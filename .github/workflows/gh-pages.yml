@@ -22,13 +22,11 @@ jobs:
         run: npm install
         working-directory: ${{ github.workspace }}
 
-      # Remove or comment out the build step for publishing static files
-      #- name: Build
-      #  run: npm run build # replace with your actual command if you don't use npm
+      - name: Build
+        run: npm run build
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ${{ github.workspace }}
           deploy_key: ${{ secrets.DEPLOY_KEY }}
