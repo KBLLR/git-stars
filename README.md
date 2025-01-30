@@ -12,7 +12,7 @@ Generated with [stargazed](https://github.com/abhijithvijayan/stargazed)
 ![Updated](https://img.shields.io/badge/Updated-30--01--2025-blue.svg)
 
 
-## 🏠 Contents
+## Initial Sort by programming language.
 
 - [C (19)](#c)
 - [C# (11)](#c-1)

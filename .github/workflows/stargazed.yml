@@ -19,3 +19,5 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Update stars list"
+          push_options: "--force"
+          repository: https://KBLLR:${{ secrets.GITHUB_TOKEN }}@github.com/KBLLR/git-stars.git
