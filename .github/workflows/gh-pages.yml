@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main
+      - main # Or your main branch (e.g., master)
   workflow_dispatch:
 
 jobs:
@@ -20,12 +20,14 @@ jobs:
 
       - name: Install Dependencies
         run: npm install
+        working-directory: ${{ github.workspace }}
 
-      - name: Build
-        run: npm run build # replace with your actual command if you don't use npm
+      # Remove or comment out the build step for publishing static files
+      #- name: Build
+      #  run: npm run build # replace with your actual command if you don't use npm
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./ #or any specific folder where you have your build
+          publish_dir: ${{ github.workspace }}

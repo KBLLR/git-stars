@@ -1,0 +1,26 @@
+{
+  "name": "git-stars",
+  "version": "1.0.0",
+  "description": "I created this list using `stargazed`, a Node.js package that generates this markdown file from my starred repositories, helping me track and organize my discoveries. The automation workflow is handled by GitHub Actions, ensuring the list is always up to date.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KBLLR/git-stars.git"
+  },
+  "keywords": [
+    "archival",
+    "github",
+    "stargazed",
+    "stars"
+  ],
+  "author": "KBLLR",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/KBLLR/git-stars/issues"
+  },
+  "homepage": "https://github.com/KBLLR/git-stars#readme"
+}
