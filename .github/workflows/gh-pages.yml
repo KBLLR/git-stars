@@ -23,10 +23,11 @@ jobs:
         working-directory: ${{ github.workspace }}
 
       - name: Build
-        run: npm run build
+        run: npm run build # replace with your actual command if you don't use npm
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          deploy_key: ${{ secrets.DEPLOY_KEY }}
+          publish_dir: ${{ github.workspace }}
+          publish_branch: gh-pages-temp

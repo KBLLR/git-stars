@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>My GitHub Stars</title>
+    </head>
+    <body>
+        <h1>My GitHub Stars</h1>
+        <div id="content">
+            ${marked(readmeContent)}
+            <br />
+            ${chart}
+        </div>
+        <script>
+            fetch("./data.json")
+                .then((response) => response.json())
+                .then((data) => {
+                    const content = document.getElementById("content");
+                    console.log(data);
+                    let html = "";
+                    for (let i = 0; i < data.length; i++) {
+                        const repos = data[i];
+                        html += `<h2>${repos.language}</h2>`;
+                        html += `<table>`;
+                        html += ` <thead><tr><th>Name</th><th>Description</th><th>Author</th><th>Stars</th><th>Date</th></tr></thead><tbody>`;
+                        for (const repo of repos) {
+                            html += `
+                       <tr>
+                         <td><a href="${repo.url}">${repo.name}</a></td>
+                         <td>${repo.description}</td>
+                         <td>${repo.author}</td>
+                         <td>${repo.stars}</td>
+                         <td>${repo.date}</td>
+                       </tr>
+                      `;
+                        }
+                        html += `</tbody></table>`;
+                    }
+                    content.innerHTML = content.innerHTML + html;
+                })
+
+                .catch((err) => {
+                    console.log("There was an error" + err);
+                });
+        </script>
+    </body>
+</html>
