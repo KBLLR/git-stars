@@ -31,3 +31,5 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ${{ github.workspace }}
+          force_orphan: true
+          repository: https://KBLLR:${{ secrets.GITHUB_TOKEN }}@github.com/KBLLR/git-stars.git
