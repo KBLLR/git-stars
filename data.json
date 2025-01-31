@@ -1,0 +1,23 @@
+[
+  {
+    "language": "JavaScript",
+    "repos": [
+      {
+        "name": "repo1",
+        "description": "...",
+        "author": "user1",
+        "stars": 123,
+        "url": "...",
+        "date": "1/30/2025"
+      },
+      {
+        "name": "repo2",
+        "description": "...",
+        "author": "user2",
+        "stars": 1234,
+        "url": "...",
+        "date": "1/29/2025"
+      }
+    ]
+  }
+]

@@ -9,12 +9,12 @@ const { marked } = require("marked");
 
 // Configure program options
 program
-  .option("-u, --username <username>", "GitHub username", "")
-  .option("-t, --token <token>", "GitHub token", "")
-  .option("-r, --repository <repository>", "repository name", "")
-  .option("-s, --sort", "sort by language", false)
+  .option("-u, --username <username>", "GitHub username", "KBLLR")
+  .option("-t, --token <token>", "GitHub token", "$`{TOKEN}")
+  .option("-r, --repository <repository>", "repository name", "git-stars")
+  .option("-s, --sort", "sort by language", true)
   .option("-m, --message <message>", "commit message", "Update stars list")
-  .option("-w, --workflow", "Setup GitHub Actions for Daily AutoUpdate", false)
+  .option("-w, --workflow", "Setup GitHub Actions for Daily AutoUpdate", true)
 
   .version("1.0.1")
   .parse(process.argv);

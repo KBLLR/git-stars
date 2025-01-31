@@ -80,7 +80,7 @@
 | 7 |  [sokol](https://github.com/floooh/sokol) | minimal cross-platform standalone C headers | floooh | 7667 |
 | 8 |  [mmg](https://github.com/MmgTools/mmg) | open source software for bidimensional and tridimensional remeshing | MmgTools | 384 |
 | 9 |  [FidelityFX-Denoiser](https://github.com/GPUOpen-Effects/FidelityFX-Denoiser) | FidelityFX Denoiser | GPUOpen-Effects | 142 |
-| 10 |  [WindTerm](https://github.com/kingToolbox/WindTerm) | A professional cross-platform SSH/Sftp/Shell/Telnet/Tmux/Serial terminal. | kingToolbox | 24806 |
+| 10 |  [WindTerm](https://github.com/kingToolbox/WindTerm) | A professional cross-platform SSH/Sftp/Shell/Telnet/Tmux/Serial terminal. | kingToolbox | 24807 |
 | 11 |  [ImageMagick](https://github.com/ImageMagick/ImageMagick) | ImageMagick is a powerful, open-source software suite for creating, editing, converting, and manipulating images in over 200 formats. Ideal for web developers, graphic designers, and researchers, it offers versatile tools for image processing, including batch processing, format conversion, and complex image transformations. | ImageMagick | 12696 |
 | 12 |  [bitmap-outliner](https://github.com/detomon/bitmap-outliner) | This algorithm converts a bitmap image to vector paths enclosing the pixel groups | detomon | 11 |
 | 13 |  [cmftStudio](https://github.com/dariomanesku/cmftStudio) | cmftStudio - GUI counterpart for: | dariomanesku | 1272 |
@@ -114,7 +114,7 @@
 | 8 |  [glTF-Asset-Generator](https://github.com/bghgary/glTF-Asset-Generator) | Tool for generating various glTF assets for importer validation | bghgary | 17 |
 | 9 |  [Pixel-Sorting](https://github.com/GarrettGunnell/Pixel-Sorting) | A &#34;real time&#34; pixel sorter for Unity | GarrettGunnell | 207 |
 | 10 |  [com.unity.demoteam.hair](https://github.com/Unity-Technologies/com.unity.demoteam.hair) | An integrated solution for authoring / importing / simulating / rendering strand-based hair in Unity. | Unity-Technologies | 768 |
-| 11 |  [mixbox](https://github.com/scrtwpns/mixbox) | Mixbox is a library for natural color mixing based on real pigments. | scrtwpns | 3098 |
+| 11 |  [mixbox](https://github.com/scrtwpns/mixbox) | Mixbox is a library for natural color mixing based on real pigments. | scrtwpns | 3101 |
 | 12 |  [LogicReinc.BlendFarm](https://github.com/LogicReinc/LogicReinc.BlendFarm) | A stand-alone Blender Network Renderer | LogicReinc | 470 |
 | 13 |  [UnityGLTF](https://github.com/prefrontalcortex/UnityGLTF) | Runtime GLTF Loader for Unity3D | prefrontalcortex | 163 |
 | 14 |  [t3](https://github.com/tooll3/t3) | Tooll 3 is an open source software to create realtime motion graphics. | tooll3 | 3583 |
@@ -134,7 +134,7 @@
 | 6 |  [bark.cpp](https://github.com/PABannier/bark.cpp) | Suno AI's Bark model in C/C++ for fast text-to-speech generation | PABannier | 767 |
 | 7 |  [stable-diffusion.cpp](https://github.com/ggerganov/stable-diffusion.cpp) | Stable Diffusion in pure C/C++ | ggerganov | 60 |
 | 8 |  [hnterm](https://github.com/ggerganov/hnterm) | :page_with_curl: Hacker News in the terminal | ggerganov | 268 |
-| 9 |  [llama.cpp](https://github.com/ggerganov/llama.cpp) | LLM inference in C/C++ | ggerganov | 72332 |
+| 9 |  [llama.cpp](https://github.com/ggerganov/llama.cpp) | LLM inference in C/C++ | ggerganov | 72336 |
 | 10 |  [whisper.cpp](https://github.com/ggerganov/whisper.cpp) | Port of OpenAI's Whisper model in C/C++ | ggerganov | 37236 |
 | 11 |  [ggmorse](https://github.com/ggerganov/ggmorse) | Morse code decoding library | ggerganov | 244 |
 | 12 |  [geometrize](https://github.com/Tw1ddle/geometrize) | :white_square_button: Geometrize is a desktop app that geometrizes images into geometric primitives | Tw1ddle | 1975 |
@@ -158,9 +158,9 @@
 | 30 |  [spine-runtimes](https://github.com/EsotericSoftware/spine-runtimes) | 2D skeletal animation runtimes for Spine. | EsotericSoftware | 4514 |
 | 31 |  [rhubarb-lip-sync](https://github.com/DanielSWolf/rhubarb-lip-sync) | Rhubarb Lip Sync is a command-line tool that automatically creates 2D mouth animation from voice recordings. You can use it for characters in computer games, in animated cartoons, or in any other project that requires animating mouths based on existing recordings. | DanielSWolf | 1913 |
 | 32 |  [SimpleHydrology](https://github.com/weigert/SimpleHydrology) | Procedural Hydrology / River / Lake Simulation | weigert | 631 |
-| 33 |  [mlx](https://github.com/ml-explore/mlx) | MLX: An array framework for Apple silicon | ml-explore | 18705 |
+| 33 |  [mlx](https://github.com/ml-explore/mlx) | MLX: An array framework for Apple silicon | ml-explore | 18707 |
 | 34 |  [flashlight](https://github.com/flashlight/flashlight) | A C++ standalone library for machine learning | flashlight | 5320 |
-| 35 |  [obs-localvocal](https://github.com/locaal-ai/obs-localvocal) | OBS plugin for local speech recognition and captioning using AI | locaal-ai | 645 |
+| 35 |  [obs-localvocal](https://github.com/locaal-ai/obs-localvocal) | OBS plugin for local speech recognition and captioning using AI | locaal-ai | 646 |
 | 36 |  [obs-urlsource](https://github.com/locaal-ai/obs-urlsource) | OBS plugin to fetch data from a URL or file, connect to an API or AI service, parse responses and display text, image or audio on scene | locaal-ai | 202 |
 | 37 |  [StreamFX-Public](https://github.com/Vhonowslend/StreamFX-Public) | StreamFX is a plugin for OBS® Studio which adds many new effects, filters, sources, transitions and encoders! Be it 3D Transform, Blur, complex Masking, or even custom shaders, you'll find it all here. | Vhonowslend | 3981 |
 | 38 |  [cam2web](https://github.com/cvsandbox/cam2web) | Streaming camera to web as MJPEG stream or individual JPEG snapshots. Providing embedded web UI for watching camera directly from a web browser. | cvsandbox | 186 |
@@ -175,7 +175,7 @@
 | 47 |  [libossia](https://github.com/ossia/libossia) | A modern C++, cross-environment distributed object model for creative coding and interaction scoring | ossia | 213 |
 | 48 |  [backscrub](https://github.com/floe/backscrub) | Virtual Video Device for Background Replacement with Deep Semantic Segmentation | floe | 736 |
 | 49 |  [ncnn](https://github.com/Tencent/ncnn) | ncnn is a high-performance neural network inference framework optimized for the mobile platform | Tencent | 20869 |
-| 50 |  [liquidfun](https://github.com/google/liquidfun) | 2D physics engine for games | google | 4770 |
+| 50 |  [liquidfun](https://github.com/google/liquidfun) | 2D physics engine for games | google | 4771 |
 | 51 |  [ready](https://github.com/GollyGang/ready) | A cross-platform implementation of various reaction-diffusion systems and PDEs. | GollyGang | 788 |
 | 52 |  [openpose](https://github.com/CMU-Perceptual-Computing-Lab/openpose) | OpenPose: Real-time multi-person keypoint detection library for body, face, hands, and foot estimation | CMU-Perceptual-Computing-Lab | 31743 |
 | 53 |  [hilma](https://github.com/patriciogonzalezvivo/hilma) | library to generate 2D/3D geometries | patriciogonzalezvivo | 98 |
@@ -187,10 +187,10 @@
 | 59 |  [nanogui](https://github.com/mitsuba-renderer/nanogui) | Minimalistic C++/Python GUI library for OpenGL, GLES2/3, Metal, and WebAssembly/WebGL | mitsuba-renderer | 1608 |
 | 60 |  [Open3D](https://github.com/isl-org/Open3D) | Open3D: A Modern Library for 3D Data Processing | isl-org | 11843 |
 | 61 |  [kinects_human_tracking](https://github.com/kuka-isir/kinects_human_tracking) | Human tracking for multi-Kinect systems around a robot on ROS | kuka-isir | 39 |
-| 62 |  [mongo](https://github.com/mongodb/mongo) | The MongoDB Database | mongodb | 26684 |
-| 63 |  [mediapipe](https://github.com/google-ai-edge/mediapipe) | Cross-platform, customizable ML solutions for live and streaming media. | google-ai-edge | 28407 |
-| 64 |  [colmap](https://github.com/colmap/colmap) | COLMAP - Structure-from-Motion and Multi-View Stereo | colmap | 8085 |
-| 65 |  [gpt4all](https://github.com/nomic-ai/gpt4all) | GPT4All: Run Local LLMs on Any Device. Open-source and available for commercial use. | nomic-ai | 72023 |
+| 62 |  [mongo](https://github.com/mongodb/mongo) | The MongoDB Database | mongodb | 26683 |
+| 63 |  [mediapipe](https://github.com/google-ai-edge/mediapipe) | Cross-platform, customizable ML solutions for live and streaming media. | google-ai-edge | 28408 |
+| 64 |  [colmap](https://github.com/colmap/colmap) | COLMAP - Structure-from-Motion and Multi-View Stereo | colmap | 8087 |
+| 65 |  [gpt4all](https://github.com/nomic-ai/gpt4all) | GPT4All: Run Local LLMs on Any Device. Open-source and available for commercial use. | nomic-ai | 72024 |
 | 66 |  [context-free](https://github.com/MtnViewJohn/context-free) | Context Free is a program that generates images from written instructions called a grammar. The program follows the instructions in a few seconds to create images that can contain millions of shapes. | MtnViewJohn | 484 |
 | 67 |  [tinygrammar](https://github.com/schism-/tinygrammar) | A software to procedurally generate tangle art with Shape Grammars. | schism- | 8 |
 | 68 |  [shapeml](https://github.com/stefalie/shapeml) | ShapeML is a rule- or grammar-based procedural 3D modeling framework. | stefalie | 84 |
@@ -217,7 +217,7 @@
 | 89 |  [osci-render](https://github.com/jameshball/osci-render) | 〰📺🔊 Synthesiser audio plugin for making music by drawing objects on an oscilloscope using audio. | jameshball | 469 |
 | 90 |  [f3d](https://github.com/f3d-app/f3d) | Fast and minimalist 3D viewer. | f3d-app | 3117 |
 | 91 |  [GLSL-PathTracer](https://github.com/knightcrawler25/GLSL-PathTracer) | A toy physically based GPU path tracer (C++/OpenGL/GLSL) | knightcrawler25 | 1899 |
-| 92 |  [imgui](https://github.com/ocornut/imgui) | Dear ImGui: Bloat-free Graphical User interface for C++ with minimal dependencies | ocornut | 62846 |
+| 92 |  [imgui](https://github.com/ocornut/imgui) | Dear ImGui: Bloat-free Graphical User interface for C++ with minimal dependencies | ocornut | 62848 |
 | 93 |  [ada](https://github.com/patriciogonzalezvivo/ada) | A general porpose OpenGL app library | patriciogonzalezvivo | 122 |
 | 94 |  [hypatia](https://github.com/patriciogonzalezvivo/hypatia) | Geo-Astronomical library for artist | patriciogonzalezvivo | 62 |
 | 95 |  [OpenLiDAR](https://github.com/patriciogonzalezvivo/OpenLiDAR) | DIY 3D LiDAR Scanner | patriciogonzalezvivo | 254 |
@@ -333,13 +333,13 @@
 ## Go
 |  | Name 	|  Description 	| Author  	|  Stars 	|
 |---	|---	|---	|---	|---	|
-| 1 |  [lux](https://github.com/iawia002/lux) | 👾 Fast and simple video download library and CLI tool written in Go | iawia002 | 28505 |
-| 2 |  [fabric](https://github.com/danielmiessler/fabric) | fabric is an open-source framework for augmenting humans using AI. It provides a modular framework for solving specific problems using a crowdsourced set of AI prompts that can be used anywhere. | danielmiessler | 28126 |
+| 1 |  [lux](https://github.com/iawia002/lux) | 👾 Fast and simple video download library and CLI tool written in Go | iawia002 | 28509 |
+| 2 |  [fabric](https://github.com/danielmiessler/fabric) | fabric is an open-source framework for augmenting humans using AI. It provides a modular framework for solving specific problems using a crowdsourced set of AI prompts that can be used anywhere. | danielmiessler | 28127 |
 | 3 |  [LLocalSearch](https://github.com/nilsherzig/LLocalSearch) | LLocalSearch is a completely locally running search aggregator using LLM Agents. The user can ask a question and the system will use a chain of LLMs to find the answer. The user can see the progress of the agents and the final answer. No OpenAI or Google API keys are needed. | nilsherzig | 5800 |
-| 4 |  [ollama](https://github.com/ollama/ollama) | Get up and running with Llama 3.3, DeepSeek-R1, Phi-4, Gemma 2, and other large language models. | ollama | 115421 |
+| 4 |  [ollama](https://github.com/ollama/ollama) | Get up and running with Llama 3.3, DeepSeek-R1, Phi-4, Gemma 2, and other large language models. | ollama | 115492 |
 | 5 |  [plandex](https://github.com/plandex-ai/plandex) | AI driven development in your terminal. Designed for large, real-world tasks. | plandex-ai | 11028 |
 | 6 |  [cortex](https://github.com/cortexlabs/cortex) | Production infrastructure for machine learning at scale | cortexlabs | 8025 |
-| 7 |  [usql](https://github.com/xo/usql) | Universal command-line interface for SQL databases | xo | 9184 |
+| 7 |  [usql](https://github.com/xo/usql) | Universal command-line interface for SQL databases | xo | 9185 |
 | 8 |  [git-lfs](https://github.com/git-lfs/git-lfs) | Git extension for versioning large files | git-lfs | 13207 |
 | 9 |  [sims](https://github.com/CompCogNeuro/sims) | Simulations for the Computational Cognitive Neuroscience textbook | CompCogNeuro | 143 |
 | 10 |  [aix](https://github.com/projectdiscovery/aix) | AIx is a cli tool to interact with Large Language Models (LLM) APIs. | projectdiscovery | 278 |
@@ -380,7 +380,7 @@
 | 20 |  [connascence.github.io](https://github.com/connascence/connascence.github.io) |  | connascence | 38 |
 | 21 |  [threejs_starter](https://github.com/sketchpunk/threejs_starter) |  | sketchpunk | 23 |
 | 22 |  [nshelton.github.io](https://github.com/nshelton/nshelton.github.io) | github pages | nshelton | 6 |
-| 23 |  [awesome-chatgpt-prompts](https://github.com/f/awesome-chatgpt-prompts) | This repo includes ChatGPT prompt curation to use ChatGPT and other LLM tools better. | f | 119364 |
+| 23 |  [awesome-chatgpt-prompts](https://github.com/f/awesome-chatgpt-prompts) | This repo includes ChatGPT prompt curation to use ChatGPT and other LLM tools better. | f | 119377 |
 | 24 |  [context-cursor](https://github.com/PavelLaptev/context-cursor) | A cursor that takes the shape of the hovered element. | PavelLaptev | 82 |
 | 25 |  [nft-pixels](https://github.com/danielesteban/nft-pixels) | NFT Exploration | danielesteban | 2 |
 | 26 |  [OpenGL-Refpages](https://github.com/KhronosGroup/OpenGL-Refpages) | OpenGL and OpenGL ES reference page sources, and generated HTML used as backing store for khronos.org | KhronosGroup | 443 |
@@ -394,7 +394,7 @@
 | 34 |  [AudioBasedImageDistortion](https://github.com/neundex/AudioBasedImageDistortion) |  | neundex | 130 |
 | 35 |  [computational-photography](https://github.com/aferriss/computational-photography) | Workshop materials for the Computational Photography workshop at the Anderson ranch | aferriss | 23 |
 | 36 |  [london-css-2020](https://github.com/argyleink/london-css-2020) | CSS 🎉 | argyleink | 5 |
-| 37 |  [awesome-creative-coding](https://github.com/terkelg/awesome-creative-coding) | Creative Coding: Generative Art, Data visualization, Interaction Design, Resources. | terkelg | 13188 |
+| 37 |  [awesome-creative-coding](https://github.com/terkelg/awesome-creative-coding) | Creative Coding: Generative Art, Data visualization, Interaction Design, Resources. | terkelg | 13189 |
 | 38 |  [webgl-fundamentals](https://github.com/gfxfundamentals/webgl-fundamentals) | WebGL lessons that start with the basics | gfxfundamentals | 4752 |
 | 39 |  [svg.draggable.js](https://github.com/svgdotjs/svg.draggable.js) | An extension for the svg.js library to make elements draggable | svgdotjs | 291 |
 | 40 |  [W](https://github.com/xem/W) | A micro WebGL2 framework with a ton of features | xem | 333 |
@@ -416,7 +416,7 @@
 | 1 |  [mae-annotation](https://github.com/keighrim/mae-annotation) | MAE is a lightweight, general-purpose natural language annotation tool | keighrim | 61 |
 | 2 |  [myrobotlab](https://github.com/MyRobotLab/myrobotlab) | Open Source Java Framework for Robotics and Creative Machine Control | MyRobotLab | 230 |
 | 3 |  [tdk-microservices-demo](https://github.com/synthesized-io/tdk-microservices-demo) |  | synthesized-io | 4 |
-| 4 |  [bazel](https://github.com/bazelbuild/bazel) | a fast, scalable, multi-language and extensible build system | bazelbuild | 23600 |
+| 4 |  [bazel](https://github.com/bazelbuild/bazel) | a fast, scalable, multi-language and extensible build system | bazelbuild | 23599 |
 | 5 |  [lwjgl-basics](https://github.com/mattdesl/lwjgl-basics) | :wrench: LibGDX/LWJGL tutorials and examples | mattdesl | 1875 |
 
 **[⬆ Back to Index](#-contents)**
@@ -447,9 +447,9 @@
 | 21 |  [ComfyUI-Custom-Scripts](https://github.com/pythongosssss/ComfyUI-Custom-Scripts) | Enhancements & experiments for ComfyUI, mostly focusing on UI features | pythongosssss | 2060 |
 | 22 |  [samples-js](https://github.com/avatarsdk/samples-js) | How to interact with AvatarSDK WEB API in JavaScript | avatarsdk | 7 |
 | 23 |  [three-gpu-ecosystem-tests](https://github.com/verekia/three-gpu-ecosystem-tests) |  | verekia | 28 |
-| 24 |  [documind](https://github.com/DocumindHQ/documind) | Open-source platform for extracting structured data from documents using AI. | DocumindHQ | 1226 |
+| 24 |  [documind](https://github.com/DocumindHQ/documind) | Open-source platform for extracting structured data from documents using AI. | DocumindHQ | 1228 |
 | 25 |  [raphael](https://github.com/DmitryBaranovskiy/raphael) | JavaScript Vector Library | DmitryBaranovskiy | 11282 |
-| 26 |  [three-cesium-examples](https://github.com/z2586300277/three-cesium-examples) | WebGL Three.js Cesium.js Examples And Demo - WebGL 的 Three.js 和 Cesium.js 案例 --- Star ---点星星 | z2586300277 | 953 |
+| 26 |  [three-cesium-examples](https://github.com/z2586300277/three-cesium-examples) | WebGL Three.js Cesium.js Examples And Demo - WebGL 的 Three.js 和 Cesium.js 案例 --- Star ---点星星 | z2586300277 | 954 |
 | 27 |  [diffusion-canvas](https://github.com/carllapierre/diffusion-canvas) | A simple react app with a canvas to draw an image. Real time image-to-image inference using Stable Diffusion XL Turbo and Modal | carllapierre | 23 |
 | 28 |  [threejs-blender-template](https://github.com/Soft8Soft/threejs-blender-template) | Starter project for creating WebGL apps with Blender and Three.js | Soft8Soft | 30 |
 | 29 |  [glTF-Sample-Renderer](https://github.com/KhronosGroup/glTF-Sample-Renderer) | The render portion of Sample Viewer (glTF-Sample-Viewer) | KhronosGroup | 24 |
@@ -468,7 +468,7 @@
 | 42 |  [ai-alchemy](https://github.com/darabos/ai-alchemy) | An element merging game powered by AI | darabos | 12 |
 | 43 |  [linear-vaporwave-three.js](https://github.com/MaximeHeckel/linear-vaporwave-three.js) | My first Three.js project: an attempt at recreating the WebGL animation of the 2021 Linear release page https://linear.app/releases/2021-06 | MaximeHeckel | 49 |
 | 44 |  [three-gltf-extensions](https://github.com/takahirox/three-gltf-extensions) | Unofficial Three.js glTF loader/exporter plugins | takahirox | 125 |
-| 45 |  [samples](https://github.com/webrtc/samples) | WebRTC Web demos and samples | webrtc | 14166 |
+| 45 |  [samples](https://github.com/webrtc/samples) | WebRTC Web demos and samples | webrtc | 14167 |
 | 46 |  [speech-driven-lipsync](https://github.com/srigaurav1986/speech-driven-lipsync) | Speech Driven Lip sync for Web Browser | srigaurav1986 | 27 |
 | 47 |  [marked](https://github.com/markedjs/marked) | A markdown parser and compiler. Built for speed. | markedjs | 33689 |
 | 48 |  [Noi](https://github.com/lencx/Noi) | 🚀 Power Your World with AI - Explore, Extend, Empower. | lencx | 7003 |
@@ -479,7 +479,7 @@
 | 53 |  [arena-js](https://github.com/ivangreene/arena-js) | are.na API wrapper for JavaScript | ivangreene | 190 |
 | 54 |  [shaderbooth](https://github.com/MaxBittker/shaderbooth) | Write & Share face filter shaders art in the browser | MaxBittker | 103 |
 | 55 |  [multipleWindow3dScene](https://github.com/bgstaal/multipleWindow3dScene) | A quick example of how one can &#34;synchronize&#34; a 3d scene across multiple windows using three.js and localStorage | bgstaal | 16665 |
-| 56 |  [one-api](https://github.com/songquanpeng/one-api) | OpenAI 接口管理 & 分发系统，支持 Azure、Anthropic Claude、Google PaLM 2 & Gemini、智谱 ChatGLM、百度文心一言、讯飞星火认知、阿里通义千问、360 智脑以及腾讯混元，可用于二次分发管理 key，仅单可执行文件，已打包好 Docker 镜像，一键部署，开箱即用. OpenAI key management & redistribution system, using a single API for all LLMs, and features an English UI. | songquanpeng | 21067 |
+| 56 |  [one-api](https://github.com/songquanpeng/one-api) | OpenAI 接口管理 & 分发系统，支持 Azure、Anthropic Claude、Google PaLM 2 & Gemini、智谱 ChatGLM、百度文心一言、讯飞星火认知、阿里通义千问、360 智脑以及腾讯混元，可用于二次分发管理 key，仅单可执行文件，已打包好 Docker 镜像，一键部署，开箱即用. OpenAI key management & redistribution system, using a single API for all LLMs, and features an English UI. | songquanpeng | 21068 |
 | 57 |  [d3-geo](https://github.com/d3/d3-geo) | Geographic projections, spherical shapes and spherical trigonometry. | d3 | 1045 |
 | 58 |  [webgl-workshop](https://github.com/stackgl/webgl-workshop) | :mortar_board: The sequel to shader-school: Learn the WebGL API | stackgl | 1496 |
 | 59 |  [canvas-dimensions](https://github.com/mattdesl/canvas-dimensions) | utility for setting up Canvas2D dimensions | mattdesl | 23 |
@@ -492,10 +492,10 @@
 | 66 |  [talking_avatar_backend](https://github.com/bornfree/talking_avatar_backend) | Simple ExpressJS backend for talking avatars | bornfree | 67 |
 | 67 |  [talking_avatar](https://github.com/bornfree/talking_avatar) | A nice 3D avatar that can speak input text with facial expressions | bornfree | 331 |
 | 68 |  [threads.js](https://github.com/threadsjs/threads.js) | A Node.js library for the Threads API | threadsjs | 280 |
-| 69 |  [open-webui](https://github.com/open-webui/open-webui) | User-friendly AI Interface (Supports Ollama, OpenAI API, ...) | open-webui | 63486 |
+| 69 |  [open-webui](https://github.com/open-webui/open-webui) | User-friendly AI Interface (Supports Ollama, OpenAI API, ...) | open-webui | 63555 |
 | 70 |  [chatgpt.js](https://github.com/KudoAI/chatgpt.js) | 🤖 A powerful, open source client-side JavaScript library for ChatGPT | KudoAI | 1943 |
 | 71 |  [NotionNext](https://github.com/tangly1024/NotionNext) | 使用 NextJS + Notion API 实现的，支持多种部署方案的静态博客，无需服务器、零门槛搭建网站，为Notion和所有创作者设计。 (A static blog built with NextJS and Notion API, supporting multiple deployment options. No server required, zero threshold to set up a website. Designed for Notion and all creators.) | tangly1024 | 8494 |
-| 72 |  [htmx](https://github.com/bigskysoftware/htmx) | &lt;/&gt; htmx - high power tools for HTML | bigskysoftware | 43293 |
+| 72 |  [htmx](https://github.com/bigskysoftware/htmx) | &lt;/&gt; htmx - high power tools for HTML | bigskysoftware | 43294 |
 | 73 |  [example](https://github.com/dreamsxin/example) | 各种代码实例 | dreamsxin | 171 |
 | 74 |  [debundle](https://github.com/1egoman/debundle) | :card_file_box: A javascript debundler. Takes a Browserify or Webpack bundle and recreates the initial, pre-bundled source. | 1egoman | 715 |
 | 75 |  [ComfyUI_Custom_Nodes_AlekPet](https://github.com/AlekPet/ComfyUI_Custom_Nodes_AlekPet) | Custom nodes that extend the capabilities of Comfyui | AlekPet | 1002 |
@@ -504,7 +504,7 @@
 | 78 |  [netron](https://github.com/lutzroeder/netron) | Visualizer for neural network, deep learning and machine learning models | lutzroeder | 29220 |
 | 79 |  [three-csm](https://github.com/StrandedKitty/three-csm) | ☀️ Cascaded shadow maps (CSMs) implementation for Three.js | StrandedKitty | 312 |
 | 80 |  [three-default-cube](https://github.com/mjurczyk/three-default-cube) | Game Development Toolkit for Three.js | mjurczyk | 22 |
-| 81 |  [screenity](https://github.com/alyssaxuu/screenity) | The free and privacy-friendly screen recorder with no limits 🎥 | alyssaxuu | 13481 |
+| 81 |  [screenity](https://github.com/alyssaxuu/screenity) | The free and privacy-friendly screen recorder with no limits 🎥 | alyssaxuu | 13482 |
 | 82 |  [sunposition](https://github.com/elschilling/sunposition) | Sun position 3D viewer | elschilling | 50 |
 | 83 |  [frame.js](https://github.com/mrdoob/frame.js) | JavaScript Sequence Editor | mrdoob | 1082 |
 | 84 |  [3D-Driving-AI-PPO](https://github.com/fredrikcollyer/3D-Driving-AI-PPO) | 🚗 3D web app that combines Proximal Policy Optimization with Three.js, enabling users to directly interact with or train AI models on a virtual racetrack. | fredrikcollyer | 30 |
@@ -542,7 +542,7 @@
 | 116 |  [chromotome](https://github.com/kgolid/chromotome) | A collection of color palettes saved for personal use. | kgolid | 345 |
 | 117 |  [webgl-filter](https://github.com/evanw/webgl-filter) | An image editor in WebGL | evanw | 1050 |
 | 118 |  [avaturn-threejs-example](https://github.com/avaturn/avaturn-threejs-example) | Three.js example for Avaturn integration | avaturn | 23 |
-| 119 |  [axios](https://github.com/axios/axios) | Promise based HTTP client for the browser and node.js | axios | 106230 |
+| 119 |  [axios](https://github.com/axios/axios) | Promise based HTTP client for the browser and node.js | axios | 106231 |
 | 120 |  [Carnage](https://github.com/laurentlb/Carnage) |  | laurentlb | 2 |
 | 121 |  [aframe-gaussian-splatting](https://github.com/quadjr/aframe-gaussian-splatting) | A-Frame component implementation of the 3D Gaussian splat viewer | quadjr | 195 |
 | 122 |  [facelift](https://github.com/cesarferreira/facelift) | Quick github-pages generator | cesarferreira | 24 |
@@ -568,7 +568,7 @@
 | 142 |  [LSystems_JavaScript](https://github.com/simondevyoutube/LSystems_JavaScript) |  | simondevyoutube | 49 |
 | 143 |  [AmbientCanvasBackgrounds](https://github.com/crnacura/AmbientCanvasBackgrounds) | Five ambient webpage backgrounds created using the HTML5 Canvas API and jwagner's Simplex Noise library. | crnacura | 715 |
 | 144 |  [d3-geo-polygon](https://github.com/d3/d3-geo-polygon) | Clipping and geometric operations for spherical polygons. | d3 | 113 |
-| 145 |  [engine](https://github.com/playcanvas/engine) | Powerful web graphics runtime built on WebGL, WebGPU, WebXR and glTF | playcanvas | 9867 |
+| 145 |  [engine](https://github.com/playcanvas/engine) | Powerful web graphics runtime built on WebGL, WebGPU, WebXR and glTF | playcanvas | 9866 |
 | 146 |  [dom-to-image](https://github.com/tsayen/dom-to-image) | Generates an image from a DOM node using HTML5 canvas | tsayen | 10484 |
 | 147 |  [generative-utils](https://github.com/georgedoescode/generative-utils) | A collection of handy generative art utilities | georgedoescode | 294 |
 | 148 |  [audiosprite](https://github.com/tonistiigi/audiosprite) | Jukebox/Howler/CreateJS compatible audio sprite generator | tonistiigi | 693 |
@@ -664,7 +664,7 @@
 | 238 |  [Code-Package-p5.js](https://github.com/generative-design/Code-Package-p5.js) | Code package of the book: Generative Design – Creative Coding for the Web with JavaScript in p5.js | generative-design | 935 |
 | 239 |  [curl-flow](https://github.com/ichitaro/curl-flow) |  | ichitaro | 112 |
 | 240 |  [three-gltf-viewer](https://github.com/donmccurdy/three-gltf-viewer) | Drag-and-drop preview for glTF 2.0 models in WebGL using three.js. | donmccurdy | 2191 |
-| 241 |  [whatsapp-web.js](https://github.com/pedroslopez/whatsapp-web.js) | A WhatsApp client library for NodeJS that connects through the WhatsApp Web browser app | pedroslopez | 15984 |
+| 241 |  [whatsapp-web.js](https://github.com/pedroslopez/whatsapp-web.js) | A WhatsApp client library for NodeJS that connects through the WhatsApp Web browser app | pedroslopez | 15985 |
 | 242 |  [module-best-practices](https://github.com/mattdesl/module-best-practices) | :books: some best practices for JS modules | mattdesl | 1545 |
 | 243 |  [hyper-postprocessing](https://github.com/slammayjammay/hyper-postprocessing) | Add fragment shaders to the Hyper terminal. | slammayjammay | 139 |
 | 244 |  [three-bmfont-text](https://github.com/dmarcos/three-bmfont-text) | renders BMFont files in ThreeJS with word-wrapping | dmarcos | 4 |
@@ -715,7 +715,7 @@
 | 289 |  [glfx.js](https://github.com/evanw/glfx.js) | An image effects library for JavaScript using WebGL | evanw | 3315 |
 | 290 |  [Three.js-experiments-pool](https://github.com/BKcore/Three.js-experiments-pool) | Three.js experiments and demo sources. | BKcore | 52 |
 | 291 |  [threejs-modern-app](https://github.com/marcofugaro/threejs-modern-app) | Boilerplate and utils for a fullscreen Three.js app | marcofugaro | 386 |
-| 292 |  [atropos](https://github.com/nolimits4web/atropos) | Stunning touch-friendly 3D parallax hover effects | nolimits4web | 3357 |
+| 292 |  [atropos](https://github.com/nolimits4web/atropos) | Stunning touch-friendly 3D parallax hover effects | nolimits4web | 3356 |
 | 293 |  [threejs-andy-boilerplate](https://github.com/ektogamat/threejs-andy-boilerplate) | Very simple threejs boilerplate in VanillaJS to start your projects. There is only a basic scene, a load model method and a simple webpack. | ektogamat | 716 |
 | 294 |  [pwa-examples](https://github.com/mdn/pwa-examples) | Examples for progressive web apps. | mdn | 942 |
 | 295 |  [Canvas-Sprite-Animations](https://github.com/IceCreamYou/Canvas-Sprite-Animations) | A powerful, easy-to-use Sprite animation library designed for HTML5 Canvas. | IceCreamYou | 65 |
@@ -755,11 +755,11 @@
 | 329 |  [threejs-starter](https://github.com/kekkorider/threejs-starter) |  | kekkorider | 197 |
 | 330 |  [Ternion](https://github.com/FabienMotte/Ternion) | A simple starter kit to prototype quickly your ideas with Three.js | FabienMotte | 104 |
 | 331 |  [generator-threejs-modern-app](https://github.com/marcofugaro/generator-threejs-modern-app) | Scaffold out a boilerplate and utils for a fullscreen Three.js app | marcofugaro | 6 |
-| 332 |  [SolarSys](https://github.com/solarcg/SolarSys) | Realistic Solar System simulation with three.js | solarcg | 84 |
+| 332 |  [SolarSys](https://github.com/solarcg/SolarSys) | Realistic Solar System simulation with three.js | solarcg | 83 |
 | 333 |  [alien.js](https://github.com/alienkitty/alien.js) | 👽 MVC design pattern and render pipeline | alienkitty | 945 |
-| 334 |  [edex-ui](https://github.com/GitSquared/edex-ui) | A cross-platform, customizable science fiction terminal emulator with advanced monitoring & touchscreen support. | GitSquared | 41406 |
+| 334 |  [edex-ui](https://github.com/GitSquared/edex-ui) | A cross-platform, customizable science fiction terminal emulator with advanced monitoring & touchscreen support. | GitSquared | 41407 |
 | 335 |  [Rythm.js](https://github.com/Okazari/Rythm.js) | A javascript library that makes your page dance. | Okazari | 3937 |
-| 336 |  [matter-js](https://github.com/liabru/matter-js) | a 2D rigid body physics engine for the web ▲● ■ | liabru | 17131 |
+| 336 |  [matter-js](https://github.com/liabru/matter-js) | a 2D rigid body physics engine for the web ▲● ■ | liabru | 17132 |
 | 337 |  [mole](https://github.com/gavinmcfarland/mole) | A tool for managing design decision outputs for different platforms | gavinmcfarland | 33 |
 | 338 |  [svg.filter.js](https://github.com/svgdotjs/svg.filter.js) | A plugin for svg.js adding svg filters | svgdotjs | 220 |
 | 339 |  [css-doodle](https://github.com/css-doodle/css-doodle) | 🎨  A web component for drawing patterns with CSS. | css-doodle | 5709 |
@@ -785,7 +785,7 @@
 | 359 |  [three-mesh-ui](https://github.com/felixmariotto/three-mesh-ui) | ⏹ Make VR user interfaces for Three.js | felixmariotto | 1344 |
 | 360 |  [figma-github](https://github.com/camilleriluke/figma-github) | Browser extension that adds real-time Figma designs within GitHub | camilleriluke | 29 |
 | 361 |  [Photoshop-Export-Layers-to-Files-Fast](https://github.com/antipalindrome/Photoshop-Export-Layers-to-Files-Fast) | This script allows you to export your layers as individual files at a speed much faster than the built-in script from Adobe. | antipalindrome | 1542 |
-| 362 |  [three.js](https://github.com/mrdoob/three.js) | JavaScript 3D Library. | mrdoob | 104046 |
+| 362 |  [three.js](https://github.com/mrdoob/three.js) | JavaScript 3D Library. | mrdoob | 104047 |
 | 363 |  [Resizable.js](https://github.com/Tom-Rawlings/Resizable.js) | A JavaScript library allowing the creation of manually resizable div elements. | Tom-Rawlings | 59 |
 
 **[⬆ Back to Index](#-contents)**
@@ -800,19 +800,19 @@
 ## Jupyter Notebook
 |  | Name 	|  Description 	| Author  	|  Stars 	|
 |---	|---	|---	|---	|---	|
-| 1 |  [alpaca_eval](https://github.com/tatsu-lab/alpaca_eval) | An automatic evaluator for instruction-following language models. Human-validated, high-quality, cheap, and fast. | tatsu-lab | 1626 |
+| 1 |  [alpaca_eval](https://github.com/tatsu-lab/alpaca_eval) | An automatic evaluator for instruction-following language models. Human-validated, high-quality, cheap, and fast. | tatsu-lab | 1627 |
 | 2 |  [Self-Correction-Human-Parsing](https://github.com/GoGoDuck912/Self-Correction-Human-Parsing) | An out-of-box human parsing representation extractor. | GoGoDuck912 | 1085 |
 | 3 |  [asal](https://github.com/SakanaAI/asal) | Automating the Search for Artificial Life with Foundation Models! | SakanaAI | 352 |
 | 4 |  [pretrained-gan-70s-scifi](https://github.com/jeffheaton/pretrained-gan-70s-scifi) | Pretrained model 1024x1024 trained on 1970s scifi art | jeffheaton | 52 |
-| 5 |  [dspy-breakdown](https://github.com/ALucek/dspy-breakdown) | Stop prompt engineering! Program your LLMs with DSPy | ALucek | 18 |
+| 5 |  [dspy-breakdown](https://github.com/ALucek/dspy-breakdown) | Stop prompt engineering! Program your LLMs with DSPy | ALucek | 20 |
 | 6 |  [eval-course](https://github.com/wandb/eval-course) |  | wandb | 14 |
 | 7 |  [scrapegraphai-ai-copilot](https://github.com/ScrapeGraphAI/scrapegraphai-ai-copilot) |  | ScrapeGraphAI | 25 |
 | 8 |  [AI_CollabFiles](https://github.com/AkshatRastogi-1nC0re/AI_CollabFiles) | Hey fellow learners, This repository contains all of the practice / reference notebooks that I have worked on while learning artificial intelligence. If you do find it useful, give this repository a star and if you encounter any improvements or problems with the notebooks just submit an issue I'll assign it to you. | AkshatRastogi-1nC0re | 12 |
 | 9 |  [semantic-sliders](https://github.com/linoytsaban/semantic-sliders) |  | linoytsaban | 60 |
 | 10 |  [Phi-3-Vision-MLX](https://github.com/JosefAlbers/Phi-3-Vision-MLX) | Phi-3.5 for Mac: Locally-run Vision and Language Models for Apple Silicon | JosefAlbers | 259 |
 | 11 |  [gemma-cookbook](https://github.com/google-gemini/gemma-cookbook) | A collection of guides and examples for the Gemma open models from Google. | google-gemini | 967 |
-| 12 |  [cookbook](https://github.com/google-gemini/cookbook) | Examples and guides for using the Gemini API | google-gemini | 10532 |
-| 13 |  [ag2](https://github.com/ag2ai/ag2) | AG2 (formerly AutoGen): The Open-Source AgentOS. Join us at: https://discord.gg/pAbnFJrkgZ | ag2ai | 1647 |
+| 12 |  [cookbook](https://github.com/google-gemini/cookbook) | Examples and guides for using the Gemini API | google-gemini | 10535 |
+| 13 |  [ag2](https://github.com/ag2ai/ag2) | AG2 (formerly AutoGen): The Open-Source AgentOS. Join us at: https://discord.gg/pAbnFJrkgZ | ag2ai | 1648 |
 | 14 |  [InstantStyle](https://github.com/instantX-research/InstantStyle) | InstantStyle: Free Lunch towards Style-Preserving in Text-to-Image Generation 🔥 | instantX-research | 1741 |
 | 15 |  [chunking-strategies](https://github.com/ALucek/chunking-strategies) |  | ALucek | 15 |
 | 16 |  [hume-api-examples](https://github.com/HumeAI/hume-api-examples) | Example projects built with the Hume AI APIs | HumeAI | 155 |
@@ -825,7 +825,7 @@
 | 23 |  [WhisperSpeech](https://github.com/WhisperSpeech/WhisperSpeech) | An Open Source text-to-speech system built by inverting Whisper. | WhisperSpeech | 4099 |
 | 24 |  [awesome-design.ai](https://github.com/shadowcz007/awesome-design.ai) | Useful resources for creating Design Artificial Intelligence | shadowcz007 | 144 |
 | 25 |  [courses](https://github.com/anthropics/courses) | Anthropic's educational courses | anthropics | 8808 |
-| 26 |  [CLIP](https://github.com/openai/CLIP) | CLIP (Contrastive Language-Image Pretraining),  Predict the most relevant text snippet given an image | openai | 27144 |
+| 26 |  [CLIP](https://github.com/openai/CLIP) | CLIP (Contrastive Language-Image Pretraining),  Predict the most relevant text snippet given an image | openai | 27145 |
 | 27 |  [guidance](https://github.com/guidance-ai/guidance) | A guidance language for controlling large language models. | guidance-ai | 19545 |
 | 28 |  [Stable-Diffusion](https://github.com/FurkanGozukara/Stable-Diffusion) | FLUX, Stable Diffusion, SDXL, SD3, LoRA, Fine Tuning, DreamBooth, Training, Automatic1111, Forge WebUI, SwarmUI, DeepFake, TTS, Animation, Text To Video, Tutorials, Guides, Lectures, Courses, ComfyUI, Google Colab, RunPod, Kaggle, NoteBooks, ControlNet, TTS, Voice Cloning, AI, AI News, ML, ML News, News, Tech, Tech News, Kohya, Midjourney, RunPod | FurkanGozukara | 2253 |
 | 29 |  [lucent-notebooks](https://github.com/greentfrapp/lucent-notebooks) | Colab/Jupyter notebooks based on Lucent. | greentfrapp | 20 |
@@ -837,23 +837,23 @@
 | 35 |  [gpt_from_scratch](https://github.com/mkthoma/gpt_from_scratch) |  | mkthoma | 3 |
 | 36 |  [shap](https://github.com/shap/shap) | A game theoretic approach to explain the output of any machine learning model. | shap | 23307 |
 | 37 |  [audiocraft](https://github.com/facebookresearch/audiocraft) | Audiocraft is a library for audio processing and generation with deep learning. It features the state-of-the-art EnCodec audio compressor / tokenizer, along with MusicGen, a simple and controllable music generation LM with textual and melodic conditioning. | facebookresearch | 21392 |
-| 38 |  [StoryDiffusion](https://github.com/HVision-NKU/StoryDiffusion) | Accepted as [NeurIPS 2024] Spotlight Presentation Paper | HVision-NKU | 6144 |
+| 38 |  [StoryDiffusion](https://github.com/HVision-NKU/StoryDiffusion) | Accepted as [NeurIPS 2024] Spotlight Presentation Paper | HVision-NKU | 6145 |
 | 39 |  [MultiDiffusion](https://github.com/omerbt/MultiDiffusion) | Official Pytorch Implementation for &#34;MultiDiffusion: Fusing Diffusion Paths for Controlled Image Generation&#34; presenting &#34;MultiDiffusion&#34; (ICML 2023) | omerbt | 1014 |
 | 40 |  [corenet](https://github.com/apple/corenet) | CoreNet: A library for training deep neural networks | apple | 6993 |
-| 41 |  [llama-cookbook](https://github.com/meta-llama/llama-cookbook) | Welcome to the Llama Cookbook! This is your go to guide for Building with Llama: Getting started with Inference, Fine-Tuning, RAG. We also show you how to solve end to end problems using Llama model family and using them on various provider services | meta-llama | 16083 |
-| 42 |  [seamless_communication](https://github.com/facebookresearch/seamless_communication) | Foundational Models for State-of-the-Art Speech and Text Translation | facebookresearch | 11254 |
+| 41 |  [llama-cookbook](https://github.com/meta-llama/llama-cookbook) | Welcome to the Llama Cookbook! This is your go to guide for Building with Llama: Getting started with Inference, Fine-Tuning, RAG. We also show you how to solve end to end problems using Llama model family and using them on various provider services | meta-llama | 16085 |
+| 42 |  [seamless_communication](https://github.com/facebookresearch/seamless_communication) | Foundational Models for State-of-the-Art Speech and Text Translation | facebookresearch | 11256 |
 | 43 |  [facescape](https://github.com/zhuhao-nju/facescape) | FaceScape (PAMI2023 & CVPR2020) | zhuhao-nju | 892 |
-| 44 |  [generative-ai-for-beginners](https://github.com/microsoft/generative-ai-for-beginners) | 21 Lessons, Get Started Building with Generative AI  🔗 https://microsoft.github.io/generative-ai-for-beginners/ | microsoft | 69350 |
+| 44 |  [generative-ai-for-beginners](https://github.com/microsoft/generative-ai-for-beginners) | 21 Lessons, Get Started Building with Generative AI  🔗 https://microsoft.github.io/generative-ai-for-beginners/ | microsoft | 69364 |
 | 45 |  [3DPeople-Dataset](https://github.com/albertpumarola/3DPeople-Dataset) | Visualize 3DPeople Dataset | albertpumarola | 114 |
-| 46 |  [generative-ai](https://github.com/GoogleCloudPlatform/generative-ai) | Sample code and notebooks for Generative AI on Google Cloud, with Gemini on Vertex AI | GoogleCloudPlatform | 9115 |
+| 46 |  [generative-ai](https://github.com/GoogleCloudPlatform/generative-ai) | Sample code and notebooks for Generative AI on Google Cloud, with Gemini on Vertex AI | GoogleCloudPlatform | 9117 |
 | 47 |  [facechain](https://github.com/modelscope/facechain) | FaceChain is a deep-learning toolchain for generating your Digital-Twin. | modelscope | 9250 |
 | 48 |  [Face2Diffusion](https://github.com/mapooon/Face2Diffusion) | [CVPR 2024] Face2Diffusion for Fast and Editable Face Personalization https://arxiv.org/abs/2403.05094 | mapooon | 82 |
 | 49 |  [StableCascade](https://github.com/Stability-AI/StableCascade) | Official Code for Stable Cascade | Stability-AI | 6575 |
 | 50 |  [ALDM](https://github.com/boschresearch/ALDM) | Official implementation of &#34;Adversarial Supervision Makes Layout-to-Image Diffusion Models Thrive&#34; (ICLR 2024) | boschresearch | 52 |
 | 51 |  [AI-in-a-Box](https://github.com/Azure/AI-in-a-Box) | AI-in-a-Box leverages the expertise of Microsoft across the globe to develop and provide AI and ML solutions to the technical community.  Our intent is to present a curated collection of solution accelerators that can help engineers establish their AI/ML environments and solutions rapidly and with minimal friction. | Azure | 553 |
 | 52 |  [airllm](https://github.com/lyogavin/airllm) | AirLLM 70B inference with single 4GB GPU | lyogavin | 5628 |
-| 53 |  [moondream](https://github.com/vikhyat/moondream) | tiny vision language model | vikhyat | 7165 |
-| 54 |  [LLMs-from-scratch](https://github.com/rasbt/LLMs-from-scratch) | Implement a ChatGPT-like LLM in PyTorch from scratch, step by step | rasbt | 38754 |
+| 53 |  [moondream](https://github.com/vikhyat/moondream) | tiny vision language model | vikhyat | 7167 |
+| 54 |  [LLMs-from-scratch](https://github.com/rasbt/LLMs-from-scratch) | Implement a ChatGPT-like LLM in PyTorch from scratch, step by step | rasbt | 38760 |
 | 55 |  [openvino_notebooks](https://github.com/openvinotoolkit/openvino_notebooks) | 📚 Jupyter notebook tutorials for OpenVINO™ | openvinotoolkit | 2578 |
 | 56 |  [Pragmatic-Color-Generation](https://github.com/frankaging/Pragmatic-Color-Generation) | Pragmatically Informative Color Generation by Grounding Contextual Modifiers | frankaging | 3 |
 | 57 |  [RPG-DiffusionMaster](https://github.com/YangLing0818/RPG-DiffusionMaster) | [ICML 2024] Mastering Text-to-Image Diffusion: Recaptioning, Planning, and Generating with Multimodal LLMs (RPG) | YangLing0818 | 1741 |
@@ -862,7 +862,7 @@
 | 60 |  [threestudio](https://github.com/threestudio-project/threestudio) | A unified framework for 3D content generation. | threestudio-project | 6512 |
 | 61 |  [sitcoms3D](https://github.com/ethanweber/sitcoms3D) | Code for &#34;The One Where They Reconstructed 3D Humans and Environments in TV shows&#34; appearing in ECCV 2022. | ethanweber | 260 |
 | 62 |  [sample-generator](https://github.com/Harmonai-org/sample-generator) | Tools to train a generative model on arbitrary audio samples | Harmonai-org | 1091 |
-| 63 |  [IP-Adapter](https://github.com/tencent-ailab/IP-Adapter) | The image prompt adapter is designed to enable a pretrained text-to-image diffusion model to generate images with image prompt. | tencent-ailab | 5579 |
+| 63 |  [IP-Adapter](https://github.com/tencent-ailab/IP-Adapter) | The image prompt adapter is designed to enable a pretrained text-to-image diffusion model to generate images with image prompt. | tencent-ailab | 5580 |
 | 64 |  [tcr-matching](https://github.com/arogozhnikov/tcr-matching) | Learning T-cell immunity *without* knowing peptides | arogozhnikov | 2 |
 | 65 |  [m1-machine-learning-test](https://github.com/mrdbourke/m1-machine-learning-test) | Code for testing various M1 Chip benchmarks with TensorFlow. | mrdbourke | 531 |
 | 66 |  [visual_anagrams](https://github.com/dangeng/visual_anagrams) | Code for the paper &#34;Visual Anagrams: Generating Multi-View Optical Illusions with Diffusion Models&#34; | dangeng | 898 |
@@ -881,12 +881,12 @@
 | 79 |  [SAM-Med2D](https://github.com/OpenGVLab/SAM-Med2D) | Official implementation of SAM-Med2D | OpenGVLab | 921 |
 | 80 |  [virtual-try-on](https://github.com/pbelevich/virtual-try-on) | Non-commercial educational project that combines pose estimation and garment re-targeting to create virtual try-on demo | pbelevich | 19 |
 | 81 |  [Python-Image-Processing-Cookbook](https://github.com/PacktPublishing/Python-Image-Processing-Cookbook) |  | PacktPublishing | 161 |
-| 82 |  [machine-learning-book](https://github.com/rasbt/machine-learning-book) | Code Repository for Machine Learning with PyTorch and Scikit-Learn | rasbt | 3886 |
+| 82 |  [machine-learning-book](https://github.com/rasbt/machine-learning-book) | Code Repository for Machine Learning with PyTorch and Scikit-Learn | rasbt | 3887 |
 | 83 |  [machine-learning-notes](https://github.com/rasbt/machine-learning-notes) | Collection of useful machine learning codes and snippets (originally intended for my personal use) | rasbt | 804 |
 | 84 |  [HypothesisHub](https://github.com/bhaskatripathi/HypothesisHub) | An AI Tool for Automated Research Question and Hypothesis Generation from a given Scientific Literature | bhaskatripathi | 33 |
-| 85 |  [segment-anything](https://github.com/facebookresearch/segment-anything) | The repository provides code for running inference with the SegmentAnything Model (SAM), links for downloading the trained model checkpoints, and example notebooks that show how to use the model. | facebookresearch | 48664 |
-| 86 |  [langchain](https://github.com/langchain-ai/langchain) | 🦜🔗 Build context-aware reasoning applications | langchain-ai | 99215 |
-| 87 |  [stable-diffusion](https://github.com/CompVis/stable-diffusion) | A latent text-to-image diffusion model | CompVis | 69330 |
+| 85 |  [segment-anything](https://github.com/facebookresearch/segment-anything) | The repository provides code for running inference with the SegmentAnything Model (SAM), links for downloading the trained model checkpoints, and example notebooks that show how to use the model. | facebookresearch | 48666 |
+| 86 |  [langchain](https://github.com/langchain-ai/langchain) | 🦜🔗 Build context-aware reasoning applications | langchain-ai | 99222 |
+| 87 |  [stable-diffusion](https://github.com/CompVis/stable-diffusion) | A latent text-to-image diffusion model | CompVis | 69331 |
 | 88 |  [super-gradients](https://github.com/Deci-AI/super-gradients) | Easily train or fine-tune SOTA computer vision models with one open source training library. The home of Yolo-NAS. | Deci-AI | 4665 |
 | 89 |  [face_toolbox_keras](https://github.com/shaoanlu/face_toolbox_keras) | A collection of deep learning frameworks ported to Keras for face analysis. | shaoanlu | 277 |
 | 90 |  [Kandinsky-2](https://github.com/ai-forever/Kandinsky-2) | Kandinsky 2 — multilingual text2image latent diffusion model | ai-forever | 2776 |
@@ -900,9 +900,9 @@
 | 98 |  [stable-diffusion-webui-colab](https://github.com/camenduru/stable-diffusion-webui-colab) | stable diffusion webui colab | camenduru | 15714 |
 | 99 |  [Dreambooth-Stable-Diffusion](https://github.com/XavierXiao/Dreambooth-Stable-Diffusion) | Implementation of Dreambooth (https://arxiv.org/abs/2208.12242) with Stable Diffusion | XavierXiao | 7651 |
 | 100 |  [disco-diffusion](https://github.com/alembics/disco-diffusion) |  | alembics | 7464 |
-| 101 |  [tortoise-tts](https://github.com/neonbjb/tortoise-tts) | A multi-voice TTS system trained with an emphasis on quality | neonbjb | 13594 |
+| 101 |  [tortoise-tts](https://github.com/neonbjb/tortoise-tts) | A multi-voice TTS system trained with an emphasis on quality | neonbjb | 13595 |
 | 102 |  [Dreambooth-Stable-Diffusion](https://github.com/JoePenna/Dreambooth-Stable-Diffusion) | Implementation of Dreambooth (https://arxiv.org/abs/2208.12242) by way of Textual Inversion (https://arxiv.org/abs/2208.01618) for Stable Diffusion (https://arxiv.org/abs/2112.10752). Tweaks focused on training faces, objects, and styles. | JoePenna | 3206 |
-| 103 |  [first-order-model](https://github.com/AliaksandrSiarohin/first-order-model) | This repository contains the source code for the paper First Order Motion Model for Image Animation | AliaksandrSiarohin | 14682 |
+| 103 |  [first-order-model](https://github.com/AliaksandrSiarohin/first-order-model) | This repository contains the source code for the paper First Order Motion Model for Image Animation | AliaksandrSiarohin | 14683 |
 
 **[⬆ Back to Index](#-contents)**
 
@@ -996,20 +996,20 @@
 | 7 |  [awesome-human-motion](https://github.com/derikon/awesome-human-motion) | 🏃‍♀️ A curated list about human motion capture, analysis and synthesis. | derikon | 421 |
 | 8 |  [simulacra-aesthetic-captions](https://github.com/JD-P/simulacra-aesthetic-captions) | Dataset of prompts, synthetic AI generated images, and aesthetic ratings. | JD-P | 405 |
 | 9 |  [llms-tools](https://github.com/PetroIvaniuk/llms-tools) | A list of LLMs Tools & Projects | PetroIvaniuk | 177 |
-| 10 |  [awesome-ai-agents](https://github.com/e2b-dev/awesome-ai-agents) | A list of AI autonomous agents | e2b-dev | 13798 |
+| 10 |  [awesome-ai-agents](https://github.com/e2b-dev/awesome-ai-agents) | A list of AI autonomous agents | e2b-dev | 13800 |
 | 11 |  [LLMR](https://github.com/imclab/LLMR) |  | imclab | 1 |
 | 12 |  [glTF-InteractivityGraph-AuthoringTool](https://github.com/KhronosGroup/glTF-InteractivityGraph-AuthoringTool) | A React based DCC for viewing and authoring KHR_interactivity models | KhronosGroup | 18 |
 | 13 |  [EMO](https://github.com/HumanAIGC/EMO) | Emote Portrait Alive: Generating Expressive Portrait Videos with Audio2Video Diffusion Model under Weak Conditions | HumanAIGC | 7566 |
 | 14 |  [awesome-talking-head-generation](https://github.com/harlanhong/awesome-talking-head-generation) |  | harlanhong | 1589 |
 | 15 |  [bark.cpp](https://github.com/ggerganov/bark.cpp) | Port of Suno AI's Bark in C/C++ for fast inference | ggerganov | 54 |
 | 16 |  [VCSL](https://github.com/sgossner/VCSL) | Open CC0 sample library. | sgossner | 227 |
-| 17 |  [Awesome-Bioinformatics](https://github.com/danielecook/Awesome-Bioinformatics) | A curated list of awesome Bioinformatics libraries and software. | danielecook | 3282 |
+| 17 |  [Awesome-Bioinformatics](https://github.com/danielecook/Awesome-Bioinformatics) | A curated list of awesome Bioinformatics libraries and software. | danielecook | 3283 |
 | 18 |  [FaceSynthetics](https://github.com/microsoft/FaceSynthetics) | Face synthetics datasets | microsoft | 839 |
 | 19 |  [MistoLine](https://github.com/TheMistoAI/MistoLine) | A Versatile and Robust SDXL-ControlNet Model for Adaptable Line Art Conditioning | TheMistoAI | 508 |
 | 20 |  [ComputerGraphics](https://github.com/melling/ComputerGraphics) | Computer Graphics Topics: Bézier curves, OpenGL, Ray Tracing, etc | melling | 134 |
-| 21 |  [LLM-Prompt-Library](https://github.com/abilzerian/LLM-Prompt-Library) | Advanced Code and Text Manipulation Prompts for Various LLMs. Suitable for Siri, GPT-4o, Claude, Llama3, Gemini, and other high-performance open-source LLMs. | abilzerian | 888 |
+| 21 |  [LLM-Prompt-Library](https://github.com/abilzerian/LLM-Prompt-Library) | Advanced Code and Text Manipulation Prompts for Various LLMs. Suitable for Siri, GPT-4o, Claude, Llama3, Gemini, and other high-performance open-source LLMs. | abilzerian | 890 |
 | 22 |  [ChatGPT-System-Prompts](https://github.com/mustvlad/ChatGPT-System-Prompts) | This repository contains a collection of the best system prompts for ChatGPT, a conversational AI model developed by OpenAI. Star this repository to help us reach 5,000 stars! | mustvlad | 895 |
-| 23 |  [Awesome-Model-Quantization](https://github.com/Efficient-ML/Awesome-Model-Quantization) | A list of papers, docs, codes about model quantization. This repo is aimed to provide the info for model quantization research, we are continuously improving the project. Welcome to PR the works (papers, repositories) that are missed by the repo. | Efficient-ML | 1972 |
+| 23 |  [Awesome-Model-Quantization](https://github.com/Efficient-ML/Awesome-Model-Quantization) | A list of papers, docs, codes about model quantization. This repo is aimed to provide the info for model quantization research, we are continuously improving the project. Welcome to PR the works (papers, repositories) that are missed by the repo. | Efficient-ML | 1973 |
 | 24 |  [ChatGPT-presets](https://github.com/tinygeeker/ChatGPT-presets) | 🌈  ChatGPT的一些有趣的预设包：DAN机器人、猫娘、丁真、律师、诗人、辩论家、小说家等等 | tinygeeker | 118 |
 | 25 |  [all-about-ai-residency](https://github.com/ankitshah009/all-about-ai-residency) | AI residency programs information | ankitshah009 | 455 |
 | 26 |  [BoardGameInserts](https://github.com/soy1bonus/BoardGameInserts) | Blender templates to build printable boardgame inserts. | soy1bonus | 8 |
@@ -1036,11 +1036,11 @@
 | 47 |  [Upscale-Hub](https://github.com/Sirosky/Upscale-Hub) | A repository collecting image and video upscaling resources as well as my own super resolution models. | Sirosky | 167 |
 | 48 |  [VLM_survey](https://github.com/jingyi0000/VLM_survey) | Collection of AWESOME vision-language models for vision tasks | jingyi0000 | 2460 |
 | 49 |  [CoT-Igniting-Agent](https://github.com/Zoeyyao27/CoT-Igniting-Agent) | This repository contains the paper list for the paper: Igniting Language Intelligence: The Hitchhiker's Guide From Chain-of-Thought Reasoning to Language Agents | Zoeyyao27 | 347 |
-| 50 |  [awesome](https://github.com/sindresorhus/awesome) | 😎 Awesome lists about all kinds of interesting topics | sindresorhus | 344416 |
+| 50 |  [awesome](https://github.com/sindresorhus/awesome) | 😎 Awesome lists about all kinds of interesting topics | sindresorhus | 344434 |
 | 51 |  [ChatGPT_Custom_Instructions](https://github.com/daveshap/ChatGPT_Custom_Instructions) | Repo of custom instructions that you can use for ChatGPT | daveshap | 1291 |
 | 52 |  [Machine-Learning-Ethics-References](https://github.com/radames/Machine-Learning-Ethics-References) | List of references about Machine Learning bias and ethics | radames | 60 |
 | 53 |  [awesome-mvs](https://github.com/krahets/awesome-mvs) | A curated list of tutorials, papers, software related to multi-view stereo. | krahets | 254 |
-| 54 |  [system-design-101](https://github.com/ByteByteGoHq/system-design-101) | Explain complex systems using visuals and simple terms. Help you prepare for system design interviews. | ByteByteGoHq | 68142 |
+| 54 |  [system-design-101](https://github.com/ByteByteGoHq/system-design-101) | Explain complex systems using visuals and simple terms. Help you prepare for system design interviews. | ByteByteGoHq | 68144 |
 | 55 |  [cgi-resources](https://github.com/afichet/cgi-resources) | List of some useful databases and resources for Computer Graphics | afichet | 98 |
 | 56 |  [sd-akashic](https://github.com/Maks-s/sd-akashic) | A compendium of informations regarding Stable Diffusion (SD) | Maks-s | 1636 |
 | 57 |  [styleguide-generators](https://github.com/davidhund/styleguide-generators) | An overview of automatic living styleguide generators | davidhund | 1900 |
@@ -1059,7 +1059,7 @@
 | 70 |  [webgpu-samples](https://github.com/austinEng/webgpu-samples) | WebGPU Samples | austinEng | 45 |
 | 71 |  [graphql-workshop](https://github.com/artsy/graphql-workshop) | A workshop for understanding GraphQL by exploring Metaphysics | artsy | 14 |
 | 72 |  [ResearchChatGPT](https://github.com/hollobit/ResearchChatGPT) | 50 use cases of ChatGPT for research work | hollobit | 237 |
-| 73 |  [awesome-ChatGPT-repositories](https://github.com/taishi-i/awesome-ChatGPT-repositories) | A curated list of resources dedicated to open source GitHub repositories related to ChatGPT | taishi-i | 2290 |
+| 73 |  [awesome-ChatGPT-repositories](https://github.com/taishi-i/awesome-ChatGPT-repositories) | A curated list of resources dedicated to open source GitHub repositories related to ChatGPT | taishi-i | 2291 |
 | 74 |  [UnrealGPT](https://github.com/imclab/UnrealGPT) | A collection of Unreal Engine 5 Editor Utility widgets powered by GPT3/4 | imclab | 1 |
 | 75 |  [figma-tokens-sync-example](https://github.com/hchiam/figma-tokens-sync-example) | https://github.com/argyleink/open-props and https://github.com/six7/figma-tokens | hchiam | 16 |
 | 76 |  [stable-diffusion-prompt-templates](https://github.com/Dalabad/stable-diffusion-prompt-templates) |  | Dalabad | 675 |
@@ -1095,12 +1095,12 @@
 | 106 |  [project-checklist](https://github.com/amilajack/project-checklist) | ✅ A checklist of things to do before releasing your project | amilajack | 760 |
 | 107 |  [Front-End-Performance-Checklist](https://github.com/thedaviddias/Front-End-Performance-Checklist) | 🎮 The only Front-End Performance Checklist that runs faster than the others | thedaviddias | 16766 |
 | 108 |  [Front-End-Design-Checklist](https://github.com/thedaviddias/Front-End-Design-Checklist) | 💎 The Design Checklist for Creative Web Designers and Patient Front-End Developers | thedaviddias | 5027 |
-| 109 |  [Front-End-Checklist](https://github.com/thedaviddias/Front-End-Checklist) | 🗂 The perfect Front-End Checklist for modern websites and meticulous developers | thedaviddias | 69454 |
+| 109 |  [Front-End-Checklist](https://github.com/thedaviddias/Front-End-Checklist) | 🗂 The perfect Front-End Checklist for modern websites and meticulous developers | thedaviddias | 69457 |
 | 110 |  [Hover3D.js](https://github.com/PavelLaptev/Hover3D.js) | A cool 3D hover effect for your awesome web project. | PavelLaptev | 2 |
 | 111 |  [three-js-resources](https://github.com/Fasani/three-js-resources) | A collection of resources for building 3D projects with three.js | Fasani | 210 |
 | 112 |  [social-icons](https://github.com/brianlovin/social-icons) | Collection of SVG & PNG social media icons. Embeddable Social Icons, Use directly on your websites. | brianlovin | 1 |
 | 113 |  [D-KNIGHT-NFT](https://github.com/KBLLR/D-KNIGHT-NFT) |  | KBLLR | 1 |
-| 114 |  [project-based-learning](https://github.com/practical-tutorials/project-based-learning) | Curated list of project-based tutorials | practical-tutorials | 215097 |
+| 114 |  [project-based-learning](https://github.com/practical-tutorials/project-based-learning) | Curated list of project-based tutorials | practical-tutorials | 215110 |
 
 **[⬆ Back to Index](#-contents)**
 
@@ -1134,32 +1134,32 @@
 | 2 |  [DatasetCondensation](https://github.com/VICO-UoE/DatasetCondensation) | Dataset Condensation (ICLR21 and ICML21) | VICO-UoE | 498 |
 | 3 |  [Blender-GPT](https://github.com/TREE-Ind/Blender-GPT) | An all-in-one Blender assistant powered by GPT3/4 + Whisper integration | TREE-Ind | 125 |
 | 4 |  [LLaSA_training](https://github.com/zhenye234/LLaSA_training) | LLaSA: Scaling Train-time and Test-time Compute for LLaMA-based Speech Synthesis | zhenye234 | 239 |
-| 5 |  [Hunyuan3D-2](https://github.com/Tencent/Hunyuan3D-2) | High-Resolution 3D Assets Generation with Large Scale Hunyuan3D Diffusion Models. | Tencent | 5212 |
-| 6 |  [EasyAnimate](https://github.com/aigc-apps/EasyAnimate) | 📺 An End-to-End Solution for High-Resolution and Long Video Generation Based on Transformer Diffusion | aigc-apps | 1854 |
+| 5 |  [Hunyuan3D-2](https://github.com/Tencent/Hunyuan3D-2) | High-Resolution 3D Assets Generation with Large Scale Hunyuan3D Diffusion Models. | Tencent | 5225 |
+| 6 |  [EasyAnimate](https://github.com/aigc-apps/EasyAnimate) | 📺 An End-to-End Solution for High-Resolution and Long Video Generation Based on Transformer Diffusion | aigc-apps | 1855 |
 | 7 |  [curator](https://github.com/bespokelabsai/curator) | Synthetic Data curation for post-training and structured data extraction | bespokelabsai | 604 |
 | 8 |  [open_flamingo](https://github.com/mlfoundations/open_flamingo) | An open-source framework for training large multimodal models. | mlfoundations | 3807 |
-| 9 |  [open_clip](https://github.com/mlfoundations/open_clip) | An open source implementation of CLIP. | mlfoundations | 10883 |
+| 9 |  [open_clip](https://github.com/mlfoundations/open_clip) | An open source implementation of CLIP. | mlfoundations | 10884 |
 | 10 |  [mostlyai-engine](https://github.com/mostly-ai/mostlyai-engine) | Synthetic Data Engine 💎 | mostly-ai | 38 |
-| 11 |  [Integuru](https://github.com/Integuru-AI/Integuru) | The first AI agent that builds permissionless integrations through reverse engineering platforms' internal APIs. | Integuru-AI | 3979 |
+| 11 |  [Integuru](https://github.com/Integuru-AI/Integuru) | The first AI agent that builds permissionless integrations through reverse engineering platforms' internal APIs. | Integuru-AI | 3982 |
 | 12 |  [audio](https://github.com/pytorch/audio) | Data manipulation and transformation for audio signal processing, powered by PyTorch | pytorch | 2593 |
-| 13 |  [self-adaptive-llms](https://github.com/SakanaAI/self-adaptive-llms) | A Self-adaptation Framework🐙 that adapts LLMs for unseen tasks in real-time! | SakanaAI | 845 |
+| 13 |  [self-adaptive-llms](https://github.com/SakanaAI/self-adaptive-llms) | A Self-adaptation Framework🐙 that adapts LLMs for unseen tasks in real-time! | SakanaAI | 846 |
 | 14 |  [panoramic-image-stitching](https://github.com/Avinash793/panoramic-image-stitching) | Create panorama image using invariant features from given set of overlapping images. | Avinash793 | 227 |
 | 15 |  [community-models](https://github.com/drawthingsai/community-models) | The source repository to manage &#34;Community&#34; section of models and LoRAs in the Draw Things app. | drawthingsai | 29 |
 | 16 |  [mllm-mmrotate](https://github.com/Li-Qingyun/mllm-mmrotate) | A Simple Aerial Detection Baseline of Multimodal Language Models. | Li-Qingyun | 39 |
-| 17 |  [whisper](https://github.com/openai/whisper) | Robust Speech Recognition via Large-Scale Weak Supervision | openai | 75317 |
+| 17 |  [whisper](https://github.com/openai/whisper) | Robust Speech Recognition via Large-Scale Weak Supervision | openai | 75324 |
 | 18 |  [Efficient-Prompt](https://github.com/ju-chen/Efficient-Prompt) |  | ju-chen | 193 |
 | 19 |  [LFA](https://github.com/saic-fi/LFA) | [ICCV 2023] Black Box Few-Shot Adaptation for Vision-Language models | saic-fi | 19 |
 | 20 |  [dictionary_learning](https://github.com/saprmarks/dictionary_learning) |  | saprmarks | 222 |
 | 21 |  [qlora-pipe](https://github.com/tdrussell/qlora-pipe) | A pipeline parallel training script for LLMs. | tdrussell | 121 |
-| 22 |  [diffusion-pipe](https://github.com/tdrussell/diffusion-pipe) | A pipeline parallel training script for diffusion models. | tdrussell | 468 |
+| 22 |  [diffusion-pipe](https://github.com/tdrussell/diffusion-pipe) | A pipeline parallel training script for diffusion models. | tdrussell | 469 |
 | 23 |  [pipelines](https://github.com/open-webui/pipelines) | Pipelines: Versatile, UI-Agnostic OpenAI-Compatible Plugin Framework | open-webui | 1291 |
-| 24 |  [dspy](https://github.com/stanfordnlp/dspy) | DSPy: The framework for programming—not prompting—language models | stanfordnlp | 21508 |
+| 24 |  [dspy](https://github.com/stanfordnlp/dspy) | DSPy: The framework for programming—not prompting—language models | stanfordnlp | 21512 |
 | 25 |  [happy-jar-cli](https://github.com/TechWiz-3/happy-jar-cli) | 🌼 Keep a happy jar from your terminal | TechWiz-3 | 28 |
 | 26 |  [kaggle-api](https://github.com/Kaggle/kaggle-api) | Official Kaggle API | Kaggle | 6408 |
 | 27 |  [ComfyUI-IF_Trellis](https://github.com/if-ai/ComfyUI-IF_Trellis) | ComfyUI TRELLIS is a large 3D asset generation in various formats, such as Radiance Fields, 3D Gaussians, and meshes. The cornerstone of TRELLIS is a unified Structured LATent (SLAT) representation that allows decoding to different output formats and Rectified Flow Transformers tailored for SLAT as the powerful backbones. | if-ai | 357 |
 | 28 |  [youtube-dl](https://github.com/ytdl-org/youtube-dl) | Command-line program to download videos from YouTube.com and other video sites | ytdl-org | 133897 |
 | 29 |  [deepseek-engineer](https://github.com/Doriandarko/deepseek-engineer) | A powerful coding assistant application that integrates with the DeepSeek API to process user conversations and generate structured JSON responses. Through an intuitive command-line interface, it can read local file contents, create new files, and apply diff edits to existing files in real time. | Doriandarko | 910 |
-| 30 |  [fast-gaussian-rasterization](https://github.com/dendenxu/fast-gaussian-rasterization) | A geometry-shader-based, global CUDA sorted high-performance 3D Gaussian Splatting rasterizer. Can achieve a 5-10x speedup in rendering compared to the vanialla diff-gaussian-rasterization. | dendenxu | 521 |
+| 30 |  [fast-gaussian-rasterization](https://github.com/dendenxu/fast-gaussian-rasterization) | A geometry-shader-based, global CUDA sorted high-performance 3D Gaussian Splatting rasterizer. Can achieve a 5-10x speedup in rendering compared to the vanialla diff-gaussian-rasterization. | dendenxu | 522 |
 | 31 |  [ColorFlow](https://github.com/TencentARC/ColorFlow) | The official implementation of paper &#34;ColorFlow: Retrieval-Augmented Image Sequence Colorization&#34; | TencentARC | 348 |
 | 32 |  [detoxify](https://github.com/unitaryai/detoxify) | Trained models & code to predict toxic comments on all 3 Jigsaw Toxic Comment Challenges. Built using ⚡ Pytorch Lightning and 🤗 Transformers. For access to our API, please email us at contact@unitary.ai. | unitaryai | 996 |
 | 33 |  [mmsegmentation](https://github.com/open-mmlab/mmsegmentation) | OpenMMLab Semantic Segmentation Toolbox and Benchmark. | open-mmlab | 8504 |
@@ -1170,11 +1170,11 @@
 | 38 |  [swarm_agents](https://github.com/All-About-AI-YouTube/swarm_agents) | OpenAI Swarm Agents | All-About-AI-YouTube | 52 |
 | 39 |  [llama-models](https://github.com/meta-llama/llama-models) | Utilities intended for use with Llama models. | meta-llama | 5702 |
 | 40 |  [DiffSensei](https://github.com/jianzongwu/DiffSensei) | Implementation of &#34;DiffSensei: Bridging Multi-Modal LLMs and Diffusion Models for Customized Manga Generation&#34; | jianzongwu | 572 |
-| 41 |  [TRELLIS](https://github.com/microsoft/TRELLIS) | Official repo for paper &#34;Structured 3D Latents for Scalable and Versatile 3D Generation&#34;. | microsoft | 7345 |
+| 41 |  [TRELLIS](https://github.com/microsoft/TRELLIS) | Official repo for paper &#34;Structured 3D Latents for Scalable and Versatile 3D Generation&#34;. | microsoft | 7346 |
 | 42 |  [ComfyUI_AdvancedRefluxControl](https://github.com/kaibioinfo/ComfyUI_AdvancedRefluxControl) |  | kaibioinfo | 413 |
 | 43 |  [R2R](https://github.com/SciPhi-AI/R2R) | The most advanced AI retrieval system. Agentic Retrieval-Augmented Generation (RAG) with a RESTful API. | SciPhi-AI | 4623 |
 | 44 |  [Comfyui_Flux_Style_Adjust](https://github.com/yichengup/Comfyui_Flux_Style_Adjust) | Redux StyleModelApply adds more controls | yichengup | 237 |
-| 45 |  [instructor](https://github.com/instructor-ai/instructor) | structured outputs for llms | instructor-ai | 9173 |
+| 45 |  [instructor](https://github.com/instructor-ai/instructor) | structured outputs for llms | instructor-ai | 9174 |
 | 46 |  [QRNet](https://github.com/zhaoyuzhi/QRNet) | Modeling Dual-Exposure Quad-Bayer Patterns for Joint Denoising and Deblurring. IEEE TIP, 2024 | zhaoyuzhi | 17 |
 | 47 |  [RES4LYF](https://github.com/ClownsharkBatwing/RES4LYF) |  | ClownsharkBatwing | 73 |
 | 48 |  [ComfyUI_Guide_To_Making_Custom_Nodes](https://github.com/Suzie1/ComfyUI_Guide_To_Making_Custom_Nodes) | A guide to making custom nodes in ComfyUI | Suzie1 | 148 |
@@ -1191,9 +1191,9 @@
 | 59 |  [OminiControl](https://github.com/Yuanshi9815/OminiControl) | A minimal and universal controller for FLUX.1. | Yuanshi9815 | 1136 |
 | 60 |  [NVComposer](https://github.com/TencentARC/NVComposer) | Boosting Generative Novel View Synthesis with Sparse and Unposed Images | TencentARC | 83 |
 | 61 |  [3dgs-render-blender-addon](https://github.com/Kiri-Innovation/3dgs-render-blender-addon) | 3DGS Render by KIRI Engine | Kiri-Innovation | 403 |
-| 62 |  [open-instruct](https://github.com/allenai/open-instruct) |  | allenai | 2387 |
+| 62 |  [open-instruct](https://github.com/allenai/open-instruct) |  | allenai | 2391 |
 | 63 |  [DROID-Splat](https://github.com/ChenHoy/DROID-Splat) | End-to-End SLAM with camera calibration, monocular prior integration and dense Rendering | ChenHoy | 292 |
-| 64 |  [Sana](https://github.com/NVlabs/Sana) | SANA: Efficient High-Resolution Image Synthesis with Linear Diffusion Transformer | NVlabs | 3182 |
+| 64 |  [Sana](https://github.com/NVlabs/Sana) | SANA: Efficient High-Resolution Image Synthesis with Linear Diffusion Transformer | NVlabs | 3185 |
 | 65 |  [MMGenBench](https://github.com/lerogo/MMGenBench) | Official repository of MMGenBench | lerogo | 106 |
 | 66 |  [LTX-Video](https://github.com/Lightricks/LTX-Video) | Official repository for LTX-Video | Lightricks | 2680 |
 | 67 |  [echomimic_v2](https://github.com/antgroup/echomimic_v2) | EchoMimicV2: Towards Striking, Simplified, and Semi-Body Human Animation | antgroup | 2468 |
@@ -1201,13 +1201,13 @@
 | 69 |  [ChatterBot](https://github.com/gunthercox/ChatterBot) | ChatterBot is a machine learning, conversational dialog engine for creating chat bots | gunthercox | 14171 |
 | 70 |  [ComfyUI-API-Integration](https://github.com/luckkyzhou/ComfyUI-API-Integration) | ComfyUI API Integration, ComfyUI Automated Workflow, ComfyUI API 一键集成, ComfyUI 自动流程 | luckkyzhou | 87 |
 | 71 |  [ml-cross-entropy](https://github.com/apple/ml-cross-entropy) |  | apple | 311 |
-| 72 |  [MagicQuill](https://github.com/ant-research/MagicQuill) | Official Implementations for Paper - MagicQuill: An Intelligent Interactive Image Editing System | ant-research | 2728 |
+| 72 |  [MagicQuill](https://github.com/ant-research/MagicQuill) | Official Implementations for Paper - MagicQuill: An Intelligent Interactive Image Editing System | ant-research | 2729 |
 | 73 |  [prompty](https://github.com/microsoft/prompty) | Prompty makes it easy to create, manage, debug, and evaluate LLM prompts for your AI applications.  Prompty is an asset class and format for LLM prompts designed to enhance observability, understandability, and portability for developers. | microsoft | 698 |
 | 74 |  [Tora](https://github.com/alibaba/Tora) | The official repository for paper &#34;Tora: Trajectory-oriented Diffusion Transformer for Video Generation&#34; | alibaba | 1058 |
 | 75 |  [DreamClear](https://github.com/shallowdream204/DreamClear) | [NeurIPS 2024🔥] DreamClear: High-Capacity Real-World Image Restoration with Privacy-Safe Dataset Curation | shallowdream204 | 882 |
 | 76 |  [Framer](https://github.com/aim-uofa/Framer) | [ICLR'25] Official PyTorch implementation of &#34;Framer: Interactive Frame Interpolation&#34;. | aim-uofa | 411 |
 | 77 |  [optimum](https://github.com/huggingface/optimum) | 🚀 Accelerate inference and training of 🤗 Transformers, Diffusers, TIMM and Sentence Transformers with easy to use hardware optimization tools | huggingface | 2708 |
-| 78 |  [accelerate](https://github.com/huggingface/accelerate) | 🚀 A simple way to launch, train, and use PyTorch models on almost any device and distributed configuration, automatic mixed precision (including fp8), and easy-to-configure FSDP and DeepSpeed support | huggingface | 8225 |
+| 78 |  [accelerate](https://github.com/huggingface/accelerate) | 🚀 A simple way to launch, train, and use PyTorch models on almost any device and distributed configuration, automatic mixed precision (including fp8), and easy-to-configure FSDP and DeepSpeed support | huggingface | 8227 |
 | 79 |  [autotrain-advanced](https://github.com/huggingface/autotrain-advanced) | 🤗 AutoTrain Advanced | huggingface | 4219 |
 | 80 |  [MotionInversion](https://github.com/EnVision-Research/MotionInversion) | Official implementation of 'Motion Inversion For Video Customization' | EnVision-Research | 136 |
 | 81 |  [xtuner](https://github.com/InternLM/xtuner) | An efficient, flexible and full-featured toolkit for fine-tuning LLM (InternLM2, Llama3, Phi3, Qwen, Mistral, ...) | InternLM | 4185 |
@@ -1220,9 +1220,9 @@
 | 88 |  [fluxgym](https://github.com/cocktailpeanut/fluxgym) | Dead simple FLUX LoRA training UI with LOW VRAM support | cocktailpeanut | 1808 |
 | 89 |  [modal-examples](https://github.com/modal-labs/modal-examples) | Examples of programs built using Modal | modal-labs | 770 |
 | 90 |  [poc-realtime-ai-assistant](https://github.com/disler/poc-realtime-ai-assistant) | Sharing early versions of Ada, a personal AI Assistant built on OpenAIs Realtime API | disler | 681 |
-| 91 |  [ell](https://github.com/MadcowD/ell) | A language model programming library. | MadcowD | 5575 |
+| 91 |  [ell](https://github.com/MadcowD/ell) | A language model programming library. | MadcowD | 5576 |
 | 92 |  [Oryx](https://github.com/Oryx-mllm/Oryx) | MLLM for On-Demand Spatial-Temporal Understanding at Arbitrary Resolution | Oryx-mllm | 279 |
-| 93 |  [outlines](https://github.com/dottxt-ai/outlines) | Structured Text Generation | dottxt-ai | 10515 |
+| 93 |  [outlines](https://github.com/dottxt-ai/outlines) | Structured Text Generation | dottxt-ai | 10517 |
 | 94 |  [modAL](https://github.com/modAL-python/modAL) | A modular active learning framework for Python | modAL-python | 2250 |
 | 95 |  [Dynamic-2DGS](https://github.com/hustvl/Dynamic-2DGS) | Dynamic 2D Gaussians: Geometrically accurate radiance fields for dynamic objects | hustvl | 111 |
 | 96 |  [tarotGPT](https://github.com/LukasMosser/tarotGPT) |  | LukasMosser | 6 |
@@ -1232,12 +1232,12 @@
 | 100 |  [ProHMR](https://github.com/nkolot/ProHMR) | Repository for &#34;Probabilistic Modeling for Human Mesh Recovery&#34; | nkolot | 265 |
 | 101 |  [PHALP](https://github.com/brjathu/PHALP) | Code repository for the paper &#34;Tracking People by Predicting 3D Appearance, Location & Pose&#34;. (CVPR 2022 Oral) | brjathu | 294 |
 | 102 |  [ViTPose-Pytorch](https://github.com/gpastal24/ViTPose-Pytorch) | VitPose without MMCV dependencies | gpastal24 | 35 |
-| 103 |  [unstract](https://github.com/Zipstack/unstract) | No-code LLM Platform to launch APIs and ETL Pipelines to structure unstructured documents | Zipstack | 3470 |
+| 103 |  [unstract](https://github.com/Zipstack/unstract) | No-code LLM Platform to launch APIs and ETL Pipelines to structure unstructured documents | Zipstack | 3472 |
 | 104 |  [DiscretizedDiffusion](https://github.com/LeonKang130/DiscretizedDiffusion) | Render subsurface scattering via convolution over vertices on the mesh. | LeonKang130 | 1 |
 | 105 |  [marvin](https://github.com/PrefectHQ/marvin) | ✨ AI agents that spark joy | PrefectHQ | 5435 |
 | 106 |  [algorithms-and-data-structures](https://github.com/albanie/algorithms-and-data-structures) | Video descriptions and minimalist Python implementations of algorithms and data structures. | albanie | 63 |
 | 107 |  [Face-Aging-CAAE](https://github.com/ZZUTK/Face-Aging-CAAE) | Age Progression/Regression by Conditional Adversarial Autoencoder | ZZUTK | 640 |
-| 108 |  [fairseq](https://github.com/facebookresearch/fairseq) | Facebook AI Research Sequence-to-Sequence Toolkit written in Python. | facebookresearch | 30860 |
+| 108 |  [fairseq](https://github.com/facebookresearch/fairseq) | Facebook AI Research Sequence-to-Sequence Toolkit written in Python. | facebookresearch | 30861 |
 | 109 |  [parrotLipsync](https://github.com/blackears/parrotLipsync) | Addon for Blender that lets you generate lipsync animation automatically from audio files. | blackears | 46 |
 | 110 |  [wiki-listicle-generation](https://github.com/colinmorris/wiki-listicle-generation) | Semi-automatically writing Wikipedia list articles using Wikidata/Wikipedia APIs | colinmorris | 1 |
 | 111 |  [voca](https://github.com/TimoBolkart/voca) | This codebase demonstrates how to synthesize realistic 3D character animations given an arbitrary speech signal and a static character mesh. | TimoBolkart | 1184 |
@@ -1261,8 +1261,8 @@
 | 129 |  [ComfyUI-ZeroShot-MTrans](https://github.com/kealiu/ComfyUI-ZeroShot-MTrans) | ZeST: Zero-Shot Material Transfer from a Single Image | kealiu | 165 |
 | 130 |  [ComfyUI_VLM_nodes](https://github.com/gokayfem/ComfyUI_VLM_nodes) | Custom ComfyUI nodes for Vision Language Models, Large Language Models, Image to Music, Text to Music, Consistent and Random Creative Prompt Generation | gokayfem | 455 |
 | 131 |  [caption-upsampling](https://github.com/sayakpaul/caption-upsampling) | This repository implements the idea of &#34;caption upsampling&#34; from DALL-E 3 with Zephyr-7B and gathers results with SDXL. | sayakpaul | 153 |
-| 132 |  [ComfyUI-Manager](https://github.com/ltdrdata/ComfyUI-Manager) | ComfyUI-Manager is an extension designed to enhance the usability of ComfyUI. It offers management functions to install, remove, disable, and enable various custom nodes of ComfyUI. Furthermore, this extension provides a hub feature and convenience functions to access a wide range of information within ComfyUI. | ltdrdata | 8217 |
-| 133 |  [ChatTTS](https://github.com/2noise/ChatTTS) | A generative speech model for daily dialogue. | 2noise | 34004 |
+| 132 |  [ComfyUI-Manager](https://github.com/ltdrdata/ComfyUI-Manager) | ComfyUI-Manager is an extension designed to enhance the usability of ComfyUI. It offers management functions to install, remove, disable, and enable various custom nodes of ComfyUI. Furthermore, this extension provides a hub feature and convenience functions to access a wide range of information within ComfyUI. | ltdrdata | 8218 |
+| 133 |  [ChatTTS](https://github.com/2noise/ChatTTS) | A generative speech model for daily dialogue. | 2noise | 34005 |
 | 134 |  [vid2densepose](https://github.com/Flode-Labs/vid2densepose) | Convert your videos to densepose and use it on MagicAnimate | Flode-Labs | 1086 |
 | 135 |  [ComfyUI-Stereopsis](https://github.com/IsItDanOrAi/ComfyUI-Stereopsis) |  | IsItDanOrAi | 10 |
 | 136 |  [deep-learning-book-notes](https://github.com/greentfrapp/deep-learning-book-notes) | Notes on Deep Learning textbook by Ian Goodfellow, Yoshua Bengio and Aaron Courville | greentfrapp | 61 |
@@ -1276,12 +1276,12 @@
 | 144 |  [MeshAnythingV2](https://github.com/buaacyw/MeshAnythingV2) | From anything to mesh like human artists. Official impl. of &#34;MeshAnything V2: Artist-Created Mesh Generation With Adjacent Mesh Tokenization&#34; | buaacyw | 726 |
 | 145 |  [Deep-Live-Cam](https://github.com/hacksider/Deep-Live-Cam) | real time face swap and one-click video deepfake with only a single image | hacksider | 43464 |
 | 146 |  [meshgpt-pytorch](https://github.com/MarcusLoppe/meshgpt-pytorch) | Implementation of MeshGPT, SOTA Mesh generation using Attention, in Pytorch | MarcusLoppe | 73 |
-| 147 |  [flux](https://github.com/black-forest-labs/flux) | Official inference repo for FLUX.1 models | black-forest-labs | 19823 |
+| 147 |  [flux](https://github.com/black-forest-labs/flux) | Official inference repo for FLUX.1 models | black-forest-labs | 19824 |
 | 148 |  [Unique3D](https://github.com/AiuniAI/Unique3D) | [NeurIPS 2024] Unique3D: High-Quality and Efficient 3D Mesh Generation from a Single Image | AiuniAI | 3224 |
 | 149 |  [agentscope](https://github.com/modelscope/agentscope) | Start building LLM-empowered multi-agent applications in an easier way. | modelscope | 6024 |
-| 150 |  [changedetection.io](https://github.com/dgtlmoon/changedetection.io) | The best and simplest free open source web page change detection, website watcher,  restock monitor and notification service. Restock Monitor, change detection. Designed for simplicity - Simply monitor which websites had a text change for free. Free Open source web page change detection, Website defacement monitoring, Price change notification | dgtlmoon | 21386 |
-| 151 |  [ComfyUI-LivePortraitKJ](https://github.com/kijai/ComfyUI-LivePortraitKJ) | ComfyUI nodes for LivePortrait | kijai | 1791 |
-| 152 |  [LivePortrait](https://github.com/KwaiVGI/LivePortrait) | Bring portraits to life! | KwaiVGI | 13761 |
+| 150 |  [changedetection.io](https://github.com/dgtlmoon/changedetection.io) | The best and simplest free open source web page change detection, website watcher,  restock monitor and notification service. Restock Monitor, change detection. Designed for simplicity - Simply monitor which websites had a text change for free. Free Open source web page change detection, Website defacement monitoring, Price change notification | dgtlmoon | 21389 |
+| 151 |  [ComfyUI-LivePortraitKJ](https://github.com/kijai/ComfyUI-LivePortraitKJ) | ComfyUI nodes for LivePortrait | kijai | 1792 |
+| 152 |  [LivePortrait](https://github.com/KwaiVGI/LivePortrait) | Bring portraits to life! | KwaiVGI | 13763 |
 | 153 |  [claude-engineer](https://github.com/Doriandarko/claude-engineer) | Claude Engineer is an interactive command-line interface (CLI) that leverages the power of Anthropic's Claude-3.5-Sonnet model to assist with software development tasks.This framework enables Claude to generate and manage its own tools, continuously expanding its capabilities through conversation. Available both as a CLI and a modern web interface | Doriandarko | 10681 |
 | 154 |  [hello-deep-learning](https://github.com/robert/hello-deep-learning) | Unbelievably basic deep learning exercises that run on your laptop in a few seconds. | robert | 54 |
 | 155 |  [Paints-UNDO](https://github.com/lllyasviel/Paints-UNDO) | Understand Human Behavior to Align True Needs | lllyasviel | 3684 |
@@ -1306,7 +1306,7 @@
 | 174 |  [StyleHEAT](https://github.com/OpenTalker/StyleHEAT) | [ECCV 2022] StyleHEAT: A framework for high-resolution editable talking face generation | OpenTalker | 644 |
 | 175 |  [video-retalking](https://github.com/OpenTalker/video-retalking) | [SIGGRAPH Asia 2022] VideoReTalking: Audio-based Lip Synchronization for Talking Head Video Editing In the Wild | OpenTalker | 6842 |
 | 176 |  [ComfyUI_omost](https://github.com/huchenlei/ComfyUI_omost) | ComfyUI implementation of Omost | huchenlei | 427 |
-| 177 |  [searxng](https://github.com/searxng/searxng) | SearXNG is a free internet metasearch engine which aggregates results from various search services and databases. Users are neither tracked nor profiled. | searxng | 15558 |
+| 177 |  [searxng](https://github.com/searxng/searxng) | SearXNG is a free internet metasearch engine which aggregates results from various search services and databases. Users are neither tracked nor profiled. | searxng | 15563 |
 | 178 |  [AlpacaDataCleaned](https://github.com/gururise/AlpacaDataCleaned) | Alpaca dataset from Stanford, cleaned and curated | gururise | 1532 |
 | 179 |  [ChatTTS-ui](https://github.com/jianchang512/ChatTTS-ui) | 一个简单的本地网页界面，使用ChatTTS将文字合成为语音，同时支持对外提供API接口。A simple native web interface that uses ChatTTS to synthesize text into speech, along with support for external API interfaces. | jianchang512 | 6572 |
 | 180 |  [sd-wav2lip-uhq](https://github.com/numz/sd-wav2lip-uhq) | Wav2Lip UHQ extension for Automatic1111 | numz | 1329 |
@@ -1320,43 +1320,43 @@
 | 188 |  [deformation_transfer_ARkit_blendshapes](https://github.com/vasiliskatr/deformation_transfer_ARkit_blendshapes) | Implementation of the deformation transfer paper and its application in generating all the ARkit facial blend shapes for any 3D face | vasiliskatr | 65 |
 | 189 |  [ICT-FaceKit](https://github.com/ICT-VGL/ICT-FaceKit) | ICT's Vision and Graphics Lab's morphable face model and toolkit | ICT-VGL | 667 |
 | 190 |  [neural-blend-shapes](https://github.com/PeizhuoLi/neural-blend-shapes) | An end-to-end library for automatic character rigging, skinning, and blend shapes generation, as well as a visualization tool [SIGGRAPH 2021] | PeizhuoLi | 658 |
-| 191 |  [khoj](https://github.com/khoj-ai/khoj) | Your AI second brain. Self-hostable. Get answers from the web or your docs. Build custom agents, schedule automations, do deep research. Turn any online or local LLM into your personal, autonomous AI (gpt, claude, gemini, llama, qwen, mistral). Get started - free. | khoj-ai | 25561 |
+| 191 |  [khoj](https://github.com/khoj-ai/khoj) | Your AI second brain. Self-hostable. Get answers from the web or your docs. Build custom agents, schedule automations, do deep research. Turn any online or local LLM into your personal, autonomous AI (gpt, claude, gemini, llama, qwen, mistral). Get started - free. | khoj-ai | 25569 |
 | 192 |  [comfyui-selector](https://github.com/exdysa/comfyui-selector) | 簡單的離線節點，用於ComfyUI。[選擇器]預設值[資源]開關。Simple offline nodes for ComfyUI. [Selector] Presets [Recourse] Switches. | exdysa | 5 |
-| 193 |  [SeargeSDXL](https://github.com/SeargeDP/SeargeSDXL) | Custom nodes and workflows for SDXL in ComfyUI | SeargeDP | 818 |
+| 193 |  [SeargeSDXL](https://github.com/SeargeDP/SeargeSDXL) | Custom nodes and workflows for SDXL in ComfyUI | SeargeDP | 819 |
 | 194 |  [PSG4D](https://github.com/Jingkang50/PSG4D) | 4D Panoptic Scene Graph Generation (NeurIPS'23 Spotlight) | Jingkang50 | 98 |
-| 195 |  [apex](https://github.com/NVIDIA/apex) | A PyTorch Extension:  Tools for easy mixed precision and distributed training in Pytorch | NVIDIA | 8517 |
+| 195 |  [apex](https://github.com/NVIDIA/apex) | A PyTorch Extension:  Tools for easy mixed precision and distributed training in Pytorch | NVIDIA | 8518 |
 | 196 |  [TaskingAI](https://github.com/TaskingAI/TaskingAI) | The open source platform for AI-native application development. | TaskingAI | 5031 |
 | 197 |  [DFDNet](https://github.com/csxmli2016/DFDNet) | Blind Face Restoration via Deep Multi-scale Component Dictionaries (ECCV 2020) | csxmli2016 | 918 |
 | 198 |  [newspaper](https://github.com/codelucas/newspaper) | newspaper3k is a news, full-text, and article metadata extraction in Python 3. Advanced docs: | codelucas | 14311 |
-| 199 |  [TTS](https://github.com/coqui-ai/TTS) | 🐸💬 - a deep learning toolkit for Text-to-Speech, battle-tested in research and production | coqui-ai | 37250 |
+| 199 |  [TTS](https://github.com/coqui-ai/TTS) | 🐸💬 - a deep learning toolkit for Text-to-Speech, battle-tested in research and production | coqui-ai | 37251 |
 | 200 |  [openrouter-runner](https://github.com/OpenRouterTeam/openrouter-runner) | Inference engine powering open source models on OpenRouter | OpenRouterTeam | 694 |
 | 201 |  [alphafold3-pytorch](https://github.com/lucidrains/alphafold3-pytorch) | Implementation of Alphafold 3 from Google Deepmind in Pytorch | lucidrains | 1342 |
 | 202 |  [imutils](https://github.com/PyImageSearch/imutils) | A series of convenience functions to make basic image processing operations such as translation, rotation, resizing, skeletonization, and displaying Matplotlib images easier with OpenCV and Python. | PyImageSearch | 4551 |
 | 203 |  [mirror](https://github.com/cocktailpeanut/mirror) |  | cocktailpeanut | 278 |
-| 204 |  [litellm](https://github.com/BerriAI/litellm) | Python SDK, Proxy Server (LLM Gateway) to call 100+ LLM APIs in OpenAI format - [Bedrock, Azure, OpenAI, VertexAI, Cohere, Anthropic, Sagemaker, HuggingFace, Replicate, Groq] | BerriAI | 16787 |
+| 204 |  [litellm](https://github.com/BerriAI/litellm) | Python SDK, Proxy Server (LLM Gateway) to call 100+ LLM APIs in OpenAI format - [Bedrock, Azure, OpenAI, VertexAI, Cohere, Anthropic, Sagemaker, HuggingFace, Replicate, Groq] | BerriAI | 16789 |
 | 205 |  [bert-extractive-summarizer](https://github.com/dmmiller612/bert-extractive-summarizer) | Easy to use extractive text summarization with BERT | dmmiller612 | 1416 |
 | 206 |  [Tensorflow-Project-Template](https://github.com/MrGemy95/Tensorflow-Project-Template) | A best practice for tensorflow project template architecture. | MrGemy95 | 3614 |
 | 207 |  [LLaVA](https://github.com/haotian-liu/LLaVA) | [NeurIPS'23 Oral] Visual Instruction Tuning (LLaVA) built towards GPT-4V level capabilities and beyond. | haotian-liu | 21240 |
 | 208 |  [ViT_PyTorch](https://github.com/qnguyen3/ViT_PyTorch) | A PyTorch Implementation of ViT (Vision Transformer) | qnguyen3 | 18 |
-| 209 |  [chat-with-mlx](https://github.com/qnguyen3/chat-with-mlx) | An all-in-one LLMs Chat UI for Apple Silicon Mac using MLX Framework. | qnguyen3 | 1513 |
+| 209 |  [chat-with-mlx](https://github.com/qnguyen3/chat-with-mlx) | An all-in-one LLMs Chat UI for Apple Silicon Mac using MLX Framework. | qnguyen3 | 1514 |
 | 210 |  [pytorch_mgie](https://github.com/tsujuifu/pytorch_mgie) | A Gradio demo of MGIE | tsujuifu | 346 |
 | 211 |  [petals](https://github.com/bigscience-workshop/petals) | 🌸 Run LLMs at home, BitTorrent-style. Fine-tuning and inference up to 10x faster than offloading | bigscience-workshop | 9388 |
 | 212 |  [Torch-Pruning](https://github.com/VainF/Torch-Pruning) | [CVPR 2023] DepGraph: Towards Any Structural Pruning | VainF | 2850 |
 | 213 |  [DeepCache](https://github.com/horseee/DeepCache) | [CVPR 2024] DeepCache: Accelerating Diffusion Models for Free | horseee | 841 |
 | 214 |  [PuLID_ComfyUI](https://github.com/cubiq/PuLID_ComfyUI) | PuLID native implementation for ComfyUI | cubiq | 777 |
-| 215 |  [IC-Light](https://github.com/lllyasviel/IC-Light) | More relighting! | lllyasviel | 7438 |
-| 216 |  [vocode-core](https://github.com/vocodedev/vocode-core) | 🤖 Build voice-based LLM agents. Modular + open source. | vocodedev | 3110 |
+| 215 |  [IC-Light](https://github.com/lllyasviel/IC-Light) | More relighting! | lllyasviel | 7439 |
+| 216 |  [vocode-core](https://github.com/vocodedev/vocode-core) | 🤖 Build voice-based LLM agents. Modular + open source. | vocodedev | 3111 |
 | 217 |  [SWE-agent](https://github.com/SWE-agent/SWE-agent) | SWE-agent takes a GitHub issue and tries to automatically fix it, using GPT-4, or your LM of choice. It can also be employed for offensive cybersecurity or competitive coding challenges. [NeurIPS 2024] | SWE-agent | 14307 |
 | 218 |  [MLServer](https://github.com/SeldonIO/MLServer) | An inference server for your machine learning models, including support for multiple frameworks, multi-model serving and more | SeldonIO | 760 |
 | 219 |  [BentoML](https://github.com/bentoml/BentoML) | The easiest way to serve AI apps and models - Build Model Inference APIs, Job queues, LLM apps, Multi-model pipelines, and more! | bentoml | 7315 |
-| 220 |  [lip-reading-deeplearning](https://github.com/astorfi/lip-reading-deeplearning) | :unlock: Lip Reading - Cross Audio-Visual Recognition using 3D Architectures | astorfi | 1845 |
+| 220 |  [lip-reading-deeplearning](https://github.com/astorfi/lip-reading-deeplearning) | :unlock: Lip Reading - Cross Audio-Visual Recognition using 3D Architectures | astorfi | 1846 |
 | 221 |  [LogPrompt](https://github.com/lunyiliu/LogPrompt) |  | lunyiliu | 46 |
 | 222 |  [CoachLM](https://github.com/lunyiliu/CoachLM) | Code and data for CoachLM, an automatic instruction revision approach LLM instruction tuning. | lunyiliu | 60 |
 | 223 |  [pywinassistant](https://github.com/a-real-ai/pywinassistant) | The first open-source Artificial Narrow Intelligence generalist agentic framework Computer-Using-Agent that fully operates graphical-user-interfaces (GUIs) by using only natural language. Uses Visualization-of-Thought and Chain-of-Thought reasoning to elicit spatial reasoning and perception, emulates, plans and simulates synthetic HID interactions. | a-real-ai | 1277 |
 | 224 |  [UnlearnCanvas](https://github.com/OPTML-Group/UnlearnCanvas) | [NeurIPS 2024 D&B Track] UnlearnCanvas: A Stylized Image Dataset to Benchmark Machine Unlearning for Diffusion Models by Yihua Zhang, Chongyu Fan, Yimeng Zhang, Yuguang Yao, Jinghan Jia, Jiancheng Liu, Gaoyuan Zhang, Gaowen Liu, Ramana Kompella, Xiaoming Liu, Sijia Liu | OPTML-Group | 61 |
 | 225 |  [LLava-Image-Analyzer](https://github.com/AIDevBytes/LLava-Image-Analyzer) | Llava, Ollama and Streamlit \| Create POWERFUL Image Analyzer Chatbot for FREE - Windows & Mac | AIDevBytes | 19 |
 | 226 |  [maestro](https://github.com/Doriandarko/maestro) | A framework for Claude Opus to intelligently orchestrate subagents. | Doriandarko | 4197 |
-| 227 |  [mergekit](https://github.com/arcee-ai/mergekit) | Tools for merging pretrained large language models. | arcee-ai | 5168 |
+| 227 |  [mergekit](https://github.com/arcee-ai/mergekit) | Tools for merging pretrained large language models. | arcee-ai | 5169 |
 | 228 |  [skeletor](https://github.com/navis-org/skeletor) | Extraction of 3D skeletons from meshes. | navis-org | 217 |
 | 229 |  [ComfyUI-Tripo](https://github.com/VAST-AI-Research/ComfyUI-Tripo) | Custom nodes for using Tripo in ComfyUI. | VAST-AI-Research | 219 |
 | 230 |  [ParlAI](https://github.com/facebookresearch/ParlAI) | A framework for training and evaluating AI models on a variety of openly available dialogue datasets. | facebookresearch | 10497 |
@@ -1364,18 +1364,18 @@
 | 232 |  [AICoverGen](https://github.com/SociallyIneptWeeb/AICoverGen) | A WebUI to create song covers with any RVC v2 trained AI voice from YouTube videos or audio files. | SociallyIneptWeeb | 1186 |
 | 233 |  [layered-neural-atlases](https://github.com/ykasten/layered-neural-atlases) |  | ykasten | 597 |
 | 234 |  [Text2LIVE](https://github.com/omerbt/Text2LIVE) | Official Pytorch Implementation for &#34;Text2LIVE: Text-Driven Layered Image and Video Editing&#34; (ECCV 2022 Oral) | omerbt | 886 |
-| 235 |  [gpt-researcher](https://github.com/assafelovic/gpt-researcher) | LLM based autonomous agent that conducts local and web research on any topic and generates a comprehensive report with citations. | assafelovic | 15962 |
+| 235 |  [gpt-researcher](https://github.com/assafelovic/gpt-researcher) | LLM based autonomous agent that conducts local and web research on any topic and generates a comprehensive report with citations. | assafelovic | 15961 |
 | 236 |  [BlenderSlot](https://github.com/davidkingzyb/BlenderSlot) | A blender addon for record your operations, manage your customize scripts and generate script by AI with Ollama. | davidkingzyb | 6 |
 | 237 |  [AI-Render](https://github.com/benrugg/AI-Render) | Stable Diffusion in Blender | benrugg | 1136 |
-| 238 |  [open-interpreter](https://github.com/OpenInterpreter/open-interpreter) | A natural language interface for computers | OpenInterpreter | 58064 |
+| 238 |  [open-interpreter](https://github.com/OpenInterpreter/open-interpreter) | A natural language interface for computers | OpenInterpreter | 58066 |
 | 239 |  [Open-Sora](https://github.com/hpcaitech/Open-Sora) | Open-Sora: Democratizing Efficient Video Production for All | hpcaitech | 23194 |
-| 240 |  [gradio](https://github.com/gradio-app/gradio) | Build and share delightful machine learning apps, all in Python. 🌟 Star to support our work! | gradio-app | 35615 |
+| 240 |  [gradio](https://github.com/gradio-app/gradio) | Build and share delightful machine learning apps, all in Python. 🌟 Star to support our work! | gradio-app | 35619 |
 | 241 |  [BrowserGym](https://github.com/ServiceNow/BrowserGym) | 🌎💪 BrowserGym, a Gym environment for web task automation | ServiceNow | 489 |
 | 242 |  [webllama](https://github.com/McGill-NLP/webllama) | Llama-3 agents that can browse the web by following instructions and talking to you | McGill-NLP | 1389 |
 | 243 |  [ComfyUI-Disco-Diffusion](https://github.com/space-nuko/ComfyUI-Disco-Diffusion) |  | space-nuko | 50 |
 | 244 |  [github-trending](https://github.com/bonfy/github-trending) | Tracking the most popular Github repos, update daily(Python version) | bonfy | 582 |
-| 245 |  [OpenVoice](https://github.com/myshell-ai/OpenVoice) | Instant voice cloning by MIT and MyShell. Audio foundation model. | myshell-ai | 30666 |
-| 246 |  [detectron2](https://github.com/facebookresearch/detectron2) | Detectron2 is a platform for object detection, segmentation and other visual recognition tasks. | facebookresearch | 31106 |
+| 245 |  [OpenVoice](https://github.com/myshell-ai/OpenVoice) | Instant voice cloning by MIT and MyShell. Audio foundation model. | myshell-ai | 30667 |
+| 246 |  [detectron2](https://github.com/facebookresearch/detectron2) | Detectron2 is a platform for object detection, segmentation and other visual recognition tasks. | facebookresearch | 31107 |
 | 247 |  [IDM-VTON](https://github.com/yisol/IDM-VTON) | [ECCV2024] IDM-VTON : Improving Diffusion Models for Authentic Virtual Try-on in the Wild | yisol | 4181 |
 | 248 |  [audio2photoreal](https://github.com/facebookresearch/audio2photoreal) | Code and dataset for photorealistic Codec Avatars driven from audio | facebookresearch | 2745 |
 | 249 |  [sdfstudio](https://github.com/autonomousvision/sdfstudio) | A Unified Framework for Surface Reconstruction | autonomousvision | 2003 |
@@ -1390,23 +1390,23 @@
 | 258 |  [RAVE](https://github.com/RehgLab/RAVE) | RAVE: Randomized Noise Shuffling for Fast and Consistent Video Editing with Diffusion Models [CVPR 2024] | RehgLab | 284 |
 | 259 |  [ComfyUI-Vextra-Nodes](https://github.com/diontimmer/ComfyUI-Vextra-Nodes) | Custom nodes for ComfyUI | diontimmer | 72 |
 | 260 |  [intrinsic-lora](https://github.com/duxiaodan/intrinsic-lora) | Official repo of 𝗚𝗲𝗻𝗲𝗿𝗮𝘁𝗶𝘃𝗲 𝗠𝗼𝗱𝗲𝗹𝘀: 𝗪𝗵𝗮𝘁 𝗗𝗼 𝗧𝗵𝗲𝘆 𝗞𝗻𝗼𝘄? 𝗗𝗼 𝗧𝗵𝗲𝘆 𝗞𝗻𝗼𝘄 𝗧𝗵𝗶𝗻𝗴𝘀? 𝗟𝗲𝘁'𝘀 𝗙𝗶𝗻𝗱 𝗢𝘂𝘁! (Previously titled 𝘐𝘯𝘵𝘳𝘪𝘯𝘴𝘪𝘤 𝘓𝘰𝘙𝘈: 𝘈 𝘎𝘦𝘯𝘦𝘳𝘢𝘭𝘪𝘴𝘵 𝘈𝘱𝘱𝘳𝘰𝘢𝘤𝘩 𝘧𝘰𝘳 𝘋𝘪𝘴𝘤𝘰𝘷𝘦𝘳𝘪𝘯𝘨 𝘒𝘯𝘰𝘸𝘭𝘦𝘥𝘨𝘦 𝘪𝘯 𝘎𝘦𝘯𝘦𝘳𝘢𝘵𝘪𝘷𝘦 𝘔𝘰𝘥𝘦𝘭𝘴)) | duxiaodan | 179 |
-| 261 |  [ComfyUI-KJNodes](https://github.com/kijai/ComfyUI-KJNodes) | Various custom nodes for ComfyUI | kijai | 807 |
+| 261 |  [ComfyUI-KJNodes](https://github.com/kijai/ComfyUI-KJNodes) | Various custom nodes for ComfyUI | kijai | 808 |
 | 262 |  [PurpleLlama](https://github.com/meta-llama/PurpleLlama) | Set of tools to assess and improve LLM security. | meta-llama | 2861 |
 | 263 |  [mixture-of-diffusers](https://github.com/albarji/mixture-of-diffusers) | Mixture of Diffusers for scene composition and high resolution image generation | albarji | 421 |
 | 264 |  [ComfyUI-TiledDiffusion](https://github.com/shiimizu/ComfyUI-TiledDiffusion) | Tiled Diffusion, MultiDiffusion, Mixture of Diffusers, and optimized VAE | shiimizu | 361 |
 | 265 |  [ComfyUI-Book-Tools](https://github.com/Big-Idea-Technology/ComfyUI-Book-Tools) |  | Big-Idea-Technology | 23 |
-| 266 |  [llama3](https://github.com/meta-llama/llama3) | The official Meta Llama 3 GitHub site | meta-llama | 28137 |
+| 266 |  [llama3](https://github.com/meta-llama/llama3) | The official Meta Llama 3 GitHub site | meta-llama | 28138 |
 | 267 |  [ComfyUI_MagicClothing](https://github.com/frankchieng/ComfyUI_MagicClothing) | unofficial implementation of Comfyui magic clothing | frankchieng | 542 |
 | 268 |  [ComfyUI_ELLA](https://github.com/ExponentialML/ComfyUI_ELLA) | ComfyUI Implementaion of ELLA: Equip Diffusion Models with LLM for Enhanced Semantic Alignment | ExponentialML | 160 |
 | 269 |  [ComfyUI-SAI_API](https://github.com/Stability-AI/ComfyUI-SAI_API) |  | Stability-AI | 53 |
 | 270 |  [SurfacePsycho](https://github.com/RomainGuimbal/SurfacePsycho) | SurfacePsycho Blender addon | RomainGuimbal | 53 |
 | 271 |  [blender-stable-diffusion-render](https://github.com/neph1/blender-stable-diffusion-render) | A Blender addon for using Stable Diffusion to render texture bakes for objects. | neph1 | 23 |
 | 272 |  [ComfyUI-post-processing-nodes](https://github.com/EllangoK/ComfyUI-post-processing-nodes) | A collection of Post Processing Nodes for ComfyUI, which enable a variety of cool image effects | EllangoK | 203 |
-| 273 |  [champ](https://github.com/fudan-generative-vision/champ) | Champ: Controllable and Consistent Human Image Animation with 3D Parametric Guidance | fudan-generative-vision | 4138 |
+| 273 |  [champ](https://github.com/fudan-generative-vision/champ) | Champ: Controllable and Consistent Human Image Animation with 3D Parametric Guidance | fudan-generative-vision | 4139 |
 | 274 |  [simulacra-aesthetic-models](https://github.com/crowsonkb/simulacra-aesthetic-models) |  | crowsonkb | 166 |
 | 275 |  [ComfyUI-Strimmlarns-Aesthetic-Score](https://github.com/strimmlarn/ComfyUI-Strimmlarns-Aesthetic-Score) | aesthetic for comfy ui | strimmlarn | 29 |
-| 276 |  [aider](https://github.com/Aider-AI/aider) | aider is AI pair programming in your terminal | Aider-AI | 25981 |
-| 277 |  [transformers](https://github.com/huggingface/transformers) | 🤗 Transformers: State-of-the-art Machine Learning for Pytorch, TensorFlow, and JAX. | huggingface | 138303 |
+| 276 |  [aider](https://github.com/Aider-AI/aider) | aider is AI pair programming in your terminal | Aider-AI | 25985 |
+| 277 |  [transformers](https://github.com/huggingface/transformers) | 🤗 Transformers: State-of-the-art Machine Learning for Pytorch, TensorFlow, and JAX. | huggingface | 138306 |
 | 278 |  [swap-anything](https://github.com/eric-ai-lab/swap-anything) | Official implementation of the ECCV paper &#34;SwapAnything: Enabling Arbitrary Object Swapping in Personalized Visual Editing&#34; | eric-ai-lab | 237 |
 | 279 |  [ComfyUI-BRIA_AI-RMBG](https://github.com/ZHO-ZHO-ZHO/ComfyUI-BRIA_AI-RMBG) | Unofficial implementation of BRIA RMBG Model for ComfyUI | ZHO-ZHO-ZHO | 750 |
 | 280 |  [awesome-ml-demos-with-ios](https://github.com/tucan9389/awesome-ml-demos-with-ios) | The challenge projects for Inferencing machine learning models on iOS | tucan9389 | 1225 |
@@ -1416,7 +1416,7 @@
 | 284 |  [stability-ComfyUI-nodes](https://github.com/Stability-AI/stability-ComfyUI-nodes) |  | Stability-AI | 208 |
 | 285 |  [lollms_nodes_suite](https://github.com/ParisNeo/lollms_nodes_suite) | A suite of lollms Comfyui nodes | ParisNeo | 11 |
 | 286 |  [lightning-whisper-mlx](https://github.com/mustafaaljadery/lightning-whisper-mlx) | An extremely fast implementation of whisper optimized for Apple Silicon using MLX. | mustafaaljadery | 627 |
-| 287 |  [MoneyPrinterTurbo](https://github.com/harry0703/MoneyPrinterTurbo) | 利用AI大模型，一键生成高清短视频 Generate short videos with one click using AI LLM. | harry0703 | 21346 |
+| 287 |  [MoneyPrinterTurbo](https://github.com/harry0703/MoneyPrinterTurbo) | 利用AI大模型，一键生成高清短视频 Generate short videos with one click using AI LLM. | harry0703 | 21347 |
 | 288 |  [Open-AnimateAnyone](https://github.com/guoqincode/Open-AnimateAnyone) | Unofficial Implementation of Animate Anyone | guoqincode | 2893 |
 | 289 |  [AniPortrait](https://github.com/Zejun-Yang/AniPortrait) | AniPortrait: Audio-Driven Synthesis of Photorealistic Portrait Animation | Zejun-Yang | 4791 |
 | 290 |  [Projectors](https://github.com/Ocupe/Projectors) | A Blender add-on for simple projector creation and modification. | Ocupe | 206 |
@@ -1429,8 +1429,8 @@
 | 297 |  [MB-Lab](https://github.com/animate1978/MB-Lab) | MB-Lab is a character creation tool for Blender 4.0 and above, based off ManuelBastioniLAB | animate1978 | 1888 |
 | 298 |  [reinforcement-learning-algorithms](https://github.com/TianhongDai/reinforcement-learning-algorithms) | This repository contains most of pytorch implementation based classic deep reinforcement learning algorithms, including - DQN, DDQN, Dueling Network, DDPG, SAC, A2C, PPO, TRPO. (More algorithms are still in progress) | TianhongDai | 672 |
 | 299 |  [Super-mario-bros-PPO-pytorch](https://github.com/vietnh1009/Super-mario-bros-PPO-pytorch) | Proximal Policy Optimization (PPO) algorithm for Super Mario Bros | vietnh1009 | 1121 |
-| 300 |  [cleanrl](https://github.com/vwxyzjn/cleanrl) | High-quality single file implementation of Deep Reinforcement Learning algorithms with research-friendly features (PPO, DQN, C51, DDPG, TD3, SAC, PPG) | vwxyzjn | 6143 |
-| 301 |  [llama_index](https://github.com/run-llama/llama_index) | LlamaIndex is the leading framework for building LLM-powered agents over your data. | run-llama | 38440 |
+| 300 |  [cleanrl](https://github.com/vwxyzjn/cleanrl) | High-quality single file implementation of Deep Reinforcement Learning algorithms with research-friendly features (PPO, DQN, C51, DDPG, TD3, SAC, PPG) | vwxyzjn | 6145 |
+| 301 |  [llama_index](https://github.com/run-llama/llama_index) | LlamaIndex is the leading framework for building LLM-powered agents over your data. | run-llama | 38443 |
 | 302 |  [ComfyI2I](https://github.com/ManglerFTW/ComfyI2I) | ComfyI2I is a set of custom nodes for ComfyUI that help with image 2 image functions. | ManglerFTW | 165 |
 | 303 |  [ComfyUI-Advanced-ControlNet](https://github.com/Kosinkadink/ComfyUI-Advanced-ControlNet) | ControlNet scheduling and masking nodes with sliding context support | Kosinkadink | 689 |
 | 304 |  [ReNoise-Inversion](https://github.com/garibida/ReNoise-Inversion) | Officail Implementation for &#34;ReNoise: Real Image Inversion Through Iterative Noising&#34; | garibida | 212 |
@@ -1444,7 +1444,7 @@
 | 312 |  [imgui_manual](https://github.com/pthom/imgui_manual) | https://pthom.github.io/imgui_manual_online - an interactive manual for ImGui | pthom | 339 |
 | 313 |  [AnimatableGaussians](https://github.com/lizhe00/AnimatableGaussians) | Code of [CVPR 2024] &#34;Animatable Gaussians: Learning Pose-dependent Gaussian Maps for High-fidelity Human Avatar Modeling&#34; | lizhe00 | 958 |
 | 314 |  [Visual-Style-Prompting](https://github.com/naver-ai/Visual-Style-Prompting) | Official Pytorch implementation of &#34;Visual Style Prompting with Swapping Self-Attention&#34; | naver-ai | 431 |
-| 315 |  [DeepSeek-VL](https://github.com/deepseek-ai/DeepSeek-VL) | DeepSeek-VL: Towards Real-World Vision-Language Understanding | deepseek-ai | 3072 |
+| 315 |  [DeepSeek-VL](https://github.com/deepseek-ai/DeepSeek-VL) | DeepSeek-VL: Towards Real-World Vision-Language Understanding | deepseek-ai | 3077 |
 | 316 |  [graspologic](https://github.com/graspologic-org/graspologic) | Python package for graph statistics | graspologic-org | 853 |
 | 317 |  [grok-1](https://github.com/xai-org/grok-1) | Grok open release | xai-org | 49886 |
 | 318 |  [ComfyUI_FaceAnalysis](https://github.com/cubiq/ComfyUI_FaceAnalysis) | Extension for ComfyUI to evaluate the similarity between two faces | cubiq | 379 |
@@ -1473,9 +1473,9 @@
 | 341 |  [Deep-Dive-Into-AI-With-MLX-PyTorch](https://github.com/neobundy/Deep-Dive-Into-AI-With-MLX-PyTorch) | &#34;Deep Dive into AI with MLX and PyTorch&#34; is an educational initiative designed to help anyone interested in AI, specifically in machine learning and deep learning, using Apple's MLX and Meta's PyTorch frameworks. | neobundy | 412 |
 | 342 |  [Comfyui_image2prompt](https://github.com/zhongpei/Comfyui_image2prompt) | image to prompt by vikhyatk/moondream1 | zhongpei | 316 |
 | 343 |  [LWM](https://github.com/LargeWorldModel/LWM) | Large World Model -- Modeling Text and Video with Millions Context | LargeWorldModel | 7212 |
-| 344 |  [whisperkittools](https://github.com/argmaxinc/whisperkittools) | Python tools for WhisperKit: Model conversion, optimization and evaluation | argmaxinc | 196 |
+| 344 |  [whisperkittools](https://github.com/argmaxinc/whisperkittools) | Python tools for WhisperKit: Model conversion, optimization and evaluation | argmaxinc | 197 |
 | 345 |  [a-person-mask-generator](https://github.com/djbielejeski/a-person-mask-generator) | Extension for Automatic1111 and ComfyUI to automatically create masks for Background/Hair/Body/Face/Clothes in Img2Img | djbielejeski | 304 |
-| 346 |  [ComfyUI_InstantID](https://github.com/cubiq/ComfyUI_InstantID) |  | cubiq | 1431 |
+| 346 |  [ComfyUI_InstantID](https://github.com/cubiq/ComfyUI_InstantID) |  | cubiq | 1432 |
 | 347 |  [ml-ferret](https://github.com/jeanjerome/ml-ferret) | A port to Apple Silicon (see branch silicon) | jeanjerome | 17 |
 | 348 |  [llmquiz](https://github.com/AUTOMATIC1111/llmquiz) | Simple script to quiz LLMs | AUTOMATIC1111 | 25 |
 | 349 |  [ComfyUI_ADV_CLIP_emb](https://github.com/BlenderNeko/ComfyUI_ADV_CLIP_emb) | ComfyUI node that let you pick the way in which prompt weights are interpreted | BlenderNeko | 345 |
@@ -1485,13 +1485,13 @@
 | 353 |  [comfyui_segment_anything](https://github.com/storyicon/comfyui_segment_anything) | Based on GroundingDino and SAM, use semantic strings to segment any element in an image. The comfyui version of sd-webui-segment-anything. | storyicon | 821 |
 | 354 |  [ml-mgie](https://github.com/apple/ml-mgie) |  | apple | 3872 |
 | 355 |  [playground](https://github.com/open-mmlab/playground) | A central hub for gathering and showcasing amazing projects that extend OpenMMLab with SAM and other exciting features. | open-mmlab | 1157 |
-| 356 |  [mmpose](https://github.com/open-mmlab/mmpose) | OpenMMLab Pose Estimation Toolbox and Benchmark. | open-mmlab | 6067 |
+| 356 |  [mmpose](https://github.com/open-mmlab/mmpose) | OpenMMLab Pose Estimation Toolbox and Benchmark. | open-mmlab | 6068 |
 | 357 |  [AP-10K](https://github.com/AlexTheBad/AP-10K) | NeurIPS 2021 Datasets and Benchmarks Track | AlexTheBad | 147 |
 | 358 |  [ComfyUI-Flowty-LDSR](https://github.com/flowtyone/ComfyUI-Flowty-LDSR) | LDSR custom node for ComfyUI | flowtyone | 220 |
 | 359 |  [web2pdf](https://github.com/dvcoolarun/web2pdf) | 🔄 CLI to convert Webpages to PDFs 🚀 | dvcoolarun | 1195 |
 | 360 |  [ComfyUI-WD14-Tagger](https://github.com/pythongosssss/ComfyUI-WD14-Tagger) | A ComfyUI extension allowing for the interrogation of booru tags from images. | pythongosssss | 748 |
 | 361 |  [ComfyUI_SeeCoder](https://github.com/BlenderNeko/ComfyUI_SeeCoder) |  | BlenderNeko | 38 |
-| 362 |  [DreamCraft3D](https://github.com/deepseek-ai/DreamCraft3D) | [ICLR 2024] Official implementation of DreamCraft3D: Hierarchical 3D Generation with Bootstrapped Diffusion Prior | deepseek-ai | 2624 |
+| 362 |  [DreamCraft3D](https://github.com/deepseek-ai/DreamCraft3D) | [ICLR 2024] Official implementation of DreamCraft3D: Hierarchical 3D Generation with Bootstrapped Diffusion Prior | deepseek-ai | 2639 |
 | 363 |  [TriplaneGaussian](https://github.com/VAST-AI-Research/TriplaneGaussian) | TriplaneGaussian: A new hybrid representation for single-view 3D reconstruction. | VAST-AI-Research | 810 |
 | 364 |  [ComfyUI-3D-Pack](https://github.com/MrForExample/ComfyUI-3D-Pack) | An extensive node suite that enables ComfyUI to process 3D inputs (Mesh & UV Texture, etc) using cutting edge algorithms (3DGS, NeRF, etc.) | MrForExample | 2691 |
 | 365 |  [Comfyui-StableSR](https://github.com/gameltb/Comfyui-StableSR) |  | gameltb | 161 |
@@ -1509,7 +1509,7 @@
 | 377 |  [python-tf-bodypix](https://github.com/PINTO0309/python-tf-bodypix) | A Python implementation of the bodypix model. | PINTO0309 | 5 |
 | 378 |  [PINTO_model_zoo](https://github.com/PINTO0309/PINTO_model_zoo) | A repository for storing models that have been inter-converted between various frameworks. Supported frameworks are TensorFlow, PyTorch, ONNX, OpenVINO, TFJS, TFTRT, TensorFlowLite (Float32/16/INT8), EdgeTPU, CoreML. | PINTO0309 | 3683 |
 | 379 |  [open_model_zoo](https://github.com/openvinotoolkit/open_model_zoo) | Pre-trained Deep Learning models and demos (high quality and extremely fast) | openvinotoolkit | 4143 |
-| 380 |  [ultralytics](https://github.com/ultralytics/ultralytics) | Ultralytics YOLO11 🚀 | ultralytics | 35920 |
+| 380 |  [ultralytics](https://github.com/ultralytics/ultralytics) | Ultralytics YOLO11 🚀 | ultralytics | 35922 |
 | 381 |  [VGen](https://github.com/ali-vilab/VGen) | Official repo for VGen: a holistic video generation ecosystem for video generation building on diffusion models | ali-vilab | 3040 |
 | 382 |  [ExtrusionEffect](https://github.com/isaacbmiller/ExtrusionEffect) |  | isaacbmiller | 14 |
 | 383 |  [evenflow](https://github.com/willkurt/evenflow) | Framework for Self-Organizing Python Agents | willkurt | 29 |
@@ -1518,7 +1518,7 @@
 | 386 |  [ml-ferret](https://github.com/apple/ml-ferret) |  | apple | 8554 |
 | 387 |  [pixelsort](https://github.com/satyarth/pixelsort) | Pixel sorting images in python. | satyarth | 797 |
 | 388 |  [ml-ane-transformers](https://github.com/apple/ml-ane-transformers) | Reference implementation of the Transformer architecture optimized for Apple Neural Engine (ANE) | apple | 2583 |
-| 389 |  [text-generation-webui](https://github.com/oobabooga/text-generation-webui) | A Gradio web UI for Large Language Models with support for multiple inference backends. | oobabooga | 41953 |
+| 389 |  [text-generation-webui](https://github.com/oobabooga/text-generation-webui) | A Gradio web UI for Large Language Models with support for multiple inference backends. | oobabooga | 41954 |
 | 390 |  [T2I-Adapter](https://github.com/TencentARC/T2I-Adapter) | T2I-Adapter | TencentARC | 3571 |
 | 391 |  [kaolin](https://github.com/NVIDIAGameWorks/kaolin) | A PyTorch Library for Accelerating 3D Deep Learning Research | NVIDIAGameWorks | 4599 |
 | 392 |  [DIB-R-Single-Image-3D-Reconstruction](https://github.com/nv-tlabs/DIB-R-Single-Image-3D-Reconstruction) |  | nv-tlabs | 74 |
@@ -1530,7 +1530,7 @@
 | 398 |  [GaussianDreamer](https://github.com/hustvl/GaussianDreamer) | [CVPR 2024] GaussianDreamer: Fast Generation from Text to 3D Gaussians by Bridging 2D and 3D Diffusion Models | hustvl | 716 |
 | 399 |  [tiled_ksampler](https://github.com/FlyingFireCo/tiled_ksampler) |  | FlyingFireCo | 74 |
 | 400 |  [magic-animate](https://github.com/magic-research/magic-animate) | [CVPR 2024] MagicAnimate: Temporally Consistent Human Image Animation using Diffusion Model | magic-research | 10664 |
-| 401 |  [ComfyUI-to-Python-Extension](https://github.com/pydn/ComfyUI-to-Python-Extension) | A powerful tool that translates ComfyUI workflows into executable Python code. | pydn | 1464 |
+| 401 |  [ComfyUI-to-Python-Extension](https://github.com/pydn/ComfyUI-to-Python-Extension) | A powerful tool that translates ComfyUI workflows into executable Python code. | pydn | 1465 |
 | 402 |  [comfyui-portrait-master](https://github.com/florestefano1975/comfyui-portrait-master) | This node was designed to help AI image creators to generate prompts for human portraits. | florestefano1975 | 972 |
 | 403 |  [promptbase](https://github.com/microsoft/promptbase) | All things prompt engineering | microsoft | 5515 |
 | 404 |  [upfusion](https://github.com/upfusion3d/upfusion) | UpFusion: Novel View Diffusion from Unposed Sparse View Observations (ECCV 2024) | upfusion3d | 110 |
@@ -1540,27 +1540,27 @@
 | 408 |  [lightweight-gan](https://github.com/lucidrains/lightweight-gan) | Implementation of 'lightweight' GAN, proposed in ICLR 2021, in Pytorch. High resolution image generations that can be trained within a day or two | lucidrains | 1642 |
 | 409 |  [sample-diffusion](https://github.com/sudosilico/sample-diffusion) | A Python library and CLI for generating audio samples using Harmonai Dance Diffusion models. | sudosilico | 94 |
 | 410 |  [avatar-graph-comfyui](https://github.com/avatechai/avatar-graph-comfyui) | A custom nodes module for creating real-time interactive avatars powered by blender bpy mesh api + Avatech Shape Flow runtime. | avatechai | 256 |
-| 411 |  [safetensors](https://github.com/huggingface/safetensors) | Simple, safe way to store and distribute tensors | huggingface | 3043 |
-| 412 |  [mlx-examples](https://github.com/ml-explore/mlx-examples) | Examples in the MLX framework | ml-explore | 6767 |
+| 411 |  [safetensors](https://github.com/huggingface/safetensors) | Simple, safe way to store and distribute tensors | huggingface | 3044 |
+| 412 |  [mlx-examples](https://github.com/ml-explore/mlx-examples) | Examples in the MLX framework | ml-explore | 6768 |
 | 413 |  [ComfyUI_IPAdapter_plus](https://github.com/cubiq/ComfyUI_IPAdapter_plus) |  | cubiq | 4537 |
 | 414 |  [blender-addons](https://github.com/sadaszewski/blender-addons) | My Blender Add-ons | sadaszewski | 8 |
 | 415 |  [syn-rep-learn](https://github.com/google-research/syn-rep-learn) | Learning from synthetic data - code and models | google-research | 307 |
-| 416 |  [unsloth](https://github.com/unslothai/unsloth) | Finetune Llama 3.3, Mistral, Phi-4, Qwen 2.5 & Gemma LLMs 2-5x faster with 70% less memory | unslothai | 22414 |
+| 416 |  [unsloth](https://github.com/unslothai/unsloth) | Finetune Llama 3.3, Mistral, Phi-4, Qwen 2.5 & Gemma LLMs 2-5x faster with 70% less memory | unslothai | 22450 |
 | 417 |  [mip-splatting](https://github.com/autonomousvision/mip-splatting) | [CVPR'24 Best Student Paper] Mip-Splatting: Alias-free 3D Gaussian Splatting | autonomousvision | 1175 |
 | 418 |  [Uni3D](https://github.com/baaivision/Uni3D) | [ICLR'24 Spotlight] Uni3D: 3D Visual Representation from BAAI | baaivision | 524 |
 | 419 |  [GeoDream](https://github.com/baaivision/GeoDream) | GeoDream: Disentangling 2D and Geometric Priors for High-Fidelity and Consistent 3D Generation | baaivision | 496 |
 | 420 |  [self-operating-computer](https://github.com/OthersideAI/self-operating-computer) | A framework to enable multimodal models to operate a computer. | OthersideAI | 9210 |
 | 421 |  [q-transformer](https://github.com/lucidrains/q-transformer) | Implementation of Q-Transformer, Scalable Offline Reinforcement Learning via Autoregressive Q-Functions, out of Google Deepmind | lucidrains | 359 |
 | 422 |  [meshgpt-pytorch](https://github.com/lucidrains/meshgpt-pytorch) | Implementation of MeshGPT, SOTA Mesh generation using Attention, in Pytorch | lucidrains | 793 |
-| 423 |  [pytorch](https://github.com/pytorch/pytorch) | Tensors and Dynamic neural networks in Python with strong GPU acceleration | pytorch | 86350 |
-| 424 |  [taipy](https://github.com/Avaiga/taipy) | Turns Data and AI algorithms into production-ready web applications in no time. | Avaiga | 17724 |
+| 423 |  [pytorch](https://github.com/pytorch/pytorch) | Tensors and Dynamic neural networks in Python with strong GPU acceleration | pytorch | 86352 |
+| 424 |  [taipy](https://github.com/Avaiga/taipy) | Turns Data and AI algorithms into production-ready web applications in no time. | Avaiga | 17727 |
 | 425 |  [SEINE](https://github.com/Vchitect/SEINE) | [ICLR 2024] SEINE: Short-to-Long Video Diffusion Model for Generative Transition and Prediction | Vchitect | 928 |
 | 426 |  [gpt_paper_assistant](https://github.com/tatsu-lab/gpt_paper_assistant) | GPT4 based personalized ArXiv paper assistant bot | tatsu-lab | 503 |
 | 427 |  [StyleDrop-PyTorch](https://github.com/aim-uofa/StyleDrop-PyTorch) | This is an unofficial PyTorch implementation of StyleDrop: Text-to-Image Generation in Any Style. | aim-uofa | 208 |
 | 428 |  [ziplora-pytorch](https://github.com/mkshing/ziplora-pytorch) | Implementation of &#34;ZipLoRA: Any Subject in Any Style by Effectively Merging LoRAs&#34; | mkshing | 524 |
 | 429 |  [multi-agent-postgres-data-analytics](https://github.com/disler/multi-agent-postgres-data-analytics) | The way we interact with our data is changing. | disler | 810 |
 | 430 |  [CogVLM](https://github.com/THUDM/CogVLM) | a state-of-the-art-level open visual language model \| 多模态预训练模型 | THUDM | 6312 |
-| 431 |  [autogen](https://github.com/microsoft/autogen) | A programming framework for agentic AI 🤖 PyPi: autogen-agentchat Discord: https://aka.ms/autogen-discord Office Hour: https://aka.ms/autogen-officehour | microsoft | 38508 |
+| 431 |  [autogen](https://github.com/microsoft/autogen) | A programming framework for agentic AI 🤖 PyPi: autogen-agentchat Discord: https://aka.ms/autogen-discord Office Hour: https://aka.ms/autogen-officehour | microsoft | 38512 |
 | 432 |  [Expy-Kit](https://github.com/pKrime/Expy-Kit) | Blending different Character Rigs together | pKrime | 367 |
 | 433 |  [mario-gpt](https://github.com/shyamsn97/mario-gpt) | [Neurips 2023] Generating Mario Levels with GPT2. Code for the paper &#34;MarioGPT: Open-Ended Text2Level Generation through Large Language Models&#34; https://arxiv.org/abs/2302.05981 | shyamsn97 | 1116 |
 | 434 |  [TheVGLC](https://github.com/TheVGLC/TheVGLC) | The Video Game Level Corpus | TheVGLC | 237 |
@@ -1576,7 +1576,7 @@
 | 444 |  [narrator](https://github.com/cbh123/narrator) | David Attenborough narrates your life | cbh123 | 4398 |
 | 445 |  [cats-blender-plugin](https://github.com/absolute-quantum/cats-blender-plugin) | :smiley_cat: A tool designed to shorten steps needed to import and optimize models into VRChat. Compatible models are: MMD, XNALara, Mixamo, DAZ/Poser, Blender Rigify, Sims 2, Motion Builder, 3DS Max and potentially more | absolute-quantum | 3612 |
 | 446 |  [IT3D-text-to-3D](https://github.com/buaacyw/IT3D-text-to-3D) | [AAAI'2024] IT3D: Improved Text-to-3D Generation with Explicit View Synthesis | buaacyw | 218 |
-| 447 |  [screenshot-to-code](https://github.com/abi/screenshot-to-code) | Drop in a screenshot and convert it to clean code (HTML/Tailwind/React/Vue) | abi | 67375 |
+| 447 |  [screenshot-to-code](https://github.com/abi/screenshot-to-code) | Drop in a screenshot and convert it to clean code (HTML/Tailwind/React/Vue) | abi | 67376 |
 | 448 |  [bulk_transcribe_youtube_videos_from_playlist](https://github.com/Dicklesworthstone/bulk_transcribe_youtube_videos_from_playlist) | Easily take an entire YouTube playlist and turn it into high quality transcripts using Whisper. | Dicklesworthstone | 499 |
 | 449 |  [EmotiVoice](https://github.com/netease-youdao/EmotiVoice) | EmotiVoice 😊: a Multi-Voice and Prompt-Controlled TTS Engine | netease-youdao | 7614 |
 | 450 |  [OpenAI_Agent_Swarm](https://github.com/daveshap/OpenAI_Agent_Swarm) | HAAS = Hierarchical Autonomous Agent Swarm - &#34;Resistance is futile!&#34; | daveshap | 3059 |
@@ -1586,7 +1586,7 @@
 | 454 |  [gaussian-splatting-blender-addon](https://github.com/ReshotAI/gaussian-splatting-blender-addon) |  | ReshotAI | 471 |
 | 455 |  [Fractalshades](https://github.com/GBillotey/Fractalshades) | Arbitrary-precision fractal explorer - Python package | GBillotey | 28 |
 | 456 |  [Real-Time-Latent-Consistency-Model](https://github.com/radames/Real-Time-Latent-Consistency-Model) | App showcasing multiple real-time diffusion models pipelines with Diffusers | radames | 887 |
-| 457 |  [Retrieval-based-Voice-Conversion-WebUI](https://github.com/RVC-Project/Retrieval-based-Voice-Conversion-WebUI) | Easily train a good VC model with voice data &lt;= 10 mins! | RVC-Project | 26506 |
+| 457 |  [Retrieval-based-Voice-Conversion-WebUI](https://github.com/RVC-Project/Retrieval-based-Voice-Conversion-WebUI) | Easily train a good VC model with voice data &lt;= 10 mins! | RVC-Project | 26508 |
 | 458 |  [sd-scripts](https://github.com/kohya-ss/sd-scripts) |  | kohya-ss | 5614 |
 | 459 |  [ImageBind](https://github.com/facebookresearch/ImageBind) | ImageBind One Embedding Space to Bind Them All | facebookresearch | 8488 |
 | 460 |  [coremltools](https://github.com/apple/coremltools) | Core ML tools contain supporting tools for Core ML model conversion, editing, and validation. | apple | 4542 |
@@ -1599,13 +1599,13 @@
 | 467 |  [refractiveindex.info-database](https://github.com/polyanskiy/refractiveindex.info-database) | Database of optical constants | polyanskiy | 176 |
 | 468 |  [meshio](https://github.com/nschloe/meshio) | :spider_web: input/output for many mesh formats | nschloe | 2000 |
 | 469 |  [vedo](https://github.com/marcomusy/vedo) | A python module for scientific analysis of 3D data based on VTK and Numpy | marcomusy | 2078 |
-| 470 |  [public-apis](https://github.com/public-apis/public-apis) | A collective list of free APIs | public-apis | 326198 |
+| 470 |  [public-apis](https://github.com/public-apis/public-apis) | A collective list of free APIs | public-apis | 326204 |
 | 471 |  [magvit](https://github.com/google-research/magvit) | Official JAX implementation of MAGVIT: Masked Generative Video Transformer | google-research | 971 |
-| 472 |  [Agently](https://github.com/AgentEra/Agently) | [AI Agent Application Development Framework] - 🚀 Build AI agent native application in very few code 💬 Easy to interact with AI agent in code using structure data and chained-calls syntax 🧩 Enhance AI Agent using plugins instead of rebuild a whole new agent | AgentEra | 1213 |
+| 472 |  [Agently](https://github.com/AgentEra/Agently) | [AI Agent Application Development Framework] - 🚀 Build AI agent native application in very few code 💬 Easy to interact with AI agent in code using structure data and chained-calls syntax 🧩 Enhance AI Agent using plugins instead of rebuild a whole new agent | AgentEra | 1214 |
 | 473 |  [latent-upscale](https://github.com/feynlee/latent-upscale) | Provides more options for latent upscale in img2img for Stable Diffusion Automatic1111. | feynlee | 76 |
 | 474 |  [pytorch-layoutnet](https://github.com/sunset1995/pytorch-layoutnet) | Pytorch implementation of LayoutNet. | sunset1995 | 171 |
 | 475 |  [ddetailer](https://github.com/dustysys/ddetailer) |  | dustysys | 339 |
-| 476 |  [gallery-dl](https://github.com/mikf/gallery-dl) | Command-line program to download image galleries and collections from several image hosting sites | mikf | 12596 |
+| 476 |  [gallery-dl](https://github.com/mikf/gallery-dl) | Command-line program to download image galleries and collections from several image hosting sites | mikf | 12597 |
 | 477 |  [VideoCrafter](https://github.com/AILab-CVC/VideoCrafter) | VideoCrafter2: Overcoming Data Limitations for High-Quality Video Diffusion Models | AILab-CVC | 4667 |
 | 478 |  [stable-diffusion-webui-aesthetic-gradients](https://github.com/AUTOMATIC1111/stable-diffusion-webui-aesthetic-gradients) | Aesthetic gradients extension for web ui | AUTOMATIC1111 | 443 |
 | 479 |  [ml-engineering](https://github.com/stas00/ml-engineering) | Machine Learning Engineering Open Book | stas00 | 12579 |
@@ -1620,7 +1620,7 @@
 | 488 |  [chaiNNer](https://github.com/chaiNNer-org/chaiNNer) | A node-based image processing GUI aimed at making chaining image processing tasks easy and customizable. Born as an AI upscaling application, chaiNNer has grown into an extremely flexible and powerful programmatic image processing application. | chaiNNer-org | 4831 |
 | 489 |  [adetailer](https://github.com/Bing-su/adetailer) | Auto detecting, masking and inpainting with detection model. | Bing-su | 4310 |
 | 490 |  [stable-diffusion-webui-composable-lora](https://github.com/opparco/stable-diffusion-webui-composable-lora) | This extension replaces the built-in LoRA forward procedure. | opparco | 483 |
-| 491 |  [MetaGPT](https://github.com/geekan/MetaGPT) | 🌟 The Multi-Agent Framework: First AI Software Company, Towards Natural Language Programming | geekan | 45858 |
+| 491 |  [MetaGPT](https://github.com/geekan/MetaGPT) | 🌟 The Multi-Agent Framework: First AI Software Company, Towards Natural Language Programming | geekan | 45859 |
 | 492 |  [Mix-of-Show](https://github.com/TencentARC/Mix-of-Show) | NeurIPS 2023, Mix-of-Show: Decentralized Low-Rank Adaptation for Multi-Concept Customization of Diffusion Models | TencentARC | 411 |
 | 493 |  [open-procedures](https://github.com/KillianLucas/open-procedures) | Tiny, structured coding tutorials that can be searched semantically | KillianLucas | 165 |
 | 494 |  [cog-sdxl](https://github.com/replicate/cog-sdxl) | Stable Diffusion XL training and inference as a cog model | replicate | 218 |
@@ -1631,13 +1631,13 @@
 | 499 |  [unsup3d](https://github.com/elliottwu/unsup3d) | (CVPR'20 Oral) Unsupervised Learning of Probably Symmetric Deformable 3D Objects from Images in the Wild | elliottwu | 1192 |
 | 500 |  [DeepFaceLab](https://github.com/iperov/DeepFaceLab) | DeepFaceLab is the leading software for creating deepfakes. | iperov | 16894 |
 | 501 |  [chupa](https://github.com/snuvclab/chupa) |  | snuvclab | 95 |
-| 502 |  [gaussian-splatting](https://github.com/graphdeco-inria/gaussian-splatting) | Original reference implementation of &#34;3D Gaussian Splatting for Real-Time Radiance Field Rendering&#34; | graphdeco-inria | 15582 |
+| 502 |  [gaussian-splatting](https://github.com/graphdeco-inria/gaussian-splatting) | Original reference implementation of &#34;3D Gaussian Splatting for Real-Time Radiance Field Rendering&#34; | graphdeco-inria | 15584 |
 | 503 |  [dashboard-icons](https://github.com/homarr-labs/dashboard-icons) | The best source for dashboard icons. | homarr-labs | 5369 |
 | 504 |  [sd-extension-system-info](https://github.com/vladmandic/sd-extension-system-info) | System and platform info and standardized benchmarking extension for SD.Next and WebUI | vladmandic | 299 |
 | 505 |  [hyper-merge](https://github.com/tfernd/hyper-merge) |  | tfernd | 54 |
-| 506 |  [gpt-engineer](https://github.com/AntonOsika/gpt-engineer) | Platform to experiment with the AI Software Engineer. Terminal based. NOTE: Very different from https://gptengineer.app | AntonOsika | 52964 |
+| 506 |  [gpt-engineer](https://github.com/AntonOsika/gpt-engineer) | Platform to experiment with the AI Software Engineer. Terminal based. NOTE: Very different from https://gptengineer.app | AntonOsika | 52963 |
 | 507 |  [DB-GPT](https://github.com/eosphoros-ai/DB-GPT) | AI Native Data App Development framework with AWEL(Agentic Workflow Expression Language) and Agents | eosphoros-ai | 14434 |
-| 508 |  [Fooocus](https://github.com/lllyasviel/Fooocus) | Focus on prompting and generating | lllyasviel | 42900 |
+| 508 |  [Fooocus](https://github.com/lllyasviel/Fooocus) | Focus on prompting and generating | lllyasviel | 42903 |
 | 509 |  [DWPose](https://github.com/IDEA-Research/DWPose) | &#34;Effective Whole-body Pose Estimation with Two-stages Distillation&#34; (ICCV 2023, CV4Metaverse Workshop) | IDEA-Research | 2335 |
 | 510 |  [sd-dynamic-prompts](https://github.com/adieyal/sd-dynamic-prompts) | A custom script for AUTOMATIC1111/stable-diffusion-webui to implement a tiny template language for random prompt generation | adieyal | 2096 |
 | 511 |  [sd-webui-additional-networks](https://github.com/kohya-ss/sd-webui-additional-networks) |  | kohya-ss | 1803 |
@@ -1651,7 +1651,7 @@
 | 519 |  [ml-finerecon](https://github.com/apple/ml-finerecon) |  | apple | 151 |
 | 520 |  [sd-webui-ar](https://github.com/alemelis/sd-webui-ar) | Select img aspect ratio from presets in sd-webui | alemelis | 231 |
 | 521 |  [SwinIR](https://github.com/JingyunLiang/SwinIR) | SwinIR: Image Restoration Using Swin Transformer (official repository) | JingyunLiang | 4609 |
-| 522 |  [llama](https://github.com/meta-llama/llama) | Inference code for Llama models | meta-llama | 57426 |
+| 522 |  [llama](https://github.com/meta-llama/llama) | Inference code for Llama models | meta-llama | 57427 |
 | 523 |  [qmsolve](https://github.com/quantum-visualizations/qmsolve) | ⚛️ A module for solving and visualizing the Schrödinger equation. | quantum-visualizations | 973 |
 | 524 |  [generative-art-nft](https://github.com/rounakbanik/generative-art-nft) | A generative art library for NFT avatar and collectible projects. | rounakbanik | 752 |
 | 525 |  [sd-webui-faceswaplab](https://github.com/glucauze/sd-webui-faceswaplab) | Extended faceswap extension for StableDiffusion web-ui with multiple faceswaps, inpainting, checkpoints, .... | glucauze | 784 |
@@ -1659,8 +1659,8 @@
 | 527 |  [facefusion](https://github.com/facefusion/facefusion) | Industry leading face manipulation platform | facefusion | 21203 |
 | 528 |  [WaveMix](https://github.com/pranavphoenix/WaveMix) | 2D discrete Wavelet Transform for Image Classification and Segmentation | pranavphoenix | 80 |
 | 529 |  [BlenderSAM](https://github.com/AmusedDiffuser/BlenderSAM) | Initial implementation of segment anything model as a blender add-on | AmusedDiffuser | 7 |
-| 530 |  [roop](https://github.com/s0md3v/roop) | one-click face swap | s0md3v | 29117 |
-| 531 |  [avatarify-python](https://github.com/alievk/avatarify-python) | Avatars for Zoom, Skype and other video-conferencing apps. | alievk | 16355 |
+| 530 |  [roop](https://github.com/s0md3v/roop) | one-click face swap | s0md3v | 29119 |
+| 531 |  [avatarify-python](https://github.com/alievk/avatarify-python) | Avatars for Zoom, Skype and other video-conferencing apps. | alievk | 16356 |
 | 532 |  [google-images-download](https://github.com/hardikvasa/google-images-download) | Python Script to download hundreds of images from 'Google Images'. It is a ready-to-run code! | hardikvasa | 8610 |
 | 533 |  [DAIN](https://github.com/baowenbo/DAIN) | Depth-Aware Video Frame Interpolation (CVPR 2019) | baowenbo | 8260 |
 | 534 |  [Richard-roop](https://github.com/RichardErkhov/Richard-roop) | for those who wants some speed | RichardErkhov | 106 |
@@ -1685,7 +1685,7 @@
 | 553 |  [stable-diffusion-prompt-reader](https://github.com/receyuki/stable-diffusion-prompt-reader) | A simple standalone viewer for reading prompts from Stable Diffusion generated image outside the webui. | receyuki | 1110 |
 | 554 |  [ml-stable-diffusion](https://github.com/apple/ml-stable-diffusion) | Stable Diffusion with Core ML on Apple Silicon | apple | 17105 |
 | 555 |  [Wooey](https://github.com/wooey/Wooey) | A Django app that creates automatic web UIs for Python scripts. | wooey | 2150 |
-| 556 |  [awesome-python](https://github.com/vinta/awesome-python) | An opinionated list of awesome Python frameworks, libraries, software and resources. | vinta | 232176 |
+| 556 |  [awesome-python](https://github.com/vinta/awesome-python) | An opinionated list of awesome Python frameworks, libraries, software and resources. | vinta | 232193 |
 | 557 |  [IronDepth](https://github.com/baegwangbin/IronDepth) | [BMVC 2022] IronDepth: Iterative Refinement of Single-View Depth using Surface Normal and its Uncertainty | baegwangbin | 175 |
 | 558 |  [UniMVSNet](https://github.com/prstrive/UniMVSNet) | [CVPR 2022] Rethinking Depth Estimation for Multi-View Stereo: A Unified Representation | prstrive | 234 |
 | 559 |  [insightface](https://github.com/deepinsight/insightface) | State-of-the-art 2D and 3D Face Analysis Project | deepinsight | 24128 |
@@ -1702,7 +1702,7 @@
 | 570 |  [i3DMM](https://github.com/tarun738/i3DMM) |  | tarun738 | 84 |
 | 571 |  [DragGAN](https://github.com/XingangPan/DragGAN) | Official Code for DragGAN (SIGGRAPH 2023) | XingangPan | 35842 |
 | 572 |  [MPP-Blender-Addon](https://github.com/ymt3d/MPP-Blender-Addon) | MPP -Material Pick and Paste- Blender Addon | ymt3d | 18 |
-| 573 |  [langflow](https://github.com/langflow-ai/langflow) | Langflow is a low-code app builder for RAG and multi-agent AI applications. It’s Python-based and agnostic to any model, API, or database. | langflow-ai | 45660 |
+| 573 |  [langflow](https://github.com/langflow-ai/langflow) | Langflow is a low-code app builder for RAG and multi-agent AI applications. It’s Python-based and agnostic to any model, API, or database. | langflow-ai | 45669 |
 | 574 |  [Vivy](https://github.com/JarodMica/Vivy) |  | JarodMica | 160 |
 | 575 |  [install.python-poetry.org](https://github.com/python-poetry/install.python-poetry.org) | The official Poetry installation script | python-poetry | 217 |
 | 576 |  [private-gpt](https://github.com/zylon-ai/private-gpt) | Interact with your documents using the power of GPT, 100% privately, no data leaks | zylon-ai | 55036 |
@@ -1710,7 +1710,7 @@
 | 578 |  [KeypointNeRF](https://github.com/facebookresearch/KeypointNeRF) | KeypointNeRF Generalizing Image-based Volumetric Avatars using Relative Spatial Encoding of Keypoints | facebookresearch | 374 |
 | 579 |  [smplify-x](https://github.com/vchoutas/smplify-x) | Expressive Body Capture: 3D Hands, Face, and Body from a Single Image | vchoutas | 1818 |
 | 580 |  [ICON](https://github.com/YuliangXiu/ICON) | [CVPR'22] ICON: Implicit Clothed humans Obtained from Normals | YuliangXiu | 1619 |
-| 581 |  [shap-e](https://github.com/openai/shap-e) | Generate 3D objects conditioned on text or images | openai | 11772 |
+| 581 |  [shap-e](https://github.com/openai/shap-e) | Generate 3D objects conditioned on text or images | openai | 11773 |
 | 582 |  [ComicCrawler](https://github.com/eight04/ComicCrawler) | An image crawler written in Python. | eight04 | 274 |
 | 583 |  [keras](https://github.com/keras-team/keras) | Deep Learning for humans | keras-team | 62427 |
 | 584 |  [BlenderExporter](https://github.com/BabylonJS/BlenderExporter) | Exports From Blender to Babylon.JS in JSON / .babylon format | BabylonJS | 295 |
@@ -1723,7 +1723,7 @@
 | 591 |  [hdri-sun-aligner](https://github.com/akej74/hdri-sun-aligner) | Blender addon for aligning an object (e.g. a sun) to match the brightest part in a HDRI environment | akej74 | 124 |
 | 592 |  [blender-rhubarb-lipsync](https://github.com/scaredyfish/blender-rhubarb-lipsync) | Blender Rhubarb Lipsync is an addon for Blender integrating Rhubarb Lip Sync to automatically generate mouth-shape keyframes from a pose library. | scaredyfish | 199 |
 | 593 |  [3d-photo-inpainting](https://github.com/vt-vl-lab/3d-photo-inpainting) | [CVPR 2020] 3D Photography using Context-aware Layered Depth Inpainting | vt-vl-lab | 6939 |
-| 594 |  [babyagi](https://github.com/yoheinakajima/babyagi) |  | yoheinakajima | 20904 |
+| 594 |  [babyagi](https://github.com/yoheinakajima/babyagi) |  | yoheinakajima | 20906 |
 | 595 |  [Gaffer](https://github.com/gregzaal/Gaffer) | A light-manager add-on for Blender | gregzaal | 389 |
 | 596 |  [camel](https://github.com/camel-ai/camel) | 🐫 CAMEL: Finding the Scaling Law of Agents. The first and the best multi-agent framework. https://www.camel-ai.org | camel-ai | 6110 |
 | 597 |  [ssp](https://github.com/CMU-Perceptual-Computing-Lab/ssp) | Towards Social Artificial Intelligence: Nonverbal Social Signal Prediction in A Triadic Interaction (CVPR 2020) | CMU-Perceptual-Computing-Lab | 33 |
@@ -1731,19 +1731,19 @@
 | 599 |  [TailorNet_dataset](https://github.com/zycliao/TailorNet_dataset) | [CVPR 2020] Dataset of &#34;TailorNet: Predicting Clothing in 3D as a Function of Human Pose, Shape and Garment Style&#34; | zycliao | 145 |
 | 600 |  [mesh](https://github.com/MPI-IS/mesh) | MPI-IS Mesh Processing Library | MPI-IS | 683 |
 | 601 |  [TailorNet](https://github.com/chaitanya100100/TailorNet) | Code for our CVPR 2020 (ORAL) paper - TailorNet: Predicting Clothing in 3D as a Function of Human Pose, Shape and Garment Style. | chaitanya100100 | 408 |
-| 602 |  [chatgpt-retrieval-plugin](https://github.com/openai/chatgpt-retrieval-plugin) | The ChatGPT Retrieval Plugin lets you easily find personal or work documents by asking questions in natural language. | openai | 21103 |
+| 602 |  [chatgpt-retrieval-plugin](https://github.com/openai/chatgpt-retrieval-plugin) | The ChatGPT Retrieval Plugin lets you easily find personal or work documents by asking questions in natural language. | openai | 21104 |
 | 603 |  [vid2vid-zero](https://github.com/baaivision/vid2vid-zero) | Zero-Shot Video Editing Using Off-The-Shelf Image Diffusion Models | baaivision | 350 |
 | 604 |  [asset_browser_utilities](https://github.com/Gorgious56/asset_browser_utilities) |  | Gorgious56 | 111 |
-| 605 |  [AutoGPT](https://github.com/Significant-Gravitas/AutoGPT) | AutoGPT is the vision of accessible AI for everyone, to use and to build on. Our mission is to provide the tools, so that you can focus on what matters. | Significant-Gravitas | 170948 |
+| 605 |  [AutoGPT](https://github.com/Significant-Gravitas/AutoGPT) | AutoGPT is the vision of accessible AI for everyone, to use and to build on. Our mission is to provide the tools, so that you can focus on what matters. | Significant-Gravitas | 170949 |
 | 606 |  [BlenderGIS](https://github.com/domlysz/BlenderGIS) | Blender addons to make the bridge between Blender and geographic data | domlysz | 7971 |
-| 607 |  [fast-stable-diffusion](https://github.com/TheLastBen/fast-stable-diffusion) | fast-stable-diffusion + DreamBooth | TheLastBen | 7625 |
+| 607 |  [fast-stable-diffusion](https://github.com/TheLastBen/fast-stable-diffusion) | fast-stable-diffusion + DreamBooth | TheLastBen | 7624 |
 | 608 |  [BlenderGPT](https://github.com/gd3kr/BlenderGPT) | Use commands in English to control Blender with OpenAI's GPT-4 | gd3kr | 4664 |
 | 609 |  [blender-differential-growth](https://github.com/inca/blender-differential-growth) | Blender Addon: Differential Growth | inca | 826 |
 | 610 |  [Blender-ControlNet](https://github.com/coolzilj/Blender-ControlNet) | Using ControlNet right in Blender. | coolzilj | 768 |
 | 611 |  [bilayer-model](https://github.com/saic-violet/bilayer-model) |  | saic-violet | 246 |
 | 612 |  [uptrain](https://github.com/uptrain-ai/uptrain) | UpTrain is an open-source unified platform to evaluate and improve Generative AI applications. We provide grades for 20+ preconfigured checks (covering language, code, embedding use-cases), perform root cause analysis on failure cases and give insights on how to resolve them. | uptrain-ai | 2235 |
 | 613 |  [projection-conditioned-point-cloud-diffusion](https://github.com/lukemelas/projection-conditioned-point-cloud-diffusion) | Official code for &#34;Projection-Conditioned Point Cloud Diffusion for Single-Image 3D Reconstruction&#34; (CVPR 2023) | lukemelas | 186 |
-| 614 |  [ComfyUI](https://github.com/comfyanonymous/ComfyUI) | The most powerful and modular diffusion model GUI, api and backend with a graph/nodes interface. | comfyanonymous | 65264 |
+| 614 |  [ComfyUI](https://github.com/comfyanonymous/ComfyUI) | The most powerful and modular diffusion model GUI, api and backend with a graph/nodes interface. | comfyanonymous | 65268 |
 | 615 |  [TaskMatrix](https://github.com/chenfei-wu/TaskMatrix) |  | chenfei-wu | 34536 |
 | 616 |  [SMALify](https://github.com/benjiebob/SMALify) | This repository contains an implementation for performing 3D animal (quadruped) reconstruction from a monocular image or video. The system adapts the pose (limb positions) and shape (animal type/height/weight) parameters for the SMAL deformable quadruped model, as well as camera parameters until the projected SMAL model aligns with 2D keypoints and silhouette segmentations extracted from the input frame(s). | benjiebob | 122 |
 | 617 |  [pytorch3d](https://github.com/facebookresearch/pytorch3d) | PyTorch3D is FAIR's library of reusable components for deep learning with 3D data | facebookresearch | 9010 |
@@ -1759,7 +1759,7 @@
 | 627 |  [VoxFormer](https://github.com/NVlabs/VoxFormer) | Official PyTorch implementation of VoxFormer [CVPR 2023 Highlight] | NVlabs | 1087 |
 | 628 |  [ControlNet](https://github.com/lllyasviel/ControlNet) | Let us control diffusion models! | lllyasviel | 31317 |
 | 629 |  [LGT-Net](https://github.com/zhigangjiang/LGT-Net) | This is PyTorch implementation of our paper &#34;LGT-Net: Indoor Panoramic Room Layout Estimation with Geometry-Aware Transformer Network&#34;.(CVPR'22) | zhigangjiang | 82 |
-| 630 |  [kohya_ss](https://github.com/bmaltais/kohya_ss) |  | bmaltais | 10028 |
+| 630 |  [kohya_ss](https://github.com/bmaltais/kohya_ss) |  | bmaltais | 10029 |
 | 631 |  [micromotion-styleGAN](https://github.com/wuqiuche/micromotion-styleGAN) |  | wuqiuche | 60 |
 | 632 |  [OroJaR](https://github.com/csyxwei/OroJaR) | Orthogonal Jacobian Regularization for Unsupervised Disentanglement in Image Generation (ICCV 2021) | csyxwei | 69 |
 | 633 |  [stable-diffusion-videos](https://github.com/nateraw/stable-diffusion-videos) | Create 🔥 videos with Stable Diffusion by exploring the latent space and morphing between text prompts | nateraw | 4496 |
@@ -1771,12 +1771,12 @@
 | 639 |  [Text2Human](https://github.com/yumingj/Text2Human) | Code for Text2Human (SIGGRAPH 2022). Paper: Text2Human: Text-Driven Controllable Human Image Generation | yumingj | 835 |
 | 640 |  [diffusers](https://github.com/huggingface/diffusers) | 🤗 Diffusers: State-of-the-art diffusion models for image, video, and audio generation in PyTorch and FLAX. | huggingface | 27329 |
 | 641 |  [deforum-stable-diffusion](https://github.com/deforum-art/deforum-stable-diffusion) |  | deforum-art | 2226 |
-| 642 |  [frame-interpolation](https://github.com/google-research/frame-interpolation) | FILM: Frame Interpolation for Large Motion, In ECCV 2022. | google-research | 2904 |
+| 642 |  [frame-interpolation](https://github.com/google-research/frame-interpolation) | FILM: Frame Interpolation for Large Motion, In ECCV 2022. | google-research | 2903 |
 | 643 |  [video-download-cut-split](https://github.com/balgruuf/video-download-cut-split) | A script for gathering facesets from online videos | balgruuf | 36 |
-| 644 |  [faceswap](https://github.com/deepfakes/faceswap) | Deepfakes Software For All | deepfakes | 53132 |
+| 644 |  [faceswap](https://github.com/deepfakes/faceswap) | Deepfakes Software For All | deepfakes | 53133 |
 | 645 |  [DeepFaceLive](https://github.com/iperov/DeepFaceLive) | Real-time face swap for PC streaming or video calls | iperov | 27483 |
 | 646 |  [point-e](https://github.com/openai/point-e) | Point cloud diffusion for 3D model synthesis | openai | 6615 |
-| 647 |  [nerfstudio](https://github.com/nerfstudio-project/nerfstudio) | A collaboration friendly studio for NeRFs | nerfstudio-project | 9818 |
+| 647 |  [nerfstudio](https://github.com/nerfstudio-project/nerfstudio) | A collaboration friendly studio for NeRFs | nerfstudio-project | 9819 |
 | 648 |  [stable-diffusion-pickle-scanner](https://github.com/zxix/stable-diffusion-pickle-scanner) |  | zxix | 187 |
 | 649 |  [learn2learn](https://github.com/learnables/learn2learn) | A PyTorch Library for Meta-learning Research | learnables | 2706 |
 | 650 |  [x-transformers](https://github.com/kingoflolz/x-transformers) | A simple but complete full-attention transformer with a set of promising experimental features from various papers | kingoflolz | 4 |
@@ -1789,16 +1789,16 @@
 | 657 |  [material_addon](https://github.com/NejcHirci/material_addon) | Source repository for the development of Blender addon for ML material extraction and editing | NejcHirci | 9 |
 | 658 |  [MaterialMapGenerator](https://github.com/YahiaAngelo/MaterialMapGenerator) | A Blender Add-on to easily generate Material Maps from an Image Texture with just one click. | YahiaAngelo | 39 |
 | 659 |  [DeepBump](https://github.com/HugoTini/DeepBump) | Normal & height maps generation from single pictures | HugoTini | 1120 |
-| 660 |  [stable-diffusion-webui](https://github.com/AUTOMATIC1111/stable-diffusion-webui) | Stable Diffusion web UI | AUTOMATIC1111 | 146584 |
+| 660 |  [stable-diffusion-webui](https://github.com/AUTOMATIC1111/stable-diffusion-webui) | Stable Diffusion web UI | AUTOMATIC1111 | 146592 |
 | 661 |  [EasyMocap](https://github.com/zju3dv/EasyMocap) | Make human motion capture easier. | zju3dv | 3839 |
 | 662 |  [meshroom2blender](https://github.com/tibicen/meshroom2blender) | Blender importer of meshroom datafiles: cameras, images, sparse pointcloud and obj's. | tibicen | 194 |
 | 663 |  [Blender-Addon-Photogrammetry-Importer](https://github.com/SBCV/Blender-Addon-Photogrammetry-Importer) | Addon to import different photogrammetry formats into Blender | SBCV | 937 |
-| 664 |  [CodeFormer](https://github.com/sczhou/CodeFormer) | [NeurIPS 2022] Towards Robust Blind Face Restoration with Codebook Lookup Transformer | sczhou | 16343 |
+| 664 |  [CodeFormer](https://github.com/sczhou/CodeFormer) | [NeurIPS 2022] Towards Robust Blind Face Restoration with Codebook Lookup Transformer | sczhou | 16342 |
 | 665 |  [Stable-diffusion-webui-video](https://github.com/memes-forever/Stable-diffusion-webui-video) |  | memes-forever | 157 |
-| 666 |  [stable-dreamfusion](https://github.com/ashawkey/stable-dreamfusion) | Text-to-3D & Image-to-3D & Mesh Exportation with NeRF + Diffusion. | ashawkey | 8442 |
+| 666 |  [stable-dreamfusion](https://github.com/ashawkey/stable-dreamfusion) | Text-to-3D & Image-to-3D & Mesh Exportation with NeRF + Diffusion. | ashawkey | 8443 |
 | 667 |  [Bandai-Namco-Research-Motiondataset](https://github.com/BandaiNamcoResearchInc/Bandai-Namco-Research-Motiondataset) | This repository provides motion datasets collected by Bandai Namco Research Inc | BandaiNamcoResearchInc | 3132 |
 | 668 |  [EasyFX-2.8](https://github.com/DoubleZZ/EasyFX-2.8) | A port of EasyFX addon (by Rymdnisse.net) for Blender 2.8+ | DoubleZZ | 31 |
-| 669 |  [Real-ESRGAN](https://github.com/xinntao/Real-ESRGAN) | Real-ESRGAN aims at developing Practical Algorithms for General Image/Video Restoration. | xinntao | 29398 |
+| 669 |  [Real-ESRGAN](https://github.com/xinntao/Real-ESRGAN) | Real-ESRGAN aims at developing Practical Algorithms for General Image/Video Restoration. | xinntao | 29397 |
 | 670 |  [sverchok](https://github.com/nortikin/sverchok) | Sverchok | nortikin | 2291 |
 | 671 |  [dream-textures](https://github.com/carson-katri/dream-textures) | Stable Diffusion built-in to Blender | carson-katri | 7916 |
 | 672 |  [Material-Map-Generator](https://github.com/joeyballentine/Material-Map-Generator) | Easily create AI generated Normal maps, Displacement maps, and Roughness maps. | joeyballentine | 295 |
@@ -1841,7 +1841,7 @@
 ## Ruby
 |  | Name 	|  Description 	| Author  	|  Stars 	|
 |---	|---	|---	|---	|---	|
-| 1 |  [huginn](https://github.com/huginn/huginn) | Create agents that monitor and act on your behalf.  Your agents are standing by! | huginn | 44493 |
+| 1 |  [huginn](https://github.com/huginn/huginn) | Create agents that monitor and act on your behalf.  Your agents are standing by! | huginn | 44492 |
 | 2 |  [punks.starter](https://github.com/cryptopunksnotdead/punks.starter) | DIY (Do-It-Yourself) - Yes, You Can!  Pixel Art Collection Quick Starter - Generate Algorithmically Your Own Curated (or Randomized) Collection | cryptopunksnotdead | 197 |
 
 **[⬆ Back to Index](#-contents)**
@@ -1849,14 +1849,14 @@
 ## Rust
 |  | Name 	|  Description 	| Author  	|  Stars 	|
 |---	|---	|---	|---	|---	|
-| 1 |  [zed](https://github.com/zed-industries/zed) | Code at the speed of thought – Zed is a high-performance, multiplayer code editor from the creators of Atom and Tree-sitter. | zed-industries | 53643 |
+| 1 |  [zed](https://github.com/zed-industries/zed) | Code at the speed of thought – Zed is a high-performance, multiplayer code editor from the creators of Atom and Tree-sitter. | zed-industries | 53647 |
 | 2 |  [wonnx](https://github.com/webonnx/wonnx) | A WebGPU-accelerated ONNX inference run-time written 100% in Rust, ready for native and the web | webonnx | 1697 |
 | 3 |  [aici](https://github.com/microsoft/aici) | AICI: Prompts as (Wasm) Programs | microsoft | 1996 |
 | 4 |  [system-info-collector](https://github.com/qarmin/system-info-collector) | App to collect ram/cpu usage from OS and show it in pretty graphs | qarmin | 17 |
 | 5 |  [czkawka](https://github.com/qarmin/czkawka) | Multi functional app to find duplicates, empty folders, similar images etc. | qarmin | 21500 |
 | 6 |  [splashsurf](https://github.com/InteractiveComputerGraphics/splashsurf) | Surface reconstruction library and CLI for particle data from SPH simulations, written in Rust. | InteractiveComputerGraphics | 190 |
 | 7 |  [glTFVariantMeld](https://github.com/facebookincubator/glTFVariantMeld) | An application that accepts files on the glTF format, interprets them as variants of an over-arching whole, and melds them together. | facebookincubator | 51 |
-| 8 |  [alacritty](https://github.com/alacritty/alacritty) | A cross-platform, OpenGL terminal emulator. | alacritty | 57523 |
+| 8 |  [alacritty](https://github.com/alacritty/alacritty) | A cross-platform, OpenGL terminal emulator. | alacritty | 57524 |
 | 9 |  [shader-prepper](https://github.com/h3r2tic/shader-prepper) | Shader include parser and crawler for Rust | h3r2tic | 38 |
 
 **[⬆ Back to Index](#-contents)**
@@ -1889,15 +1889,15 @@
 ## Shell
 |  | Name 	|  Description 	| Author  	|  Stars 	|
 |---	|---	|---	|---	|---	|
-| 1 |  [ohmyzsh](https://github.com/ohmyzsh/ohmyzsh) | 🙃   A delightful community-driven (with 2,400+ contributors) framework for managing your zsh configuration. Includes 300+ optional plugins (rails, git, macOS, hub, docker, homebrew, node, php, python, etc), 140+ themes to spice up your morning, and an auto-update tool that makes it easy to keep up with the latest updates from the community. | ohmyzsh | 175686 |
-| 2 |  [headless-chrome-nvidia-t4-gpu-support](https://github.com/jasonmayes/headless-chrome-nvidia-t4-gpu-support) | Using headless Chrome on server side environments for true client side browser emulation with NVIDIA T4 GPUs for Web AI model testing or graphical workloads | jasonmayes | 69 |
+| 1 |  [ohmyzsh](https://github.com/ohmyzsh/ohmyzsh) | 🙃   A delightful community-driven (with 2,400+ contributors) framework for managing your zsh configuration. Includes 300+ optional plugins (rails, git, macOS, hub, docker, homebrew, node, php, python, etc), 140+ themes to spice up your morning, and an auto-update tool that makes it easy to keep up with the latest updates from the community. | ohmyzsh | 175689 |
+| 2 |  [headless-chrome-nvidia-t4-gpu-support](https://github.com/jasonmayes/headless-chrome-nvidia-t4-gpu-support) | Using headless Chrome on server side environments for true client side browser emulation with NVIDIA T4 GPUs for Web AI model testing or graphical workloads | jasonmayes | 70 |
 | 3 |  [morse-meme](https://github.com/ggerganov/morse-meme) | Meme generator in Bash | ggerganov | 20 |
 | 4 |  [shell-novice](https://github.com/swcarpentry/shell-novice) | The Unix Shell | swcarpentry | 395 |
 | 5 |  [miniforge](https://github.com/conda-forge/miniforge) | A conda-forge distribution. | conda-forge | 6973 |
 | 6 |  [xbar-plugins](https://github.com/matryer/xbar-plugins) | Plugin repository for xbar (the BitBar reboot) | matryer | 2468 |
 | 7 |  [minimal-terminal-prompt](https://github.com/Lissy93/minimal-terminal-prompt) | 📟 A clean PS1 bash prompt, showing user, host, pathname and git status | Lissy93 | 55 |
 | 8 |  [afloat](https://github.com/rwu823/afloat) | Always on top solution, quickly install Afloat in macOS | rwu823 | 856 |
-| 9 |  [nvm](https://github.com/nvm-sh/nvm) | Node Version Manager - POSIX-compliant bash script to manage multiple active node.js versions | nvm-sh | 81936 |
+| 9 |  [nvm](https://github.com/nvm-sh/nvm) | Node Version Manager - POSIX-compliant bash script to manage multiple active node.js versions | nvm-sh | 81938 |
 | 10 |  [gpt3-cli](https://github.com/CrazyPython/gpt3-cli) | A lightweight command-line interface to OpenAI's GPT-3. Temperature, presence, and frequency up to 2. Streaming support | CrazyPython | 55 |
 
 **[⬆ Back to Index](#-contents)**
@@ -1926,7 +1926,7 @@
 | 9 |  [ConcentricOnboarding](https://github.com/exyte/ConcentricOnboarding) | SwiftUI library for a walkthrough or onboarding flow with tap actions | exyte | 1444 |
 | 10 |  [draw-things-community](https://github.com/drawthingsai/draw-things-community) | The community repository for the Draw Things app. | drawthingsai | 141 |
 | 11 |  [RGBD_data_capture](https://github.com/lxk121lalala/RGBD_data_capture) | RGB-D Data Capture App for iPhone TrueDepth Camera | lxk121lalala | 61 |
-| 12 |  [stats](https://github.com/exelban/stats) | macOS system monitor in your menu bar | exelban | 27786 |
+| 12 |  [stats](https://github.com/exelban/stats) | macOS system monitor in your menu bar | exelban | 27920 |
 | 13 |  [SwiftOpenAI](https://github.com/jamesrochabrun/SwiftOpenAI) | An open-source Swift package for interacting with OpenAI's public API. | jamesrochabrun | 416 |
 | 14 |  [Shuffle](https://github.com/mac-gallagher/Shuffle) | 🔥 A multi-directional card swiping library inspired by Tinder | mac-gallagher | 927 |
 | 15 |  [fan-menu](https://github.com/exyte/fan-menu) | Menu with a circular layout based on Macaw | exyte | 731 |
@@ -1936,7 +1936,7 @@
 | 19 |  [Chat](https://github.com/exyte/Chat) | A SwiftUI Chat UI framework with fully customizable message cells and a built-in media picker | exyte | 1066 |
 | 20 |  [open-swiftui-animations](https://github.com/amosgyamfi/open-swiftui-animations) | You don't need an animation library to add a simple effect to your SwiftUI app. Create it yourself with SwiftUI. This repo inspires you to add helpful and expressive SwiftUI animations like loading/progress, looping, on-off, enter, exit, fade, spin, and background animations to your next project. The repo also contains tremendous spring animations. | amosgyamfi | 4535 |
 | 21 |  [LiquidSwipe](https://github.com/exyte/LiquidSwipe) | Example of using SwiftUI to create a beautiful Liquid Swipe control | exyte | 549 |
-| 22 |  [awesome-ios](https://github.com/vsouza/awesome-ios) | A curated list of awesome iOS ecosystem, including Objective-C and Swift Projects | vsouza | 47976 |
+| 22 |  [awesome-ios](https://github.com/vsouza/awesome-ios) | A curated list of awesome iOS ecosystem, including Objective-C and Swift Projects | vsouza | 47978 |
 | 23 |  [enchanted](https://github.com/gluonfield/enchanted) | Enchanted is iOS and macOS app for chatting with private self hosted language models such as Llama2, Mistral or Vicuna using Ollama. | gluonfield | 4557 |
 | 24 |  [Core-ML-And-Vision-Object-Classifier-Lightweight-Version](https://github.com/IlijaMihajlovic/Core-ML-And-Vision-Object-Classifier-Lightweight-Version) | Core ML and Vision object classifier with a lightweight trained model. The model is trained and tested with Create ML straight from Xcode Playgrounds with the dataset I provided. | IlijaMihajlovic | 10 |
 | 25 |  [SDWebImageSwiftUI](https://github.com/SDWebImage/SDWebImageSwiftUI) | SwiftUI Image loading and Animation framework powered by SDWebImage | SDWebImage | 2301 |
@@ -1944,7 +1944,7 @@
 | 27 |  [MochiDiffusion](https://github.com/MochiDiffusion/MochiDiffusion) | Run Stable Diffusion on Mac natively | MochiDiffusion | 7564 |
 | 28 |  [UTM](https://github.com/utmapp/UTM) | Virtual machines for iOS and macOS | utmapp | 27988 |
 | 29 |  [swift-openapi-generator](https://github.com/apple/swift-openapi-generator) | Generate Swift client and server code from an OpenAPI document. | apple | 1502 |
-| 30 |  [AudioKit](https://github.com/AudioKit/AudioKit) | Audio synthesis, processing, & analysis platform for iOS, macOS and tvOS | AudioKit | 10827 |
+| 30 |  [AudioKit](https://github.com/AudioKit/AudioKit) | Audio synthesis, processing, & analysis platform for iOS, macOS and tvOS | AudioKit | 10828 |
 | 31 |  [ARKit-Sampler](https://github.com/shu223/ARKit-Sampler) | Code examples for ARKit. | shu223 | 1547 |
 | 32 |  [MLModelCamera](https://github.com/shu223/MLModelCamera) | A camera app to test .mlmodel files. | shu223 | 385 |
 | 33 |  [StreamIt](https://github.com/twittemb/StreamIt) | This iOS app streams your camera so you can watch it in a simple web browser (MJPEG stream) | twittemb | 115 |
@@ -1977,24 +1977,24 @@
 | 5 |  [arena-api-playground](https://github.com/caizoryan/arena-api-playground) | A GUI interface for building queries to use the Are.na Api with. | caizoryan | 11 |
 | 6 |  [InstantCoder](https://github.com/osanseviero/InstantCoder) | Create apps with Gemini | osanseviero | 733 |
 | 7 |  [IconPark](https://github.com/bytedance/IconPark) | 🍎Transform an SVG icon into multiple themes, and generate React icons，Vue icons，svg icons | bytedance | 8514 |
-| 8 |  [multimodal-live-api-web-console](https://github.com/google-gemini/multimodal-live-api-web-console) | A react-based starter app for using the Multimodal Live API over websockets with Gemini | google-gemini | 1655 |
+| 8 |  [multimodal-live-api-web-console](https://github.com/google-gemini/multimodal-live-api-web-console) | A react-based starter app for using the Multimodal Live API over websockets with Gemini | google-gemini | 1656 |
 | 9 |  [starter-applets](https://github.com/google-gemini/starter-applets) | Google AI Studio Starter Apps | google-gemini | 605 |
 | 10 |  [ComfyUI-Launcher](https://github.com/ComfyWorkflows/ComfyUI-Launcher) | Run any ComfyUI workflow w/ ZERO setup. | ComfyWorkflows | 653 |
 | 11 |  [genaiscript](https://github.com/microsoft/genaiscript) | Automatable GenAI Scripting | microsoft | 2195 |
 | 12 |  [json4u](https://github.com/loggerhead/json4u) |  | loggerhead | 2330 |
 | 13 |  [pcui](https://github.com/playcanvas/pcui) | UI component library for web-based tools | playcanvas | 682 |
 | 14 |  [model-viewer](https://github.com/playcanvas/model-viewer) | 3D Model Viewer supporting glTF and 3D Gaussian Splats | playcanvas | 474 |
-| 15 |  [ollama-js](https://github.com/ollama/ollama-js) | Ollama JavaScript library | ollama | 2800 |
+| 15 |  [ollama-js](https://github.com/ollama/ollama-js) | Ollama JavaScript library | ollama | 2801 |
 | 16 |  [vanilla-prime](https://github.com/morris/vanilla-prime) | A simpler, more sustainable way of web development | morris | 210 |
 | 17 |  [3D-image](https://github.com/arturbien/3D-image) | 🏄 3D images on your website (just like those on Facebook!) | arturbien | 105 |
 | 18 |  [procedural-planets](https://github.com/XenoverseUp/procedural-planets) | A procedural planet generation tool written in WebGL, ThreeJS. It uses multiple layered Simplex noise to generate terrain. | XenoverseUp | 19 |
-| 19 |  [magicui](https://github.com/magicuidesign/magicui) | UI Library for Design Engineers. Animated components and effects you can copy and paste into your apps. Free. Open Source. | magicuidesign | 13934 |
-| 20 |  [crawlee](https://github.com/apify/crawlee) | Crawlee—A web scraping and browser automation library for Node.js to build reliable crawlers. In JavaScript and TypeScript. Extract data for AI, LLMs, RAG, or GPTs. Download HTML, PDF, JPG, PNG, and other files from websites. Works with Puppeteer, Playwright, Cheerio, JSDOM, and raw HTTP. Both headful and headless mode. With proxy rotation. | apify | 16647 |
-| 21 |  [firecrawl](https://github.com/mendableai/firecrawl) | 🔥 Turn entire websites into LLM-ready markdown or structured data. Scrape, crawl and extract with a single API. | mendableai | 23104 |
+| 19 |  [magicui](https://github.com/magicuidesign/magicui) | UI Library for Design Engineers. Animated components and effects you can copy and paste into your apps. Free. Open Source. | magicuidesign | 13936 |
+| 20 |  [crawlee](https://github.com/apify/crawlee) | Crawlee—A web scraping and browser automation library for Node.js to build reliable crawlers. In JavaScript and TypeScript. Extract data for AI, LLMs, RAG, or GPTs. Download HTML, PDF, JPG, PNG, and other files from websites. Works with Puppeteer, Playwright, Cheerio, JSDOM, and raw HTTP. Both headful and headless mode. With proxy rotation. | apify | 16650 |
+| 21 |  [firecrawl](https://github.com/mendableai/firecrawl) | 🔥 Turn entire websites into LLM-ready markdown or structured data. Scrape, crawl and extract with a single API. | mendableai | 23107 |
 | 22 |  [node-sdk](https://github.com/watson-developer-cloud/node-sdk) | :comet: Node.js library to access IBM Watson services. | watson-developer-cloud | 1484 |
 | 23 |  [rpm-face-tracking](https://github.com/srcnalt/rpm-face-tracking) |  | srcnalt | 49 |
 | 24 |  [three-pinata](https://github.com/dgreenheck/three-pinata) | Three.js library for fracturing and slicing meshes in real time. | dgreenheck | 112 |
-| 25 |  [suno-api](https://github.com/gcui-art/suno-api) | Use API to call the music generation AI of suno.ai, and easily integrate it into agents like GPTs. | gcui-art | 1702 |
+| 25 |  [suno-api](https://github.com/gcui-art/suno-api) | Use API to call the music generation AI of suno.ai, and easily integrate it into agents like GPTs. | gcui-art | 1703 |
 | 26 |  [Perplexica](https://github.com/ItzCrazyKns/Perplexica) | Perplexica is an AI-powered search engine. It is an Open source alternative to Perplexity AI | ItzCrazyKns | 19247 |
 | 27 |  [openui](https://github.com/wandb/openui) | OpenUI let's you describe UI using your imagination, then see it rendered live. | wandb | 19774 |
 | 28 |  [huggingface.js](https://github.com/huggingface/huggingface.js) | Utilities to use the Hugging Face Hub API | huggingface | 1505 |
@@ -2005,10 +2005,10 @@
 | 33 |  [csi](https://github.com/pshihn/csi) | https://createsocialimages.com | pshihn | 10 |
 | 34 |  [docs](https://github.com/learn-anything/docs) | Docs, API and all things you can know about LA | learn-anything | 13 |
 | 35 |  [deepgram-js-captions](https://github.com/deepgram/deepgram-js-captions) | This package is the JavaScript implementation of Deepgram's WebVTT and SRT formatting. Given a transcription, this package can return a valid string to store as WebVTT or SRT caption files. | deepgram | 12 |
-| 36 |  [appsmith](https://github.com/appsmithorg/appsmith) | Platform to build admin panels, internal tools, and dashboards. Integrates with 25+ databases and any API. | appsmithorg | 35387 |
+| 36 |  [appsmith](https://github.com/appsmithorg/appsmith) | Platform to build admin panels, internal tools, and dashboards. Integrates with 25+ databases and any API. | appsmithorg | 35388 |
 | 37 |  [learn-anything](https://github.com/learn-anything/learn-anything) | Organize world's knowledge, explore connections and curate learning paths | learn-anything | 16252 |
 | 38 |  [ar-cutpaste](https://github.com/cyrildiagne/ar-cutpaste) | Cut and paste your surroundings using AR | cyrildiagne | 14563 |
-| 39 |  [notion-sdk-js](https://github.com/makenotion/notion-sdk-js) | Official Notion JavaScript Client | makenotion | 5037 |
+| 39 |  [notion-sdk-js](https://github.com/makenotion/notion-sdk-js) | Official Notion JavaScript Client | makenotion | 5038 |
 | 40 |  [amica](https://github.com/semperai/amica) | Amica is an open source interface for interactive communication with 3D characters with voice synthesis and speech recognition. | semperai | 856 |
 | 41 |  [unsplash-js](https://github.com/unsplash/unsplash-js) | 🤖 Official JavaScript wrapper for the Unsplash API | unsplash | 2159 |
 | 42 |  [hls.js](https://github.com/video-dev/hls.js) | HLS.js is a JavaScript library that plays HLS in browsers with support for MSE. | video-dev | 15214 |
@@ -2026,7 +2026,7 @@
 | 54 |  [gsplat.js](https://github.com/huggingface/gsplat.js) | JavaScript Gaussian Splatting library. | huggingface | 1401 |
 | 55 |  [text-to-speech-using-hugging-face](https://github.com/sambowenhughes/text-to-speech-using-hugging-face) | Convert text to speech using pre-trained hugging face models. This Next.js project showcases sound generation, model selection, and playback within a user-friendly web interface. | sambowenhughes | 22 |
 | 56 |  [sd-parseq](https://github.com/rewbs/sd-parseq) | Parameter sequencer for Stable Diffusion | rewbs | 372 |
-| 57 |  [immich](https://github.com/immich-app/immich) | High performance self-hosted photo and video management solution. | immich-app | 57297 |
+| 57 |  [immich](https://github.com/immich-app/immich) | High performance self-hosted photo and video management solution. | immich-app | 57303 |
 | 58 |  [ComfyBox](https://github.com/space-nuko/ComfyBox) | Customizable Stable Diffusion frontend for ComfyUI | space-nuko | 643 |
 | 59 |  [mafs](https://github.com/stevenpetryk/mafs) | React components for interactive math | stevenpetryk | 3273 |
 | 60 |  [3d-avatar-controller](https://github.com/jays0606/3d-avatar-controller) | Basic 3d gltf avatar controller playground using three.js, react-three-fiber | jays0606 | 9 |
@@ -2053,7 +2053,7 @@
 | 81 |  [gradientify](https://github.com/dulajkavinda/gradientify) | ✨ Lambda to convert given image file into CSS gradients to use as skeleton loaders | dulajkavinda | 33 |
 | 82 |  [container-query-polyfill](https://github.com/GoogleChromeLabs/container-query-polyfill) | A polyfill for CSS Container Queries | GoogleChromeLabs | 1134 |
 | 83 |  [three-actor](https://github.com/PaulHax/three-actor) | Character framework for three.js | PaulHax | 6 |
-| 84 |  [material-ui](https://github.com/mui/material-ui) | Material UI: Comprehensive React component library that implements Google's Material Design. Free forever. | mui | 94580 |
+| 84 |  [material-ui](https://github.com/mui/material-ui) | Material UI: Comprehensive React component library that implements Google's Material Design. Free forever. | mui | 94582 |
 | 85 |  [mui-treasury](https://github.com/siriwatknp/mui-treasury) | A collection of ready-to-use components based on Material-UI | siriwatknp | 2394 |
 | 86 |  [pts](https://github.com/williamngan/pts) | A library for visualization and creative-coding | williamngan | 5221 |
 | 87 |  [threejs-shader-materials](https://github.com/MasatoMakino/threejs-shader-materials) | Collection of shader materials for three.js | MasatoMakino | 347 |
@@ -2070,7 +2070,7 @@
 | 98 |  [scrollytelling](https://github.com/basementstudio/scrollytelling) | A library for creating Scrollytelling animations, powered by React & GSAP. | basementstudio | 1192 |
 | 99 |  [model-viewer](https://github.com/google/model-viewer) | Easily display interactive 3D models on the web and in AR! | google | 7159 |
 | 100 |  [fSpy](https://github.com/stuffmatic/fSpy) | A cross platform app for quick and easy still image camera matching | stuffmatic | 2278 |
-| 101 |  [NextChat](https://github.com/ChatGPTNextWeb/NextChat) | ✨ Local and Fast AI Assistant. Support: Web \| iOS \| MacOS \| Android \|  Linux \| Windows | ChatGPTNextWeb | 79114 |
+| 101 |  [NextChat](https://github.com/ChatGPTNextWeb/NextChat) | ✨ Local and Fast AI Assistant. Support: Web \| iOS \| MacOS \| Android \|  Linux \| Windows | ChatGPTNextWeb | 79119 |
 | 102 |  [ogl-typescript](https://github.com/nshen/ogl-typescript) | Minimal WebGL framework | nshen | 35 |
 | 103 |  [js-agent](https://github.com/lgrammel/js-agent) | Build AI Agents with JS & TS | lgrammel | 247 |
 | 104 |  [tfjs-models](https://github.com/tensorflow/tfjs-models) | Pretrained models for TensorFlow.js | tensorflow | 14263 |
@@ -2082,7 +2082,7 @@
 | 110 |  [ossos](https://github.com/sketchpunklabs/ossos) | Webbased Character Animation System | sketchpunklabs | 436 |
 | 111 |  [examples](https://github.com/vercel/examples) | Enjoy our curated collection of examples and solutions. Use these patterns to build your own robust and scalable applications. | vercel | 3696 |
 | 112 |  [tweakpane](https://github.com/cocopon/tweakpane) | :control_knobs: Compact GUI for fine-tuning parameters and monitoring value changes | cocopon | 3809 |
-| 113 |  [react-spectrum](https://github.com/adobe/react-spectrum) | A collection of libraries and tools that help you build adaptive, accessible, and robust user experiences. | adobe | 13386 |
+| 113 |  [react-spectrum](https://github.com/adobe/react-spectrum) | A collection of libraries and tools that help you build adaptive, accessible, and robust user experiences. | adobe | 13388 |
 | 114 |  [dom-window-manager](https://github.com/michaelkolesidis/dom-window-manager) | A simple window manager for DOM elements | michaelkolesidis | 11 |
 | 115 |  [javascript-software-synthesizer](https://github.com/michaelkolesidis/javascript-software-synthesizer) | JSS-01 \| JavaScript Software Synthesizer | michaelkolesidis | 125 |
 | 116 |  [threejs-journey](https://github.com/pmndrs/threejs-journey) | ⚛️  Bruno Simons journey demos in React | pmndrs | 747 |
@@ -2091,7 +2091,7 @@
 | 119 |  [animate-css-grid](https://github.com/aholachek/animate-css-grid) | Painless transitions for CSS Grid | aholachek | 1381 |
 | 120 |  [Echo](https://github.com/Lightning-Universe/Echo) | Production-ready audio and video transcription app that can run on your laptop or in the cloud. | Lightning-Universe | 72 |
 | 121 |  [berlin-brutalism](https://github.com/PavelLaptev/berlin-brutalism) |  | PavelLaptev | 3 |
-| 122 |  [InvokeAI](https://github.com/invoke-ai/InvokeAI) | Invoke is a leading creative engine for Stable Diffusion models, empowering professionals, artists, and enthusiasts to generate and create visual media using the latest AI-driven technologies. The solution offers an industry leading WebUI, and serves as the foundation for multiple commercial products. | invoke-ai | 24286 |
+| 122 |  [InvokeAI](https://github.com/invoke-ai/InvokeAI) | Invoke is a leading creative engine for Stable Diffusion models, empowering professionals, artists, and enthusiasts to generate and create visual media using the latest AI-driven technologies. The solution offers an industry leading WebUI, and serves as the foundation for multiple commercial products. | invoke-ai | 24288 |
 | 123 |  [oklch-picker](https://github.com/evilmartians/oklch-picker) | Color Picker for LCH | evilmartians | 966 |
 | 124 |  [satori](https://github.com/vercel/satori) | Enlightened library to convert HTML and CSS to SVG | vercel | 11408 |
 | 125 |  [Babylon_101](https://github.com/Babylon-Projects/Babylon_101) |  | Babylon-Projects | 59 |
@@ -2105,7 +2105,7 @@
 | 133 |  [r3f-gyroid-sphere-operable](https://github.com/nemutas/r3f-gyroid-sphere-operable) |  | nemutas | 12 |
 | 134 |  [hextiles-demo](https://github.com/Fokku/hextiles-demo) |  | Fokku | 1 |
 | 135 |  [glsl-canvas](https://github.com/actarian/glsl-canvas) |  | actarian | 116 |
-| 136 |  [lume](https://github.com/lume/lume) | GPU-powered 3D HTML. ✨🧊 &lt;lume-box size=&#34;1 2 3&#34;&gt; | lume | 1372 |
+| 136 |  [lume](https://github.com/lume/lume) | GPU-powered 3D HTML. ✨🧊 &lt;lume-box size=&#34;1 2 3&#34;&gt; | lume | 1373 |
 | 137 |  [three-ts-types](https://github.com/three-types/three-ts-types) | TypeScript types for the popular 3D library three.js | three-types | 243 |
 | 138 |  [Three.js-TypeScript-Boilerplate](https://github.com/Sean-Bradley/Three.js-TypeScript-Boilerplate) | Three.js TypeScript Boilerplate | Sean-Bradley | 547 |
 | 139 |  [THREE-CustomShaderMaterial](https://github.com/FarazzShaikh/THREE-CustomShaderMaterial) | 🧩 Extend Three.js standard materials with your own shaders! | FarazzShaikh | 965 |
@@ -2124,12 +2124,12 @@
 | 152 |  [plugin-template](https://github.com/tweakpane/plugin-template) | Plugin template for Tweakpane | tweakpane | 15 |
 | 153 |  [tsparticles](https://github.com/tsparticles/tsparticles) | tsParticles - Easily create highly customizable JavaScript particles effects, confetti explosions and fireworks animations and use them as animated backgrounds for your website. Ready to use components available for React.js, Vue.js (2.x and 3.x), Angular, Svelte, jQuery, Preact, Inferno, Solid, Riot and Web Components. | tsparticles | 7986 |
 | 154 |  [ogl-typescript-starter](https://github.com/nshen/ogl-typescript-starter) | ogl-typescript starter with code minifier and livereload dev server. | nshen | 2 |
-| 155 |  [zustand](https://github.com/pmndrs/zustand) | 🐻 Bear necessities for state management in React | pmndrs | 49800 |
+| 155 |  [zustand](https://github.com/pmndrs/zustand) | 🐻 Bear necessities for state management in React | pmndrs | 49801 |
 | 156 |  [colors](https://github.com/radix-ui/colors) | A gorgeous, accessible color system. | radix-ui | 1411 |
 | 157 |  [satus](https://github.com/darkroomengineering/satus) | App router Next.js starter template | darkroomengineering | 569 |
 | 158 |  [wtc-gl](https://github.com/wethegit/wtc-gl) | A bare-bones webgl library. | wethegit | 39 |
 | 159 |  [egjs-infinitegrid](https://github.com/naver/egjs-infinitegrid) | A module used to arrange card elements including content infinitely on a grid layout. | naver | 2249 |
-| 160 |  [react-three-fiber](https://github.com/pmndrs/react-three-fiber) | 🇨🇭 A React renderer for Three.js | pmndrs | 28081 |
+| 160 |  [react-three-fiber](https://github.com/pmndrs/react-three-fiber) | 🇨🇭 A React renderer for Three.js | pmndrs | 28080 |
 | 161 |  [theatre](https://github.com/theatre-js/theatre) | Motion design editor for the web | theatre-js | 11509 |
 | 162 |  [css.gui](https://github.com/components-ai/css.gui) | Visual development environment for CSS | components-ai | 546 |
 | 163 |  [jeri](https://github.com/colour-science/jeri) | Javascript Extended Range Imaging Viewer | colour-science | 1 |
