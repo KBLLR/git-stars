@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main # Or your main branch (e.g., master)
+      - main
   workflow_dispatch:
 
 jobs:
@@ -23,8 +23,7 @@ jobs:
         working-directory: ${{ github.workspace }}
 
       - name: Build
-        run: npm run build # replace with your actual command if you don't use npm
-
+        run: npm run build
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
