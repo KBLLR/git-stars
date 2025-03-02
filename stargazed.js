@@ -9,15 +9,15 @@ const { marked } = require("marked");
 
 // Configure program options
 program
-	.option("-u, --username <username>", "GitHub username", "")
-	.option("-t, --token <token>", "GitHub token", "")
-	.option("-r, --repository <repository>", "repository name", "git-stars")
-	.option("-s, --sort", "sort by language", true)
-	.option("-m, --message <message>", "commit message", "Update stars list")
-	.option("-w, --workflow", "Setup GitHub Actions for Daily AutoUpdate", true)
+  .option("-u, --username <username>", "GitHub username", "")
+  .option("-t, --token <token>", "GitHub token", "")
+  .option("-r, --repository <repository>", "repository name", "git-stars")
+  .option("-s, --sort", "sort by language", true)
+  .option("-m, --message <message>", "commit message", "Update stars list")
+  .option("-w, --workflow", "Setup GitHub Actions for Daily AutoUpdate", true)
 
-	.version("1.0.1")
-	.parse(process.argv);
+  .version("1.0.1")
+  .parse(process.argv);
 const options = program.opts();
 
 const githubUsername = options.username;
@@ -28,75 +28,75 @@ const commitMessage = options.message;
 const createWorkflow = options.workflow;
 
 if (!githubUsername || !githubRepo || !githubToken) {
-	console.error("Please provide all required parameters");
-	process.exit(1);
+  console.error("Please provide all required parameters");
+  process.exit(1);
 }
 
 const octokit = new Octokit({
-	auth: githubToken,
-	request: {
-		fetch: axios,
-	},
+  auth: githubToken,
+  request: {
+    fetch: axios,
+  },
 });
 
 async function getStarredRepos(username) {
-	try {
-		const repos = [];
-		let page = 1;
-		while (true) {
-			const response = await octokit.rest.activity.listReposStarredByUser({
-				username: username,
-				per_page: 100,
-				page: page,
-			});
-			if (response.data.length === 0) {
-				break;
-			}
-			repos.push(...response.data);
-			page++;
-		}
-		return repos;
-	} catch (err) {
-		console.error("Error fetching starred repos:", err);
-		process.exit(1);
-	}
+  try {
+    const repos = [];
+    let page = 1;
+    while (true) {
+      const response = await octokit.rest.activity.listReposStarredByUser({
+        username: username,
+        per_page: 100,
+        page: page,
+      });
+      if (response.data.length === 0) {
+        break;
+      }
+      repos.push(...response.data);
+      page++;
+    }
+    return repos;
+  } catch (err) {
+    console.error("Error fetching starred repos:", err);
+    process.exit(1);
+  }
 }
 
 async function createReadme() {
-	try {
-		console.log("✔ Fetched stargazed items");
-		const repos = await getStarredRepos(githubUsername);
-		let sortedRepos = repos;
+  try {
+    console.log("✔ Fetched stargazed items");
+    const repos = await getStarredRepos(githubUsername);
+    let sortedRepos = repos;
 
-		if (sortByLanguage) {
-			sortedRepos = [...repos].sort((a, b) => {
-				const langA = a.language || "Others";
-				const langB = b.language || "Others";
-				return langA.localeCompare(langB);
-			});
-		}
+    if (sortByLanguage) {
+      sortedRepos = [...repos].sort((a, b) => {
+        const langA = a.language || "Others";
+        const langB = b.language || "Others";
+        return langA.localeCompare(langB);
+      });
+    }
 
-		const reposByLanguage = sortedRepos.reduce((acc, repo) => {
-			const language = repo.language || "Others";
-			if (!acc[language]) {
-				acc[language] = [];
-			}
-			acc[language].push({
-				name: repo.name,
-				description: repo.description || "",
-				author: repo.owner.login,
-				stars: repo.stargazers_count,
-				url: repo.html_url,
-				date: new Date(repo.starred_at).toLocaleDateString(),
-			});
-			return acc;
-		}, {});
+    const reposByLanguage = sortedRepos.reduce((acc, repo) => {
+      const language = repo.language || "Others";
+      if (!acc[language]) {
+        acc[language] = [];
+      }
+      acc[language].push({
+        name: repo.name,
+        description: repo.description || "",
+        author: repo.owner.login,
+        stars: repo.stargazers_count,
+        url: repo.html_url,
+        date: new Date(repo.starred_at).toLocaleDateString(),
+      });
+      return acc;
+    }, {});
 
-		let outputJsonData = [];
-		let readmeContent = `
+    let outputJsonData = [];
+    let readmeContent = `
 # My GitHub Stars
 
-Embark on a journey through my digital bookmarks—a collection of repositories that have sparked my curiosity, fueled my projects, and broadened my understanding of the tech world. This isn't just a list; it's a reflection of my ongoing exploration into the diverse landscapes of technology.
+Embark on a journey through my digital bookmarks—a collection of repositories that have expanded my curiosity, fueled my projects, and broadened my understanding of the Tech I love. This isn't just a list; it's a reflection of my ongoing exploration into the diverse landscapes of technology.
 
 From innovative tools and libraries to cutting-edge research and design, this collection highlights the projects I've personally found intriguing and valuable. These projects are not just about lines of code, but represent the collective knowledge, hard work, and creativity of the open-source community.
 
@@ -108,41 +108,41 @@ Dive in, explore, and let these projects be a launchpad for your own discoveries
 
 Generated by stargazed
 `;
-		for (const language of Object.keys(reposByLanguage)) {
-			const repos = reposByLanguage[language];
-			outputJsonData.push({
-				language,
-				repos,
-			});
-			readmeContent += `
+    for (const language of Object.keys(reposByLanguage)) {
+      const repos = reposByLanguage[language];
+      outputJsonData.push({
+        language,
+        repos,
+      });
+      readmeContent += `
 
 ## ${language}
 |  | Name 	|  Description 	| Author  	|  Stars 	|  Date |
 |---	|:---|:---|:---|---:|---:|
 `;
 
-			for (let i = 0; i < repos.length; i++) {
-				const repo = repos[i];
-				readmeContent += `| ${i + 1} |  [${repo.name}](${repo.url}) | ${repo.description} | ${repo.author} | ${repo.stars} | ${repo.date} |
+      for (let i = 0; i < repos.length; i++) {
+        const repo = repos[i];
+        readmeContent += `| ${i + 1} |  [${repo.name}](${repo.url}) | ${repo.description} | ${repo.author} | ${repo.stars} | ${repo.date} |
 `;
-			}
-		}
+      }
+    }
 
-		readmeContent += `
+    readmeContent += `
 
 Generated by stargazed
 `;
-		console.log("✔ README template loaded");
-		fs.writeFileSync("README.md", readmeContent);
-		console.log("✔ README created locally");
+    console.log("✔ README template loaded");
+    fs.writeFileSync("README.md", readmeContent);
+    console.log("✔ README created locally");
 
-		const outputJson = JSON.stringify(outputJsonData, null, 2);
+    const outputJson = JSON.stringify(outputJsonData, null, 2);
 
-		fs.writeFileSync("data.json", outputJson);
+    fs.writeFileSync("data.json", outputJson);
 
-		if (createWorkflow) {
-			console.log("ℹ Repository found!");
-			const workflowFile = `
+    if (createWorkflow) {
+      console.log("ℹ Repository found!");
+      const workflowFile = `
       name: Stargazed Auto Update
 
       on:
@@ -169,13 +169,13 @@ Generated by stargazed
 
       `;
 
-			console.log("✔ workflow.yml loaded");
-			fs.writeFileSync(".github/workflows/stargazed.yml", workflowFile);
-		}
-	} catch (error) {
-		console.error("Error in createReadme:", error);
-		process.exit(1);
-	}
+      console.log("✔ workflow.yml loaded");
+      fs.writeFileSync(".github/workflows/stargazed.yml", workflowFile);
+    }
+  } catch (error) {
+    console.error("Error in createReadme:", error);
+    process.exit(1);
+  }
 }
 
 createReadme();

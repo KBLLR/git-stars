@@ -20,4 +20,4 @@ jobs:
         with:
           commit_message: "Update stars list"
           push_options: "--force"
-          repository: https://KBLLR:${{ secrets.GITHUB_TOKEN }}@github.com/KBLLR/git-stars.git
+          repository: KBLLR/git-stars

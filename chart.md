@@ -1,1 +1,1 @@
-![Languages](https://quickchart.io/chart?c={type:'pie',data:{labels:["JavaScript"], datasets:[{data: [2] }] }, options: {plugins: {title: {display:true, text: 'Languages', color:'#000000'}}}})
+![Languages](https://quickchart.io/chart?c={type:'pie',data:{labels:[], datasets:[{data: [] }] }, options: {plugins: {title: {display:true, text: 'Languages', color:'#000000'}}}})
