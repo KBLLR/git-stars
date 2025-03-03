@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Tech Repository Cards</title>
+        <style>
+            body {
+                min-height: 100vh;
+                background: #f5f5f5;
+                margin: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                perspective: 1000px;
+            }
+
+            .card-container {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+                gap: 2rem;
+                padding: 2rem;
+            }
+
+            .card {
+                background: white;
+                border-radius: 12px;
+                padding: 2rem;
+                position: relative;
+                box-shadow: inset 0 -2px 4px rgba(0, 0, 0, 0.1);
+                transition: transform 0.3s;
+            }
+
+            .card::before {
+                content: "";
+                position: absolute;
+                width: 100%;
+                height: 20px;
+                background: linear-gradient(transparent, #f5f5f5);
+                bottom: -10px;
+                left: 0;
+            }
+
+            .card:hover {
+                transform: translateZ(4px);
+            }
+
+            /* Specific card styles */
+            .card-gemini {
+                background: linear-gradient(135deg, #6a11cb, #2575fc);
+                color: white;
+            }
+
+            .card-comfyui {
+                background: #1a202c;
+                color: white;
+            }
+
+            .card-genai {
+                background: #2c2c2c;
+                color: white;
+            }
+
+            .card-microsoft {
+                background: #000;
+                color: white;
+            }
+
+            /* Chart containers */
+            .chart-container {
+                margin-top: 1rem;
+                position: relative;
+                z-index: 2;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+                transform-style: preserve-3d;
+                transition: transform 0.2s;
+            }
+
+            .chart-container:hover {
+                transform: translateY(-4px);
+            }
+
+            /* Interactive elements */
+            .data-point {
+                cursor: pointer;
+                transition: 0.3s;
+            }
+
+            .data-point:hover {
+                transform: scale(1.1);
+                filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+            }
+
+            /* Language badges */
+            .language-badge {
+                display: inline-block;
+                margin: 0.3rem 0.5rem;
+                padding: 0.5rem 1rem;
+                background: #eee;
+                border-radius: 20px;
+                transition: 0.3s;
+                cursor: pointer;
+            }
+
+            .language-badge:hover {
+                background: #007acc;
+                color: white;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="card-container">
+            <!-- IconPark Card -->
+            <div class="card">
+                <h2>IconPark</h2>
+                <p>Transform SVG icons into multiple themes for React/Vue</p>
+                <div class="chart-container">
+                    <canvas id="iconparkChart"></canvas>
+                </div>
+                <div class="stats">
+                    <span>8,550 ⭐</span>
+                    <span>736 🍴</span>
+                </div>
+                <div class="languages">
+                    <span class="language-badge" data-lang="TypeScript"
+                        >TypeScript (100%)</span
+                    >
+                </div>
+            </div>
+
+            <!-- Gemini API Card -->
+            <div class="card card-gemini">
+                <h2>Gemini API</h2>
+                <p>React-based starter app for WebSocket Multimodal API</p>
+                <div class="chart-container">
+                    <canvas id="geminiChart"></canvas>
+                </div>
+                <div class="stats">
+                    <span>1,833 ⭐</span>
+                    <span>26 🍴</span>
+                </div>
+                <div class="languages">
+                    <span class="language-badge" data-lang="TypeScript"
+                        >TypeScript (82.9%)</span
+                    >
+                    <span class="language-badge" data-lang="SCSS"
+                        >SCSS (14.7%)</span
+                    >
+                </div>
+            </div>
+
+            <!-- ComfyUI Workflows Card -->
+            <div class="card card-comfyui">
+                <h2>Comfy Workflows</h2>
+                <p>Run ComfyUI workflows with zero setup</p>
+                <div class="chart-container">
+                    <svg
+                        viewBox="0 0 400 200"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <!-- Simplified workflow flowchart -->
+                        <circle cx="50" cy="100" r="20" fill="#00ff9e" />
+                        <circle cx="200" cy="100" r="20" fill="#007acc" />
+                        <circle cx="350" cy="100" r="20" fill="#2575fc" />
+                        <path
+                            d="M70 100 l120 0"
+                            stroke="#007acc"
+                            stroke-width="3"
+                            fill="none"
+                        />
+                        <path
+                            d="M220 100 l120 0"
+                            stroke="#2575fc"
+                            stroke-width="3"
+                            fill="none"
+                        />
+                    </svg>
+                </div>
+                <div class="stats">
+                    <span>697 ⭐</span>
+                    <span>23 🍴</span>
+                </div>
+                <div class="languages">
+                    <span class="language-badge" data-lang="TypeScript"
+                        >TypeScript (70.9%)</span
+                    >
+                    <span class="language-badge" data-lang="Python"
+                        >Python (25%)</span
+                    >
+                </div>
+            </div>
+
+            <!-- GenAI Scripting Card -->
+            <div class="card card-genai">
+                <h2>GenAI Scripting</h2>
+                <p>Automated GenAI workflow compositions</p>
+                <div class="chart-container">
+                    <canvas id="genaiChart"></canvas>
+                </div>
+                <div class="stats">
+                    <span>2,295 ⭐</span>
+                    <span>71 🍴</span>
+                </div>
+                <div class="languages">
+                    <span class="language-badge" data-lang="TypeScript"
+                        >TypeScript (86.1%)</span
+                    >
+                    <span class="language-badge" data-lang="JavaScript"
+                        >JavaScript (10.2%)</span
+                    >
+                </div>
+            </div>
+
+            <!-- Microsoft GenAI Card -->
+            <div class="card card-microsoft">
+                <h2>Microsoft GenAI</h2>
+                <p>Agent-based GenAI scripting framework</p>
+                <div class="chart-container">
+                    <svg
+                        viewBox="0 0 400 200"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <!-- Simplified network graph -->
+                        <circle cx="100" cy="100" r="20" fill="#00ff9e" />
+                        <circle cx="300" cy="100" r="20" fill="#2575fc" />
+                        <path
+                            d="M120 100 q100 50 100 -50"
+                            stroke="#007acc"
+                            stroke-width="3"
+                            fill="none"
+                        />
+                    </svg>
+                </div>
+                <div class="stats">
+                    <span>2,295 ⭐</span>
+                    <span>71 🍴</span>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+            // IconPark Pie Chart
+            const iconparkConfig = {
+                type: "pie",
+                data: {
+                    labels: ["TypeScript", "Less"],
+                    datasets: [
+                        {
+                            data: [100, 0],
+                            backgroundColor: ["#007acc", "#663399"],
+                        },
+                    ],
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                    },
+                },
+            };
+            new Chart(document.getElementById("iconparkChart"), iconparkConfig);
+
+            // Gemini Line Chart
+            const geminiConfig = {
+                type: "line",
+                data: {
+                    labels: ["Jan", "Feb", "Mar", "Apr"],
+                    datasets: [
+                        {
+                            label: "WebSocket Requests",
+                            data: [150, 175, 220, 250],
+                            borderColor: "#007acc",
+                            fill: false,
+                        },
+                    ],
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                },
+            };
+            new Chart(document.getElementById("geminiChart"), geminiConfig);
+
+            // GenAI Composition Chart
+            const genaiConfig = {
+                type: "doughnut",
+                data: {
+                    labels: ["TypeScript", "JavaScript", "Others"],
+                    datasets: [
+                        {
+                            data: [86.1, 10.2, 3.7],
+                            backgroundColor: ["#007acc", "#f3e569", "#3cba9f"],
+                        },
+                    ],
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                },
+            };
+            new Chart(document.getElementById("genaiChart"), genaiConfig);
+
+            // Language badge interactions
+            document.querySelectorAll(".language-badge").forEach((badge) => {
+                badge.addEventListener("click", () => {
+                    alert(`Filtering by ${badge.dataset.lang}`);
+                });
+            });
+        </script>
+    </body>
+</html>
