@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Bar Chart Repo Card</title>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        />
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <style>
+            body,
+            h1,
+            h2,
+            p,
+            ul,
+            li {
+                margin: 0;
+                padding: 0;
+            }
+
+            .repo-card {
+                border: 1px solid #e0e0e0;
+                border-radius: 12px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+                width: 500px;
+                padding: 25px;
+                font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+                color: #444;
+                background-color: #f9f9f9;
+                line-height: 1.5;
+            }
+
+            .repo-title {
+                font-size: 1.75rem;
+                color: #28a745;
+                text-decoration: none;
+                margin-bottom: 10px;
+                display: block;
+            }
+
+            .repo-description {
+                font-size: 1.1rem;
+                color: #666;
+                margin-bottom: 15px;
+            }
+
+            .repo-languages {
+                margin-top: 20px;
+            }
+
+            .chart-container {
+                width: 90%;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            .repo-stats {
+                display: flex;
+                justify-content: space-around;
+                font-size: 1rem;
+                color: #777;
+                margin-top: 20px;
+            }
+
+            .repo-topics {
+                margin-top: 20px;
+            }
+
+            .repo-topic {
+                background-color: #e9ecef;
+                padding: 7px 14px;
+                border-radius: 20px;
+                margin-right: 8px;
+                color: #555;
+                display: inline-block;
+                font-size: 0.9rem;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="repo-card">
+            <a href="#" class="repo-title">Modern Repo (Bar)</a>
+            <p class="repo-description">
+                A showcase project with a visually appealing horizontal bar
+                chart for language stats.
+            </p>
+
+            <div class="repo-languages">
+                <h4>Language Proficiency</h4>
+                <div class="chart-container">
+                    <canvas id="languageChartBar"></canvas>
+                </div>
+            </div>
+
+            <div class="repo-stats">
+                <span><i class="fas fa-star"></i> 4321</span>
+                <span><i class="fas fa-code-fork"></i> 876</span>
+            </div>
+
+            <div class="repo-topics">
+                <span class="repo-topic">react</span>
+                <span class="repo-topic">ui</span>
+                <span class="repo-topic">components</span>
+            </div>
+        </div>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const languageData = {
+                    labels: ["JavaScript", "Python", "Java"],
+                    datasets: [
+                        {
+                            label: "Lines of Code",
+                            data: [1200, 800, 500],
+                            backgroundColor: ["#28a745", "#dc3545", "#ffc107"], // Vivid colors
+                            borderColor: [
+                                "rgba(40, 167, 69, 0.8)",
+                                "rgba(220, 53, 69, 0.8)",
+                                "rgba(255, 193, 7, 0.8)",
+                            ],
+                            borderWidth: 1,
+                        },
+                    ],
+                };
+
+                const ctx = document
+                    .getElementById("languageChartBar")
+                    .getContext("2d");
+                new Chart(ctx, {
+                    type: "bar", // Changed to 'bar'
+                    data: languageData,
+                    options: {
+                        indexAxis: "y", // Make it horizontal
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            x: {
+                                // Use 'x' instead of 'xAxes'
+                                beginAtZero: true,
+                            },
+                        },
+                        legend: {
+                            display: false,
+                        },
+                    },
+                });
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,333 @@
+:root {
+    --primary-color: #3498db; /* Blue */
+    --secondary-color: #2c3e50; /* Deep Blue */
+    --text-color: #333;
+    --background-color: #f9fafb;
+    --card-background-color: #ffffff;
+    --font-family: "Poppins", sans-serif;
+    --topic-tag-bg-color: #ecf0f1;
+    --topic-tag-text-color: #555;
+    --detail-icon-color: #777;
+}
+
+body {
+    font-family: var(--font-family);
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.filters > div {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.filters input,
+.filters select {
+    padding: 5px;
+    font-size: 1em;
+}
+.filters button {
+    padding: 6px 12px;
+    font-size: 1em;
+    cursor: pointer;
+}
+#results {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.search-container {
+    position: relative;
+    margin-right: 1rem;
+}
+
+.search-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.repo-card {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+    transition: box-shadow 0.3s;
+}
+
+.repo-card:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.repo-metadata {
+    display: flex;
+    gap: 1rem;
+    margin: 10px 0;
+    color: #666;
+}
+
+.metric {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.fa {
+    margin-right: 3px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 40px;
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f4f4f4;
+}
+
+.highlight {
+    background-color: #ffff99;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    color: var(--secondary-color);
+}
+
+.view-toggle {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+button:not(.active) {
+    background-color: var(--topic-tag-bg-color);
+    color: var(--text-color);
+}
+
+button:hover:not(.active) {
+    background-color: #bdc3c7;
+}
+
+button:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* Card Container Styling */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background-color: var(--card-background-color);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Card Header and Title */
+.card h3 {
+    font-size: 1.2rem;
+    margin: 10px;
+    color: var(--secondary-color);
+}
+
+.card h3 a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease;
+}
+
+.card h3 a:hover,
+.card h3 a:focus {
+    color: #e74c3c;
+}
+
+/* Description Section */
+.description {
+    margin: 10px;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+/* Details Section */
+.details {
+    margin: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    color: var(--detail-icon-color);
+}
+
+.details span:first-child::before {
+    content: "\f007"; /* FontAwesome icon for user (Author) */
+    font-family: "Font Awesome 5 Free";
+    margin-right: 5px;
+}
+
+.details span:last-child::before {
+    content: "\f005"; /* FontAwesome icon for star (Stars) */
+    font-family: "Font Awesome 5 Free";
+    margin-right: 5px;
+}
+
+/* Languages Section */
+.languages {
+    margin: 10px;
+    font-size: 0.9rem;
+    color: var(--detail-icon-color);
+}
+
+.languages span {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.languages span[data-language="Python"]::before {
+    content: "";
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: #3572a5; /* Python color */
+    margin-right: 5px;
+    border-radius: 50%;
+}
+
+.languages span[data-language="C++"]::before {
+    content: "";
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: #f34b7d; /* C++ color */
+    margin-right: 5px;
+    border-radius: 50%;
+}
+
+.languages span[data-language="Cuda"]::before {
+    content: "";
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: #76b900; /* CUDA color */
+    margin-right: 5px;
+    border-radius: 50%;
+}
+
+/* Topics Section */
+.topics {
+    margin: 10px;
+    margin-bottom: 5px;
+    padding: 5px 10px;
+    font-size: 0.8rem;
+    stroke: 1px solid black;
+}
+
+.topic {
+    display: inline-block;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    padding: 5px 10px;
+    font-size: 0.8rem;
+    stroke: 1px solid black;
+    background-color: var(--topic-tag-bg-color);
+    color: var(--topic-tag-text-color);
+    border-radius: 20px;
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease;
+}
+
+.topic:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Date Section */
+.date {
+    margin: 10px;
+    bottom: 0;
+    left: 0;
+    font-size: 0.8rem;
+    color: #aaa;
+    text-align: right;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .card-container {
+        grid-template-columns: 1fr, 1fr, 1fr;
+    }
+
+    .card {
+        margin-bottom: 20px;
+    }
+}
+@media (max-width: 600px) {
+    .card {
+        width: 90%;
+    }
+}

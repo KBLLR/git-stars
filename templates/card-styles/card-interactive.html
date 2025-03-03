@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Interactive Card with Buttons</title>
+        <style>
+            body {
+                font-family: "Roboto", sans-serif;
+                background-color: #f0f0f0;
+                padding: 30px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+            }
+
+            .interactive-card {
+                background-color: #ffffff;
+                border: 1px solid #cccccc;
+                border-radius: 8px;
+                padding: 20px;
+                width: 350px;
+                position: relative;
+                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            }
+
+            .interactive-card h3 {
+                margin-top: 0;
+                font-size: 1.3em;
+                color: #333333;
+            }
+
+            .interactive-card .description {
+                color: #666666;
+                margin-bottom: 10px;
+            }
+
+            .interactive-card .details,
+            .interactive-card .languages,
+            .interactive-card .topics,
+            .interactive-card .date {
+                font-size: 0.9em;
+                color: #999999;
+                margin-bottom: 5px;
+            }
+
+            .interactive-card .topic {
+                background-color: #e0e0e0;
+                padding: 2px 6px;
+                border-radius: 4px;
+                margin-right: 3px;
+            }
+
+            .interactive-card .buttons {
+                position: absolute;
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .interactive-card .btn {
+                background-color: #3498db;
+                color: #ffffff;
+                border: none;
+                padding: 8px 12px;
+                border-radius: 4px;
+                cursor: pointer;
+                margin-left: 5px;
+            }
+
+            .interactive-card .btn:hover {
+                background-color: #2980b9;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="interactive-card">
+            <h3>
+                <a href="https://github.com/fixie-ai/ultravox" target="_blank"
+                    >ultravox</a
+                >
+            </h3>
+            <p class="description">A fast multimodal LLM for real-time voice</p>
+            <div class="details">
+                <span>Author: fixie-ai</span>
+                <span>Stars: 3,658</span>
+            </div>
+            <div class="languages">
+                <span>Python (97.6%)</span> | <span>Shell (1.1%)</span>
+            </div>
+            <div class="topics">
+                <span class="topic">AI</span> <span class="topic">LLM</span>
+                <span class="topic">Voice</span>
+            </div>
+            <div class="date">Starred on: 2/19/2025</div>
+            <div class="buttons">
+                <button class="btn">Star</button>
+                <button class="btn">Fork</button>
+            </div>
+        </div>
+    </body>
+</html>

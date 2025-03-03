@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Futuristic Card</title>
+        <style>
+            body {
+                background: #0d0d0d;
+                color: #ffffff;
+                font-family: "Orbitron", sans-serif;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+            }
+
+            .futuristic-card {
+                position: relative;
+                background: linear-gradient(135deg, #2c3e50, #34495e);
+                border-radius: 16px;
+                padding: 30px;
+                width: 350px;
+                box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+                overflow: hidden;
+            }
+
+            .futuristic-card::before {
+                content: "";
+                position: absolute;
+                top: -50%;
+                left: -50%;
+                width: 200%;
+                height: 200%;
+                background: rgba(255, 255, 255, 0.1);
+                border-radius: 50%;
+                animation: spin 5s infinite linear;
+            }
+
+            @keyframes spin {
+                from {
+                    transform: rotate(0deg);
+                }
+                to {
+                    transform: rotate(360deg);
+                }
+            }
+
+            .futuristic-card h3 {
+                margin-top: 0;
+                font-size: 1.5em;
+                color: #ffcc00;
+                text-align: center;
+            }
+
+            .futuristic-card .description {
+                font-size: 1.1em;
+                color: #ffffff;
+                margin: 20px 0;
+                text-align: center;
+            }
+
+            .futuristic-card .details {
+                display: flex;
+                justify-content: space-between;
+                font-size: 0.9em;
+                margin-bottom: 15px;
+            }
+
+            .futuristic-card .languages {
+                font-size: 0.85em;
+                margin-bottom: 10px;
+            }
+
+            .futuristic-card .topics {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 5px;
+            }
+
+            .futuristic-card .topic {
+                background-color: rgba(255, 255, 255, 0.2);
+                padding: 4px 8px;
+                border-radius: 20px;
+                font-size: 0.8em;
+            }
+
+            .futuristic-card .date {
+                font-size: 0.8em;
+                text-align: right;
+                color: #cccccc;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="futuristic-card">
+            <h3>
+                <a
+                    href="https://github.com/multimodal-art-projection/YuE"
+                    target="_blank"
+                    >YuE</a
+                >
+            </h3>
+            <p class="description">
+                YuE: Open Full-song Music Generation Foundation Model
+            </p>
+            <div class="details">
+                <span>Author: multimodal-art-projection</span>
+                <span>Stars: 4,171</span>
+            </div>
+            <div class="languages">
+                <span>Python (100.0%)</span>
+            </div>
+            <div class="topics">
+                <span class="topic">AI</span>
+                <span class="topic">Audio Generation</span>
+                <span class="topic">Music</span>
+            </div>
+            <div class="date">Starred on: 3/1/2025</div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Catalogue Repo Card</title>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        />
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <style>
+            body,
+            h1,
+            h2,
+            p,
+            ul,
+            li {
+                margin: 0;
+                padding: 0;
+            }
+            .repo-card {
+                border: 1px solid black; /* Thin black border */
+                border-radius: 30px; /* Sharp corners for directory look */
+                width: 300px; /* Standard catalogue width */
+                height: auto;
+                padding: 0px;
+                margin: 20px;
+                font-family:
+                    "Courier New", monospace; /* Monospace font for code-like feel */
+                color: #222; /* Very dark grey for text */
+                background-color: #fff; /* Clean white background */
+                // line-height: 1.4;
+                box-shadow: none; /* Remove box shadow for a flat look */
+            }
+
+            .repo-title {
+                font-size: 1rem; /* Subtly smaller title */
+                color: #000; /* Black title */
+                text-decoration: none;
+                font-weight: normal; /* Regular font weight */
+                margin-bottom: 0; /* Tight spacing */
+                display: flex; /* Use flexbox for aligning the icon and title */
+                align-items: center; /* Vertically center the title and icon */
+                text-align: center;
+                justify-content: center;
+            }
+
+            .repo-title i {
+                margin-right: 5px; /* Space between icon and title */
+                font-size: 1.2rem; /* Icon size */
+            }
+
+            .repo-description {
+                font-size: 0.8rem; /* Slightly smaller description */
+                color: #555; /* Muted description color */
+                margin-bottom: 10px;
+                text-align: center;
+            }
+
+            .repo-stats {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                font-size: 0.5rem; /* Smaller stats */
+                color: #777;
+            }
+
+            .repo-languages,
+            .repo-topics {
+                margin-top: 10px;
+            }
+
+            .repo-languages h4,
+            .repo-topics h4 {
+                font-size: 0.7rem; /* Tiny section headings */
+                margin-bottom: 5px;
+                font-weight: normal;
+                color: #444;
+            }
+
+            .repo-topic {
+                background-color: #f0f0f0; /* Light background for topics */
+                padding: 3px 6px;
+                border-radius: 3px; /* Slightly rounded topics */
+                margin-right: 3px;
+                color: #666;
+                display: inline-block;
+                font-size: 0.65rem; /* Even smaller topic size */
+            }
+
+            .language-chart {
+                width: 100px; /* Smaller chart for delicate aesthetics */
+                height: 100px;
+                margin: 0 auto;
+            }
+
+            /* Remove list bullets from language details */
+            .repo-languages ul {
+                list-style-type: none;
+                padding: 0;
+                margin: 0;
+            }
+
+            .repo-languages li {
+                font-size: 0.7rem; /* Small language details */
+            }
+        </style>
+    </head>
+    <body>
+        <div class="repo-card">
+            <a href="#" class="repo-title">
+                <i class="fas fa-folder"></i> RepositoryName
+            </a>
+            <hr />
+            <p class="repo-description">
+                Short description of the repository, explaining its purpose.
+            </p>
+
+            <div class="repo-languages">
+                <h4>Languages:</h4>
+                <div class="language-chart">
+                    <canvas id="languageChartCatalogue"></canvas>
+                </div>
+            </div>
+
+            <div class="repo-stats">
+                <span><i class="fas fa-star"></i> 12345 Stars</span>
+                <span><i class="fas fa-code-fork"></i> 6789 Forks</span>
+            </div>
+
+            <div class="repo-topics">
+                <h4>Topics:</h4>
+                <span class="repo-topic">minimalism</span>
+                <span class="repo-topic">clean-code</span>
+                <span class="repo-topic">directory-style</span>
+            </div>
+        </div>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const languageData = {
+                    labels: ["JavaScript", "Python", "HTML", "CSS"],
+                    datasets: [
+                        {
+                            data: [30, 25, 20, 25],
+                            backgroundColor: [
+                                "#2ecc71",
+                                "#3498db",
+                                "#9b59b6",
+                                "#f1c40f",
+                            ], // Pastel colors
+                            borderWidth: 0,
+                        },
+                    ],
+                };
+
+                const ctx = document
+                    .getElementById("languageChartCatalogue")
+                    .getContext("2d");
+                new Chart(ctx, {
+                    type: "doughnut",
+                    data: languageData,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        cutoutPercentage: 70,
+                        legend: {
+                            display: false /* Hide the legend for a cleaner look */,
+                        },
+                    },
+                });
+            });
+        </script>
+    </body>
+</html>
