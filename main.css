@@ -172,7 +172,7 @@ button:focus {
     gap: 20px;
 }
 
-.card {
+.repo-card {
     background-color: var(--card-background-color);
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -183,26 +183,26 @@ button:focus {
         box-shadow 0.3s ease;
 }
 
-.card:hover {
+.repo-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
 }
 
 /* Card Header and Title */
-.card h3 {
+.repo-card h3 {
     font-size: 1.2rem;
     margin: 10px;
     color: var(--secondary-color);
 }
 
-.card h3 a {
+.repo-card h3 a {
     text-decoration: none;
     color: inherit;
     transition: color 0.3s ease;
 }
 
-.card h3 a:hover,
-.card h3 a:focus {
+.repo-card h3 a:hover,
+.repo-card h3 a:focus {
     color: #e74c3c;
 }
 
