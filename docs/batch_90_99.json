@@ -1,0 +1,107 @@
+[
+  {
+    "document": "documents/3d-topology/3d-topology-guides.pdf",
+    "error": "Exceeded retry limit",
+    "title": "",
+    "description": "",
+    "tags": []
+  },
+  {
+    "title": "UNDERSTANDING\n3D TOPOLOGY",
+    "description": "This document is a comprehensive tutorial on 3D topology, a critical aspect of 3D modeling. It explains what topology is, why it matters (smooth deformation, efficient rendering, subdivision surfaces, collaboration), and provides a guide on how to get started with topology, including reference and planning, starting simple, understanding edge loops and flow, limiting poles, deleting ngons, and maintaining consistency. It also lists common tools used in creating and manipulating topology, such as edge and vertex slide, loop cut and slide, knife tool, and subdivision surface modifier. The document emphasizes the importance of testing and refining topology for achieving desired results in 3D modeling.",
+    "tags": [
+      "3D Topology",
+      "3D Modeling",
+      "Edge Loops",
+      "Vertices",
+      "Polygons"
+    ],
+    "document": "documents/3d-topology/Mastering the Art of 3D Topology_ A Comprehensive Tutorial.pdf"
+  },
+  {
+    "title": "How to model anything?",
+    "description": "This article provides a comprehensive guide on 3D modeling, focusing on the essential skills needed to become proficient. It delves into understanding 3D modeling commands, principles, topology, and the crucial role of design and function in the modeling process. The article emphasizes the importance of edge flow, case studies, and reference gathering for successful 3D modeling.",
+    "tags": [
+      "3D modeling",
+      "Topology",
+      "Design and Function",
+      "Edge Flow",
+      "Case Studies"
+    ],
+    "document": "documents/3d-topology/how-to-model-anything.pdf"
+  },
+  {
+    "document": "documents/3d-topology/index-topology.pdf",
+    "error": "Exceeded retry limit",
+    "title": "",
+    "description": "",
+    "tags": []
+  },
+  {
+    "title": "Gwyddion user guide",
+    "description": "This document is a user guide for the scanning probe microscopy data processing software Gwyddion. It is available in English, French, and Russian. The guide explains how to use Gwyddion to analyze height fields obtained by various scanning probe microscopy techniques, such as AFM, MFM, STM, and NSOM.",
+    "tags": [
+      "SPM data analysis",
+      "scanning probe microscopy",
+      "AFM",
+      "MFM",
+      "STM"
+    ],
+    "document": "documents/64bit-optimization-malloc-gpu/gwyddion-user-guide-en.pdf"
+  },
+  {
+    "title": "The RISC-V Instruction Set Manual\nVolume I: Unprivileged ISA",
+    "description": "This document describes the RISC-V unprivileged architecture. It is a derivative of \"The RISC-V Instruction Set Manual, Volume I: User-Level ISA Version 2.1\" and includes the version 2.1 of the A extension, which was ratified in December 2019. It also defines a big-endian ISA variant and moves the N extension for user-mode interrupts into Volume II.",
+    "tags": [
+      "RISC-V",
+      "Instruction Set",
+      "Unprivileged ISA",
+      "Computer Architecture",
+      "A Extension"
+    ],
+    "document": "documents/64bit-optimization-malloc-gpu/riscv-spec-20191213.pdf"
+  },
+  {
+    "title": "Exploring Neural Networks with Activation Atlases",
+    "description": "Activation atlases are a new technique for visualizing millions of activations from an image classification network. By using feature inversion to create an explorable activation atlas of features, we can reveal how the network typically represents some concepts and identify potential misunderstandings that can be exploited.",
+    "tags": [
+      "Activation Atlases",
+      "Neural Networks",
+      "Feature Inversion",
+      "Image Classification",
+      "Visualization"
+    ],
+    "document": "documents/AI_for_visualiyation/Activation Atlas.pdf"
+  },
+  {
+    "title": "Differentiable Image Parameterizations",
+    "description": "This document explores differentiable image parameterizations as a powerful tool for neural network visualizations and art. It discusses how changing the parameterization of an optimization problem can significantly impact the results, even when the objective function remains the same. The document provides concrete examples of using different parameterizations for tasks like aligned feature visualization interpolation, style transfer with non-VGG architectures, generation of semi-transparent patterns, and efficient texture optimization and style transfer through 3D rendering.",
+    "tags": [
+      "Differentiable Image Parameterizations",
+      "Neural Network Visualization",
+      "Style Transfer",
+      "Feature Visualization",
+      "3D Rendering"
+    ],
+    "document": "documents/AI_for_visualiyation/Differentiable Image Parameterizations.pdf"
+  },
+  {
+    "title": "Feature Visualization",
+    "description": "This document explores feature visualization, a technique for understanding how neural networks build their understanding of images. It discusses how to create visualizations by optimization, the importance of diversity in these visualizations, the challenges posed by high-frequency noise, and various regularization methods to address them. The document also touches upon the interaction between neurons and the concept of activation space.",
+    "tags": [
+      "Feature Visualization",
+      "Neural Networks",
+      "Image Recognition",
+      "Deep Learning",
+      "Regularization"
+    ],
+    "document": "documents/AI_for_visualiyation/Feature Visualization.pdf"
+  },
+  {
+    "document": "documents/AI_for_visualiyation/The Building Blocks of Interpretability.pdf",
+    "error": "Exceeded retry limit",
+    "title": "",
+    "description": "",
+    "tags": []
+  }
+]

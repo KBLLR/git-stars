@@ -1,0 +1,107 @@
+[
+  {
+    "title": "Bardana",
+    "description": "This document describes Bardana, also known as arctium majus or lappa, a plant from the Aster\u00e1ceas family. It covers its appearance, active principles, pharmacological action, indications, toxicity, energetic aspects, and traditional uses.",
+    "tags": [
+      "Bardana",
+      "arctium majus",
+      "Aster\u00e1ceas",
+      "Medicinal plants",
+      "Traditional medicine"
+    ],
+    "document": "documents/Fitoterapia/PLANTAS/Arctium Lappa - Bardana.pdf"
+  },
+  {
+    "title": "Gayuba",
+    "description": "This document describes the Gayuba plant, scientifically known as Arctostaphylos uva-ursi, and its medicinal properties. It covers its active ingredients, pharmacological action, indications, dosage, contraindications, observations, and energetic aspects.",
+    "tags": [
+      "Gayuba",
+      "Arctostaphylos uva-ursi",
+      "Medicinal plants",
+      "Urinary tract infections",
+      "Diuretic"
+    ],
+    "document": "documents/Fitoterapia/PLANTAS/Arctostaphylos uva \u2013 ursi - Gayuba.pdf"
+  },
+  {
+    "document": "documents/Fitoterapia/PLANTAS/A\u0301rnica Montana - A\u0301rnica.pdf",
+    "error": "Exceeded retry limit",
+    "title": "",
+    "description": "",
+    "tags": []
+  },
+  {
+    "title": "ABEDUL",
+    "description": "This document describes the medicinal properties and uses of birch (Betula pendula, Betula alba). It covers its active ingredients, pharmacological action, therapeutic indications, toxicity, dosage forms, energetic aspects, and use in traditional Chinese medicine.",
+    "tags": [
+      "Betula pendula",
+      "Betula alba",
+      "Medicinal plants",
+      "Traditional Chinese medicine",
+      "Herbal remedies"
+    ],
+    "document": "documents/Fitoterapia/PLANTAS/Betula Alba - Abedu\u0301l.pdf"
+  },
+  {
+    "title": "Calendula",
+    "description": "This document describes the Calendula flower, also known as Cal\u00e9ndula Officinalis, a member of the Aster\u00e1ceas family. It covers its medicinal properties, including its antiseptic, antifungal, anti-inflammatory, and healing qualities. The document details its uses for various ailments, both internally and externally, and provides dosage information for different applications.",
+    "tags": [
+      "Calendula",
+      "Medicinal Plants",
+      "Herbal Remedies",
+      "Dermatology",
+      "Digestive Health"
+    ],
+    "document": "documents/Fitoterapia/PLANTAS/Cale\u0301ndula Officinalis - Calendula.pdf"
+  },
+  {
+    "document": "documents/Fitoterapia/PLANTAS/Carica papaya - Papayo.pdf",
+    "error": "Exceeded retry limit",
+    "title": "",
+    "description": "",
+    "tags": []
+  },
+  {
+    "title": "ACHICORIA",
+    "description": "This document describes the properties and uses of chicory, a plant with the Latin name Cichorium intybus. It highlights its medicinal properties, particularly its diuretic, digestive, and anti-inflammatory effects. The document also details its active ingredients, contraindications, dosage, and energetic aspects according to traditional medicine.",
+    "tags": [
+      "ACHICORIA",
+      "Cichorium intybus",
+      "Aster\u00e1ceas",
+      "DROGA",
+      "RA\u00cdZ Y HOJAS"
+    ],
+    "document": "documents/Fitoterapia/PLANTAS/Cassia angustifolia Vahl - Achicoria.pdf"
+  },
+  {
+    "title": "Manzanilla romana \u2013\nmanzanilla amarga",
+    "description": "This document describes Manzanilla romana, also known as Manzanilla amarga, including its scientific name (Chamaemelum nobile L.), family (Aster\u00e1ceas), active ingredients, pharmacological action, indications, dosage, precautions, toxicity, observations, and energetic aspects.",
+    "tags": [
+      "Manzanilla romana",
+      "Manzanilla amarga",
+      "Chamaemelum nobile L.",
+      "Aster\u00e1ceas",
+      "Medicinal plants"
+    ],
+    "document": "documents/Fitoterapia/PLANTAS/Cassia angustifolia Vahl - Manzanilla romana.pdf"
+  },
+  {
+    "document": "documents/Fitoterapia/PLANTAS/Cassia angustifolia Vahl. - Sen_de_la_India.pdf",
+    "error": "Exceeded retry limit",
+    "title": "",
+    "description": "",
+    "tags": []
+  },
+  {
+    "title": "Calabazas",
+    "description": "This document describes the properties and uses of pumpkins, including their Latin name, family, active ingredients, and pharmacological action.",
+    "tags": [
+      "Calabazas",
+      "curcubita maxima",
+      "curcubita pepo",
+      "curcubit\u00e1ceas",
+      "Antihelm\u00edntico"
+    ],
+    "document": "documents/Fitoterapia/PLANTAS/Cimifuga racemosa - Calabazas.pdf"
+  }
+]

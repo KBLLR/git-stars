@@ -1,0 +1,107 @@
+[
+  {
+    "document": "documents/E. R. Davies - Computer Vision_ Principles, Algorithms, Applications, Learning, Fifth Editio [5th Ed] (Complete Instructor's Resources with (2017, Academic Press, AP, A. P.) - libgen.li/other/MATLAB_Application_4.pdf",
+    "error": "Exceeded retry limit",
+    "title": "",
+    "description": "",
+    "tags": []
+  },
+  {
+    "title": "Introduction to Matlab",
+    "description": "This document is a tutorial for Matlab, a computer language specifically designed for matrix manipulation. It delves into the fundamentals of Matlab, comparing its basic programming notations with C++, and highlighting its strengths in matrix operations. The tutorial covers topics such as declaring variables, vector and matrix manipulation, scalar and pointwise operations, selectively addressing matrix elements, and using the 'find' function. It provides clear examples and explanations for each concept, making it an ideal starting point for anyone new to Matlab.",
+    "tags": [
+      "Matlab",
+      "Matrix Manipulation",
+      "Programming Language",
+      "Tutorial",
+      "Linear Algebra"
+    ],
+    "document": "documents/E. R. Davies - Computer Vision_ Principles, Algorithms, Applications, Learning, Fifth Editio [5th Ed] (Complete Instructor's Resources with (2017, Academic Press, AP, A. P.) - libgen.li/other/MATLAB_Tutorial_1.pdf"
+  },
+  {
+    "title": "Strings and I/O functions",
+    "description": "This document provides a tutorial on strings and input/output functions in Matlab. It covers topics such as string concatenation, comparison, searching, and manipulation, as well as reading and writing data to files using functions like 'fopen', 'fprintf', 'fscanf', and 'strtok'. The tutorial uses practical examples to illustrate the concepts and provides a clear explanation of the syntax and usage of each function.",
+    "tags": [
+      "Strings",
+      "Input/Output",
+      "Matlab",
+      "Functions",
+      "File Handling"
+    ],
+    "document": "documents/E. R. Davies - Computer Vision_ Principles, Algorithms, Applications, Learning, Fifth Editio [5th Ed] (Complete Instructor's Resources with (2017, Academic Press, AP, A. P.) - libgen.li/other/MATLAB_Tutorial_2.pdf"
+  },
+  {
+    "document": "documents/E. R. Davies - Computer Vision_ Principles, Algorithms, Applications, Learning, Fifth Editio [5th Ed] (Complete Instructor's Resources with (2017, Academic Press, AP, A. P.) - libgen.li/other/MATLAB_Tutorial_3.pdf",
+    "error": "Exceeded retry limit",
+    "title": "",
+    "description": "",
+    "tags": []
+  },
+  {
+    "title": "More advanced structures and functions",
+    "description": "This tutorial introduces more advanced structures and functions in Matlab, focusing on cell arrays and structs. Cell arrays offer a way to store data of different types and sizes, while structs allow for grouping related parameters under a single structure name. The tutorial also covers anonymous functions and handles, which are useful for defining simple functions and performing operations like graph plotting.",
+    "tags": [
+      "Cell Arrays",
+      "Structured Arrays",
+      "Anonymous Functions",
+      "Handles",
+      "Matlab"
+    ],
+    "document": "documents/E. R. Davies - Computer Vision_ Principles, Algorithms, Applications, Learning, Fifth Editio [5th Ed] (Complete Instructor's Resources with (2017, Academic Press, AP, A. P.) - libgen.li/other/MATLAB_Tutorial_4.pdf"
+  },
+  {
+    "title": "Graphics and plotting techniques",
+    "description": "This document is a tutorial on the basics of graphics and plotting in two dimensions using Matlab. It covers the use of functions like 'plot', 'subplot', and 'line' for creating various types of graphs, including line plots, scatter plots, and subplots. The tutorial also explains how to customize the appearance of plots, such as adding titles, labels, legends, and grids, as well as modifying line styles, colors, and marker types.",
+    "tags": [
+      "Graphics",
+      "Plotting",
+      "Matlab",
+      "2-D Functions",
+      "Visualization"
+    ],
+    "document": "documents/E. R. Davies - Computer Vision_ Principles, Algorithms, Applications, Learning, Fifth Editio [5th Ed] (Complete Instructor's Resources with (2017, Academic Press, AP, A. P.) - libgen.li/other/MATLAB_Tutorial_5.pdf"
+  },
+  {
+    "document": "documents/Essential Dev Resource.pdf",
+    "error": "Exceeded retry limit",
+    "title": "",
+    "description": "",
+    "tags": []
+  },
+  {
+    "title": "Introducci\u00f3n a la Aromaterapia",
+    "description": "This document appears to be a presentation about aromatherapy. It covers the definition, quality criteria, and precautions of using essential oils. It also provides examples of specific essential oils, their properties, indications, and toxicity. Lastly, it lists various essential oils, their properties, indications, and recommended uses.",
+    "tags": [
+      "Aromaterapia",
+      "Aceites esenciales",
+      "Propiedades",
+      "Indicaciones",
+      "Toxicidad"
+    ],
+    "document": "documents/Fitoterapia/Aromaterapia_1o_Fitoterapia.pdf"
+  },
+  {
+    "title": "LECCI\u00d3N 1",
+    "description": "This document appears to be lecture notes on the history of medicine, with a focus on the origins of pharmaceuticals. It covers the use of plants and other natural substances for medicinal purposes from prehistory to modern times, highlighting key civilizations and figures like Hippocrates, Galen, and Paracelso. The document also touches on the evolution of pharmacy as a profession and the development of pharmacopoeias.",
+    "tags": [
+      "History of Medicine",
+      "Pharmaceuticals",
+      "Herbal Remedies",
+      "Ancient Civilizations",
+      "Pharmacopoeias"
+    ],
+    "document": "documents/Fitoterapia/Leccion_1_Farmacognosia.pdf"
+  },
+  {
+    "title": "LECCI\u00d3N 2",
+    "description": "The document discusses pharmacognosy, the study of drugs and medicinal substances from natural sources. It covers the definition of pharmacognosy, types of medicinal plants (wild and cultivated), methods of plant selection and improvement, harvesting techniques for different plant parts, and methods of drug preservation, including drying and enzyme inactivation. It also highlights the importance of proper storage and processing of medicinal plants.",
+    "tags": [
+      "Pharmacognosy",
+      "Medicinal Plants",
+      "Drug Preservation",
+      "Harvesting Techniques",
+      "Plant Selection"
+    ],
+    "document": "documents/Fitoterapia/Leccion_2_Farmacognosia.pdf"
+  }
+]

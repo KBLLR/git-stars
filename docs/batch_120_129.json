@@ -1,0 +1,107 @@
+[
+  {
+    "title": "LA DULCE REVOLUCI\u00d3N",
+    "description": "An interview with Josep P\u00e0mies, a farmer fighting against GMOs and for the use of natural remedies like stevia. He discusses the health benefits of stevia and the legal challenges he faces selling it due to labeling restrictions on medicinal plants. P\u00e0mies also criticizes pharmaceutical companies for profiting from chronic illnesses and calls for a \"sweet revolution\" to raise awareness about natural cures.",
+    "tags": [
+      "Stevia",
+      "Natural Remedies",
+      "GMOs",
+      "Pharmaceutical Industry",
+      "Health Freedom"
+    ],
+    "document": "documents/Dietoterapia/Dulce_Revolucion_75.pdf"
+  },
+  {
+    "document": "documents/Dietoterapia/LECCCION 1 - Reviewed.pdf",
+    "error": "Exceeded retry limit",
+    "title": "",
+    "description": "",
+    "tags": []
+  },
+  {
+    "title": "INSTRUCCIONES PARA LA\nELABORACION DE DIETAS",
+    "description": "This document outlines guidelines for creating personalized diets, focusing on food choices, meal frequency, and preparation methods. It emphasizes whole, organic foods, avoiding processed and refined options. The document also includes specific recommendations for various food groups, cooking methods, and dietary considerations.",
+    "tags": [
+      "Diet",
+      "Nutrition",
+      "Food",
+      "Health",
+      "Wellness"
+    ],
+    "document": "documents/Dietoterapia/NORMAS_PARA_ELABORAR_DIETAS.pdf"
+  },
+  {
+    "title": "NO CONSIGO\nADELGAZAR",
+    "description": "This book presents the Dukan Diet, a weight loss method that involves consuming natural proteins and combining them with other foods. The diet is based on four phases: attack, cruise, consolidation, and stabilization. The book claims that over 1 million readers in France have lost weight following the Dukan Diet.",
+    "tags": [
+      "Weight Loss",
+      "Dukan Diet",
+      "Protein Diet",
+      "Health",
+      "Nutrition"
+    ],
+    "document": "documents/Dietoterapia/Noconsigoadelgazar_PierreDukan.pdf"
+  },
+  {
+    "document": "documents/E. R. Davies - Computer Vision_ Principles, Algorithms, Applications, Learning, Fifth Editio [5th Ed] (Complete Instructor's Resources with (2017, Academic Press, AP, A. P.) - libgen.li/Matlab1.pdf",
+    "error": "Exceeded retry limit",
+    "title": "",
+    "description": "",
+    "tags": []
+  },
+  {
+    "title": "Strings and I/O functions",
+    "description": "This document is a tutorial about strings and input/output functions in Matlab. It explains how strings are represented, processed, and converted in Matlab. It also covers functions for string concatenation, comparison, searching, and replacement. Additionally, it details input/output operations like saving and loading data, and reading from and writing to files. It also introduces the strtok function for parsing strings into smaller meaningful sequences.",
+    "tags": [
+      "Strings",
+      "Input/Output",
+      "Matlab",
+      "Functions",
+      "File Handling"
+    ],
+    "document": "documents/E. R. Davies - Computer Vision_ Principles, Algorithms, Applications, Learning, Fifth Editio [5th Ed] (Complete Instructor's Resources with (2017, Academic Press, AP, A. P.) - libgen.li/Matlab2.pdf"
+  },
+  {
+    "title": "Computer Vision: Theory, Algorithms,\nApplications, Learning",
+    "description": "This document provides solutions, analysis, methods, hints, constraints, and ideas related to a set of computer vision problems. It is intended as a helpful resource for readers exploring the wide-ranging subject of computer vision, rather than as a complete set of solutions like those found in a school text. The document includes chapters covering various topics in computer vision, with a focus on providing aids to learning and understanding the subject matter.",
+    "tags": [
+      "Computer Vision",
+      "Theory",
+      "Algorithms",
+      "Applications",
+      "Learning"
+    ],
+    "document": "documents/E. R. Davies - Computer Vision_ Principles, Algorithms, Applications, Learning, Fifth Editio [5th Ed] (Complete Instructor's Resources with (2017, Academic Press, AP, A. P.) - libgen.li/Solutions.pdf"
+  },
+  {
+    "document": "documents/E. R. Davies - Computer Vision_ Principles, Algorithms, Applications, Learning, Fifth Editio [5th Ed] (Complete Instructor's Resources with (2017, Academic Press, AP, A. P.) - libgen.li/other/MATLAB_Application_1.pdf",
+    "error": "Exceeded retry limit",
+    "title": "",
+    "description": "",
+    "tags": []
+  },
+  {
+    "title": "Modelling hand shapes using sets of landmark points",
+    "description": "This document describes a method for modeling hand shapes using sets of landmark points. The process begins by obtaining a small number of landmark points on a hand image, which are then used to derive more points using algorithms. These points are then analyzed to generate intermediate points and finger midlines. Finally, the document discusses how to use Kroon's Active Shape Model (ASM) and Active Appearance Model (AAM) package to further process the landmark points.",
+    "tags": [
+      "Hand Shape Modeling",
+      "Landmark Points",
+      "Computer Vision",
+      "Image Processing",
+      "Active Shape Model (ASM)"
+    ],
+    "document": "documents/E. R. Davies - Computer Vision_ Principles, Algorithms, Applications, Learning, Fifth Editio [5th Ed] (Complete Instructor's Resources with (2017, Academic Press, AP, A. P.) - libgen.li/other/MATLAB_Application_2.pdf"
+  },
+  {
+    "title": "Boosting weak classifier performance",
+    "description": "This document describes how the Adaboost and Logitboost algorithms were implemented in Matlab to produce figures 14.11 and 14.15 in the book \"Davies (2017) Chapter 14\".  The document details the modifications made to existing Adaboost and Logitboost Matlab scripts to generate the figures, including changes to data initialization, training result processing, and graphical output. The document also highlights the importance of using a specific Matlab version (R2015a) to maintain compatibility with the original figures and avoid errors.",
+    "tags": [
+      "Adaboost",
+      "Logitboost",
+      "weak classifiers",
+      "Matlab",
+      "Computer Vision"
+    ],
+    "document": "documents/E. R. Davies - Computer Vision_ Principles, Algorithms, Applications, Learning, Fifth Editio [5th Ed] (Complete Instructor's Resources with (2017, Academic Press, AP, A. P.) - libgen.li/other/MATLAB_Application_3.pdf"
+  }
+]

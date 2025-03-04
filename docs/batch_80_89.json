@@ -1,0 +1,107 @@
+[
+  {
+    "title": "3D Computer Graphics Primer: Ray-Tracing as an Example",
+    "description": "This document delves into the concept of reflection and refraction in the context of ray tracing, a computer graphics technique. It explains how Turner Whitted enhanced the basic ray-tracing algorithm to incorporate these optical effects, leading to more realistic rendering of materials like glass and mirrors. The document further elaborates on calculating reflection and refraction rays, the role of the Fresnel equation in blending these effects, and the recursive nature of the algorithm in handling multiple reflective and refractive surfaces.",
+    "tags": [
+      "Ray Tracing",
+      "Reflection",
+      "Refraction",
+      "Computer Graphics",
+      "Fresnel Equation"
+    ],
+    "document": "documents/3D Computer Graphics Primer_ Ray-Tracing as an Example4.pdf"
+  },
+  {
+    "document": "documents/3D Computer Graphics Primer_ Ray-Tracing as an Example5.pdf",
+    "error": "Exceeded retry limit",
+    "title": "",
+    "description": "",
+    "tags": []
+  },
+  {
+    "title": "ASH: Animatable Gaussian Splats for Efficient and Photoreal Human Rendering",
+    "description": "The paper introduces ASH, a novel method for real-time rendering of photorealistic and controllable human avatars. ASH parameterizes clothed humans as animatable 3D Gaussians, leveraging efficient 2D convolutional architectures for learning Gaussian parameters in 2D texture space. This approach enables real-time, high-fidelity rendering of dynamic humans with motion-dependent details, surpassing existing real-time methods and showing comparable or even better results than offline methods.",
+    "tags": [
+      "Human Rendering",
+      "Gaussian Splats",
+      "Animatable Avatars",
+      "Real-Time Rendering",
+      "Computer Vision and Graphics"
+    ],
+    "document": "documents/3d-nerfs-gaussian/ASH-animatable-gaussian.pdf"
+  },
+  {
+    "title": "VR-GS: A Physical Dynamics-Aware Interactive Gaussian Splatting System in Virtual Reality",
+    "description": "This paper introduces VR-GS, a physics-aware, interactive Virtual Reality (VR) system for immersive manipulation of 3D content represented with Gaussian Splatting (GS). The system utilizes eXtended Position-based Dynamics (XPBD) for real-time deformation simulation and a novel two-level embedding approach to ensure a smooth and realistic deformation experience. VR-GS also incorporates features like object segmentation, scene inpainting, and dynamic shadow casting to enhance realism and user experience.",
+    "tags": [
+      "Gaussian Splatting",
+      "Virtual Reality",
+      "Physics-based Simulation",
+      "Interactive Editing",
+      "3D Content Manipulation"
+    ],
+    "document": "documents/3d-nerfs-gaussian/VR-gaussians.pdf"
+  },
+  {
+    "document": "documents/3d-nerfs-gaussian/WHAM-Reconstructed-World-grounded-Humans3D-Motion.pdf",
+    "error": "Exceeded retry limit",
+    "title": "",
+    "description": "",
+    "tags": []
+  },
+  {
+    "title": "DREAMFUSION: TEXT-TO-3D USING 2D DIFFUSION",
+    "description": "This document presents DreamFusion, a method for synthesizing 3D models from text prompts using a pre-trained 2D text-to-image diffusion model. The key innovation is Score Distillation Sampling (SDS), which enables optimization of a 3D model's parameters such that its rendered images from random angles resemble a sample from the diffusion model. This approach eliminates the need for 3D training data and allows for the generation of high-fidelity, coherent 3D objects and scenes from a variety of user-provided text prompts.",
+    "tags": [
+      "Text-to-3D Synthesis",
+      "Diffusion Models",
+      "Neural Radiance Fields (NeRF)",
+      "Score Distillation Sampling",
+      "3D Generative Models"
+    ],
+    "document": "documents/3d-nerfs-gaussian/dreamfusion.pdf"
+  },
+  {
+    "title": "pixelSplat: 3D Gaussian Splats from Image Pairs for Scalable Generalizable 3D Reconstruction",
+    "description": "This document introduces pixelSplat, a new method for reconstructing 3D scenes from a small number of images. Unlike previous methods that rely on computationally expensive techniques like differentiable rendering, pixelSplat uses a novel approach based on 3D Gaussian primitives. This allows for real-time rendering and efficient memory use, making it suitable for use in applications where resources are limited. The authors demonstrate the effectiveness of their method on challenging datasets and show that it outperforms existing techniques in terms of both visual quality and computational efficiency.",
+    "tags": [
+      "3D Reconstruction",
+      "Novel View Synthesis",
+      "Gaussian Splatting",
+      "Differentiable Rendering",
+      "Scale Ambiguity"
+    ],
+    "document": "documents/3d-nerfs-gaussian/pixelSplat.pdf"
+  },
+  {
+    "document": "documents/3d-nerfs-gaussian/text-guiding-texturing.pdf",
+    "error": "Exceeded retry limit",
+    "title": "",
+    "description": "",
+    "tags": []
+  },
+  {
+    "title": "Triplane Meets Gaussian Splatting: Fast and Generalizable Single-View 3D Reconstruction with Transformers",
+    "description": "This paper introduces a novel approach for single-view 3D reconstruction that efficiently generates a 3D model from a single image via feed-forward inference. The method utilizes two transformer-based networks, a point decoder and a triplane decoder, to reconstruct 3D objects using a hybrid Triplane-Gaussian intermediate representation. This hybrid representation balances faster rendering speed compared to implicit representations with superior rendering quality than explicit representations. The approach includes two networks for reconstructing the point cloud and triplane from the input image, employing a fully transformer-based architecture for both, enabling the interaction of latent features with input image features through cross-attention. This design ensures scalability and supports large-scale, category-agnostic training, enhancing the model's generalizability to real-world objects. The method augments each 3D Gaussian with local image features by projecting explicit geometry onto the input image plane. The proposed approach allows for fast, high-resolution rendering and facilitates efficient end-to-end training of the entire pipeline.",
+    "tags": [
+      "3D Reconstruction",
+      "Single-View Reconstruction",
+      "Transformers",
+      "Gaussian Splatting",
+      "Triplane Representation"
+    ],
+    "document": "documents/3d-nerfs-gaussian/triplane-meets-gaussian.pdf"
+  },
+  {
+    "title": "3D Modeling Encyclopedia",
+    "description": "This document is a 3D modeling encyclopedia that provides definitions and explanations of common 3D modeling terms. It covers topics such as vertex, edge, face, polygon, mesh, topology, UV, and more. The encyclopedia aims to be a helpful resource for both beginner and experienced 3D modelers.",
+    "tags": [
+      "3D Modeling",
+      "Terminology",
+      "Definitions",
+      "Mesh",
+      "Topology"
+    ],
+    "document": "documents/3d-topology/3d-modeling-encyclopedia-topology Guides.pdf"
+  }
+]

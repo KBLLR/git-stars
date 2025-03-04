@@ -1,0 +1,122 @@
+[
+  {
+    "title": "Intelligent Home 3D: Automatic 3D-House Design\nfrom Linguistic Descriptions Only",
+    "description": "The paper introduces a novel approach for automatically generating 3D house designs from natural language descriptions. The authors propose a House Plan Generative Model (HPGM) that leverages deep learning techniques to translate linguistic instructions into structural layouts and interior textures. The model first parses the input text into a structural graph representation, then utilizes a Graph Conditioned Layout Prediction Network (GC-LPN) to generate room layouts and a Language Conditioned Texture GAN (LCT-GAN) to synthesize corresponding textures. Finally, a 3D scene generation method renders the final 3D house plan. The authors created a new dataset, Text-to-3D House Model, to train and evaluate their model. Experiments demonstrate that HPGM outperforms baseline methods in layout generation accuracy and texture synthesis quality. The authors also conducted ablation studies and human evaluation to validate the effectiveness of their approach.",
+    "tags": [
+      "3D House Design",
+      "Natural Language Processing",
+      "Computer Vision",
+      "Generative Adversarial Networks (GANs)",
+      "Floor Plan Generation"
+    ],
+    "document": "documents/2003.00397v1.pdf"
+  },
+  {
+    "title": "The quantum cosmological tilt and the origin of dark matter",
+    "description": "This document proposes a new model for the formation of primordial black holes (PBHs) as a candidate for cold dark matter. The model relies on the concept of \"quantum tilt,\" a non-perturbative quantum effect derived from the quantum Fisher information for de Sitter vacua pure states. This tilt, unlike traditional inflationary models, naturally transitions from a red tilt at large scales (consistent with CMB observations) to a blue tilt at small scales. This blue tilt leads to an enhancement of the power spectrum at small scales, triggering the formation of PBHs in a specific mass range. The authors argue that this model provides a more natural and model-independent explanation for PBH formation compared to traditional two-field inflationary models.",
+    "tags": [
+      "Dark Matter",
+      "Primordial Black Holes (PBHs)",
+      "Quantum Cosmology",
+      "Quantum Tilt",
+      "Power Spectrum"
+    ],
+    "document": "documents/2012.07883v2.pdf"
+  },
+  {
+    "title": "Automatic Comic Generation with Stylistic Multi-page\nLayouts and Emotion-driven Text Balloon Generation",
+    "description": "This paper proposes a fully automatic system for generating comic books from videos. The system first extracts keyframes from an input video and stylizes them into comic-style images. Then, it uses a novel multi-page layout framework to arrange the images across multiple pages and create visually interesting layouts. Finally, it employs an emotion-aware balloon generation method to create different types of word balloons based on the emotion of subtitles and audios.",
+    "tags": [
+      "Comic Generation",
+      "Multi-page Layout",
+      "Emotion-aware",
+      "Text Balloon Generation",
+      "Keyframe Extraction"
+    ],
+    "document": "documents/2101.11111v1.pdf"
+  },
+  {
+    "title": "Learning Transferable Visual Models From Natural Language Supervision",
+    "description": "This document presents CLIP, a novel approach for learning transferable visual models from natural language supervision. CLIP is trained on a massive dataset of 400 million (image, text) pairs collected from the internet and learns to predict which caption goes with which image. This simple pre-training task enables zero-shot transfer of the model to downstream tasks, where natural language is used to reference learned visual concepts. The authors benchmark CLIP on over 30 different existing computer vision datasets, spanning tasks such as OCR, action recognition in videos, geo-localization, and many types of fine-grained object classification. CLIP achieves state-of-the-art results on many of these datasets and is often competitive with fully supervised baselines without the need for any dataset specific training.",
+    "tags": [
+      "Computer Vision",
+      "Natural Language Supervision",
+      "Zero-Shot Transfer",
+      "Image Representation Learning",
+      "Contrastive Learning"
+    ],
+    "document": "documents/2103.00020v1.pdf"
+  },
+  {
+    "title": "Real-time low-resource phoneme recognition on edge devices",
+    "description": "This research paper presents a method for creating and training speech recognition models for any language that are highly accurate and require minimal storage, memory, and training data. The models are designed to recognize individual phonemes, which are the smallest vocal components of speech, and can be deployed on edge devices such as mobile phones or car displays for fast real-time speech recognition. The paper describes the use of log-mel spectrograms, convolutional recurrent neural networks, and sequence-to-sequence models in the development of the phoneme recognition models. The authors also discuss the challenges of working with low-resource languages and the potential of this approach to make speech recognition more accessible to people throughout the world.",
+    "tags": [
+      "speech recognition",
+      "phoneme recognition",
+      "edge devices",
+      "low-resource languages",
+      "machine learning"
+    ],
+    "document": "documents/2103.13997v1.pdf"
+  },
+  {
+    "title": "VideoGPT: Video Generation using VQ-VAE and Transformers",
+    "description": "This document proposes VideoGPT, a novel architecture for video generation that leverages VQ-VAE and Transformer models, commonly used in image generation. VideoGPT simplifies video generation by first downsampling video data into discrete latent codes using VQ-VAE and then training a GPT-like architecture to model these codes. This approach allows for the generation of realistic videos competitive with state-of-the-art GAN-based models, as demonstrated by experiments on datasets like BAIR Robot Pushing, UCF-101, and Tumblr GIF. The document also includes ablation studies on various architectural choices, offering insights for future development in video generation.",
+    "tags": [
+      "Video Generation",
+      "VQ-VAE",
+      "Transformers",
+      "Generative Modeling",
+      "Deep Learning"
+    ],
+    "document": "documents/2104.10157v2.pdf"
+  },
+  {
+    "title": "GODIVA: Generating Open-DomaIn Videos\nfrom natural Descriptions",
+    "description": "The paper proposes GODIVA, a novel model for generating open-domain videos from textual descriptions. GODIVA leverages a VQ-VAE auto-encoder to represent video pixels as discrete tokens and employs a three-dimensional sparse attention mechanism to generate videos, considering temporal, column, and row information. The model is pre-trained on the Howto100M dataset and fine-tuned on the MSR-VTT dataset, demonstrating its ability to generate semantically consistent and visually coherent videos from textual descriptions.",
+    "tags": [
+      "Video Generation",
+      "Text-to-Video",
+      "VQ-VAE",
+      "Sparse Attention",
+      "Open-Domain"
+    ],
+    "document": "documents/2104.14806v1.pdf"
+  },
+  {
+    "title": "Conditional Variational Autoencoder with Adversarial Learning for End-to-End Text-to-Speech",
+    "description": "This paper proposes a new end-to-end text-to-speech (TTS) method called Variational Inference with adversarial learning for end-to-end Text-to-Speech (VITS) that outperforms current two-stage models in terms of audio quality. VITS uses a variational autoencoder (VAE) to connect two modules of TTS systems through latent variables, enabling efficient end-to-end learning. The authors also introduce a stochastic duration predictor to synthesize speech with diverse rhythms from input text. Subjective human evaluation shows that VITS outperforms the best publicly available TTS systems and achieves a comparable mean opinion score (MOS) to ground truth.",
+    "tags": [
+      "Text-to-Speech (TTS)",
+      "Variational Autoencoder (VAE)",
+      "Adversarial Learning",
+      "Stochastic Duration Predictor",
+      "End-to-End Learning"
+    ],
+    "document": "documents/2106.06103v1.pdf"
+  },
+  {
+    "title": "LORA: LOW-RANK ADAPTATION OF LARGE LANGUAGE MODELS",
+    "description": "This document proposes a novel technique called Low-Rank Adaptation (LoRA) for adapting large language models to specific tasks. LoRA freezes the pre-trained model weights and injects trainable rank decomposition matrices into each layer, significantly reducing the number of trainable parameters and memory requirements. The method achieves comparable or better performance than full fine-tuning while offering advantages like efficient task switching and no additional inference latency.",
+    "tags": [
+      "Large Language Models",
+      "Parameter-Efficient Adaptation",
+      "Low-Rank Decomposition",
+      "Transformer Architecture",
+      "Natural Language Processing"
+    ],
+    "document": "documents/2106.09685v2.pdf"
+  },
+  {
+    "title": "Structured Denoising Diffusion Models in Discrete\nState-Spaces",
+    "description": "This document introduces Discrete Denoising Diffusion Probabilistic Models (D3PMs), a new class of diffusion-like generative models for discrete data. D3PMs generalize previous work by allowing for more structured categorical corruption processes, leading to improved results in image and text generation. The authors explore various structured corruption processes, including those based on Gaussian kernels, nearest neighbors in embedding space, and absorbing states. They also introduce a new loss function that combines the variational lower bound with an auxiliary cross entropy loss. Their experiments demonstrate that D3PMs achieve strong results on character-level text generation, scaling to large vocabularies and long sequence lengths. On image generation, their models approach the sample quality and exceed the log-likelihood of continuous-space DDPM models.",
+    "tags": [
+      "Denoising Diffusion Probabilistic Models",
+      "Discrete Data",
+      "Generative Models",
+      "Text Generation",
+      "Image Generation"
+    ],
+    "document": "documents/2107.03006v3.pdf"
+  }
+]

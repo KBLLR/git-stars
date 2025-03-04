@@ -1,0 +1,98 @@
+[
+  {
+    "error": "Exceeded retry limit",
+    "document": "documents/2408.00960v1.pdf",
+    "title": "",
+    "description": "",
+    "tags": []
+  },
+  {
+    "title": "IPAdapter-Instruct: Resolving Ambiguity in Image-based Conditioning using Instruct Prompts",
+    "description": "This document proposes IPAdapter-Instruct, a method to improve image generation by resolving ambiguity in image-based conditioning. It leverages \"instruct\" prompts to guide the interpretation of condition images, allowing for control over aspects like style transfer, object extraction, and composition. The authors demonstrate its effectiveness through qualitative and quantitative comparisons with task-specific models and highlight its compatibility with ControlNet and LoRA models. The paper also discusses limitations, such as the need for extensive training datasets and biases introduced by source data.",
+    "tags": [
+      "Image Generation",
+      "Diffusion Models",
+      "Image Conditioning",
+      "Instruct Prompts",
+      "Multi-task Learning"
+    ]
+  },
+  {
+    "title": "Sapiens: Foundation for Human Vision Models",
+    "description": "This document introduces Sapiens, a family of vision transformer models pretrained on a large-scale dataset of human images. The authors argue that curating a dataset focused on humans and scaling the pretraining process significantly improves performance on downstream human-centric vision tasks like pose estimation, body-part segmentation, depth estimation, and surface normal prediction. They demonstrate Sapiens' effectiveness by achieving state-of-the-art results on several benchmarks, highlighting its ability to generalize to in-the-wild settings and handle complex scenarios.",
+    "tags": [
+      "Human-centric Vision",
+      "Vision Transformers",
+      "Large-scale Pretraining",
+      "Pose Estimation",
+      "Body-part Segmentation",
+      "Depth Estimation",
+      "Surface Normal Estimation"
+    ]
+  },
+  {
+    "error": "Exceeded retry limit",
+    "document": "documents/2409.08278v1.pdf",
+    "title": "",
+    "description": "",
+    "tags": []
+  },
+  {
+    "title": "ORYX MLLM: ON-DEMAND SPATIAL-TEMPORAL\nUNDERSTANDING AT ARBITRARY RESOLUTION",
+    "description": "The document introduces Oryx, a new multi-modal architecture designed to process visual data of varying lengths and resolutions, such as images, videos, and 3D scenes. Unlike existing multi-modal LLMs that standardize visual input to a fixed resolution, Oryx offers an on-demand solution for seamless and efficient processing of visual inputs with arbitrary spatial sizes and temporal lengths. This is achieved through two core innovations: a pre-trained OryxViT model that encodes images at any resolution into LLM-friendly visual representations, and a dynamic compressor module that supports 1x to 16x compression on visual tokens by request. The authors demonstrate Oryx's superior performance on various multi-modal benchmarks, including image, video, and 3D understanding tasks, highlighting its effectiveness and versatility in handling diverse visual inputs.",
+    "tags": [
+      "Multi-Modal Large Language Models (MLLMs)",
+      "On-demand Visual Understanding",
+      "Spatial-Temporal Understanding",
+      "Arbitrary Resolution Processing",
+      "Dynamic Compression"
+    ]
+  },
+  {
+    "title": "Dynamic 2D Gaussians: Geometrically accurate radiance fields\nfor dynamic objects",
+    "description": "This research paper proposes a novel framework called Dynamic 2D Gaussians (D-2DGS) for reconstructing dynamic objects and extracting high-quality meshes from sparse 2D image input. The framework addresses the challenge of modeling complex, non-rigid motion in 4D object reconstruction by employing sparse-controlled points to guide the deformation of 2D Gaussian primitives. This approach ensures both temporal dynamics and geometric consistency, leading to accurate and smooth dynamic mesh sequences. Additionally, the paper introduces a depth filtering method using rendered RGB masks to eliminate geometry floaters, further enhancing the quality of the extracted mesh. Experiments demonstrate that D-2DGS achieves state-of-the-art reconstruction quality compared to other advanced representations.",
+    "tags": [
+      "Dynamic 2D Gaussians",
+      "Mesh Reconstruction",
+      "Sparse-Controlled Points",
+      "Depth Filtering",
+      "4D Object Reconstruction"
+    ]
+  },
+  {
+    "error": "Exceeded retry limit",
+    "document": "documents/2410.18975v2.pdf",
+    "title": "",
+    "description": "",
+    "tags": []
+  },
+  {
+    "title": "IN-CONTEXT LORA FOR DIFFUSION TRANSFORMERS",
+    "description": "This technical report introduces In-Context LoRA (IC-LORA), a novel framework for adapting text-to-image models to diverse generative tasks by leveraging their inherent in-context generation capabilities. IC-LORA simplifies the process by concatenating images and prompts, requiring only minimal fine-tuning with small datasets. This approach eliminates the need for task-specific architectures and extensive training, enabling high-quality image set generation across various tasks, including portrait photography, font design, home decoration, and visual effects.",
+    "tags": [
+      "In-context Learning",
+      "Diffusion Transformers",
+      "Image Generation",
+      "LoRA",
+      "Task-Agnostic Generation"
+    ]
+  },
+  {
+    "title": "CUT YOUR LOSSES IN LARGE-VOCABULARY LANGUAGE MODELS",
+    "description": "This document proposes Cut Cross-Entropy (CCE), a method to reduce the memory footprint of large language models (LLMs) during training. The authors point out that as LLMs grow in size, the memory consumed by the cross-entropy loss computation in the classifier head becomes disproportionately large. CCE addresses this by computing the cross-entropy loss without materializing the full logit matrix, instead calculating logits on-the-fly and leveraging sparsity in the softmax to skip negligible gradient computations. This results in a significant reduction in memory consumption, allowing for larger batch sizes and potentially enabling the training of even larger language models.",
+    "tags": [
+      "Large Language Models",
+      "Cross-Entropy Loss",
+      "Memory Footprint",
+      "Vocabulary Size",
+      "Training Efficiency"
+    ]
+  },
+  {
+    "error": "Exceeded retry limit",
+    "document": "documents/2411.09703v1.pdf",
+    "title": "",
+    "description": "",
+    "tags": []
+  }
+]
