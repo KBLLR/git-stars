@@ -165,17 +165,7 @@ function generateHTML(data) {
         <meta charset="UTF-8">
         <title>Your Starred Repositories</title>
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-        <style>
-          body { font-family: Arial, sans-serif; max-width: 1200px; margin: 0 auto; padding: 20px; }
-          .repo-card { border: 1px solid #ddd; padding: 20px; margin: 20px 0; border-radius: 8px; }
-          table { width: 100%; border-collapse: collapse; margin-top: 40px; }
-          th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
-          th { background-color: #f4f4f4; }
-          .filters { margin-bottom: 20px; }
-          .filters input, .filters select, .filters button { margin-right: 10px; padding: 8px; }
-          .metrics { display: flex; gap: 10px; margin-top: 10px; }
-          .metric { display: flex; align-items: center; gap: 5px; }
-        </style>
+        <link rel="stylesheet" href="main.css">
       </head>
       <body>
         <h1>Your Starred Repositories</h1>
@@ -207,9 +197,7 @@ function generateHTML(data) {
           <button onclick="applyFilters()">Apply Filters</button>
           <button onclick="toggleView()">Switch View</button>
         </div>
-        <div id="reposContainer">
-          ${reposHTML}
-        </div>
+        <div id="reposContainer">${reposHTML}</div>
         <script>
           const originalData = ${JSON.stringify(data)};
           let filteredData = originalData;
@@ -252,7 +240,7 @@ function generateHTML(data) {
               ...group,
               repos: group.repos.filter(repo =>
                 repo.stars >= minStars &&
-                (selectedLanguage === 'All' || group.language === selectedLanguage)
+                (selectedLanguage === 'All Languages' || group.language === selectedLanguage)
               )
             })).filter(group => group.repos.length > 0);
 

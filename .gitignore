@@ -29,7 +29,7 @@ yarn-error.log
 .cache/
 
 # Directories
-docs/
+data/
 node_modules/
 
 # npm lock file that will be generated in yarn projects

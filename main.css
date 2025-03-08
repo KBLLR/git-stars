@@ -8,86 +8,104 @@ body {
     padding: 0;
 }
 
-/* Repo Card Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 40px;
+}
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+th {
+    background-color: #f4f4f4;
+}
+
+/* Container for all repository cards */
+#reposContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+/* Individual repository card styling */
 .repo-card {
-    background-color: #fff;
+    background: #fff;
+    border: 1px solid #ddd;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin-bottom: 20px;
-    transition: box-shadow 0.3s ease; /* Subtle hover effect */
-    border: 1px solid #ddd; /* Optional subtle border */
+    width: 300px;
+    padding: 15px;
+    transition: transform 0.2s ease-in-out;
 }
 
+/* Lift effect on hover */
 .repo-card:hover {
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
 }
 
-.repo-card h3 {
-    margin-top: 0;
-    margin-bottom: 10px;
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #2c3e50; /* A darker, more professional color */
-}
-
+/* Title styling */
 .repo-card h3 a {
-    color: inherit; /* Inherit color from h3 */
-    text-decoration: none; /* Remove underline */
-    transition: color 0.3s ease;
+    text-decoration: none;
+    color: #333;
+    font-size: 1.25em;
 }
 
-.repo-card h3 a:hover {
-    color: #3498db; /* A highlight color on hover */
-}
-
+/* Paragraph styling for author and description */
 .repo-card p {
-    margin-bottom: 8px;
-}
-
-.repo-card strong {
-    font-weight: 500; /* Slightly lighter bold */
-    color: #777;
-    margin-right: 5px; /*Add spacing after strong tag*/
-}
-
-.repo-card .metrics {
-    display: flex;
-    flex-wrap: wrap; /* Allow metrics to wrap on smaller screens */
-    gap: 15px; /* Consistent spacing between metrics */
-    margin-top: 15px;
-    margin-bottom: 15px;
-}
-
-.repo-card .metric {
-    display: flex;
-    align-items: center;
-    font-size: 0.9rem;
+    font-size: 0.9em;
     color: #555;
+    line-height: 1.5;
 }
 
-.repo-card .metric i {
-    margin-right: 5px;
-    color: #3498db; /* Icon color */
-}
-
-.repo-card .languages {
-    font-size: 0.85rem;
-    color: #888;
+/* Metrics section styling */
+.metrics {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
     margin-bottom: 10px;
-    border-top: 1px solid #eee; /* Subtle separator */
-    padding-top: 10px;
 }
 
-.repo-card .topics {
-    font-size: 0.8rem;
+.metric {
+    background: #eee;
+    padding: 5px 8px;
+    border-radius: 4px;
+    font-size: 0.85em;
     color: #666;
-    word-spacing: 5px; /* Adjust as needed */
 }
 
-.repo-card .topics::before {
-    content: "#";
-    margin-right: 5px;
+/* Languages section styling */
+.languages {
+    font-size: 0.85em;
+    color: #666;
+    margin-top: 10px; /* Adds margin above the languages section */
+    margin-bottom: 10px; /* Keeps the existing bottom margin */
+    border-top: 1px solid #ddd; /* Adds the top stroke */
+    padding-top: 10px; /* Adds space between the border and the text */
+}
+
+/* Topics section styling */
+.topics {
+    font-size: 0.85em;
+    color: #666;
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+    text-align: center;
+}
+
+.filters {
+    margin-bottom: 20px;
+}
+.filters input,
+.filters select,
+.filters button {
+    margin-right: 10px;
+    padding: 8px;
 }
 
 /* Filter Styles */
