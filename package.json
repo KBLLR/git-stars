@@ -2,11 +2,12 @@
   "name": "git-stars",
   "version": "1.0.0",
   "description": "I created this list using `stargazed`, a Node.js package that generates this markdown file from my starred repositories, helping me track and organize my discoveries. The automation workflow is handled by GitHub Actions, ensuring the list is always up to date.",
-  "main": "index.js",
+  "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "node generator.js",
-    "build-local": "node stargazed.js"
+    "build-local": "node stargazed.js",
+    "serve": "browser-sync start --server --files \"*.html, *.css, data.json\""
   },
   "repository": {
     "type": "git",
@@ -34,5 +35,8 @@
   "bugs": {
     "url": "https://github.com/KBLLR/git-stars/issues"
   },
-  "homepage": "https://github.com/KBLLR/git-stars#readme"
+  "homepage": "https://github.com/KBLLR/git-stars#readme",
+  "devDependencies": {
+    "browser-sync": "^3.0.3"
+  }
 }

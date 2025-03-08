@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>GitHub Starred Repositories</title>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        />
+
+        <link rel="stylesheet" href="main.css" />
+
+        <style>
+            /* === GENERAL LAYOUT === */
+            body {
+                font-family: "Inter", sans-serif;
+                background: #0f0f0f;
+                color: white;
+                overflow: hidden;
+            }
+
+            /* === TOP NAVIGATION BAR === */
+            .top-bar {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 10px 20px;
+                background: rgba(20, 20, 20, 0.8);
+                backdrop-filter: blur(10px);
+                z-index: 1000;
+            }
+            .top-bar button {
+                background: transparent;
+                border: none;
+                color: white;
+                font-size: 1.2rem;
+                cursor: pointer;
+                margin: 0 10px;
+            }
+
+            /* === LEFT FILTER PANEL === */
+            .sidebar {
+                position: fixed;
+                left: 0;
+                top: 50px;
+                width: 250px;
+                height: calc(100vh - 50px);
+                background: rgba(30, 30, 30, 0.9);
+                backdrop-filter: blur(12px);
+                padding: 15px;
+                overflow-y: auto;
+                z-index: 999;
+                transition: transform 0.3s ease-in-out;
+            }
+
+            .filter-group {
+                margin-bottom: 15px;
+            }
+
+            /* === REPO CONTAINER === */
+            #reposContainer {
+                margin-top: 60px;
+                padding-left: 270px;
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 16px;
+            }
+
+            /* === FLOATING AI PANEL === */
+            .ai-panel {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                width: 80px;
+                height: 80px;
+                background: rgba(50, 50, 50, 0.9);
+                backdrop-filter: blur(12px);
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+                transition: all 0.3s ease-in-out;
+            }
+
+            .ai-panel.expanded {
+                width: 300px;
+                height: 80px;
+                border-radius: 20px;
+                display: flex;
+                gap: 10px;
+                justify-content: space-around;
+            }
+
+            .ai-panel button {
+                background: transparent;
+                border: none;
+                color: white;
+                font-size: 1.2rem;
+                cursor: pointer;
+            }
+
+            .loading {
+                display: none;
+                text-align: center;
+                font-size: 1.2rem;
+                padding: 10px;
+                color: white;
+            }
+
+            #githubSearchPrompt {
+                display: none;
+                background: rgba(255, 255, 0, 0.2);
+                color: yellow;
+                padding: 10px;
+                text-align: center;
+                cursor: pointer;
+            }
+
+            /* === MOBILE RESPONSIVENESS === */
+            @media (max-width: 768px) {
+                .sidebar {
+                    transform: translateX(-100%);
+                }
+                #reposContainer {
+                    padding-left: 0;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <!-- TOP BAR WITH TOGGLES -->
+        <button id="darkModeToggle">
+            <i class="fas fa-moon"></i> Dark Mode
+        </button>
+        <button id="toggleView">
+            <i class="fas fa-th-large"></i> Grid/List
+        </button>
+        <button id="refreshData">
+            <i class="fas fa-sync-alt"></i> Refresh
+        </button>
+
+        <!-- FILTER SIDEBAR -->
+        <div class="sidebar">
+            <h3>Filters</h3>
+
+            <div class="filter-group">
+                <label
+                    >Search:
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search repos..."
+                /></label>
+                <button id="githubSearchBtn">🔍 Search on GitHub</button>
+            </div>
+
+            <div class="filter-group">
+                <label
+                    >Language:
+                    <select id="languageFilter">
+                        <option value="all">All Languages</option>
+                    </select>
+                </label>
+            </div>
+
+            <div class="filter-group">
+                <label
+                    >Stars:
+                    <input
+                        type="number"
+                        id="starsFilter"
+                        placeholder="Min Stars"
+                /></label>
+            </div>
+
+            <div class="filter-group">
+                <h4>Sort By</h4>
+                <select id="sortBy">
+                    <option value="stars-desc">Most Stars</option>
+                    <option value="stars-asc">Least Stars</option>
+                    <option value="name-asc">Name (A-Z)</option>
+                    <option value="name-desc">Name (Z-A)</option>
+                    <option value="updated-desc">Recently Updated</option>
+                    <option value="updated-asc">Oldest Updated</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <h4>Topics</h4>
+                <div id="topicContainer"></div>
+            </div>
+        </div>
+
+        <!-- GITHUB SEARCH PROMPT -->
+        <div id="githubSearchPrompt" onclick="performGithubSearch()">
+            No local results found. Click to search GitHub globally.
+        </div>
+
+        <!-- LOADING INDICATOR -->
+        <div class="loading" id="loadingIndicator">Loading...</div>
+
+        <!-- REPOSITORY GRID -->
+        <div id="reposContainer">{{reposContainer}}</div>
+
+        <!-- GITHUB SEARCH RESULTS -->
+        <div id="githubResultsContainer"></div>
+
+        <!-- FLOATING AI PANEL -->
+        <div id="aiPanel" class="ai-panel">
+            <button id="expandAiPanel">
+                <i class="fas fa-robot"></i>
+            </button>
+            <button id="searchGitHub">
+                <i class="fas fa-search"></i>
+            </button>
+            <button id="voiceAssistant">
+                <i class="fas fa-microphone"></i>
+            </button>
+        </div>
+
+        <!-- REPOSITORY GRID -->
+        <div id="reposContainer">{{reposContainer}}</div>
+
+        <script src="main.js"></script>
+    </body>
+</html>
