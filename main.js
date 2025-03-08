@@ -1,201 +1,156 @@
 document.addEventListener("DOMContentLoaded", async () => {
-  let originalData = null;
-  let filteredData = null;
-  let githubSearchResults = [];
+  let originalData = [];
 
-  // Fetch and initialize data
+  const searchInput = document.getElementById("searchInput");
+  const languageFilter = document.getElementById("languageFilter");
+  const starsFilter = document.getElementById("starsFilter");
+  const sortBy = document.getElementById("sortBy");
+  const darkModeToggle = document.getElementById("darkModeToggle");
+  const toggleView = document.getElementById("toggleView");
+  const reposContainer = document.getElementById("reposContainer");
+
+  let currentView = "grid"; // Possible views: grid, list, graph
+
+  // Fetch JSON data
   async function fetchData() {
     try {
       const response = await fetch("data.json");
       const data = await response.json();
       originalData = data.repos;
-      filteredData = originalData;
-      setupFilters();
-      setupSearch();
-      updateDisplay(filteredData);
+      populateFilters(originalData);
+      updateDisplay(originalData);
     } catch (error) {
       console.error("Failed to fetch data:", error);
     }
   }
 
-  // Setup filters
-  function setupFilters() {
-    setupLanguageFilter();
-    setupStarsFilter();
-    setupTopicFilter();
-    setupSorting();
-  }
-
-  function setupLanguageFilter() {
-    const languageFilter = document.getElementById("languageFilter");
-    const languages = new Set(originalData.map((repo) => repo.language));
-
-    languageFilter.innerHTML = `<option value="all">All Languages</option>`;
-    languages.forEach((language) => {
-      if (language) {
-        const option = document.createElement("option");
-        option.value = language;
-        option.textContent = language;
-        languageFilter.appendChild(option);
-      }
-    });
-
-    languageFilter.addEventListener("change", applyFilters);
-  }
-
-  function setupStarsFilter() {
-    document
-      .getElementById("starsFilter")
-      .addEventListener("input", applyFilters);
-  }
-
-  function setupTopicFilter() {
-    const topicContainer = document.getElementById("topicContainer");
-    const topicCheckboxes = topicContainer.querySelectorAll(".topic-checkbox");
-
-    topicCheckboxes.forEach((checkbox) => {
-      checkbox.addEventListener("change", applyFilters);
+  // Populate language filter options
+  function populateFilters(data) {
+    const languages = [
+      ...new Set(data.map((repo) => repo.language).filter(Boolean)),
+    ];
+    languages.forEach((lang) => {
+      const option = document.createElement("option");
+      option.value = lang;
+      option.textContent = lang;
+      languageFilter.appendChild(option);
     });
   }
 
-  function setupSorting() {
-    document.getElementById("sortBy").addEventListener("change", applyFilters);
-  }
-
-  function setupSearch() {
-    document
-      .getElementById("searchInput")
-      .addEventListener("input", debounce(applyFilters, 300));
-    document
-      .getElementById("githubSearchBtn")
-      .addEventListener("click", performGithubSearch);
-  }
-
+  // Apply filters and sorting
   function applyFilters() {
-    const language = document.getElementById("languageFilter").value;
-    const minStars =
-      parseInt(document.getElementById("starsFilter").value) || 0;
-    const searchQuery = document
-      .getElementById("searchInput")
-      .value.toLowerCase();
-    const selectedTopics = Array.from(
-      document.querySelectorAll(".topic-checkbox:checked"),
-    ).map((checkbox) => checkbox.value);
+    let filteredData = [...originalData];
 
-    filteredData = originalData.filter((repo) => {
-      const matchesLanguage = language === "all" || repo.language === language;
-      const matchesStars = repo.stars >= minStars;
-      const matchesSearch =
-        repo.name.toLowerCase().includes(searchQuery) ||
-        repo.description.toLowerCase().includes(searchQuery);
-      const matchesTopics =
-        selectedTopics.length === 0 ||
-        selectedTopics.some((topic) => repo.topics.includes(topic));
+    const searchQuery = searchInput.value.toLowerCase();
+    const selectedLanguage = languageFilter.value;
+    const minStars = parseInt(starsFilter.value) || 0;
+    const sortValue = sortBy.value;
 
-      return matchesLanguage && matchesStars && matchesSearch && matchesTopics;
-    });
+    if (searchQuery) {
+      filteredData = filteredData.filter((repo) =>
+        repo.name.toLowerCase().includes(searchQuery),
+      );
+    }
 
-    applySorting();
+    if (selectedLanguage !== "all") {
+      filteredData = filteredData.filter(
+        (repo) => repo.language === selectedLanguage,
+      );
+    }
+
+    filteredData = filteredData.filter((repo) => repo.stars >= minStars);
+
+    switch (sortValue) {
+      case "stars-desc":
+        filteredData.sort((a, b) => b.stars - a.stars);
+        break;
+      case "stars-asc":
+        filteredData.sort((a, b) => a.stars - b.stars);
+        break;
+      case "name-asc":
+        filteredData.sort((a, b) => a.name.localeCompare(b.name));
+        break;
+      case "name-desc":
+        filteredData.sort((a, b) => b.name.localeCompare(a.name));
+        break;
+      case "updated-desc":
+        filteredData.sort(
+          (a, b) => new Date(b.last_updated) - new Date(a.last_updated),
+        );
+        break;
+      case "updated-asc":
+        filteredData.sort(
+          (a, b) => new Date(a.last_updated) - new Date(b.last_updated),
+        );
+        break;
+    }
+
     updateDisplay(filteredData);
-
-    // If no results found, suggest GitHub global search
-    if (filteredData.length === 0 && searchQuery.length > 2) {
-      document.getElementById("githubSearchPrompt").style.display = "block";
-    } else {
-      document.getElementById("githubSearchPrompt").style.display = "none";
-    }
   }
 
-  function applySorting() {
-    const sortBy = document.getElementById("sortBy").value;
-
-    filteredData.sort((a, b) => {
-      if (sortBy === "stars-desc") return b.stars - a.stars;
-      if (sortBy === "stars-asc") return a.stars - b.stars;
-      if (sortBy === "name-asc") return a.name.localeCompare(b.name);
-      if (sortBy === "name-desc") return b.name.localeCompare(a.name);
-      if (sortBy === "updated-desc")
-        return new Date(b.last_updated) - new Date(a.last_updated);
-      if (sortBy === "updated-asc")
-        return new Date(a.last_updated) - new Date(b.last_updated);
-      return 0;
-    });
-  }
-
+  // Update display with repositories
   function updateDisplay(data) {
-    const container = document.getElementById("reposContainer");
-    container.innerHTML = data
-      .map(
-        (repo) => `
-                <div class="repo-card">
-                    <h3><a href="${repo.url}" target="_blank">${repo.name}</a></h3>
-                    <p>${repo.description}</p>
-                    <p><strong>Stars:</strong> ${repo.stars}</p>
-                    <p><strong>Language:</strong> ${repo.language}</p>
-                    <p><strong>Topics:</strong> ${repo.topics.join(", ") || "None"}</p>
-                </div>
-            `,
-      )
-      .join("");
-  }
-
-  // Perform GitHub Global Search
-  async function performGithubSearch() {
-    const searchQuery = document.getElementById("searchInput").value.trim();
-    if (!searchQuery) return;
-
-    const url = `https://api.github.com/search/repositories?q=${encodeURIComponent(searchQuery)}&sort=stars&order=desc`;
-
-    try {
-      const response = await fetch(url, {
-        headers: {
-          Authorization: `Bearer YOUR_GITHUB_TOKEN`, // Replace with a valid GitHub token
-        },
-      });
-      const data = await response.json();
-      githubSearchResults = data.items || [];
-      displayGithubResults();
-    } catch (error) {
-      console.error("GitHub Search Failed:", error);
+    if (currentView === "graph") {
+      renderGraphView(data);
+      return;
     }
-  }
 
-  // Display GitHub Search Results
-  function displayGithubResults() {
-    const container = document.getElementById("githubResultsContainer");
-    container.innerHTML = githubSearchResults
+    const reposContainer = document.getElementById("reposContainer");
+    reposContainer.innerHTML = data
       .map(
         (repo) => `
-                <div class="repo-card github-result">
-                    <h3><a href="${repo.html_url}" target="_blank">${repo.name}</a></h3>
-                    <p>${repo.description}</p>
-                    <p><strong>Stars:</strong> ${repo.stargazers_count}</p>
-                    <p><strong>Language:</strong> ${repo.language || "Unknown"}</p>
-                </div>
-            `,
+          <div class="repo-card">
+            <h3><a href="${repo.url}" target="_blank">${repo.name} <i class="fas fa-external-link-alt"></i></a></h3>
+            <p>${repo.description}</p>
+            <p><i class="fas fa-star"></i> <strong>Stars:</strong> ${repo.stars}</p>
+            <p><i class="fas fa-code"></i> <strong>Language:</strong> ${repo.language}</p>
+            <p><i class="fas fa-tags"></i> <strong>Topics:</strong> ${repo.topics.join(", ") || "None"}</p>
+            <p><i class="fas fa-scroll"></i> <strong>License:</strong> ${repo.license}</p>
+            <p><i class="fas fa-clock"></i> <strong>Last Updated:</strong> ${new Date(repo.last_updated).toLocaleDateString()}</p>
+          </div>
+        `,
       )
       .join("");
   }
-
-  // Toggle grid/list view
-  document.getElementById("toggleView").addEventListener("click", () => {
-    document.getElementById("reposContainer").classList.toggle("list-view");
-  });
 
   // Toggle dark mode
-  document.getElementById("darkModeToggle").addEventListener("click", () => {
+  darkModeToggle.addEventListener("click", () => {
     document.body.classList.toggle("dark-mode");
   });
 
-  setInterval(fetchData, 300000);
+  // Toggle view mode
+  toggleView.addEventListener("click", () => {
+    if (currentView === "grid") {
+      reposContainer.classList.add("list-view");
+      currentView = "list";
+    } else if (currentView === "list") {
+      currentView = "graph";
+      reposContainer.style.display = "none";
+      document.getElementById("graphView").style.display = "block";
+      renderGraphView();
+    } else {
+      document.getElementById("graphView").style.display = "none";
+      reposContainer.style.display = "grid";
+      reposContainer.classList.toggle("list-view");
+      currentView = reposContainer.classList.contains("list-view")
+        ? "list"
+        : "grid";
+    }
+  });
+
+  // Render graph view
+  function renderGraphView(data = originalData) {
+    // Implement your graph visualization logic here, using p5.js or another library.
+    reposContainer.style.display = "none";
+    document.getElementById("graphView").style.display = "block";
+    // Example: Initialize p5.js and render graph
+  }
+
+  // Event listeners for filters
+  searchInput.addEventListener("input", applyFilters);
+  languageFilter.addEventListener("change", applyFilters);
+  starsFilter.addEventListener("input", applyFilters);
+  sortBy.addEventListener("change", applyFilters);
+
   fetchData();
 });
-
-// Debounce function
-function debounce(func, delay) {
-  let timeout;
-  return function () {
-    clearTimeout(timeout);
-    timeout = setTimeout(() => func.apply(this, arguments), delay);
-  };
-}
