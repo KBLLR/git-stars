@@ -1,24 +1,71 @@
-/* General Styles */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
-    padding-top: 60px; /* space for header */
+/* === GLOBAL STYLES === */
+:root {
+    --background-color: #0f0f0f;
+    --text-color: white;
+    --primary-accent: #4caf50;
+    --secondary-accent: #ffeb3b;
+    --card-bg: rgba(30, 30, 30, 0.9);
+    --border-radius: 8px;
+    --transition-speed: 0.3s;
 }
 
-/* Header */
-.main-header {
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    font-size: 20px;
+    font-family: "Segoe UI", "Roboto Mono", sans-serif;
+    background-color: #0f0f0f;
+    color: #ffffff;
+    width: 100vw;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    background: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    overflow: hidden;
+}
+
+button {
+    background: var(--primary-accent);
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+button:hover {
+    background: var(--secondary-accent);
+}
+
+button i {
+    font-size: 1.2rem;
+}
+
+/* === NAVIGATION BAR === */
+.top-bar {
     position: fixed;
     top: 0;
     left: 0;
-    right: 0;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
+<<<<<<< HEAD
     background: rgba(255, 255, 255, 0.6);
     backdrop-filter: blur(10px);
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -114,12 +161,50 @@ body {
     display: flex;
     flex-direction: column;
     transition: transform 0.2s ease-in-out;
+=======
+    background: rgba(20, 20, 20, 0.8);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+}
+
+.top-bar button {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+/* === SIDEBAR === */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 50px;
+    width: 250px;
+    height: calc(100vh - 50px);
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    padding: 15px;
+    overflow-y: auto;
+    z-index: 999;
+}
+
+/* === REPO CARDS === */
+.repo-card {
+    background: var(--card-bg);
+    padding: 15px;
+    border-radius: var(--border-radius);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform var(--transition-speed);
+>>>>>>> c35a3ee (Included new generator)
 }
 
 .repo-card:hover {
     transform: translateY(-5px);
 }
 
+<<<<<<< HEAD
 .repo-card h3 {
     margin: 0 0 10px;
     font-size: 1.25em;
@@ -193,6 +278,166 @@ body {
     .filters input,
     .filters select {
         width: 100%;
+=======
+/* === LOADING INDICATOR === */
+.loading {
+    text-align: center;
+    font-size: 1.2rem;
+    padding: 10px;
+    display: none;
+}
+
+/* === AI PANEL === */
+.ai-panel {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 80px;
+    height: 80px;
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all var(--transition-speed);
+}
+
+.ai-panel.expanded {
+    width: 300px;
+    height: 80px;
+    border-radius: 20px;
+    display: flex;
+    gap: 10px;
+    justify-content: space-around;
+}
+
+/* === RESPONSIVENESS === */
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+    }
+    #reposContainer {
+        padding-left: 0;
+    }
+}
+
+/* Search Bar */
+.search-bar {
+    position: sticky;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 12px 20px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 12px;
+    background: transparent;
+    color: #ffffff;
+    font-size: 1rem;
+    outline: none;
+}
+.search-bar input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* Filters Section */
+.filters {
+    position: sticky;
+    top: 60px;
+    left: 24px;
+    z-index: 10;
+    display: flex;
+    gap: 15px;
+}
+
+.filters select {
+    padding: 10px 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    font-size: 1em;
+    cursor: pointer;
+    backdrop-filter: blur(5px);
+    transition:
+        border-color 0.3s,
+        background-color 0.3s;
+}
+
+.filters select:focus {
+    border-color: #ffcc00;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Repo Container */
+.repos-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    padding: 20px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* List View */
+.repos-container.list-view {
+    display: block;
+}
+
+/* Repo Cards */
+.repo-card {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    border-radius: 12px;
+    transition: all 0.3s ease-in-out;
+}
+
+.repo-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+}
+
+/* Dark Mode */
+body.dark-mode {
+    background: #ffffff;
+    color: #0f0f0f;
+}
+
+body.dark-mode .repo-card {
+    background: rgba(0, 0, 0, 0.1);
+    color: #333;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1200px) {
+    .repos-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .repos-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .repos-container {
+        grid-template-columns: 1fr;
+>>>>>>> c35a3ee (Included new generator)
     }
 }
 
