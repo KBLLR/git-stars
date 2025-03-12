@@ -1,181 +1,87 @@
-const fs = require("node:fs");
-const path = require("node:path");
-const axios = require("axios");
-const { Octokit } = require("@octokit/rest");
-const { Command } = require("commander");
+import fs from "node:fs";
+import dotenv from "dotenv";
+import { Octokit } from "@octokit/rest";
+import { Command } from "commander";
+
+dotenv.config();
+
 const program = new Command();
-const { template } = require("lodash");
-const { marked } = require("marked");
 
-// Configure program options
 program
-  .option("-u, --username <username>", "GitHub username", "")
-  .option("-t, --token <token>", "GitHub token", "")
-  .option("-r, --repository <repository>", "repository name", "git-stars")
-  .option("-s, --sort", "sort by language", true)
-  .option("-m, --message <message>", "commit message", "Update stars list")
-  .option("-w, --workflow", "Setup GitHub Actions for Daily AutoUpdate", true)
+  .option(
+    "-u, --username <username>",
+    "GitHub username",
+    process.env.GITHUB_USERNAME,
+  )
+  .option("-t, --token <token>", "GitHub token", process.env.GITHUB_TOKEN)
+  .option("-m, --message <message>", "Commit message", "Update starred repos")
+  .parse();
 
-  .version("1.0.1")
-  .parse(process.argv);
-const options = program.opts();
+const { username, token, message } = program.opts();
 
-const githubUsername = options.username;
-const githubRepo = options.repository;
-const githubToken = options.token;
-const sortByLanguage = options.sort;
-const commitMessage = options.message;
-const createWorkflow = options.workflow;
-
-if (!githubUsername || !githubRepo || !githubToken) {
-  console.error("Please provide all required parameters");
+if (!username || !token) {
+  console.error(
+    "⚠️ Missing required environment variables (GITHUB_USERNAME or GITHUB_TOKEN).",
+  );
   process.exit(1);
 }
 
-const octokit = new Octokit({
-  auth: githubToken,
-  request: {
-    fetch: axios,
-  },
-});
+const octokit = new Octokit({ auth: token });
 
 async function getStarredRepos(username) {
-  try {
-    const repos = [];
-    let page = 1;
-    while (true) {
-      const response = await octokit.rest.activity.listReposStarredByUser({
-        username: username,
-        per_page: 100,
-        page: page,
-      });
-      if (response.data.length === 0) {
-        break;
-      }
-      repos.push(...response.data);
-      page++;
-    }
-    return repos;
-  } catch (err) {
-    console.error("Error fetching starred repos:", err);
-    process.exit(1);
+  const repos = [];
+  let page = 1;
+
+  while (true) {
+    const { data } = await octokit.activity.listReposStarredByUser({
+      username,
+      per_page: 100,
+      page,
+    });
+    if (data.length === 0) break;
+    repos.push(...data);
+    page++;
   }
+
+  return repos;
 }
 
-async function createReadme() {
+async function generate() {
   try {
-    console.log("✔ Fetched stargazed items");
-    const repos = await getStarredRepos(githubUsername);
-    let sortedRepos = repos;
+    console.log(`🔍 Fetching starred repositories for ${username}...`);
+    const starredRepos = await getStarredRepos(username);
 
-    if (sortByLanguage) {
-      sortedRepos = [...repos].sort((a, b) => {
-        const langA = a.language || "Others";
-        const langB = b.language || "Others";
-        return langA.localeCompare(langB);
-      });
-    }
+    const outputJsonData = starredRepos.map((repo) => ({
+      name: repo.name || "Unknown Repo",
+      description: repo.description || "No description",
+      author: repo.owner?.login || "Unknown Author",
+      stars: repo.stargazers_count || 0,
+      url: repo.html_url || "#",
+      date: new Date(repo.created_at || Date.now()).toLocaleDateString(),
+      languages: repo.language ? [{ language: repo.language }] : [],
+      topics: repo.topics || [],
+      license: repo.license?.spdx_id || "None",
+      forks: repo.forks_count || 0,
+      open_issues: repo.open_issues_count || 0,
+      last_updated: new Date(repo.pushed_at || Date.now()).toLocaleDateString(),
+    }));
 
-    const reposByLanguage = sortedRepos.reduce((acc, repo) => {
-      const language = repo.language || "Others";
-      if (!acc[language]) {
-        acc[language] = [];
-      }
-      acc[language].push({
-        name: repo.name,
-        description: repo.description || "",
-        author: repo.owner.login,
-        stars: repo.stargazers_count,
-        url: repo.html_url,
-        date: new Date(repo.starred_at).toLocaleDateString(),
-      });
-      return acc;
-    }, {});
+    fs.writeFileSync("data.json", JSON.stringify(outputJsonData, null, 2));
 
-    let outputJsonData = [];
-    let readmeContent = `
+    const readmeContent = `
 # My GitHub Stars
 
-Embark on a journey through my digital bookmarks—a collection of repositories that have expanded my curiosity, fueled my projects, and broadened my understanding of the Tech I love. This isn't just a list; it's a reflection of my ongoing exploration into the diverse landscapes of technology.
+Last updated: ${new Date().toLocaleDateString()}
 
-From innovative tools and libraries to cutting-edge research and design, this collection highlights the projects I've personally found intriguing and valuable. These projects are not just about lines of code, but represent the collective knowledge, hard work, and creativity of the open-source community.
-
-I created this list using \`stargazed\`, a Node.js package that generates this markdown file from my starred repositories, helping me track and organize my discoveries. The automation workflow is handled by GitHub Actions, ensuring the list is always up to date.
-
-Whether you're a fellow developer, a tech enthusiast, or simply curious, I hope you find something here that inspires you as well. Thank you to the open-source community for your invaluable contributions. This list wouldn't exist without your hard work and passion!
-
-Dive in, explore, and let these projects be a launchpad for your own discoveries.
-
-Generated by stargazed
-`;
-    for (const language of Object.keys(reposByLanguage)) {
-      const repos = reposByLanguage[language];
-      outputJsonData.push({
-        language,
-        repos,
-      });
-      readmeContent += `
-
-## ${language}
-|  | Name 	|  Description 	| Author  	|  Stars 	|  Date |
-|---	|:---|:---|:---|---:|---:|
+Automatically generated by [stargazed](https://github.com/KBLLR/git-stars).
 `;
 
-      for (let i = 0; i < repos.length; i++) {
-        const repo = repos[i];
-        readmeContent += `| ${i + 1} |  [${repo.name}](${repo.url}) | ${repo.description} | ${repo.author} | ${repo.stars} | ${repo.date} |
-`;
-      }
-    }
-
-    readmeContent += `
-
-Generated by stargazed
-`;
-    console.log("✔ README template loaded");
     fs.writeFileSync("README.md", readmeContent);
-    console.log("✔ README created locally");
 
-    const outputJson = JSON.stringify(outputJsonData, null, 2);
-
-    fs.writeFileSync("data.json", outputJson);
-
-    if (createWorkflow) {
-      console.log("ℹ Repository found!");
-      const workflowFile = `
-      name: Stargazed Auto Update
-
-      on:
-        schedule:
-          - cron: '0 0 * * *'  # Runs daily at midnight UTC
-        workflow_dispatch:
-
-      jobs:
-        update-stars:
-          runs-on: ubuntu-latest
-          steps:
-            - uses: actions/checkout@v4
-            - uses: actions/setup-node@v4
-              with:
-                node-version: '18'
-            - name: Update stars
-              run: npx stargazed -u "\${{ github.repository_owner }}" -r "\${{ github.event.repository.name }}" -t "\${{ secrets.GITHUB_TOKEN }}" -m "Update stars list" -s
-            - name: Commit changes
-              uses: stefanzweifel/git-auto-commit-action@v5
-              with:
-                commit_message: 'Update stars list'
-                push_options: '--force'
-                repository:  https://\${{ github.repository_owner }}:\${{ secrets.GITHUB_TOKEN }}@github.com/\${{ github.repository_owner }}/\${{ github.event.repository.name }}.git
-
-      `;
-
-      console.log("✔ workflow.yml loaded");
-      fs.writeFileSync(".github/workflows/stargazed.yml", workflowFile);
-    }
+    console.log("✅ README.md and data.json generated successfully!");
   } catch (error) {
-    console.error("Error in createReadme:", error);
-    process.exit(1);
+    console.error("⚠️ Error:", error);
   }
 }
 
-createReadme();
+generate();
