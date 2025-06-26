@@ -1,0 +1,7 @@
+{
+  "venv": "/paper_processor",
+  "venvPath": "/Users/davidcaballero/anaconda3/envs",
+  "pythonVersion": "3.10",
+  "typeCheckingMode": "basic",
+  "reportAttributeAccessIssue": false
+}
