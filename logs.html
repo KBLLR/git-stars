@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Action Logs</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <h1 id="pageTitle">Logs</h1>
+    <div id="logsContainer" class="logs-list"></div>
+    <script type="module">
+        function loadLogs() {
+            const logs = JSON.parse(localStorage.getItem('actionLogs') || '[]');
+            logs.sort((a,b) => new Date(b.time) - new Date(a.time));
+            const rows = logs.map(l => `
+                <tr>
+                    <td>${new Date(l.time).toLocaleString()}</td>
+                    <td>${l.type}</td>
+                    <td>${l.details}</td>
+                    <td>${l.tags || ''}</td>
+                    <td>${l.rating || ''}</td>
+                </tr>
+            `).join('');
+            document.getElementById('logsContainer').innerHTML = `
+                <table class="log-table">
+                    <thead>
+                        <tr><th>Time</th><th>Action</th><th>Data</th><th>Tags</th><th>Rating</th></tr>
+                    </thead>
+                    <tbody>${rows}</tbody>
+                </table>`;
+        }
+        loadLogs();
+    </script>
+</body>
+</html>

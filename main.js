@@ -3,6 +3,10 @@ const searchInput = document.getElementById('searchInput');
 const languageFilter = document.getElementById('languageFilter');
 const tagFilter = document.getElementById('tagFilter');
 const sortBy = document.getElementById('sortBy');
+const summarizeIcon = document.getElementById('summarizeIcon');
+const tagIcon = document.getElementById('tagIcon');
+const rateIcon = document.getElementById('rateIcon');
+const logsIcon = document.getElementById('logsIcon');
 
 let repos = [];
 let languages = new Set();
@@ -88,3 +92,30 @@ searchInput.addEventListener('input', render);
 languageFilter.addEventListener('change', render);
 tagFilter.addEventListener('change', render);
 sortBy.addEventListener('change', render);
+
+function logAction(type, details, tags = '', rating = '') {
+  const logs = JSON.parse(localStorage.getItem('actionLogs') || '[]');
+  logs.push({ time: new Date().toISOString(), type, details, tags, rating });
+  localStorage.setItem('actionLogs', JSON.stringify(logs));
+}
+
+// Placeholder AI actions
+summarizeIcon.addEventListener('click', () => {
+  alert('Summarizing repository...');
+  logAction('summarize', 'repo');
+});
+
+tagIcon.addEventListener('click', () => {
+  alert('Generating tags...');
+  logAction('tag', 'repo', 'example');
+});
+
+rateIcon.addEventListener('click', () => {
+  alert('Rating repository...');
+  const rating = Math.floor(Math.random() * 5) + 1;
+  logAction('rate', 'repo', '', rating);
+});
+
+logsIcon.addEventListener('click', () => {
+  logAction('open-logs', 'page');
+});
