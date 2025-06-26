@@ -111,10 +111,10 @@ function repoCard(repo) {
     <p><strong>Author:</strong> ${escapeHtml(repo.author)}</p>
     <p><strong>Description:</strong> ${escapeHtml(repo.description)}</p>
     <div class="metrics">
-      <div class="metric"><i class="fa fa-star"></i> ${repo.stars}</div>
-      <div class="metric"><i class="fa fa-code-branch"></i> ${repo.forks}</div>
-      <div class="metric"><i class="fa fa-bug"></i> ${repo.open_issues}</div>
-      <div class="metric"><i class="fa fa-calendar"></i> ${repo.last_updated}</div>
+      <div class="metric"><i class="fa fa-star" title="Stars"></i> ${repo.stars}</div>
+      <div class="metric"><i class="fa fa-code-branch" title="Forks"></i> ${repo.forks}</div>
+      <div class="metric"><i class="fa fa-bug" title="Open Issues"></i> ${repo.open_issues}</div>
+      <div class="metric"><i class="fa fa-calendar" title="Last Updated"></i> ${repo.last_updated}</div>
     </div>
     <div class="languages">${langs}</div>
     <div class="topics">${escapeHtml(topics) || 'None'}</div>
