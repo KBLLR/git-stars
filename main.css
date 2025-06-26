@@ -6,6 +6,7 @@ body {
     line-height: 1.6;
     margin: 0;
     padding: 0;
+    padding-top: 60px; /* space for header */
 }
 
 /* Header */
@@ -184,4 +185,17 @@ body {
     .filters select {
         width: 100%;
     }
+}
+
+/* Logs Page */
+.log-entry {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 10px;
+}
+
+.logs-header {
+    padding: 20px;
 }

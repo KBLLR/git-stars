@@ -12,18 +12,23 @@ let tags = new Set();
 
 fetch('data.json')
   .then(r => r.json())
-  .then(data => {
-    repos = data;
-    repoCountBadge.textContent = repos.length;
-    const logs = JSON.parse(localStorage.getItem('logs') || '[]');
-    logsCountBadge.textContent = logs.length;
-    repos.forEach(r => {
-      (r.languages || []).forEach(l => languages.add(l.language));
-      (r.topics || []).forEach(t => tags.add(t));
-    });
-    populateFilters();
-    render();
+.then(data => {
+  repos = data;
+
+  // Update count badges
+  if (repoCountBadge) repoCountBadge.textContent = repos.length;
+
+  const logs = JSON.parse(localStorage.getItem('logs') || '[]');
+  if (logsCountBadge) logsCountBadge.textContent = logs.length;
+
+  repos.forEach(r => {
+    (r.languages || []).forEach(l => languages.add(l.language));
+    (r.topics || []).forEach(t => tags.add(t));
   });
+
+  populateFilters();
+  render();
+});
 
 function populateFilters() {
   languageFilter.innerHTML = '<option value="all">All Languages</option>' +
@@ -93,3 +98,30 @@ searchInput.addEventListener('input', render);
 languageFilter.addEventListener('change', render);
 tagFilter.addEventListener('change', render);
 sortBy.addEventListener('change', render);
+
+// Logging functionality
+const logs = JSON.parse(localStorage.getItem('logs') || '[]');
+
+function updateLogCount() {
+  const logEl = document.getElementById('logCount');
+  if (logEl) logEl.textContent = logs.length;
+}
+
+function addLog(action, dataType) {
+  logs.push({ action, dataType, tags: [], rating: '', time: new Date().toLocaleString() });
+  localStorage.setItem('logs', JSON.stringify(logs));
+  updateLogCount();
+}
+
+function handleAction(action, dataType) {
+  addLog(action, dataType);
+  alert(`${action} action triggered`);
+}
+
+document.getElementById('action-statistics')?.addEventListener('click', () => handleAction('Statistics', 'graphs'));
+document.getElementById('action-notebook')?.addEventListener('click', () => handleAction('Notebook LLM', 'blog'));
+document.getElementById('action-chat')?.addEventListener('click', () => handleAction('Chat Gemini', 'chat'));
+document.getElementById('action-news')?.addEventListener('click', () => handleAction('News Feed', 'news'));
+
+updateLogCount();
+
