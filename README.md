@@ -5,6 +5,49 @@
 ![Total](https://img.shields.io/badge/Total-2046-green.svg)
 ![Updated](https://img.shields.io/badge/Updated-26--6--2025-blue.svg)
 
+## Getting Started
+
+### Install Node dependencies
+
+```bash
+npm install
+```
+
+### Generate `data.json`
+
+```bash
+node generator.js
+```
+
+### Serve the site locally
+
+Any HTTP server will work:
+
+```bash
+npx serve
+# or
+python3 -m http.server
+```
+
+### Launch the optional Streamlit dashboard
+
+Install the Python requirements first:
+
+```bash
+pip install -r requirements.txt
+streamlit run app.py
+```
+
+### Screenshots
+
+Header
+
+![Header Screenshot](images/header_screenshot.svg)
+
+Logs
+
+![Logs Screenshot](images/logs_screenshot.svg)
+
 ## 🏠 Contents
 
 - [ASP.NET (1)](#aspnet)
