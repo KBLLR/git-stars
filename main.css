@@ -21,6 +21,7 @@ body {
     padding: 10px 20px;
     background: rgba(255, 255, 255, 0.6);
     backdrop-filter: blur(10px);
+    border-radius: 12px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     border-radius: 999px;
     z-index: 1000;
@@ -64,6 +65,9 @@ body {
     transition: background 0.2s, transform 0.2s;
     font-size: 2em;
 }
+.icon-btn i {
+    font-size: 32px;
+}
 
 .icon-btn:hover {
     background: rgba(255, 255, 255, 1);
@@ -73,8 +77,12 @@ body {
 .badge {
     background: #ff4757;
     color: #fff;
-    border-radius: 12px;
-    padding: 2px 6px;
+    min-width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
     font-size: 0.75em;
 }
 
@@ -90,6 +98,8 @@ body {
 
 .logs-container .badge {
     position: absolute;
+    top: -8px;
+    right: -8px;
     top: -4px;
     right: -4px;
 
@@ -258,4 +268,30 @@ select:focus {
 /* Logs Page Header */
 .logs-header {
     padding: 20px;
+}
+
+/* Card style presets */
+body.retro .repo-card {
+    background-color: #ffffff;
+    border: 2px solid #cccccc;
+    border-radius: 12px;
+    position: relative;
+}
+body.retro .repo-card::before {
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border: 2px solid #ffcc00;
+    border-radius: 14px;
+    pointer-events: none;
+}
+
+body.futuristic .repo-card {
+    background: rgba(0,0,0,0.7);
+    color: #fff;
+    border: 1px solid #0ff;
+    box-shadow: 0 0 10px rgba(0,255,255,0.5);
 }
