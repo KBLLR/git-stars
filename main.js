@@ -12,7 +12,7 @@ const logsIcon = document.getElementById('logsIcon');
 const starCountElem = document.getElementById('starCount');
 const cardStyleSelect = document.getElementById('cardStyle');
 
-const repoCountBadge = document.getElementById('repoCountBadge');
+const starCountBadge = document.getElementById('starCount');
 const logsCountBadge = document.getElementById('logsCountBadge');
 const logBadge = document.getElementById('logCount');
 
@@ -46,8 +46,8 @@ fetch('data.json')
   .then(data => {
     repos = data;
 
-    if (repoCountBadge) repoCountBadge.textContent = repos.length;
-    if (starCountElem) starCountElem.textContent = repos.length;
+    if (starCountBadge) starCountBadge.textContent = repos.length;
+
 
     updateLogCount();
 
