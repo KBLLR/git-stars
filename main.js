@@ -3,6 +3,8 @@ const searchInput = document.getElementById('searchInput');
 const languageFilter = document.getElementById('languageFilter');
 const tagFilter = document.getElementById('tagFilter');
 const sortBy = document.getElementById('sortBy');
+const repoCountBadge = document.getElementById('repoCountBadge');
+const logsCountBadge = document.getElementById('logsCountBadge');
 
 let repos = [];
 let languages = new Set();
@@ -10,17 +12,23 @@ let tags = new Set();
 
 fetch('data.json')
   .then(r => r.json())
-  .then(data => {
-    repos = data;
-    const starCountEl = document.getElementById('starCount');
-    if (starCountEl) starCountEl.textContent = repos.length;
-    repos.forEach(r => {
-      (r.languages || []).forEach(l => languages.add(l.language));
-      (r.topics || []).forEach(t => tags.add(t));
-    });
-    populateFilters();
-    render();
+.then(data => {
+  repos = data;
+
+  // Update count badges
+  if (repoCountBadge) repoCountBadge.textContent = repos.length;
+
+  const logs = JSON.parse(localStorage.getItem('logs') || '[]');
+  if (logsCountBadge) logsCountBadge.textContent = logs.length;
+
+  repos.forEach(r => {
+    (r.languages || []).forEach(l => languages.add(l.language));
+    (r.topics || []).forEach(t => tags.add(t));
   });
+
+  populateFilters();
+  render();
+});
 
 function populateFilters() {
   languageFilter.innerHTML = '<option value="all">All Languages</option>' +
