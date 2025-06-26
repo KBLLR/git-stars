@@ -9,6 +9,8 @@ const summarizeIcon = document.getElementById('summarizeIcon');
 const tagIcon = document.getElementById('tagIcon');
 const rateIcon = document.getElementById('rateIcon');
 const logsIcon = document.getElementById('logsIcon');
+const starCountElem = document.getElementById('starCount');
+const cardStyleSelect = document.getElementById('cardStyle');
 
 const repoCountBadge = document.getElementById('repoCountBadge');
 const logsCountBadge = document.getElementById('logsCountBadge');
@@ -45,6 +47,7 @@ fetch('data.json')
     repos = data;
 
     if (repoCountBadge) repoCountBadge.textContent = repos.length;
+    if (starCountElem) starCountElem.textContent = repos.length;
 
     updateLogCount();
 
@@ -186,3 +189,12 @@ rateIcon?.addEventListener('click', () => {
 logsIcon?.addEventListener('click', () => {
   logAction('open-logs', 'page');
 });
+
+cardStyleSelect?.addEventListener('change', () => {
+  document.body.classList.remove('retro', 'futuristic');
+  const style = cardStyleSelect.value;
+  if (style !== 'default') {
+    document.body.classList.add(style);
+  }
+});
+cardStyleSelect?.dispatchEvent(new Event('change'));

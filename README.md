@@ -29,6 +29,12 @@ npx serve
 python3 -m http.server
 ```
 
+### Card style presets
+
+The interface includes a **Card Style** dropdown in the filter bar. Choose a
+preset to apply different looks to the repository cards. More examples can be
+found under `templates/card-styles`.
+
 ### Launch the optional Streamlit dashboard
 
 Install the Python requirements first:
