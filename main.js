@@ -4,6 +4,31 @@ const languageFilter = document.getElementById('languageFilter');
 const tagFilter = document.getElementById('tagFilter');
 const sortBy = document.getElementById('sortBy');
 
+const summarizeIcon = document.getElementById('summarizeIcon');
+const tagIcon = document.getElementById('tagIcon');
+const rateIcon = document.getElementById('rateIcon');
+const logsIcon = document.getElementById('logsIcon');
+
+const repoCountBadge = document.getElementById('repoCountBadge');
+const logsCountBadge = document.getElementById('logsCountBadge');
+const logBadge = document.getElementById('logCount');
+
+// Escape HTML to avoid injecting markup
+function escapeHtml(unsafe) {
+  return String(unsafe).replace(/[&<>"'{}]/g, match => {
+    const map = {
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#039;',
+      '{': '&#123;',
+      '}': '&#125;'
+    };
+    return map[match];
+  });
+}
+
 let repos = [];
 let languages = new Set();
 let tags = new Set();
@@ -12,19 +37,31 @@ fetch('data.json')
   .then(r => r.json())
   .then(data => {
     repos = data;
+
+    if (repoCountBadge) repoCountBadge.textContent = repos.length;
+
+    updateLogCount();
+
     repos.forEach(r => {
       (r.languages || []).forEach(l => languages.add(l.language));
       (r.topics || []).forEach(t => tags.add(t));
     });
+
     populateFilters();
     render();
   });
 
 function populateFilters() {
   languageFilter.innerHTML = '<option value="all">All Languages</option>' +
-    Array.from(languages).sort().map(l => `<option value="${l}">${l}</option>`).join('');
+    Array.from(languages)
+      .sort()
+      .map(l => `<option value="${escapeHtml(l)}">${escapeHtml(l)}</option>`)
+      .join('');
   tagFilter.innerHTML = '<option value="all">All Tags</option>' +
-    Array.from(tags).sort().map(t => `<option value="${t}">${t}</option>`).join('');
+    Array.from(tags)
+      .sort()
+      .map(t => `<option value="${escapeHtml(t)}">${escapeHtml(t)}</option>`)
+      .join('');
 }
 
 function render() {
@@ -40,8 +77,8 @@ function render() {
   });
 
   const sortValue = sortBy.value;
-  filtered.sort((a,b) => {
-    switch(sortValue){
+  filtered.sort((a, b) => {
+    switch (sortValue) {
       case 'name':
         return a.name.localeCompare(b.name);
       case 'date':
@@ -66,13 +103,13 @@ function render() {
   container.innerHTML = filtered.map(repo => repoCard(repo)).join('');
 }
 
-function repoCard(repo){
+function repoCard(repo) {
   const langs = (repo.languages || []).map(l => `${l.language}`).join(', ');
   const topics = (repo.topics || []).join(', ');
   return `<div class="repo-card">
-    <h3><a href="${repo.url}" target="_blank">${repo.name}</a></h3>
-    <p><strong>Author:</strong> ${repo.author}</p>
-    <p><strong>Description:</strong> ${repo.description}</p>
+    <h3><a href="${repo.url}" target="_blank">${escapeHtml(repo.name)}</a></h3>
+    <p><strong>Author:</strong> ${escapeHtml(repo.author)}</p>
+    <p><strong>Description:</strong> ${escapeHtml(repo.description)}</p>
     <div class="metrics">
       <div class="metric"><i class="fa fa-star" title="Stars"></i> ${repo.stars}</div>
       <div class="metric"><i class="fa fa-code-branch" title="Forks"></i> ${repo.forks}</div>
@@ -80,7 +117,7 @@ function repoCard(repo){
       <div class="metric"><i class="fa fa-calendar" title="Last Updated"></i> ${repo.last_updated}</div>
     </div>
     <div class="languages">${langs}</div>
-    <div class="topics">${topics || 'None'}</div>
+    <div class="topics">${escapeHtml(topics) || 'None'}</div>
   </div>`;
 }
 
@@ -88,3 +125,52 @@ searchInput.addEventListener('input', render);
 languageFilter.addEventListener('change', render);
 tagFilter.addEventListener('change', render);
 sortBy.addEventListener('change', render);
+
+// Unified logging function
+function logAction(type, details, tags = '', rating = '') {
+  const logs = JSON.parse(localStorage.getItem('actionLogs') || '[]');
+  logs.push({ time: new Date().toISOString(), type, details, tags, rating });
+  localStorage.setItem('actionLogs', JSON.stringify(logs));
+  updateLogCount();
+}
+
+function updateLogCount() {
+  const logs = JSON.parse(localStorage.getItem('actionLogs') || '[]');
+  if (logsCountBadge) logsCountBadge.textContent = logs.length;
+  if (logBadge) logBadge.textContent = logs.length;
+}
+
+// Event handlers
+document.getElementById('action-statistics')?.addEventListener('click', () => {
+  alert('Statistics action triggered');
+  logAction('Statistics', 'graphs');
+});
+document.getElementById('action-notebook')?.addEventListener('click', () => {
+  alert('Notebook action triggered');
+  logAction('Notebook LLM', 'blog');
+});
+document.getElementById('action-chat')?.addEventListener('click', () => {
+  alert('Chat action triggered');
+  logAction('Chat Gemini', 'chat');
+});
+document.getElementById('action-news')?.addEventListener('click', () => {
+  alert('News Feed action triggered');
+  logAction('News Feed', 'news');
+});
+
+summarizeIcon?.addEventListener('click', () => {
+  alert('Summarizing repository...');
+  logAction('summarize', 'repo');
+});
+tagIcon?.addEventListener('click', () => {
+  alert('Generating tags...');
+  logAction('tag', 'repo', 'example');
+});
+rateIcon?.addEventListener('click', () => {
+  alert('Rating repository...');
+  const rating = Math.floor(Math.random() * 5) + 1;
+  logAction('rate', 'repo', '', rating);
+});
+logsIcon?.addEventListener('click', () => {
+  logAction('open-logs', 'page');
+});
