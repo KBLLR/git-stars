@@ -31,6 +31,7 @@ body {
     text-align: center;
     padding: 10px;
 }
+
 .main-header .left-group {
     display: flex;
     align-items: center;
@@ -91,6 +92,7 @@ body {
     right: -10px;
 
 }
+
 
 /* Repo grid */
 #reposContainer {

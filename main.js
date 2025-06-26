@@ -24,7 +24,7 @@ function escapeHtml(unsafe) {
       '"': '&quot;',
       "'": '&#039;',
       '{': '&#123;',
-      '}': '&#125;'
+      '}': '&#125;',
     };
     return map[match];
   });
