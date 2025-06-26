@@ -1,6 +1,6 @@
 /* General Styles */
 body {
-    font-family: "Arial", sans-serif; /* Or your preferred font */
+    font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     color: #333;
     line-height: 1.6;
@@ -8,66 +8,67 @@ body {
     padding: 0;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 40px;
-}
-th,
-td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-}
-th {
-    background-color: #f4f4f4;
+/* Fixed page title */
+#pageTitle {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    margin: 0;
+    padding: 5px 10px;
+    font-weight: bold;
+    color: #000;
+    background: rgba(255,255,255,0.8);
+    z-index: 1000;
 }
 
-/* Container for all repository cards */
+/* Repo grid */
 #reposContainer {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 20px;
-    justify-content: center;
-    padding: 20px;
-    background-color: #f9f9f9;
+    padding: 80px 20px 80px; /* space for title and filters */
+    width: 100%;
+    box-sizing: border-box;
 }
 
-/* Individual repository card styling */
+/* Card styling */
 .repo-card {
     background: #fff;
     border: 1px solid #ddd;
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     padding: 15px;
+    display: flex;
+    flex-direction: column;
     transition: transform 0.2s ease-in-out;
 }
 
-/* Lift effect on hover */
 .repo-card:hover {
     transform: translateY(-5px);
 }
 
-/* Title styling */
-.repo-card h3 a {
-    text-decoration: none;
-    color: #333;
+.repo-card h3 {
+    margin: 0 0 10px;
     font-size: 1.25em;
 }
 
-/* Paragraph styling for author and description */
+.repo-card h3 a {
+    color: #333;
+    text-decoration: none;
+    word-break: break-word;
+}
+
 .repo-card p {
     font-size: 0.9em;
     color: #555;
-    line-height: 1.5;
+    margin: 4px 0;
 }
 
-/* Metrics section styling */
 .metrics {
     display: flex;
-    justify-content: space-around;
-    margin-top: 10px;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: auto;
     margin-bottom: 10px;
 }
 
@@ -79,130 +80,48 @@ th {
     color: #666;
 }
 
-/* Languages section styling */
-.languages {
-    font-size: 0.85em;
-    color: #666;
-    margin-top: 10px; /* Adds margin above the languages section */
-    margin-bottom: 10px; /* Keeps the existing bottom margin */
-    border-top: 1px solid #ddd; /* Adds the top stroke */
-    padding-top: 10px; /* Adds space between the border and the text */
-}
-
-/* Topics section styling */
+.languages,
 .topics {
-    font-size: 0.85em;
+    font-size: 0.8em;
     color: #666;
-    border-top: 1px solid #eee;
-    padding-top: 10px;
-    text-align: center;
+    margin-top: 5px;
+    word-break: break-word;
 }
 
+/* Floating filters */
 .filters {
-    margin-bottom: 20px;
-}
-.filters input,
-.filters select,
-.filters button {
-    margin-right: 10px;
-    padding: 8px;
-}
-
-/* Filter Styles */
-/* Filter Sidebar */
-.filters {
-    width: 20%;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
-    flex-direction: column; /* Stack filters vertically */
-    gap: 15px;
-    border: 1px solid #ddd;
-    position: relative; /* Needed for absolute positioning of the icon */
+    gap: 10px;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    z-index: 1000;
 }
 
-.filters label {
-    font-weight: 500;
-    color: #555;
-    margin-bottom: 5px;
-    display: block; /*Ensure the labels take up the right amount of space*/
-}
-
-.filters input[type="text"],
+.filters input,
 .filters select {
-    padding: 8px 12px;
+    padding: 6px 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    font-size: 0.9rem;
-    outline: none;
-    transition: border-color 0.3s ease;
-    width: 100%; /* Make filters full width of the sidebar */
-    box-sizing: border-box; /* Include padding and border in width calculation */
-    padding-left: 30px; /* Space for the magnifying glass icon */
+    font-size: 0.9em;
 }
 
-.filters input[type="text"]:focus,
-.filters select:focus {
-    border-color: #3498db;
-}
-
-/* Magnifying Glass Icon */
-.filters .search-icon {
-    position: absolute;
-    top: calc(
-        20px + 8px
-    ); /* Adjust based on filter padding and input padding */
-    left: 10px;
-    color: #777;
-    pointer-events: none; /* Allows clicks to pass through to the input */
-}
-
-.filters button {
-    background-color: #3498db;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    padding: 10px 15px;
-    font-size: 0.9rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    white-space: nowrap;
-}
-
-.filters button:hover {
-    background-color: #2980b9;
-}
-
-/* Repo Container Styles */
-#reposContainer {
-    padding: 20px;
-}
-
-#reposContainer h2 {
-    font-size: 1.75rem;
-    margin-bottom: 15px;
-    color: #333;
-    border-bottom: 2px solid #3498db;
-    padding-bottom: 5px;
-}
-
-/* Media Queries for Responsiveness */
-@media (max-width: 768px) {
+@media (max-width: 600px) {
+    #pageTitle {
+        font-size: 1.2em;
+    }
     .filters {
-        flex-direction: column; /* Stack filters vertically on smaller screens */
-        align-items: stretch; /* Stretch items to full width */
+        flex-direction: column;
+        align-items: center;
     }
-
-    .filters input[type="text"],
-    .filters select,
-    .filters button {
-        width: 100%; /* Make filters full width */
-    }
-
-    .repo-card .metrics {
-        flex-direction: column; /* Stack metrics vertically on smaller screens */
-        align-items: flex-start;
+    .filters input,
+    .filters select {
+        width: 100%;
     }
 }
