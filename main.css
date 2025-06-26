@@ -8,17 +8,80 @@ body {
     padding: 0;
 }
 
-/* Fixed page title */
-#pageTitle {
+/* Header */
+.main-header {
     position: fixed;
-    top: 10px;
-    left: 10px;
-    margin: 0;
-    padding: 5px 10px;
-    font-weight: bold;
-    color: #000;
-    background: rgba(255,255,255,0.8);
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     z-index: 1000;
+}
+
+.main-header .left-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.main-header .left-group.capsule {
+    padding: 6px 12px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 999px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.main-header .center-group {
+    display: flex;
+    gap: 8px;
+}
+
+.icon-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.8);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.icon-btn:hover {
+    background: rgba(255, 255, 255, 1);
+    transform: scale(1.1);
+}
+
+.badge {
+    background: #ff4757;
+    color: #fff;
+    border-radius: 12px;
+    padding: 2px 6px;
+    font-size: 0.75em;
+}
+
+.right-group {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.logs-container {
+    position: relative;
+}
+
+.logs-container .badge {
+    position: absolute;
+    top: -6px;
+    right: -10px;
 }
 
 /* Repo grid */
@@ -113,9 +176,6 @@ body {
 }
 
 @media (max-width: 600px) {
-    #pageTitle {
-        font-size: 1.2em;
-    }
     .filters {
         flex-direction: column;
         align-items: center;
