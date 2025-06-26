@@ -3,14 +3,15 @@ import fs from "fs";
 // Load data using ES module
 const originalData = JSON.parse(fs.readFileSync("./data.json", "utf8"));
 
-// Process data with added robustness
+// Aggregate language usage by counting occurrences
 const languageCount = {};
 originalData.forEach((repo) => {
-  if (repo.languages && Array.isArray(repo.languages)) {
+  if (Array.isArray(repo.languages)) {
     repo.languages.forEach((lang) => {
       const name = lang.language;
-      languageCount[name] =
-        (languageCount[name] || 0) + parseFloat(lang.percentage);
+      if (name) {
+        languageCount[name] = (languageCount[name] || 0) + 1;
+      }
     });
   }
 });
@@ -20,8 +21,8 @@ const sortedLanguages = Object.entries(languageCount)
   .sort((a, b) => b[1] - a[1])
   .slice(0, 10);
 
-const labels = sortedLanguages.map((lang) => lang[0]);
-const data = sortedLanguages.map((lang) => parseFloat(lang[1]).toFixed(1));
+const labels = sortedLanguages.map(([lang]) => lang);
+const data = sortedLanguages.map(([, count]) => count);
 
 // Create QuickChart URL
 const chartConfig = encodeURIComponent(
