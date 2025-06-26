@@ -25,6 +25,12 @@ body {
     z-index: 1000;
 }
 
+/* Error message */
+#errorMessage {
+    color: red;
+    text-align: center;
+    padding: 10px;
+}
 .main-header .left-group {
     display: flex;
     align-items: center;
@@ -83,6 +89,7 @@ body {
     position: absolute;
     top: -6px;
     right: -10px;
+
 }
 
 /* Repo grid */
