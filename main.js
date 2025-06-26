@@ -3,13 +3,19 @@ const searchInput = document.getElementById('searchInput');
 const languageFilter = document.getElementById('languageFilter');
 const tagFilter = document.getElementById('tagFilter');
 const sortBy = document.getElementById('sortBy');
+const errorMessage = document.getElementById('errorMessage');
 
 let repos = [];
 let languages = new Set();
 let tags = new Set();
 
 fetch('data.json')
-  .then(r => r.json())
+  .then(r => {
+    if (!r.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return r.json();
+  })
   .then(data => {
     repos = data;
     repos.forEach(r => {
@@ -18,6 +24,12 @@ fetch('data.json')
     });
     populateFilters();
     render();
+  })
+  .catch(err => {
+    console.error('Failed to load repository data:', err);
+    if (errorMessage) {
+      errorMessage.textContent = 'Failed to load data. Please try again later.';
+    }
   });
 
 function populateFilters() {

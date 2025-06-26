@@ -21,6 +21,13 @@ body {
     z-index: 1000;
 }
 
+/* Error message */
+#errorMessage {
+    color: red;
+    text-align: center;
+    padding: 10px;
+}
+
 /* Repo grid */
 #reposContainer {
     display: grid;
