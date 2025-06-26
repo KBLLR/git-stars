@@ -187,7 +187,47 @@ body {
     }
 }
 
-/* Logs Page */
+/* Header action icons */
+.header-actions {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    gap: 10px;
+    z-index: 1000;
+}
+
+.action-icon {
+    cursor: pointer;
+    background: rgba(255,255,255,0.8);
+    padding: 5px;
+    border-radius: 4px;
+    color: #333;
+}
+
+.header-actions a {
+    text-decoration: none;
+}
+
+/* Logs Page – Table style */
+.logs-list {
+    padding: 80px 20px;
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+}
+
+.log-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.log-table th, .log-table td {
+    padding: 8px;
+    border-bottom: 1px solid #ccc;
+    text-align: left;
+}
+
+/* Logs Page – Entry card style (fallback or older format) */
 .log-entry {
     background: #fff;
     border: 1px solid #ddd;
@@ -196,6 +236,7 @@ body {
     margin: 10px;
 }
 
+/* Logs Page Header */
 .logs-header {
     padding: 20px;
 }

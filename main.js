@@ -3,10 +3,17 @@ const searchInput = document.getElementById('searchInput');
 const languageFilter = document.getElementById('languageFilter');
 const tagFilter = document.getElementById('tagFilter');
 const sortBy = document.getElementById('sortBy');
+
+const summarizeIcon = document.getElementById('summarizeIcon');
+const tagIcon = document.getElementById('tagIcon');
+const rateIcon = document.getElementById('rateIcon');
+const logsIcon = document.getElementById('logsIcon');
+
 const repoCountBadge = document.getElementById('repoCountBadge');
 const logsCountBadge = document.getElementById('logsCountBadge');
+const logBadge = document.getElementById('logCount');
 
-// Escape HTML to avoid injecting markup from repo data
+// Escape HTML to avoid injecting markup
 function escapeHtml(unsafe) {
   return String(unsafe).replace(/[&<>"'{}]/g, match => {
     const map = {
@@ -28,23 +35,21 @@ let tags = new Set();
 
 fetch('data.json')
   .then(r => r.json())
-.then(data => {
-  repos = data;
+  .then(data => {
+    repos = data;
 
-  // Update count badges
-  if (repoCountBadge) repoCountBadge.textContent = repos.length;
+    if (repoCountBadge) repoCountBadge.textContent = repos.length;
 
-  const logs = JSON.parse(localStorage.getItem('logs') || '[]');
-  if (logsCountBadge) logsCountBadge.textContent = logs.length;
+    updateLogCount();
 
-  repos.forEach(r => {
-    (r.languages || []).forEach(l => languages.add(l.language));
-    (r.topics || []).forEach(t => tags.add(t));
+    repos.forEach(r => {
+      (r.languages || []).forEach(l => languages.add(l.language));
+      (r.topics || []).forEach(t => tags.add(t));
+    });
+
+    populateFilters();
+    render();
   });
-
-  populateFilters();
-  render();
-});
 
 function populateFilters() {
   languageFilter.innerHTML = '<option value="all">All Languages</option>' +
@@ -72,8 +77,8 @@ function render() {
   });
 
   const sortValue = sortBy.value;
-  filtered.sort((a,b) => {
-    switch(sortValue){
+  filtered.sort((a, b) => {
+    switch (sortValue) {
       case 'name':
         return a.name.localeCompare(b.name);
       case 'date':
@@ -98,7 +103,7 @@ function render() {
   container.innerHTML = filtered.map(repo => repoCard(repo)).join('');
 }
 
-function repoCard(repo){
+function repoCard(repo) {
   const langs = (repo.languages || []).map(l => `${l.language}`).join(', ');
   const topics = (repo.topics || []).join(', ');
   return `<div class="repo-card">
@@ -121,29 +126,51 @@ languageFilter.addEventListener('change', render);
 tagFilter.addEventListener('change', render);
 sortBy.addEventListener('change', render);
 
-// Logging functionality
-const logs = JSON.parse(localStorage.getItem('logs') || '[]');
-
-function updateLogCount() {
-  const logEl = document.getElementById('logCount');
-  if (logEl) logEl.textContent = logs.length;
-}
-
-function addLog(action, dataType) {
-  logs.push({ action, dataType, tags: [], rating: '', time: new Date().toLocaleString() });
-  localStorage.setItem('logs', JSON.stringify(logs));
+// Unified logging function
+function logAction(type, details, tags = '', rating = '') {
+  const logs = JSON.parse(localStorage.getItem('actionLogs') || '[]');
+  logs.push({ time: new Date().toISOString(), type, details, tags, rating });
+  localStorage.setItem('actionLogs', JSON.stringify(logs));
   updateLogCount();
 }
 
-function handleAction(action, dataType) {
-  addLog(action, dataType);
-  alert(`${action} action triggered`);
+function updateLogCount() {
+  const logs = JSON.parse(localStorage.getItem('actionLogs') || '[]');
+  if (logsCountBadge) logsCountBadge.textContent = logs.length;
+  if (logBadge) logBadge.textContent = logs.length;
 }
 
-document.getElementById('action-statistics')?.addEventListener('click', () => handleAction('Statistics', 'graphs'));
-document.getElementById('action-notebook')?.addEventListener('click', () => handleAction('Notebook LLM', 'blog'));
-document.getElementById('action-chat')?.addEventListener('click', () => handleAction('Chat Gemini', 'chat'));
-document.getElementById('action-news')?.addEventListener('click', () => handleAction('News Feed', 'news'));
+// Event handlers
+document.getElementById('action-statistics')?.addEventListener('click', () => {
+  alert('Statistics action triggered');
+  logAction('Statistics', 'graphs');
+});
+document.getElementById('action-notebook')?.addEventListener('click', () => {
+  alert('Notebook action triggered');
+  logAction('Notebook LLM', 'blog');
+});
+document.getElementById('action-chat')?.addEventListener('click', () => {
+  alert('Chat action triggered');
+  logAction('Chat Gemini', 'chat');
+});
+document.getElementById('action-news')?.addEventListener('click', () => {
+  alert('News Feed action triggered');
+  logAction('News Feed', 'news');
+});
 
-updateLogCount();
-
+summarizeIcon?.addEventListener('click', () => {
+  alert('Summarizing repository...');
+  logAction('summarize', 'repo');
+});
+tagIcon?.addEventListener('click', () => {
+  alert('Generating tags...');
+  logAction('tag', 'repo', 'example');
+});
+rateIcon?.addEventListener('click', () => {
+  alert('Rating repository...');
+  const rating = Math.floor(Math.random() * 5) + 1;
+  logAction('rate', 'repo', '', rating);
+});
+logsIcon?.addEventListener('click', () => {
+  logAction('open-logs', 'page');
+});
