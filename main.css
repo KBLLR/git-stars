@@ -125,3 +125,21 @@ body {
         width: 100%;
     }
 }
+/* Button hover transitions */
+button {
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+button:hover {
+    background-color: #ddd;
+    transform: scale(1.05);
+}
+
+/* Accessible focus outlines */
+button:focus,
+a:focus,
+input:focus,
+select:focus {
+    outline: 2px solid #000;
+    outline-offset: 2px;
+}
