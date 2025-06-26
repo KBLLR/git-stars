@@ -7,7 +7,36 @@
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
-    <h1 id="pageTitle">Git Stars</h1>
+    <header class="header-bar">
+        <div class="header-left capsule">
+            <i class="fa-brands fa-github f-icon"></i>
+            <span id="starCount">0</span>
+            <span class="title">GitStars</span>
+        </div>
+        <div class="header-center">
+            <button class="action-btn" id="action-statistics" title="Statistics">
+                <i class="fa fa-chart-bar"></i>
+            </button>
+            <button class="action-btn" id="action-notebook" title="Notebook LLM">
+                <i class="fa fa-book"></i>
+            </button>
+            <button class="action-btn" id="action-chat" title="Chat Gemini">
+                <i class="fa fa-comments"></i>
+            </button>
+            <button class="action-btn" id="action-news" title="News Feed">
+                <i class="fa fa-newspaper"></i>
+            </button>
+        </div>
+        <div class="header-right">
+            <a href="logs.html" class="icon-btn" title="Logs">
+                <i class="fa fa-list"></i>
+                <span id="logCount" class="badge">0</span>
+            </a>
+            <button class="icon-btn" id="settingsBtn" title="Settings">
+                <i class="fa fa-cog"></i>
+            </button>
+        </div>
+    </header>
     <div id="reposContainer"></div>
     <div class="filters">
         <input type="text" id="searchInput" placeholder="Search...">
