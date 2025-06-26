@@ -21,9 +21,12 @@
     </div>
     <div class="right-group">
       <div class="logs-container" title="Logs">
-        <i class="fa fa-list"></i>
+        <a id="logsIcon" href="logs.html"><i class="fa fa-list"></i></a>
         <span id="logCount" class="badge">0</span>
       </div>
+      <i id="summarizeIcon" class="fa fa-comment-dots action-icon" title="Summarize"></i>
+      <i id="tagIcon" class="fa fa-tags action-icon" title="Tag"></i>
+      <i id="rateIcon" class="fa fa-star-half-stroke action-icon" title="Rate"></i>
       <button class="icon-btn" id="settingsBtn" title="Settings"><i class="fa fa-cog"></i></button>
     </div>
   </header>
@@ -32,12 +35,6 @@
 
   <div id="errorMessage" class="error"></div>
 
-  <div id="actionHeader" class="header-actions">
-    <i id="summarizeIcon" class="fa fa-comment-dots action-icon" title="Summarize"></i>
-    <i id="tagIcon" class="fa fa-tags action-icon" title="Tag"></i>
-    <i id="rateIcon" class="fa fa-star-half-stroke action-icon" title="Rate"></i>
-    <a id="logsIcon" href="logs.html" title="Logs"><i class="fa fa-list action-icon"></i></a>
-  </div>
 
   <div id="reposContainer"></div>
 
