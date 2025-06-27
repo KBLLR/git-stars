@@ -1,0 +1,61 @@
+body.futuristic .repo-card {
+    position: relative;
+    background: linear-gradient(135deg, #2c3e50, #34495e);
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 0 20px rgba(255,255,255,0.1);
+    overflow: hidden;
+}
+body.futuristic .repo-card::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    animation: spin 5s infinite linear;
+}
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+body.futuristic .repo-card h3 {
+    margin-top: 0;
+    font-size: 1.5em;
+    color: #ffcc00;
+    text-align: center;
+}
+body.futuristic .repo-card .description {
+    font-size: 1.1em;
+    color: #ffffff;
+    margin: 20px 0;
+    text-align: center;
+}
+body.futuristic .repo-card .details {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9em;
+    margin-bottom: 15px;
+}
+body.futuristic .repo-card .languages {
+    font-size: 0.85em;
+    margin-bottom: 10px;
+}
+body.futuristic .repo-card .topics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+body.futuristic .repo-card .topic {
+    background-color: rgba(255,255,255,0.2);
+    padding: 4px 8px;
+    border-radius: 20px;
+    font-size: 0.8em;
+}
+body.futuristic .repo-card .date {
+    font-size: 0.8em;
+    text-align: right;
+    color: #cccccc;
+}
