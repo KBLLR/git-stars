@@ -2,7 +2,6 @@ const container = document.getElementById('reposContainer');
 const searchInput = document.getElementById('searchInput');
 const languageFilter = document.getElementById('languageFilter');
 const tagFilter = document.getElementById('tagFilter');
-const licenseFilter = document.getElementById('licenseFilter');
 const sortBy = document.getElementById('sortBy');
 const errorMessage = document.getElementById('errorMessage');
 
@@ -36,7 +35,6 @@ function escapeHtml(unsafe) {
 let repos = [];
 let languages = new Set();
 let tags = new Set();
-let licenses = new Set();
 
 fetch('data.json')
   .then(r => {
@@ -56,7 +54,6 @@ fetch('data.json')
     repos.forEach(r => {
       (r.languages || []).forEach(l => languages.add(l.language));
       (r.topics || []).forEach(t => tags.add(t));
-      if (r.license) licenses.add(r.license);
     });
 
     populateFilters();
@@ -80,25 +77,18 @@ function populateFilters() {
       .sort()
       .map(t => `<option value="${escapeHtml(t)}">${escapeHtml(t)}</option>`)
       .join('');
-  licenseFilter.innerHTML = '<option value="all">All Licenses</option>' +
-    Array.from(licenses)
-      .sort()
-      .map(l => `<option value="${escapeHtml(l)}">${escapeHtml(l)}</option>`)
-      .join('');
 }
 
 function render() {
   const search = searchInput.value.toLowerCase();
   const lang = languageFilter.value;
   const tag = tagFilter.value;
-  const lic = licenseFilter.value;
 
   let filtered = repos.filter(r => {
     const matchSearch = !search || r.name.toLowerCase().includes(search) || (r.description || '').toLowerCase().includes(search);
     const matchLang = lang === 'all' || (r.languages || []).some(l => l.language === lang);
     const matchTag = tag === 'all' || (r.topics || []).includes(tag);
-    const matchLic = lic === 'all' || r.license === lic;
-    return matchSearch && matchLang && matchTag && matchLic;
+    return matchSearch && matchLang && matchTag;
   });
 
   const sortValue = sortBy.value;
@@ -149,7 +139,6 @@ function repoCard(repo) {
 searchInput.addEventListener('input', render);
 languageFilter.addEventListener('change', render);
 tagFilter.addEventListener('change', render);
-licenseFilter.addEventListener('change', render);
 sortBy.addEventListener('change', render);
 
 // Unified logging function

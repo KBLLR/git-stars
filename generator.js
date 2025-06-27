@@ -349,7 +349,22 @@ async function generate() {
     console.log("Writing files...");
     fs.writeFileSync("index.html", htmlContent);
     fs.writeFileSync("data.json", JSON.stringify(transformedData, null, 2));
-    console.log("Files saved: index.html and data.json");
+
+    if (!fs.existsSync("public")) {
+      fs.mkdirSync("public");
+    }
+    fs.writeFileSync("public/index.html", htmlContent);
+    fs.writeFileSync(
+      "public/data.json",
+      JSON.stringify(transformedData, null, 2),
+    );
+    fs.copyFileSync("main.js", "public/main.js");
+    fs.copyFileSync("main.css", "public/main.css");
+    if (!fs.existsSync("public/src")) {
+      fs.mkdirSync("public/src", { recursive: true });
+    }
+    fs.cpSync("src/css", "public/src/css", { recursive: true });
+    console.log("Files saved to root and public directory");
   } catch (error) {
     console.error("Error during generation:", error);
   }
