@@ -1,0 +1,16 @@
+body.terminal .repo-card {
+    background-color: #111;
+    color: #0f0;
+    font-family: "Courier New", Courier, monospace;
+    border: 1px solid #0f0;
+    box-shadow: none;
+}
+
+body.terminal .repo-card h3 a {
+    color: #0f0;
+}
+
+body.terminal .repo-card .metric {
+    background: #222;
+    color: #0f0;
+}

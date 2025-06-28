@@ -5,6 +5,7 @@
   <title>Git Stars</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="fonts.css">
   <link rel="stylesheet" href="main.css">
 </head>
 <body>
@@ -27,6 +28,11 @@
 
 
   <div id="reposContainer"></div>
+
+  <div id="readmePanel">
+    <button id="closePanel">Close</button>
+    <pre id="readmeContent"></pre>
+  </div>
 
   <div class="bottom-actions">
     <button class="icon-btn" id="action-statistics" aria-label="Statistics"><i class="fa fa-chart-bar" aria-hidden="true"></i></button>
@@ -75,6 +81,9 @@
         <option value="default">Default Cards</option>
         <option value="retro">Retro</option>
         <option value="futuristic">Futuristic</option>
+        <option value="professional">Professional</option>
+        <option value="terminal">Terminal</option>
+        <option value="neumorphic">Neumorphic</option>
       </select>
     </div>
   </div>

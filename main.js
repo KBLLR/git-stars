@@ -131,7 +131,7 @@ function render() {
 function repoCard(repo) {
   const langs = (repo.languages || []).map(l => `${l.language}`).join(', ');
   const topics = (repo.topics || []).join(', ');
-  return `<div class="repo-card">
+  return `<div class="repo-card" data-name="${repo.name}" data-author="${repo.author}">
     <h3><a href="${repo.url}" target="_blank">${escapeHtml(repo.name)}</a></h3>
     <p><strong>Author:</strong> ${escapeHtml(repo.author)}</p>
     <p><strong>Description:</strong> ${escapeHtml(repo.description)}</p>
@@ -202,10 +202,44 @@ logsIcon?.addEventListener('click', () => {
 });
 
 cardStyleSelect?.addEventListener('change', () => {
-  document.body.classList.remove('retro', 'futuristic');
+  document.body.classList.remove('retro', 'futuristic', 'professional', 'terminal', 'neumorphic');
   const style = cardStyleSelect.value;
   if (style !== 'default') {
     document.body.classList.add(style);
   }
 });
 cardStyleSelect?.dispatchEvent(new Event('change'));
+
+// Panel elements
+const readmePanel = document.getElementById('readmePanel');
+const readmeContent = document.getElementById('readmeContent');
+const closePanel = document.getElementById('closePanel');
+
+// Close panel handler
+closePanel?.addEventListener('click', () => {
+  readmePanel.classList.remove('open');
+  document.body.classList.remove('panel-open');
+});
+
+// Delegate click on repo cards
+container.addEventListener('click', async (e) => {
+  const card = e.target.closest('.repo-card');
+  if (!card) return;
+  const author = card.getAttribute('data-author');
+  const name = card.getAttribute('data-name');
+  if (!author || !name) return;
+
+  document.body.classList.add('panel-open');
+  readmePanel.classList.add('open');
+  readmeContent.textContent = 'Loading README...';
+
+  try {
+    const url = `https://raw.githubusercontent.com/${author}/${name}/master/README.md`;
+    const resp = await fetch(url);
+    if (!resp.ok) throw new Error('Failed');
+    const text = await resp.text();
+    readmeContent.textContent = text;
+  } catch (err) {
+    readmeContent.textContent = 'Failed to load README';
+  }
+});

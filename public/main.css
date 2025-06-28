@@ -126,6 +126,7 @@ body {
     display: flex;
     flex-direction: column;
     transition: transform 0.2s ease-in-out;
+    cursor: pointer;
 }
 
 .repo-card:hover {
@@ -294,4 +295,28 @@ body.futuristic .repo-card {
     color: #fff;
     border: 1px solid #0ff;
     box-shadow: 0 0 10px rgba(0,255,255,0.5);
+}
+
+/* Readme side panel */
+#readmePanel {
+    position: fixed;
+    top: 0;
+    right: -50%;
+    width: 50%;
+    height: 100%;
+    background: #fff;
+    overflow-y: auto;
+    box-shadow: -2px 0 5px rgba(0,0,0,0.3);
+    transition: right 0.3s ease;
+    z-index: 1000;
+    padding: 20px;
+}
+
+#readmePanel.open {
+    right: 0;
+}
+
+body.panel-open #reposContainer {
+    width: 50%;
+    transition: width 0.3s ease;
 }
