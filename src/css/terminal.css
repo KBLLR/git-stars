@@ -1,0 +1,13 @@
+body.terminal .repo-card {
+  background-color: #1e1e1e;
+  color: #00ff00;
+  border: 1px solid #00ff00;
+  font-family: 'Fira Code', monospace;
+}
+body.terminal .repo-card a {
+  color: #00ff00;
+}
+body.terminal .repo-card .metric {
+  background-color: #333;
+  color: #0f0;
+}

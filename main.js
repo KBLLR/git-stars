@@ -1,3 +1,5 @@
+import { marked } from 'marked';
+
 const container = document.getElementById('reposContainer');
 const searchInput = document.getElementById('searchInput');
 const languageFilter = document.getElementById('languageFilter');
@@ -16,6 +18,9 @@ const cardStyleSelect = document.getElementById('cardStyle');
 const starCountBadge = document.getElementById('starCount');
 const logsCountBadge = document.getElementById('logsCountBadge');
 const logBadge = document.getElementById('logCount');
+const readmePanel = document.getElementById('readmePanel');
+const readmeContent = document.getElementById('readmeContent');
+const closePanel = document.getElementById('closePanel');
 
 // Escape HTML to avoid injecting markup
 function escapeHtml(unsafe) {
@@ -131,7 +136,7 @@ function render() {
 function repoCard(repo) {
   const langs = (repo.languages || []).map(l => `${l.language}`).join(', ');
   const topics = (repo.topics || []).join(', ');
-  return `<div class="repo-card">
+  return `<div class="repo-card" data-author="${escapeHtml(repo.author)}" data-repo="${escapeHtml(repo.name)}">
     <h3><a href="${repo.url}" target="_blank">${escapeHtml(repo.name)}</a></h3>
     <p><strong>Author:</strong> ${escapeHtml(repo.author)}</p>
     <p><strong>Description:</strong> ${escapeHtml(repo.description)}</p>
@@ -165,6 +170,29 @@ function updateLogCount() {
   if (logsCountBadge) logsCountBadge.textContent = logs.length;
   if (logBadge) logBadge.textContent = logs.length;
 }
+
+function openReadmePanel(author, repo) {
+  if (!readmePanel) return;
+  document.body.classList.add('panel-open');
+  readmePanel.classList.add('open');
+  readmeContent.innerHTML = 'Loading...';
+  const base = `https://raw.githubusercontent.com/${author}/${repo}`;
+  fetch(`${base}/master/README.md`).then(r => r.ok ? r.text() : fetch(`${base}/main/README.md`).then(rr => rr.ok ? rr.text() : ''))
+    .then(text => {
+      if (text) {
+        readmeContent.innerHTML = marked.parse(text);
+      } else {
+        readmeContent.textContent = 'README not found';
+      }
+    }).catch(() => {
+      readmeContent.textContent = 'Failed to load README';
+    });
+}
+
+closePanel?.addEventListener('click', () => {
+  readmePanel.classList.remove('open');
+  document.body.classList.remove('panel-open');
+});
 
 // Event handlers
 document.getElementById('action-statistics')?.addEventListener('click', () => {
@@ -202,10 +230,20 @@ logsIcon?.addEventListener('click', () => {
 });
 
 cardStyleSelect?.addEventListener('change', () => {
-  document.body.classList.remove('retro', 'futuristic');
+  document.body.classList.remove('retro', 'futuristic', 'professional', 'terminal', 'minimalist');
   const style = cardStyleSelect.value;
   if (style !== 'default') {
     document.body.classList.add(style);
   }
 });
 cardStyleSelect?.dispatchEvent(new Event('change'));
+
+container?.addEventListener('click', (e) => {
+  const card = e.target.closest('.repo-card');
+  if (!card) return;
+  const author = card.dataset.author;
+  const repo = card.dataset.repo;
+  if (author && repo) {
+    openReadmePanel(author, repo);
+  }
+});

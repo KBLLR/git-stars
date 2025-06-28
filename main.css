@@ -336,3 +336,34 @@ body.futuristic .repo-card {
     right: 20px;
     z-index: 1000;
 }
+
+/* Readme side panel */
+.readme-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 100%;
+    background: #fff;
+    overflow-y: auto;
+    box-shadow: -2px 0 5px rgba(0,0,0,0.3);
+    transition: width 0.3s ease;
+    z-index: 2000;
+    padding: 20px;
+}
+.readme-panel.open {
+    width: 50%;
+}
+body.panel-open #reposContainer {
+    margin-right: 50%;
+    transition: margin-right 0.3s ease;
+}
+.close-btn {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+}
