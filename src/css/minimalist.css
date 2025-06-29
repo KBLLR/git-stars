@@ -1,0 +1,15 @@
+body.minimalist .repo-card {
+  background: #ffffff;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 10px 0;
+  font-family: 'Source Code Pro', monospace;
+}
+body.minimalist .repo-card h3 {
+  font-size: 1.1em;
+  margin-bottom: 4px;
+}
+body.minimalist .repo-card p {
+  margin: 2px 0;
+}

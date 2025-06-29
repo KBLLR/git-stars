@@ -23,29 +23,36 @@
     </div>
   </header>
 
-
   <div id="errorMessage" class="error"></div>
-
-
   <div id="reposContainer"></div>
 
-  <div id="readmePanel">
-    <button id="closePanel">Close</button>
-    <pre id="readmeContent"></pre>
+  <div id="readmePanel" class="readme-panel">
+    <button id="closePanel" class="close-btn" aria-label="Close">&times;</button>
+    <div id="readmeContent"></div>
   </div>
 
   <div class="bottom-actions">
-    <button class="icon-btn" id="action-statistics" aria-label="Statistics"><i class="fa fa-chart-bar" aria-hidden="true"></i></button>
-    <button class="icon-btn" id="action-notebook" aria-label="Notebook LLM"><i class="fa fa-book" aria-hidden="true"></i></button>
-    <button class="icon-btn" id="action-chat" aria-label="Chat Gemini"><i class="fa fa-comments" aria-hidden="true"></i></button>
-    <button class="icon-btn" id="action-news" aria-label="News Feed"><i class="fa fa-newspaper" aria-hidden="true"></i></button>
-    <i id="summarizeIcon" class="fa fa-comment-dots action-icon" aria-label="Summarize" title="Summarize"></i>
-    <i id="tagIcon" class="fa fa-tags action-icon" aria-label="Tag" title="Tag"></i>
-    <i id="rateIcon" class="fa fa-star-half-stroke action-icon" aria-label="Rate" title="Rate"></i>
+    <button class="icon-btn" id="action-statistics" aria-label="Statistics">
+      <i class="fa fa-chart-bar" aria-hidden="true"></i>
+    </button>
+    <button class="icon-btn" id="action-notebook" aria-label="Notebook LLM">
+      <i class="fa fa-book" aria-hidden="true"></i>
+    </button>
+    <button class="icon-btn" id="action-chat" aria-label="Chat Gemini">
+      <i class="fa fa-comments" aria-hidden="true"></i>
+    </button>
+    <button class="icon-btn" id="action-news" aria-label="News Feed">
+      <i class="fa fa-newspaper" aria-hidden="true"></i>
+    </button>
+    <i id="summarizeIcon" class="fa fa-comment-dots action-icon" title="Summarize"></i>
+    <i id="tagIcon" class="fa fa-tags action-icon" title="Tag"></i>
+    <i id="rateIcon" class="fa fa-star-half-stroke action-icon" title="Rate"></i>
   </div>
 
   <div class="settings-float">
-    <button class="icon-btn" id="settingsBtn" aria-label="Settings"><i class="fa fa-cog" aria-hidden="true"></i></button>
+    <button class="icon-btn" id="settingsBtn" aria-label="Settings">
+      <i class="fa fa-cog" aria-hidden="true"></i>
+    </button>
   </div>
 
   <div class="filters capsule" role="search">
@@ -84,6 +91,7 @@
         <option value="professional">Professional</option>
         <option value="terminal">Terminal</option>
         <option value="neumorphic">Neumorphic</option>
+        <option value="minimalist">Minimalist</option>
       </select>
     </div>
   </div>
