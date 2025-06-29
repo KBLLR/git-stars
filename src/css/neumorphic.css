@@ -1,0 +1,17 @@
+body.neumorphic .repo-card {
+    background: #e0e0e0;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 8px 8px 16px #bebebe,
+                -8px -8px 16px #ffffff;
+}
+
+body.neumorphic .repo-card h3 a {
+    color: #333;
+    font-weight: bold;
+}
+
+body.neumorphic .repo-card .metric {
+    background: #d0d0d0;
+    border-radius: 12px;
+}
