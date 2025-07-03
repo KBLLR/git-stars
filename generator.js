@@ -1,5 +1,6 @@
 import fs from "fs";
 import dotenv from "dotenv";
+import { Octokit } from "@octokit/rest";
 
 dotenv.config();
 
@@ -11,46 +12,33 @@ if (!GITHUB_TOKEN) {
   process.exit(1);
 }
 
-async function getStarredRepos(username, token) {
-  const headers = {
-    Accept:
-      "application/vnd.github.v3.star+json, application/vnd.github.mercy-preview+json",
-    ...(token ? { Authorization: `Bearer ${token}` } : {}),
-  };
+const octokit = new Octokit({ auth: GITHUB_TOKEN });
 
-  let page = 1;
-  let repos = [];
-  let hasMore = true;
-
-  while (hasMore) {
-    const url = `https://api.github.com/users/${username}/starred?per_page=100&page=${page}`;
-    const response = await fetch(url, { headers });
-    if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
-    const data = await response.json();
-    repos = repos.concat(data);
-    const linkHeader = response.headers.get("Link");
-    hasMore = linkHeader?.includes('rel="next"');
-    page++;
+async function getStarredRepos(username) {
+  try {
+    return await octokit.paginate(
+      octokit.activity.listReposStarredByUser,
+      {
+        username,
+        per_page: 100,
+      },
+    );
+  } catch (error) {
+    console.error("Error fetching starred repositories:", error);
+    throw error;
   }
-  return repos;
 }
 
-async function getRepoLanguages(languagesUrl, token) {
+async function getRepoLanguages(owner, repo) {
   try {
-    const headers = {
-      Accept: "application/vnd.github.v3+json",
-      ...(token ? { Authorization: `Bearer ${token}` } : {}),
-    };
-    const response = await fetch(languagesUrl, { headers });
-    if (!response.ok) return null;
-    const data = await response.json();
+    const { data } = await octokit.repos.listLanguages({ owner, repo });
     const total = Object.values(data).reduce((sum, val) => sum + val, 0);
     return Object.entries(data).map(([lang, bytes]) => ({
       language: lang,
       percentage: total > 0 ? ((bytes / total) * 100).toFixed(1) + "%" : "N/A",
     }));
   } catch (error) {
-    console.error(`Error fetching languages for ${languagesUrl}:`, error);
+    console.error(`Error fetching languages for ${owner}/${repo}:`, error);
     return null;
   }
 }
@@ -62,8 +50,8 @@ async function transformData(starredRepos) {
     starredRepos.map(async (starredRepo) => {
       const repo = starredRepo.repo;
       const languages = await getRepoLanguages(
-        repo.languages_url,
-        GITHUB_TOKEN,
+        repo.owner.login,
+        repo.name,
       );
       return {
         ...starredRepo,
@@ -337,7 +325,7 @@ function generateHTML(data) {
 async function generate() {
   try {
     console.log("Fetching starred repositories...");
-    const starredRepos = await getStarredRepos(USERNAME, GITHUB_TOKEN);
+    const starredRepos = await getStarredRepos(USERNAME);
     console.log(`Fetched ${starredRepos.length} repositories.`);
 
     console.log("Processing repository data...");
