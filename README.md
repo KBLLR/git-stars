@@ -431,7 +431,7 @@
 | 33 |  [head-tracker-window](https://github.com/evanw/head-tracker-window) |  | evanw | 3 |
 | 34 |  [WebGazer](https://github.com/brownhci/WebGazer) | WebGazer.js: Scalable Webcam EyeTracking Using User Interactions | brownhci | 3679 |
 | 35 |  [font-texture-generator](https://github.com/evanw/font-texture-generator) |  | evanw | 125 |
-| 36 |  [css-reference](https://github.com/jgthms/css-reference) | CSS Reference: a free visual guide to the most popular CSS properties | jgthms | 4901 |
+| 36 |  [css-reference](https://github.com/jgthms/css-reference) | CSS Reference: a free visual guide to the most popular CSS properties | jgthms | 4900 |
 | 37 |  [TextRepetitionEffect](https://github.com/codrops/TextRepetitionEffect) | An on-scroll animation that shows repeated fragments of a big text as seen on the website of Dr. Dabber. | codrops | 108 |
 | 38 |  [AudioBasedImageDistortion](https://github.com/neundex/AudioBasedImageDistortion) |  | neundex | 131 |
 | 39 |  [computational-photography](https://github.com/aferriss/computational-photography) | Workshop materials for the Computational Photography workshop at the Anderson ranch | aferriss | 24 |
@@ -626,7 +626,7 @@
 | 157 |  [transformers.js](https://github.com/huggingface/transformers.js) | State-of-the-art Machine Learning for the web. Run 🤗 Transformers directly in your browser, with no need for a server! | huggingface | 14026 |
 | 158 |  [StableDiffusion-CheatSheet](https://github.com/SupaGruen/StableDiffusion-CheatSheet) | A list of StableDiffusion styles and some notes for offline use. Pure HTML, CSS and a bit of JS. | SupaGruen | 2012 |
 | 159 |  [noisify](https://github.com/kgolid/noisify) | Generate noise field using given image as its gradient map. | kgolid | 63 |
-| 160 |  [chromotome](https://github.com/kgolid/chromotome) | A collection of color palettes saved for personal use. | kgolid | 351 |
+| 160 |  [chromotome](https://github.com/kgolid/chromotome) | A collection of color palettes saved for personal use. | kgolid | 350 |
 | 161 |  [webgl-filter](https://github.com/evanw/webgl-filter) | An image editor in WebGL | evanw | 1061 |
 | 162 |  [avaturn-threejs-example](https://github.com/avaturn/avaturn-threejs-example) | Three.js example for Avaturn integration | avaturn | 23 |
 | 163 |  [physically-based-api](https://github.com/AntonPalmqvist/physically-based-api) | A database of physically based values for CG artists. | AntonPalmqvist | 424 |
@@ -693,11 +693,11 @@
 | 224 |  [3Dgrassball](https://github.com/JT5D/3Dgrassball) | Created with CodeSandbox | JT5D | 3 |
 | 225 |  [live-streaming-demo](https://github.com/de-id/live-streaming-demo) | Use D-ID's live streaming API to stream a talking presenter | de-id | 200 |
 | 226 |  [three-jsm](https://github.com/Mugen87/three-jsm) | Minimal three.js project setup using ES6 modules and rollup. | Mugen87 | 122 |
-| 227 |  [Depthkit.js-deprecated](https://github.com/ScatterCo/Depthkit.js-deprecated) | 🎞 A plugin for using Depthkit's volumteric captures in Three.js | ScatterCo | 33 |
+| 227 |  [Depthkit.js-deprecated](https://github.com/ScatterCo/Depthkit.js-deprecated) | 🎞 A plugin for using Depthkit's volumetric captures in Three.js | ScatterCo | 33 |
 | 228 |  [projects](https://github.com/drcmda/projects) | projects | drcmda | 9 |
 | 229 |  [graphEditor](https://github.com/N8python/graphEditor) | For an academic project. | N8python | 1 |
 | 230 |  [collection-of-div-surrogates](https://github.com/michaelkolesidis/collection-of-div-surrogates) | A piece of web art. | michaelkolesidis | 2 |
-| 231 |  [bird-generator](https://github.com/michaelkolesidis/bird-generator) | A Bird Generator™ made with p5.js. Bird, lights, go! | michaelkolesidis | 8 |
+| 231 |  [bird-generator](https://github.com/michaelkolesidis/bird-generator) | A Bird Generator™ made with p5.js. Bird, lights, go! | michaelkolesidis | 7 |
 | 232 |  [subsurfaceScatteringMat](https://github.com/N8python/subsurfaceScatteringMat) |  | N8python | 11 |
 | 233 |  [city](https://github.com/N8python/city) | A procedurally generated city that dynamically creates a road network and then populates the surrounding area with buildings. Pedestrians and cars then intelligently traverse the roads and sidewalks. Dynamic clouds, glowing windows, dynamic shadows, and baked ambient occlusion make the city feel all the better to explore. | N8python | 17 |
 | 234 |  [fogEditor](https://github.com/N8python/fogEditor) | An interactive program that allows the user to experiment with raymarched volumetric fog, which is generated frame-by-frame using fractal noise. | N8python | 8 |
@@ -778,7 +778,7 @@
 | 309 |  [stemkoski.github.com](https://github.com/stemkoski/stemkoski.github.com) |  | stemkoski | 1826 |
 | 310 |  [ibl-converter](https://github.com/oframe/ibl-converter) | IBL map converter for PBR | oframe | 48 |
 | 311 |  [vscode-glsl-canvas](https://github.com/actarian/vscode-glsl-canvas) | Live WebGL preview of GLSL shaders | actarian | 348 |
-| 312 |  [HULL](https://github.com/ndimatteo/HULL) | 💀 Headless Shopify Starter – powered by Next.js + Sanity.io | ndimatteo | 1424 |
+| 312 |  [HULL](https://github.com/ndimatteo/HULL) | 💀 Headless Shopify Starter – powered by Next.js + Sanity.io | ndimatteo | 1424 |
 | 313 |  [react-three-next](https://github.com/pmndrs/react-three-next) | React Three Fiber, Threejs, Nextjs starter | pmndrs | 2727 |
 | 314 |  [three-devtools](https://github.com/threejs/three-devtools) | three.js devtools | threejs | 624 |
 | 315 |  [core-js](https://github.com/zloirock/core-js) | Standard Library | zloirock | 25109 |
@@ -1256,32 +1256,7 @@
 ## Processing
 |  | Name 	|  Description 	| Author  	|  Stars 	|
 |---	|---	|---	|---	|---	|
-| 1 |  [ASDFPixelSort](https://github.com/kimasendorf/ASDFPixelSort) | Processing script to sort portions of pixels in an image. | kimasendorf | 619 |
-| 2 |  [Starburst-Music-Viz](https://github.com/andrele/Starburst-Music-Viz) | Quick music starburst music visualization using Processing, Control P5, Minim, FFT and Soundflower (for local audio routing) | andrele | 21 |
-| 3 |  [SimpleOpenNI](https://github.com/totovr/SimpleOpenNI) | SimpleOpenNI library for Processing 3.5.2, 3.4, 3.3.7, 3.3.6  on MacOS for V1 and V2 | totovr | 164 |
-
-**[⬆ Back to Index](#-contents)**
-
-## Python
-|  | Name 	|  Description 	| Author  	|  Stars 	|
-|---	|---	|---	|---	|---	|
-| 1 |  [clip-interrogator](https://github.com/pharmapsychotic/clip-interrogator) | Image to prompt with BLIP and CLIP | pharmapsychotic | 2868 |
-| 2 |  [colour-visuals](https://github.com/colour-science/colour-visuals) | WebGPU-based visuals for colour science applications | colour-science | 44 |
-| 3 |  [talking-head-anime-2-demo](https://github.com/pkhungurn/talking-head-anime-2-demo) | Demo programs for the Talking Head Anime from a Single Image 2: More Expressive project. | pkhungurn | 1145 |
-| 4 |  [comfy-mecha](https://github.com/ljleb/comfy-mecha) | Executable Stable Diffusion merge recipes in comfyui | ljleb | 81 |
-| 5 |  [OpenHands](https://github.com/All-Hands-AI/OpenHands) | 🙌 OpenHands: Code Less, Make More | All-Hands-AI | 60320 |
-| 6 |  [mkdocs-material](https://github.com/squidfunk/mkdocs-material) | Documentation that simply works | squidfunk | 23869 |
-| 7 |  [RAD-NeRF](https://github.com/ashawkey/RAD-NeRF) | Real-time Neural Radiance Talking Portrait Synthesis via Audio-spatial Decomposition | ashawkey | 921 |
-| 8 |  [ER-NeRF](https://github.com/Fictionarry/ER-NeRF) | [ICCV'23] Efficient Region-Aware Neural Radiance Fields for High-Fidelity Talking Portrait Synthesis | Fictionarry | 1189 |
-| 9 |  [huggingface_hub](https://github.com/huggingface/huggingface_hub) | The official Python client for the Huggingface Hub. | huggingface | 2760 |
-| 10 |  [GaussianHaircut](https://github.com/eth-ait/GaussianHaircut) | Gaussian Haircut: Human Hair Reconstruction with Strand-Aligned 3D Gaussians | eth-ait | 251 |
-| 11 |  [mlx-embeddings](https://github.com/Blaizzy/mlx-embeddings) | MLX-Embeddings is the best package for running Vision and Language Embedding models locally on your Mac using MLX. | Blaizzy | 179 |
-| 12 |  [mlx-vlm](https://github.com/Blaizzy/mlx-vlm) | MLX-VLM is a package for inference and fine-tuning of Vision Language Models (VLMs) on your Mac using MLX. | Blaizzy | 1484 |
-| 13 |  [macOS-use](https://github.com/browser-use/macOS-use) | Make Mac apps accessible for AI agents | browser-use | 1449 |
-| 14 |  [ComfyUI-Hunyuan3DWrapper](https://github.com/kijai/ComfyUI-Hunyuan3DWrapper) |  | kijai | 785 |
-| 15 |  [bpt](https://github.com/Tencent-Hunyuan/bpt) | Official code for paper: Scaling Mesh Generation via Compressive Tokenization [CVPR'25] | Tencent-Hunyuan | 265 |
-| 16 |  [Vach](https://github.com/Hujiazeng/Vach) | Real time streaming talking head | Hujiazeng | 481 |
-| 17 |  [facenet-pytorch](https://github.com/timesler/facenet-pytorch) | Pretrained Pytorch face detection (MTCNN) and facial recognition (InceptionResnet) models | timesler | 4928 |
+| 1 |  [ASDFPixelSort](https://github.com/kimasendorf/ASDFPixelSort) | Processing script to sort ceptionResnet) models | timesler | 4928 |
 | 18 |  [ACE-Step](https://github.com/ace-step/ACE-Step) | ACE-Step: A Step Towards Music Generation Foundation Model | ace-step | 2676 |
 | 19 |  [HairStep](https://github.com/GAP-LAB-CUHK-SZ/HairStep) | Repository for &#34;HairStep: Transfer Synthetic to Real Using Strand and Depth Maps for Single-View 3D Hair Modeling&#34;. [CVPR2023 Highlight] | GAP-LAB-CUHK-SZ | 189 |
 | 20 |  [HairStep](https://github.com/PAULYZHENG/HairStep) | Repository for &#34;HairStep: Transfer Synthetic to Real Using Strand and Depth Maps for Single-View 3D Hair Modeling&#34;. [CVPR2023 Highlight] | PAULYZHENG | 1 |
@@ -2027,7 +2002,7 @@
 | 760 |  [sverchok](https://github.com/nortikin/sverchok) | Sverchok | nortikin | 2337 |
 | 761 |  [dream-textures](https://github.com/carson-katri/dream-textures) | Stable Diffusion built-in to Blender | carson-katri | 8038 |
 | 762 |  [Material-Map-Generator](https://github.com/joeyballentine/Material-Map-Generator) | Easily create AI generated Normal maps, Displacement maps, and Roughness maps. | joeyballentine | 307 |
-| 763 |  [material_stable_diffusion](https://github.com/TomMoore515/material_stable_diffusion) | Tileable Stable Diffusion - Cog model | TomMoore515 | 241 |
+| 763 |  [material_stable_diffusion](https://github.com/TomMoore515/material_stable_diffusion) | Tileable Stable Diffusion - Cog model | TomMoore515 | 240 |
 | 764 |  [BlenderLiveUpdate](https://github.com/CedricGuillemet/BlenderLiveUpdate) | Live HTTP/GLTF2 link between Blender and any tool that can stream assets like Babylon.js Playground | CedricGuillemet | 25 |
 | 765 |  [HumGen3D](https://github.com/OliverJPost/HumGen3D) | Main code of the Human Generator 3D add-on for Blender | OliverJPost | 102 |
 | 766 |  [curve_bone_binder](https://github.com/muratagawa/curve_bone_binder) | Bind bones to selected curve points | muratagawa | 4 |
@@ -2336,7 +2311,7 @@
 | 123 |  [llm-vscode](https://github.com/huggingface/llm-vscode) | LLM powered development for VSCode | huggingface | 1305 |
 | 124 |  [eui](https://github.com/elastic/eui) | Elastic UI Framework 🙌 | elastic | 6187 |
 | 125 |  [gradientify](https://github.com/dulajkavinda/gradientify) | ✨ Lambda to convert given image file into CSS gradients to use as skeleton loaders | dulajkavinda | 33 |
-| 126 |  [container-query-polyfill](https://github.com/GoogleChromeLabs/container-query-polyfill) | A polyfill for CSS Container Queries | GoogleChromeLabs | 1147 |
+| 126 |  [container-query-polyfill](https://github.com/GoogleChromeLabs/container-query-polyfill) | A polyfill for CSS Container Queries | GoogleChromeLabs | 1148 |
 | 127 |  [three-actor](https://github.com/PaulHax/three-actor) | Character framework for three.js | PaulHax | 6 |
 | 128 |  [material-ui](https://github.com/mui/material-ui) | Material UI: Comprehensive React component library that implements Google's Material Design. Free forever. | mui | 96090 |
 | 129 |  [mui-treasury](https://github.com/siriwatknp/mui-treasury) | A collection of ready-to-use components based on Material-UI | siriwatknp | 2413 |
@@ -2390,7 +2365,7 @@
 | 177 |  [r3f-gyroid-sphere-operable](https://github.com/nemutas/r3f-gyroid-sphere-operable) |  | nemutas | 13 |
 | 178 |  [hextiles-demo](https://github.com/Fokku/hextiles-demo) |  | Fokku | 1 |
 | 179 |  [glsl-canvas](https://github.com/actarian/glsl-canvas) |  | actarian | 116 |
-| 180 |  [lume](https://github.com/lume/lume) | GPU-powered 3D HTML. ✨🧊 &lt;lume-box size=&#34;1 2 3&#34;&gt; | lume | 1436 |
+| 180 |  [lume](https://github.com/lume/lume) | GPU-powered 3D HTML. ✨🧊 <lume-box size="1 2 3"> | lume | 1436 |
 | 181 |  [three-ts-types](https://github.com/three-types/three-ts-types) | TypeScript types for the popular 3D library three.js | three-types | 261 |
 | 182 |  [Three.js-TypeScript-Boilerplate](https://github.com/Sean-Bradley/Three.js-TypeScript-Boilerplate) | Three.js TypeScript Boilerplate | Sean-Bradley | 578 |
 | 183 |  [THREE-CustomShaderMaterial](https://github.com/FarazzShaikh/THREE-CustomShaderMaterial) | 🧩 Extend Three.js standard materials with your own shaders! | FarazzShaikh | 1139 |
