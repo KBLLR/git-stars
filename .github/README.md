@@ -5,195 +5,193 @@
 ![Total](https://img.shields.io/badge/Total-2056-green.svg)
 ![Updated](https://img.shields.io/badge/Updated-13--7--2025-blue.svg)
 
-## 🏠 Contents
+## 🏠 Languages and Tools
 
-<table>
+<table width="100%" style="margin: 0 auto;">
 <tr>
-<td align="center">
+<td align="center" width="16.66%">
 <a href="#aspnet">
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dot-net/dot-net-original-wordmark.svg" width="40" height="40" alt="ASP.NET" /><br />
 <sub><b>ASP.NET (1)</b></sub>
 </a>
 </td>
-<td align="center">
+<td align="center" width="16.66%">
 <a href="#c">
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" width="40" height="40" alt="C" /><br />
 <sub><b>C (32)</b></sub>
 </a>
 </td>
-<td align="center">
+<td align="center" width="16.66%">
 <a href="#c-1">
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" width="40" height="40" alt="C#" /><br />
 <sub><b>C# (20)</b></sub>
 </a>
 </td>
-<td align="center">
+<td align="center" width="16.66%">
 <a href="#c-2">
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" width="40" height="40" alt="C++" /><br />
 <sub><b>C++ (112)</b></sub>
 </a>
 </td>
-<td align="center">
+<td align="center" width="16.66%">
 <a href="#cmake">
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cmake/cmake-original-wordmark.svg" width="40" height="40" alt="CMake" /><br />
 <sub><b>CMake (1)</b></sub>
 </a>
 </td>
-</tr>
-<tr>
-<td align="center">
+<td align="center" width="16.66%">
 <a href="#css">
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original-wordmark.svg" width="40" height="40" alt="CSS" /><br />
 <sub><b>CSS (11)</b></sub>
 </a>
 </td>
-<td align="center">
+</tr>
+<tr>
+<td align="center" width="16.66%">
 <a href="#coffeescript">
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/coffeescript/coffeescript-original-wordmark.svg" width="40" height="40" alt="CoffeeScript" /><br />
 <sub><b>CoffeeScript (1)</b></sub>
 </a>
 </td>
-<td align="center">
+<td align="center" width="16.66%">
 <a href="#coq">
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Coq_logo.svg/1200px-Coq_logo.svg.png" width="40" height="40" alt="Coq" /><br />
 <sub><b>Coq (1)</b></sub>
 </a>
 </td>
-<td align="center">
+<td align="center" width="16.66%">
 <a href="#cuda">
 <img src="https://developer.nvidia.com/assets/cuda-toolkit-web-square-500x500@2x.png" width="40" height="40" alt="Cuda" /><br />
 <sub><b>Cuda (5)</b></sub>
 </a>
 </td>
-<td align="center">
+<td align="center" width="16.66%">
 <a href="#cython">
 <img src="https://cython.org/logo/cython-logo-square-64x64.png" width="40" height="40" alt="Cython" /><br />
 <sub><b>Cython (1)</b></sub>
 </a>
 </td>
-</tr>
-<tr>
-<td align="center">
+<td align="center" width="16.66%">
 <a href="#dart">
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dart/dart-original-wordmark.svg" width="40" height="40" alt="Dart" /><br />
 <sub><b>Dart (1)</b></sub>
 </a>
 </td>
-<td align="center">
+<td align="center" width="16.66%">
 <a href="#dockerfile">
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original-wordmark.svg" width="40" height="40" alt="Dockerfile" /><br />
 <sub><b>Dockerfile (1)</b></sub>
 </a>
 </td>
-<td align="center">
+</tr>
+<tr>
+<td align="center" width="16.66%">
 <a href="#elixir">
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/elixir/elixir-original-wordmark.svg" width="40" height="40" alt="Elixir" /><br />
 <sub><b>Elixir (1)</b></sub>
 </a>
 </td>
-<td align="center">
+<td align="center" width="16.66%">
 <a href="#forth">
 <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Forth_logo.svg" width="40" height="40" alt="Forth" /><br />
 <sub><b>Forth (1)</b></sub>
 </a>
 </td>
-<td align="center">
+<td align="center" width="16.66%">
 <a href="#g-code">
 <img src="https://www.cnczone.com/forums/attachments/2/1/1/2/4/395610.jpg" width="40" height="40" alt="G-code" /><br />
 <sub><b>G-code (1)</b></sub>
 </a>
 </td>
-</tr>
-<tr>
-<td align="center">
+<td align="center" width="16.66%">
 <a href="#glsl">
 <img src="https://www.khronos.org/assets/images/api_logos/opengl.svg" width="40" height="40" alt="GLSL" /><br />
 <sub><b>GLSL (16)</b></sub>
 </a>
 </td>
-<td align="center">
+<td align="center" width="16.66%">
 <a href="#go">
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg" width="40" height="40" alt="Go" /><br />
 <sub><b>Go (14)</b></sub>
 </a>
 </td>
-<td align="center">
+<td align="center" width="16.66%">
 <a href="#hlsl">
 <img src="https://learn.microsoft.com/en-us/windows/win32/direct3dhlsl/images/directx-12-logo-white-background-1024x1024.png" width="40" height="40" alt="HLSL" /><br />
 <sub><b>HLSL (1)</b></sub>
 </a>
 </td>
-<td align="center">
+</tr>
+<tr>
+<td align="center" width="16.66%">
 <a href="#html">
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original-wordmark.svg" width="40" height="40" alt="HTML" /><br />
 <sub><b>HTML (44)</b></sub>
 </a>
 </td>
-<td align="center">
+<td align="center" width="16.66%">
 <a href="#haxe">
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/haxe/haxe-original.svg" width="40" height="40" alt="Haxe" /><br />
 <sub><b>Haxe (3)</b></sub>
 </a>
 </td>
-</tr>
-<tr>
-<td align="center">
+<td align="center" width="16.66%">
 <a href="#java">
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original-wordmark.svg" width="40" height="40" alt="Java" /><br />
 <sub><b>Java (6)</b></sub>
 </a>
 </td>
-<td align="center">
+<td align="center" width="16.66%">
 <a href="#javascript">
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" width="40" height="40" alt="JavaScript" /><br />
 <sub><b>JavaScript (408)</b></sub>
 </a>
 </td>
-<td align="center">
+<td align="center" width="16.66%">
 <a href="#jinja">
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jinja/jinja-original.svg" width="40" height="40" alt="Jinja" /><br />
 <sub><b>Jinja (1)</b></sub>
 </a>
 </td>
-<td align="center">
+<td align="center" width="16.66%">
 <a href="#julia">
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/julia/julia-original-wordmark.svg" width="40" height="40" alt="Julia" /><br />
 <sub><b>Julia (1)</b></sub>
 </a>
 </td>
-<td align="center">
+</tr>
+<tr>
+<td align="center" width="16.66%">
 <a href="#jupyter-notebook">
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original-wordmark.svg" width="40" height="40" alt="Jupyter Notebook" /><br />
 <sub><b>Jupyter Notebook (111)</b></sub>
 </a>
 </td>
-</tr>
-<tr>
-<td align="center">
+<td align="center" width="16.66%">
 <a href="#kotlin">
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original-wordmark.svg" width="40" height="40" alt="Kotlin" /><br />
 <sub><b>Kotlin (2)</b></sub>
 </a>
 </td>
-<td align="center">
+<td align="center" width="16.66%">
 <a href="#llvm">
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/llvm/llvm-original.svg" width="40" height="40" alt="LLVM" /><br />
 <sub><b>LLVM (1)</b></sub>
 </a>
 </td>
-<td align="center">
+<td align="center" width="16.66%">
 <a href="#lua">
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/lua/lua-original-wordmark.svg" width="40" height="40" alt="Lua" /><br />
 <sub><b>Lua (1)</b></sub>
 </a>
 </td>
-<td align="center">
+<td align="center" width="16.66%">
 <a href="#matlab">
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/matlab/matlab-original.svg" width="40" height="40" alt="MATLAB" /><br />
 <sub><b>MATLAB (3)</b></sub>
 </a>
 </td>
-<td align="center">
+<td align="center" width="16.66%">
 <a href="#mdx">
 <img src="https://mdxjs.com/logo.svg" width="40" height="40" alt="MDX" /><br />
 <sub><b>MDX (3)</b></sub>
@@ -201,167 +199,165 @@
 </td>
 </tr>
 <tr>
-<td align="center">
+<td align="center" width="16.66%">
 <a href="#mathematica">
 <img src="https://www.wolfram.com/language/img/pages/language/en/logo-mathematica.png" width="40" height="40" alt="Mathematica" /><br />
 <sub><b>Mathematica (3)</b></sub>
 </a>
 </td>
-<td align="center">
+<td align="center" width="16.66%">
 <a href="#matlab-1">
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/matlab/matlab-original.svg" width="40" height="40" alt="Matlab" /><br />
 <sub><b>Matlab (1)</b></sub>
 </a>
 </td>
-<td align="center">
+<td align="center" width="16.66%">
 <a href="#metal">
 <img src="https://developer.apple.com/assets/elements/icons/metal/metal-96x96_2x.png" width="40" height="40" alt="Metal" /><br />
 <sub><b>Metal (1)</b></sub>
 </a>
 </td>
-<td align="center">
+<td align="center" width="16.66%">
 <a href="#objective-c">
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/objectivec/objectivec-plain.svg" width="40" height="40" alt="Objective-C" /><br />
 <sub><b>Objective-C (12)</b></sub>
 </a>
 </td>
-<td align="center">
+<td align="center" width="16.66%">
 <a href="#objective-c-1">
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/objectivec/objectivec-plain.svg" width="40" height="40" alt="Objective-C++" /><br />
 <sub><b>Objective-C++ (1)</b></sub>
 </a>
 </td>
-</tr>
-<tr>
-<td align="center">
+<td align="center" width="16.66%">
 <a href="#others">
 <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="40" height="40" alt="Others" /><br />
 <sub><b>Others (127)</b></sub>
 </a>
 </td>
-<td align="center">
+</tr>
+<tr>
+<td align="center" width="16.66%">
 <a href="#php">
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" width="40" height="40" alt="PHP" /><br />
 <sub><b>PHP (2)</b></sub>
 </a>
 </td>
-<td align="center">
+<td align="center" width="16.66%">
 <a href="#plpgsql">
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original-wordmark.svg" width="40" height="40" alt="PLpgSQL" /><br />
 <sub><b>PLpgSQL (1)</b></sub>
 </a>
 </td>
-<td align="center">
+<td align="center" width="16.66%">
 <a href="#powershell">
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/powershell/powershell-original.svg" width="40" height="40" alt="PowerShell" /><br />
 <sub><b>PowerShell (2)</b></sub>
 </a>
 </td>
-<td align="center">
+<td align="center" width="16.66%">
 <a href="#processing">
 <img src="https://processing.org/img/processing-logo.svg" width="40" height="40" alt="Processing" /><br />
 <sub><b>Processing (3)</b></sub>
 </a>
 </td>
-</tr>
-<tr>
-<td align="center">
+<td align="center" width="16.66%">
 <a href="#python">
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original-wordmark.svg" width="40" height="40" alt="Python" /><br />
 <sub><b>Python (771)</b></sub>
 </a>
 </td>
-<td align="center">
+<td align="center" width="16.66%">
 <a href="#r">
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/r/r-original.svg" width="40" height="40" alt="R" /><br />
 <sub><b>R (2)</b></sub>
 </a>
 </td>
-<td align="center">
+</tr>
+<tr>
+<td align="center" width="16.66%">
 <a href="#rpc">
 <img src="https://www.gorillastack.com/wp-content/uploads/2021/08/gRPC-icon-green.png" width="40" height="40" alt="RPC" /><br />
 <sub><b>RPC (1)</b></sub>
 </a>
 </td>
-<td align="center">
+<td align="center" width="16.66%">
 <a href="#roff">
 <img src="https://www.gnu.org/software/groff/groff-logo.png" width="40" height="40" alt="Roff" /><br />
 <sub><b>Roff (3)</b></sub>
 </a>
 </td>
-<td align="center">
+<td align="center" width="16.66%">
 <a href="#ruby">
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ruby/ruby-original-wordmark.svg" width="40" height="40" alt="Ruby" /><br />
 <sub><b>Ruby (3)</b></sub>
 </a>
 </td>
-</tr>
-<tr>
-<td align="center">
+<td align="center" width="16.66%">
 <a href="#rust">
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rust/rust-plain.svg" width="40" height="40" alt="Rust" /><br />
 <sub><b>Rust (14)</b></sub>
 </a>
 </td>
-<td align="center">
+<td align="center" width="16.66%">
 <a href="#scss">
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg" width="40" height="40" alt="SCSS" /><br />
 <sub><b>SCSS (1)</b></sub>
 </a>
 </td>
-<td align="center">
+<td align="center" width="16.66%">
 <a href="#scala">
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scala/scala-original-wordmark.svg" width="40" height="40" alt="Scala" /><br />
 <sub><b>Scala (5)</b></sub>
 </a>
 </td>
-<td align="center">
+</tr>
+<tr>
+<td align="center" width="16.66%">
 <a href="#shaderlab">
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/unity/unity-original-wordmark.svg" width="40" height="40" alt="ShaderLab" /><br />
 <sub><b>ShaderLab (1)</b></sub>
 </a>
 </td>
-<td align="center">
+<td align="center" width="16.66%">
 <a href="#shell">
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" width="40" height="40" alt="Shell" /><br />
 <sub><b>Shell (12)</b></sub>
 </a>
 </td>
-</tr>
-<tr>
-<td align="center">
+<td align="center" width="16.66%">
 <a href="#svelte">
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/svelte/svelte-original-wordmark.svg" width="40" height="40" alt="Svelte" /><br />
 <sub><b>Svelte (5)</b></sub>
 </a>
 </td>
-<td align="center">
+<td align="center" width="16.66%">
 <a href="#swift">
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swift/swift-original-wordmark.svg" width="40" height="40" alt="Swift" /><br />
 <sub><b>Swift (46)</b></sub>
 </a>
 </td>
-<td align="center">
+<td align="center" width="16.66%">
 <a href="#tex">
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/latex/latex-original.svg" width="40" height="40" alt="TeX" /><br />
 <sub><b>TeX (4)</b></sub>
 </a>
 </td>
-<td align="center">
+<td align="center" width="16.66%">
 <a href="#typescript">
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" width="40" height="40" alt="TypeScript" /><br />
 <sub><b>TypeScript (219)</b></sub>
 </a>
 </td>
-<td align="center">
+</tr>
+<tr>
+<td align="center" width="16.66%">
 <a href="#vue">
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original-wordmark.svg" width="40" height="40" alt="Vue" /><br />
 <sub><b>Vue (10)</b></sub>
 </a>
 </td>
-</tr>
-<tr>
-<td align="center">
+<td align="center" width="16.66%">
 <a href="#yaml">
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/yaml/yaml-original.svg" width="40" height="40" alt="YAML" /><br />
 <sub><b>YAML (1)</b></sub>
@@ -369,7 +365,12 @@
 </td>
 </tr>
 </table>
-
+Sources
+help
+stackoverflow.com
+Google Search Suggestions
+Display of Search Suggestions is required when using Grounding with Google Search. Learn more
+Google logo
 ---
 
 ## ASP.NET
