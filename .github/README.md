@@ -365,12 +365,7 @@
 </td>
 </tr>
 </table>
-Sources
-help
-stackoverflow.com
-Google Search Suggestions
-Display of Search Suggestions is required when using Grounding with Google Search. Learn more
-Google logo
+
 ---
 
 ## ASP.NET
