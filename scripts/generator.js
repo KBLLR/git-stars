@@ -16,13 +16,10 @@ const octokit = new Octokit({ auth: GITHUB_TOKEN });
 
 async function getStarredRepos(username) {
   try {
-    return await octokit.paginate(
-      octokit.activity.listReposStarredByUser,
-      {
-        username,
-        per_page: 100,
-      },
-    );
+    return await octokit.paginate(octokit.activity.listReposStarredByUser, {
+      username,
+      per_page: 100,
+    });
   } catch (error) {
     console.error("Error fetching starred repositories:", error);
     throw error;
@@ -49,10 +46,7 @@ async function transformData(starredRepos) {
   const reposWithLanguages = await Promise.all(
     starredRepos.map(async (starredRepo) => {
       const repo = starredRepo.repo;
-      const languages = await getRepoLanguages(
-        repo.owner.login,
-        repo.name,
-      );
+      const languages = await getRepoLanguages(repo.owner.login, repo.name);
       return {
         ...starredRepo,
         enhancedRepo: {
@@ -331,6 +325,14 @@ async function generate() {
     console.log("Processing repository data...");
     const transformedData = await transformData(starredRepos);
 
+    // Flatten the transformed data for the frontend
+    const flattenedData = transformedData.flatMap(
+      (langGroup) => langGroup.repos || [],
+    );
+    console.log(
+      `Processed ${flattenedData.length} repositories into flat array.`,
+    );
+
     console.log("Generating HTML...");
     const htmlContent = generateHTML(transformedData);
 
@@ -352,6 +354,16 @@ async function generate() {
       fs.mkdirSync("public/src", { recursive: true });
     }
     fs.cpSync("src/css", "public/src/css", { recursive: true });
+
+    // Save flattened data.json to the frontend directory for Vite dev server
+    console.log("Saving flattened data.json to frontend directory...");
+    if (!fs.existsSync("src/frontend")) {
+      fs.mkdirSync("src/frontend", { recursive: true });
+    }
+    fs.writeFileSync(
+      "src/frontend/data.json",
+      JSON.stringify(flattenedData, null, 2),
+    );
     console.log("Files saved to root and public directory");
   } catch (error) {
     console.error("Error during generation:", error);

@@ -7,6 +7,62 @@
 
 ## 🏠 Contents
 
+## 🚀 Git Stars App
+
+This is a web application that displays and organizes your GitHub starred repositories.
+
+### Setup and Installation
+
+1. Clone this repository
+   ```bash
+   git clone https://github.com/KBLLR/git-stars.git
+   cd git-stars
+   ```
+
+2. Install dependencies
+   ```bash
+   npm install
+   ```
+
+3. Set up your GitHub token
+   - Copy the .env.example file to .env
+     ```bash
+     cp .env.example .env
+     ```
+   - Edit the .env file and add your GitHub personal access token
+   - Optionally change the GitHub username to track (defaults to "KBLLR")
+
+4. Generate data from your starred repositories
+   ```bash
+   npm run build:data
+   ```
+
+5. Start the development server
+   ```bash
+   npm run dev
+   ```
+
+6. Open your browser and navigate to the URL shown in the terminal
+
+### Building for Production
+
+```bash
+npm run build
+```
+
+The built files will be in the `dist` directory.
+
+### Features
+
+- View all your starred repositories in one place
+- Filter by language, tag, and license
+- Search repositories by name and description
+- Sort by different criteria
+- View README files directly in the app
+- Multiple card style options
+- Logging of actions
+
+
 - [ASP.NET (1)](#aspnet)
 - [C (32)](#c)
 - [C# (20)](#c-1)

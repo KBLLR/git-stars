@@ -1,0 +1,29 @@
+[server]
+enableCORS = false
+enableXsrfProtection = true
+port = 8501
+maxUploadSize = 200
+enableWebsocketCompression = true
+headless = true
+
+[theme]
+primaryColor = "#ffcc00"
+backgroundColor = "#222222"
+secondaryBackgroundColor = "#333333"
+textColor = "#ffffff"
+font = "sans serif"
+
+[browser]
+serverAddress = "localhost"
+serverPort = 8501
+gatherUsageStats = false
+
+[deprecation]
+showfileUploaderEncoding = false
+showPyplotGlobalUse = false
+
+[global]
+developmentMode = false
+disableWatchdogWarning = false
+showWarningOnDirectExecution = true
+dataFrameSerialization = "arrow"
