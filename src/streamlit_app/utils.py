@@ -9,14 +9,29 @@ BASE_PATH = os.path.dirname(__file__)
 @st.cache_data(show_spinner="Loading data...")
 def load_data_json():
     """Loads and caches the main data.json file containing GitHub starred repositories."""
-    path = os.path.join(BASE_PATH, "..", "..", "data", "data.json")
-    try:
-        with open(path, "r") as f:
-            data = json.load(f)
-        return data
-    except FileNotFoundError:
-        st.error(f"Error: The file 'data/data.json' was not found. Please ensure it exists.")
-        return []
+    # Try multiple possible locations for data.json
+    possible_paths = [
+        os.path.join(BASE_PATH, "..", "..", "data", "data.json"),  # Original path
+        os.path.join(BASE_PATH, "..", "..", "public", "data.json"),  # In public directory
+        os.path.join(BASE_PATH, "..", "..", "src", "frontend", "data.json"),  # In frontend directory
+        os.path.join(BASE_PATH, "..", "..", "data.json"),  # In project root
+    ]
+
+    for path in possible_paths:
+        try:
+            with open(path, "r") as f:
+                data = json.load(f)
+            st.success(f"Successfully loaded data from: {path}")
+            return data
+        except FileNotFoundError:
+            continue
+
+    # If we get here, none of the paths worked
+    st.error("Error: data.json was not found in any of the expected locations.")
+    st.info("Places checked: data/, public/, src/frontend/, and project root.")
+
+    # Create a minimal empty data structure to prevent further errors
+    return []
 
 @st.cache_data(show_spinner="Loading university modules...")
 def load_modules():

@@ -28,12 +28,25 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          # Generate data
           npm run build:data
+          mkdir -p src/frontend/public
           cp -f public/data.json src/frontend/
+
+          # Build frontend
           npm run build:frontend
+
+          # Ensure assets are in the right place
+          if [ -d "src/frontend/images" ]; then
+            cp -r src/frontend/images dist/
+          fi
+
+          # Create a .nojekyll file to bypass GitHub Pages Jekyll processing
+          touch dist/.nojekyll
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
+          force_orphan: true

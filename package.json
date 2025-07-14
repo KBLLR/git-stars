@@ -9,7 +9,10 @@
     "build:data": "node scripts/generator.js",
     "build:readme": "node scripts/generator.js",
     "build:readme-local": "node scripts/stargazed.js",
-    "streamlit": "streamlit run src/streamlit_app/app.py",
+    "setup:streamlit": "node scripts/setup-streamlit.js",
+    "streamlit": "npm run setup:streamlit && streamlit run src/streamlit_app/app.py",
+    "build:streamlit": "npm run build:data && npm run setup:streamlit",
+    "postbuild": "node scripts/ensure-build.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
