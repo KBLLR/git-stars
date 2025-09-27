@@ -35,16 +35,43 @@ def load_data_json():
     # Create a minimal empty data structure to prevent further errors
     return []
 
+def _flatten_repos(data):
+    """Normalises the repo structure from data.json.
+
+    Older exports grouped repositories by language (e.g. `[{language, repos: [...]}, ...]`)
+    while the latest export is a simple list of repositories. This helper returns a
+    consistent list of repository dictionaries regardless of the original shape.
+    """
+
+    # Single dictionary with repos
+    if isinstance(data, dict) and isinstance(data.get("repos"), list):
+        return [repo for repo in data["repos"] if isinstance(repo, dict)]
+
+    repos: list[dict] = []
+
+    if isinstance(data, list):
+        for item in data:
+            if isinstance(item, dict) and isinstance(item.get("repos"), list):
+                repos.extend(repo for repo in item["repos"] if isinstance(repo, dict))
+            elif isinstance(item, dict):
+                repos.append(item)
+
+    return repos
+
+
 @st.cache_data(show_spinner="Loading university modules...")
 def load_modules():
     """Derives module-like learning paths from real repository metadata."""
     data = load_data_json()
+    repos = _flatten_repos(data)
     topic_to_repos: dict[str, list[dict]] = defaultdict(list)
 
-    for lang_group in data:
-        for repo in lang_group.get("repos", []):
-            for topic in repo.get("topics", []):
-                topic_to_repos[topic].append(repo)
+    for repo in repos:
+        topics = repo.get("topics", [])
+        if isinstance(topics, str):
+            topics = [topics]
+        for topic in topics:
+            topic_to_repos[topic].append(repo)
 
     # Rank topics by how many repositories reference them to surface meaningful tracks
     ranked_topics = sorted(
@@ -91,11 +118,7 @@ def load_modules():
 def load_code_repos():
     """Loads and caches the GitHub repository data from data.json."""
     data = load_data_json()
-    repos = []
-    for lang_group in data:
-        for repo in lang_group.get("repos", []):
-            repos.append(repo)
-    return repos
+    return _flatten_repos(data)
 
 
 
