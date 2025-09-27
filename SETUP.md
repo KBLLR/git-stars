@@ -153,7 +153,7 @@ Edit the theme files in `src/frontend/css/themes/` to create custom visual style
 ### Adding New Features
 
 The main application code is in:
-- `src/frontend/js/main.js` - Core functionality
+- `src/frontend/main.js` - Core functionality
 - `src/frontend/index.html` - Main HTML structure
 - `src/frontend/css/` - Styling
 

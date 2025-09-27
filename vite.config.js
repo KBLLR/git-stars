@@ -3,29 +3,25 @@ import { defineConfig } from 'vite';
 import { resolve } from 'path';
 
 export default defineConfig({
-  // Specify the correct base path (especially important if deploying to a subdirectory)
-  base: './',
-
-  // Configure the public directory where static assets should be served from
+  root: resolve(__dirname, 'src/frontend'),
+  base: '/git-stars/',
   publicDir: resolve(__dirname, 'public'),
-
-  // Build options
   build: {
-    outDir: 'dist',
+    outDir: resolve(__dirname, 'dist'),
     assetsDir: 'assets',
-    // Generate sourcemaps for better debugging
     sourcemap: true,
+    emptyOutDir: true,
+    rollupOptions: {
+      input: {
+        main: resolve(__dirname, 'src/frontend/index.html'),
+        logs: resolve(__dirname, 'src/frontend/logs.html'),
+      },
+    },
   },
-
-  // Configure server options
   server: {
-    // Show overlay on errors
     hmr: { overlay: true },
-    // Enable automatic opening in browser
     open: true,
   },
-
-  // Resolve aliases for easier imports
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src/frontend'),
