@@ -51,6 +51,12 @@ streamlit run src/streamlit_app/app.py
 
 The app will be available at http://localhost:8501
 
+## Accessing the Dashboard
+
+- **Hosted deployment:** The production dashboard is available at [https://git-stars.streamlit.app](https://git-stars.streamlit.app). Use the same GitHub account that owns the repository to access private deployments.
+- **From the web UI:** The Vite frontend includes a floating Streamlit logo button in the lower-right corner; click it to launch the Streamlit dashboard in a new tab.
+- **Local preview:** Run `npm run streamlit` to generate the latest data (`npm run setup:streamlit` is run automatically) and open the app locally with Streamlit.
+
 ## Data Files
 
 The app expects the following data files in the `data` directory:

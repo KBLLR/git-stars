@@ -208,11 +208,49 @@ function populateFilters() {
       .join("");
 }
 
+const getCardStyle = () => cardStyleSelect?.value || "default";
+
+function safeNumber(value, fallback = "0") {
+  if (typeof value === "number" && Number.isFinite(value)) {
+    return value.toLocaleString();
+  }
+  if (typeof value === "string" && value.trim().length) {
+    return escapeHtml(value);
+  }
+  return fallback;
+}
+
+function chipList(items, { emptyLabel, className }) {
+  if (!Array.isArray(items) || items.length === 0) {
+    return `<span class="${className} ${className}--empty">${escapeHtml(emptyLabel)}</span>`;
+  }
+  return items
+    .map((item) => `<span class="${className}">${escapeHtml(String(item))}</span>`)
+    .join("");
+}
+
+function languageList(languages) {
+  if (!Array.isArray(languages) || languages.length === 0) {
+    return '<span class="language-item language-item--empty">Languages unavailable</span>';
+  }
+
+  return languages
+    .map((entry) => {
+      const lang = entry?.language ? escapeHtml(entry.language) : "Unknown";
+      const percentage = entry?.percentage
+        ? ` <span class="language-percent">${escapeHtml(entry.percentage)}</span>`
+        : "";
+      return `<span class="language-item">${lang}${percentage}</span>`;
+    })
+    .join("");
+}
+
 function render() {
   const search = searchInput.value.toLowerCase();
   const lang = languageFilter.value;
   const tag = tagFilter.value;
   const lic = licenseFilter.value;
+  const style = getCardStyle();
 
   const filtered = repos
     .filter((r) => {
@@ -245,25 +283,117 @@ function render() {
       }
     });
 
-  container.innerHTML = filtered.map((repo) => repoCard(repo)).join("");
+  container.innerHTML = filtered.map((repo) => repoCard(repo, style)).join("");
 }
 
-function repoCard(repo) {
-  const langs = (repo.languages || []).map((l) => l.language).join(", ");
-  const topics = (repo.topics || []).join(", ") || "None";
-  return `<div class="repo-card" data-author="${escapeHtml(repo.author)}" data-repo="${escapeHtml(repo.name)}">
+function baseCard(repo, style) {
+  const primaryLanguage =
+    repo.primary_language || repo.languages?.[0]?.language || "Unknown";
+  const topicsMarkup = chipList(repo.topics, {
+    emptyLabel: "No topics yet",
+    className: "topic",
+  });
+  const licenseLabel =
+    repo.license && repo.license !== "None" ? repo.license : "No license";
+
+  return `<article class="repo-card" data-author="${escapeHtml(
+    repo.author || "unknown",
+  )}" data-repo="${escapeHtml(repo.name)}" data-card-style="${escapeHtml(
+    style,
+  )}">
     <h3><a href="${repo.url}" target="_blank">${escapeHtml(repo.name)}</a></h3>
-    <p><strong>Author:</strong> ${escapeHtml(repo.author)}</p>
-    <p><strong>Description:</strong> ${escapeHtml(repo.description)}</p>
-    <div class="metrics">
-      <div class="metric"><i class="fa fa-star"></i> ${repo.stars}</div>
-      <div class="metric"><i class="fa fa-code-branch"></i> ${repo.forks}</div>
-      <div class="metric"><i class="fa fa-bug"></i> ${repo.open_issues}</div>
-      <div class="metric"><i class="fa fa-calendar"></i> ${repo.last_updated}</div>
+    <p class="description">${escapeHtml(
+      repo.description || "No description provided",
+    )}</p>
+    <div class="details" aria-label="Repository details">
+      <span class="detail-item"><i class="fa fa-user"></i>${escapeHtml(
+        repo.author || "Unknown author",
+      )}</span>
+      <span class="detail-item"><i class="fa fa-code"></i>${escapeHtml(
+        primaryLanguage,
+      )}</span>
+      <span class="detail-item"><i class="fa fa-id-badge"></i>${escapeHtml(
+        licenseLabel,
+      )}</span>
     </div>
-    <div class="languages">${langs}</div>
-    <div class="topics">${escapeHtml(topics)}</div>
-  </div>`;
+    <div class="metrics" aria-label="Repository metrics">
+      <div class="metric"><i class="fa fa-star"></i> ${safeNumber(
+        repo.stars,
+      )}</div>
+      <div class="metric"><i class="fa fa-code-branch"></i> ${safeNumber(
+        repo.forks,
+      )}</div>
+      <div class="metric"><i class="fa fa-bug"></i> ${safeNumber(
+        repo.open_issues,
+      )}</div>
+      <div class="metric"><i class="fa fa-calendar"></i> ${escapeHtml(
+        repo.last_updated || "Unknown",
+      )}</div>
+    </div>
+    <div class="languages" aria-label="Languages">${languageList(
+      repo.languages,
+    )}</div>
+    <div class="topics" aria-label="Topics">${topicsMarkup}</div>
+    <div class="date">Starred on: ${escapeHtml(repo.date || "Unknown")}</div>
+  </article>`;
+}
+
+function professionalCard(repo, style) {
+  const topicsMarkup = chipList(repo.topics, {
+    emptyLabel: "No topics yet",
+    className: "topic",
+  });
+  const languagesMarkup = languageList(repo.languages);
+  const primaryLanguage =
+    repo.primary_language || repo.languages?.[0]?.language || "Unknown";
+  const licenseLabel =
+    repo.license && repo.license !== "None" ? repo.license : "No license";
+
+  return `<article class="repo-card repo-card--professional" data-author="${escapeHtml(
+    repo.author || "unknown",
+  )}" data-repo="${escapeHtml(repo.name)}" data-card-style="${escapeHtml(
+    style,
+  )}">
+    <aside class="sidebar">
+      <div class="stars" title="GitHub stars">
+        <i class="fa fa-star"></i> ${safeNumber(repo.stars)}
+      </div>
+      <div class="language" title="Primary language">${escapeHtml(
+        primaryLanguage,
+      )}</div>
+    </aside>
+    <div class="content">
+      <h3><a href="${repo.url}" target="_blank">${escapeHtml(
+        repo.name,
+      )}</a></h3>
+      <p class="description">${escapeHtml(
+        repo.description || "No description provided",
+      )}</p>
+      <div class="details" aria-label="Repository details">
+        <span class="detail-item"><i class="fa fa-user"></i>${escapeHtml(
+          repo.author || "Unknown author",
+        )}</span>
+        <span class="detail-item"><i class="fa fa-id-badge"></i>${escapeHtml(
+          licenseLabel,
+        )}</span>
+        <span class="detail-item"><i class="fa fa-calendar"></i>${escapeHtml(
+          repo.last_updated || "Unknown",
+        )}</span>
+      </div>
+      <div class="languages" aria-label="Languages">${languagesMarkup}</div>
+      <div class="topics" aria-label="Topics">${topicsMarkup}</div>
+      <div class="date">Starred on: ${escapeHtml(
+        repo.date || "Unknown",
+      )}</div>
+    </div>
+  </article>`;
+}
+
+function repoCard(repo, style) {
+  if (style === "professional") {
+    return professionalCard(repo, style);
+  }
+  return baseCard(repo, style);
 }
 
 searchInput.addEventListener("input", render);
@@ -572,6 +702,7 @@ cardStyleSelect?.addEventListener("change", () => {
   );
   const style = cardStyleSelect.value;
   if (style !== "default") document.body.classList.add(style);
+  render();
 });
 cardStyleSelect?.dispatchEvent(new Event("change"));
 

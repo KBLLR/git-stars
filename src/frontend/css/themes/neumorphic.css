@@ -15,3 +15,26 @@ body.neumorphic .repo-card .metric {
     background: #d0d0d0;
     border-radius: 12px;
 }
+body.neumorphic .repo-card .detail-item {
+    background: #dcdcdc;
+    border: none;
+    color: #333;
+    text-transform: none;
+    letter-spacing: normal;
+}
+body.neumorphic .repo-card .detail-item i {
+    color: #6366f1;
+}
+body.neumorphic .repo-card .language-item {
+    background: #e4e4e4;
+    border: none;
+    color: #373737;
+}
+body.neumorphic .repo-card .topic {
+    background: #e8e8e8;
+    color: #4b5563;
+    border-radius: 10px;
+}
+body.neumorphic .repo-card .date {
+    color: #6b7280;
+}

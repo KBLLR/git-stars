@@ -13,3 +13,25 @@ body.minimalist .repo-card h3 {
 body.minimalist .repo-card p {
   margin: 2px 0;
 }
+body.minimalist .repo-card .detail-item,
+body.minimalist .repo-card .metric,
+body.minimalist .repo-card .language-item,
+body.minimalist .repo-card .topic {
+  background: none;
+  border: none;
+  color: #2d3748;
+  padding: 0;
+  gap: 4px;
+}
+body.minimalist .repo-card .detail-item {
+  text-transform: none;
+  letter-spacing: normal;
+  font-size: 0.75em;
+}
+body.minimalist .repo-card .metric {
+  font-size: 0.75em;
+}
+body.minimalist .repo-card .date {
+  color: #4a5568;
+  text-align: left;
+}
