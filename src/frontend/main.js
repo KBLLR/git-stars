@@ -4,6 +4,16 @@ import { marked } from "marked";
 const APP_VERSION = "1.0.2";
 console.log(`Git Stars App v${APP_VERSION}`);
 
+// Normalize the URL so deployments don't show /index.html
+const { pathname, search, hash } = window.location;
+if (/index\.html$/i.test(pathname)) {
+  let newPath = pathname.replace(/index\.html$/i, "");
+  if (!newPath || newPath === "/") {
+    newPath = "/";
+  }
+  window.history.replaceState({}, "", `${newPath}${search}${hash}`);
+}
+
 // Initialize application elements
 const container = document.getElementById("reposContainer");
 const searchInput = document.getElementById("searchInput");
