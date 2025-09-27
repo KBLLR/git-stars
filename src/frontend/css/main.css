@@ -1,12 +1,20 @@
+@import url("./index.css");
+@import url("./themes/retro.css");
+@import url("./themes/futuristic.css");
+@import url("./themes/professional.css");
+@import url("./themes/terminal.css");
+@import url("./themes/neumorphic.css");
+@import url("./themes/minimalist.css");
+
 /* General Layout */
 body {
-    font-family: "Roboto", Arial, sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
-    padding-top: 100px; /* space for header */
+  font-family: "Roboto", Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  padding-top: 100px; /* space for header */
 }
 
 /* Header */
