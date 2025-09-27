@@ -2,33 +2,25 @@
 import { defineConfig } from 'vite';
 import { resolve } from 'path';
 
+const rootDir = resolve(__dirname, 'src/frontend');
+
 export default defineConfig({
-  // Specify the correct base path (especially important if deploying to a subdirectory)
+  root: rootDir,
   base: './',
-
-  // Configure the public directory where static assets should be served from
   publicDir: resolve(__dirname, 'public'),
-
-  // Build options
   build: {
-    outDir: 'dist',
+    outDir: resolve(__dirname, 'dist'),
     assetsDir: 'assets',
-    // Generate sourcemaps for better debugging
     sourcemap: true,
+    emptyOutDir: true,
   },
-
-  // Configure server options
   server: {
-    // Show overlay on errors
     hmr: { overlay: true },
-    // Enable automatic opening in browser
     open: true,
   },
-
-  // Resolve aliases for easier imports
   resolve: {
     alias: {
-      '@': resolve(__dirname, 'src/frontend'),
+      '@': rootDir,
     },
   },
 });
