@@ -1,10 +1,19 @@
 // vite.config.js
 import { defineConfig } from 'vite';
-import { resolve } from 'path';
+import { resolve, dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+// Recreate __dirname in ESM
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+const rootDir = resolve(__dirname, 'src/frontend');
 
 export default defineConfig({
-  root: resolve(__dirname, 'src/frontend'),
-  base: '/git-stars/',
+  root: rootDir,
+  // Use './' for local dev, Vercel, Netlify, etc.
+  // If deploying to GitHub Pages under /git-stars/, change to base: '/git-stars/'
+  base: './',
   publicDir: resolve(__dirname, 'public'),
   build: {
     outDir: resolve(__dirname, 'dist'),
@@ -24,7 +33,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@': resolve(__dirname, 'src/frontend'),
+      '@': rootDir,
     },
   },
 });
