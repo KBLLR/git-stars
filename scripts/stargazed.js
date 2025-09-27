@@ -19,6 +19,10 @@ program
 
 const { username, token, message } = program.opts();
 
+if (message) {
+  console.log(`📝 Using commit message template: ${message}`);
+}
+
 if (!username || !token) {
   console.error(
     "⚠️ Missing required environment variables (GITHUB_USERNAME or GITHUB_TOKEN).",

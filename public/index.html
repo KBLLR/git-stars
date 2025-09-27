@@ -24,7 +24,7 @@
     <div class="right-group">
       <div class="logs-container" title="Logs">
         <a id="logsIcon" href="logs.html"><i class="fa fa-list"></i></a>
-        <span id="logCount" class="badge">0</span>
+        <span id="logsCountBadge" class="badge" aria-live="polite">0</span>
       </div>
       <i id="summarizeIcon" class="fa fa-comment-dots action-icon" title="Summarize"></i>
       <i id="tagIcon" class="fa fa-tags action-icon" title="Tag"></i>
@@ -36,6 +36,23 @@
   <h1 id="pageTitle">Git Stars</h1>
 
   <div id="errorMessage" class="error"></div>
+
+
+  <section class="activity-panel" aria-labelledby="activityTitle">
+    <div class="activity-header">
+      <h2 id="activityTitle">Recent Activity</h2>
+      <select id="logTypeFilter" aria-label="Filter recent activity by action type">
+        <option value="all">All actions</option>
+      </select>
+    </div>
+    <ul id="recentLogs" class="activity-list">
+      <li class="empty">No activity yet. Interact with the app to get started.</li>
+    </ul>
+    <div class="activity-footer">
+      <button id="exportLogsBtn" class="activity-export" type="button">Export activity</button>
+      <a class="activity-link" href="logs.html">View full history</a>
+    </div>
+  </section>
 
 
   <div id="reposContainer"></div>

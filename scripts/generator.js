@@ -1,6 +1,9 @@
 import fs from "fs";
+import path from "path";
 import dotenv from "dotenv";
+import { fileURLToPath } from "url";
 import { Octokit } from "@octokit/rest";
+import PQueue from "p-queue";
 
 dotenv.config();
 
@@ -13,6 +16,41 @@ if (!GITHUB_TOKEN) {
 }
 
 const octokit = new Octokit({ auth: GITHUB_TOKEN });
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const CACHE_DIR = path.resolve(__dirname, ".cache");
+const LANGUAGE_CACHE_FILE = path.join(CACHE_DIR, "languages.json");
+
+let languageCache = {};
+try {
+  if (fs.existsSync(LANGUAGE_CACHE_FILE)) {
+    languageCache = JSON.parse(fs.readFileSync(LANGUAGE_CACHE_FILE, "utf-8"));
+  }
+} catch (error) {
+  console.warn("Failed to load language cache. Rebuilding from scratch.", error);
+  languageCache = {};
+}
+
+const languageQueue = new PQueue({
+  concurrency: 5,
+  interval: 60_000,
+  intervalCap: 45,
+});
+
+function saveLanguageCache() {
+  try {
+    if (!fs.existsSync(CACHE_DIR)) {
+      fs.mkdirSync(CACHE_DIR, { recursive: true });
+    }
+    fs.writeFileSync(
+      LANGUAGE_CACHE_FILE,
+      JSON.stringify(languageCache, null, 2),
+    );
+  } catch (error) {
+    console.error("Failed to persist language cache:", error);
+  }
+}
 
 async function getStarredRepos(username) {
   try {
@@ -44,23 +82,56 @@ async function transformData(starredRepos) {
   const reposByLanguage = {};
 
   const reposWithLanguages = await Promise.all(
-    starredRepos.map(async (starredRepo) => {
-      const repo = starredRepo.repo;
-      const languages = await getRepoLanguages(repo.owner.login, repo.name);
-      return {
-        ...starredRepo,
-        enhancedRepo: {
-          ...repo,
-          languages: languages || [],
-          topics: repo.topics || [],
-        },
-      };
-    }),
+    starredRepos.map((starredRepo) =>
+      languageQueue.add(async () => {
+        const repo = starredRepo.repo;
+        const cacheKey = `${repo.owner.login}/${repo.name}`;
+        const signature =
+          repo.pushed_at || repo.updated_at || starredRepo.starred_at || "unknown";
+
+        let languages = [];
+        const cachedEntry = languageCache[cacheKey];
+
+        if (cachedEntry && cachedEntry.signature === signature) {
+          languages = cachedEntry.languages;
+        } else {
+          const fetchedLanguages = await getRepoLanguages(
+            repo.owner.login,
+            repo.name,
+          );
+          if (fetchedLanguages) {
+            languages = fetchedLanguages;
+            languageCache[cacheKey] = {
+              signature,
+              languages,
+              cachedAt: new Date().toISOString(),
+            };
+          } else if (cachedEntry) {
+            languages = cachedEntry.languages;
+          }
+        }
+
+        return {
+          ...starredRepo,
+          enhancedRepo: {
+            ...repo,
+            languages,
+            topics: repo.topics || [],
+          },
+        };
+      }),
+    ),
   );
 
   reposWithLanguages.forEach(({ enhancedRepo, starred_at }) => {
     // Use the repository language if available, otherwise use "Unknown"
     const language = enhancedRepo.language || "Unknown";
+    const primaryLanguage =
+      enhancedRepo.language ||
+      (enhancedRepo.languages && enhancedRepo.languages[0]
+        ? enhancedRepo.languages[0].language
+        : "Unknown");
+
     const repoData = {
       name: enhancedRepo.name,
       description: enhancedRepo.description || "No description",
@@ -70,6 +141,7 @@ async function transformData(starredRepos) {
       date: new Date(starred_at).toLocaleDateString(),
       languages: enhancedRepo.languages,
       topics: enhancedRepo.topics,
+      primary_language: primaryLanguage,
       license: enhancedRepo.license?.spdx_id || "None",
       forks: enhancedRepo.forks_count,
       open_issues: enhancedRepo.open_issues_count,
@@ -324,6 +396,7 @@ async function generate() {
 
     console.log("Processing repository data...");
     const transformedData = await transformData(starredRepos);
+    saveLanguageCache();
 
     // Flatten the transformed data for the frontend
     const flattenedData = transformedData.flatMap(

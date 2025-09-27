@@ -1,6 +1,8 @@
 import streamlit as st
 import json
 import os
+from collections import defaultdict
+from datetime import datetime
 
 # --- Get the base path of the script to build robust file paths ---
 # This ensures that the paths work regardless of where the script is run from.
@@ -35,28 +37,52 @@ def load_data_json():
 
 @st.cache_data(show_spinner="Loading university modules...")
 def load_modules():
-    """Creates mock module data based on repository topics from data.json."""
+    """Derives module-like learning paths from real repository metadata."""
     data = load_data_json()
-    # Create synthesized modules from repository topics
-    all_topics = set()
+    topic_to_repos: dict[str, list[dict]] = defaultdict(list)
+
     for lang_group in data:
         for repo in lang_group.get("repos", []):
             for topic in repo.get("topics", []):
-                all_topics.add(topic)
+                topic_to_repos[topic].append(repo)
 
-    # Create a synthetic module for each major topic
+    # Rank topics by how many repositories reference them to surface meaningful tracks
+    ranked_topics = sorted(
+        topic_to_repos.items(),
+        key=lambda item: (-len(item[1]), item[0]),
+    )
+
     modules = []
-    for i, topic in enumerate(sorted(all_topics)):
-        if i > 10:  # Limit to 10 synthetic modules
-            break
-        modules.append({
-            "title_and_version": f"CS{i+100}: {topic.replace('-', ' ').title()}",
-            "core_focus": f"Study of {topic.replace('-', ' ')}",
-            "topics": [topic],
-            "semester": "Fall 2023",
-            "credits": 3,
-            "description": f"An exploration of {topic.replace('-', ' ')} concepts and applications."
-        })
+    for topic, repos in ranked_topics[:12]:
+        primary_repo = max(repos, key=lambda r: r.get("stars", 0))
+        languages = {
+            lang.get("language")
+            for repo in repos
+            for lang in repo.get("languages", [])
+            if isinstance(lang, dict)
+        }
+
+        modules.append(
+            {
+                "title_and_version": f"{topic.replace('-', ' ').title()} Track",
+                "core_focus": primary_repo.get("description")
+                or "No description provided.",
+                "topics": sorted({topic, *primary_repo.get("topics", [])}),
+                "semester": primary_repo.get("last_updated", "Recently updated"),
+                "credits": max(len(repos), 1),
+                "description": (
+                    f"Curated from {len(repos)} repositories such as "
+                    + ", ".join(repo.get("name", "Unnamed") for repo in repos[:3])
+                ),
+                "languages": sorted(filter(None, languages))
+                or [primary_repo.get("primary_language", "Unknown")],
+                "resources": [
+                    {"name": repo.get("name"), "url": repo.get("url")}
+                    for repo in repos[:5]
+                ],
+            }
+        )
+
     return modules
 
 
@@ -75,33 +101,38 @@ def load_code_repos():
 
 @st.cache_data(show_spinner="Loading knowledge base...")
 def load_papers():
-    """Creates synthetic research papers based on repository topics from data.json."""
-    data = load_data_json()
+    """Synthesizes paper-like insights from the most starred repositories."""
+    repos = load_code_repos()
 
-    # Extract all topics and languages to create synthetic papers
-    all_topics = set()
-    all_languages = set()
+    def summarise_languages(repo):
+        lang_entries = [
+            lang.get("language")
+            for lang in repo.get("languages", [])
+            if isinstance(lang, dict)
+        ]
+        if lang_entries:
+            return ", ".join(lang_entries[:3])
+        return repo.get("primary_language") or "Unknown"
 
-    for lang_group in data:
-        all_languages.add(lang_group.get("language", "Unknown"))
-        for repo in lang_group.get("repos", []):
-            for topic in repo.get("topics", []):
-                all_topics.add(topic)
-
-    # Create synthetic papers based on topics and languages
     papers = []
-    for i, topic in enumerate(sorted(all_topics)):
-        if i > 15:  # Limit to 15 synthetic papers
-            break
-        papers.append({
-            "title": f"Advances in {topic.replace('-', ' ').title()} Technology",
-            "authors": ["KBLLR", "Git Stars"],
-            "year": 2023,
-            "description": f"A research study exploring {topic.replace('-', ' ')} applications and techniques.",
-            "tags": [topic] + list(sorted(all_topics))[:2],  # Add the topic and a couple more
-            "url": f"https://example.org/papers/{topic}",
-            "citation_count": i * 10 + 5  # Just a placeholder value
-        })
+    for repo in sorted(repos, key=lambda r: r.get("stars", 0), reverse=True)[:20]:
+        topics = repo.get("topics", [])
+        if isinstance(topics, str):
+            topics = [topics]
+
+        papers.append(
+            {
+                "title": f"{repo.get('name')} in Practice",
+                "authors": [repo.get("author", "Unknown")],
+                "year": _extract_year(repo.get("last_updated")),
+                "description": repo.get("description") or "No description provided.",
+                "tags": topics,
+                "url": repo.get("url"),
+                "citation_count": repo.get("stars", 0),
+                "languages": summarise_languages(repo),
+            }
+        )
+
     return papers
 
 def get_all_topics(modules_data, repos_list, kb_data):
@@ -117,3 +148,16 @@ def get_all_topics(modules_data, repos_list, kb_data):
         for tag in kb.get("tags", []):
             all_topics.add(tag)
     return sorted(list(all_topics))
+
+
+def _extract_year(value):
+    if not value:
+        return datetime.utcnow().year
+
+    for fmt in ("%m/%d/%Y", "%Y-%m-%d", "%Y/%m/%d"):
+        try:
+            return datetime.strptime(value, fmt).year
+        except ValueError:
+            continue
+
+    return datetime.utcnow().year

@@ -13,7 +13,9 @@
     "streamlit": "npm run setup:streamlit && streamlit run src/streamlit_app/app.py",
     "build:streamlit": "npm run build:data && npm run setup:streamlit",
     "postbuild": "node scripts/ensure-build.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint .",
+    "test:data": "node tests/run-tests.js",
+    "test": "npm run lint && npm run test:data"
   },
   "repository": {
     "type": "git",
@@ -39,6 +41,8 @@
     "p-queue": "^8.1.0"
   },
   "devDependencies": {
+    "@eslint/js": "^9.9.0",
+    "eslint": "^9.9.0",
     "vite": "^5.2.11"
   },
   "bugs": {

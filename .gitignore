@@ -27,6 +27,7 @@ yarn-error.log
 # Other files
 .DS_Store?
 .cache/
+scripts/.cache/
 
 # Directories
 data/
