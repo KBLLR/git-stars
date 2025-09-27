@@ -24,7 +24,7 @@
             </div>
             <div class="right-group">
                 <div class="logs-container" title="Logs">
-                    <span id="logCount" class="badge">0</span>
+                    <span id="logsCountBadge" class="badge" aria-live="polite">0</span>
                 </div>
             </div>
         </header>
@@ -102,7 +102,7 @@
             const exportLogsBtn = document.getElementById('exportLogs');
             const logsTableBody = document.getElementById('logsTableBody');
             const noLogsMessage = document.getElementById('noLogs');
-            const logCountBadge = document.getElementById('logCount');
+            const logCountBadge = document.getElementById('logsCountBadge');
             const errorMessage = document.getElementById('errorMessage');
 
             // Format date and time

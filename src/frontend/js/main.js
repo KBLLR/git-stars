@@ -17,8 +17,11 @@ const tagIcon = document.getElementById("tagIcon");
 const rateIcon = document.getElementById("rateIcon");
 const logsIcon = document.getElementById("logsIcon");
 const starCountBadge = document.getElementById("starCount");
-const logsCountBadge = document.getElementById("logsCountBadge");
-const logBadge = document.getElementById("logCount");
+const logsCountBadge =
+  document.getElementById("logsCountBadge") || document.getElementById("logCount");
+const logTypeFilter = document.getElementById("logTypeFilter");
+const recentLogsList = document.getElementById("recentLogs");
+const exportLogsBtn = document.getElementById("exportLogsBtn");
 const cardStyleSelect = document.getElementById("cardStyle");
 
 // Initialize repository count to 0
@@ -269,9 +272,137 @@ tagFilter.addEventListener("change", render);
 licenseFilter.addEventListener("change", render);
 sortBy.addEventListener("change", render);
 
-function logAction(type, details, tags = "", rating = "") {
+logTypeFilter?.addEventListener("change", () => {
+  renderRecentLogs(getStoredLogs());
+});
+
+exportLogsBtn?.addEventListener("click", () => {
+  const logs = getStoredLogs();
+  if (!logs.length) {
+    alert("No activity available to export yet.");
+    return;
+  }
+  exportLogsToJson(logs);
+});
+
+refreshActivityView();
+
+function getStoredLogs() {
   try {
     const logs = JSON.parse(localStorage.getItem("actionLogs") || "[]");
+    if (!Array.isArray(logs)) {
+      return [];
+    }
+    return logs;
+  } catch (e) {
+    console.error("Error reading logs:", e);
+    if (e instanceof SyntaxError) {
+      console.warn("Resetting corrupted logs");
+      localStorage.setItem("actionLogs", "[]");
+    }
+    return [];
+  }
+}
+
+function populateLogTypes(logs) {
+  if (!logTypeFilter) return;
+
+  const currentValue = logTypeFilter.value;
+  const uniqueTypes = new Set(["all"]);
+  logs.forEach((log) => {
+    if (log?.type) uniqueTypes.add(log.type);
+  });
+
+  logTypeFilter.innerHTML = Array.from(uniqueTypes)
+    .sort((a, b) => {
+      if (a === "all") return -1;
+      if (b === "all") return 1;
+      return a.localeCompare(b);
+    })
+    .map(
+      (type) =>
+        `<option value="${type}">${
+          type === "all" ? "All actions" : escapeHtml(type)
+        }</option>`,
+    )
+    .join("");
+
+  if (uniqueTypes.has(currentValue)) {
+    logTypeFilter.value = currentValue;
+  }
+}
+
+function renderRecentLogs(logs) {
+  if (!recentLogsList) return;
+
+  const selectedType = logTypeFilter ? logTypeFilter.value : "all";
+  const filtered = logs.filter((log) => {
+    if (!log || typeof log !== "object") return false;
+    if (selectedType && selectedType !== "all" && log.type !== selectedType) {
+      return false;
+    }
+    return true;
+  });
+
+  const latest = filtered.slice(0, 6);
+
+  if (!latest.length) {
+    recentLogsList.innerHTML =
+      '<li class="empty">No matching activity yet. Try a different filter.</li>';
+    return;
+  }
+
+  recentLogsList.innerHTML = latest
+    .map((log) => {
+      const timestamp = log.time
+        ? new Date(log.time).toLocaleString()
+        : "Unknown time";
+      const details = log.details ? escapeHtml(log.details) : "No details provided";
+      const tags = log.tags
+        ? escapeHtml(Array.isArray(log.tags) ? log.tags.join(", ") : log.tags)
+        : "—";
+      const rating = log.rating ? `⭐ ${escapeHtml(String(log.rating))}` : "";
+      return `<li>
+        <div class="meta">
+          <span>${escapeHtml(log.type || "unknown action")}</span>
+          <span>${escapeHtml(timestamp)}</span>
+        </div>
+        <div>${details}</div>
+        <div class="meta">
+          <span>${tags}</span>
+          <span>${rating}</span>
+        </div>
+      </li>`;
+    })
+    .join("");
+}
+
+function exportLogsToJson(logs) {
+  if (!logs?.length) return;
+  const blob = new Blob([JSON.stringify(logs, null, 2)], {
+    type: "application/json",
+  });
+  const url = URL.createObjectURL(blob);
+  const anchor = document.createElement("a");
+  anchor.href = url;
+  anchor.download = "git-stars-activity.json";
+  document.body.appendChild(anchor);
+  anchor.click();
+  document.body.removeChild(anchor);
+  URL.revokeObjectURL(url);
+}
+
+function refreshActivityView() {
+  const logs = getStoredLogs();
+  if (logsCountBadge) logsCountBadge.textContent = logs.length;
+  populateLogTypes(logs);
+  renderRecentLogs(logs);
+  return logs;
+}
+
+function logAction(type, details, tags = "", rating = "") {
+  try {
+    const logs = getStoredLogs();
     const newLog = {
       time: new Date().toISOString(),
       type,
@@ -281,54 +412,41 @@ function logAction(type, details, tags = "", rating = "") {
       appVersion: APP_VERSION,
     };
 
-    // Add new log at the beginning instead of the end (more efficient to trim)
     logs.unshift(newLog);
 
-    // Keep only the most recent 100 logs to avoid storage quota issues
     if (logs.length > 100) {
       logs.length = 100;
     }
 
-    // Try to store logs, if it fails, reduce size and try again
     try {
       localStorage.setItem("actionLogs", JSON.stringify(logs));
     } catch (storageError) {
-      // If storage quota is exceeded, reduce to 50 logs and try again
+      if (debugMode) {
+        console.warn("Storage quota warning while saving logs", storageError);
+      }
       logs.length = 50;
       try {
         localStorage.setItem("actionLogs", JSON.stringify(logs));
-      } catch (e) {
-        // If it still fails, clear logs and just save this one
+      } catch (error) {
+        if (debugMode) {
+          console.error("Failed to persist trimmed logs", error);
+        }
         localStorage.setItem("actionLogs", JSON.stringify([newLog]));
       }
     }
 
-    updateLogCount();
+    refreshActivityView();
 
-    // Log to console in debug mode
     if (debugMode) {
       console.log("Action logged:", newLog);
     }
-  } catch (e) {
-    console.error("Error logging action:", e);
+  } catch (error) {
+    console.error("Error logging action:", error);
   }
 }
 
 function updateLogCount() {
-  try {
-    const logs = JSON.parse(localStorage.getItem("actionLogs") || "[]");
-    if (logsCountBadge) logsCountBadge.textContent = logs.length;
-    if (logBadge) logBadge.textContent = logs.length;
-  } catch (e) {
-    console.error("Error updating log count:", e);
-    // Reset corrupted logs
-    if (e instanceof SyntaxError) {
-      console.warn("Resetting corrupted logs");
-      localStorage.setItem("actionLogs", "[]");
-      if (logsCountBadge) logsCountBadge.textContent = "0";
-      if (logBadge) logBadge.textContent = "0";
-    }
-  }
+  refreshActivityView();
 }
 
 // Add a function to clean up storage if needed
@@ -340,19 +458,21 @@ function cleanupStorage() {
 
     // Check storage usage
     let totalSize = 0;
-    for (let key in localStorage) {
-      if (localStorage.hasOwnProperty(key)) {
-        totalSize += (localStorage[key].length * 2) / 1024; // Approximate KB
+    Object.keys(localStorage).forEach((key) => {
+      const value = localStorage.getItem(key);
+      if (value) {
+        totalSize += (value.length * 2) / 1024; // Approximate KB
       }
-    }
+    });
 
     // If using more than ~4MB, clean up logs
     if (totalSize > 4000) {
-      const logs = JSON.parse(localStorage.getItem("actionLogs") || "[]");
+      const logs = getStoredLogs();
       if (logs.length > 20) {
         logs.length = 20; // Aggressive cleanup
         localStorage.setItem("actionLogs", JSON.stringify(logs));
         console.warn("Storage cleanup performed. Reduced logs to 20 entries.");
+        refreshActivityView();
       }
     }
   } catch (e) {
@@ -364,7 +484,7 @@ function cleanupStorage() {
 function clearAllLogs() {
   try {
     localStorage.setItem("actionLogs", "[]");
-    updateLogCount();
+    refreshActivityView();
     console.log("All logs cleared");
 
     // Show feedback to user

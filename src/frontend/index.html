@@ -26,7 +26,13 @@
                     <a id="logsIcon" href="logs.html"
                         ><i class="fa fa-list"></i
                     ></a>
-                    <span id="logCount" class="badge">0</span>
+                    <span
+                        id="logsCountBadge"
+                        class="badge"
+                        aria-live="polite"
+                        aria-label="Total actions logged"
+                        >0</span
+                    >
                     <button
                         id="clearLogsBtn"
                         class="clear-logs-btn"
@@ -39,6 +45,28 @@
         </header>
 
         <div id="errorMessage" class="error"></div>
+        <section class="activity-panel" aria-labelledby="activityTitle">
+            <div class="activity-header">
+                <h2 id="activityTitle">Recent Activity</h2>
+                <select
+                    id="logTypeFilter"
+                    aria-label="Filter recent activity by action type"
+                >
+                    <option value="all">All actions</option>
+                </select>
+            </div>
+            <ul id="recentLogs" class="activity-list">
+                <li class="empty">
+                    No activity yet. Interact with the app to get started.
+                </li>
+            </ul>
+            <div class="activity-footer">
+                <button id="exportLogsBtn" class="activity-export" type="button">
+                    Export activity
+                </button>
+                <a class="activity-link" href="logs.html">View full history</a>
+            </div>
+        </section>
         <div id="reposContainer"></div>
 
         <div id="readmePanel" class="readme-panel">

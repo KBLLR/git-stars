@@ -32,6 +32,17 @@ def render_cards(items, card_type="module"):
                 st.subheader(item.get("title_and_version", "No Title"))
                 st.write("**Core Focus:**", item.get("core_focus", "N/A"))
                 st.write("**Topics:**", ", ".join(item.get("topics", [])))
+                st.write("**Languages:**", ", ".join(item.get("languages", [])))
+                resources = item.get("resources", [])
+                if resources:
+                    st.markdown("**Highlighted Repositories:**")
+                    for resource in resources:
+                        name = resource.get("name", "Repository")
+                        url = resource.get("url")
+                        if url:
+                            st.markdown(f"- [{name}]({url})")
+                        else:
+                            st.markdown(f"- {name}")
             elif card_type == "repo":
                 repo_name = item.get("name", item.get("title", "Unnamed Repository"))
                 st.subheader(repo_name)
@@ -53,6 +64,8 @@ def render_cards(items, card_type="module"):
                 st.subheader(item.get("title", "No Title"))
                 st.write(item.get("description", "No description provided"))
                 st.write("**Tags:**", ", ".join(item.get("tags", [])))
+                if item.get("languages"):
+                    st.write("**Languages:**", item.get("languages"))
             st.markdown("---")
 
 
@@ -126,7 +139,7 @@ def render_network_graph_tab(modules_data, repos_list, kb_data):
         edge_stats = st.checkbox("Show Edge Labels", False)
         node_stats = st.checkbox("Show Node Degrees", False)
 
-    st.caption("Note: Modules and Papers are synthetically generated from your GitHub starred repository data")
+    st.caption("Modules and Papers are derived from your starred repositories' live metadata.")
 
     # --- Graph Generation ---
     G = nx.Graph()
@@ -230,7 +243,7 @@ def main():
     # Display app information
     st.sidebar.markdown("## Git Stars Dashboard")
     st.sidebar.markdown("This dashboard visualizes your GitHub starred repositories and generates synthetic educational content based on repository topics.")
-    st.sidebar.markdown("**Note:** The University Modules and Research Papers are synthetically generated from your GitHub repository topics.")
+st.sidebar.markdown("**Note:** The learning paths and research spotlights are built directly from your starred repositories' topics, languages, and update history.")
 
     with github_tab:
         render_cards(filtered_repos, card_type="repo")
