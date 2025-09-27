@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "I created this list using `stargazed`, a Node.js package that generates this markdown file from my starred repositories, helping me track and organize my discoveries. The automation workflow is handled by GitHub Actions, ensuring the list is always up to date.",
   "scripts": {
-    "dev": "vite src/frontend",
+    "dev": "vite --config vite.config.js",
     "build": "npm run build:frontend && npm run build:data",
-    "build:frontend": "vite build src/frontend --outDir dist",
+    "build:frontend": "vite build --config vite.config.js",
     "build:data": "node scripts/generator.js",
     "build:readme": "node scripts/generator.js",
     "build:readme-local": "node scripts/stargazed.js",
