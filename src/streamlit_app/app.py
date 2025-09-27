@@ -242,8 +242,14 @@ def main():
 
     # Display app information
     st.sidebar.markdown("## Git Stars Dashboard")
-    st.sidebar.markdown("This dashboard visualizes your GitHub starred repositories and generates synthetic educational content based on repository topics.")
-st.sidebar.markdown("**Note:** The learning paths and research spotlights are built directly from your starred repositories' topics, languages, and update history.")
+    st.sidebar.markdown(
+        "This dashboard visualizes your GitHub starred repositories and generates synthetic "
+        "educational content based on repository topics."
+    )
+    st.sidebar.markdown(
+        "**Note:** The learning paths and research spotlights are built directly from your starred "
+        "repositories' topics, languages, and update history."
+    )
 
     with github_tab:
         render_cards(filtered_repos, card_type="repo")
