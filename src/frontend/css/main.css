@@ -377,31 +377,104 @@ body.debug-mode::before {
     text-decoration: none;
     word-break: break-word;
 }
-.repo-card p {
-    font-size: 0.9em;
-    color: #555;
-    margin: 4px 0;
+.repo-card .description {
+    font-size: 0.95em;
+    color: #475569;
+    margin: 8px 0 16px;
+    line-height: 1.5;
+    min-height: 48px;
+}
+.repo-card .details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+.repo-card .detail-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: #f1f5f9;
+    color: #1f2937;
+    font-size: 0.75em;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+.repo-card .detail-item i {
+    color: #2563eb;
 }
 .metrics {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 10px;
     margin-top: auto;
-    margin-bottom: 10px;
+    margin-bottom: 14px;
 }
 .metric {
-    background: #eee;
-    padding: 5px 8px;
-    border-radius: 4px;
-    font-size: 0.85em;
-    color: #666;
-}
-.languages,
-.topics {
+    background: linear-gradient(135deg, #e2e8f0, #f8fafc);
+    padding: 6px 10px;
+    border-radius: 8px;
     font-size: 0.8em;
-    color: #666;
-    margin-top: 5px;
-    word-break: break-word;
+    color: #475569;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+.metric i {
+    color: #0f172a;
+}
+.repo-card .languages {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 10px;
+}
+.repo-card .language-item {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 4px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 4px 10px;
+    font-size: 0.75em;
+    color: #1e293b;
+}
+.repo-card .language-item--empty {
+    background: #fef3c7;
+    border-color: #facc15;
+    color: #92400e;
+}
+.repo-card .language-percent {
+    color: #64748b;
+    font-weight: 600;
+}
+.repo-card .topics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 12px;
+}
+.repo-card .topic {
+    background: #e0f2fe;
+    color: #0f172a;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 0.75em;
+    font-weight: 600;
+}
+.repo-card .topic--empty {
+    background: #fef9c3;
+    color: #92400e;
+}
+.repo-card .date {
+    margin-top: auto;
+    font-size: 0.75em;
+    color: #64748b;
+    text-align: right;
+}
 }
 
 /* Panel + Side Readme */
