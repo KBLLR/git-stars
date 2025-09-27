@@ -1,0 +1,40 @@
+body.neumorphic .repo-card {
+    background: #e0e0e0;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 8px 8px 16px #bebebe,
+                -8px -8px 16px #ffffff;
+}
+
+body.neumorphic .repo-card h3 a {
+    color: #333;
+    font-weight: bold;
+}
+
+body.neumorphic .repo-card .metric {
+    background: #d0d0d0;
+    border-radius: 12px;
+}
+body.neumorphic .repo-card .detail-item {
+    background: #dcdcdc;
+    border: none;
+    color: #333;
+    text-transform: none;
+    letter-spacing: normal;
+}
+body.neumorphic .repo-card .detail-item i {
+    color: #6366f1;
+}
+body.neumorphic .repo-card .language-item {
+    background: #e4e4e4;
+    border: none;
+    color: #373737;
+}
+body.neumorphic .repo-card .topic {
+    background: #e8e8e8;
+    color: #4b5563;
+    border-radius: 10px;
+}
+body.neumorphic .repo-card .date {
+    color: #6b7280;
+}

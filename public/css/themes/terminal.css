@@ -1,0 +1,41 @@
+body.terminal .repo-card {
+  background-color: #111; /* dark terminal background */
+  color: #00ff00;         /* terminal green */
+  font-family: 'Fira Code', 'Courier New', Courier, monospace;
+  border: 1px solid #00ff00;
+  box-shadow: none;
+}
+
+body.terminal .repo-card h3 a,
+body.terminal .repo-card a {
+  color: #00ff00;
+}
+
+body.terminal .repo-card .metric {
+  background-color: #222;
+  color: #00ff00;
+  border: 1px solid rgba(0, 255, 0, 0.4);
+}
+body.terminal .repo-card .detail-item {
+  background: rgba(0, 255, 0, 0.1);
+  border: 1px solid rgba(0, 255, 0, 0.4);
+  color: #00ff9d;
+  text-transform: none;
+  letter-spacing: 0.03em;
+}
+body.terminal .repo-card .detail-item i {
+  color: #00ff00;
+}
+body.terminal .repo-card .language-item {
+  background: #181818;
+  border: 1px solid rgba(0, 255, 0, 0.3);
+  color: #00ff9d;
+}
+body.terminal .repo-card .topic {
+  background: #1f1f1f;
+  border: 1px solid rgba(0, 255, 0, 0.3);
+  color: #00ff00;
+}
+body.terminal .repo-card .date {
+  color: rgba(0, 255, 0, 0.75);
+}
