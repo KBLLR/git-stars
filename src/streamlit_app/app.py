@@ -30,14 +30,48 @@ def render_cards(items, card_type="module"):
         with cols[i % 3]:
             if card_type == "module":
                 st.subheader(item.get("title_and_version", "No Title"))
+                details_col1, details_col2 = st.columns(2)
+                with details_col1:
+                    st.write("**Semester:**", item.get("semester", "N/A"))
+                    st.write(
+                        "**ECTS Credits:**",
+                        item.get("ects_credits") or item.get("credits", "N/A"),
+                    )
+                    st.write("**Contact Time:**", item.get("contact_time_hours", "N/A"))
+                    st.write(
+                        "**Self-Study Time:**",
+                        item.get("self_study_time_hours", "N/A"),
+                    )
+                with details_col2:
+                    st.write("**Module Type:**", item.get("module_type", "N/A"))
+                    st.write("**Grading Type:**", item.get("grading_type", "N/A"))
+                    st.write("**Teaching Format:**", item.get("teaching_format", "N/A"))
+                    st.write("**Assessment Type:**", item.get("assessment_type", "N/A"))
+
+                st.write("**Prerequisites:**", item.get("prerequisites", "N/A"))
+                st.write(
+                    "**Module Coordinator:**", item.get("module_coordinator", "N/A")
+                )
+                topics_display = ", ".join(item.get("topics", [])) or "N/A"
+                st.write("**Topics:**", topics_display)
                 st.write("**Core Focus:**", item.get("core_focus", "N/A"))
-                st.write("**Topics:**", ", ".join(item.get("topics", [])))
-                st.write("**Languages:**", ", ".join(item.get("languages", [])))
+
+                qualification_objectives = item.get("qualification_objectives", [])
+                if qualification_objectives:
+                    st.markdown("**Qualification Objectives:**")
+                    for objective in qualification_objectives:
+                        st.markdown(f"- {objective}")
+
+                key_contents = item.get("key_contents")
+                if key_contents:
+                    st.markdown("**Key Contents / Topics:**")
+                    st.write(key_contents)
+
                 resources = item.get("resources", [])
                 if resources:
-                    st.markdown("**Highlighted Repositories:**")
+                    st.markdown("**Highlighted Resources:**")
                     for resource in resources:
-                        name = resource.get("name", "Repository")
+                        name = resource.get("name", "Resource")
                         url = resource.get("url")
                         if url:
                             st.markdown(f"- [{name}]({url})")
