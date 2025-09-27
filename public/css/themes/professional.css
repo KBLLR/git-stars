@@ -45,3 +45,38 @@ body.professional .repo-card .topic {
     border-radius: 4px;
     margin-right: 3px;
 }
+body.professional .repo-card .detail-item {
+    background: none;
+    border: none;
+    color: #475569;
+    text-transform: none;
+    letter-spacing: normal;
+    font-size: 0.8em;
+}
+body.professional .repo-card .detail-item i {
+    color: #94a3b8;
+}
+body.professional .repo-card .metric {
+    background: #eef2f7;
+    color: #1f2937;
+}
+body.professional .repo-card .languages {
+    margin: 12px 0;
+}
+body.professional .repo-card .language-item {
+    background: #eef2ff;
+    border: 1px solid #c7d2fe;
+    color: #3730a3;
+}
+body.professional .repo-card .topic {
+    background-color: #e2e8f0;
+    color: #475569;
+    margin-right: 6px;
+}
+body.professional .repo-card .topic--empty {
+    background: #f1f5f9;
+    color: #64748b;
+}
+body.professional .repo-card .date {
+    color: #475569;
+}
