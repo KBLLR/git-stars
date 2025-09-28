@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Git Stars - Activity Logs</title>
+        <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap"
+            rel="stylesheet"
+        />
+      <link rel="stylesheet" crossorigin href="./assets/main-DvXGz5MR.css">
+    </head>
+    <body>
+        <header class="main-header">
+            <div class="left-group capsule">
+                <a href="index.html" class="home-link">
+                    <i class="fa-brands fa-github f-icon"></i>
+                    <span class="title">GitStars</span>
+                </a>
+            </div>
+            <div class="right-group">
+                <div class="logs-container" title="Logs">
+                    <span id="logsCountBadge" class="badge" aria-live="polite">0</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="logs-header">
+            <h1>Activity Logs</h1>
+            <div class="logs-actions">
+                <div class="filter-item">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    <input
+                        type="text"
+                        id="searchLogs"
+                        placeholder="Search logs..."
+                        aria-label="Search logs"
+                    />
+                </div>
+                <div class="filter-item">
+                    <i class="fa fa-filter" aria-hidden="true"></i>
+                    <select id="typeFilter" aria-label="Filter by action type">
+                        <option value="all">All Actions</option>
+                    </select>
+                </div>
+                <div class="filter-item">
+                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                    <select id="dateFilter" aria-label="Filter by date">
+                        <option value="all">All Time</option>
+                        <option value="today">Today</option>
+                        <option value="yesterday">Yesterday</option>
+                        <option value="week">This Week</option>
+                        <option value="month">This Month</option>
+                    </select>
+                </div>
+                <button id="clearLogs" class="danger-btn">
+                    <i class="fa fa-trash"></i> Clear All Logs
+                </button>
+                <button id="exportLogs" class="action-btn">
+                    <i class="fa fa-download"></i> Export
+                </button>
+            </div>
+        </div>
+
+        <div id="errorMessage" class="error"></div>
+
+        <div class="logs-list">
+            <table class="log-table">
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Action</th>
+                        <th>Details</th>
+                        <th>Tags</th>
+                        <th>Rating</th>
+                    </tr>
+                </thead>
+                <tbody id="logsTableBody">
+                    <!-- Logs will be inserted here -->
+                </tbody>
+            </table>
+            <div id="noLogs" class="no-logs-message" style="display: none;">
+                <p>No logs found. Start interacting with repositories to generate logs.</p>
+                <a href="index.html" class="action-btn">Go Back to Repositories</a>
+            </div>
+        </div>
+
+        <a href="index.html" class="back-button" title="Back to repository list">
+            <i class="fa fa-arrow-left"></i>
+        </a>
+
+        <script>
+            // Initialize UI elements
+            const searchLogs = document.getElementById('searchLogs');
+            const typeFilter = document.getElementById('typeFilter');
+            const dateFilter = document.getElementById('dateFilter');
+            const clearLogsBtn = document.getElementById('clearLogs');
+            const exportLogsBtn = document.getElementById('exportLogs');
+            const logsTableBody = document.getElementById('logsTableBody');
+            const noLogsMessage = document.getElementById('noLogs');
+            const logCountBadge = document.getElementById('logsCountBadge');
+            const errorMessage = document.getElementById('errorMessage');
+
+            // Format date and time
+            function formatDateTime(isoString) {
+                const date = new Date(isoString);
+                return date.toLocaleString();
+            }
+
+            // Check if date is today
+            function isToday(dateString) {
+                const today = new Date();
+                const date = new Date(dateString);
+                return date.getDate() === today.getDate() &&
+                    date.getMonth() === today.getMonth() &&
+                    date.getFullYear() === today.getFullYear();
+            }
+
+            // Check if date is yesterday
+            function isYesterday(dateString) {
+                const yesterday = new Date();
+                yesterday.setDate(yesterday.getDate() - 1);
+                const date = new Date(dateString);
+                return date.getDate() === yesterday.getDate() &&
+                    date.getMonth() === yesterday.getMonth() &&
+                    date.getFullYear() === yesterday.getFullYear();
+            }
+
+            // Check if date is this week
+            function isThisWeek(dateString) {
+                const today = new Date();
+                const oneWeekAgo = new Date(today.getFullYear(), today.getMonth(), today.getDate() - 7);
+                const date = new Date(dateString);
+                return date >= oneWeekAgo;
+            }
+
+            // Check if date is this month
+            function isThisMonth(dateString) {
+                const today = new Date();
+                const date = new Date(dateString);
+                return date.getMonth() === today.getMonth() &&
+                    date.getFullYear() === today.getFullYear();
+            }
+
+            // Escape HTML to avoid injecting markup
+            function escapeHtml(unsafe) {
+                return String(unsafe).replace(
+                    /[&<>"'{}]/g,
+                    (match) =>
+                    ({
+                        "&": "&amp;",
+                        "<": "&lt;",
+                        ">": "&gt;",
+                        '"': "&quot;",
+                        "'": "&#039;",
+                        "{": "&#123;",
+                        "}": "&#125;",
+                    })[match],
+                );
+            }
+
+            // Load logs from localStorage
+            function loadLogs() {
+                try {
+                    const logs = JSON.parse(localStorage.getItem('actionLogs') || '[]');
+
+                    if (logs.length === 0) {
+                        noLogsMessage.style.display = 'block';
+                        logCountBadge.textContent = '0';
+                        return [];
+                    }
+
+                    noLogsMessage.style.display = 'none';
+                    logCountBadge.textContent = logs.length;
+
+                    // Collect unique action types for the filter
+                    const actionTypes = new Set();
+                    logs.forEach(log => actionTypes.add(log.type));
+
+                    // Populate action type filter
+                    typeFilter.innerHTML = '<option value="all">All Actions</option>';
+                    [...actionTypes].sort().forEach(type => {
+                        typeFilter.innerHTML += `<option value="${escapeHtml(type)}">${escapeHtml(type)}</option>`;
+                    });
+
+                    return logs;
+                } catch (err) {
+                    console.error('Error loading logs:', err);
+                    errorMessage.innerHTML = `
+                        <div class="error-message">
+                            <p>Failed to load logs. Error: ${escapeHtml(err.message)}</p>
+                        </div>
+                    `;
+                    return [];
+                }
+            }
+
+            // Render logs to the table
+            function renderLogs(logs) {
+                const search = searchLogs.value.toLowerCase();
+                const typeValue = typeFilter.value;
+                const dateValue = dateFilter.value;
+
+                const filtered = logs.filter(log => {
+                    const matchSearch = !search ||
+                        log.type.toLowerCase().includes(search) ||
+                        (log.details || '').toLowerCase().includes(search) ||
+                        (log.tags || '').toLowerCase().includes(search);
+
+                    const matchType = typeValue === 'all' || log.type === typeValue;
+
+                    let matchDate = true;
+                    if (dateValue === 'today') {
+                        matchDate = isToday(log.time);
+                    } else if (dateValue === 'yesterday') {
+                        matchDate = isYesterday(log.time);
+                    } else if (dateValue === 'week') {
+                        matchDate = isThisWeek(log.time);
+                    } else if (dateValue === 'month') {
+                        matchDate = isThisMonth(log.time);
+                    }
+
+                    return matchSearch && matchType && matchDate;
+                });
+
+                // Sort logs by time (newest first)
+                filtered.sort((a, b) => new Date(b.time) - new Date(a.time));
+
+                // Generate table rows
+                logsTableBody.innerHTML = filtered.map(log => `
+                    <tr>
+                        <td>${formatDateTime(log.time)}</td>
+                        <td>${escapeHtml(log.type)}</td>
+                        <td>${escapeHtml(log.details || '')}</td>
+                        <td>${escapeHtml(log.tags || '')}</td>
+                        <td>${log.rating ? '⭐'.repeat(parseInt(log.rating)) : ''}</td>
+                    </tr>
+                `).join('');
+
+                // Show message if no logs match filters
+                if (filtered.length === 0 && logs.length > 0) {
+                    logsTableBody.innerHTML = `
+                        <tr>
+                            <td colspan="5" class="no-results">
+                                No logs match your filters. Try adjusting your search criteria.
+                            </td>
+                        </tr>
+                    `;
+                }
+            }
+
+            // Add a new log entry (for testing)
+            function addLogEntry(type, details, tags = '', rating = '') {
+                const logs = JSON.parse(localStorage.getItem('actionLogs') || '[]');
+                logs.push({
+                    time: new Date().toISOString(),
+                    type,
+                    details,
+                    tags,
+                    rating
+                });
+                localStorage.setItem('actionLogs', JSON.stringify(logs));
+
+                // Reload and render logs
+                const updatedLogs = loadLogs();
+                renderLogs(updatedLogs);
+            }
+
+            // Clear all logs
+            function clearAllLogs() {
+                if (confirm('Are you sure you want to clear all logs? This cannot be undone.')) {
+                    localStorage.setItem('actionLogs', '[]');
+                    noLogsMessage.style.display = 'block';
+                    logsTableBody.innerHTML = '';
+                    logCountBadge.textContent = '0';
+                }
+            }
+
+            // Export logs as JSON
+            function exportLogsToJson() {
+                const logs = JSON.parse(localStorage.getItem('actionLogs') || '[]');
+                const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(logs, null, 2));
+                const downloadAnchorNode = document.createElement('a');
+                downloadAnchorNode.setAttribute("href", dataStr);
+                downloadAnchorNode.setAttribute("download", "git-stars-logs.json");
+                document.body.appendChild(downloadAnchorNode);
+                downloadAnchorNode.click();
+                downloadAnchorNode.remove();
+            }
+
+            // Initialize the page
+            function init() {
+                const logs = loadLogs();
+                renderLogs(logs);
+
+                // Add event listeners
+                searchLogs.addEventListener('input', () => renderLogs(logs));
+                typeFilter.addEventListener('change', () => renderLogs(logs));
+                dateFilter.addEventListener('change', () => renderLogs(logs));
+                clearLogsBtn.addEventListener('click', clearAllLogs);
+                exportLogsBtn.addEventListener('click', exportLogsToJson);
+
+                // Log that the logs page was viewed
+                addLogEntry('view', 'logs page');
+            }
+
+            // Initialize on page load
+            document.addEventListener('DOMContentLoaded', init);
+        </script>
+
+        <style>
+            .logs-header {
+                display: flex;
+                flex-direction: column;
+                padding: 20px;
+                margin-top: 60px;
+                background: rgba(255, 255, 255, 0.8);
+                border-radius: 8px;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .logs-actions {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+                margin-top: 15px;
+            }
+
+            .log-table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 20px;
+                background: white;
+                border-radius: 8px;
+                overflow: hidden;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .log-table th {
+                background: #f4f4f4;
+                padding: 12px;
+                text-align: left;
+                font-weight: bold;
+                border-bottom: 2px solid #ddd;
+            }
+
+            .log-table td {
+                padding: 10px 12px;
+                border-bottom: 1px solid #eee;
+            }
+
+            .log-table tr:hover {
+                background-color: #f9f9f9;
+            }
+
+            .danger-btn {
+                background-color: #e74c3c;
+                color: white;
+                border: none;
+                padding: 8px 16px;
+                border-radius: 4px;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                transition: background-color 0.2s;
+            }
+
+            .danger-btn:hover {
+                background-color: #c0392b;
+            }
+
+            .action-btn {
+                background-color: #3498db;
+                color: white;
+                border: none;
+                padding: 8px 16px;
+                border-radius: 4px;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                transition: background-color 0.2s;
+                text-decoration: none;
+            }
+
+            .action-btn:hover {
+                background-color: #2980b9;
+            }
+
+            .back-button {
+                position: fixed;
+                bottom: 20px;
+                left: 20px;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.8);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                cursor: pointer;
+                transition: transform 0.2s;
+                z-index: 1000;
+                color: #333;
+                text-decoration: none;
+            }
+
+            .back-button:hover {
+                transform: scale(1.1);
+            }
+
+            .no-logs-message {
+                text-align: center;
+                padding: 40px;
+                background: white;
+                border-radius: 8px;
+                margin-top: 20px;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .no-logs-message p {
+                margin-bottom: 20px;
+                color: #666;
+            }
+
+            .home-link {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                text-decoration: none;
+                color: inherit;
+            }
+
+            .no-results {
+                text-align: center;
+                padding: 20px;
+                color: #666;
+            }
+
+            @media (max-width: 768px) {
+                .logs-actions {
+                    flex-direction: column;
+                }
+
+                .log-table {
+                    font-size: 0.9em;
+                }
+
+                .log-table th:nth-child(4),
+                .log-table td:nth-child(4),
+                .log-table th:nth-child(5),
+                .log-table td:nth-child(5) {
+                    display: none;
+                }
+            }
+        </style>
+    </body>
+</html>

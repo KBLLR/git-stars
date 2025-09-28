@@ -1,0 +1,82 @@
+body.professional .repo-card {
+    display: flex;
+    background-color: #ffffff;
+    border: 1px solid #d0d0d0;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+body.professional .repo-card .sidebar {
+    width: 80px;
+    text-align: center;
+    padding-top: 10px;
+    border-right: 1px solid #e0e0e0;
+    margin-right: 15px;
+}
+body.professional .repo-card .stars {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #f1c40f;
+    margin-bottom: 5px;
+}
+body.professional .repo-card .language {
+    font-size: 0.9em;
+    color: #666666;
+}
+body.professional .repo-card .content h3 {
+    margin-top: 0;
+    font-size: 1.3em;
+    color: #333333;
+}
+body.professional .repo-card .description {
+    color: #555555;
+    margin-bottom: 10px;
+}
+body.professional .repo-card .details,
+body.professional .repo-card .topics,
+body.professional .repo-card .date {
+    font-size: 0.85em;
+    color: #999999;
+    margin-bottom: 5px;
+}
+body.professional .repo-card .topic {
+    background-color: #e0e0e0;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-right: 3px;
+}
+body.professional .repo-card .detail-item {
+    background: none;
+    border: none;
+    color: #475569;
+    text-transform: none;
+    letter-spacing: normal;
+    font-size: 0.8em;
+}
+body.professional .repo-card .detail-item i {
+    color: #94a3b8;
+}
+body.professional .repo-card .metric {
+    background: #eef2f7;
+    color: #1f2937;
+}
+body.professional .repo-card .languages {
+    margin: 12px 0;
+}
+body.professional .repo-card .language-item {
+    background: #eef2ff;
+    border: 1px solid #c7d2fe;
+    color: #3730a3;
+}
+body.professional .repo-card .topic {
+    background-color: #e2e8f0;
+    color: #475569;
+    margin-right: 6px;
+}
+body.professional .repo-card .topic--empty {
+    background: #f1f5f9;
+    color: #64748b;
+}
+body.professional .repo-card .date {
+    color: #475569;
+}

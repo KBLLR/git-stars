@@ -1,0 +1,10 @@
+@import url("main.css");
+@import url("fonts.css");
+
+/* --- Themes --- */
+@import url("themes/retro.css");
+@import url("themes/futuristic.css");
+@import url("themes/professional.css");
+@import url("themes/terminal.css");
+@import url("themes/neumorphic.css");
+@import url("themes/minimalist.css");
