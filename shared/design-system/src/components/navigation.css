@@ -1,0 +1,154 @@
+/* ==================================================
+   NAVIGATION
+   Headers, navbars, breadcrumbs
+   ================================================== */
+@layer components {
+  /* Main navigation */
+  .nav {
+    display: flex;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-5);
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-surface-border);
+  }
+
+  .nav a {
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-2);
+    font-weight: 500;
+    transition: color 0.2s ease, background 0.2s ease;
+  }
+
+  .nav a:hover {
+    color: var(--color-text-primary);
+    background: var(--color-surface-hover);
+  }
+
+  .nav a[aria-current="page"],
+  .nav a.active {
+    color: var(--color-text-primary);
+    background: var(--color-surface-hover);
+    font-weight: 600;
+  }
+
+  /* Breadcrumbs */
+  .breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--step--1);
+    color: var(--color-text-secondary);
+  }
+
+  .breadcrumbs a {
+    color: var(--color-text-secondary);
+    text-decoration: none;
+  }
+
+  .breadcrumbs a:hover {
+    color: var(--color-accent);
+    text-decoration: underline;
+  }
+
+  .breadcrumbs .separator {
+    color: var(--color-text-tertiary);
+  }
+
+  .breadcrumbs [aria-current="page"] {
+    color: var(--color-text-primary);
+    font-weight: 600;
+  }
+
+  /* Tabs */
+  .tabs {
+    display: flex;
+    gap: var(--space-1);
+    border-bottom: 1px solid var(--color-surface-border);
+  }
+
+  .tabs button,
+  .tabs a {
+    padding: var(--space-3) var(--space-4);
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    font-weight: 500;
+    transition: color 0.2s ease, border-color 0.2s ease;
+    text-decoration: none;
+  }
+
+  .tabs button:hover,
+  .tabs a:hover {
+    color: var(--color-text-primary);
+  }
+
+  .tabs button[aria-selected="true"],
+  .tabs a[aria-current="page"],
+  .tabs .active {
+    color: var(--color-accent);
+    border-bottom-color: var(--color-accent);
+    font-weight: 600;
+  }
+
+  /* Pagination */
+  .pagination {
+    display: flex;
+    gap: var(--space-2);
+    align-items: center;
+  }
+
+  .pagination button,
+  .pagination a {
+    min-width: 44px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-2);
+    border: 1px solid var(--color-surface-border);
+    background: var(--color-surface);
+    color: var(--color-text-primary);
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+
+  .pagination button:hover,
+  .pagination a:hover {
+    background: var(--color-surface-hover);
+  }
+
+  .pagination button[aria-current="page"],
+  .pagination a[aria-current="page"],
+  .pagination .active {
+    background: var(--color-accent);
+    color: var(--color-bg);
+    border-color: transparent;
+  }
+
+  .pagination button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  /* Capsule nav (like current header) */
+  .capsule {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-2) var(--space-5);
+    background: var(--color-surface);
+    border-radius: var(--radius-full);
+    box-shadow: var(--shadow-2);
+    backdrop-filter: blur(8px);
+  }
+
+  .capsule:hover {
+    box-shadow: var(--shadow-3);
+  }
+}

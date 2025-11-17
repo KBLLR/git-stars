@@ -1,0 +1,179 @@
+/* ==================================================
+   BUTTONS
+   Accessible button components
+   ================================================== */
+@layer components {
+  /* Base button */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    padding: 0 var(--space-4);
+    min-height: 44px; /* WCAG touch target */
+    border-radius: var(--radius-2);
+    border: 1px solid var(--color-surface-border);
+    background: var(--color-surface);
+    color: var(--color-text-primary);
+    font-weight: 600;
+    font-size: var(--step-0);
+    line-height: 1;
+    cursor: pointer;
+    transition: transform 0.06s ease, box-shadow 0.12s ease, background 0.12s ease;
+    box-shadow: var(--shadow-0);
+    text-decoration: none;
+  }
+
+  .btn:hover {
+    background: var(--color-surface-hover);
+    box-shadow: var(--shadow-1);
+    text-decoration: none;
+  }
+
+  .btn:active {
+    transform: translateY(1px);
+  }
+
+  .btn:focus-visible {
+    outline: 2px solid var(--color-focus-ring);
+    outline-offset: 2px;
+  }
+
+  .btn:disabled,
+  .btn[aria-disabled="true"] {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  /* Primary button */
+  .btn.primary {
+    background: var(--color-accent);
+    border-color: transparent;
+    color: var(--color-bg);
+    box-shadow: var(--shadow-1);
+  }
+
+  .btn.primary:hover {
+    background: var(--color-accent-hover);
+    box-shadow: var(--shadow-2);
+  }
+
+  /* Secondary button (outline) */
+  .btn.secondary {
+    background: transparent;
+    border-color: var(--color-text-primary);
+    color: var(--color-text-primary);
+  }
+
+  .btn.secondary:hover {
+    background: var(--color-surface-hover);
+  }
+
+  /* Danger button */
+  .btn.danger {
+    background: var(--color-danger);
+    border-color: transparent;
+    color: var(--color-bg);
+  }
+
+  .btn.danger:hover {
+    filter: brightness(0.9);
+  }
+
+  /* Success button */
+  .btn.success {
+    background: var(--color-success);
+    border-color: transparent;
+    color: var(--color-bg);
+  }
+
+  .btn.success:hover {
+    filter: brightness(0.9);
+  }
+
+  /* Icon button (circular) */
+  .icon-btn {
+    width: 64px;
+    height: 64px;
+    min-height: auto;
+    border-radius: var(--radius-full);
+    background: var(--color-surface);
+    border: 1px solid var(--color-surface-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: var(--shadow-1);
+    padding: 0;
+  }
+
+  .icon-btn:hover {
+    background: var(--color-surface-hover);
+    transform: scale(1.05);
+    box-shadow: var(--shadow-2);
+  }
+
+  .icon-btn:active {
+    transform: scale(0.98);
+  }
+
+  .icon-btn i {
+    font-size: 2em;
+    color: var(--color-text-primary);
+  }
+
+  /* Small button */
+  .btn-sm {
+    min-height: 32px;
+    padding: 0 var(--space-3);
+    font-size: var(--step--1);
+  }
+
+  /* Large button */
+  .btn-lg {
+    min-height: 52px;
+    padding: 0 var(--space-6);
+    font-size: var(--step-1);
+  }
+
+  /* Button group */
+  .btn-group {
+    display: inline-flex;
+    gap: var(--space-2);
+  }
+
+  .btn-group .btn {
+    margin: 0;
+  }
+
+  /* Badge (pill button) */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 20px;
+    height: 20px;
+    padding: var(--space-1) var(--space-2);
+    background: var(--color-danger);
+    color: var(--color-bg);
+    border-radius: var(--radius-full);
+    font-size: var(--step--2);
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .badge.accent {
+    background: var(--color-accent);
+  }
+
+  .badge.success {
+    background: var(--color-success);
+  }
+
+  .badge.warning {
+    background: var(--color-warning);
+    color: var(--color-text-primary);
+  }
+}
