@@ -410,6 +410,17 @@ async function generate() {
     const htmlContent = generateHTML(transformedData);
 
     console.log("Writing files...");
+
+    // Save to centralized data directory (for MCP server)
+    if (!fs.existsSync("data")) {
+      fs.mkdirSync("data", { recursive: true });
+    }
+    fs.writeFileSync(
+      "data/data.json",
+      JSON.stringify(flattenedData, null, 2),
+    );
+
+    // Save to root and public for backward compatibility
     fs.writeFileSync("index.html", htmlContent);
     fs.writeFileSync("data.json", JSON.stringify(transformedData, null, 2));
 
@@ -437,7 +448,8 @@ async function generate() {
       "src/frontend/data.json",
       JSON.stringify(flattenedData, null, 2),
     );
-    console.log("Files saved to root and public directory");
+
+    console.log("Files saved to data/, root, public, and frontend directories");
   } catch (error) {
     console.error("Error during generation:", error);
   }
