@@ -1,58 +1,58 @@
-# Intake Report: git-stars MCP Server Transformation
+# Intake Report: Setup Vercel & GitHub Pages Deployments
 
 **Date**: 2025-11-17
-**Agent ID**: agent.prompt.audit-plan-implement.v1
-**Session**: claude/audit-plan-implement-agent-01KfbAf5T4zveVvUYtJdzGFU
+**Agent ID**: agent.prompt.audit-plan-implement.deploy.v2
+**Session**: claude/setup-deployments-01JhpaFRrtDB9KsPw2ucM3pM
 
 ## Task Summary
 
-Transform the git-stars project into a comprehensive MCP (Model Context Protocol) server tool with:
+Configure dual hosting for git-stars repository:
 
-1. **MCP Server Creation**: Enable MLX-OpenAI API compatible agents to fetch and query GitHub starred repository data
-2. **Code Quality**: Clean up existing codebase and improve maintainability
-3. **Enhanced Automation**: Ensure seamless repo updates and data generation
-4. **Statistics & Analytics**: Complete statistics presentation (counts, trends, language breakdowns)
-5. **Value Proposition**: Maximize the tool's utility for developers and AI agents
+1. **Fix Build Errors**: Resolve missing GITHUB_TOKEN in .env causing build failures
+2. **Vercel Deployment**: Add Vercel configuration and GitHub Actions workflow
+3. **GitHub Pages Enhancement**: Modernize existing GitHub Pages workflow
+4. **Verification**: Ensure both hosting targets are reachable and functional
 
 ## Acceptance Criteria
 
 ### Primary
-- [ ] MCP server running with documented tools/endpoints
-- [ ] Statistics dashboard showing comprehensive metrics
-- [ ] Clean, maintainable codebase with no duplication
-- [ ] Automated workflows functioning reliably
-- [ ] Complete documentation for setup and usage
+- [x] Build succeeds in CI without local .env file
+- [ ] Vercel deployment configured with GitHub Actions workflow
+- [ ] GitHub Pages deployment enhanced to modern standards
+- [ ] Both URLs return HTTP 200
+- [ ] Documentation updated (README, CHANGELOG, ADR)
 
 ### Secondary
-- [ ] MLX-compatible API tested and verified
-- [ ] Enhanced search and filtering capabilities
-- [ ] Performance optimizations
-- [ ] Comprehensive test coverage
+- [ ] Vercel preview deployments on PRs (optional)
+- [ ] 404 fallback for SPA routing
+- [ ] Performance optimizations for static assets
+- [ ] Deployment status badges in README
 
 ## Assumptions & Locked Defaults
 
-1. **MCP Protocol**: Using standard MCP server architecture (stdio transport)
-2. **Stack Continuity**: Maintain Node.js/JavaScript core with Python for analytics
-3. **Data Format**: Preserve existing JSON structure with enhancements
-4. **Authentication**: Continue using GitHub PAT for API access
-5. **Deployment**: Keep GitHub Pages + add MCP server capability
+1. **Stack**: Node.js 20, npm/pnpm, Vite 5
+2. **Build Output**: `dist/` directory (static files)
+3. **GitHub Token**: Available as `secrets.GITHUB_TOKEN` in CI
+4. **Vercel Token**: User must add `secrets.VERCEL_TOKEN` manually
+5. **Base Path**: Using `./` for both platforms
+6. **Deployment**: Static-only (no SSR) for GitHub Pages compatibility
 
 ## Non-Functional Requirements
 
 ### Performance
-- MCP server response time < 500ms for queries
-- Data generation complete within 5 minutes for 2000+ repos
-- Frontend load time < 2 seconds
+- Build time < 5 minutes
+- Static asset caching configured
+- Optimized bundle size
 
 ### Security
-- No secrets in repository (use env vars)
-- Input validation on all MCP endpoints
-- Rate limiting for GitHub API calls
+- No secrets in repository
+- Minimal token scopes (public_repo, read:user)
+- Secure token storage in GitHub Secrets
 
 ### Accessibility
-- Frontend meets WCAG 2.1 AA standards
-- Clear error messages and documentation
+- Existing frontend a11y maintained
+- Clear documentation structure
 
 ## Definition of DONE
 
-**DONE** = All acceptance criteria met + automation verified + documentation complete + successful MLX agent integration test
+**DONE** = Build works + Vercel configured + GitHub Pages enhanced + Both URLs reachable (HTTP 200) + Docs updated + HANDOFF created

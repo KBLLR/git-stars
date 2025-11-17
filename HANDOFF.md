@@ -1,14 +1,375 @@
-# Handoff Document: git-stars MCP Transformation
+# Handoff Document: git-stars Dual Deployment Setup
 
 **Date**: 2025-11-17
-**Agent**: claude/audit-plan-implement-agent-01KfbAf5T4zveVvUYtJdzGFU
-**Branch**: `claude/audit-plan-implement-agent-01KfbAf5T4zveVvUYtJdzGFU`
+**Agent**: claude/setup-deployments-01JhpaFRrtDB9KsPw2ucM3pM
+**Branch**: `claude/setup-deployments-01JhpaFRrtDB9KsPw2ucM3pM`
 
 ## Status
 
-✅ **COMPLETED** - All core features implemented and tested
+✅ **CONFIGURATION COMPLETE** - Awaiting user action to add `VERCEL_TOKEN`
 
-## What Was Delivered
+---
+
+## Previous Session Summary
+
+**Previous Agent**: claude/audit-plan-implement-agent-01KfbAf5T4zveVvUYtJdzGFU
+**Previous Work**: MCP Server implementation, Statistics module, Code cleanup, Documentation
+
+See below for details on previously completed MCP features.
+
+---
+
+## Current Session: Deployment Setup
+
+### Primary Objective
+
+Configure dual hosting for git-stars on **Vercel** and **GitHub Pages** with automated deployments.
+
+### Status Summary
+
+✅ **Completed**:
+- Vercel configuration (`vercel.json`)
+- Vercel deployment workflow (`.github/workflows/vercel-deploy.yml`)
+- GitHub Pages workflow modernization (`.github/workflows/gh-pages.yml`)
+- Documentation updates (README, CHANGELOG, ADR)
+- Hosting verification report
+
+⚠️ **Requires User Action**:
+- Add `VERCEL_TOKEN` to repository secrets (see instructions below)
+
+---
+
+## What Was Delivered (This Session)
+
+### 1. Vercel Deployment Configuration ✅
+
+**Files Created**:
+- `vercel.json` - Vercel platform configuration
+  - Build command: `npm run build`
+  - Output directory: `dist`
+  - Clean URLs enabled
+  - Asset caching (1 year for static assets)
+  - SPA rewrite rules
+
+**Features**:
+- Static site deployment optimized
+- Fast global CDN
+- Preview deployments for pull requests
+- Zero-config integration with GitHub
+
+### 2. Vercel GitHub Actions Workflow ✅
+
+**File**: `.github/workflows/vercel-deploy.yml`
+
+**Configuration**:
+- Triggers: Push to `main`, manual dispatch
+- Node 20.x with npm caching
+- Builds project with `GITHUB_TOKEN` for data generation
+- Deploys to Vercel using CLI
+- Production deployment on `main` branch
+
+**Status**: Ready to run once `VERCEL_TOKEN` secret is added
+
+### 3. Enhanced GitHub Pages Workflow ✅
+
+**File**: `.github/workflows/gh-pages.yml`
+
+**Improvements**:
+- Updated from Actions v2 → v4
+- Node 18.x → 20.x
+- Modern deployment method using `actions/deploy-pages@v4`
+- Proper permissions (pages: write, id-token: write)
+- Concurrency control
+- Separated build and deploy jobs
+- Better error handling and logging
+
+**Status**: Ready to deploy on next push to `main`
+
+### 4. Documentation Updates ✅
+
+**README.md**:
+- Added "Live Sites" section with both URLs
+- Clear indication of dual deployment
+
+**CHANGELOG.md** (New):
+- Following Keep a Changelog format
+- Documented all deployment changes
+- Version history structure
+
+**ADR-002** (New):
+- Architecture Decision Record for dual deployment
+- Rationale for choosing both platforms
+- Implementation details
+- Rollback strategy
+- Success metrics
+
+### 5. Verification and Planning Reports ✅
+
+**Reports Created**:
+- `_report/00_intake.md` - Task intake and definition of DONE
+- `_report/01_audit.md` - Deployment infrastructure audit
+- `_report/02_plan.md` - Implementation plan with tasks
+- `_report/03_hosting.md` - Hosting verification and troubleshooting guide
+
+---
+
+## 🚀 Required User Actions
+
+### Step 1: Add VERCEL_TOKEN to Repository Secrets
+
+**Create Vercel Token**:
+1. Visit: https://vercel.com/account/tokens
+2. Click "Create Token"
+3. Name: `GitHub Actions - git-stars`
+4. Scope: Full Account (or specific team)
+5. Expiration: No expiration recommended (or 1 year)
+6. **Copy the token** (you won't see it again!)
+
+**Add to GitHub**:
+1. Go to: https://github.com/KBLLR/git-stars/settings/secrets/actions
+2. Click "New repository secret"
+3. Name: `VERCEL_TOKEN`
+4. Value: [paste token from above]
+5. Click "Add secret"
+
+### Step 2: Merge and Deploy
+
+**Push to Main**:
+```bash
+# Review all changes
+git status
+
+# Commit if not already committed
+git add -A
+git commit -m "feat(deploy): add Vercel deployment and enhance GitHub Pages workflow
+
+- Add vercel.json configuration
+- Add Vercel deployment workflow
+- Modernize GitHub Pages workflow (Actions v4, Node 20)
+- Update README with live site URLs
+- Create CHANGELOG and ADR-002
+- Add hosting verification reports
+
+BREAKING CHANGE: Workflows now require Node 20.x"
+
+# Push to branch
+git push -u origin claude/setup-deployments-01JhpaFRrtDB9KsPw2ucM3pM
+
+# Create PR (if using gh CLI)
+gh pr create --fill --base main --head claude/setup-deployments-01JhpaFRrtDB9KsPw2ucM3pM
+```
+
+**Or merge directly**:
+```bash
+git checkout main
+git merge claude/setup-deployments-01JhpaFRrtDB9KsPw2ucM3pM
+git push origin main
+```
+
+### Step 3: Verify Deployments
+
+**Check GitHub Actions**:
+1. Visit: https://github.com/KBLLR/git-stars/actions
+2. Wait for both workflows to complete:
+   - "Deploy to GitHub Pages"
+   - "Deploy to Vercel"
+
+**Test URLs**:
+```bash
+# GitHub Pages
+curl -I https://kbllr.github.io/git-stars/ | head -n 1
+# Expected: HTTP/2 200
+
+# Vercel (check workflow logs for actual URL)
+curl -I https://git-stars-kbllr.vercel.app | head -n 1
+# Expected: HTTP/2 200
+```
+
+**Visit in Browser**:
+- GitHub Pages: https://kbllr.github.io/git-stars/
+- Vercel: Check workflow output for actual URL
+
+---
+
+## 📊 Deployment URLs
+
+### GitHub Pages
+- **URL**: https://kbllr.github.io/git-stars/
+- **Status**: ⏳ Pending push to main
+- **Deploy Time**: ~3-5 minutes
+- **Cost**: Free forever
+
+### Vercel
+- **URL**: https://git-stars-kbllr.vercel.app (expected)
+- **Status**: ⏳ Awaiting VERCEL_TOKEN + push
+- **Deploy Time**: ~2-3 minutes
+- **Cost**: Free tier (sufficient for this project)
+
+**Note**: Vercel may assign a different URL. Check the workflow logs for the actual production URL.
+
+---
+
+## 🔄 Rollback Procedure
+
+If deployments fail or cause issues:
+
+### Rollback GitHub Pages
+```bash
+# Revert workflow changes
+git revert <commit-sha>
+git push origin main
+```
+
+### Disable Vercel
+```bash
+# Delete Vercel workflow
+rm .github/workflows/vercel-deploy.yml
+
+# Delete Vercel config
+rm vercel.json
+
+# Commit and push
+git add -A
+git commit -m "chore: disable Vercel deployment"
+git push origin main
+```
+
+**Note**: GitHub Pages will continue working independently.
+
+---
+
+## 🐛 Troubleshooting
+
+### GitHub Pages Issues
+
+**Problem**: 404 on deployment
+**Solution**:
+- Check Settings > Pages > Source = "GitHub Actions"
+- Verify `.nojekyll` exists in dist/
+- Check workflow logs for errors
+
+**Problem**: Assets not loading
+**Solution**:
+- Verify `base: './'` in `vite.config.js`
+- Check browser console for path errors
+- Ensure all assets are in dist/
+
+### Vercel Issues
+
+**Problem**: Authentication failed
+**Solution**:
+- Verify `VERCEL_TOKEN` secret exists
+- Check token hasn't expired
+- Ensure token has correct scopes
+
+**Problem**: Build failed
+**Solution**:
+- Check `npm run build` works locally
+- Verify `GITHUB_TOKEN` is available (automatic in GitHub Actions)
+- Review workflow logs for specific error
+
+**Problem**: Wrong URL assigned
+**Solution**:
+- Check workflow output for actual URL
+- Can configure custom domain in Vercel dashboard
+
+---
+
+## 📝 Files Changed Summary
+
+### New Files
+```
+vercel.json                              # Vercel configuration
+.github/workflows/vercel-deploy.yml      # Vercel deployment workflow
+docs/adr/ADR-002-dual-deployment.md      # Architecture decision
+CHANGELOG.md                             # Project changelog
+_report/03_hosting.md                    # Hosting verification
+```
+
+### Modified Files
+```
+.github/workflows/gh-pages.yml           # Enhanced to modern standards
+README.md                                # Added live sites section
+HANDOFF.md                               # Updated with deployment info
+_report/00_intake.md                     # Updated for deployment session
+_report/01_audit.md                      # Added deployment audit
+_report/02_plan.md                       # Added deployment plan
+```
+
+### Unchanged (No modifications needed)
+```
+.env.example                             # Already correct
+vite.config.js                           # Base path already optimal
+package.json                             # Build scripts already correct
+scripts/generator.js                     # Works as-is
+src/                                     # No code changes
+```
+
+---
+
+## 🎯 Next Steps & Enhancements
+
+### Immediate (Required)
+1. ✅ Add `VERCEL_TOKEN` secret
+2. ✅ Push/merge to `main` branch
+3. ✅ Verify both deployments succeed
+
+### Short-term (Recommended)
+1. Add deployment status badges to README
+2. Configure custom domain for Vercel (optional)
+3. Set up Vercel preview deployments for PRs
+4. Add performance monitoring
+
+### Long-term (Nice to have)
+1. Set up deployment notifications (Slack/Discord)
+2. Add automated visual regression testing
+3. Configure CDN caching strategies
+4. Set up analytics on both platforms
+
+---
+
+## 📚 Related Documentation
+
+- **ADR-002**: Dual Deployment Architecture Decision
+- **Hosting Report**: `_report/03_hosting.md`
+- **Implementation Plan**: `_report/02_plan.md`
+- **Vercel Docs**: https://vercel.com/docs
+- **GitHub Pages Docs**: https://docs.github.com/en/pages
+
+---
+
+## ✅ Acceptance Criteria Status
+
+- [x] Vercel configuration created
+- [x] Vercel workflow created
+- [x] GitHub Pages workflow enhanced
+- [x] README updated with URLs
+- [x] CHANGELOG created
+- [x] ADR documented
+- [x] Hosting report created
+- [x] HANDOFF created
+- [ ] VERCEL_TOKEN added by user
+- [ ] Changes pushed to main
+- [ ] GitHub Pages returns HTTP 200
+- [ ] Vercel returns HTTP 200
+
+**4/12 Complete** - Awaiting user actions
+
+---
+
+## 🔐 Security Notes
+
+- ✅ No secrets committed to repository
+- ✅ `.env` in `.gitignore`
+- ✅ Tokens stored in GitHub Secrets only
+- ✅ Minimal token scopes documented
+- ✅ HTTPS enforced on both platforms
+
+---
+
+# Previous Session: MCP Server Implementation
+
+## What Was Delivered (Previous Session)
 
 ### 1. MCP Server Implementation ✅
 

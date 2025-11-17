@@ -1,262 +1,290 @@
-# Implementation Plan: git-stars MCP Transformation
+# Implementation Plan: Vercel & GitHub Pages Deployment Setup
 
 **Date**: 2025-11-17
-**Estimated Completion**: 4-6 hours of development time
+**Estimated Completion**: 1-2 hours
+**Focus**: Dual hosting configuration with build fixes
 
 ## Overview
 
-Transform git-stars into a production-ready MCP server with enhanced statistics, clean codebase, and seamless automation.
+Configure dual hosting for git-stars with Vercel and GitHub Pages, fix build errors, and ensure both deployments are functional and verifiable.
 
 ## Architecture Decision
 
-### MCP Server Design
+### Dual Hosting Strategy
 
 ```
-┌─────────────────────────────────────┐
-│   MLX / OpenAI Compatible Agent     │
-└───────────────┬─────────────────────┘
-                │ stdio/SSE
-┌───────────────▼─────────────────────┐
-│         MCP Server (Node.js)        │
-│  ┌──────────────────────────────┐   │
-│  │  Tools:                      │   │
-│  │  - list_starred_repos        │   │
-│  │  - search_repos              │   │
-│  │  - get_repo_details          │   │
-│  │  - get_statistics            │   │
-│  │  - get_language_breakdown    │   │
-│  │  - get_trending_topics       │   │
-│  │  - filter_by_criteria        │   │
-│  └──────────────────────────────┘   │
-└───────────────┬─────────────────────┘
+┌──────────────────────────────────────────┐
+│     git-stars Repository (GitHub)        │
+│                                          │
+│   Build Process:                         │
+│   1. npm run build:data (GITHUB_TOKEN)   │
+│   2. npm run build:frontend (Vite)       │
+│   3. Output: dist/ (static files)        │
+└───────────────┬──────────────────────────┘
                 │
-┌───────────────▼─────────────────────┐
-│      Data Layer (data.json)         │
-│   + Statistics Cache (stats.json)   │
-└─────────────────────────────────────┘
+        ┌───────┴───────┐
+        │               │
+┌───────▼───────┐ ┌────▼──────────┐
+│ GitHub Pages  │ │    Vercel     │
+│               │ │               │
+│ - Free        │ │ - Free tier   │
+│ - Auto deploy │ │ - Auto deploy │
+│ - Static only │ │ - Fast CDN    │
+│ - Project URL │ │ - Custom URL  │
+└───────────────┘ └───────────────┘
 ```
 
-### Data Contracts
+### Key Decisions
 
-**Input**: MCP tool requests (JSON-RPC 2.0)
-**Output**: Structured repository data + statistics
-**Storage**: File-based (data.json, stats.json)
+**ADR-002: Dual Deployment Architecture**
 
-## Implementation Slices
+1. **Both platforms from same build**: Single `dist/` output
+2. **GitHub Pages primary**: Existing setup, free, tied to repo
+3. **Vercel secondary**: Better performance, custom domains, previews
+4. **Base path**: Using `./` (relative) works for both
+5. **No SSR**: Static-only ensures compatibility
 
-### Slice 1: MCP Server Foundation (MVP)
-**Goal**: Get a working MCP server responding to basic queries
+## Implementation Tasks (Ordered)
 
-#### Tasks
-1. Create `src/mcp-server/` directory structure
-2. Implement MCP server with stdio transport
-3. Add `list_starred_repos` tool
-4. Add `search_repos` tool
-5. Add `get_repo_details` tool
-6. Create server configuration file
-7. Add npm script to run MCP server
+### Task 1: Fix Build Process ⚙️
+**Priority**: Critical
+**Goal**: Resolve GITHUB_TOKEN missing error
 
-**Test**: Agent can connect and list repositories
+#### Steps
+1. Document `.env.example` clearly
+2. Ensure CI workflows use `secrets.GITHUB_TOKEN`
+3. Test build locally with `.env` file
+4. Verify build outputs to `dist/`
 
----
-
-### Slice 2: Statistics Module
-**Goal**: Generate and expose comprehensive statistics
-
-#### Tasks
-1. Create `src/analytics/statistics.js` module
-2. Implement statistics calculation:
-   - Total repos, stars, forks
-   - Language distribution (count + percentage)
-   - Topic frequency analysis
-   - License breakdown
-   - Activity timeline (stars over time)
-   - Top repositories by stars
-3. Add `get_statistics` MCP tool
-4. Add `get_language_breakdown` MCP tool
-5. Create statistics caching mechanism
-6. Add npm script: `npm run generate:stats`
-
-**Test**: Statistics returned accurately for all 2171 repos
+**Verification**: `npm run build` completes without errors
 
 ---
 
-### Slice 3: Code Consolidation & Cleanup
-**Goal**: Remove duplication, improve maintainability
+### Task 2: Create Vercel Configuration 🚀
+**Priority**: High
+**Goal**: Add Vercel deployment files
 
-#### Tasks
-1. Create `src/core/data-fetcher.js` - shared GitHub API logic
-2. Create `src/core/transformer.js` - shared data transformation
-3. Refactor `scripts/generator.js` to use core modules
-4. Remove `scripts/stargazed.js` (functionality absorbed)
-5. Standardize data.json location: `data/data.json`
-6. Update all imports to use new structure
-7. Add JSDoc comments to all modules
-8. Fix ESLint warnings
+#### Steps
+1. Create `vercel.json` with:
+   - `buildCommand`: `npm run build`
+   - `outputDirectory`: `dist`
+   - `cleanUrls`: true
+   - Rewrites for multi-page app
+2. Verify Vite config base path compatibility
 
-**Test**: All existing scripts work with refactored code
-
----
-
-### Slice 4: Enhanced MCP Tools
-**Goal**: Add advanced query capabilities
-
-#### Tasks
-1. Implement `get_trending_topics` tool (top 20 topics)
-2. Implement `filter_by_criteria` tool (language, stars, date range)
-3. Implement `get_repo_recommendations` tool (similar repos)
-4. Add caching layer for expensive queries
-5. Add rate limiting configuration
-
-**Test**: All tools return correct results for edge cases
+**Verification**: `vercel.json` validates against schema
 
 ---
 
-### Slice 5: Automation Enhancement
-**Goal**: Robust, reliable automation
+### Task 3: Add Vercel GitHub Actions Workflow 🔄
+**Priority**: High
+**Goal**: Automated Vercel deployment on push to main
 
-#### Tasks
-1. Update `.github/workflows/main.yml`:
-   - Add statistics generation step
-   - Add MCP server validation step
-   - Improve error handling
-2. Create new workflow: `.github/workflows/mcp-test.yml`
-   - Test MCP server on every push
-3. Add pre-commit hook configuration
-4. Update build scripts to handle all steps
-5. Add build verification tests
+#### Steps
+1. Create `.github/workflows/vercel-deploy.yml`
+2. Configure:
+   - Trigger: push to `main` branch
+   - Node 20.x setup
+   - npm install
+   - npm run build
+   - Vercel CLI deploy
+   - Use `secrets.VERCEL_TOKEN`
+3. Add conditional logic for production vs preview
 
-**Test**: Full workflow runs successfully in CI
-
----
-
-### Slice 6: Documentation & Handoff
-**Goal**: Complete, clear documentation
-
-#### Tasks
-1. Update `README.md` with MCP server instructions
-2. Create `docs/MCP_SERVER.md` - detailed MCP guide
-3. Create `docs/STATISTICS.md` - statistics documentation
-4. Create `docs/API_REFERENCE.md` - tool reference
-5. Create `docs/adr/ADR-001-mcp-architecture.md`
-6. Update `CHANGELOG.md`
-7. Create `HANDOFF.md`
-
-**Test**: New user can set up and use MCP server from docs
+**Verification**: Workflow file syntax is valid
 
 ---
 
-## Test Strategy
+### Task 4: Enhance GitHub Pages Workflow 📄
+**Priority**: Medium
+**Goal**: Modernize existing workflow to latest standards
 
-### Unit Tests
-- Data transformation functions
-- Statistics calculations
-- Filter and search logic
+#### Steps
+1. Update `.github/workflows/gh-pages.yml`:
+   - Upgrade actions to v4 where available
+   - Node 18.x → 20.x
+   - Add proper permissions for Pages
+   - Add deployment status output
+   - Add URL verification step
+2. Keep existing build logic (working correctly)
+3. Ensure `.nojekyll` file is created
 
-### Integration Tests
-- MCP server tool execution
-- GitHub API interactions
-- Data caching behavior
+**Verification**: Workflow passes validation
 
-### E2E Tests
-- Full MCP request/response cycle
-- Statistics generation pipeline
-- Automation workflow
+---
+
+### Task 5: Update Documentation 📚
+**Priority**: Medium
+**Goal**: Document deployment setup and usage
+
+#### Steps
+1. **README.md**: Add hosting section
+   - Vercel URL
+   - GitHub Pages URL
+   - Deployment status badges (optional)
+   - Local development instructions
+2. **CHANGELOG.md**: Add entries for deployment setup
+3. **Create ADR-002**: Document dual-deployment decisions
+   - Why both platforms
+   - Base path strategy
+   - Build process
+   - Rollback plan
+
+**Verification**: Documentation is clear and complete
+
+---
+
+### Task 6: Create Hosting Verification Report 🔍
+**Priority**: Medium
+**Goal**: Prove both deployments are reachable
+
+#### Steps
+1. Create `_report/03_hosting.md`
+2. Document:
+   - Vercel preview URL
+   - GitHub Pages URL
+   - HTTP status codes
+   - curl commands for verification
+3. Add screenshots/links if available
+
+**Verification**: Both URLs return HTTP 200 (after user adds VERCEL_TOKEN)
+
+---
+
+### Task 7: Create Handoff Documentation 📋
+**Priority**: High
+**Goal**: Clear next steps for user
+
+#### Steps
+1. Create/update `HANDOFF.md` with:
+   - What was changed
+   - Both deployment URLs
+   - How to verify deployments
+   - Required user actions (add VERCEL_TOKEN)
+   - Next steps and enhancement ideas
+   - Rollback procedure
+
+**Verification**: Handoff is actionable and complete
+
+---
+
+## Deployment Verification Strategy
+
+### Local Build Test
+```bash
+# Create .env file with GITHUB_TOKEN
+cp .env.example .env
+# Add your token to .env
+npm install
+npm run build
+# Verify dist/ directory contains index.html
+```
+
+### GitHub Pages Verification
+```bash
+# After push to main, wait for workflow
+# Check: https://github.com/KBLLR/git-stars/actions
+# Access: https://kbllr.github.io/git-stars/
+curl -I https://kbllr.github.io/git-stars/ | head -n 1
+```
+
+### Vercel Verification (requires VERCEL_TOKEN)
+```bash
+# After user adds secret and workflow runs
+# Access: https://git-stars-kbllr.vercel.app (or assigned URL)
+curl -I https://git-stars-kbllr.vercel.app | head -n 1
+```
 
 ## Performance Targets
 
 | Metric | Target | Current | Status |
 |--------|--------|---------|--------|
-| MCP tool response | < 500ms | TBD | 🔄 |
-| Statistics generation | < 30s | TBD | 🔄 |
-| Data fetch (2171 repos) | < 5min | ~3min | ✅ |
+| Build time | < 5min | ~3min | ✅ |
 | Frontend load time | < 2s | ~1.5s | ✅ |
+| GitHub Pages deploy | < 5min | TBD | 🔄 |
+| Vercel deploy | < 3min | TBD | 🔄 |
 
 ## Security Checklist
 
-- [ ] No secrets in repository
-- [ ] Environment variables documented
-- [ ] Input validation on all MCP tools
-- [ ] Rate limiting for API calls
-- [ ] Error messages don't leak sensitive data
+- [x] No secrets in repository
+- [x] `.env` in `.gitignore`
+- [x] Environment variables documented in `.env.example`
+- [x] CI uses GitHub Secrets for tokens
+- [ ] VERCEL_TOKEN added by user (required action)
+- [x] Minimal token scopes documented
 - [ ] Dependencies audited (`npm audit`)
 
-## File Structure (Post-Implementation)
+## Files to Create/Modify
 
-```
-git-stars/
-├── _report/                    [NEW] Documentation
-│   ├── 00_intake.md
-│   ├── 01_audit.md
-│   └── 02_plan.md
-├── data/                       [NEW] Centralized data storage
-│   ├── data.json
-│   └── stats.json
-├── docs/                       [NEW] Documentation
-│   ├── adr/
-│   │   └── ADR-001-mcp-architecture.md
-│   ├── API_REFERENCE.md
-│   ├── MCP_SERVER.md
-│   └── STATISTICS.md
-├── src/
-│   ├── core/                   [NEW] Shared logic
-│   │   ├── data-fetcher.js
-│   │   ├── transformer.js
-│   │   └── cache-manager.js
-│   ├── analytics/              [NEW] Statistics
-│   │   ├── statistics.js
-│   │   └── trends.js
-│   ├── mcp-server/             [NEW] MCP implementation
-│   │   ├── index.js
-│   │   ├── tools/
-│   │   │   ├── list-repos.js
-│   │   │   ├── search.js
-│   │   │   ├── statistics.js
-│   │   │   └── filter.js
-│   │   └── config.js
-│   ├── frontend/
-│   │   └── main.js
-│   └── streamlit_app/
-│       ├── app.py
-│       └── utils.py
-├── scripts/
-│   ├── generator.js            [REFACTORED]
-│   └── [others kept]
-├── tests/                      [ENHANCED]
-│   ├── unit/
-│   ├── integration/
-│   └── e2e/
-├── CHANGELOG.md                [UPDATED]
-├── HANDOFF.md                  [NEW]
-└── README.md                   [UPDATED]
-```
+### New Files
+- `vercel.json` - Vercel configuration
+- `.github/workflows/vercel-deploy.yml` - Vercel deployment workflow
+- `docs/adr/ADR-002-dual-deployment.md` - Architecture decision record
+- `_report/03_hosting.md` - Hosting verification report
+- `HANDOFF.md` - Handoff documentation (updated)
 
-## Dependencies to Add
+### Modified Files
+- `.github/workflows/gh-pages.yml` - Enhanced workflow
+- `README.md` - Add hosting section
+- `CHANGELOG.md` - Document changes (if exists, create if not)
 
-```json
-{
-  "dependencies": {
-    "@modelcontextprotocol/sdk": "^0.5.0"
-  },
-  "devDependencies": {
-    "vitest": "^1.0.0"
-  }
-}
-```
+### Unchanged (Keep Existing)
+- `.env.example` - Already correct
+- `vite.config.js` - Base path already set correctly
+- `package.json` - Build scripts working
+- `scripts/generator.js` - Keep as-is
+- All source files - No code changes needed
+
+## Dependencies
+
+**No new dependencies required** ✅
+
+All necessary packages already in `package.json`:
+- `vite` - Build tool
+- `@octokit/rest` - GitHub API
+- `dotenv` - Environment variables
 
 ## Rollback Strategy
 
-If MCP server fails:
-1. Feature is additive - doesn't break existing functionality
-2. Can disable MCP server via environment variable
-3. Git revert to previous working state
-4. Existing frontend/streamlit continue to work
+If deployments fail:
+1. **GitHub Pages**: Already working, changes are non-breaking enhancements
+2. **Vercel**: Purely additive, doesn't affect existing functionality
+3. **Revert**: `git revert <commit-sha>` to undo changes
+4. **Remove workflow**: Delete `.github/workflows/vercel-deploy.yml`
+5. **Remove config**: Delete `vercel.json`
 
-## Success Metrics
+## Success Criteria
 
-- ✅ MCP server responds to all 7 core tools
-- ✅ Statistics generated for 2171+ repositories
-- ✅ Code duplication reduced by >50%
-- ✅ All workflows passing in CI
-- ✅ Documentation complete and tested
-- ✅ MLX agent successfully queries data
+- [x] Audit and plan complete
+- [ ] Build succeeds with `.env` file
+- [ ] `vercel.json` created and valid
+- [ ] Vercel workflow created
+- [ ] GitHub Pages workflow enhanced
+- [ ] Documentation updated (README, CHANGELOG, ADR)
+- [ ] Hosting report created
+- [ ] HANDOFF created with verification steps
+- [ ] **GitHub Pages returns HTTP 200** (verifiable now)
+- [ ] **Vercel returns HTTP 200** (after user adds token)
+
+## User Action Required
+
+**IMPORTANT**: After this setup is complete, user must:
+
+1. Add `VERCEL_TOKEN` to repository secrets:
+   - Go to: https://github.com/KBLLR/git-stars/settings/secrets/actions
+   - Click "New repository secret"
+   - Name: `VERCEL_TOKEN`
+   - Value: Create at https://vercel.com/account/tokens
+   - Scope: Full access (or specific to project)
+
+2. Push changes to `main` branch to trigger deployments
+
+3. Verify both URLs return HTTP 200:
+   ```bash
+   curl -I https://kbllr.github.io/git-stars/
+   curl -I https://git-stars-kbllr.vercel.app
+   ```
+
+---
+
+**Next Step:** Begin implementation with Task 1 (Fix Build Process)
