@@ -21,15 +21,34 @@ Git Stars is a web application that:
 
 ## Installation
 
+### Automated setup (recommended)
+
+To install both the Node.js and optional Streamlit (Python) dependencies in one step, run the helper script from the project ro
+ot:
+
+```bash
+./scripts/install-environment.sh
+```
+
+The script verifies that `node`/`npm` are installed, installs the JavaScript dependencies, and installs the Python packages fro
+m `requirements.txt` when Python and `pip` are available.
+
+### Manual setup
+
 1. Clone the repository:
    ```bash
    git clone https://github.com/KBLLR/git-stars.git
    cd git-stars
    ```
 
-2. Install dependencies:
+2. Install Node.js dependencies:
    ```bash
    npm install
+   ```
+
+3. (Optional) Install the Streamlit dependencies for the analytics dashboard:
+   ```bash
+   pip install -r requirements.txt
    ```
 
 ## GitHub Token Setup
