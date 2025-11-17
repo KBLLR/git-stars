@@ -13,7 +13,12 @@ st.set_page_config(
     page_title="Git Stars Dashboard",
     page_icon="⭐",
     layout="wide",
-    initial_sidebar_state="expanded"
+    initial_sidebar_state="expanded",
+    menu_items={
+        'Get Help': 'https://github.com/KBLLR/git-stars',
+        'Report a bug': 'https://github.com/KBLLR/git-stars/issues',
+        'About': '# Git Stars Dashboard\n\nVisualize and analyze your GitHub starred repositories with AI-powered insights!'
+    }
 )
 
 
@@ -25,82 +30,101 @@ def render_cards(items, card_type="module"):
         st.info(f"No {card_type}s to display with the current filters.")
         return
 
+    # Show count
+    st.caption(f"Showing {len(items)} {card_type}(s)")
+
     cols = st.columns(3)
     for i, item in enumerate(items):
         with cols[i % 3]:
-            if card_type == "module":
-                st.subheader(item.get("title_and_version", "No Title"))
-                details_col1, details_col2 = st.columns(2)
-                with details_col1:
-                    st.write("**Semester:**", item.get("semester", "N/A"))
+            # Add container with styling
+            with st.container():
+                if card_type == "module":
+                    st.subheader(item.get("title_and_version", "No Title"))
+                    details_col1, details_col2 = st.columns(2)
+                    with details_col1:
+                        st.write("**Semester:**", item.get("semester", "N/A"))
+                        st.write(
+                            "**ECTS Credits:**",
+                            item.get("ects_credits") or item.get("credits", "N/A"),
+                        )
+                        st.write("**Contact Time:**", item.get("contact_time_hours", "N/A"))
+                        st.write(
+                            "**Self-Study Time:**",
+                            item.get("self_study_time_hours", "N/A"),
+                        )
+                    with details_col2:
+                        st.write("**Module Type:**", item.get("module_type", "N/A"))
+                        st.write("**Grading Type:**", item.get("grading_type", "N/A"))
+                        st.write("**Teaching Format:**", item.get("teaching_format", "N/A"))
+                        st.write("**Assessment Type:**", item.get("assessment_type", "N/A"))
+
+                    st.write("**Prerequisites:**", item.get("prerequisites", "N/A"))
                     st.write(
-                        "**ECTS Credits:**",
-                        item.get("ects_credits") or item.get("credits", "N/A"),
+                        "**Module Coordinator:**", item.get("module_coordinator", "N/A")
                     )
-                    st.write("**Contact Time:**", item.get("contact_time_hours", "N/A"))
-                    st.write(
-                        "**Self-Study Time:**",
-                        item.get("self_study_time_hours", "N/A"),
-                    )
-                with details_col2:
-                    st.write("**Module Type:**", item.get("module_type", "N/A"))
-                    st.write("**Grading Type:**", item.get("grading_type", "N/A"))
-                    st.write("**Teaching Format:**", item.get("teaching_format", "N/A"))
-                    st.write("**Assessment Type:**", item.get("assessment_type", "N/A"))
+                    topics_display = ", ".join(item.get("topics", [])) or "N/A"
+                    st.write("**Topics:**", topics_display)
+                    st.write("**Core Focus:**", item.get("core_focus", "N/A"))
 
-                st.write("**Prerequisites:**", item.get("prerequisites", "N/A"))
-                st.write(
-                    "**Module Coordinator:**", item.get("module_coordinator", "N/A")
-                )
-                topics_display = ", ".join(item.get("topics", [])) or "N/A"
-                st.write("**Topics:**", topics_display)
-                st.write("**Core Focus:**", item.get("core_focus", "N/A"))
+                    qualification_objectives = item.get("qualification_objectives", [])
+                    if qualification_objectives:
+                        st.markdown("**Qualification Objectives:**")
+                        for objective in qualification_objectives:
+                            st.markdown(f"- {objective}")
 
-                qualification_objectives = item.get("qualification_objectives", [])
-                if qualification_objectives:
-                    st.markdown("**Qualification Objectives:**")
-                    for objective in qualification_objectives:
-                        st.markdown(f"- {objective}")
+                    key_contents = item.get("key_contents")
+                    if key_contents:
+                        st.markdown("**Key Contents / Topics:**")
+                        st.write(key_contents)
 
-                key_contents = item.get("key_contents")
-                if key_contents:
-                    st.markdown("**Key Contents / Topics:**")
-                    st.write(key_contents)
+                    resources = item.get("resources", [])
+                    if resources:
+                        st.markdown("**Highlighted Resources:**")
+                        for resource in resources:
+                            name = resource.get("name", "Resource")
+                            url = resource.get("url")
+                            if url:
+                                st.markdown(f"- [{name}]({url})")
+                            else:
+                                st.markdown(f"- {name}")
+                elif card_type == "repo":
+                    repo_name = item.get("name", item.get("title", "Unnamed Repository"))
+                    st.subheader(f"🔗 {repo_name}")
 
-                resources = item.get("resources", [])
-                if resources:
-                    st.markdown("**Highlighted Resources:**")
-                    for resource in resources:
-                        name = resource.get("name", "Resource")
-                        url = resource.get("url")
-                        if url:
-                            st.markdown(f"- [{name}]({url})")
+                    description = item.get("description", "No description provided")
+                    st.write(description[:150] + "..." if len(description) > 150 else description)
+
+                    # Handle different language formats
+                    if isinstance(item.get("languages"), list):
+                        if item["languages"] and isinstance(item["languages"][0], dict):
+                            languages = ", ".join([lang.get("language", "N/A") for lang in item.get("languages", [])])
                         else:
-                            st.markdown(f"- {name}")
-            elif card_type == "repo":
-                repo_name = item.get("name", item.get("title", "Unnamed Repository"))
-                st.subheader(repo_name)
-                st.write(item.get("description", "No description provided"))
-
-                # Handle different language formats
-                if isinstance(item.get("languages"), list):
-                    if item["languages"] and isinstance(item["languages"][0], dict):
-                        languages = ", ".join([lang.get("language", "N/A") for lang in item.get("languages", [])])
+                            languages = ", ".join(item.get("languages", []))
                     else:
-                        languages = ", ".join(item.get("languages", []))
-                else:
-                    languages = "N/A"
+                        languages = "N/A"
 
-                st.write(f"**Languages:** {languages} | **Stars:** {item.get('stars', 0)}")
-                if item.get("url"):
-                    st.markdown(f"[Repository URL]({item['url']})")
-            elif card_type == "paper":
-                st.subheader(item.get("title", "No Title"))
-                st.write(item.get("description", "No description provided"))
-                st.write("**Tags:**", ", ".join(item.get("tags", [])))
-                if item.get("languages"):
-                    st.write("**Languages:**", item.get("languages"))
-            st.markdown("---")
+                    col1, col2 = st.columns(2)
+                    with col1:
+                        st.metric("⭐ Stars", item.get('stars', 0))
+                    with col2:
+                        st.write(f"**Languages:** {languages[:30]}...")
+
+                    # Display topics as tags
+                    topics = item.get("topics", [])
+                    if isinstance(topics, str):
+                        topics = [topics]
+                    if topics:
+                        st.caption("📌 " + " • ".join(topics[:5]))
+
+                    if item.get("url"):
+                        st.markdown(f"[🔗 View Repository]({item['url']})")
+                elif card_type == "paper":
+                    st.subheader(item.get("title", "No Title"))
+                    st.write(item.get("description", "No description provided"))
+                    st.write("**Tags:**", ", ".join(item.get("tags", [])))
+                    if item.get("languages"):
+                        st.write("**Languages:**", item.get("languages"))
+                st.markdown("---")
 
 
 def render_project_generator_tab(all_topics, modules_data, repos_list, kb_data):
@@ -252,11 +276,36 @@ def render_network_graph_tab(modules_data, repos_list, kb_data):
 # --- Main Application ---
 def main():
     """Main function to run the Streamlit application."""
+    # Display header
+    st.title("⭐ Git Stars Dashboard")
+    st.markdown("""
+    Welcome to your GitHub Stars Dashboard! This interactive tool helps you:
+    - 📊 Visualize your starred repositories
+    - 🎓 Discover learning paths based on your interests
+    - 🔬 Explore research connections
+    - 💡 Generate project ideas
+    """)
+
     # --- Load all data once ---
-    modules_data = load_modules()
-    repos_list = load_code_repos()
-    kb_data = load_papers()
-    all_topics = get_all_topics(modules_data, repos_list, kb_data)
+    try:
+        modules_data = load_modules()
+        repos_list = load_code_repos()
+        kb_data = load_papers()
+        all_topics = get_all_topics(modules_data, repos_list, kb_data)
+
+        if not repos_list:
+            st.warning("⚠️ No repository data found. Please ensure data.json is generated.")
+            st.info("Run `npm run build:data` to generate repository data.")
+            return
+
+        # Display stats in sidebar
+        st.sidebar.metric("Total Repositories", len(repos_list))
+        st.sidebar.metric("Total Topics", len(all_topics))
+        st.sidebar.metric("Learning Paths", len(modules_data))
+    except Exception as e:
+        st.error(f"❌ Error loading data: {str(e)}")
+        st.info("Please check that all data files are properly generated.")
+        return
 
     # --- Sidebar Filter ---
     st.sidebar.header("Filter Options")
