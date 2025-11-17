@@ -31,7 +31,8 @@ This Streamlit application provides an interactive interface to explore your Git
    cd git-stars
    ```
 
-2. Install the required packages:
+2. Install the required packages (you can also run `./scripts/install-environment.sh` from the repo root to handle both npm and
+   pip dependencies automatically):
    ```bash
    pip install -r requirements.txt
    ```
