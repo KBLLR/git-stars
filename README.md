@@ -5,6 +5,15 @@
 ![Total](https://img.shields.io/badge/Total-2171-green.svg)
 ![Updated](https://img.shields.io/badge/Updated-17--11--2025-blue.svg)
 
+## 🌐 Live Sites
+
+This repository is automatically deployed to two hosting platforms:
+
+- **GitHub Pages**: [https://kbllr.github.io/git-stars/](https://kbllr.github.io/git-stars/)
+- **Vercel**: [https://git-stars-kbllr.vercel.app](https://git-stars-kbllr.vercel.app) (or check latest deployment)
+
+Both sites are automatically updated when changes are pushed to the `main` branch.
+
 ## 🏠 Contents
 
 - [ASP.NET (1)](#aspnet)
