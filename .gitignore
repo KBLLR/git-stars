@@ -32,5 +32,6 @@ scripts/.cache/
 # Directories
 data/
 node_modules/
+dist/
 
 # npm lock file that will be generated in yarn projects
