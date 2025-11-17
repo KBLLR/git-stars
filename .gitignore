@@ -34,4 +34,3 @@ data/
 node_modules/
 
 # npm lock file that will be generated in yarn projects
-package-lock.json

@@ -44,9 +44,13 @@
     "p-queue": "^8.1.0"
   },
   "devDependencies": {
+<<<<<<< HEAD
     "@eslint/js": "^9.9.0",
     "eslint": "^9.9.0",
     "vite": "^5.2.11"
+=======
+    "vite": "^7.2.2"
+>>>>>>> d66f2a2 (added lock)
   },
   "bugs": {
     "url": "https://github.com/KBLLR/git-stars/issues"
