@@ -1,0 +1,215 @@
+@layer reset, tokens, base, components, utilities;
+
+/* ==================================================
+   RESET LAYER
+   Normalize browser defaults
+   ================================================== */
+@layer reset {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html, body {
+    height: 100%;
+  }
+
+  body {
+    margin: 0;
+  }
+
+  img, svg, video, canvas {
+    max-width: 100%;
+    display: block;
+  }
+
+  input, button, textarea, select {
+    font: inherit;
+    color: inherit;
+  }
+
+  :focus {
+    outline: none; /* Will be replaced by :focus-visible */
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-focus-ring);
+    outline-offset: 2px;
+    border-radius: inherit;
+  }
+
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* ==================================================
+   TOKENS LAYER
+   CSS Custom Properties (populated by build step)
+   ================================================== */
+@layer tokens {
+  :root {
+    /* Default light theme tokens */
+    --color-bg: oklch(98% 0.01 250);
+    --color-surface: oklch(100% 0 0);
+    --color-surface-border: oklch(90% 0 0 / 0.24);
+    --color-surface-hover: oklch(96% 0 0);
+    --color-text-primary: oklch(20% 0.02 250);
+    --color-text-secondary: oklch(40% 0.01 250);
+    --color-text-tertiary: oklch(32% 0.01 250);
+    --color-accent: oklch(65% 0.16 230);
+    --color-accent-hover: oklch(60% 0.18 230);
+    --color-focus-ring: oklch(65% 0.16 230);
+    --color-success: oklch(70% 0.15 155);
+    --color-warning: oklch(80% 0.15 85);
+    --color-danger: oklch(60% 0.20 25);
+    --color-info: oklch(70% 0.13 240);
+
+    /* Spacing scale (4px base unit) */
+    --space-0: 0;
+    --space-1: 0.25rem; /* 4px */
+    --space-2: 0.5rem;  /* 8px */
+    --space-3: 0.75rem; /* 12px */
+    --space-4: 1rem;    /* 16px */
+    --space-5: 1.5rem;  /* 24px */
+    --space-6: 2rem;    /* 32px */
+    --space-7: 2.5rem;  /* 40px */
+    --space-8: 3.5rem;  /* 56px */
+    --space-9: 4.5rem;  /* 72px */
+
+    /* Radius scale */
+    --radius-0: 0px;
+    --radius-1: 0.25rem; /* 4px */
+    --radius-2: 0.5rem;  /* 8px */
+    --radius-3: 0.75rem; /* 12px */
+    --radius-4: 1rem;    /* 16px */
+    --radius-full: 9999px;
+
+    /* Shadow scale */
+    --shadow-0: none;
+    --shadow-1: 0 1px 2px oklch(0% 0 0 / 0.08);
+    --shadow-2: 0 2px 8px oklch(0% 0 0 / 0.12);
+    --shadow-3: 0 4px 16px oklch(0% 0 0 / 0.16);
+    --shadow-4: 0 8px 32px oklch(0% 0 0 / 0.24);
+    --shadow-inset: inset 0 1px 3px oklch(0% 0 0 / 0.1);
+
+    /* Typography */
+    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-mono: ui-monospace, "SF Mono", Menlo, Monaco, "Courier New", monospace;
+
+    /* Type scale (fluid with clamp) */
+    --step--2: clamp(0.69rem, 0.66rem + 0.15vw, 0.79rem);
+    --step--1: clamp(0.83rem, 0.79rem + 0.20vw, 0.96rem);
+    --step-0:  clamp(1.00rem, 0.95rem + 0.25vw, 1.12rem);
+    --step-1:  clamp(1.20rem, 1.13rem + 0.35vw, 1.34rem);
+    --step-2:  clamp(1.44rem, 1.34rem + 0.50vw, 1.60rem);
+    --step-3:  clamp(1.73rem, 1.57rem + 0.75vw, 1.92rem);
+    --step-4:  clamp(2.07rem, 1.83rem + 1.15vw, 2.30rem);
+    --step-5:  clamp(2.49rem, 2.13rem + 1.70vw, 2.76rem);
+    --step-6:  clamp(2.99rem, 2.47rem + 2.45vw, 3.31rem);
+
+    /* Z-index scale */
+    --z-base: 0;
+    --z-dropdown: 100;
+    --z-sticky: 200;
+    --z-fixed: 300;
+    --z-modal-backdrop: 400;
+    --z-modal: 500;
+    --z-popover: 600;
+    --z-tooltip: 700;
+
+    /* Container widths */
+    --container-max: 1200px;
+    --container-narrow: 800px;
+    --container-wide: 1600px;
+  }
+
+  /* Respect system color scheme preference */
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme]) {
+      color-scheme: dark;
+      --color-bg: oklch(14% 0.02 250);
+      --color-surface: oklch(20% 0.02 250);
+      --color-surface-border: oklch(30% 0 0 / 0.32);
+      --color-surface-hover: oklch(24% 0.02 250);
+      --color-text-primary: oklch(96% 0 0);
+      --color-text-secondary: oklch(80% 0 0);
+      --color-text-tertiary: oklch(68% 0 0);
+      --color-accent: oklch(65% 0.16 230);
+      --color-accent-hover: oklch(70% 0.18 230);
+      --color-focus-ring: oklch(65% 0.16 230);
+      --color-success: oklch(70% 0.15 155);
+      --color-warning: oklch(80% 0.15 85);
+      --color-danger: oklch(65% 0.20 25);
+      --color-info: oklch(70% 0.13 240);
+    }
+  }
+}
+
+/* ==================================================
+   BASE LAYER
+   Element-level base styles
+   ================================================== */
+@layer base {
+  :root {
+    color-scheme: light dark;
+    scroll-padding-top: 140px; /* Account for fixed header/filters */
+  }
+
+  body {
+    background: var(--color-bg);
+    color: var(--color-text-primary);
+    font-family: var(--font-sans);
+    font-size: var(--step-0);
+    line-height: 1.6;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Links */
+  a {
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: var(--color-accent-hover);
+    text-decoration: underline;
+  }
+
+  a:focus-visible {
+    outline: 2px solid var(--color-focus-ring);
+    outline-offset: 2px;
+  }
+
+  /* Code */
+  code, kbd, pre, samp {
+    font-family: var(--font-mono);
+  }
+
+  code {
+    background: var(--color-surface-hover);
+    padding: 0.125em 0.375em;
+    border-radius: var(--radius-1);
+    font-size: 0.9em;
+  }
+
+  pre code {
+    background: none;
+    padding: 0;
+  }
+
+  /* Selection */
+  ::selection {
+    background: var(--color-accent);
+    color: var(--color-bg);
+  }
+}

@@ -1,0 +1,160 @@
+{
+  "$schema": "https://kbllr.com/schemas/design-tokens.schema.json",
+  "meta": {
+    "name": "Git-Stars Design System",
+    "version": "0.1.0",
+    "description": "Research-driven design tokens for accessible, themeable UI",
+    "author": "Design Engineering Agent"
+  },
+  "modes": ["light", "dark", "hc"],
+  "brand": {
+    "default": {
+      "oklch": {
+        "bg-light": "oklch(98% 0.01 250)",
+        "bg-dark": "oklch(14% 0.02 250)",
+        "surface-light": "oklch(100% 0 0)",
+        "surface-dark": "oklch(20% 0.02 250)",
+        "accent": "oklch(65% 0.16 230)",
+        "success": "oklch(70% 0.15 155)",
+        "warning": "oklch(80% 0.15 85)",
+        "danger": "oklch(60% 0.20 25)",
+        "info": "oklch(70% 0.13 240)"
+      }
+    }
+  },
+  "roles": {
+    "color": {
+      "light": {
+        "bg": "oklch(98% 0.01 250)",
+        "surface": "oklch(100% 0 0)",
+        "surface-border": "oklch(90% 0 0 / 0.24)",
+        "surface-hover": "oklch(96% 0 0)",
+        "text-primary": "oklch(20% 0.02 250)",
+        "text-secondary": "oklch(40% 0.01 250)",
+        "text-tertiary": "oklch(32% 0.01 250)",
+        "accent": "oklch(65% 0.16 230)",
+        "accent-hover": "oklch(60% 0.18 230)",
+        "focus-ring": "oklch(65% 0.16 230)",
+        "success": "oklch(70% 0.15 155)",
+        "warning": "oklch(80% 0.15 85)",
+        "danger": "oklch(60% 0.20 25)",
+        "info": "oklch(70% 0.13 240)"
+      },
+      "dark": {
+        "bg": "oklch(14% 0.02 250)",
+        "surface": "oklch(20% 0.02 250)",
+        "surface-border": "oklch(30% 0 0 / 0.32)",
+        "surface-hover": "oklch(24% 0.02 250)",
+        "text-primary": "oklch(96% 0 0)",
+        "text-secondary": "oklch(80% 0 0)",
+        "text-tertiary": "oklch(68% 0 0)",
+        "accent": "oklch(65% 0.16 230)",
+        "accent-hover": "oklch(70% 0.18 230)",
+        "focus-ring": "oklch(65% 0.16 230)",
+        "success": "oklch(70% 0.15 155)",
+        "warning": "oklch(80% 0.15 85)",
+        "danger": "oklch(65% 0.20 25)",
+        "info": "oklch(70% 0.13 240)"
+      },
+      "hc": {
+        "bg": "oklch(0% 0 0)",
+        "surface": "oklch(0% 0 0)",
+        "surface-border": "oklch(100% 0 0)",
+        "surface-hover": "oklch(10% 0 0)",
+        "text-primary": "oklch(100% 0 0)",
+        "text-secondary": "oklch(100% 0 0)",
+        "text-tertiary": "oklch(100% 0 0)",
+        "accent": "oklch(90% 0.20 110)",
+        "accent-hover": "oklch(95% 0.22 110)",
+        "focus-ring": "oklch(90% 0.20 110)",
+        "success": "oklch(85% 0.25 145)",
+        "warning": "oklch(90% 0.28 95)",
+        "danger": "oklch(75% 0.28 30)",
+        "info": "oklch(85% 0.20 240)"
+      }
+    },
+    "size": {
+      "space": {
+        "0": "0",
+        "1": "0.25rem",
+        "2": "0.5rem",
+        "3": "0.75rem",
+        "4": "1rem",
+        "5": "1.5rem",
+        "6": "2rem",
+        "7": "2.5rem",
+        "8": "3.5rem",
+        "9": "4.5rem"
+      },
+      "radius": {
+        "0": "0px",
+        "1": "0.25rem",
+        "2": "0.5rem",
+        "3": "0.75rem",
+        "4": "1rem",
+        "full": "9999px"
+      },
+      "shadow": {
+        "0": "none",
+        "1": "0 1px 2px oklch(0% 0 0 / 0.08)",
+        "2": "0 2px 8px oklch(0% 0 0 / 0.12)",
+        "3": "0 4px 16px oklch(0% 0 0 / 0.16)",
+        "4": "0 8px 32px oklch(0% 0 0 / 0.24)",
+        "inset": "inset 0 1px 3px oklch(0% 0 0 / 0.1)"
+      }
+    },
+    "type": {
+      "font": {
+        "sans": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\"",
+        "mono": "ui-monospace, \"SF Mono\", \"Cascadia Code\", \"Source Code Pro\", Menlo, Monaco, \"Courier New\", monospace"
+      },
+      "scale_steps": {
+        "ratio": 1.2,
+        "base_px": 16,
+        "-2": "clamp(0.69rem, 0.66rem + 0.15vw, 0.79rem)",
+        "-1": "clamp(0.83rem, 0.79rem + 0.20vw, 0.96rem)",
+        "0": "clamp(1.00rem, 0.95rem + 0.25vw, 1.12rem)",
+        "1": "clamp(1.20rem, 1.13rem + 0.35vw, 1.34rem)",
+        "2": "clamp(1.44rem, 1.34rem + 0.50vw, 1.60rem)",
+        "3": "clamp(1.73rem, 1.57rem + 0.75vw, 1.92rem)",
+        "4": "clamp(2.07rem, 1.83rem + 1.15vw, 2.30rem)",
+        "5": "clamp(2.49rem, 2.13rem + 1.70vw, 2.76rem)",
+        "6": "clamp(2.99rem, 2.47rem + 2.45vw, 3.31rem)"
+      },
+      "leading": {
+        "tight": 1.2,
+        "normal": 1.5,
+        "loose": 1.7
+      },
+      "tracking": {
+        "tight": "-0.02em",
+        "normal": "0",
+        "loose": "0.05em",
+        "wide": "0.1em"
+      }
+    },
+    "layout": {
+      "z-index": {
+        "base": 0,
+        "dropdown": 100,
+        "sticky": 200,
+        "fixed": 300,
+        "modal-backdrop": 400,
+        "modal": 500,
+        "popover": 600,
+        "tooltip": 700
+      },
+      "breakpoints": {
+        "sm": "640px",
+        "md": "768px",
+        "lg": "1024px",
+        "xl": "1280px"
+      },
+      "container": {
+        "max-width": "1200px",
+        "narrow": "800px",
+        "wide": "1600px"
+      }
+    }
+  }
+}
