@@ -39,22 +39,13 @@ jobs:
       - name: Install Vercel CLI
         run: npm install -g vercel@latest
 
-      - name: Debug Secrets Presence
-        env:
-          HAS_TOKEN: ${{ secrets.VERCEL_TOKEN != '' }}
-          HAS_ORG: ${{ secrets.VERCEL_ORG_ID != '' }}
-          HAS_PROJECT: ${{ secrets.VERCEL_PROJECT_ID != '' }}
-        run: |
-          echo "VERCEL_TOKEN present: $HAS_TOKEN"
-          echo "VERCEL_ORG_ID present: $HAS_ORG"
-          echo "VERCEL_PROJECT_ID present: $HAS_PROJECT"
-
       - name: Pull Vercel Environment Information
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
         run: vercel pull --yes --environment=production
+        continue-on-error: true
 
       - name: Build Project Artifacts
         env:
