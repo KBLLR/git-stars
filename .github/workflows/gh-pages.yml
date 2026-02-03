@@ -39,19 +39,11 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # Generate data and statistics
+          # Generate data
           npm run build:data
-          npm run generate:stats
-          mkdir -p src/frontend/public
-          cp -f public/data.json src/frontend/
 
-          # Build frontend
-          npm run build:frontend
-
-          # Ensure assets are in the right place
-          if [ -d "src/frontend/images" ]; then
-            cp -r src/frontend/images dist/
-          fi
+          # Build frontend (Vite copies public/ to dist/)
+          npm run build
 
           # Create a .nojekyll file to bypass GitHub Pages Jekyll processing
           touch dist/.nojekyll
