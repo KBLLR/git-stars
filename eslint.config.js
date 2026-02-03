@@ -1,65 +1,53 @@
 import js from "@eslint/js";
+import tseslint from "typescript-eslint";
+import reactHooks from "eslint-plugin-react-hooks";
+import reactRefresh from "eslint-plugin-react-refresh";
 
-export default [
+export default tseslint.config(
   {
     ignores: [
-      "node_modules/**",
       "dist/**",
-      "public/data.json",
-      "src/frontend/data.json",
+      "node_modules/**",
+      "public/**",
       "scripts/.cache/**",
-      "src_legacy/**",
+      "coverage/**"
     ],
   },
   {
-    ...js.configs.recommended,
+    extends: [js.configs.recommended, ...tseslint.configs.recommended],
+    files: ["**/*.{ts,tsx}"],
     languageOptions: {
       ecmaVersion: 2022,
-      sourceType: "module",
-    },
-  },
-  {
-    files: [
-      "scripts/**/*.js",
-      "tests/**/*.js",
-      "vite.config.js",
-      "eslint.config.js",
-      "src/analytics/**/*.js",
-    ],
-    languageOptions: {
-      ecmaVersion: 2022,
-      sourceType: "module",
       globals: {
-        console: "readonly",
-        process: "readonly",
-        __dirname: "readonly",
+        browser: true,
+        es2020: true
       },
     },
-  },
-  {
-    files: ["public/**/*.js", "src/frontend/**/*.js", "logs/**/*.js"],
-    languageOptions: {
-      ecmaVersion: 2022,
-      sourceType: "module",
-      globals: {
-        document: "readonly",
-        window: "readonly",
-        localStorage: "readonly",
-        URL: "readonly",
-        Blob: "readonly",
-        alert: "readonly",
-        console: "readonly",
-        fetch: "readonly",
-        Event: "readonly",
-        URLSearchParams: "readonly",
-        navigator: "readonly",
-        setTimeout: "readonly",
-        clearTimeout: "readonly",
-        confirm: "readonly",
-      },
+    plugins: {
+      "react-hooks": reactHooks,
+      "react-refresh": reactRefresh,
     },
     rules: {
-      "no-alert": "off",
+      ...reactHooks.configs.recommended.rules,
+      "react-refresh/only-export-components": [
+        "warn",
+        { allowConstantExport: true },
+      ],
+      "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
+      "@typescript-eslint/no-explicit-any": "warn"
     },
   },
-];
+  {
+    files: ["scripts/**/*.js"],
+    languageOptions: {
+      globals: {
+        process: "readonly",
+        console: "readonly",
+        __dirname: "readonly"
+      }
+    },
+    rules: {
+      "@typescript-eslint/no-var-requires": "off"
+    }
+  }
+);

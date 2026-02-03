@@ -13,9 +13,19 @@
       "provider": "mlx-local",
       "model": "hf/mlx-community__Qwen2.5-14B-Instruct-4bit",
       "promptPath": "./agents/repo-analyst.md",
-      "skills": ["repo-analysis", "trend-detection"],
-      "tools": ["get_statistics", "get_language_breakdown", "get_trending_topics"],
-      "capabilities": ["analytics", "insights"],
+      "skills": [
+        "repo-analysis",
+        "trend-detection"
+      ],
+      "tools": [
+        "get_statistics",
+        "get_language_breakdown",
+        "get_trending_topics"
+      ],
+      "capabilities": [
+        "analytics",
+        "insights"
+      ],
       "house_binding": "local",
       "house_id": "git-stars"
     },
@@ -28,9 +38,19 @@
       "provider": "mlx-local",
       "model": "hf/mlx-community__Qwen2.5-14B-Instruct-4bit",
       "promptPath": "./agents/repo-navigator.md",
-      "skills": ["repo-discovery"],
-      "tools": ["list_starred_repos", "search_repos", "filter_by_criteria"],
-      "capabilities": ["search", "discovery", "navigation"],
+      "skills": [
+        "repo-discovery"
+      ],
+      "tools": [
+        "list_starred_repos",
+        "search_repos",
+        "filter_by_criteria"
+      ],
+      "capabilities": [
+        "search",
+        "discovery",
+        "navigation"
+      ],
       "house_binding": "local",
       "house_id": "git-stars"
     },
@@ -46,12 +66,30 @@
       "input_schema": {
         "type": "object",
         "properties": {
-          "limit": { "type": "number", "default": 20 },
-          "offset": { "type": "number", "default": 0 },
-          "sortBy": { "type": "string", "enum": ["stars", "forks", "name", "created"], "default": "stars" }
+          "limit": {
+            "type": "number",
+            "default": 20
+          },
+          "offset": {
+            "type": "number",
+            "default": 0
+          },
+          "sortBy": {
+            "type": "string",
+            "enum": [
+              "stars",
+              "forks",
+              "name",
+              "created"
+            ],
+            "default": "stars"
+          }
         }
       },
-      "capabilities": ["listing", "pagination"],
+      "capabilities": [
+        "listing",
+        "pagination"
+      ],
       "house_binding": "shared",
       "house_id": "git-stars"
     },
@@ -67,14 +105,30 @@
       "input_schema": {
         "type": "object",
         "properties": {
-          "query": { "type": "string", "description": "Search query" },
-          "language": { "type": "string", "description": "Filter by language" },
-          "minStars": { "type": "number" },
-          "maxResults": { "type": "number", "default": 10 }
+          "query": {
+            "type": "string",
+            "description": "Search query"
+          },
+          "language": {
+            "type": "string",
+            "description": "Filter by language"
+          },
+          "minStars": {
+            "type": "number"
+          },
+          "maxResults": {
+            "type": "number",
+            "default": 10
+          }
         },
-        "required": ["query"]
+        "required": [
+          "query"
+        ]
       },
-      "capabilities": ["search", "filtering"],
+      "capabilities": [
+        "search",
+        "filtering"
+      ],
       "house_binding": "shared",
       "house_id": "git-stars"
     },
@@ -90,12 +144,23 @@
       "input_schema": {
         "type": "object",
         "properties": {
-          "name": { "type": "string", "description": "Repository name" },
-          "author": { "type": "string", "description": "Repository owner (optional)" }
+          "name": {
+            "type": "string",
+            "description": "Repository name"
+          },
+          "author": {
+            "type": "string",
+            "description": "Repository owner (optional)"
+          }
         },
-        "required": ["name"]
+        "required": [
+          "name"
+        ]
       },
-      "capabilities": ["details", "lookup"],
+      "capabilities": [
+        "details",
+        "lookup"
+      ],
       "house_binding": "shared",
       "house_id": "git-stars"
     },
@@ -112,7 +177,10 @@
         "type": "object",
         "properties": {}
       },
-      "capabilities": ["analytics", "summary"],
+      "capabilities": [
+        "analytics",
+        "summary"
+      ],
       "house_binding": "shared",
       "house_id": "git-stars"
     },
@@ -128,10 +196,16 @@
       "input_schema": {
         "type": "object",
         "properties": {
-          "topN": { "type": "number", "default": 10 }
+          "topN": {
+            "type": "number",
+            "default": 10
+          }
         }
       },
-      "capabilities": ["analytics", "languages"],
+      "capabilities": [
+        "analytics",
+        "languages"
+      ],
       "house_binding": "shared",
       "house_id": "git-stars"
     },
@@ -147,10 +221,16 @@
       "input_schema": {
         "type": "object",
         "properties": {
-          "limit": { "type": "number", "default": 20 }
+          "limit": {
+            "type": "number",
+            "default": 20
+          }
         }
       },
-      "capabilities": ["analytics", "topics"],
+      "capabilities": [
+        "analytics",
+        "topics"
+      ],
       "house_binding": "shared",
       "house_id": "git-stars"
     },
@@ -166,16 +246,33 @@
       "input_schema": {
         "type": "object",
         "properties": {
-          "language": { "type": "string" },
-          "topic": { "type": "string" },
-          "license": { "type": "string" },
-          "minStars": { "type": "number" },
-          "maxStars": { "type": "number" },
-          "minForks": { "type": "number" },
-          "author": { "type": "string" }
+          "language": {
+            "type": "string"
+          },
+          "topic": {
+            "type": "string"
+          },
+          "license": {
+            "type": "string"
+          },
+          "minStars": {
+            "type": "number"
+          },
+          "maxStars": {
+            "type": "number"
+          },
+          "minForks": {
+            "type": "number"
+          },
+          "author": {
+            "type": "string"
+          }
         }
       },
-      "capabilities": ["filtering", "multi-criteria"],
+      "capabilities": [
+        "filtering",
+        "multi-criteria"
+      ],
       "house_binding": "shared",
       "house_id": "git-stars"
     },
@@ -186,15 +283,21 @@
       "name": "Sync Starred Repos",
       "description": "Fetch latest starred repos from GitHub API",
       "category": "sync",
-      "entry_point": "./scripts/build-data.js",
+      "entry_point": "./scripts/generator.js",
       "mcp_server": "house-functions",
       "input_schema": {
         "type": "object",
         "properties": {
-          "force": { "type": "boolean", "default": false }
+          "force": {
+            "type": "boolean",
+            "default": false
+          }
         }
       },
-      "capabilities": ["sync", "github-api"],
+      "capabilities": [
+        "sync",
+        "github-api"
+      ],
       "house_binding": "local",
       "house_id": "git-stars"
     },
@@ -206,9 +309,18 @@
       "description": "Analyze patterns and trends across starred repositories",
       "category": "analytics",
       "entry_point": "./skills/repo-analysis/SKILL.md",
-      "tools": ["get_statistics", "get_language_breakdown", "get_trending_topics"],
-      "agents": ["repo-analyst"],
-      "capabilities": ["analytics", "insights"],
+      "tools": [
+        "get_statistics",
+        "get_language_breakdown",
+        "get_trending_topics"
+      ],
+      "agents": [
+        "repo-analyst"
+      ],
+      "capabilities": [
+        "analytics",
+        "insights"
+      ],
       "house_binding": "shared",
       "house_id": "git-stars"
     },
@@ -220,9 +332,19 @@
       "description": "Find and filter repositories by various criteria",
       "category": "search",
       "entry_point": "./skills/repo-discovery/SKILL.md",
-      "tools": ["list_starred_repos", "search_repos", "filter_by_criteria", "get_repo_details"],
-      "agents": ["repo-navigator"],
-      "capabilities": ["search", "discovery"],
+      "tools": [
+        "list_starred_repos",
+        "search_repos",
+        "filter_by_criteria",
+        "get_repo_details"
+      ],
+      "agents": [
+        "repo-navigator"
+      ],
+      "capabilities": [
+        "search",
+        "discovery"
+      ],
       "house_binding": "shared",
       "house_id": "git-stars"
     },
@@ -239,7 +361,10 @@
         "path": "./data/data.json",
         "auto_sync": "daily"
       },
-      "capabilities": ["memory", "repository-data"],
+      "capabilities": [
+        "memory",
+        "repository-data"
+      ],
       "house_binding": "local",
       "house_id": "git-stars"
     },
@@ -255,7 +380,10 @@
         "backend": "json",
         "path": "./data/stats.json"
       },
-      "capabilities": ["memory", "analytics-cache"],
+      "capabilities": [
+        "memory",
+        "analytics-cache"
+      ],
       "house_binding": "local",
       "house_id": "git-stars"
     }
@@ -283,7 +411,6 @@
       "7 MCP tools for AI agents",
       "Real-time search and filtering",
       "Language and topic analytics",
-      "Streamlit analytics dashboard",
       "Daily GitHub sync via Actions",
       "Dual deployment (Pages + Vercel)"
     ]
