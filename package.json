@@ -25,32 +25,30 @@
     "url": "git+https://github.com/KBLLR/git-stars.git"
   },
   "keywords": [
-    "archival",
     "github",
-    "stargazed",
-    "stars"
+    "stargazed"
   ],
   "author": "KBLLR",
   "license": "ISC",
   "type": "module",
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.22.0",
-    "@octokit/rest": "^20.0.2",
-    "axios": "^1.6.7",
-    "commander": "^12.0.0",
-    "dotenv": "^16.4.7",
-    "lodash": "^4.17.21",
-    "marked": "^12.0.0",
+    "@modelcontextprotocol/sdk": "^1.25.3",
+    "@octokit/rest": "^20.1.2",
+    "axios": "^1.13.4",
+    "commander": "^12.1.0",
+    "dotenv": "^16.6.1",
+    "lodash": "^4.17.23",
+    "marked": "^12.0.2",
     "node-fetch": "^3.3.2",
-    "p-queue": "^8.1.0"
+    "p-queue": "^8.1.1"
   },
   "devDependencies": {
-    "@eslint/js": "^9.9.0",
-    "eslint": "^9.9.0",
-    "vite": "^5.2.11"
+    "@eslint/js": "^9.39.2",
+    "eslint": "^9.39.2",
+    "vite": "^7.3.1"
   },
   "bugs": {
     "url": "https://github.com/KBLLR/git-stars/issues"
   },
-  "homepage": "https://github.com/KBLLR/git-stars#readme"
+  "homepage": "https://github.com/KBLLR/git-stars/public/index.html"
 }
