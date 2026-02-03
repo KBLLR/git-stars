@@ -54,7 +54,7 @@ export function ReadmePanel({ isOpen, onClose, repo }: ReadmePanelProps) {
     <div className={`readme-panel ${isOpen ? 'open' : ''}`}>
       <div className="panel-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
          <div style={{ display: 'flex', gap: '10px' }}>
-            <button className="close-btn" onClick={onClose} style={{ background: 'none', border: 'none', cursor: 'pointer' }}>
+            <button className="close-btn" onClick={onClose} style={{ position: 'static', background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
                <X size={24} />
             </button>
             {repo && (
