@@ -7,7 +7,7 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const rootDir = resolve(__dirname, 'src/frontend');
+const rootDir = resolve(__dirname, 'src');
 
 export default defineConfig({
   root: rootDir,
@@ -22,8 +22,8 @@ export default defineConfig({
     emptyOutDir: true,
     rollupOptions: {
       input: {
-        main: resolve(__dirname, 'src/frontend/index.html'),
-        logs: resolve(__dirname, 'src/frontend/logs.html'),
+        main: resolve(__dirname, 'src/index.html'),
+        logs: resolve(__dirname, 'src/logs.html'),
       },
     },
   },

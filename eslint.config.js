@@ -8,6 +8,7 @@ export default [
       "public/data.json",
       "src/frontend/data.json",
       "scripts/.cache/**",
+      "src_legacy/**",
     ],
   },
   {
@@ -18,7 +19,13 @@ export default [
     },
   },
   {
-    files: ["scripts/**/*.js", "tests/**/*.js", "vite.config.js", "eslint.config.js"],
+    files: [
+      "scripts/**/*.js",
+      "tests/**/*.js",
+      "vite.config.js",
+      "eslint.config.js",
+      "src/analytics/**/*.js",
+    ],
     languageOptions: {
       ecmaVersion: 2022,
       sourceType: "module",

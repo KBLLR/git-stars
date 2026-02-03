@@ -1,0 +1,292 @@
+{
+  "$schema": "../../htdi-collective-agency/schemas/flow-manifest.schema.json",
+  "house_id": "git-stars",
+  "version": "1.0.0",
+  "description": "GitHub Repository Discovery & Analytics Platform with MCP server for AI agent integration",
+  "items": [
+    {
+      "id": "repo-analyst",
+      "type": "agent",
+      "status": "active",
+      "name": "Repository Analyst",
+      "description": "Analyzes repository patterns, languages, and trends across starred repos",
+      "provider": "mlx-local",
+      "model": "hf/mlx-community__Qwen2.5-14B-Instruct-4bit",
+      "promptPath": "./agents/repo-analyst.md",
+      "skills": ["repo-analysis", "trend-detection"],
+      "tools": ["get_statistics", "get_language_breakdown", "get_trending_topics"],
+      "capabilities": ["analytics", "insights"],
+      "house_binding": "local",
+      "house_id": "git-stars"
+    },
+    {
+      "id": "repo-navigator",
+      "type": "agent",
+      "status": "active",
+      "name": "Repository Navigator",
+      "description": "Helps discover and filter repositories based on criteria",
+      "provider": "mlx-local",
+      "model": "hf/mlx-community__Qwen2.5-14B-Instruct-4bit",
+      "promptPath": "./agents/repo-navigator.md",
+      "skills": ["repo-discovery"],
+      "tools": ["list_starred_repos", "search_repos", "filter_by_criteria"],
+      "capabilities": ["search", "discovery", "navigation"],
+      "house_binding": "local",
+      "house_id": "git-stars"
+    },
+    {
+      "id": "list_starred_repos",
+      "type": "tool",
+      "status": "active",
+      "name": "List Starred Repos",
+      "description": "List repositories with pagination and sorting options",
+      "category": "query",
+      "entry_point": "./mcp-server/index.js",
+      "mcp_server": "git-stars-mcp",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "limit": { "type": "number", "default": 20 },
+          "offset": { "type": "number", "default": 0 },
+          "sortBy": { "type": "string", "enum": ["stars", "forks", "name", "created"], "default": "stars" }
+        }
+      },
+      "capabilities": ["listing", "pagination"],
+      "house_binding": "shared",
+      "house_id": "git-stars"
+    },
+    {
+      "id": "search_repos",
+      "type": "tool",
+      "status": "active",
+      "name": "Search Repos",
+      "description": "Full-text search with language filtering",
+      "category": "query",
+      "entry_point": "./mcp-server/index.js",
+      "mcp_server": "git-stars-mcp",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "query": { "type": "string", "description": "Search query" },
+          "language": { "type": "string", "description": "Filter by language" },
+          "minStars": { "type": "number" },
+          "maxResults": { "type": "number", "default": 10 }
+        },
+        "required": ["query"]
+      },
+      "capabilities": ["search", "filtering"],
+      "house_binding": "shared",
+      "house_id": "git-stars"
+    },
+    {
+      "id": "get_repo_details",
+      "type": "tool",
+      "status": "active",
+      "name": "Get Repo Details",
+      "description": "Detailed info for a specific repository",
+      "category": "query",
+      "entry_point": "./mcp-server/index.js",
+      "mcp_server": "git-stars-mcp",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string", "description": "Repository name" },
+          "author": { "type": "string", "description": "Repository owner (optional)" }
+        },
+        "required": ["name"]
+      },
+      "capabilities": ["details", "lookup"],
+      "house_binding": "shared",
+      "house_id": "git-stars"
+    },
+    {
+      "id": "get_statistics",
+      "type": "tool",
+      "status": "active",
+      "name": "Get Statistics",
+      "description": "Comprehensive aggregate analytics snapshot",
+      "category": "analytics",
+      "entry_point": "./mcp-server/index.js",
+      "mcp_server": "git-stars-mcp",
+      "input_schema": {
+        "type": "object",
+        "properties": {}
+      },
+      "capabilities": ["analytics", "summary"],
+      "house_binding": "shared",
+      "house_id": "git-stars"
+    },
+    {
+      "id": "get_language_breakdown",
+      "type": "tool",
+      "status": "active",
+      "name": "Get Language Breakdown",
+      "description": "Language distribution analysis across repositories",
+      "category": "analytics",
+      "entry_point": "./mcp-server/index.js",
+      "mcp_server": "git-stars-mcp",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "topN": { "type": "number", "default": 10 }
+        }
+      },
+      "capabilities": ["analytics", "languages"],
+      "house_binding": "shared",
+      "house_id": "git-stars"
+    },
+    {
+      "id": "get_trending_topics",
+      "type": "tool",
+      "status": "active",
+      "name": "Get Trending Topics",
+      "description": "Popular topics extraction from repository tags",
+      "category": "analytics",
+      "entry_point": "./mcp-server/index.js",
+      "mcp_server": "git-stars-mcp",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "limit": { "type": "number", "default": 20 }
+        }
+      },
+      "capabilities": ["analytics", "topics"],
+      "house_binding": "shared",
+      "house_id": "git-stars"
+    },
+    {
+      "id": "filter_by_criteria",
+      "type": "tool",
+      "status": "active",
+      "name": "Filter by Criteria",
+      "description": "Multi-criteria repository filtering",
+      "category": "query",
+      "entry_point": "./mcp-server/index.js",
+      "mcp_server": "git-stars-mcp",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "language": { "type": "string" },
+          "topic": { "type": "string" },
+          "license": { "type": "string" },
+          "minStars": { "type": "number" },
+          "maxStars": { "type": "number" },
+          "minForks": { "type": "number" },
+          "author": { "type": "string" }
+        }
+      },
+      "capabilities": ["filtering", "multi-criteria"],
+      "house_binding": "shared",
+      "house_id": "git-stars"
+    },
+    {
+      "id": "sync_starred_repos",
+      "type": "tool",
+      "status": "active",
+      "name": "Sync Starred Repos",
+      "description": "Fetch latest starred repos from GitHub API",
+      "category": "sync",
+      "entry_point": "./scripts/build-data.js",
+      "mcp_server": "house-functions",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "force": { "type": "boolean", "default": false }
+        }
+      },
+      "capabilities": ["sync", "github-api"],
+      "house_binding": "local",
+      "house_id": "git-stars"
+    },
+    {
+      "id": "repo-analysis",
+      "type": "skill",
+      "status": "active",
+      "name": "Repository Analysis",
+      "description": "Analyze patterns and trends across starred repositories",
+      "category": "analytics",
+      "entry_point": "./skills/repo-analysis/SKILL.md",
+      "tools": ["get_statistics", "get_language_breakdown", "get_trending_topics"],
+      "agents": ["repo-analyst"],
+      "capabilities": ["analytics", "insights"],
+      "house_binding": "shared",
+      "house_id": "git-stars"
+    },
+    {
+      "id": "repo-discovery",
+      "type": "skill",
+      "status": "active",
+      "name": "Repository Discovery",
+      "description": "Find and filter repositories by various criteria",
+      "category": "search",
+      "entry_point": "./skills/repo-discovery/SKILL.md",
+      "tools": ["list_starred_repos", "search_repos", "filter_by_criteria", "get_repo_details"],
+      "agents": ["repo-navigator"],
+      "capabilities": ["search", "discovery"],
+      "house_binding": "shared",
+      "house_id": "git-stars"
+    },
+    {
+      "id": "starred-repos-db",
+      "type": "memory_store",
+      "status": "active",
+      "name": "Starred Repos Database",
+      "description": "JSON database of starred repositories (1880+ repos)",
+      "category": "memory",
+      "entry_point": "./data/data.json",
+      "config": {
+        "backend": "json",
+        "path": "./data/data.json",
+        "auto_sync": "daily"
+      },
+      "capabilities": ["memory", "repository-data"],
+      "house_binding": "local",
+      "house_id": "git-stars"
+    },
+    {
+      "id": "statistics-cache",
+      "type": "memory_store",
+      "status": "active",
+      "name": "Statistics Cache",
+      "description": "Pre-computed analytics cache",
+      "category": "memory",
+      "entry_point": "./data/stats.json",
+      "config": {
+        "backend": "json",
+        "path": "./data/stats.json"
+      },
+      "capabilities": ["memory", "analytics-cache"],
+      "house_binding": "local",
+      "house_id": "git-stars"
+    }
+  ],
+  "mcp_server": {
+    "name": "git-stars-mcp",
+    "tools_count": 7,
+    "protocol": "Model Context Protocol",
+    "entry_point": "./mcp-server/index.js"
+  },
+  "metadata": {
+    "endpoints": {
+      "dev": "http://localhost:5173",
+      "production": "https://kbllr.github.io/git-stars/",
+      "vercel": "https://git-stars-kbllr.vercel.app"
+    },
+    "dependencies": {
+      "vite": "^5.2",
+      "@modelcontextprotocol/sdk": "latest",
+      "@octokit/rest": "latest",
+      "marked": "latest"
+    },
+    "features": [
+      "1880+ starred repositories",
+      "7 MCP tools for AI agents",
+      "Real-time search and filtering",
+      "Language and topic analytics",
+      "Streamlit analytics dashboard",
+      "Daily GitHub sync via Actions",
+      "Dual deployment (Pages + Vercel)"
+    ]
+  },
+  "updatedAt": "2026-01-19T12:45:00.000Z"
+}

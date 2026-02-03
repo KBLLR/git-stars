@@ -1,3 +1,7 @@
+# Production
+dist/
+build/
+
 # Node.js dependencies
 node_modules
 npm-debug.log
@@ -25,17 +29,14 @@ yarn-error.log
 \#*#
 
 # Other files
-.DS_Store?
 .cache/
 scripts/.cache/
+coverage/
 
 # Directories
 data/
-node_modules/
 
 # npm lock file that will be generated in yarn projects
 
 HOUSE_PROFILE.md
-functions.manifest.json
-.pnpm-store
 HANDOFF.md

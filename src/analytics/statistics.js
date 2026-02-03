@@ -43,8 +43,13 @@ async function loadData() {
 function calculateStatistics(repos) {
   console.log(`Calculating statistics for ${repos.length} repositories...`);
 
+  const now = new Date();
+  const ONE_DAY = 24 * 60 * 60 * 1000;
+  const SIX_MONTHS = 180 * ONE_DAY;
+  const TWO_YEARS = 730 * ONE_DAY;
+
   const stats = {
-    generated_at: new Date().toISOString(),
+    generated_at: now.toISOString(),
     summary: {
       total_repos: repos.length,
       total_stars: 0,
@@ -58,10 +63,18 @@ function calculateStatistics(repos) {
     licenses: {},
     authors: {},
     yearly_activity: {},
+    staleness: {
+      active: 0, // < 6 months
+      stable: 0, // 6 months - 2 years
+      archived: 0, // > 2 years
+    },
+    hidden_gems: [], // High stars, low forks, active
+    tech_clusters: {}, // Co-occurrence of topics
     top_repos: {
       by_stars: [],
       by_forks: [],
       by_activity: [],
+      by_hype: [], // Stars / Age
     },
     distributions: {
       stars_ranges: {
@@ -82,22 +95,48 @@ function calculateStatistics(repos) {
     },
   };
 
+  const topicPairs = {};
+
   // Process each repository
-  repos.forEach(repo => {
+  repos.forEach((repo) => {
     const stars = repo.stars || 0;
     const forks = repo.forks || 0;
     const issues = repo.open_issues || 0;
+    const lastUpdated = repo.last_updated ? new Date(repo.last_updated) : null;
 
     // Summary calculations
     stats.summary.total_stars += stars;
     stats.summary.total_forks += forks;
     stats.summary.total_open_issues += issues;
 
+    // Staleness
+    if (lastUpdated) {
+      const diff = now - lastUpdated;
+      if (diff < SIX_MONTHS) stats.staleness.active++;
+      else if (diff < TWO_YEARS) stats.staleness.stable++;
+      else stats.staleness.archived++;
+    }
+
+    // Hidden Gems: > 500 stars, forks < 10% of stars, active in lat 2 years
+    if (stars > 500 && forks < stars * 0.1 && lastUpdated && (now - lastUpdated) < TWO_YEARS) {
+      stats.hidden_gems.push({
+        name: repo.name,
+        stars,
+        forks,
+        description: repo.description,
+        url: repo.url
+      });
+    }
+
     // Language breakdown
     let primaryLang = repo.primary_language || repo.language;
 
     // If not found, try to get from languages array
-    if (!primaryLang && Array.isArray(repo.languages) && repo.languages.length > 0) {
+    if (
+      !primaryLang &&
+      Array.isArray(repo.languages) &&
+      repo.languages.length > 0
+    ) {
       primaryLang = repo.languages[0].language;
     }
 
@@ -120,9 +159,11 @@ function calculateStatistics(repos) {
       stars,
     });
 
-    // Topics frequency
+    // Topics frequency & Co-occurrence
     const topics = Array.isArray(repo.topics) ? repo.topics : [];
-    topics.forEach(topic => {
+    
+    // Track individual topics
+    topics.forEach((topic) => {
       if (!stats.topics[topic]) {
         stats.topics[topic] = {
           count: 0,
@@ -134,6 +175,18 @@ function calculateStatistics(repos) {
       stats.topics[topic].total_stars += stars;
       stats.topics[topic].repos.push(repo.name);
     });
+
+    // Track topic pairs for clusters (only for top topics later)
+    if (topics.length > 1) {
+        for (let i = 0; i < topics.length; i++) {
+            for (let j = i + 1; j < topics.length; j++) {
+                const t1 = topics[i];
+                const t2 = topics[j];
+                const pair = t1 < t2 ? `${t1}|${t2}` : `${t2}|${t1}`;
+                topicPairs[pair] = (topicPairs[pair] || 0) + 1;
+            }
+        }
+    }
 
     // License breakdown
     const license = repo.license || "None";
@@ -153,9 +206,9 @@ function calculateStatistics(repos) {
     stats.authors[author].repos.push(repo.name);
 
     // Yearly activity (based on last_updated)
-    if (repo.last_updated) {
-      const year = new Date(repo.last_updated).getFullYear();
-      if (!isNaN(year) && year > 2000 && year <= new Date().getFullYear()) {
+    if (lastUpdated) {
+      const year = lastUpdated.getFullYear();
+      if (!isNaN(year) && year > 2000 && year <= now.getFullYear()) {
         stats.yearly_activity[year] = (stats.yearly_activity[year] || 0) + 1;
       }
     }
@@ -179,49 +232,63 @@ function calculateStatistics(repos) {
   });
 
   // Calculate averages
-  stats.summary.average_stars = (stats.summary.total_stars / repos.length).toFixed(2);
-  stats.summary.average_forks = (stats.summary.total_forks / repos.length).toFixed(2);
+  stats.summary.average_stars = (
+    stats.summary.total_stars / repos.length
+  ).toFixed(2);
+  stats.summary.average_forks = (
+    stats.summary.total_forks / repos.length
+  ).toFixed(2);
+
+  // Hidden Gems sorting
+  stats.hidden_gems.sort((a, b) => b.stars - a.stars);
+  stats.hidden_gems = stats.hidden_gems.slice(0, 20);
+
+  // Tech Clusters - filtering top pairs
+  stats.tech_clusters = Object.entries(topicPairs)
+    .sort(([, a], [, b]) => b - a)
+    .slice(0, 20)
+    .reduce((obj, [key, val]) => {
+        obj[key] = val;
+        return obj;
+    }, {});
 
   // Get top repos
+  const mapRepo = (r) => ({
+    name: r.name,
+    author: r.author,
+    stars: r.stars,
+    forks: r.forks,
+    description: r.description,
+    url: r.url,
+    language: r.primary_language || r.language,
+    topics: r.topics,
+    last_updated: r.last_updated,
+  });
+
   stats.top_repos.by_stars = repos
     .sort((a, b) => (b.stars || 0) - (a.stars || 0))
     .slice(0, 50)
-    .map(r => ({
-      name: r.name,
-      author: r.author,
-      stars: r.stars,
-      forks: r.forks,
-      description: r.description,
-      url: r.url,
-      language: r.primary_language || r.language,
-      topics: r.topics,
-    }));
+    .map(mapRepo);
 
   stats.top_repos.by_forks = repos
     .sort((a, b) => (b.forks || 0) - (a.forks || 0))
     .slice(0, 50)
-    .map(r => ({
-      name: r.name,
-      author: r.author,
-      stars: r.stars,
-      forks: r.forks,
-      description: r.description,
-      url: r.url,
-    }));
+    .map(mapRepo);
 
   stats.top_repos.by_activity = repos
-    .filter(r => r.last_updated)
-    .sort((a, b) => new Date(b.last_updated) - new Date(a.last_updated))
+    .filter((r) => r.last_updated)
+    .sort(
+      (a, b) => new Date(b.last_updated) - new Date(a.last_updated),
+    )
     .slice(0, 50)
-    .map(r => ({
-      name: r.name,
-      author: r.author,
-      stars: r.stars,
-      last_updated: r.last_updated,
-      description: r.description,
-      url: r.url,
-    }));
+    .map(mapRepo);
 
+  // Hype Factor: Stars / Days Old (approx using last_updated as a proxy for "liveness" and we don't have created_at in clean data sometimes)
+  // Ideally we use date starred 'starred_at' vs today for user-hype, or we need created_at.
+  // The data transformation in generator.js keeps pushed_at/updated_at/starred_at as 'date' (starred_at) and 'last_updated' (pushed_at).
+  // We don't have created_at readily available in the flattened object. We will skip Hype Factor for now or use Stars alone.
+  // Let's rely on Hidden Gems as a "High Interest" proxy.
+  
   // Sort and limit language data
   stats.languages = Object.entries(stats.languages)
     .sort(([, a], [, b]) => b.count - a.count)
