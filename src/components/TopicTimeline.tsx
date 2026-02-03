@@ -24,6 +24,8 @@ export const TopicTimeline: React.FC<TopicTimelineProps> = ({ repos }) => {
   const chartData = useMemo(() => {
     if (!repos.length) return { data: [], topTopics: [] };
 
+    console.log("Generating timeline for", repos.length, "repos");
+
     // 1. Calculate Top 10 Topics globally
     const topicCounts: Record<string, number> = {};
     repos.forEach(repo => {
@@ -37,48 +39,67 @@ export const TopicTimeline: React.FC<TopicTimelineProps> = ({ repos }) => {
       .slice(0, 10)
       .map(([topic]) => topic);
 
-    // 2. Group Repos by Month
-    const reposByMonth: Record<string, Repo[]> = {};
-    const minDate = new Date(Math.min(...repos.map(r => new Date(r.date || new Date()).getTime())));
-    const maxDate = new Date(); // As of now
+    // 2. Determine Timeline Bounds (Start of first repo -> Today)
+    const dates = repos
+      .map(r => r.date ? new Date(r.date).getTime() : 0)
+      .filter(d => d > 0);
+    
+    if (dates.length === 0) return { data: [], topTopics: [] };
 
-    // Create a continuous timeline of months
-    let currentDate = new Date(minDate.getFullYear(), minDate.getMonth(), 1);
-    while (currentDate <= maxDate) {
-      const monthKey = currentDate.toISOString().slice(0, 7); // YYYY-MM
-      reposByMonth[monthKey] = [];
-      currentDate.setMonth(currentDate.getMonth() + 1);
+    const minDateTs = Math.min(...dates);
+    const minDate = new Date(minDateTs);
+    // Align to Monday of that week
+    minDate.setDate(minDate.getDate() - minDate.getDay() + 1); 
+
+    const maxDate = new Date(); // Today
+
+    // 3. Create Continuous Week Buckets
+    const buckets: Record<string, any> = {};
+    const current = new Date(minDate);
+    
+    while (current <= maxDate) {
+      // Key format: YYYY-Www (e.g., 2023-W01)
+      const year = current.getFullYear();
+      const week = getWeekNumber(current);
+      const key = `${year}-W${week.toString().padStart(2, '0')}`;
+      
+      const entry: any = { 
+        name: key,
+        dateObj: new Date(current), // for sorting/display
+        display: current.toLocaleDateString(), // simplified
+      };
+      
+      // Init counts to 0
+      topTopics.forEach(t => entry[t] = 0);
+      
+      buckets[key] = entry;
+
+      // Next week
+      current.setDate(current.getDate() + 7);
     }
 
-    // Populate with actual data
+    // 4. Populate with Data
     repos.forEach(repo => {
-      const date = new Date(repo.date || new Date());
-      const monthKey = date.toISOString().slice(0, 7);
-      if (reposByMonth[monthKey]) {
-        reposByMonth[monthKey].push(repo);
+      if (!repo.date) return;
+      const d = new Date(repo.date);
+      const year = d.getFullYear();
+      const week = getWeekNumber(d);
+      const key = `${year}-W${week.toString().padStart(2, '0')}`;
+
+      // Handle edge cases where repo date is slightly out of our generated buckets (e.g. today vs bucket start)
+      // Find the closest bucket if exact match missing (though logic above should cover it)
+      if (buckets[key]) {
+        repo.topics.forEach(topic => {
+          if (topTopics.includes(topic)) {
+            buckets[key][topic]++;
+          }
+        });
       }
     });
 
-    // 3. Aggregate Top Topic Counts per Month
-    const data = Object.entries(reposByMonth)
-      .sort(([a], [b]) => a.localeCompare(b))
-      .map(([month, monthRepos]) => {
-        const entry: any = { month };
-        
-        // Initialize top topics to 0
-        topTopics.forEach(topic => entry[topic] = 0);
-
-        // Count occurences in this month
-        monthRepos.forEach(repo => {
-          repo.topics.forEach(topic => {
-            if (topTopics.includes(topic)) {
-              entry[topic] = (entry[topic] || 0) + 1;
-            }
-          });
-        });
-
-        return entry;
-      });
+    const data = Object.values(buckets); // buckets is already sorted by insertion logic? 
+    // Actually object keys iteration order is not guaranteed. Let's sort manually.
+    data.sort((a, b) => a.dateObj.getTime() - b.dateObj.getTime());
 
     return { data, topTopics };
   }, [repos]);
@@ -86,9 +107,13 @@ export const TopicTimeline: React.FC<TopicTimelineProps> = ({ repos }) => {
   if (!chartData.data.length) return null;
 
   return (
-    <div className="bg-white rounded-lg p-6 shadow-sm border border-slate-200">
-      <h3 className="text-lg font-semibold text-slate-800 mb-6">Trending Topics Over Time</h3>
-      <div className="h-[400px] w-full">
+    <div style={{ background: '#fff', padding: '24px', borderRadius: '12px', border: '1px solid #e2e8f0', boxShadow: '0 4px 6px rgba(0,0,0,0.05)' }}>
+      <h3 style={{ fontSize: '1.25rem', fontWeight: 600, color: '#1e293b', marginBottom: '24px', margin: 0 }}>Trending Topics Over Time</h3>
+      <p style={{ fontSize: '0.875rem', color: '#64748b', marginBottom: '20px' }}>
+        Showing frequency of top 10 topics per week
+      </p>
+      
+      <div style={{ height: '400px', width: '100%' }}>
         <ResponsiveContainer width="100%" height="100%">
           <LineChart
             data={chartData.data}
@@ -96,19 +121,20 @@ export const TopicTimeline: React.FC<TopicTimelineProps> = ({ repos }) => {
           >
             <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" />
             <XAxis 
-              dataKey="month" 
+              dataKey="dateObj" 
               tick={{ fontSize: 12, fill: '#64748b' }}
-              tickFormatter={(value) => {
-                const [year, month] = value.split('-');
-                return `${month}/${year.slice(2)}`;
+              tickFormatter={(date) => {
+                 const d = new Date(date);
+                 return `${d.getMonth() + 1}/${d.getFullYear().toString().slice(2)}`;
               }}
-              minTickGap={30}
+              minTickGap={50}
             />
             <YAxis 
               tick={{ fontSize: 12, fill: '#64748b' }}
               allowDecimals={false}
             />
             <Tooltip 
+              labelFormatter={(label) => new Date(label).toLocaleDateString()}
               contentStyle={{ 
                 backgroundColor: 'rgba(255, 255, 255, 0.95)', 
                 borderRadius: '8px',
@@ -136,9 +162,15 @@ export const TopicTimeline: React.FC<TopicTimelineProps> = ({ repos }) => {
           </LineChart>
         </ResponsiveContainer>
       </div>
-      <p className="text-sm text-slate-400 mt-4 text-center italic">
-        Showing frequency of top 10 topics per month
-      </p>
     </div>
   );
 };
+
+// Helper: Get ISO Week Number
+function getWeekNumber(d: Date) {
+  const date = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+  date.setUTCDate(date.getUTCDate() + 4 - (date.getUTCDay() || 7));
+  const yearStart = new Date(Date.UTC(date.getUTCFullYear(), 0, 1));
+  const weekNo = Math.ceil((((date.getTime() - yearStart.getTime()) / 86400000) + 1) / 7);
+  return weekNo;
+}
