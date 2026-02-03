@@ -1,0 +1,51 @@
+name: Nightly Data Fetch
+
+on:
+  schedule:
+    - cron: "0 0 * * *" # Every day at midnight UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 9
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Fetch repository data
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: pnpm run build:data
+
+      - name: Commit and Push Data
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Check for changes
+          if [[ -n $(git status --porcelain public/data.json) ]]; then
+            git add public/data.json
+            git commit -m "chore(data): nightly update of starred repos [skip ci]"
+            git push origin main
+            echo "Data updated and pushed to main."
+          else
+            echo "No changes in data.json."
+          fi
