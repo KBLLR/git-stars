@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 import { Repo } from '../types';
 import { BarChart3, Star, Code, Hash } from 'lucide-react';
+import { TopicTimeline } from './TopicTimeline';
 
 interface StatisticsProps {
   repos: Repo[];
@@ -89,6 +90,11 @@ export function Statistics({ repos }: StatisticsProps) {
             ))}
           </div>
         </div>
+      </div>
+      </div>
+      
+      <div style={{ marginTop: '20px' }}>
+        <TopicTimeline repos={repos} />
       </div>
     </div>
   );
