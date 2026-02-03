@@ -91,7 +91,7 @@ export function Statistics({ repos }: StatisticsProps) {
           </div>
         </div>
       </div>
-      </div>
+
       
       <div style={{ marginTop: '20px' }}>
         <TopicTimeline repos={repos} />
