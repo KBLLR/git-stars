@@ -33,6 +33,9 @@ export function RepoCard({ repo, onClick }: RepoCardProps) {
         <div className="metric">
           <Calendar size={16} className="icon" /> {repo.last_updated}
         </div>
+        <div className="metric">
+          <Calendar size={16} className="icon" color="#ec4899" /> Starred: {repo.date}
+        </div>
       </div>
       <div className="languages">
         {repo.languages.map((l) => `${l.language} (${l.percentage})`).join(', ') || 'N/A'}

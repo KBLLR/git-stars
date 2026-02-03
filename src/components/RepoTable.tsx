@@ -17,6 +17,7 @@ export function RepoTable({ repos }: RepoTableProps) {
           <th>Stars</th>
           <th>Forks</th>
           <th>Open Issues</th>
+          <th>Starred On</th>
           <th>Last Updated</th>
         </tr>
       </thead>
@@ -33,6 +34,7 @@ export function RepoTable({ repos }: RepoTableProps) {
             <td>{repo.stars}</td>
             <td>{repo.forks}</td>
             <td>{repo.open_issues}</td>
+            <td>{repo.date}</td>
             <td>{repo.last_updated}</td>
           </tr>
         ))}
