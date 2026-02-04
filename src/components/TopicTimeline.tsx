@@ -107,9 +107,9 @@ export const TopicTimeline: React.FC<TopicTimelineProps> = ({ repos }) => {
   if (!chartData.data.length) return null;
 
   return (
-    <div style={{ background: '#fff', padding: '24px', borderRadius: '12px', border: '1px solid #e2e8f0', boxShadow: '0 4px 6px rgba(0,0,0,0.05)' }}>
-      <h3 style={{ fontSize: '1.25rem', fontWeight: 600, color: '#1e293b', marginBottom: '24px', margin: 0 }}>Trending Topics Over Time</h3>
-      <p style={{ fontSize: '0.875rem', color: '#64748b', marginBottom: '20px' }}>
+    <div className="chart-container">
+      <h3 className="chart-title">Trending Topics Over Time</h3>
+      <p className="text-muted" style={{ marginBottom: '20px' }}>
         Showing frequency of top 10 topics per week
       </p>
       

@@ -23,7 +23,6 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'src/index.html'),
-        logs: resolve(__dirname, 'src/logs.html'),
       },
     },
   },
@@ -34,6 +33,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': rootDir,
+      '@agent-events': resolve(__dirname, '../../htdi-collective-agency/lib/agent-events.ts'),
     },
   },
 });

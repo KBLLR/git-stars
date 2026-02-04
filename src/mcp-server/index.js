@@ -21,6 +21,8 @@ const __dirname = path.dirname(__filename);
 // Data file paths
 const DATA_FILE = path.resolve(__dirname, "../../data/data.json");
 const STATS_FILE = path.resolve(__dirname, "../../data/stats.json");
+const RESEARCH_QUEUE_FILE = path.resolve(__dirname, "../../data/research-queue.json");
+const MY_REPOS_FILE = path.resolve(__dirname, "../../data/my-repos.json");
 
 /**
  * Load repository data from disk
@@ -55,6 +57,41 @@ async function loadStats() {
   } catch (error) {
     console.error("Stats not available, will calculate on-demand");
     return null;
+  }
+}
+
+/**
+ * Load my repos data from disk (if available)
+ */
+async function loadMyRepos() {
+  try {
+    const content = await fs.readFile(MY_REPOS_FILE, "utf-8");
+    const data = JSON.parse(content);
+    return Array.isArray(data) ? data : [];
+  } catch (error) {
+    console.error("My repos not available, skipping");
+    return [];
+  }
+}
+
+/**
+ * Append a research item to the queue
+ */
+async function addToResearchQueue(item) {
+  try {
+    let queue = [];
+    try {
+      const raw = await fs.readFile(RESEARCH_QUEUE_FILE, "utf-8");
+      queue = JSON.parse(raw);
+    } catch {
+      queue = [];
+    }
+    queue.push({ ...item, timestamp: new Date().toISOString() });
+    await fs.writeFile(RESEARCH_QUEUE_FILE, JSON.stringify(queue, null, 2));
+    return true;
+  } catch (error) {
+    console.error("Failed to write research queue:", error.message);
+    return false;
   }
 }
 
@@ -192,6 +229,52 @@ function filterRepos(repos, criteria = {}) {
 }
 
 /**
+ * Find similar repositories (lightweight token overlap)
+ */
+function findSimilarRepos(repos, targetName) {
+  const target = repos.find(
+    (r) => (r.name || "").toLowerCase() === (targetName || "").toLowerCase()
+  );
+  if (!target) return [];
+
+  const tokens = new Set(
+    [
+      target.name,
+      target.description || "",
+      (target.author || "") + "/" + target.name,
+      ...(Array.isArray(target.topics) ? target.topics : []),
+      target.primary_language || target.language || "",
+    ]
+      .join(" ")
+      .toLowerCase()
+      .split(/[^a-z0-9]+/)
+      .filter((t) => t.length > 3)
+  );
+
+  const scored = repos
+    .filter((r) => r.name !== target.name)
+    .map((r) => {
+      const text = [
+        r.name,
+        r.description || "",
+        (r.author || "") + "/" + r.name,
+        ...(Array.isArray(r.topics) ? r.topics : []),
+        r.primary_language || r.language || "",
+      ]
+        .join(" ")
+        .toLowerCase();
+      let score = 0;
+      tokens.forEach((t) => {
+        if (text.includes(t)) score += 1;
+      });
+      return { repo: r, score };
+    })
+    .sort((a, b) => b.score - a.score);
+
+  return scored.slice(0, 8).map((s) => s.repo);
+}
+
+/**
  * Main MCP Server
  */
 class GitStarsServer {
@@ -209,6 +292,7 @@ class GitStarsServer {
     );
 
     this.repos = [];
+    this.myRepos = [];
     this.stats = null;
 
     this.setupToolHandlers();
@@ -369,6 +453,59 @@ class GitStarsServer {
             },
           },
         },
+        {
+          name: "find_similar_repos",
+          description: "Find repositories similar to a given one",
+          inputSchema: {
+            type: "object",
+            properties: {
+              name: { type: "string", description: "Repository name" },
+            },
+            required: ["name"],
+          },
+        },
+        {
+          name: "mark_for_research",
+          description: "Add a repository to the research queue with optional notes",
+          inputSchema: {
+            type: "object",
+            properties: {
+              name: { type: "string", description: "Repository name" },
+              notes: { type: "string", description: "Research notes" },
+            },
+            required: ["name"],
+          },
+        },
+        {
+          name: "find_repos_missing_readme",
+          description: "List repositories missing a README file (best for Mine scope).",
+          inputSchema: {
+            type: "object",
+            properties: {
+              scope: {
+                type: "string",
+                enum: ["mine", "starred"],
+                description: "Which repo set to inspect (default: mine)",
+                default: "mine",
+              },
+              limit: {
+                type: "number",
+                description: "Maximum number of repos to return (default: 50)",
+                default: 50,
+              },
+              offset: {
+                type: "number",
+                description: "Number of repos to skip (default: 0)",
+                default: 0,
+              },
+              includeUnknown: {
+                type: "boolean",
+                description: "Include repos with unknown README status",
+                default: false,
+              },
+            },
+          },
+        },
       ],
     }));
 
@@ -392,6 +529,12 @@ class GitStarsServer {
             return await this.handleGetTopics(args);
           case "filter_by_criteria":
             return await this.handleFilter(args);
+          case "find_similar_repos":
+            return await this.handleFindSimilar(args);
+          case "mark_for_research":
+            return await this.handleMarkForResearch(args);
+          case "find_repos_missing_readme":
+            return await this.handleMissingReadme(args);
           default:
             throw new Error(`Unknown tool: ${name}`);
         }
@@ -571,11 +714,121 @@ class GitStarsServer {
     };
   }
 
+  async handleFindSimilar(args) {
+    const results = findSimilarRepos(this.repos, args.name);
+    return {
+      content: [
+        {
+          type: "text",
+          text: JSON.stringify(
+            {
+              name: args.name,
+              count: results.length,
+              repositories: results,
+            },
+            null,
+            2
+          ),
+        },
+      ],
+    };
+  }
+
+  async handleMarkForResearch(args) {
+    const success = await addToResearchQueue({
+      repo: args.name,
+      notes: args.notes || "",
+      by: "git-stars-mcp",
+    });
+    return {
+      content: [
+        {
+          type: "text",
+          text: JSON.stringify(
+            {
+              success,
+              name: args.name,
+              notes: args.notes || "",
+            },
+            null,
+            2
+          ),
+        },
+      ],
+    };
+  }
+
+  async handleMissingReadme(args) {
+    const {
+      scope = "mine",
+      limit = 50,
+      offset = 0,
+      includeUnknown = false,
+    } = args || {};
+
+    const source =
+      scope === "starred"
+        ? this.repos
+        : this.myRepos.filter((repo) => repo.is_owner !== false);
+    if (!source || source.length === 0) {
+      return {
+        content: [
+          {
+            type: "text",
+            text: JSON.stringify(
+              {
+                scope,
+                count: 0,
+                repositories: [],
+                error: "No repositories loaded for this scope.",
+              },
+              null,
+              2
+            ),
+          },
+        ],
+      };
+    }
+
+    const missing = source.filter((repo) => {
+      if (repo.has_readme === false) return true;
+      if (includeUnknown && (repo.has_readme === null || repo.has_readme === undefined)) return true;
+      return false;
+    });
+
+    const results = missing.slice(offset, offset + limit);
+
+    return {
+      content: [
+        {
+          type: "text",
+          text: JSON.stringify(
+            {
+              scope,
+              total: source.length,
+              missing_count: missing.length,
+              offset,
+              limit,
+              count: results.length,
+              repositories: results,
+            },
+            null,
+            2
+          ),
+        },
+      ],
+    };
+  }
+
   async run() {
     // Load data
     console.error("Loading repository data...");
     this.repos = await loadData();
     console.error(`Loaded ${this.repos.length} repositories`);
+    this.myRepos = await loadMyRepos();
+    if (this.myRepos.length) {
+      console.error(`Loaded ${this.myRepos.length} my repos`);
+    }
 
     // Try to load pre-computed stats
     this.stats = await loadStats();

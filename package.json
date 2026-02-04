@@ -14,6 +14,7 @@
     "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "build:data": "node scripts/generator.js",
+    "sync:mine": "node scripts/my-repos.js",
     "generate:stats": "node src/analytics/statistics.js",
     "mcp": "node src/mcp-server/index.js",
     "test": "npm run lint && npm run test:data"
