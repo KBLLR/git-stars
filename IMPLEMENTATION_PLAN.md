@@ -24,8 +24,8 @@ The new logger will **strictly adhere to the OpenResponses Event Schema** and th
 - `/registries/models.registry.json`
 
 **Event Transport (OpenResponses Stream):**
-- Event Bus SSE: `http://localhost:8085/events`
-- Event Bus emit: `POST http://localhost:8085/emit`
+- Event Bus SSE: `/bus/events` (proxy) or `http://localhost:8085/events`
+- Event Bus emit: `POST /bus/emit` (proxy) or `POST http://localhost:8085/emit`
 
 **Rule:** No local copies of these schemas/registries inside `git-stars`. If we need them in the frontend, we **import or fetch** from the canonical source or use an alias to it.
 

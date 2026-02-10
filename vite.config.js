@@ -29,6 +29,12 @@ export default defineConfig({
   server: {
     hmr: { overlay: true },
     open: true,
+    proxy: {
+      '/bus': {
+        target: 'http://127.0.0.1:8085',
+        changeOrigin: true,
+      },
+    },
   },
   resolve: {
     alias: {

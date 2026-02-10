@@ -1,7 +1,7 @@
 import { AgentEvent, createCustomEvent, HouseId } from '@agent-events';
 import { Repo } from '../types';
 
-const EVENT_BUS_URL = 'http://localhost:8085';
+const EVENT_BUS_URL = import.meta.env.VITE_EVENT_BUS_URL || '/bus';
 const HOUSE_ID: HouseId = 'git-stars';
 
 // Standard event types for this house

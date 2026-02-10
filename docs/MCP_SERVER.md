@@ -2,7 +2,7 @@
 
 ## Overview
 
-The git-stars MCP (Model Context Protocol) server provides a standardized interface for AI agents to query and analyze GitHub starred repository data. It implements the MCP specification, allowing compatible agents (including MLX-OpenAI API compatible systems) to seamlessly access comprehensive repository information and statistics.
+The git-stars MCP (Model Context Protocol) server provides a standardized interface for AI agents to query and analyze GitHub starred repository data. It implements the MCP specification, allowing compatible agents (including MLX-local systems) to seamlessly access comprehensive repository information and statistics.
 
 ## Features
 
@@ -54,9 +54,9 @@ MCP Server running on stdio
 
 ### Integration with MCP Clients
 
-#### Claude Desktop
+#### Desktop MCP Client
 
-Add to your Claude Desktop configuration (`~/Library/Application Support/Claude/claude_desktop_config.json` on macOS):
+Add to your MCP desktop client configuration:
 
 ```json
 {
@@ -72,7 +72,7 @@ Add to your Claude Desktop configuration (`~/Library/Application Support/Claude/
 
 #### MLX-Compatible Agents
 
-For MLX-OpenAI API compatible agents, configure the MCP server as a tool provider:
+For MLX-compatible agents, configure the MCP server as a tool provider:
 
 ```python
 from mcp import StdioServerParameters, stdio_client

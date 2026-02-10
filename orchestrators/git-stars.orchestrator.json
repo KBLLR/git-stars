@@ -1,5 +1,5 @@
 {
-  "$schema": "./house-orchestrator.schema.json",
+  "$schema": "../../../htdi-collective-agency/schemas/house-orchestrator.schema.json",
   "id": "orchestrator:git-stars",
   "house_id": "git-stars",
   "name": "Git Stars Orchestrator",
@@ -30,8 +30,8 @@
       "collections": [
         "house:git-stars:docs"
       ],
-      "embeddings_model": "mlx-community/all-MiniLM-L6-v2-4bit",
-      "rag_endpoint": "http://localhost:8092",
+      "embeddings_model": "/Users/davidcaballero/core-x-kbllr_0/model-zoo/models/embeddings/all-minilm-l6-v2-4bit",
+      "rag_endpoint": "http://localhost:8090/v1/search",
       "vector_db": "lancedb"
     },
     "skills": [],

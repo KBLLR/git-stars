@@ -681,7 +681,7 @@ document
   ?.addEventListener("click", () => logAction("Notebook LLM", "blog"));
 document
   .getElementById("action-chat")
-  ?.addEventListener("click", () => logAction("Chat Gemini", "chat"));
+  ?.addEventListener("click", () => logAction("Chat MLX", "chat"));
 document
   .getElementById("action-news")
   ?.addEventListener("click", () => logAction("News Feed", "news"));

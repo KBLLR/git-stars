@@ -3,7 +3,7 @@ import type { Repo } from '../types';
 export const HOUSE_ID = 'git-stars';
 export const DEFAULT_AGENT_ID = 'git-stars:orchestrator';
 export const EVENT_BUS_URL =
-  import.meta.env.VITE_EVENT_BUS_URL || 'http://localhost:8085';
+  import.meta.env.VITE_EVENT_BUS_URL || '/bus';
 
 export interface ChatMessage {
   role: 'system' | 'user' | 'assistant' | 'tool';

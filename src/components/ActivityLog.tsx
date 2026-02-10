@@ -3,7 +3,8 @@ import { AgentEvent, getEventHouseId } from '@agent-events';
 import { logger } from '../lib/logger';
 import { Download, Activity, Server, Database } from 'lucide-react';
 
-const EVENT_BUS_SSE_URL = 'http://localhost:8085/events';
+const EVENT_BUS_URL = import.meta.env.VITE_EVENT_BUS_URL || '/bus';
+const EVENT_BUS_SSE_URL = `${EVENT_BUS_URL}/events?agency=git-stars`;
 
  export const ActivityLog: React.FC = () => {
   const [events, setEvents] = useState<AgentEvent[]>([]);

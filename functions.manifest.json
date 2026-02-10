@@ -5,13 +5,13 @@
   "description": "GitHub Repository Discovery & Analytics Platform with MCP server for AI agent integration",
   "items": [
     {
-      "id": "repo-analyst",
+      "id": "git-stars:repo-analyst",
       "type": "agent",
       "status": "active",
       "name": "Repository Analyst",
       "description": "Analyzes repository patterns, languages, and trends across starred repos",
       "provider": "mlx-local",
-      "model": "hf/mlx-community__Qwen2.5-14B-Instruct-4bit",
+      "model": "/Users/davidcaballero/core-x-kbllr_0/model-zoo/models/text/qwen2.5-14b-4bit",
       "promptPath": "./agents/repo-analyst.md",
       "skills": [
         "repo-analysis",
@@ -27,16 +27,21 @@
         "insights"
       ],
       "house_binding": "local",
-      "house_id": "git-stars"
+      "house_id": "git-stars",
+      "_envelope": {
+        "version": "1.0.0",
+        "generated_at": "2026-02-06T18:24:23.158169+00:00",
+        "source_path": "houses/git-stars/functions.manifest.json"
+      }
     },
     {
-      "id": "repo-navigator",
+      "id": "git-stars:repo-navigator",
       "type": "agent",
       "status": "active",
       "name": "Repository Navigator",
       "description": "Helps discover and filter repositories based on criteria",
       "provider": "mlx-local",
-      "model": "hf/mlx-community__Qwen2.5-14B-Instruct-4bit",
+      "model": "/Users/davidcaballero/core-x-kbllr_0/model-zoo/models/text/qwen2.5-14b-4bit",
       "promptPath": "./agents/repo-navigator.md",
       "skills": [
         "repo-discovery"
@@ -52,10 +57,15 @@
         "navigation"
       ],
       "house_binding": "local",
-      "house_id": "git-stars"
+      "house_id": "git-stars",
+      "_envelope": {
+        "version": "1.0.0",
+        "generated_at": "2026-02-06T18:24:23.158176+00:00",
+        "source_path": "houses/git-stars/functions.manifest.json"
+      }
     },
     {
-      "id": "list_starred_repos",
+      "id": "git-stars:list_starred_repos",
       "type": "tool",
       "status": "active",
       "name": "List Starred Repos",
@@ -91,10 +101,15 @@
         "pagination"
       ],
       "house_binding": "shared",
-      "house_id": "git-stars"
+      "house_id": "git-stars",
+      "_envelope": {
+        "version": "1.0.0",
+        "generated_at": "2026-02-06T18:24:23.158181+00:00",
+        "source_path": "houses/git-stars/functions.manifest.json"
+      }
     },
     {
-      "id": "search_repos",
+      "id": "git-stars:search_repos",
       "type": "tool",
       "status": "active",
       "name": "Search Repos",
@@ -130,10 +145,15 @@
         "filtering"
       ],
       "house_binding": "shared",
-      "house_id": "git-stars"
+      "house_id": "git-stars",
+      "_envelope": {
+        "version": "1.0.0",
+        "generated_at": "2026-02-06T18:24:23.158186+00:00",
+        "source_path": "houses/git-stars/functions.manifest.json"
+      }
     },
     {
-      "id": "get_repo_details",
+      "id": "git-stars:get_repo_details",
       "type": "tool",
       "status": "active",
       "name": "Get Repo Details",
@@ -162,10 +182,15 @@
         "lookup"
       ],
       "house_binding": "shared",
-      "house_id": "git-stars"
+      "house_id": "git-stars",
+      "_envelope": {
+        "version": "1.0.0",
+        "generated_at": "2026-02-06T18:24:23.158191+00:00",
+        "source_path": "houses/git-stars/functions.manifest.json"
+      }
     },
     {
-      "id": "get_statistics",
+      "id": "git-stars:get_statistics",
       "type": "tool",
       "status": "active",
       "name": "Get Statistics",
@@ -182,10 +207,15 @@
         "summary"
       ],
       "house_binding": "shared",
-      "house_id": "git-stars"
+      "house_id": "git-stars",
+      "_envelope": {
+        "version": "1.0.0",
+        "generated_at": "2026-02-06T18:24:23.158196+00:00",
+        "source_path": "houses/git-stars/functions.manifest.json"
+      }
     },
     {
-      "id": "get_language_breakdown",
+      "id": "git-stars:get_language_breakdown",
       "type": "tool",
       "status": "active",
       "name": "Get Language Breakdown",
@@ -207,10 +237,15 @@
         "languages"
       ],
       "house_binding": "shared",
-      "house_id": "git-stars"
+      "house_id": "git-stars",
+      "_envelope": {
+        "version": "1.0.0",
+        "generated_at": "2026-02-06T18:24:23.158200+00:00",
+        "source_path": "houses/git-stars/functions.manifest.json"
+      }
     },
     {
-      "id": "get_trending_topics",
+      "id": "git-stars:get_trending_topics",
       "type": "tool",
       "status": "active",
       "name": "Get Trending Topics",
@@ -232,10 +267,15 @@
         "topics"
       ],
       "house_binding": "shared",
-      "house_id": "git-stars"
+      "house_id": "git-stars",
+      "_envelope": {
+        "version": "1.0.0",
+        "generated_at": "2026-02-06T18:24:23.158205+00:00",
+        "source_path": "houses/git-stars/functions.manifest.json"
+      }
     },
     {
-      "id": "filter_by_criteria",
+      "id": "git-stars:filter_by_criteria",
       "type": "tool",
       "status": "active",
       "name": "Filter by Criteria",
@@ -274,10 +314,15 @@
         "multi-criteria"
       ],
       "house_binding": "shared",
-      "house_id": "git-stars"
+      "house_id": "git-stars",
+      "_envelope": {
+        "version": "1.0.0",
+        "generated_at": "2026-02-06T18:24:23.158209+00:00",
+        "source_path": "houses/git-stars/functions.manifest.json"
+      }
     },
     {
-      "id": "sync_starred_repos",
+      "id": "git-stars:sync_starred_repos",
       "type": "tool",
       "status": "active",
       "name": "Sync Starred Repos",
@@ -299,10 +344,15 @@
         "github-api"
       ],
       "house_binding": "local",
-      "house_id": "git-stars"
+      "house_id": "git-stars",
+      "_envelope": {
+        "version": "1.0.0",
+        "generated_at": "2026-02-06T18:24:23.158213+00:00",
+        "source_path": "houses/git-stars/functions.manifest.json"
+      }
     },
     {
-      "id": "repo-analysis",
+      "id": "git-stars:repo-analysis",
       "type": "skill",
       "status": "active",
       "name": "Repository Analysis",
@@ -322,10 +372,15 @@
         "insights"
       ],
       "house_binding": "shared",
-      "house_id": "git-stars"
+      "house_id": "git-stars",
+      "_envelope": {
+        "version": "1.0.0",
+        "generated_at": "2026-02-06T18:24:23.158218+00:00",
+        "source_path": "houses/git-stars/functions.manifest.json"
+      }
     },
     {
-      "id": "repo-discovery",
+      "id": "git-stars:repo-discovery",
       "type": "skill",
       "status": "active",
       "name": "Repository Discovery",
@@ -346,10 +401,15 @@
         "discovery"
       ],
       "house_binding": "shared",
-      "house_id": "git-stars"
+      "house_id": "git-stars",
+      "_envelope": {
+        "version": "1.0.0",
+        "generated_at": "2026-02-06T18:24:23.158223+00:00",
+        "source_path": "houses/git-stars/functions.manifest.json"
+      }
     },
     {
-      "id": "starred-repos-db",
+      "id": "git-stars:starred-repos-db",
       "type": "memory_store",
       "status": "active",
       "name": "Starred Repos Database",
@@ -366,10 +426,15 @@
         "repository-data"
       ],
       "house_binding": "local",
-      "house_id": "git-stars"
+      "house_id": "git-stars",
+      "_envelope": {
+        "version": "1.0.0",
+        "generated_at": "2026-02-06T18:24:23.158227+00:00",
+        "source_path": "houses/git-stars/functions.manifest.json"
+      }
     },
     {
-      "id": "statistics-cache",
+      "id": "git-stars:statistics-cache",
       "type": "memory_store",
       "status": "active",
       "name": "Statistics Cache",
@@ -385,7 +450,12 @@
         "analytics-cache"
       ],
       "house_binding": "local",
-      "house_id": "git-stars"
+      "house_id": "git-stars",
+      "_envelope": {
+        "version": "1.0.0",
+        "generated_at": "2026-02-06T18:24:23.158232+00:00",
+        "source_path": "houses/git-stars/functions.manifest.json"
+      }
     }
   ],
   "mcp_server": {
@@ -415,5 +485,5 @@
       "Dual deployment (Pages + Vercel)"
     ]
   },
-  "updatedAt": "2026-01-19T12:45:00.000Z"
+  "updatedAt": "2026-02-06T18:24:23.158236+00:00"
 }
