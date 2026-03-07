@@ -5,6 +5,10 @@ on:
     - cron: "0 0 * * *" # Every day at midnight UTC
   workflow_dispatch:
 
+concurrency:
+  group: git-stars-nightly-data
+  cancel-in-progress: false
+
 permissions:
   contents: write
 
@@ -15,6 +19,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Install pnpm
         uses: pnpm/action-setup@v3
@@ -44,7 +50,8 @@ jobs:
           if [[ -n $(git status --porcelain public/data.json) ]]; then
             git add public/data.json
             git commit -m "chore(data): nightly update of starred repos [skip ci]"
-            git push origin main
+            git pull --rebase origin main
+            git push origin HEAD:main
             echo "Data updated and pushed to main."
           else
             echo "No changes in data.json."

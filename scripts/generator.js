@@ -48,18 +48,20 @@ function saveLanguageCache() {
   }
 }
 
-async function checkAuth() {
-  try {
-    const { data } = await octokit.users.getAuthenticated();
-    console.log(`Authenticated as: ${data.login}`);
-  } catch (error) {
-    console.error("Authentication check failed:", error.message);
+function logAuthMode() {
+  if (GITHUB_TOKEN) {
+    console.log("Using GITHUB_TOKEN for starred repository fetches.");
+    return;
   }
+
+  console.warn(
+    "GITHUB_TOKEN is not set. Continuing with unauthenticated requests.",
+  );
 }
 
 async function getStarredRepos(username) {
   try {
-    await checkAuth(); // Verify auth before fetching
+    logAuthMode();
 
     // Use route string to ensure headers are applied correctly without interference
     return await octokit.paginate("GET /users/{username}/starred", {
