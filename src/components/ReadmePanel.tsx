@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { marked } from 'marked';
 import DOMPurify from 'dompurify';
 import { ExternalLink, X, Sparkles, Wand2 } from 'lucide-react';
@@ -21,6 +21,8 @@ interface ChatMessage {
   role: 'user' | 'assistant';
   content: string;
 }
+
+type ModelDescriptor = string | { id?: string; model?: string };
 
 export function ReadmePanel({ isOpen, onClose, repo, actionPrompt, autoRunAction, onActionConsumed, actionPresets }: ReadmePanelProps) {
   const [content, setContent] = useState<string>('');
@@ -51,7 +53,7 @@ export function ReadmePanel({ isOpen, onClose, repo, actionPrompt, autoRunAction
     try {
       const html = await marked.parse(text);
       setContent(DOMPurify.sanitize(html));
-    } catch (error) {
+    } catch {
       const escaped = text
         .replace(/&/g, '&amp;')
         .replace(/</g, '&lt;')
@@ -60,22 +62,17 @@ export function ReadmePanel({ isOpen, onClose, repo, actionPrompt, autoRunAction
     }
   };
 
-  const getReadmeExcerpt = () => {
-    if (!rawMarkdown) return '';
-    return rawMarkdown.slice(0, 4000);
-  };
-
-  const buildConversation = (prompt: string) => {
-    const excerpt = getReadmeExcerpt();
+  const buildConversation = useCallback((prompt: string) => {
+    const excerpt = rawMarkdown ? rawMarkdown.slice(0, 4000) : '';
     const systemPrompt = `${buildSystemPrompt(repo)}\n\nREADME excerpt:\n${excerpt || 'No README loaded.'}`;
     return [
       { role: 'system', content: systemPrompt },
       ...messages.map((m) => ({ role: m.role, content: m.content })),
       { role: 'user', content: prompt },
     ];
-  };
+  }, [repo, rawMarkdown, messages]);
 
-  const runAction = (prompt: string, title?: string) => {
+  const runAction = useCallback((prompt: string, title?: string) => {
     if (!repo) return;
     const actionTitle = title || 'Action';
     const actionId = `action-${Date.now()}`;
@@ -118,7 +115,7 @@ export function ReadmePanel({ isOpen, onClose, repo, actionPrompt, autoRunAction
         setOverlayContent(`Error: ${error.message}`);
       },
     });
-  };
+  }, [repo, selectedModel, buildConversation]);
 
   useEffect(() => {
     if (isOpen && repo) {
@@ -162,8 +159,8 @@ export function ReadmePanel({ isOpen, onClose, repo, actionPrompt, autoRunAction
             : Array.isArray(data?.data)
               ? data.data
               : [];
-        const normalized = list
-          .map((m: any) => (typeof m === 'string' ? m : m?.id || m?.model))
+        const normalized = (list as ModelDescriptor[])
+          .map((m) => (typeof m === 'string' ? m : m?.id || m?.model))
           .filter(Boolean);
         if (normalized.length > 0) {
           setModels(normalized);
@@ -192,7 +189,7 @@ export function ReadmePanel({ isOpen, onClose, repo, actionPrompt, autoRunAction
     lastActionRef.current = actionPrompt;
     runAction(actionPrompt, 'Quick action');
     onActionConsumed?.();
-  }, [isOpen, repo, actionPrompt, autoRunAction, onActionConsumed]);
+  }, [isOpen, repo, actionPrompt, autoRunAction, onActionConsumed, runAction]);
 
   return (
     <div className={`readme-panel ${isOpen ? 'open' : ''}`}>

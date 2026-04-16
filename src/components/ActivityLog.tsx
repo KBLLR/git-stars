@@ -6,6 +6,12 @@ import { Download, Activity, Server, Database } from 'lucide-react';
 const EVENT_BUS_URL = import.meta.env.VITE_EVENT_BUS_URL || '/bus';
 const EVENT_BUS_SSE_URL = `${EVENT_BUS_URL}/events?agency=git-stars`;
 
+type EventDetails = {
+  data?: unknown;
+  tool_name?: string;
+  response_id?: string;
+};
+
  export const ActivityLog: React.FC = () => {
   const [events, setEvents] = useState<AgentEvent[]>([]);
   const [filterType, setFilterType] = useState<string>('all');
@@ -66,6 +72,14 @@ const EVENT_BUS_SSE_URL = `${EVENT_BUS_URL}/events?agency=git-stars`;
       if (type.startsWith('tool')) return <Database size={16} className="text-orange-500"/>
       return <Activity size={16} className="text-gray-400"/>
   }
+
+  const getEventDetails = (event: AgentEvent) => {
+    const details = event as AgentEvent & EventDetails;
+    if (details.data !== undefined) return JSON.stringify(details.data);
+    if (details.tool_name) return `Call: ${details.tool_name}`;
+    if (details.response_id) return `Resp: ${details.response_id}`;
+    return JSON.stringify(event);
+  };
 
   return (
     <div className="activity-container">
@@ -137,10 +151,7 @@ const EVENT_BUS_SSE_URL = `${EVENT_BUS_URL}/events?agency=git-stars`;
                                 </span>
                             </td>
                             <td className="text-muted" style={{ maxWidth: '400px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                                {'data' in event ? JSON.stringify((event as any).data) 
-                                 : 'tool_name' in event ? `Call: ${(event as any).tool_name}`
-                                 : 'response_id' in event ? `Resp: ${(event as any).response_id}` 
-                                 : JSON.stringify(event)}
+                                {getEventDetails(event)}
                             </td>
                         </tr>
                     ))

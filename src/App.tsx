@@ -221,7 +221,7 @@ function App() {
 
   // Filter and Sort Logic
   const processedRepos = useMemo(() => {
-    let filtered = allRepos.filter((repo) => {
+    const filtered = allRepos.filter((repo) => {
       const matchSearch =
         !searchTerm ||
         repo.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -241,8 +241,7 @@ function App() {
         case 'name':
           return a.name.localeCompare(b.name);
         case 'date':
-          // Assuming 'date' field exists on repo object in data.json equivalent to legacy 'date'
-          return new Date((b as any).date || 0).getTime() - new Date((a as any).date || 0).getTime();
+          return new Date(b.date || 0).getTime() - new Date(a.date || 0).getTime();
         case 'created':
            // Legacy mapped 'created' to 'last_updated'
           return new Date(b.last_updated).getTime() - new Date(a.last_updated).getTime();

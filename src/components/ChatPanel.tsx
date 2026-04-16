@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { X, Send, Bot, User as UserIcon, Loader, Wrench } from 'lucide-react';
 import { Repo } from '../types';
 import {
@@ -85,26 +85,13 @@ export function ChatPanel({
     }
   }, [messages, toolCalls]);
 
-  useEffect(() => {
-    if (!isOpen) return;
-    if (!prefill) return;
-    if (lastPrefillRef.current === prefill) return;
-
-    lastPrefillRef.current = prefill;
-    setInput(prefill);
-    if (autoSend) {
-      handleSend(prefill);
-      onPrefillConsumed?.();
-    }
-  }, [isOpen, prefill, autoSend, onPrefillConsumed]);
-
   const handleClose = () => {
     streamRef.current?.abort();
     streamRef.current = null;
     onClose();
   };
 
-  const handleSend = async (override?: string) => {
+  const handleSend = useCallback(async (override?: string) => {
     if (!repo) return;
     const content = (override ?? input).trim();
     if (!content) return;
@@ -163,7 +150,20 @@ export function ChatPanel({
         ]);
       },
     });
-  };
+  }, [repo, input, messages, defaultModel, agentId, tools]);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    if (!prefill) return;
+    if (lastPrefillRef.current === prefill) return;
+
+    lastPrefillRef.current = prefill;
+    setInput(prefill);
+    if (autoSend) {
+      handleSend(prefill);
+      onPrefillConsumed?.();
+    }
+  }, [isOpen, prefill, autoSend, onPrefillConsumed, handleSend]);
 
   const handleStreamEvent = (event: OpenResponsesEvent, assistantId: string) => {
     if (event.type === 'response.output_text.delta' && event.delta) {
