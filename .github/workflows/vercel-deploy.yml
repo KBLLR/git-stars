@@ -12,6 +12,8 @@ permissions:
 jobs:
   vercel-deploy:
     runs-on: ubuntu-latest
+    env:
+      HAS_VERCEL_SECRETS: ${{ secrets.VERCEL_TOKEN != '' && secrets.VERCEL_ORG_ID != '' && secrets.VERCEL_PROJECT_ID != '' }}
 
     steps:
       - name: Checkout repository
@@ -37,9 +39,11 @@ jobs:
         run: pnpm run build
 
       - name: Install Vercel CLI
+        if: env.HAS_VERCEL_SECRETS == 'true'
         run: npm install -g vercel@latest
 
       - name: Pull Vercel Environment Information
+        if: env.HAS_VERCEL_SECRETS == 'true'
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
@@ -48,6 +52,7 @@ jobs:
         continue-on-error: true
 
       - name: Build Project Artifacts
+        if: env.HAS_VERCEL_SECRETS == 'true'
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
@@ -55,6 +60,7 @@ jobs:
         run: vercel build --prod
 
       - name: Deploy Project Artifacts to Vercel
+        if: env.HAS_VERCEL_SECRETS == 'true'
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
@@ -63,6 +69,13 @@ jobs:
         id: deploy
 
       - name: Output deployment URL
+        if: env.HAS_VERCEL_SECRETS == 'true'
         run: |
           echo "Deployment complete!"
           echo "Visit your site at the Vercel URL provided above"
+
+      - name: Skip Vercel deploy (missing secrets)
+        if: env.HAS_VERCEL_SECRETS != 'true'
+        run: |
+          echo "Skipping Vercel deployment because one or more required GitHub secrets are missing:"
+          echo "VERCEL_TOKEN, VERCEL_ORG_ID, VERCEL_PROJECT_ID"
