@@ -161,10 +161,10 @@ export function ReadmePanel({ isOpen, onClose, repo, actionPrompt, autoRunAction
               : [];
         const normalized = (list as ModelDescriptor[])
           .map((m) => (typeof m === 'string' ? m : m?.id || m?.model))
-          .filter(Boolean);
+          .filter((model): model is string => Boolean(model));
         if (normalized.length > 0) {
           setModels(normalized);
-          setSelectedModel((prev) => (normalized.includes(prev) ? prev : normalized[0]));
+          setSelectedModel((prev) => (normalized.includes(prev) ? prev : normalized[0] ?? prev));
         }
       })
       .catch(() => null);

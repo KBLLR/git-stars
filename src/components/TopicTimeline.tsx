@@ -98,7 +98,8 @@ export const TopicTimeline: React.FC<TopicTimelineProps> = ({ repos }) => {
       if (buckets[key]) {
         repo.topics.forEach(topic => {
           if (topTopics.includes(topic)) {
-            buckets[key][topic]++;
+            const currentCount = buckets[key][topic];
+            buckets[key][topic] = typeof currentCount === 'number' ? currentCount + 1 : 1;
           }
         });
       }
