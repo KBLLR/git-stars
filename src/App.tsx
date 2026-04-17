@@ -8,6 +8,7 @@ import { Statistics } from './components/Statistics';
 import { ActivityLog } from './components/ActivityLog';
 import { HighlightsPanel } from './components/HighlightsPanel';
 import { MyReposPanel } from './components/MyReposPanel';
+import { RuntimeSettingsPanel } from './components/RuntimeSettingsPanel';
 import { logger } from './lib/logger';
 import { Search, Github, LayoutGrid, Table as TableIcon, BarChart3, Star, Activity, Compass, User } from 'lucide-react';
 
@@ -376,6 +377,7 @@ function App() {
                <Star size={14} fill="currentColor" className="text-muted" /> 
                {view === 'mine' ? processedMineRepos.length : processedRepos.length} Repos
             </div>
+            <RuntimeSettingsPanel />
         </div>
       </header>
 

@@ -9,6 +9,7 @@ import {
   HOUSE_ID,
 } from '../lib/orchestrator';
 import { OpenResponsesEvent, streamOpenResponses } from '../lib/openresponses-client';
+import { loadRuntimeSettings, resolveRuntimeTarget, SETTINGS_EVENT } from '../lib/settings';
 
 interface ChatPanelProps {
   isOpen: boolean;
@@ -48,6 +49,9 @@ export function ChatPanel({
   const [isLoading, setIsLoading] = useState(false);
   const [toolCalls, setToolCalls] = useState<Record<string, ToolCall>>({});
   const [defaultModel, setDefaultModel] = useState<string | null>(null);
+  const [runtimeTarget, setRuntimeTarget] = useState(() =>
+    resolveRuntimeTarget(loadRuntimeSettings())
+  );
   const scrollRef = useRef<HTMLDivElement>(null);
   const streamRef = useRef<AbortController | null>(null);
   const lastPrefillRef = useRef<string | null>(null);
@@ -63,6 +67,18 @@ export function ChatPanel({
         }
       })
       .catch(() => null);
+  }, []);
+
+  useEffect(() => {
+    const applySettings = () => {
+      setRuntimeTarget(resolveRuntimeTarget(loadRuntimeSettings()));
+    };
+    window.addEventListener(SETTINGS_EVENT, applySettings);
+    window.addEventListener('storage', applySettings);
+    return () => {
+      window.removeEventListener(SETTINGS_EVENT, applySettings);
+      window.removeEventListener('storage', applySettings);
+    };
   }, []);
 
   useEffect(() => {
@@ -122,9 +138,9 @@ export function ChatPanel({
     streamRef.current?.abort();
 
     streamRef.current = streamOpenResponses({
-      endpoint: `${EVENT_BUS_URL}/chat`,
+      endpoint: `${runtimeTarget.busUrl}/chat`,
       body: {
-        model: defaultModel || 'local-model',
+        model: runtimeTarget.model || defaultModel || 'local-model',
         messages: conversation,
         agent_id: agentId,
         house_id: HOUSE_ID,
@@ -150,7 +166,7 @@ export function ChatPanel({
         ]);
       },
     });
-  }, [repo, input, messages, defaultModel, agentId, tools]);
+  }, [repo, input, messages, defaultModel, agentId, tools, runtimeTarget]);
 
   useEffect(() => {
     if (!isOpen) return;
