@@ -11,6 +11,18 @@ import { MyReposPanel } from './components/MyReposPanel';
 import { logger } from './lib/logger';
 import { Search, Github, LayoutGrid, Table as TableIcon, BarChart3, Star, Activity, Compass, User } from 'lucide-react';
 
+function normalizeRepoPayload(jsonData: unknown): Repo[] {
+  if (!Array.isArray(jsonData)) return [];
+
+  // Newer generators emit a flat repo array.
+  if (jsonData.length === 0 || (jsonData[0] && typeof jsonData[0] === 'object' && 'name' in jsonData[0])) {
+    return jsonData as Repo[];
+  }
+
+  // Legacy format grouped repos by language.
+  return (jsonData as LanguageGroup[]).flatMap((g) => g.repos || []);
+}
+
 function App() {
   const [allRepos, setAllRepos] = useState<Repo[]>([]);
   const [loading, setLoading] = useState(true);
@@ -138,8 +150,7 @@ function App() {
         return response.json();
       })
       .then((jsonData) => {
-
-        const flat = jsonData.flatMap((g: LanguageGroup) => g.repos || []);
+        const flat = normalizeRepoPayload(jsonData);
         setAllRepos(flat);
         setLoading(false);
       })
