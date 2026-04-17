@@ -4,8 +4,9 @@ import DOMPurify from 'dompurify';
 import { ExternalLink, X, Sparkles, Wand2 } from 'lucide-react';
 import { Repo } from '../types';
 import { streamOpenResponses } from '../lib/openresponses-client';
-import { buildGitStarsTools, buildSystemPrompt, EVENT_BUS_URL } from '../lib/orchestrator';
+import { buildGitStarsTools, buildSystemPrompt } from '../lib/orchestrator';
 import { getRepoAboutUrl } from '../lib/repo-links';
+import { loadRuntimeSettings, resolveRuntimeTarget, SETTINGS_EVENT } from '../lib/settings';
 
 interface ReadmePanelProps {
   isOpen: boolean;
@@ -33,6 +34,9 @@ export function ReadmePanel({ isOpen, onClose, repo, actionPrompt, autoRunAction
   const [input, setInput] = useState('');
   const [models, setModels] = useState<string[]>([]);
   const [selectedModel, setSelectedModel] = useState('local-model');
+  const [runtimeTarget, setRuntimeTarget] = useState(() =>
+    resolveRuntimeTarget(loadRuntimeSettings())
+  );
   const [overlayVisible, setOverlayVisible] = useState(false);
   const [overlayTitle, setOverlayTitle] = useState('');
   const [overlayContent, setOverlayContent] = useState('');
@@ -90,7 +94,7 @@ export function ReadmePanel({ isOpen, onClose, repo, actionPrompt, autoRunAction
 
     streamRef.current?.abort();
     streamRef.current = streamOpenResponses({
-      endpoint: `${EVENT_BUS_URL}/chat`,
+      endpoint: `${runtimeTarget.busUrl}/chat`,
       body: {
         model: selectedModel || 'local-model',
         messages: buildConversation(prompt),
@@ -117,7 +121,7 @@ export function ReadmePanel({ isOpen, onClose, repo, actionPrompt, autoRunAction
         setOverlayContent(`Error: ${error.message}`);
       },
     });
-  }, [repo, selectedModel, buildConversation]);
+  }, [repo, selectedModel, buildConversation, runtimeTarget]);
 
   useEffect(() => {
     if (isOpen && repo) {
@@ -151,7 +155,7 @@ export function ReadmePanel({ isOpen, onClose, repo, actionPrompt, autoRunAction
 
   useEffect(() => {
     if (!isOpen) return;
-    fetch(`${EVENT_BUS_URL}/models?task_kind=llm`)
+    fetch(`${runtimeTarget.busUrl}/models?task_kind=llm`)
       .then((res) => (res.ok ? res.json() : null))
       .then((data) => {
         const list = Array.isArray(data)
@@ -167,10 +171,29 @@ export function ReadmePanel({ isOpen, onClose, repo, actionPrompt, autoRunAction
         if (normalized.length > 0) {
           setModels(normalized);
           setSelectedModel((prev) => (normalized.includes(prev) ? prev : normalized[0] ?? prev));
+        } else {
+          setSelectedModel(runtimeTarget.model || 'local-model');
         }
       })
-      .catch(() => null);
-  }, [isOpen]);
+      .catch(() => {
+        setModels([]);
+        setSelectedModel(runtimeTarget.model || 'local-model');
+      });
+  }, [isOpen, runtimeTarget]);
+
+  useEffect(() => {
+    const applySettings = () => {
+      const next = resolveRuntimeTarget(loadRuntimeSettings());
+      setRuntimeTarget(next);
+      setSelectedModel(next.model || 'local-model');
+    };
+    window.addEventListener(SETTINGS_EVENT, applySettings);
+    window.addEventListener('storage', applySettings);
+    return () => {
+      window.removeEventListener(SETTINGS_EVENT, applySettings);
+      window.removeEventListener('storage', applySettings);
+    };
+  }, []);
 
   useEffect(() => {
     if (isOpen) {
