@@ -14,6 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       HAS_VERCEL_SECRETS: ${{ secrets.VERCEL_TOKEN != '' && secrets.VERCEL_ORG_ID != '' && secrets.VERCEL_PROJECT_ID != '' }}
+      HAS_MY_REPOS_TOKEN: ${{ secrets.MY_REPOS_GITHUB_TOKEN != '' }}
 
     steps:
       - name: Checkout repository
@@ -32,6 +33,18 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+
+      - name: Sync my repositories (public + private)
+        if: env.HAS_MY_REPOS_TOKEN == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.MY_REPOS_GITHUB_TOKEN }}
+        run: pnpm run sync:mine
+
+      - name: Skip my repos sync (missing secret)
+        if: env.HAS_MY_REPOS_TOKEN != 'true'
+        run: |
+          echo "Skipping my-repos sync because MY_REPOS_GITHUB_TOKEN is not configured."
+          echo "Add a classic PAT or fine-grained token with access to your repositories."
 
       - name: Build project
         env:
