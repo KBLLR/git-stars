@@ -5,6 +5,7 @@ import { ExternalLink, X, Sparkles, Wand2 } from 'lucide-react';
 import { Repo } from '../types';
 import { streamOpenResponses } from '../lib/openresponses-client';
 import { buildGitStarsTools, buildSystemPrompt, EVENT_BUS_URL } from '../lib/orchestrator';
+import { getRepoAboutUrl } from '../lib/repo-links';
 
 interface ReadmePanelProps {
   isOpen: boolean;
@@ -48,6 +49,7 @@ export function ReadmePanel({ isOpen, onClose, repo, actionPrompt, autoRunAction
   ];
 
   const actions = actionPresets && actionPresets.length > 0 ? actionPresets : defaultActions;
+  const aboutUrl = repo ? getRepoAboutUrl(repo) : '#';
 
   const renderMarkdown = async (text: string) => {
     try {
@@ -199,7 +201,7 @@ export function ReadmePanel({ isOpen, onClose, repo, actionPrompt, autoRunAction
                <X size={20} />
             </button>
             {repo && (
-               <a href={repo.url} target="_blank" rel="noopener noreferrer" className="readme-repo-link">
+               <a href={aboutUrl} target="_blank" rel="noopener noreferrer" className="readme-repo-link">
                   Visit Repo <ExternalLink size={16} />
                </a>
             )}
