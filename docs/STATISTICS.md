@@ -2,28 +2,44 @@
 
 ## Overview
 
-The git-stars statistics module provides comprehensive analytics about your starred GitHub repositories. Statistics are pre-computed and cached for optimal performance.
+The git-stars statistics module provides comprehensive analytics about your starred GitHub repositories. It now works alongside a derived house-data layer so the UI, MCP server, and orchestrator all read from the same canonical records.
 
 ## Generation
 
 ### Manual Generation
 
 ```bash
+npm run build:data
+npm run sync:mine
 npm run generate:stats
 ```
 
 This command:
 1. Loads repository data from `data/data.json`
-2. Calculates comprehensive statistics
-3. Saves results to `data/stats.json`
-4. Displays summary in console
+2. Reads owned/collab repo data from `data/my-repos.json`
+3. Calculates comprehensive statistics
+4. Regenerates derived house data
+5. Saves results to `data/stats.json`
+6. Displays summary in console
 
 ### Automatic Generation
 
 Statistics are automatically regenerated when:
-- Running `npm run build` (includes data generation + stats)
-- GitHub Actions workflows execute
-- MCP server calculates them on-demand (if cache missing)
+- Running `npm run build:data`
+- Running `npm run sync:mine`
+- Running `npm run generate:stats`
+- The MCP server refreshes and backfills missing cache files on demand
+
+## Derived House Data
+
+In addition to `stats.json`, the house now maintains four derived datasets:
+
+- `repo-signals.json`: News and adoption signals derived from starred and owned repos
+- `research-queue.json`: Canonical queue state for repo research
+- `skill-extractions.json`: Extracted capabilities, house skills, rules, flows, and mission briefs
+- `mine-health.json`: Owned-repo maintenance and README readiness records
+
+Each file is written into both `data/` and `public/` so the UI and MCP layer use the same source of truth.
 
 ## Statistics Structure
 

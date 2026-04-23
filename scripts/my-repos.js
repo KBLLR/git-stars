@@ -3,6 +3,7 @@ import path from "path";
 import dotenv from "dotenv";
 import { fileURLToPath } from "url";
 import { Octokit } from "@octokit/rest";
+import { generateDerivedHouseData } from "../src/server/house-model.js";
 
 dotenv.config({ override: true });
 
@@ -110,6 +111,10 @@ async function run() {
     fs.writeFileSync(path.join(publicDir, "my-repos.json"), JSON.stringify(myRepos, null, 2));
 
     console.log("Saved my-repos.json to data/ and public/");
+    await generateDerivedHouseData(path.resolve(__dirname, ".."), {
+      myRepos,
+    });
+    console.log("Refreshed repo-signals, research-queue, skill-extractions, and mine-health snapshots.");
   } catch (error) {
     console.error("Failed to sync repos:", error.message);
     process.exit(1);

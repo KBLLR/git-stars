@@ -1,4 +1,4 @@
-name: Nightly Data Fetch
+name: Nightly House Data Refresh
 
 on:
   schedule:
@@ -6,14 +6,14 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: git-stars-nightly-data
+  group: git-stars-nightly-house-data
   cancel-in-progress: false
 
 permissions:
   contents: write
 
 jobs:
-  update-data:
+  update-house-data:
     runs-on: ubuntu-latest
 
     steps:
@@ -23,7 +23,7 @@ jobs:
           fetch-depth: 0
 
       - name: Install pnpm
-        uses: pnpm/action-setup@v3
+        uses: pnpm/action-setup@v4
         with:
           version: 9
 
@@ -36,23 +36,33 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Fetch repository data
+      - name: Refresh starred repositories
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_PAT != '' && secrets.GH_PAT || github.token }}
         run: pnpm run build:data
 
-      - name: Commit and Push Data
+      - name: Sync owned and collaborative repositories
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_PAT != '' && secrets.GH_PAT || github.token }}
+        run: pnpm run sync:mine
+
+      - name: Regenerate statistics
+        run: pnpm run generate:stats
+
+      - name: Verify generated datasets
+        run: pnpm run test:data
+
+      - name: Commit and push generated house data
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
-          # Check for changes
-          if [[ -n $(git status --porcelain public/data.json) ]]; then
-            git add public/data.json
-            git commit -m "chore(data): nightly update of starred repos [skip ci]"
+          if [[ -n $(git status --porcelain -- data/*.json public/*.json README.md) ]]; then
+            git add data/*.json public/*.json README.md
+            git commit -m "chore(data): refresh house snapshots [skip ci]"
             git pull --rebase origin main
             git push origin HEAD:main
-            echo "Data updated and pushed to main."
+            echo "House data updated and pushed to main."
           else
-            echo "No changes in data.json."
+            echo "No generated data changes detected."
           fi

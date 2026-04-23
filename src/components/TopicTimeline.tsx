@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo } from "react";
 import {
   LineChart,
   Line,
@@ -7,15 +7,15 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
-  ResponsiveContainer
-} from 'recharts';
-import { Repo } from '../types';
+  ResponsiveContainer,
+} from "recharts";
+import { Repo } from "../types";
 
 interface TopicTimelineProps {
   repos: Repo[];
 }
 
-interface TimelineEntry {
+interface TimelineDatum {
   name: string;
   dateObj: Date;
   display: string;
@@ -23,8 +23,8 @@ interface TimelineEntry {
 }
 
 const COLORS = [
-  '#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#a855f7', 
-  '#ec4899', '#f43f5e', '#64748b', '#0ea5e9', '#84cc16'
+  "#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#a855f7",
+  "#ec4899", "#f43f5e", "#64748b", "#0ea5e9", "#84cc16",
 ];
 
 export const TopicTimeline: React.FC<TopicTimelineProps> = ({ repos }) => {
@@ -33,81 +33,70 @@ export const TopicTimeline: React.FC<TopicTimelineProps> = ({ repos }) => {
 
     console.log("Generating timeline for", repos.length, "repos");
 
-    // 1. Calculate Top 10 Topics globally
     const topicCounts: Record<string, number> = {};
-    repos.forEach(repo => {
-      repo.topics.forEach(topic => {
+    repos.forEach((repo) => {
+      repo.topics.forEach((topic) => {
         topicCounts[topic] = (topicCounts[topic] || 0) + 1;
       });
     });
 
     const topTopics = Object.entries(topicCounts)
-      .sort(([, a], [, b]) => b - a)
+      .sort(([, left], [, right]) => right - left)
       .slice(0, 10)
       .map(([topic]) => topic);
 
-    // 2. Determine Timeline Bounds (Start of first repo -> Today)
     const dates = repos
-      .map(r => r.date ? new Date(r.date).getTime() : 0)
-      .filter(d => d > 0);
-    
+      .map((repo) => repo.date ? new Date(repo.date).getTime() : 0)
+      .filter((value) => value > 0);
+
     if (dates.length === 0) return { data: [], topTopics: [] };
 
     const minDateTs = Math.min(...dates);
     const minDate = new Date(minDateTs);
-    // Align to Monday of that week
-    minDate.setDate(minDate.getDate() - minDate.getDay() + 1); 
+    minDate.setDate(minDate.getDate() - minDate.getDay() + 1);
 
-    const maxDate = new Date(); // Today
-
-    // 3. Create Continuous Week Buckets
-    const buckets: Record<string, TimelineEntry> = {};
+    const maxDate = new Date();
+    const buckets: Record<string, TimelineDatum> = {};
     const current = new Date(minDate);
-    
+
     while (current <= maxDate) {
-      // Key format: YYYY-Www (e.g., 2023-W01)
       const year = current.getFullYear();
       const week = getWeekNumber(current);
-      const key = `${year}-W${week.toString().padStart(2, '0')}`;
-      
-      const entry: TimelineEntry = {
-        name: key,
-        dateObj: new Date(current), // for sorting/display
-        display: current.toLocaleDateString(), // simplified
-      };
-      
-      // Init counts to 0
-      topTopics.forEach(t => entry[t] = 0);
-      
-      buckets[key] = entry;
+      const key = `${year}-W${week.toString().padStart(2, "0")}`;
 
-      // Next week
+      const entry: TimelineDatum = {
+        name: key,
+        dateObj: new Date(current),
+        display: current.toLocaleDateString(),
+      };
+
+      topTopics.forEach((topic) => {
+        entry[topic] = 0;
+      });
+
+      buckets[key] = entry;
       current.setDate(current.getDate() + 7);
     }
 
-    // 4. Populate with Data
-    repos.forEach(repo => {
+    repos.forEach((repo) => {
       if (!repo.date) return;
-      const d = new Date(repo.date);
-      const year = d.getFullYear();
-      const week = getWeekNumber(d);
-      const key = `${year}-W${week.toString().padStart(2, '0')}`;
+      const date = new Date(repo.date);
+      const year = date.getFullYear();
+      const week = getWeekNumber(date);
+      const key = `${year}-W${week.toString().padStart(2, "0")}`;
 
-      // Handle edge cases where repo date is slightly out of our generated buckets (e.g. today vs bucket start)
-      // Find the closest bucket if exact match missing (though logic above should cover it)
       if (buckets[key]) {
-        repo.topics.forEach(topic => {
+        repo.topics.forEach((topic) => {
           if (topTopics.includes(topic)) {
-            const currentCount = buckets[key][topic];
-            buckets[key][topic] = typeof currentCount === 'number' ? currentCount + 1 : 1;
+            const currentCount = typeof buckets[key][topic] === "number" ? buckets[key][topic] : 0;
+            buckets[key][topic] = currentCount + 1;
           }
         });
       }
     });
 
-    const data = Object.values(buckets); // buckets is already sorted by insertion logic? 
-    // Actually object keys iteration order is not guaranteed. Let's sort manually.
-    data.sort((a, b) => a.dateObj.getTime() - b.dateObj.getTime());
+    const data = Object.values(buckets);
+    data.sort((left, right) => left.dateObj.getTime() - right.dateObj.getTime());
 
     return { data, topTopics };
   }, [repos]);
@@ -117,42 +106,42 @@ export const TopicTimeline: React.FC<TopicTimelineProps> = ({ repos }) => {
   return (
     <div className="chart-container">
       <h3 className="chart-title">Trending Topics Over Time</h3>
-      <p className="text-muted" style={{ marginBottom: '20px' }}>
+      <p className="text-muted" style={{ marginBottom: "20px" }}>
         Showing frequency of top 10 topics per week
       </p>
-      
-      <div style={{ height: '400px', width: '100%' }}>
+
+      <div style={{ height: "400px", width: "100%" }}>
         <ResponsiveContainer width="100%" height="100%">
           <LineChart
             data={chartData.data}
             margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
           >
             <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" />
-            <XAxis 
-              dataKey="dateObj" 
-              tick={{ fontSize: 12, fill: '#64748b' }}
-              tickFormatter={(date) => {
-                 const d = new Date(date);
-                 return `${d.getMonth() + 1}/${d.getFullYear().toString().slice(2)}`;
+            <XAxis
+              dataKey="dateObj"
+              tick={{ fontSize: 12, fill: "#64748b" }}
+              tickFormatter={(value) => {
+                const date = new Date(value);
+                return `${date.getMonth() + 1}/${date.getFullYear().toString().slice(2)}`;
               }}
               minTickGap={50}
             />
-            <YAxis 
-              tick={{ fontSize: 12, fill: '#64748b' }}
+            <YAxis
+              tick={{ fontSize: 12, fill: "#64748b" }}
               allowDecimals={false}
             />
-            <Tooltip 
+            <Tooltip
               labelFormatter={(label) => new Date(label).toLocaleDateString()}
-              contentStyle={{ 
-                backgroundColor: 'rgba(255, 255, 255, 0.95)', 
-                borderRadius: '8px',
-                border: '1px solid #e2e8f0',
-                boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)'
+              contentStyle={{
+                backgroundColor: "rgba(255, 255, 255, 0.95)",
+                borderRadius: "8px",
+                border: "1px solid #e2e8f0",
+                boxShadow: "0 4px 6px -1px rgb(0 0 0 / 0.1)",
               }}
-              itemStyle={{ fontSize: '13px', padding: '2px 0' }}
+              itemStyle={{ fontSize: "13px", padding: "2px 0" }}
             />
-            <Legend 
-              wrapperStyle={{ paddingTop: '20px' }}
+            <Legend
+              wrapperStyle={{ paddingTop: "20px" }}
               iconType="circle"
             />
             {chartData.topTopics.map((topic, index) => (
@@ -174,11 +163,9 @@ export const TopicTimeline: React.FC<TopicTimelineProps> = ({ repos }) => {
   );
 };
 
-// Helper: Get ISO Week Number
-function getWeekNumber(d: Date) {
-  const date = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+function getWeekNumber(dateValue: Date) {
+  const date = new Date(Date.UTC(dateValue.getFullYear(), dateValue.getMonth(), dateValue.getDate()));
   date.setUTCDate(date.getUTCDate() + 4 - (date.getUTCDay() || 7));
   const yearStart = new Date(Date.UTC(date.getUTCFullYear(), 0, 1));
-  const weekNo = Math.ceil((((date.getTime() - yearStart.getTime()) / 86400000) + 1) / 7);
-  return weekNo;
+  return Math.ceil((((date.getTime() - yearStart.getTime()) / 86400000) + 1) / 7);
 }

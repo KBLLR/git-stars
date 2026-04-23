@@ -5,6 +5,7 @@ import { fileURLToPath } from "url";
 import { Octokit } from "@octokit/rest";
 import PQueue from "p-queue";
 import { generateStatistics } from "../src/analytics/statistics.js";
+import { generateDerivedHouseData } from "../src/server/house-model.js";
 
 dotenv.config({ override: true });
 
@@ -206,6 +207,11 @@ async function generate() {
         fs.copyFileSync(path.join(DATA_DIR, "stats.json"), path.join(PUBLIC_DIR, "stats.json"));
         console.log("Copied stats.json to public/");
     }
+
+    await generateDerivedHouseData(path.resolve(__dirname, ".."), {
+      starredRepos: flattenedData,
+    });
+    console.log("Generated repo-signals, research-queue, skill-extractions, and mine-health snapshots.");
 
   } catch (error) {
     console.error("Error during generation:", error);

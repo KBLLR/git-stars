@@ -1,12 +1,17 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
-import { marked } from 'marked';
-import DOMPurify from 'dompurify';
-import { ExternalLink, X, Sparkles, Wand2 } from 'lucide-react';
-import { Repo } from '../types';
-import { streamOpenResponses } from '../lib/openresponses-client';
-import { buildGitStarsTools, buildSystemPrompt } from '../lib/orchestrator';
-import { getRepoAboutUrl } from '../lib/repo-links';
-import { loadRuntimeSettings, resolveRuntimeTarget, SETTINGS_EVENT } from '../lib/settings';
+import { useCallback, useEffect, useRef, useState } from "react";
+import { marked } from "marked";
+import DOMPurify from "dompurify";
+import { ExternalLink, Sparkles, Wand2, X } from "lucide-react";
+import type { Repo } from "../types";
+import { streamOpenResponses } from "../lib/openresponses-client";
+import type { ActionPreset, GitStarsRoute } from "../lib/orchestrator";
+import {
+  buildGitStarsTools,
+  buildSystemPrompt,
+  routeGitStarsIntent,
+} from "../lib/orchestrator";
+import { getRepoAboutUrl } from "../lib/repo-links";
+import { loadRuntimeSettings, resolveRuntimeTarget, SETTINGS_EVENT } from "../lib/settings";
 
 interface ReadmePanelProps {
   isOpen: boolean;
@@ -15,169 +20,177 @@ interface ReadmePanelProps {
   actionPrompt?: string;
   autoRunAction?: boolean;
   onActionConsumed?: () => void;
-  actionPresets?: { label: string; prompt: string; title?: string; variant?: 'primary' | 'default' }[];
+  onHouseDataChanged?: () => void;
+  actionPresets: ActionPreset[];
 }
 
 interface ChatMessage {
   id: string;
-  role: 'user' | 'assistant';
+  role: "user" | "assistant";
   content: string;
 }
 
 type ModelDescriptor = string | { id?: string; model?: string };
 
-export function ReadmePanel({ isOpen, onClose, repo, actionPrompt, autoRunAction, onActionConsumed, actionPresets }: ReadmePanelProps) {
-  const [content, setContent] = useState<string>('');
-  const [rawMarkdown, setRawMarkdown] = useState<string>('');
-  const [loading, setLoading] = useState<boolean>(false);
+export function ReadmePanel({
+  isOpen,
+  onClose,
+  repo,
+  actionPrompt,
+  autoRunAction,
+  onActionConsumed,
+  onHouseDataChanged,
+  actionPresets,
+}: ReadmePanelProps) {
+  const [content, setContent] = useState("");
+  const [rawMarkdown, setRawMarkdown] = useState("");
+  const [loading, setLoading] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>([]);
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState("");
   const [models, setModels] = useState<string[]>([]);
-  const [selectedModel, setSelectedModel] = useState('local-model');
+  const [selectedModel, setSelectedModel] = useState("local-model");
   const [runtimeTarget, setRuntimeTarget] = useState(() =>
-    resolveRuntimeTarget(loadRuntimeSettings())
+    resolveRuntimeTarget(loadRuntimeSettings()),
   );
   const [overlayVisible, setOverlayVisible] = useState(false);
-  const [overlayTitle, setOverlayTitle] = useState('');
-  const [overlayContent, setOverlayContent] = useState('');
+  const [overlayTitle, setOverlayTitle] = useState("");
+  const [overlayContent, setOverlayContent] = useState("");
   const [isRunning, setIsRunning] = useState(false);
+  const [activeRoute, setActiveRoute] = useState<GitStarsRoute | null>(null);
   const lastActionRef = useRef<string | null>(null);
   const streamRef = useRef<AbortController | null>(null);
 
-  const defaultActions = [
-    { label: 'Extract skills', prompt: 'Extract skills from this repository and list required capabilities.', title: 'Extract skills' },
-    { label: 'Ecosystem relevancy', prompt: 'Explain relevancy of this repository within our ecosystem.', title: 'Ecosystem relevancy' },
-    { label: 'How to contribute', prompt: 'Explain how to contribute and where to start.', title: 'How to contribute' },
-    { label: 'Clone into houses/', prompt: 'Suggest how to clone or integrate this repo into houses/ with a plan.', title: 'Clone into houses' },
-    { label: 'Tactical summary', prompt: 'Provide a short tactical summary and recommended next actions.', title: 'Tactical summary', variant: 'primary' },
-  ];
+  const aboutUrl = repo ? getRepoAboutUrl(repo) : "#";
 
-  const actions = actionPresets && actionPresets.length > 0 ? actionPresets : defaultActions;
-  const aboutUrl = repo ? getRepoAboutUrl(repo) : '#';
-
-  const renderMarkdown = async (text: string) => {
+  const renderMarkdown = useCallback(async (text: string) => {
     try {
       const html = await marked.parse(text);
       setContent(DOMPurify.sanitize(html));
     } catch {
       const escaped = text
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;');
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
       setContent(`<pre>${escaped}</pre>`);
     }
-  };
+  }, []);
 
-  const buildConversation = useCallback((prompt: string) => {
-    const excerpt = rawMarkdown ? rawMarkdown.slice(0, 4000) : '';
-    const systemPrompt = `${buildSystemPrompt(repo)}\n\nREADME excerpt:\n${excerpt || 'No README loaded.'}`;
-    return [
-      { role: 'system', content: systemPrompt },
-      ...messages.map((m) => ({ role: m.role, content: m.content })),
-      { role: 'user', content: prompt },
-    ];
-  }, [repo, rawMarkdown, messages]);
-
-  const runAction = useCallback((prompt: string, title?: string) => {
+  const runAction = useCallback((prompt: string, title: string) => {
     if (!repo) return;
-    const actionTitle = title || 'Action';
     const actionId = `action-${Date.now()}`;
-    setOverlayTitle(actionTitle);
-    setOverlayContent('');
+    const route = routeGitStarsIntent(prompt);
+    const excerpt = rawMarkdown.slice(0, 4000);
+    const conversation = [
+      {
+        role: "system",
+        content: `${buildSystemPrompt(repo, route)}\n\nREADME excerpt:\n${excerpt || "No README loaded."}`,
+      },
+      ...messages.map((message) => ({ role: message.role, content: message.content })),
+      { role: "user", content: prompt },
+    ];
+
+    setActiveRoute(route);
+    setOverlayTitle(title);
+    setOverlayContent("");
     setOverlayVisible(true);
     setIsRunning(true);
 
-    const userMessage: ChatMessage = { id: `${actionId}-user`, role: 'user', content: prompt };
-    const assistantMessage: ChatMessage = { id: `${actionId}-assistant`, role: 'assistant', content: '' };
+    const userMessage: ChatMessage = { id: `${actionId}-user`, role: "user", content: prompt };
+    const assistantMessage: ChatMessage = { id: `${actionId}-assistant`, role: "assistant", content: "" };
 
-    setMessages((prev) => [...prev, userMessage, assistantMessage]);
+    setMessages((previous) => [...previous, userMessage, assistantMessage]);
 
     streamRef.current?.abort();
     streamRef.current = streamOpenResponses({
       endpoint: `${runtimeTarget.busUrl}/chat`,
       body: {
-        model: selectedModel || 'local-model',
-        messages: buildConversation(prompt),
+        model: selectedModel || runtimeTarget.model || "local-model",
+        messages: conversation,
         tools: buildGitStarsTools(),
-        tool_choice: 'auto',
-        agent_id: 'git-stars:orchestrator',
-        house_id: 'git-stars',
+        tool_choice: "auto",
+        agent_id: route.agentId,
+        house_id: "git-stars",
       },
       onEvent: (event) => {
-        if (event.type === 'response.output_text.delta' && event.delta) {
-          setMessages((prev) =>
-            prev.map((m) =>
-              m.id === assistantMessage.id ? { ...m, content: m.content + event.delta } : m
-            )
+        if (event.type === "response.output_text.delta" && event.delta) {
+          setMessages((previous) =>
+            previous.map((message) =>
+              message.id === assistantMessage.id
+                ? { ...message, content: `${message.content}${event.delta}` }
+                : message,
+            ),
           );
-          setOverlayContent((prev) => prev + event.delta);
+          setOverlayContent((previous) => `${previous}${event.delta}`);
         }
       },
       onComplete: () => {
         setIsRunning(false);
+        onHouseDataChanged?.();
       },
-      onError: (error) => {
+      onError: (nextError) => {
         setIsRunning(false);
-        setOverlayContent(`Error: ${error.message}`);
+        setOverlayContent(`Error: ${nextError.message}`);
       },
     });
-  }, [repo, selectedModel, buildConversation, runtimeTarget]);
+  }, [messages, onHouseDataChanged, rawMarkdown, repo, runtimeTarget, selectedModel]);
 
   useEffect(() => {
-    if (isOpen && repo) {
-      setLoading(true);
-      setContent('');
-      setRawMarkdown('');
-      setMessages([]);
-      
-      const tryFetch = (branch: string) =>
-        fetch(`https://raw.githubusercontent.com/${repo.author}/${repo.name}/${branch}/README.md`)
-          .then((r) => (r.ok ? r.text() : ''));
+    if (!isOpen || !repo) return;
 
-      tryFetch('master')
-        .then((text) => text || tryFetch('main'))
-        .then(async (text) => {
-          if (text) {
-            setRawMarkdown(text);
-            await renderMarkdown(text);
-          } else {
-            setContent('README not found');
-          }
-        })
-        .catch(() => {
-          setContent('Failed to load README');
-        })
-        .finally(() => {
-          setLoading(false);
-        });
-    }
-  }, [isOpen, repo]);
+    setLoading(true);
+    setContent("");
+    setRawMarkdown("");
+    setMessages([]);
+
+    const tryFetch = (branch: string) =>
+      fetch(`https://raw.githubusercontent.com/${repo.author}/${repo.name}/${branch}/README.md`)
+        .then(async (response) => (response.ok ? response.text() : ""));
+
+    tryFetch("master")
+      .then((text) => text || tryFetch("main"))
+      .then(async (text) => {
+        if (text) {
+          setRawMarkdown(text);
+          await renderMarkdown(text);
+          return;
+        }
+        setContent("README not found");
+      })
+      .catch(() => {
+        setContent("Failed to load README");
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, [isOpen, renderMarkdown, repo]);
 
   useEffect(() => {
     if (!isOpen) return;
+
     fetch(`${runtimeTarget.busUrl}/models?task_kind=llm`)
-      .then((res) => (res.ok ? res.json() : null))
-      .then((data) => {
+      .then(async (response) => (response.ok ? response.json() : null))
+      .then((data: unknown) => {
         const list = Array.isArray(data)
           ? data
-          : Array.isArray(data?.models)
-            ? data.models
-            : Array.isArray(data?.data)
-              ? data.data
+          : Array.isArray((data as { models?: unknown[] } | null)?.models)
+            ? (data as { models: unknown[] }).models
+            : Array.isArray((data as { data?: unknown[] } | null)?.data)
+              ? (data as { data: unknown[] }).data
               : [];
         const normalized = (list as ModelDescriptor[])
-          .map((m) => (typeof m === 'string' ? m : m?.id || m?.model))
-          .filter((model): model is string => Boolean(model));
+          .map((item) => (typeof item === "string" ? item : item?.id || item?.model || null))
+          .filter((item): item is string => Boolean(item));
         if (normalized.length > 0) {
           setModels(normalized);
-          setSelectedModel((prev) => (normalized.includes(prev) ? prev : normalized[0] ?? prev));
-        } else {
-          setSelectedModel(runtimeTarget.model || 'local-model');
+          setSelectedModel((previous) => (normalized.includes(previous) ? previous : normalized[0]));
+          return;
         }
+        setModels([]);
+        setSelectedModel(runtimeTarget.model || "local-model");
       })
       .catch(() => {
         setModels([]);
-        setSelectedModel(runtimeTarget.model || 'local-model');
+        setSelectedModel(runtimeTarget.model || "local-model");
       });
   }, [isOpen, runtimeTarget]);
 
@@ -185,81 +198,90 @@ export function ReadmePanel({ isOpen, onClose, repo, actionPrompt, autoRunAction
     const applySettings = () => {
       const next = resolveRuntimeTarget(loadRuntimeSettings());
       setRuntimeTarget(next);
-      setSelectedModel(next.model || 'local-model');
+      setSelectedModel(next.model || "local-model");
     };
     window.addEventListener(SETTINGS_EVENT, applySettings);
-    window.addEventListener('storage', applySettings);
+    window.addEventListener("storage", applySettings);
     return () => {
       window.removeEventListener(SETTINGS_EVENT, applySettings);
-      window.removeEventListener('storage', applySettings);
+      window.removeEventListener("storage", applySettings);
     };
   }, []);
 
   useEffect(() => {
     if (isOpen) {
-      document.body.classList.add('panel-open');
-    } else {
-      document.body.classList.remove('panel-open');
-      setOverlayVisible(false);
-      setOverlayContent('');
-      setOverlayTitle('');
-      setIsRunning(false);
-      streamRef.current?.abort();
+      document.body.classList.add("panel-open");
+      return;
     }
+
+    document.body.classList.remove("panel-open");
+    setOverlayVisible(false);
+    setOverlayContent("");
+    setOverlayTitle("");
+    setIsRunning(false);
+    streamRef.current?.abort();
   }, [isOpen]);
 
   useEffect(() => {
     if (!isOpen || !repo || !actionPrompt || !autoRunAction) return;
     if (lastActionRef.current === actionPrompt) return;
     lastActionRef.current = actionPrompt;
-    runAction(actionPrompt, 'Quick action');
+    runAction(actionPrompt, "Quick action");
     onActionConsumed?.();
-  }, [isOpen, repo, actionPrompt, autoRunAction, onActionConsumed, runAction]);
+  }, [actionPrompt, autoRunAction, isOpen, onActionConsumed, repo, runAction]);
 
   return (
-    <div className={`readme-panel ${isOpen ? 'open' : ''}`}>
+    <div className={`readme-panel ${isOpen ? "open" : ""}`}>
       <div className="panel-header">
-         <div className="readme-header-left">
-            <button className="close-btn" onClick={onClose}>
-               <X size={20} />
-            </button>
-            {repo && (
-               <a href={aboutUrl} target="_blank" rel="noopener noreferrer" className="readme-repo-link">
-                  Visit Repo <ExternalLink size={16} />
-               </a>
-            )}
-         </div>
-         <div className="readme-header-right">
-           <span>Model</span>
-           <select value={selectedModel} onChange={(e) => setSelectedModel(e.target.value)}>
-             {(models.length > 0 ? models : ['local-model']).map((model) => (
-               <option key={model} value={model}>{model}</option>
-             ))}
-           </select>
-         </div>
+        <div className="readme-header-left">
+          <button className="close-btn" onClick={onClose}>
+            <X size={20} />
+          </button>
+          {repo ? (
+            <a href={aboutUrl} target="_blank" rel="noopener noreferrer" className="readme-repo-link">
+              Visit Repo <ExternalLink size={16} />
+            </a>
+          ) : null}
+        </div>
+        <div className="readme-header-right">
+          <span>Model</span>
+          <select value={selectedModel} onChange={(event) => setSelectedModel(event.target.value)}>
+            {(models.length > 0 ? models : [runtimeTarget.model || "local-model"]).map((model) => (
+              <option key={model} value={model}>{model}</option>
+            ))}
+          </select>
+        </div>
       </div>
+
       <div className="readme-actions-header">
-        {actions.map((action) => (
+        {actionPresets.map((action) => (
           <button
             key={action.label}
-            className={`action-btn ${action.variant === 'primary' ? 'primary' : ''}`}
-            onClick={() => runAction(action.prompt, action.title || action.label)}
+            className={`action-btn ${action.variant === "primary" ? "primary" : ""}`}
+            onClick={() => runAction(action.prompt, action.title)}
           >
-            {action.variant === 'primary' ? <Wand2 size={14} /> : <Sparkles size={14} />} {action.label}
+            {action.variant === "primary" ? <Wand2 size={14} /> : <Sparkles size={14} />} {action.label}
           </button>
         ))}
       </div>
+
       <div className="readme-content">
         <div className="readme-frame">
           <div className="readme-scroll">
             {loading ? <p>Loading...</p> : <div dangerouslySetInnerHTML={{ __html: content }} />}
           </div>
+
           {overlayVisible && (
             <div className="readme-overlay">
               <div className="readme-overlay-card">
                 <div className="readme-overlay-title">{overlayTitle}</div>
+                {activeRoute ? (
+                  <div className="text-muted" style={{ marginBottom: 12 }}>
+                    {activeRoute.label} · {activeRoute.capability}
+                  </div>
+                ) : null}
                 <div className="readme-overlay-body">
-                  {overlayContent || (isRunning ? 'Working...' : 'Ready')}
+                  {overlayContent || (isRunning ? "Working..." : "Ready")}
                 </div>
                 {!isRunning && (
                   <button className="action-btn" onClick={() => setOverlayVisible(false)}>
@@ -273,21 +295,21 @@ export function ReadmePanel({ isOpen, onClose, repo, actionPrompt, autoRunAction
 
         <div className="readme-chat">
           <div className="readme-chat-log">
-            {messages.map((m) => (
-              <div key={m.id} className={`chat-bubble ${m.role}`}>
-                {m.content}
+            {messages.map((message) => (
+              <div key={message.id} className={`chat-bubble ${message.role}`}>
+                {message.content}
               </div>
             ))}
           </div>
           <div className="readme-chat-input">
             <input
               value={input}
-              onChange={(e) => setInput(e.target.value)}
+              onChange={(event) => setInput(event.target.value)}
               placeholder="Ask about this repo..."
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' && input.trim()) {
-                  runAction(input.trim(), 'Custom request');
-                  setInput('');
+              onKeyDown={(event) => {
+                if (event.key === "Enter" && input.trim()) {
+                  runAction(input.trim(), "Custom request");
+                  setInput("");
                 }
               }}
             />
@@ -295,8 +317,8 @@ export function ReadmePanel({ isOpen, onClose, repo, actionPrompt, autoRunAction
               className="action-btn"
               onClick={() => {
                 if (!input.trim()) return;
-                runAction(input.trim(), 'Custom request');
-                setInput('');
+                runAction(input.trim(), "Custom request");
+                setInput("");
               }}
             >
               Ask
