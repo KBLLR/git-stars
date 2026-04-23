@@ -18,7 +18,6 @@ jobs:
     runs-on: ubuntu-latest
     env:
       HAS_VERCEL_SECRETS: ${{ secrets.VERCEL_TOKEN != '' && secrets.VERCEL_ORG_ID != '' && secrets.VERCEL_PROJECT_ID != '' }}
-      HAS_MY_REPOS_TOKEN: ${{ secrets.MY_REPOS_GITHUB_TOKEN != '' }}
 
     steps:
       - name: Checkout repository
@@ -38,28 +37,11 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Refresh starred repositories
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_PAT != '' && secrets.GH_PAT || github.token }}
-        run: pnpm run build:data
-
-      - name: Sync my repositories (public + private)
-        if: env.HAS_MY_REPOS_TOKEN == 'true'
-        env:
-          GITHUB_TOKEN: ${{ secrets.MY_REPOS_GITHUB_TOKEN }}
-        run: pnpm run sync:mine
-
-      - name: Skip my repos sync (missing secret)
-        if: env.HAS_MY_REPOS_TOKEN != 'true'
-        run: |
-          echo "Skipping my-repos sync because MY_REPOS_GITHUB_TOKEN is not configured."
-          echo "Add a classic PAT or fine-grained token with access to your repositories."
-
-      - name: Regenerate statistics
-        run: pnpm run generate:stats
-
       - name: Run verification suite
         run: pnpm test
+
+      - name: Build application
+        run: pnpm run build
 
       - name: Install Vercel CLI
         if: env.HAS_VERCEL_SECRETS == 'true'
@@ -76,7 +58,6 @@ jobs:
       - name: Build Project Artifacts
         if: env.HAS_VERCEL_SECRETS == 'true'
         env:
-          GITHUB_TOKEN: ${{ secrets.MY_REPOS_GITHUB_TOKEN != '' && secrets.MY_REPOS_GITHUB_TOKEN || secrets.GH_PAT != '' && secrets.GH_PAT || github.token }}
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}

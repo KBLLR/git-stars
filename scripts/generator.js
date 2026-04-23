@@ -12,7 +12,11 @@ dotenv.config({ override: true });
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 const USERNAME = "KBLLR";
 
-const octokit = new Octokit({ auth: GITHUB_TOKEN });
+function createOctokit(authToken) {
+  return new Octokit(authToken ? { auth: authToken } : undefined);
+}
+
+let octokit = createOctokit(GITHUB_TOKEN);
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -73,6 +77,20 @@ async function getStarredRepos(username) {
       },
     });
   } catch (error) {
+    if (GITHUB_TOKEN && error?.status === 401) {
+      console.warn(
+        "GITHUB_TOKEN was rejected. Retrying starred repository fetches without authentication.",
+      );
+      octokit = createOctokit();
+      return octokit.paginate("GET /users/{username}/starred", {
+        username,
+        per_page: 100,
+        headers: {
+          accept: "application/vnd.github.star+json",
+        },
+      });
+    }
+
     console.error("Error fetching starred repositories:", error);
     throw error;
   }
