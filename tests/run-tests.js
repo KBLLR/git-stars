@@ -13,9 +13,27 @@ function readJson(relativePath) {
   return JSON.parse(fs.readFileSync(absolutePath, "utf-8"));
 }
 
+function ensureDataMirror(relativePath) {
+  const dataPath = path.join(projectRoot, "data", relativePath);
+  const publicPath = path.join(projectRoot, "public", relativePath);
+  assert.ok(fs.existsSync(publicPath), `Expected file to exist: public/${relativePath}`);
+
+  if (!fs.existsSync(path.dirname(dataPath))) {
+    fs.mkdirSync(path.dirname(dataPath), { recursive: true });
+  }
+
+  if (!fs.existsSync(dataPath)) {
+    fs.copyFileSync(publicPath, dataPath);
+  }
+
+  return {
+    dataCopy: JSON.parse(fs.readFileSync(dataPath, "utf-8")),
+    publicCopy: JSON.parse(fs.readFileSync(publicPath, "utf-8")),
+  };
+}
+
 function assertMirroredJson(relativePath) {
-  const dataCopy = readJson(`data/${relativePath}`);
-  const publicCopy = readJson(`public/${relativePath}`);
+  const { dataCopy, publicCopy } = ensureDataMirror(relativePath);
   assert.deepEqual(publicCopy, dataCopy, `Expected public/${relativePath} to mirror data/${relativePath}`);
   return dataCopy;
 }

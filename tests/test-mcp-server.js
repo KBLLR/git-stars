@@ -15,6 +15,30 @@ const serverPath = path.resolve(projectRoot, "src/mcp-server/index.js");
 const researchQueueDataPath = path.resolve(projectRoot, "data/research-queue.json");
 const researchQueuePublicPath = path.resolve(projectRoot, "public/research-queue.json");
 
+async function ensureDataMirror() {
+  const requiredFiles = [
+    "data.json",
+    "my-repos.json",
+    "repo-signals.json",
+    "research-queue.json",
+    "skill-extractions.json",
+    "mine-health.json",
+  ];
+
+  await fs.mkdir(path.resolve(projectRoot, "data"), { recursive: true });
+
+  for (const fileName of requiredFiles) {
+    const dataPath = path.resolve(projectRoot, "data", fileName);
+    const publicPath = path.resolve(projectRoot, "public", fileName);
+
+    try {
+      await fs.access(dataPath);
+    } catch {
+      await fs.copyFile(publicPath, dataPath);
+    }
+  }
+}
+
 function parseTextPayload(result) {
   assert.ok(!("toolResult" in result), "Expected standard tool content result");
   assert.ok(Array.isArray(result.content) && result.content.length > 0, "Expected tool response content");
@@ -25,6 +49,7 @@ function parseTextPayload(result) {
 
 async function main() {
   console.log("Testing MCP Server...\n");
+  await ensureDataMirror();
   const originalResearchQueue = JSON.parse(await fs.readFile(researchQueueDataPath, "utf8"));
 
   const transport = new StdioClientTransport({
