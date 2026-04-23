@@ -464,10 +464,13 @@ function resolveDataPaths(rootDir) {
 }
 
 export async function loadHouseDatasets(rootDir) {
-  const { dataDir } = resolveDataPaths(rootDir);
-  const starredRepos = await readJson(path.join(dataDir, DATA_FILE), []);
-  const myRepos = await readJson(path.join(dataDir, MY_REPOS_FILE), []);
-  const researchQueue = await readJson(path.join(dataDir, RESEARCH_QUEUE_FILE), []);
+  const { dataDir, publicDir } = resolveDataPaths(rootDir);
+  const starredRepos = await readJson(path.join(dataDir, DATA_FILE), null)
+    ?? await readJson(path.join(publicDir, DATA_FILE), []);
+  const myRepos = await readJson(path.join(dataDir, MY_REPOS_FILE), null)
+    ?? await readJson(path.join(publicDir, MY_REPOS_FILE), []);
+  const researchQueue = await readJson(path.join(dataDir, RESEARCH_QUEUE_FILE), null)
+    ?? await readJson(path.join(publicDir, RESEARCH_QUEUE_FILE), []);
 
   return {
     starredRepos: Array.isArray(starredRepos) ? starredRepos : [],
