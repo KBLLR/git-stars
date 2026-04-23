@@ -39,7 +39,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': rootDir,
-      '@agent-events': resolve(__dirname, '../../htdi-collective-agency/lib/agent-events.ts'),
+      '@agent-events': resolve(__dirname, 'src/lib/agent-events.ts'),
     },
   },
 });

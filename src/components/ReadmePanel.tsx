@@ -8,9 +8,10 @@ import type { ActionPreset, GitStarsRoute } from "../lib/orchestrator";
 import {
   buildGitStarsTools,
   buildSystemPrompt,
-  EVENT_BUS_URL,
   routeGitStarsIntent,
 } from "../lib/orchestrator";
+import { getRepoAboutUrl } from "../lib/repo-links";
+import { loadRuntimeSettings, resolveRuntimeTarget, SETTINGS_EVENT } from "../lib/settings";
 
 interface ReadmePanelProps {
   isOpen: boolean;
@@ -29,6 +30,8 @@ interface ChatMessage {
   content: string;
 }
 
+type ModelDescriptor = string | { id?: string; model?: string };
+
 export function ReadmePanel({
   isOpen,
   onClose,
@@ -46,6 +49,9 @@ export function ReadmePanel({
   const [input, setInput] = useState("");
   const [models, setModels] = useState<string[]>([]);
   const [selectedModel, setSelectedModel] = useState("local-model");
+  const [runtimeTarget, setRuntimeTarget] = useState(() =>
+    resolveRuntimeTarget(loadRuntimeSettings()),
+  );
   const [overlayVisible, setOverlayVisible] = useState(false);
   const [overlayTitle, setOverlayTitle] = useState("");
   const [overlayContent, setOverlayContent] = useState("");
@@ -53,6 +59,8 @@ export function ReadmePanel({
   const [activeRoute, setActiveRoute] = useState<GitStarsRoute | null>(null);
   const lastActionRef = useRef<string | null>(null);
   const streamRef = useRef<AbortController | null>(null);
+
+  const aboutUrl = repo ? getRepoAboutUrl(repo) : "#";
 
   const renderMarkdown = useCallback(async (text: string) => {
     try {
@@ -94,9 +102,9 @@ export function ReadmePanel({
 
     streamRef.current?.abort();
     streamRef.current = streamOpenResponses({
-      endpoint: `${EVENT_BUS_URL}/chat`,
+      endpoint: `${runtimeTarget.busUrl}/chat`,
       body: {
-        model: selectedModel || "local-model",
+        model: selectedModel || runtimeTarget.model || "local-model",
         messages: conversation,
         tools: buildGitStarsTools(),
         tool_choice: "auto",
@@ -124,7 +132,7 @@ export function ReadmePanel({
         setOverlayContent(`Error: ${nextError.message}`);
       },
     });
-  }, [messages, onHouseDataChanged, rawMarkdown, repo, selectedModel]);
+  }, [messages, onHouseDataChanged, rawMarkdown, repo, runtimeTarget, selectedModel]);
 
   useEffect(() => {
     if (!isOpen || !repo) return;
@@ -159,7 +167,7 @@ export function ReadmePanel({
   useEffect(() => {
     if (!isOpen) return;
 
-    fetch(`${EVENT_BUS_URL}/models?task_kind=llm`)
+    fetch(`${runtimeTarget.busUrl}/models?task_kind=llm`)
       .then(async (response) => (response.ok ? response.json() : null))
       .then((data: unknown) => {
         const list = Array.isArray(data)
@@ -169,16 +177,36 @@ export function ReadmePanel({
             : Array.isArray((data as { data?: unknown[] } | null)?.data)
               ? (data as { data: unknown[] }).data
               : [];
-        const normalized = list
-          .map((item) => (typeof item === "string" ? item : item && typeof item === "object" && "id" in item ? String(item.id) : null))
+        const normalized = (list as ModelDescriptor[])
+          .map((item) => (typeof item === "string" ? item : item?.id || item?.model || null))
           .filter((item): item is string => Boolean(item));
         if (normalized.length > 0) {
           setModels(normalized);
           setSelectedModel((previous) => (normalized.includes(previous) ? previous : normalized[0]));
+          return;
         }
+        setModels([]);
+        setSelectedModel(runtimeTarget.model || "local-model");
       })
-      .catch(() => undefined);
-  }, [isOpen]);
+      .catch(() => {
+        setModels([]);
+        setSelectedModel(runtimeTarget.model || "local-model");
+      });
+  }, [isOpen, runtimeTarget]);
+
+  useEffect(() => {
+    const applySettings = () => {
+      const next = resolveRuntimeTarget(loadRuntimeSettings());
+      setRuntimeTarget(next);
+      setSelectedModel(next.model || "local-model");
+    };
+    window.addEventListener(SETTINGS_EVENT, applySettings);
+    window.addEventListener("storage", applySettings);
+    return () => {
+      window.removeEventListener(SETTINGS_EVENT, applySettings);
+      window.removeEventListener("storage", applySettings);
+    };
+  }, []);
 
   useEffect(() => {
     if (isOpen) {
@@ -210,7 +238,7 @@ export function ReadmePanel({
             <X size={20} />
           </button>
           {repo ? (
-            <a href={repo.url} target="_blank" rel="noopener noreferrer" className="readme-repo-link">
+            <a href={aboutUrl} target="_blank" rel="noopener noreferrer" className="readme-repo-link">
               Visit Repo <ExternalLink size={16} />
             </a>
           ) : null}
@@ -218,7 +246,7 @@ export function ReadmePanel({
         <div className="readme-header-right">
           <span>Model</span>
           <select value={selectedModel} onChange={(event) => setSelectedModel(event.target.value)}>
-            {(models.length > 0 ? models : ["local-model"]).map((model) => (
+            {(models.length > 0 ? models : [runtimeTarget.model || "local-model"]).map((model) => (
               <option key={model} value={model}>{model}</option>
             ))}
           </select>

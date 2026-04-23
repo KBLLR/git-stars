@@ -6,12 +6,12 @@ import {
   buildGitStarsTools,
   buildSystemPrompt,
   DEFAULT_AGENT_ID,
-  EVENT_BUS_URL,
   HOUSE_ID,
   routeGitStarsIntent,
 } from "../lib/orchestrator";
 import type { OpenResponsesEvent } from "../lib/openresponses-client";
 import { streamOpenResponses } from "../lib/openresponses-client";
+import { loadRuntimeSettings, resolveRuntimeTarget, SETTINGS_EVENT } from "../lib/settings";
 
 interface ChatPanelProps {
   isOpen: boolean;
@@ -54,6 +54,9 @@ export function ChatPanel({
   const [toolCalls, setToolCalls] = useState<Record<string, ToolCall>>({});
   const [defaultModel, setDefaultModel] = useState<string | null>(null);
   const [activeRoute, setActiveRoute] = useState<GitStarsRoute | null>(null);
+  const [runtimeTarget, setRuntimeTarget] = useState(() =>
+    resolveRuntimeTarget(loadRuntimeSettings()),
+  );
   const scrollRef = useRef<HTMLDivElement>(null);
   const streamRef = useRef<AbortController | null>(null);
   const lastPrefillRef = useRef<string | null>(null);
@@ -61,7 +64,7 @@ export function ChatPanel({
   const tools = useMemo(() => buildGitStarsTools(), []);
 
   useEffect(() => {
-    fetch(`${EVENT_BUS_URL}/settings`)
+    fetch(`${runtimeTarget.busUrl}/settings`)
       .then(async (response) => (response.ok ? response.json() : null))
       .then((settings: unknown) => {
         if (
@@ -77,6 +80,18 @@ export function ChatPanel({
         }
       })
       .catch(() => undefined);
+  }, [runtimeTarget.busUrl]);
+
+  useEffect(() => {
+    const applySettings = () => {
+      setRuntimeTarget(resolveRuntimeTarget(loadRuntimeSettings()));
+    };
+    window.addEventListener(SETTINGS_EVENT, applySettings);
+    window.addEventListener("storage", applySettings);
+    return () => {
+      window.removeEventListener(SETTINGS_EVENT, applySettings);
+      window.removeEventListener("storage", applySettings);
+    };
   }, []);
 
   useEffect(() => {
@@ -100,11 +115,11 @@ export function ChatPanel({
     }
   }, [messages, toolCalls]);
 
-  function handleClose() {
+  const handleClose = () => {
     streamRef.current?.abort();
     streamRef.current = null;
     onClose();
-  }
+  };
 
   function handleStreamEvent(event: OpenResponsesEvent, assistantId: string) {
     if (event.type === "response.output_text.delta" && event.delta) {
@@ -199,9 +214,9 @@ export function ChatPanel({
 
     streamRef.current?.abort();
     streamRef.current = streamOpenResponses({
-      endpoint: `${EVENT_BUS_URL}/chat`,
+      endpoint: `${runtimeTarget.busUrl}/chat`,
       body: {
-        model: defaultModel || "local-model",
+        model: runtimeTarget.model || defaultModel || "local-model",
         messages: conversation,
         agent_id: route.agentId || agentId,
         house_id: HOUSE_ID,
@@ -228,7 +243,7 @@ export function ChatPanel({
         ]);
       },
     });
-  }, [agentId, defaultModel, input, messages, onRunComplete, repo, tools]);
+  }, [agentId, defaultModel, input, messages, onRunComplete, repo, runtimeTarget, tools]);
 
   useEffect(() => {
     if (!isOpen || !prefill) return;

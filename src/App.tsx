@@ -19,9 +19,16 @@ import { Statistics } from "./components/Statistics";
 import { ActivityLog } from "./components/ActivityLog";
 import { HighlightsPanel } from "./components/HighlightsPanel";
 import { MyReposPanel } from "./components/MyReposPanel";
+import { RuntimeSettingsPanel } from "./components/RuntimeSettingsPanel";
 import { logger } from "./lib/logger";
 import { getReadmeActionPresets } from "./lib/orchestrator";
-import type { MineHealthRecord, Repo, RepoSignal, ResearchQueueItem } from "./types";
+import type {
+  LanguageGroup,
+  MineHealthRecord,
+  Repo,
+  RepoSignal,
+  ResearchQueueItem,
+} from "./types";
 
 async function fetchJson<T>(paths: string[]): Promise<T | null> {
   for (const currentPath of paths) {
@@ -34,6 +41,19 @@ async function fetchJson<T>(paths: string[]): Promise<T | null> {
     }
   }
   return null;
+}
+
+function normalizeRepoPayload(jsonData: unknown): Repo[] {
+  if (!Array.isArray(jsonData)) return [];
+
+  if (
+    jsonData.length === 0
+    || (jsonData[0] && typeof jsonData[0] === "object" && "name" in jsonData[0])
+  ) {
+    return jsonData as Repo[];
+  }
+
+  return (jsonData as LanguageGroup[]).flatMap((group) => group.repos || []);
 }
 
 function App() {
@@ -186,11 +206,12 @@ function App() {
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-        return response.json() as Promise<Repo[]>;
+        return response.json() as Promise<unknown>;
       })
       .then((jsonData) => {
+        const flat = normalizeRepoPayload(jsonData);
         startTransition(() => {
-          setAllRepos(Array.isArray(jsonData) ? jsonData : []);
+          setAllRepos(flat);
           setLoading(false);
         });
       })
@@ -397,6 +418,7 @@ function App() {
             <Star size={14} fill="currentColor" className="text-muted" />
             {view === "mine" ? processedMineRepos.length : processedRepos.length} Repos
           </div>
+          <RuntimeSettingsPanel />
         </div>
       </header>
 

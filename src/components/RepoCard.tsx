@@ -1,6 +1,7 @@
 import type { MouseEvent } from 'react';
 import { Repo } from '../types';
 import { Star, GitFork, Calendar, MessageSquare, Microscope, Copy, Bookmark, Lock } from 'lucide-react';
+import { getRepoAboutUrl } from '../lib/repo-links';
 
 interface RepoCardProps {
   repo: Repo;
@@ -14,6 +15,8 @@ interface RepoCardProps {
 }
 
 export function RepoCard({ repo, onClick, onChat, onResearch, onSimilar, onContextMenu, onBookmark, isBookmarked }: RepoCardProps) {
+  const aboutUrl = getRepoAboutUrl(repo);
+
   return (
     <div
       className="repo-card"
@@ -31,7 +34,7 @@ export function RepoCard({ repo, onClick, onChat, onResearch, onSimilar, onConte
         <Bookmark size={16} fill={isBookmarked ? 'currentColor' : 'none'} />
       </button>
       <h3 className="repo-title">
-        <a href={repo.url} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}>
+        <a href={aboutUrl} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}>
           {repo.private ? (
             <span className="repo-title__lock" title="Private repository">
               <Lock size={14} />

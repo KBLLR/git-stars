@@ -16,6 +16,9 @@ concurrency:
 jobs:
   vercel-deploy:
     runs-on: ubuntu-latest
+    env:
+      HAS_VERCEL_SECRETS: ${{ secrets.VERCEL_TOKEN != '' && secrets.VERCEL_ORG_ID != '' && secrets.VERCEL_PROJECT_ID != '' }}
+      HAS_MY_REPOS_TOKEN: ${{ secrets.MY_REPOS_GITHUB_TOKEN != '' }}
 
     steps:
       - name: Checkout repository
@@ -35,21 +38,35 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Prepare house data
+      - name: Refresh starred repositories
         env:
           GITHUB_TOKEN: ${{ secrets.GH_PAT != '' && secrets.GH_PAT || github.token }}
+        run: pnpm run build:data
+
+      - name: Sync my repositories (public + private)
+        if: env.HAS_MY_REPOS_TOKEN == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.MY_REPOS_GITHUB_TOKEN }}
+        run: pnpm run sync:mine
+
+      - name: Skip my repos sync (missing secret)
+        if: env.HAS_MY_REPOS_TOKEN != 'true'
         run: |
-          pnpm run build:data
-          pnpm run sync:mine
-          pnpm run generate:stats
+          echo "Skipping my-repos sync because MY_REPOS_GITHUB_TOKEN is not configured."
+          echo "Add a classic PAT or fine-grained token with access to your repositories."
+
+      - name: Regenerate statistics
+        run: pnpm run generate:stats
 
       - name: Run verification suite
         run: pnpm test
 
       - name: Install Vercel CLI
+        if: env.HAS_VERCEL_SECRETS == 'true'
         run: npm install -g vercel@latest
 
       - name: Pull Vercel Environment Information
+        if: env.HAS_VERCEL_SECRETS == 'true'
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
@@ -57,14 +74,16 @@ jobs:
         run: vercel pull --yes --environment=production
 
       - name: Build Project Artifacts
+        if: env.HAS_VERCEL_SECRETS == 'true'
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_PAT != '' && secrets.GH_PAT || github.token }}
+          GITHUB_TOKEN: ${{ secrets.MY_REPOS_GITHUB_TOKEN != '' && secrets.MY_REPOS_GITHUB_TOKEN || secrets.GH_PAT != '' && secrets.GH_PAT || github.token }}
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
         run: vercel build --prod
 
       - name: Deploy Project Artifacts to Vercel
+        if: env.HAS_VERCEL_SECRETS == 'true'
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
@@ -73,6 +92,13 @@ jobs:
         id: deploy
 
       - name: Output deployment URL
+        if: env.HAS_VERCEL_SECRETS == 'true'
         run: |
           echo "Deployment complete!"
           echo "Visit your site at the Vercel URL provided above"
+
+      - name: Skip Vercel deploy (missing secrets)
+        if: env.HAS_VERCEL_SECRETS != 'true'
+        run: |
+          echo "Skipping Vercel deployment because one or more required GitHub secrets are missing:"
+          echo "VERCEL_TOKEN, VERCEL_ORG_ID, VERCEL_PROJECT_ID"
