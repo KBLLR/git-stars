@@ -6,9 +6,10 @@ The git-stars MCP (Model Context Protocol) server provides a standardized interf
 
 ## Features
 
-- **7 Core Tools**: List, search, filter, and analyze repositories
+- **15 House Tools**: Discovery, research queue, adoption scoring, skill extraction, mission generation, and Mine health
+- **Canonical Derived Data**: Repo signals, research queue, skill extractions, and Mine health are mirrored in `data/` and `public/`
 - **Comprehensive Statistics**: Pre-computed analytics for fast responses
-- **Flexible Querying**: Multiple filter criteria and sorting options
+- **Flexible Querying**: Multiple filter criteria, scopes, and ranking views
 - **Standards Compliant**: Full MCP protocol implementation
 - **High Performance**: Response times < 500ms for most queries
 
@@ -27,15 +28,29 @@ The git-stars MCP (Model Context Protocol) server provides a standardized interf
    npm install
    ```
 
-2. **Generate data** (if not already done):
+2. **Generate starred data**:
    ```bash
    npm run build:data
    ```
 
-3. **Generate statistics**:
+3. **Sync owned/collab repos**:
+   ```bash
+   npm run sync:mine
+   ```
+
+4. **Generate statistics and derived house data**:
    ```bash
    npm run generate:stats
    ```
+
+The starred sync and Mine sync scripts also regenerate the canonical derived files:
+
+- `data/repo-signals.json`
+- `data/research-queue.json`
+- `data/skill-extractions.json`
+- `data/mine-health.json`
+
+Those files are mirrored into `public/` for the UI.
 
 ## Running the MCP Server
 
@@ -48,7 +63,7 @@ npm run mcp
 The server runs on stdio transport and will log to stderr:
 ```
 Loading repository data...
-Loaded 1880 repositories
+Loaded 2236 starred repos and 98 owned/collab repos.
 MCP Server running on stdio
 ```
 
@@ -121,6 +136,43 @@ server.stdin.write(JSON.stringify({
 ```
 
 ## Available Tools
+
+### Discovery And Analytics
+
+- `list_starred_repos`
+- `search_repos`
+- `get_repo_details`
+- `get_statistics`
+- `get_language_breakdown`
+- `get_trending_topics`
+- `filter_by_criteria`
+- `find_similar_repos`
+
+### House Intelligence
+
+- `list_news_signals`
+- `get_research_queue`
+- `update_research_queue`
+- `mark_for_research`
+- `get_adoption_candidates`
+- `extract_repo_skills`
+- `generate_repo_mission`
+- `get_mine_health`
+- `find_repos_missing_readme`
+
+These tools all read from the same canonical house data so `News`, `Mine`, `ReadmePanel`, `ChatPanel`, and the orchestrator stay aligned.
+
+## House Workflows
+
+The orchestrator and specialist agents route through five canonical workflows:
+
+- `news-digest-refresh`
+- `research-queue-flow`
+- `skill-extraction-flow`
+- `adoption-decision-flow`
+- `mine-execution-flow`
+
+## Tool Details
 
 ### 1. list_starred_repos
 

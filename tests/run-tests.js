@@ -7,8 +7,20 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const projectRoot = path.resolve(__dirname, "..");
 
+function readJson(relativePath) {
+  const absolutePath = path.join(projectRoot, relativePath);
+  assert.ok(fs.existsSync(absolutePath), `Expected file to exist: ${relativePath}`);
+  return JSON.parse(fs.readFileSync(absolutePath, "utf-8"));
+}
+
+function assertMirroredJson(relativePath) {
+  const dataCopy = readJson(`data/${relativePath}`);
+  const publicCopy = readJson(`public/${relativePath}`);
+  assert.deepEqual(publicCopy, dataCopy, `Expected public/${relativePath} to mirror data/${relativePath}`);
+  return dataCopy;
+}
+
 const dataCandidates = [
-  path.join(projectRoot, "src", "frontend", "data.json"),
   path.join(projectRoot, "public", "data.json"),
   path.join(projectRoot, "data.json"),
 ];
@@ -16,93 +28,58 @@ const dataCandidates = [
 const dataPath = dataCandidates.find((candidate) => fs.existsSync(candidate));
 assert.ok(dataPath, "Could not find a data.json file to validate.");
 
-const rawData = fs.readFileSync(dataPath, "utf-8");
-const parsed = JSON.parse(rawData);
-assert.ok(Array.isArray(parsed), "data.json must be an array");
-
-const flattenRepos = (data) => {
-  if (data.length === 0) return [];
-  if (data[0] && Array.isArray(data[0].repos)) {
-    return data.flatMap((group) => group.repos || []);
-  }
-  return data;
-};
-
-const repositories = flattenRepos(parsed);
+const repositories = JSON.parse(fs.readFileSync(dataPath, "utf-8"));
+assert.ok(Array.isArray(repositories), "data.json must be an array");
 assert.ok(repositories.length > 0, "Repository list should not be empty");
 
-const filterRepos = (repos, { search = "", language = "all", tag = "all" } = {}) => {
-  const lowerSearch = search.toLowerCase();
-  return repos.filter((repo) => {
-    const matchesSearch =
-      !lowerSearch ||
-      repo.name?.toLowerCase().includes(lowerSearch) ||
-      repo.description?.toLowerCase().includes(lowerSearch);
-
-    const matchesLanguage =
-      language === "all" ||
-      (repo.languages || []).some((entry) => entry.language === language);
-
-    const repoTopics = Array.isArray(repo.topics) ? repo.topics : [];
-    const matchesTag = tag === "all" || repoTopics.includes(tag);
-
-    return matchesSearch && matchesLanguage && matchesTag;
-  });
-};
-
 const firstRepo = repositories[0];
-assert.ok(firstRepo.name, "Each repository should have a name");
-const filteredByName = filterRepos(repositories, { search: firstRepo.name.slice(0, 3) });
+assert.equal(typeof firstRepo.name, "string", "Each repository should have a name");
+assert.equal(typeof firstRepo.author, "string", "Each repository should have an author");
+
+const partialName = firstRepo.name.slice(0, Math.min(3, firstRepo.name.length)).toLowerCase();
+const filteredByName = repositories.filter((repo) =>
+  repo.name?.toLowerCase().includes(partialName)
+  || repo.description?.toLowerCase().includes(partialName),
+);
 assert.ok(filteredByName.length > 0, "Filtering by partial name should return results");
 
-const availableLanguages = new Set();
-repositories.forEach((repo) => {
-  (repo.languages || []).forEach((entry) => {
-    if (entry && typeof entry.language === "string") {
-      availableLanguages.add(entry.language);
-    }
-  });
-});
+const repoSignals = assertMirroredJson("repo-signals.json");
+const researchQueue = assertMirroredJson("research-queue.json");
+const skillExtractions = assertMirroredJson("skill-extractions.json");
+const mineHealth = assertMirroredJson("mine-health.json");
 
-if (availableLanguages.size > 0) {
-  const language = availableLanguages.values().next().value;
-  const filteredByLang = filterRepos(repositories, { language });
-  assert.ok(
-    filteredByLang.every((repo) =>
-      (repo.languages || []).some((entry) => entry.language === language),
-    ),
-    "Language filter should only return matching repositories",
-  );
+assert.ok(Array.isArray(repoSignals) && repoSignals.length > 0, "repo-signals.json should contain ranked signals");
+assert.ok(Array.isArray(researchQueue), "research-queue.json should contain an array");
+assert.ok(Array.isArray(skillExtractions) && skillExtractions.length > 0, "skill-extractions.json should contain canonical extractions");
+assert.ok(Array.isArray(mineHealth) && mineHealth.length > 0, "mine-health.json should contain owned-repo health records");
+
+const firstSignal = repoSignals[0];
+assert.equal(typeof firstSignal.nwo, "string", "RepoSignal.nwo should be present");
+assert.ok(["starred", "mine", "research"].includes(firstSignal.scope), "RepoSignal.scope should be valid");
+assert.ok(["active", "watch", "stale"].includes(firstSignal.staleness), "RepoSignal.staleness should be valid");
+assert.ok(Array.isArray(firstSignal.reasons), "RepoSignal.reasons should be an array");
+assert.ok(Array.isArray(firstSignal.houseSkills), "RepoSignal.houseSkills should be an array");
+
+if (researchQueue.length > 0) {
+  const queuedItem = researchQueue[0];
+  assert.equal(typeof queuedItem.nwo, "string", "ResearchQueueItem.nwo should be present");
+  assert.ok(["queued", "researching", "done", "dismissed"].includes(queuedItem.status), "ResearchQueueItem.status should be valid");
+  assert.equal(typeof queuedItem.updatedAt, "string", "ResearchQueueItem.updatedAt should be present");
 }
 
-if (Array.isArray(firstRepo.topics) && firstRepo.topics.length > 0) {
-  const tag = firstRepo.topics[0];
-  const filteredByTag = filterRepos(repositories, { tag });
-  assert.ok(
-    filteredByTag.every((repo) => (repo.topics || []).includes(tag)),
-    "Tag filter should only return repositories containing the tag",
-  );
-}
+const firstExtraction = skillExtractions[0];
+assert.equal(typeof firstExtraction.nwo, "string", "SkillExtraction.nwo should be present");
+assert.ok(Array.isArray(firstExtraction.capabilities), "SkillExtraction.capabilities should be an array");
+assert.ok(Array.isArray(firstExtraction.houseSkills), "SkillExtraction.houseSkills should be an array");
+assert.ok(Array.isArray(firstExtraction.rules), "SkillExtraction.rules should be an array");
+assert.ok(Array.isArray(firstExtraction.flows), "SkillExtraction.flows should be an array");
+assert.equal(typeof firstExtraction.codexBrief, "string", "SkillExtraction.codexBrief should be present");
+assert.equal(typeof firstExtraction.claudeBrief, "string", "SkillExtraction.claudeBrief should be present");
 
-// Simulate log persistence behaviour
-const storage = new Map();
-const readLogs = () => {
-  const raw = storage.get("actionLogs");
-  if (!raw) return [];
-  return JSON.parse(raw);
-};
-const writeLogs = (logs) => {
-  storage.set("actionLogs", JSON.stringify(logs));
-};
+const firstMineRecord = mineHealth[0];
+assert.equal(typeof firstMineRecord.nwo, "string", "MineHealthRecord.nwo should be present");
+assert.ok(["public", "private"].includes(firstMineRecord.visibility), "MineHealthRecord.visibility should be valid");
+assert.ok(Array.isArray(firstMineRecord.healthFlags), "MineHealthRecord.healthFlags should be an array");
+assert.ok(Array.isArray(firstMineRecord.recommendedActions), "MineHealthRecord.recommendedActions should be an array");
 
-assert.deepEqual(readLogs(), [], "Log store should be empty initially");
-
-const newLog = { time: new Date().toISOString(), type: "test", details: "unit" };
-const logsAfterInsert = [...readLogs(), newLog].slice(-100);
-writeLogs(logsAfterInsert);
-
-const persisted = readLogs();
-assert.equal(persisted.length, 1, "Log store should contain the appended entry");
-assert.equal(persisted[0].type, "test", "Persisted log should retain its data");
-
-console.log("All data and log checks passed.");
+console.log("Derived data and mirroring checks passed.");

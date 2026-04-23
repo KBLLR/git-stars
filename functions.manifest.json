@@ -1,489 +1,483 @@
 {
   "$schema": "../../htdi-collective-agency/schemas/flow-manifest.schema.json",
   "house_id": "git-stars",
-  "version": "1.0.0",
-  "description": "GitHub Repository Discovery & Analytics Platform with MCP server for AI agent integration",
+  "version": "2.0.0",
+  "description": "Git Stars house manifest for discovery, research, adoption, skill extraction, and owned-repo execution workflows.",
   "items": [
     {
       "id": "git-stars:repo-analyst",
       "type": "agent",
       "status": "active",
       "name": "Repository Analyst",
-      "description": "Analyzes repository patterns, languages, and trends across starred repos",
+      "description": "Runs hybrid News, statistics, and adoption-intelligence workflows.",
       "provider": "mlx-local",
       "model": "/Users/davidcaballero/core-x-kbllr_0/model-zoo/models/text/qwen2.5-14b-4bit",
       "promptPath": "./agents/repo-analyst.md",
-      "skills": [
-        "repo-analysis",
-        "trend-detection"
-      ],
-      "tools": [
-        "get_statistics",
-        "get_language_breakdown",
-        "get_trending_topics"
-      ],
-      "capabilities": [
-        "analytics",
-        "insights"
-      ],
+      "skills": ["repo-research", "repo-adoption"],
+      "tools": ["list_news_signals", "get_statistics", "get_language_breakdown", "get_trending_topics", "get_adoption_candidates"],
+      "capabilities": ["analytics", "intelligence", "adoption"],
       "house_binding": "local",
-      "house_id": "git-stars",
-      "_envelope": {
-        "version": "1.0.0",
-        "generated_at": "2026-02-06T18:24:23.158169+00:00",
-        "source_path": "houses/git-stars/functions.manifest.json"
-      }
+      "house_id": "git-stars"
     },
     {
       "id": "git-stars:repo-navigator",
       "type": "agent",
       "status": "active",
       "name": "Repository Navigator",
-      "description": "Helps discover and filter repositories based on criteria",
+      "description": "Discovers, filters, and compares repositories.",
       "provider": "mlx-local",
       "model": "/Users/davidcaballero/core-x-kbllr_0/model-zoo/models/text/qwen2.5-14b-4bit",
       "promptPath": "./agents/repo-navigator.md",
-      "skills": [
-        "repo-discovery"
-      ],
-      "tools": [
-        "list_starred_repos",
-        "search_repos",
-        "filter_by_criteria"
-      ],
-      "capabilities": [
-        "search",
-        "discovery",
-        "navigation"
-      ],
+      "skills": ["repo-discovery"],
+      "tools": ["list_starred_repos", "search_repos", "filter_by_criteria", "find_similar_repos", "get_repo_details"],
+      "capabilities": ["search", "discovery", "navigation"],
       "house_binding": "local",
-      "house_id": "git-stars",
-      "_envelope": {
-        "version": "1.0.0",
-        "generated_at": "2026-02-06T18:24:23.158176+00:00",
-        "source_path": "houses/git-stars/functions.manifest.json"
-      }
+      "house_id": "git-stars"
+    },
+    {
+      "id": "git-stars:alignment-scout",
+      "type": "agent",
+      "status": "active",
+      "name": "Alignment Scout",
+      "description": "Owns research-queue state and ecosystem fit decisions.",
+      "provider": "mlx-local",
+      "model": "/Users/davidcaballero/core-x-kbllr_0/model-zoo/models/text/qwen2.5-14b-4bit",
+      "promptPath": "./agents/alignment-scout.md",
+      "skills": ["repo-research", "repo-adoption"],
+      "tools": ["get_research_queue", "update_research_queue", "extract_repo_skills", "get_adoption_candidates"],
+      "capabilities": ["research", "alignment", "adoption"],
+      "house_binding": "local",
+      "house_id": "git-stars"
+    },
+    {
+      "id": "git-stars:tool-architect",
+      "type": "agent",
+      "status": "active",
+      "name": "Tool Architect",
+      "description": "Produces canonical skills, rules, flows, and model-specific mission briefs.",
+      "provider": "mlx-local",
+      "model": "/Users/davidcaballero/core-x-kbllr_0/model-zoo/models/text/qwen2.5-14b-4bit",
+      "promptPath": "./agents/tool-architect.md",
+      "skills": ["skill-extraction", "repo-adoption"],
+      "tools": ["extract_repo_skills", "generate_repo_mission", "get_adoption_candidates"],
+      "capabilities": ["skills", "mission-generation", "toolization"],
+      "house_binding": "local",
+      "house_id": "git-stars"
+    },
+    {
+      "id": "git-stars:repo-ops",
+      "type": "agent",
+      "status": "active",
+      "name": "Repo Ops",
+      "description": "Owns Mine execution workflows for README, maintenance, template, and mission actions.",
+      "provider": "mlx-local",
+      "model": "/Users/davidcaballero/core-x-kbllr_0/model-zoo/models/text/qwen2.5-14b-4bit",
+      "promptPath": "./agents/repo-ops.md",
+      "skills": ["mine-execution"],
+      "tools": ["get_mine_health", "find_repos_missing_readme", "extract_repo_skills", "generate_repo_mission"],
+      "capabilities": ["repo-ops", "maintenance", "execution"],
+      "house_binding": "local",
+      "house_id": "git-stars"
     },
     {
       "id": "git-stars:list_starred_repos",
       "type": "tool",
       "status": "active",
       "name": "List Starred Repos",
-      "description": "List repositories with pagination and sorting options",
+      "description": "List starred repositories with pagination and sorting options.",
       "category": "query",
-      "entry_point": "./mcp-server/index.js",
+      "entry_point": "./src/mcp-server/index.js",
       "mcp_server": "git-stars-mcp",
-      "input_schema": {
-        "type": "object",
-        "properties": {
-          "limit": {
-            "type": "number",
-            "default": 20
-          },
-          "offset": {
-            "type": "number",
-            "default": 0
-          },
-          "sortBy": {
-            "type": "string",
-            "enum": [
-              "stars",
-              "forks",
-              "name",
-              "created"
-            ],
-            "default": "stars"
-          }
-        }
-      },
-      "capabilities": [
-        "listing",
-        "pagination"
-      ],
+      "capabilities": ["listing", "pagination"],
       "house_binding": "shared",
-      "house_id": "git-stars",
-      "_envelope": {
-        "version": "1.0.0",
-        "generated_at": "2026-02-06T18:24:23.158181+00:00",
-        "source_path": "houses/git-stars/functions.manifest.json"
-      }
+      "house_id": "git-stars"
     },
     {
       "id": "git-stars:search_repos",
       "type": "tool",
       "status": "active",
       "name": "Search Repos",
-      "description": "Full-text search with language filtering",
+      "description": "Search repositories by text, topic, language, and popularity.",
       "category": "query",
-      "entry_point": "./mcp-server/index.js",
+      "entry_point": "./src/mcp-server/index.js",
       "mcp_server": "git-stars-mcp",
-      "input_schema": {
-        "type": "object",
-        "properties": {
-          "query": {
-            "type": "string",
-            "description": "Search query"
-          },
-          "language": {
-            "type": "string",
-            "description": "Filter by language"
-          },
-          "minStars": {
-            "type": "number"
-          },
-          "maxResults": {
-            "type": "number",
-            "default": 10
-          }
-        },
-        "required": [
-          "query"
-        ]
-      },
-      "capabilities": [
-        "search",
-        "filtering"
-      ],
+      "capabilities": ["search", "filtering"],
       "house_binding": "shared",
-      "house_id": "git-stars",
-      "_envelope": {
-        "version": "1.0.0",
-        "generated_at": "2026-02-06T18:24:23.158186+00:00",
-        "source_path": "houses/git-stars/functions.manifest.json"
-      }
+      "house_id": "git-stars"
     },
     {
       "id": "git-stars:get_repo_details",
       "type": "tool",
       "status": "active",
       "name": "Get Repo Details",
-      "description": "Detailed info for a specific repository",
+      "description": "Fetch detailed repository metadata for one repo.",
       "category": "query",
-      "entry_point": "./mcp-server/index.js",
+      "entry_point": "./src/mcp-server/index.js",
       "mcp_server": "git-stars-mcp",
-      "input_schema": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string",
-            "description": "Repository name"
-          },
-          "author": {
-            "type": "string",
-            "description": "Repository owner (optional)"
-          }
-        },
-        "required": [
-          "name"
-        ]
-      },
-      "capabilities": [
-        "details",
-        "lookup"
-      ],
+      "capabilities": ["details", "lookup"],
       "house_binding": "shared",
-      "house_id": "git-stars",
-      "_envelope": {
-        "version": "1.0.0",
-        "generated_at": "2026-02-06T18:24:23.158191+00:00",
-        "source_path": "houses/git-stars/functions.manifest.json"
-      }
+      "house_id": "git-stars"
     },
     {
       "id": "git-stars:get_statistics",
       "type": "tool",
       "status": "active",
       "name": "Get Statistics",
-      "description": "Comprehensive aggregate analytics snapshot",
+      "description": "Return cached aggregate analytics for starred repositories.",
       "category": "analytics",
-      "entry_point": "./mcp-server/index.js",
+      "entry_point": "./src/mcp-server/index.js",
       "mcp_server": "git-stars-mcp",
-      "input_schema": {
-        "type": "object",
-        "properties": {}
-      },
-      "capabilities": [
-        "analytics",
-        "summary"
-      ],
+      "capabilities": ["analytics", "summary"],
       "house_binding": "shared",
-      "house_id": "git-stars",
-      "_envelope": {
-        "version": "1.0.0",
-        "generated_at": "2026-02-06T18:24:23.158196+00:00",
-        "source_path": "houses/git-stars/functions.manifest.json"
-      }
+      "house_id": "git-stars"
     },
     {
       "id": "git-stars:get_language_breakdown",
       "type": "tool",
       "status": "active",
       "name": "Get Language Breakdown",
-      "description": "Language distribution analysis across repositories",
+      "description": "Return language distribution analytics.",
       "category": "analytics",
-      "entry_point": "./mcp-server/index.js",
+      "entry_point": "./src/mcp-server/index.js",
       "mcp_server": "git-stars-mcp",
-      "input_schema": {
-        "type": "object",
-        "properties": {
-          "topN": {
-            "type": "number",
-            "default": 10
-          }
-        }
-      },
-      "capabilities": [
-        "analytics",
-        "languages"
-      ],
+      "capabilities": ["analytics", "languages"],
       "house_binding": "shared",
-      "house_id": "git-stars",
-      "_envelope": {
-        "version": "1.0.0",
-        "generated_at": "2026-02-06T18:24:23.158200+00:00",
-        "source_path": "houses/git-stars/functions.manifest.json"
-      }
+      "house_id": "git-stars"
     },
     {
       "id": "git-stars:get_trending_topics",
       "type": "tool",
       "status": "active",
       "name": "Get Trending Topics",
-      "description": "Popular topics extraction from repository tags",
+      "description": "Return popular topics across repositories.",
       "category": "analytics",
-      "entry_point": "./mcp-server/index.js",
+      "entry_point": "./src/mcp-server/index.js",
       "mcp_server": "git-stars-mcp",
-      "input_schema": {
-        "type": "object",
-        "properties": {
-          "limit": {
-            "type": "number",
-            "default": 20
-          }
-        }
-      },
-      "capabilities": [
-        "analytics",
-        "topics"
-      ],
+      "capabilities": ["analytics", "topics"],
       "house_binding": "shared",
-      "house_id": "git-stars",
-      "_envelope": {
-        "version": "1.0.0",
-        "generated_at": "2026-02-06T18:24:23.158205+00:00",
-        "source_path": "houses/git-stars/functions.manifest.json"
-      }
+      "house_id": "git-stars"
     },
     {
       "id": "git-stars:filter_by_criteria",
       "type": "tool",
       "status": "active",
       "name": "Filter by Criteria",
-      "description": "Multi-criteria repository filtering",
+      "description": "Apply structured repository filters.",
       "category": "query",
-      "entry_point": "./mcp-server/index.js",
+      "entry_point": "./src/mcp-server/index.js",
       "mcp_server": "git-stars-mcp",
-      "input_schema": {
-        "type": "object",
-        "properties": {
-          "language": {
-            "type": "string"
-          },
-          "topic": {
-            "type": "string"
-          },
-          "license": {
-            "type": "string"
-          },
-          "minStars": {
-            "type": "number"
-          },
-          "maxStars": {
-            "type": "number"
-          },
-          "minForks": {
-            "type": "number"
-          },
-          "author": {
-            "type": "string"
-          }
-        }
-      },
-      "capabilities": [
-        "filtering",
-        "multi-criteria"
-      ],
+      "capabilities": ["filtering", "multi-criteria"],
       "house_binding": "shared",
-      "house_id": "git-stars",
-      "_envelope": {
-        "version": "1.0.0",
-        "generated_at": "2026-02-06T18:24:23.158209+00:00",
-        "source_path": "houses/git-stars/functions.manifest.json"
-      }
+      "house_id": "git-stars"
+    },
+    {
+      "id": "git-stars:find_similar_repos",
+      "type": "tool",
+      "status": "active",
+      "name": "Find Similar Repos",
+      "description": "Find repositories similar to a given one.",
+      "category": "query",
+      "entry_point": "./src/mcp-server/index.js",
+      "mcp_server": "git-stars-mcp",
+      "capabilities": ["similarity", "discovery"],
+      "house_binding": "shared",
+      "house_id": "git-stars"
+    },
+    {
+      "id": "git-stars:list_news_signals",
+      "type": "tool",
+      "status": "active",
+      "name": "List News Signals",
+      "description": "Return ranked hybrid News signals from watched, research, mine, or starred scope.",
+      "category": "analytics",
+      "entry_point": "./src/mcp-server/index.js",
+      "mcp_server": "git-stars-mcp",
+      "capabilities": ["news", "signals", "ranking"],
+      "house_binding": "shared",
+      "house_id": "git-stars"
+    },
+    {
+      "id": "git-stars:get_research_queue",
+      "type": "tool",
+      "status": "active",
+      "name": "Get Research Queue",
+      "description": "Read the canonical research queue.",
+      "category": "research",
+      "entry_point": "./src/mcp-server/index.js",
+      "mcp_server": "git-stars-mcp",
+      "capabilities": ["research", "queue"],
+      "house_binding": "shared",
+      "house_id": "git-stars"
+    },
+    {
+      "id": "git-stars:update_research_queue",
+      "type": "tool",
+      "status": "active",
+      "name": "Update Research Queue",
+      "description": "Create or update research queue state for a repository.",
+      "category": "research",
+      "entry_point": "./src/mcp-server/index.js",
+      "mcp_server": "git-stars-mcp",
+      "capabilities": ["research", "queue", "state"],
+      "house_binding": "shared",
+      "house_id": "git-stars"
+    },
+    {
+      "id": "git-stars:mark_for_research",
+      "type": "tool",
+      "status": "active",
+      "name": "Mark for Research",
+      "description": "Compatibility alias that queues a repository for research.",
+      "category": "research",
+      "entry_point": "./src/mcp-server/index.js",
+      "mcp_server": "git-stars-mcp",
+      "capabilities": ["research", "queue"],
+      "house_binding": "shared",
+      "house_id": "git-stars"
+    },
+    {
+      "id": "git-stars:get_adoption_candidates",
+      "type": "tool",
+      "status": "active",
+      "name": "Get Adoption Candidates",
+      "description": "Return repositories ranked for house, tool, service, or template adoption.",
+      "category": "adoption",
+      "entry_point": "./src/mcp-server/index.js",
+      "mcp_server": "git-stars-mcp",
+      "capabilities": ["adoption", "ranking"],
+      "house_binding": "shared",
+      "house_id": "git-stars"
+    },
+    {
+      "id": "git-stars:extract_repo_skills",
+      "type": "tool",
+      "status": "active",
+      "name": "Extract Repo Skills",
+      "description": "Return the canonical skill extraction record for a repository.",
+      "category": "skills",
+      "entry_point": "./src/mcp-server/index.js",
+      "mcp_server": "git-stars-mcp",
+      "capabilities": ["skills", "rules", "flows"],
+      "house_binding": "shared",
+      "house_id": "git-stars"
+    },
+    {
+      "id": "git-stars:generate_repo_mission",
+      "type": "tool",
+      "status": "active",
+      "name": "Generate Repo Mission",
+      "description": "Generate a canonical Codex or Claude mission brief for a repository.",
+      "category": "skills",
+      "entry_point": "./src/mcp-server/index.js",
+      "mcp_server": "git-stars-mcp",
+      "capabilities": ["missions", "adapters"],
+      "house_binding": "shared",
+      "house_id": "git-stars"
+    },
+    {
+      "id": "git-stars:get_mine_health",
+      "type": "tool",
+      "status": "active",
+      "name": "Get Mine Health",
+      "description": "Return owned-repo actionability and readiness records.",
+      "category": "repo-ops",
+      "entry_point": "./src/mcp-server/index.js",
+      "mcp_server": "git-stars-mcp",
+      "capabilities": ["repo-ops", "health"],
+      "house_binding": "shared",
+      "house_id": "git-stars"
+    },
+    {
+      "id": "git-stars:find_repos_missing_readme",
+      "type": "tool",
+      "status": "active",
+      "name": "Find Repos Missing README",
+      "description": "List repositories missing README coverage in Mine or starred scope.",
+      "category": "repo-ops",
+      "entry_point": "./src/mcp-server/index.js",
+      "mcp_server": "git-stars-mcp",
+      "capabilities": ["repo-ops", "documentation"],
+      "house_binding": "shared",
+      "house_id": "git-stars"
     },
     {
       "id": "git-stars:sync_starred_repos",
       "type": "tool",
       "status": "active",
       "name": "Sync Starred Repos",
-      "description": "Fetch latest starred repos from GitHub API",
+      "description": "Fetch latest starred repos and regenerate derived Git Stars artifacts.",
       "category": "sync",
       "entry_point": "./scripts/generator.js",
       "mcp_server": "house-functions",
-      "input_schema": {
-        "type": "object",
-        "properties": {
-          "force": {
-            "type": "boolean",
-            "default": false
-          }
-        }
-      },
-      "capabilities": [
-        "sync",
-        "github-api"
-      ],
+      "capabilities": ["sync", "github-api"],
       "house_binding": "local",
-      "house_id": "git-stars",
-      "_envelope": {
-        "version": "1.0.0",
-        "generated_at": "2026-02-06T18:24:23.158213+00:00",
-        "source_path": "houses/git-stars/functions.manifest.json"
-      }
+      "house_id": "git-stars"
     },
     {
-      "id": "git-stars:repo-analysis",
-      "type": "skill",
+      "id": "git-stars:sync_my_repos",
+      "type": "tool",
       "status": "active",
-      "name": "Repository Analysis",
-      "description": "Analyze patterns and trends across starred repositories",
-      "category": "analytics",
-      "entry_point": "./skills/repo-analysis/SKILL.md",
-      "tools": [
-        "get_statistics",
-        "get_language_breakdown",
-        "get_trending_topics"
-      ],
-      "agents": [
-        "repo-analyst"
-      ],
-      "capabilities": [
-        "analytics",
-        "insights"
-      ],
-      "house_binding": "shared",
-      "house_id": "git-stars",
-      "_envelope": {
-        "version": "1.0.0",
-        "generated_at": "2026-02-06T18:24:23.158218+00:00",
-        "source_path": "houses/git-stars/functions.manifest.json"
-      }
+      "name": "Sync My Repos",
+      "description": "Fetch owned and collaborative repos and regenerate Mine artifacts.",
+      "category": "sync",
+      "entry_point": "./scripts/my-repos.js",
+      "mcp_server": "house-functions",
+      "capabilities": ["sync", "github-api", "mine"],
+      "house_binding": "local",
+      "house_id": "git-stars"
     },
     {
       "id": "git-stars:repo-discovery",
       "type": "skill",
       "status": "active",
-      "name": "Repository Discovery",
-      "description": "Find and filter repositories by various criteria",
-      "category": "search",
+      "name": "Repo Discovery",
+      "description": "Discover, filter, compare, and cluster repositories.",
+      "category": "skills",
       "entry_point": "./skills/repo-discovery/SKILL.md",
-      "tools": [
-        "list_starred_repos",
-        "search_repos",
-        "filter_by_criteria",
-        "get_repo_details"
-      ],
-      "agents": [
-        "repo-navigator"
-      ],
-      "capabilities": [
-        "search",
-        "discovery"
-      ],
       "house_binding": "shared",
-      "house_id": "git-stars",
-      "_envelope": {
-        "version": "1.0.0",
-        "generated_at": "2026-02-06T18:24:23.158223+00:00",
-        "source_path": "houses/git-stars/functions.manifest.json"
-      }
+      "house_id": "git-stars"
+    },
+    {
+      "id": "git-stars:repo-research",
+      "type": "skill",
+      "status": "active",
+      "name": "Repo Research",
+      "description": "Queue, review, and summarize repository research work.",
+      "category": "skills",
+      "entry_point": "./skills/repo-research/SKILL.md",
+      "house_binding": "shared",
+      "house_id": "git-stars"
+    },
+    {
+      "id": "git-stars:skill-extraction",
+      "type": "skill",
+      "status": "active",
+      "name": "Skill Extraction",
+      "description": "Extract canonical skills, rules, flows, and mission briefs.",
+      "category": "skills",
+      "entry_point": "./skills/skill-extraction/SKILL.md",
+      "house_binding": "shared",
+      "house_id": "git-stars"
+    },
+    {
+      "id": "git-stars:repo-adoption",
+      "type": "skill",
+      "status": "active",
+      "name": "Repo Adoption",
+      "description": "Score and classify adoption fit across houses, tools, services, and templates.",
+      "category": "skills",
+      "entry_point": "./skills/repo-adoption/SKILL.md",
+      "house_binding": "shared",
+      "house_id": "git-stars"
+    },
+    {
+      "id": "git-stars:mine-execution",
+      "type": "skill",
+      "status": "active",
+      "name": "Mine Execution",
+      "description": "Run maintenance, README, template, and mission workflows for owned repositories.",
+      "category": "skills",
+      "entry_point": "./skills/mine-execution/SKILL.md",
+      "house_binding": "shared",
+      "house_id": "git-stars"
     },
     {
       "id": "git-stars:starred-repos-db",
       "type": "memory_store",
       "status": "active",
       "name": "Starred Repos Database",
-      "description": "JSON database of starred repositories (1880+ repos)",
+      "description": "Primary repository snapshot for Git Stars.",
       "category": "memory",
       "entry_point": "./data/data.json",
-      "config": {
-        "backend": "json",
-        "path": "./data/data.json",
-        "auto_sync": "daily"
-      },
-      "capabilities": [
-        "memory",
-        "repository-data"
-      ],
+      "config": { "backend": "json", "path": "./data/data.json" },
       "house_binding": "local",
-      "house_id": "git-stars",
-      "_envelope": {
-        "version": "1.0.0",
-        "generated_at": "2026-02-06T18:24:23.158227+00:00",
-        "source_path": "houses/git-stars/functions.manifest.json"
-      }
+      "house_id": "git-stars"
     },
     {
       "id": "git-stars:statistics-cache",
       "type": "memory_store",
       "status": "active",
       "name": "Statistics Cache",
-      "description": "Pre-computed analytics cache",
+      "description": "Pre-computed analytics cache.",
       "category": "memory",
       "entry_point": "./data/stats.json",
-      "config": {
-        "backend": "json",
-        "path": "./data/stats.json"
-      },
-      "capabilities": [
-        "memory",
-        "analytics-cache"
-      ],
+      "config": { "backend": "json", "path": "./data/stats.json" },
       "house_binding": "local",
-      "house_id": "git-stars",
-      "_envelope": {
-        "version": "1.0.0",
-        "generated_at": "2026-02-06T18:24:23.158232+00:00",
-        "source_path": "houses/git-stars/functions.manifest.json"
-      }
+      "house_id": "git-stars"
+    },
+    {
+      "id": "git-stars:repo-signals-cache",
+      "type": "memory_store",
+      "status": "active",
+      "name": "Repo Signals Cache",
+      "description": "Hybrid News and adoption signal cache.",
+      "category": "memory",
+      "entry_point": "./data/repo-signals.json",
+      "config": { "backend": "json", "path": "./data/repo-signals.json" },
+      "house_binding": "local",
+      "house_id": "git-stars"
+    },
+    {
+      "id": "git-stars:research-queue-cache",
+      "type": "memory_store",
+      "status": "active",
+      "name": "Research Queue Cache",
+      "description": "Canonical research queue state.",
+      "category": "memory",
+      "entry_point": "./data/research-queue.json",
+      "config": { "backend": "json", "path": "./data/research-queue.json" },
+      "house_binding": "local",
+      "house_id": "git-stars"
+    },
+    {
+      "id": "git-stars:skill-extractions-cache",
+      "type": "memory_store",
+      "status": "active",
+      "name": "Skill Extractions Cache",
+      "description": "Canonical extracted skills, rules, flows, and mission briefs.",
+      "category": "memory",
+      "entry_point": "./data/skill-extractions.json",
+      "config": { "backend": "json", "path": "./data/skill-extractions.json" },
+      "house_binding": "local",
+      "house_id": "git-stars"
+    },
+    {
+      "id": "git-stars:mine-health-cache",
+      "type": "memory_store",
+      "status": "active",
+      "name": "Mine Health Cache",
+      "description": "Owned-repo health and actionability cache.",
+      "category": "memory",
+      "entry_point": "./data/mine-health.json",
+      "config": { "backend": "json", "path": "./data/mine-health.json" },
+      "house_binding": "local",
+      "house_id": "git-stars"
     }
   ],
   "mcp_server": {
     "name": "git-stars-mcp",
-    "tools_count": 7,
+    "tools_count": 17,
     "protocol": "Model Context Protocol",
-    "entry_point": "./mcp-server/index.js"
+    "entry_point": "./src/mcp-server/index.js"
   },
   "metadata": {
     "endpoints": {
       "dev": "http://localhost:5173",
-      "production": "https://kbllr.github.io/git-stars/",
-      "vercel": "https://git-stars-kbllr.vercel.app"
+      "production": "https://git-stars-kbllr.vercel.app"
     },
     "dependencies": {
-      "vite": "^5.2",
-      "@modelcontextprotocol/sdk": "latest",
-      "@octokit/rest": "latest",
-      "marked": "latest"
+      "vite": "^7.3.1",
+      "@modelcontextprotocol/sdk": "^1.25.3",
+      "@octokit/rest": "^20.1.2"
     },
     "features": [
-      "1880+ starred repositories",
-      "7 MCP tools for AI agents",
-      "Real-time search and filtering",
-      "Language and topic analytics",
-      "Daily GitHub sync via Actions",
-      "Dual deployment (Pages + Vercel)"
+      "Hybrid News intelligence",
+      "Research queue tracking",
+      "Canonical skill extraction",
+      "Claude and Codex mission generation",
+      "Mine execution workspace",
+      "GitHub-backed sync workflows"
     ]
   },
-  "updatedAt": "2026-02-06T18:24:23.158236+00:00"
+  "updatedAt": "2026-04-23T00:00:00.000000+00:00"
 }

@@ -1,0 +1,1617 @@
+[
+  {
+    "nwo": "KBLLR/git-stars",
+    "name": "git-stars",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": true,
+    "updatedAt": "2026-02-04T00:27:32.000Z",
+    "healthFlags": [],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission"
+    ]
+  },
+  {
+    "nwo": "KBLLR/KBLLR_generative_AI23",
+    "name": "KBLLR_generative_AI23",
+    "author": "KBLLR",
+    "visibility": "private",
+    "hasReadme": true,
+    "updatedAt": "2026-02-03T18:04:03.000Z",
+    "healthFlags": [
+      "private"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission"
+    ]
+  },
+  {
+    "nwo": "KBLLR/code-platformer-ai",
+    "name": "code-platformer-ai",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": true,
+    "updatedAt": "2026-02-02T09:23:52.000Z",
+    "healthFlags": [],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/the-meta-chronicle",
+    "name": "the-meta-chronicle",
+    "author": "KBLLR",
+    "visibility": "private",
+    "hasReadme": true,
+    "updatedAt": "2026-01-22T04:54:02.000Z",
+    "healthFlags": [
+      "private"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/gen-idea-lab",
+    "name": "gen-idea-lab",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": true,
+    "updatedAt": "2026-01-06T02:58:58.000Z",
+    "healthFlags": [],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/le-belle-epoch",
+    "name": "le-belle-epoch",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": false,
+    "updatedAt": "2025-12-28T23:22:47.000Z",
+    "healthFlags": [
+      "missing-readme"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "write-readme"
+    ]
+  },
+  {
+    "nwo": "KBLLR/Avatars-Lab",
+    "name": "Avatars-Lab",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": true,
+    "updatedAt": "2025-12-28T19:43:56.000Z",
+    "healthFlags": [],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/code-smart-campus",
+    "name": "code-smart-campus",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": true,
+    "updatedAt": "2025-12-15T00:08:19.000Z",
+    "healthFlags": [],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/mlx-rag-lab",
+    "name": "mlx-rag-lab",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": true,
+    "updatedAt": "2025-12-03T23:28:00.000Z",
+    "healthFlags": [],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/secretsbank",
+    "name": "secretsbank",
+    "author": "KBLLR",
+    "visibility": "private",
+    "hasReadme": true,
+    "updatedAt": "2025-12-01T08:12:07.000Z",
+    "healthFlags": [
+      "private"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/htdi-agentic-lab",
+    "name": "htdi-agentic-lab",
+    "author": "KBLLR",
+    "visibility": "private",
+    "hasReadme": false,
+    "updatedAt": "2025-12-01T08:08:49.000Z",
+    "healthFlags": [
+      "missing-readme",
+      "private"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "write-readme",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/memoryblocks",
+    "name": "memoryblocks",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": true,
+    "updatedAt": "2025-11-23T09:46:11.000Z",
+    "healthFlags": [],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/mlx-openai-server-lab",
+    "name": "mlx-openai-server-lab",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": true,
+    "updatedAt": "2025-11-20T15:37:28.000Z",
+    "healthFlags": [
+      "fork"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/htdi-project",
+    "name": "htdi-project",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": true,
+    "updatedAt": "2025-11-19T15:46:18.000Z",
+    "healthFlags": [],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission"
+    ]
+  },
+  {
+    "nwo": "KBLLR/Leagentdiary",
+    "name": "Leagentdiary",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": true,
+    "updatedAt": "2025-11-18T21:54:17.000Z",
+    "healthFlags": [],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/modal-apps-lab",
+    "name": "modal-apps-lab",
+    "author": "KBLLR",
+    "visibility": "private",
+    "hasReadme": true,
+    "updatedAt": "2025-11-17T13:01:13.000Z",
+    "healthFlags": [
+      "private"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/htdi-agentic-framework",
+    "name": "htdi-agentic-framework",
+    "author": "KBLLR",
+    "visibility": "private",
+    "hasReadme": false,
+    "updatedAt": "2025-11-17T08:38:26.000Z",
+    "healthFlags": [
+      "missing-readme",
+      "private"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "write-readme",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/project_anja",
+    "name": "project_anja",
+    "author": "KBLLR",
+    "visibility": "private",
+    "hasReadme": true,
+    "updatedAt": "2025-11-17T04:02:56.000Z",
+    "healthFlags": [
+      "private"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission"
+    ]
+  },
+  {
+    "nwo": "KBLLR/flirtcopilot",
+    "name": "flirtcopilot",
+    "author": "KBLLR",
+    "visibility": "private",
+    "hasReadme": true,
+    "updatedAt": "2025-11-17T01:52:43.000Z",
+    "healthFlags": [
+      "private"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission"
+    ]
+  },
+  {
+    "nwo": "KBLLR/3dmodel-splats-stager",
+    "name": "3dmodel-splats-stager",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": true,
+    "updatedAt": "2025-11-17T01:49:33.000Z",
+    "healthFlags": [],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/ada-agents",
+    "name": "ada-agents",
+    "author": "KBLLR",
+    "visibility": "private",
+    "hasReadme": true,
+    "updatedAt": "2025-11-17T01:14:37.000Z",
+    "healthFlags": [
+      "private"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/gen_avatar_debate",
+    "name": "gen_avatar_debate",
+    "author": "KBLLR",
+    "visibility": "private",
+    "hasReadme": true,
+    "updatedAt": "2025-11-16T20:58:46.000Z",
+    "healthFlags": [
+      "private"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission"
+    ]
+  },
+  {
+    "nwo": "KBLLR/moonsyc",
+    "name": "moonsyc",
+    "author": "KBLLR",
+    "visibility": "private",
+    "hasReadme": true,
+    "updatedAt": "2025-11-15T21:21:45.000Z",
+    "healthFlags": [
+      "private"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/city-blocks",
+    "name": "city-blocks",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": true,
+    "updatedAt": "2025-11-10T04:51:23.000Z",
+    "healthFlags": [],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission"
+    ]
+  },
+  {
+    "nwo": "KBLLR/KBLLR-template-ThreeJS",
+    "name": "KBLLR-template-ThreeJS",
+    "author": "KBLLR",
+    "visibility": "private",
+    "hasReadme": true,
+    "updatedAt": "2025-10-18T14:19:46.000Z",
+    "healthFlags": [
+      "private",
+      "template-candidate"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "template-plan",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/panorama-to-cubemap",
+    "name": "panorama-to-cubemap",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": true,
+    "updatedAt": "2025-10-18T04:17:29.000Z",
+    "healthFlags": [
+      "fork"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/icon-generator",
+    "name": "icon-generator",
+    "author": "KBLLR",
+    "visibility": "private",
+    "hasReadme": true,
+    "updatedAt": "2025-10-15T22:16:19.000Z",
+    "healthFlags": [
+      "private"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission"
+    ]
+  },
+  {
+    "nwo": "KBLLR/kbllr-graphics-threejs",
+    "name": "kbllr-graphics-threejs",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": true,
+    "updatedAt": "2025-10-15T21:10:40.000Z",
+    "healthFlags": [],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/Threejs-nerf-visualizer",
+    "name": "Threejs-nerf-visualizer",
+    "author": "KBLLR",
+    "visibility": "private",
+    "hasReadme": true,
+    "updatedAt": "2025-10-13T17:02:04.000Z",
+    "healthFlags": [
+      "private"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/LANDING_PAGE-001",
+    "name": "LANDING_PAGE-001",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": true,
+    "updatedAt": "2025-10-11T10:16:37.000Z",
+    "healthFlags": [],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/HCI_modules_test001",
+    "name": "HCI_modules_test001",
+    "author": "KBLLR",
+    "visibility": "private",
+    "hasReadme": true,
+    "updatedAt": "2025-10-10T13:48:42.000Z",
+    "healthFlags": [
+      "private"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission"
+    ]
+  },
+  {
+    "nwo": "KBLLR/3DKNIGHT.art",
+    "name": "3DKNIGHT.art",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": true,
+    "updatedAt": "2025-10-09T17:21:52.000Z",
+    "healthFlags": [],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission"
+    ]
+  },
+  {
+    "nwo": "KBLLR/Final-MariCoin",
+    "name": "Final-MariCoin",
+    "author": "KBLLR",
+    "visibility": "private",
+    "hasReadme": true,
+    "updatedAt": "2025-10-09T14:25:50.000Z",
+    "healthFlags": [
+      "private"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission"
+    ]
+  },
+  {
+    "nwo": "KBLLR/Documentation_learnings-MMXX-MMXXII",
+    "name": "Documentation_learnings-MMXX-MMXXII",
+    "author": "KBLLR",
+    "visibility": "private",
+    "hasReadme": true,
+    "updatedAt": "2025-10-09T09:24:50.000Z",
+    "healthFlags": [
+      "private"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission"
+    ]
+  },
+  {
+    "nwo": "KBLLR/livekit-project-idea-lab",
+    "name": "livekit-project-idea-lab",
+    "author": "KBLLR",
+    "visibility": "private",
+    "hasReadme": true,
+    "updatedAt": "2025-10-05T15:39:24.000Z",
+    "healthFlags": [
+      "private"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/empathic-ai",
+    "name": "empathic-ai",
+    "author": "KBLLR",
+    "visibility": "private",
+    "hasReadme": true,
+    "updatedAt": "2025-10-01T10:13:37.000Z",
+    "healthFlags": [
+      "private"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/webgi-scene",
+    "name": "webgi-scene",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": true,
+    "updatedAt": "2025-09-23T22:21:30.000Z",
+    "healthFlags": [],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/MariCoin",
+    "name": "MariCoin",
+    "author": "KBLLR",
+    "visibility": "private",
+    "hasReadme": true,
+    "updatedAt": "2025-07-22T19:38:16.000Z",
+    "healthFlags": [
+      "private"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission"
+    ]
+  },
+  {
+    "nwo": "KBLLR/ChatDev",
+    "name": "ChatDev",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": true,
+    "updatedAt": "2025-07-17T15:33:54.000Z",
+    "healthFlags": [
+      "fork"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/Auto-GPT",
+    "name": "Auto-GPT",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": true,
+    "updatedAt": "2025-07-16T20:29:43.000Z",
+    "healthFlags": [
+      "fork"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/ai-comic-factory",
+    "name": "ai-comic-factory",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": true,
+    "updatedAt": "2025-07-16T20:22:31.000Z",
+    "healthFlags": [
+      "fork"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/talking-heads-papers",
+    "name": "talking-heads-papers",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": true,
+    "updatedAt": "2025-07-13T18:31:50.000Z",
+    "healthFlags": [
+      "fork"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/v0-cyberpunk-dashboard-design",
+    "name": "v0-cyberpunk-dashboard-design",
+    "author": "KBLLR",
+    "visibility": "private",
+    "hasReadme": true,
+    "updatedAt": "2025-07-03T11:49:38.000Z",
+    "healthFlags": [
+      "private"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/3D-model-viewer-configurator",
+    "name": "3D-model-viewer-configurator",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": true,
+    "updatedAt": "2025-06-18T03:37:27.000Z",
+    "healthFlags": [],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/avatar-os",
+    "name": "avatar-os",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": false,
+    "updatedAt": "2025-06-17T21:10:26.000Z",
+    "healthFlags": [
+      "missing-readme"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "write-readme"
+    ]
+  },
+  {
+    "nwo": "KBLLR/mindmesh",
+    "name": "mindmesh",
+    "author": "KBLLR",
+    "visibility": "private",
+    "hasReadme": true,
+    "updatedAt": "2025-05-04T17:25:59.000Z",
+    "healthFlags": [
+      "private"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/Speech-Services-Azure",
+    "name": "Speech-Services-Azure",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": true,
+    "updatedAt": "2025-04-03T00:46:35.000Z",
+    "healthFlags": [
+      "stale"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "maintenance-plan",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/dam-test",
+    "name": "dam-test",
+    "author": "KBLLR",
+    "visibility": "private",
+    "hasReadme": true,
+    "updatedAt": "2025-02-12T19:06:32.000Z",
+    "healthFlags": [
+      "stale",
+      "private"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "maintenance-plan"
+    ]
+  },
+  {
+    "nwo": "KBLLR/simple-flask-api-restx",
+    "name": "simple-flask-api-restx",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": true,
+    "updatedAt": "2025-02-04T12:41:49.000Z",
+    "healthFlags": [
+      "stale"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "maintenance-plan",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/validator",
+    "name": "validator",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": true,
+    "updatedAt": "2025-01-25T14:05:49.000Z",
+    "healthFlags": [
+      "stale"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "maintenance-plan",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/Blender-GPT",
+    "name": "Blender-GPT",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": true,
+    "updatedAt": "2024-09-09T20:11:08.000Z",
+    "healthFlags": [
+      "stale",
+      "fork"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "maintenance-plan",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/dja-nominations-tool",
+    "name": "dja-nominations-tool",
+    "author": "KBLLR",
+    "visibility": "private",
+    "hasReadme": true,
+    "updatedAt": "2024-08-14T12:48:30.000Z",
+    "healthFlags": [
+      "stale",
+      "private"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "maintenance-plan"
+    ]
+  },
+  {
+    "nwo": "KBLLR/dja_panel_dashboard",
+    "name": "dja_panel_dashboard",
+    "author": "KBLLR",
+    "visibility": "private",
+    "hasReadme": true,
+    "updatedAt": "2024-08-14T11:21:38.000Z",
+    "healthFlags": [
+      "stale",
+      "private"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "maintenance-plan",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/dja-db",
+    "name": "dja-db",
+    "author": "KBLLR",
+    "visibility": "private",
+    "hasReadme": true,
+    "updatedAt": "2024-08-08T04:54:39.000Z",
+    "healthFlags": [
+      "stale",
+      "private"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "maintenance-plan",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/DJA-candidates-dashboard",
+    "name": "DJA-candidates-dashboard",
+    "author": "KBLLR",
+    "visibility": "private",
+    "hasReadme": true,
+    "updatedAt": "2024-07-28T13:25:36.000Z",
+    "healthFlags": [
+      "stale",
+      "private"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "maintenance-plan",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/gpt4o-voice-preview-main",
+    "name": "gpt4o-voice-preview-main",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": true,
+    "updatedAt": "2024-05-22T16:06:10.000Z",
+    "healthFlags": [
+      "stale"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "maintenance-plan",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/Deep-Dive-Into-AI-With-MLX-PyTorch",
+    "name": "Deep-Dive-Into-AI-With-MLX-PyTorch",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": true,
+    "updatedAt": "2024-03-05T17:27:49.000Z",
+    "healthFlags": [
+      "stale",
+      "fork"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "maintenance-plan",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/sdxl_lighting",
+    "name": "sdxl_lighting",
+    "author": "KBLLR",
+    "visibility": "private",
+    "hasReadme": true,
+    "updatedAt": "2024-02-27T23:48:19.000Z",
+    "healthFlags": [
+      "stale",
+      "private"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "maintenance-plan"
+    ]
+  },
+  {
+    "nwo": "KBLLR/StableCascade",
+    "name": "StableCascade",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": true,
+    "updatedAt": "2024-02-21T07:51:35.000Z",
+    "healthFlags": [
+      "stale",
+      "fork"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "maintenance-plan"
+    ]
+  },
+  {
+    "nwo": "KBLLR/oblik_3d-visualiser",
+    "name": "oblik_3d-visualiser",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": true,
+    "updatedAt": "2024-02-12T19:02:26.000Z",
+    "healthFlags": [
+      "stale"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "maintenance-plan",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/whisperkittools",
+    "name": "whisperkittools",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": true,
+    "updatedAt": "2024-01-30T14:11:53.000Z",
+    "healthFlags": [
+      "stale",
+      "fork"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "maintenance-plan",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/tldraw-mlx",
+    "name": "tldraw-mlx",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": true,
+    "updatedAt": "2023-12-12T13:55:38.000Z",
+    "healthFlags": [
+      "stale",
+      "template-candidate"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "maintenance-plan",
+      "template-plan",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/the-generalist-ai",
+    "name": "the-generalist-ai",
+    "author": "KBLLR",
+    "visibility": "private",
+    "hasReadme": true,
+    "updatedAt": "2023-10-14T10:32:11.000Z",
+    "healthFlags": [
+      "stale",
+      "private"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "maintenance-plan",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/full-stack-documentation-site",
+    "name": "full-stack-documentation-site",
+    "author": "KBLLR",
+    "visibility": "private",
+    "hasReadme": true,
+    "updatedAt": "2023-10-14T07:25:18.000Z",
+    "healthFlags": [
+      "stale",
+      "private"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "maintenance-plan",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/Do-Project",
+    "name": "Do-Project",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": false,
+    "updatedAt": "2023-10-11T21:17:08.000Z",
+    "healthFlags": [
+      "missing-readme",
+      "stale"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "write-readme",
+      "maintenance-plan",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/cog-sdxl",
+    "name": "cog-sdxl",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": true,
+    "updatedAt": "2023-09-15T14:34:18.000Z",
+    "healthFlags": [
+      "stale",
+      "fork"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "maintenance-plan",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/HomeLab",
+    "name": "HomeLab",
+    "author": "KBLLR",
+    "visibility": "private",
+    "hasReadme": true,
+    "updatedAt": "2023-09-12T14:24:57.000Z",
+    "healthFlags": [
+      "stale",
+      "private"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "maintenance-plan"
+    ]
+  },
+  {
+    "nwo": "KBLLR/infoq-mini-book",
+    "name": "infoq-mini-book",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": true,
+    "updatedAt": "2023-09-06T23:39:08.000Z",
+    "healthFlags": [
+      "stale",
+      "fork",
+      "template-candidate"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "maintenance-plan",
+      "template-plan",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/roop",
+    "name": "roop",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": true,
+    "updatedAt": "2023-08-17T08:48:39.000Z",
+    "healthFlags": [
+      "stale",
+      "fork"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "maintenance-plan"
+    ]
+  },
+  {
+    "nwo": "KBLLR/HomeLab_flame",
+    "name": "HomeLab_flame",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": true,
+    "updatedAt": "2023-08-12T13:29:12.000Z",
+    "healthFlags": [
+      "stale",
+      "fork"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "maintenance-plan",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/kbllr_graphics_",
+    "name": "kbllr_graphics_",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": false,
+    "updatedAt": "2023-07-07T07:02:56.000Z",
+    "healthFlags": [
+      "missing-readme",
+      "stale"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "write-readme",
+      "maintenance-plan"
+    ]
+  },
+  {
+    "nwo": "KBLLR/Shap-e_Img-to-3D_google_collab",
+    "name": "Shap-e_Img-to-3D_google_collab",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": true,
+    "updatedAt": "2023-05-13T19:43:02.000Z",
+    "healthFlags": [
+      "stale"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "maintenance-plan"
+    ]
+  },
+  {
+    "nwo": "KBLLR/OBLIK-3D-Furniture-Configurator",
+    "name": "OBLIK-3D-Furniture-Configurator",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": true,
+    "updatedAt": "2023-04-21T14:53:11.000Z",
+    "healthFlags": [
+      "stale"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "maintenance-plan"
+    ]
+  },
+  {
+    "nwo": "KBLLR/dsjlf3",
+    "name": "dsjlf3",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": true,
+    "updatedAt": "2023-04-05T14:01:42.000Z",
+    "healthFlags": [
+      "stale"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "maintenance-plan"
+    ]
+  },
+  {
+    "nwo": "KBLLR/Hands-On-Image-Generation-with-TensorFlow-2.0",
+    "name": "Hands-On-Image-Generation-with-TensorFlow-2.0",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": true,
+    "updatedAt": "2023-03-24T22:40:46.000Z",
+    "healthFlags": [
+      "stale",
+      "fork"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "maintenance-plan"
+    ]
+  },
+  {
+    "nwo": "KBLLR/glTF_3Dmodel-Configurator",
+    "name": "glTF_3Dmodel-Configurator",
+    "author": "KBLLR",
+    "visibility": "private",
+    "hasReadme": true,
+    "updatedAt": "2023-03-12T09:59:20.000Z",
+    "healthFlags": [
+      "stale",
+      "private"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "maintenance-plan",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/ThreeBoilerplate",
+    "name": "ThreeBoilerplate",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": true,
+    "updatedAt": "2023-03-06T10:39:35.000Z",
+    "healthFlags": [
+      "stale",
+      "fork",
+      "template-candidate"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "maintenance-plan",
+      "template-plan",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/javascript-algorithms",
+    "name": "javascript-algorithms",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": true,
+    "updatedAt": "2023-02-04T08:19:08.000Z",
+    "healthFlags": [
+      "stale",
+      "fork"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "maintenance-plan",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/threejs-Vite-template-complex",
+    "name": "threejs-Vite-template-complex",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": true,
+    "updatedAt": "2022-12-12T20:30:52.000Z",
+    "healthFlags": [
+      "stale",
+      "fork",
+      "template-candidate"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "maintenance-plan",
+      "template-plan",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/ccapture.js",
+    "name": "ccapture.js",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": true,
+    "updatedAt": "2022-12-04T17:17:23.000Z",
+    "healthFlags": [
+      "stale",
+      "fork"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "maintenance-plan",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/gpt-3_chrome_extension",
+    "name": "gpt-3_chrome_extension",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": true,
+    "updatedAt": "2022-11-29T19:16:06.000Z",
+    "healthFlags": [
+      "stale",
+      "fork"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "maintenance-plan",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/threejs-template-simple",
+    "name": "threejs-template-simple",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": true,
+    "updatedAt": "2022-09-01T22:32:39.000Z",
+    "healthFlags": [
+      "stale",
+      "fork",
+      "template-candidate"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "maintenance-plan",
+      "template-plan",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/3DKNIGHT",
+    "name": "3DKNIGHT",
+    "author": "KBLLR",
+    "visibility": "private",
+    "hasReadme": true,
+    "updatedAt": "2022-05-29T19:31:51.000Z",
+    "healthFlags": [
+      "stale",
+      "private"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "maintenance-plan"
+    ]
+  },
+  {
+    "nwo": "KBLLR/Three.js-TypeScript-Boilerplate",
+    "name": "Three.js-TypeScript-Boilerplate",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": true,
+    "updatedAt": "2022-05-25T21:08:42.000Z",
+    "healthFlags": [
+      "stale",
+      "fork",
+      "template-candidate"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "maintenance-plan",
+      "template-plan",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/ThreeJS-Webpack-ES6-Boilerplate",
+    "name": "ThreeJS-Webpack-ES6-Boilerplate",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": true,
+    "updatedAt": "2022-04-28T03:16:41.000Z",
+    "healthFlags": [
+      "stale",
+      "fork",
+      "template-candidate"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "maintenance-plan",
+      "template-plan",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/testing-AlienJs",
+    "name": "testing-AlienJs",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": true,
+    "updatedAt": "2022-04-09T15:42:47.000Z",
+    "healthFlags": [
+      "stale"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "maintenance-plan"
+    ]
+  },
+  {
+    "nwo": "KBLLR/D-KNIGHT-NFT",
+    "name": "D-KNIGHT-NFT",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": true,
+    "updatedAt": "2022-03-24T05:12:13.000Z",
+    "healthFlags": [
+      "stale"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "maintenance-plan"
+    ]
+  },
+  {
+    "nwo": "KBLLR/imgui-js",
+    "name": "imgui-js",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": true,
+    "updatedAt": "2022-01-29T13:55:46.000Z",
+    "healthFlags": [
+      "stale",
+      "fork"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "maintenance-plan",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/MCOIN-Case",
+    "name": "MCOIN-Case",
+    "author": "KBLLR",
+    "visibility": "private",
+    "hasReadme": true,
+    "updatedAt": "2022-01-17T07:12:23.000Z",
+    "healthFlags": [
+      "stale",
+      "private"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "maintenance-plan"
+    ]
+  },
+  {
+    "nwo": "KBLLR/my-room-in-3d",
+    "name": "my-room-in-3d",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": true,
+    "updatedAt": "2021-09-13T11:44:39.000Z",
+    "healthFlags": [
+      "stale",
+      "fork"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "maintenance-plan"
+    ]
+  },
+  {
+    "nwo": "KBLLR/Sieve",
+    "name": "Sieve",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": true,
+    "updatedAt": "2021-05-14T18:48:39.000Z",
+    "healthFlags": [
+      "stale"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "maintenance-plan",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/Habi-eco",
+    "name": "Habi-eco",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": true,
+    "updatedAt": "2021-05-13T20:01:53.000Z",
+    "healthFlags": [
+      "stale"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "maintenance-plan"
+    ]
+  },
+  {
+    "nwo": "KBLLR/Resizable.js",
+    "name": "Resizable.js",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": true,
+    "updatedAt": "2021-05-08T17:59:39.000Z",
+    "healthFlags": [
+      "stale",
+      "fork"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "maintenance-plan",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/macbook-keyboard",
+    "name": "macbook-keyboard",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": true,
+    "updatedAt": "2021-04-30T15:06:31.000Z",
+    "healthFlags": [
+      "stale",
+      "fork"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "maintenance-plan"
+    ]
+  },
+  {
+    "nwo": "KBLLR/THREE.CubemapToEquirectangular",
+    "name": "THREE.CubemapToEquirectangular",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": true,
+    "updatedAt": "2021-04-15T09:33:38.000Z",
+    "healthFlags": [
+      "stale",
+      "fork"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "maintenance-plan",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/flowmap-effect",
+    "name": "flowmap-effect",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": true,
+    "updatedAt": "2019-09-26T04:29:50.000Z",
+    "healthFlags": [
+      "stale",
+      "fork"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "maintenance-plan"
+    ]
+  },
+  {
+    "nwo": "KBLLR/webgl-shader-examples",
+    "name": "webgl-shader-examples",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": true,
+    "updatedAt": "2019-02-22T17:28:33.000Z",
+    "healthFlags": [
+      "stale",
+      "fork"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "maintenance-plan"
+    ]
+  },
+  {
+    "nwo": "KBLLR/JSTouchController",
+    "name": "JSTouchController",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": true,
+    "updatedAt": "2012-06-13T14:37:59.000Z",
+    "healthFlags": [
+      "stale",
+      "fork"
+    ],
+    "recommendedActions": [
+      "codex-mission",
+      "claude-mission",
+      "maintenance-plan"
+    ]
+  }
+]

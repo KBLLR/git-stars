@@ -51,7 +51,7 @@ async function parseSSEStream(
   const decoder = new TextDecoder();
   let buffer = '';
 
-  while (true) {
+  for (;;) {
     const { done, value } = await reader.read();
     if (done) break;
 
@@ -67,7 +67,7 @@ async function parseSSEStream(
       try {
         const event = JSON.parse(data) as OpenResponsesEvent;
         onEvent(event);
-      } catch (error) {
+      } catch {
         console.warn('[OpenResponses] Failed to parse event:', data);
       }
     }

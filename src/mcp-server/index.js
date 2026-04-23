@@ -1,10 +1,5 @@
 #!/usr/bin/env node
 
-/**
- * MCP Server for git-stars
- * Provides tools for querying GitHub starred repositories via Model Context Protocol
- */
-
 import { Server } from "@modelcontextprotocol/sdk/server/index.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import {
@@ -14,323 +9,209 @@ import {
 import fs from "fs/promises";
 import path from "path";
 import { fileURLToPath } from "url";
+import { calculateStatistics } from "../analytics/statistics.js";
+import {
+  findSkillExtraction,
+  generateDerivedHouseData,
+  listAdoptionCandidates,
+  listNewsSignals,
+  loadHouseDatasets,
+  resolveRepoRecord,
+  updateResearchQueue,
+} from "../server/house-model.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+const HOUSE_ROOT = path.resolve(__dirname, "../..");
+const DATA_DIR = path.join(HOUSE_ROOT, "data");
+const STATS_FILE = path.join(DATA_DIR, "stats.json");
+const REPO_SIGNALS_FILE = path.join(DATA_DIR, "repo-signals.json");
+const RESEARCH_QUEUE_FILE = path.join(DATA_DIR, "research-queue.json");
+const SKILL_EXTRACTIONS_FILE = path.join(DATA_DIR, "skill-extractions.json");
+const MINE_HEALTH_FILE = path.join(DATA_DIR, "mine-health.json");
 
-// Data file paths
-const DATA_FILE = path.resolve(__dirname, "../../data/data.json");
-const STATS_FILE = path.resolve(__dirname, "../../data/stats.json");
-const RESEARCH_QUEUE_FILE = path.resolve(__dirname, "../../data/research-queue.json");
-const MY_REPOS_FILE = path.resolve(__dirname, "../../data/my-repos.json");
-
-/**
- * Load repository data from disk
- */
-async function loadData() {
+async function readJson(filePath, fallback) {
   try {
-    const content = await fs.readFile(DATA_FILE, "utf-8");
-    const data = JSON.parse(content);
-
-    // Handle both formats: grouped by language or flat array
-    if (Array.isArray(data)) {
-      // Check if it's grouped format
-      if (data.length > 0 && data[0].repos) {
-        return data.flatMap(group => group.repos || []);
-      }
-      return data;
-    }
-    return [];
-  } catch (error) {
-    console.error("Error loading data:", error.message);
-    return [];
+    const raw = await fs.readFile(filePath, "utf8");
+    return JSON.parse(raw);
+  } catch {
+    return fallback;
   }
 }
 
-/**
- * Load statistics from disk (if available)
- */
-async function loadStats() {
-  try {
-    const content = await fs.readFile(STATS_FILE, "utf-8");
-    return JSON.parse(content);
-  } catch (error) {
-    console.error("Stats not available, will calculate on-demand");
-    return null;
-  }
-}
-
-/**
- * Load my repos data from disk (if available)
- */
-async function loadMyRepos() {
-  try {
-    const content = await fs.readFile(MY_REPOS_FILE, "utf-8");
-    const data = JSON.parse(content);
-    return Array.isArray(data) ? data : [];
-  } catch (error) {
-    console.error("My repos not available, skipping");
-    return [];
-  }
-}
-
-/**
- * Append a research item to the queue
- */
-async function addToResearchQueue(item) {
-  try {
-    let queue = [];
-    try {
-      const raw = await fs.readFile(RESEARCH_QUEUE_FILE, "utf-8");
-      queue = JSON.parse(raw);
-    } catch {
-      queue = [];
-    }
-    queue.push({ ...item, timestamp: new Date().toISOString() });
-    await fs.writeFile(RESEARCH_QUEUE_FILE, JSON.stringify(queue, null, 2));
-    return true;
-  } catch (error) {
-    console.error("Failed to write research queue:", error.message);
-    return false;
-  }
-}
-
-/**
- * Calculate statistics from repository data
- */
-function calculateStats(repos) {
-  const stats = {
-    total_repos: repos.length,
-    total_stars: 0,
-    total_forks: 0,
-    total_open_issues: 0,
-    languages: {},
-    topics: {},
-    licenses: {},
-    top_repos: [],
-  };
-
-  repos.forEach(repo => {
-    stats.total_stars += repo.stars || 0;
-    stats.total_forks += repo.forks || 0;
-    stats.total_open_issues += repo.open_issues || 0;
-
-    // Language breakdown
-    const primaryLang = repo.primary_language || repo.language || "Unknown";
-    stats.languages[primaryLang] = (stats.languages[primaryLang] || 0) + 1;
-
-    // Topics frequency
-    const topics = Array.isArray(repo.topics) ? repo.topics : [];
-    topics.forEach(topic => {
-      stats.topics[topic] = (stats.topics[topic] || 0) + 1;
-    });
-
-    // License breakdown
-    const license = repo.license || "None";
-    stats.licenses[license] = (stats.licenses[license] || 0) + 1;
-  });
-
-  // Get top 20 repos by stars
-  stats.top_repos = repos
-    .sort((a, b) => (b.stars || 0) - (a.stars || 0))
-    .slice(0, 20)
-    .map(r => ({
-      name: r.name,
-      author: r.author,
-      stars: r.stars,
-      description: r.description,
-      url: r.url,
-    }));
-
-  // Sort language and topic data by count
-  stats.languages = Object.entries(stats.languages)
-    .sort(([, a], [, b]) => b - a)
-    .reduce((obj, [key, val]) => ({ ...obj, [key]: val }), {});
-
-  stats.topics = Object.entries(stats.topics)
-    .sort(([, a], [, b]) => b - a)
-    .slice(0, 50) // Top 50 topics
-    .reduce((obj, [key, val]) => ({ ...obj, [key]: val }), {});
-
-  return stats;
-}
-
-/**
- * Search repositories by query
- */
 function searchRepos(repos, query, options = {}) {
   const {
     language = null,
     minStars = 0,
     maxResults = 50,
   } = options;
+  const searchTerm = String(query || "").toLowerCase();
 
-  const searchTerm = query.toLowerCase();
+  return repos
+    .filter((repo) => {
+      const matchesQuery = !searchTerm
+        || repo.name?.toLowerCase().includes(searchTerm)
+        || repo.description?.toLowerCase().includes(searchTerm)
+        || repo.author?.toLowerCase().includes(searchTerm)
+        || (Array.isArray(repo.topics) && repo.topics.some((topic) => topic.toLowerCase().includes(searchTerm)));
 
-  let results = repos.filter(repo => {
-    // Text search
-    const matchesQuery = !query ||
-      repo.name?.toLowerCase().includes(searchTerm) ||
-      repo.description?.toLowerCase().includes(searchTerm) ||
-      repo.author?.toLowerCase().includes(searchTerm) ||
-      (Array.isArray(repo.topics) && repo.topics.some(t => t.toLowerCase().includes(searchTerm)));
+      const matchesLanguage = !language
+        || repo.primary_language === language
+        || repo.language === language
+        || (Array.isArray(repo.languages) && repo.languages.some((entry) => entry.language === language));
 
-    // Language filter
-    const matchesLanguage = !language ||
-      repo.primary_language === language ||
-      repo.language === language;
-
-    // Stars filter
-    const matchesStars = (repo.stars || 0) >= minStars;
-
-    return matchesQuery && matchesLanguage && matchesStars;
-  });
-
-  // Sort by stars descending
-  results.sort((a, b) => (b.stars || 0) - (a.stars || 0));
-
-  return results.slice(0, maxResults);
+      return matchesQuery && matchesLanguage && (repo.stars || 0) >= minStars;
+    })
+    .sort((a, b) => (b.stars || 0) - (a.stars || 0))
+    .slice(0, maxResults);
 }
 
-/**
- * Filter repositories by criteria
- */
 function filterRepos(repos, criteria = {}) {
-  const {
-    language = null,
-    topic = null,
-    license = null,
-    minStars = 0,
-    maxStars = Infinity,
-    minForks = 0,
-    author = null,
-  } = criteria;
+  return repos.filter((repo) => {
+    const matchesLanguage = !criteria.language
+      || repo.primary_language === criteria.language
+      || repo.language === criteria.language
+      || (Array.isArray(repo.languages) && repo.languages.some((entry) => entry.language === criteria.language));
 
-  return repos.filter(repo => {
-    const matchesLanguage = !language ||
-      repo.primary_language === language ||
-      repo.language === language;
+    const matchesTopic = !criteria.topic
+      || (Array.isArray(repo.topics) && repo.topics.includes(criteria.topic));
 
-    const matchesTopic = !topic ||
-      (Array.isArray(repo.topics) && repo.topics.includes(topic));
-
-    const matchesLicense = !license || repo.license === license;
-
+    const matchesLicense = !criteria.license || repo.license === criteria.license;
+    const matchesAuthor = !criteria.author || repo.author === criteria.author;
     const stars = repo.stars || 0;
-    const matchesStars = stars >= minStars && stars <= maxStars;
+    const forks = repo.forks || 0;
 
-    const matchesForks = (repo.forks || 0) >= minForks;
-
-    const matchesAuthor = !author || repo.author === author;
-
-    return matchesLanguage && matchesTopic && matchesLicense &&
-           matchesStars && matchesForks && matchesAuthor;
+    return matchesLanguage
+      && matchesTopic
+      && matchesLicense
+      && matchesAuthor
+      && stars >= (criteria.minStars ?? 0)
+      && stars <= (criteria.maxStars ?? Number.POSITIVE_INFINITY)
+      && forks >= (criteria.minForks ?? 0);
   });
 }
 
-/**
- * Find similar repositories (lightweight token overlap)
- */
 function findSimilarRepos(repos, targetName) {
   const target = repos.find(
-    (r) => (r.name || "").toLowerCase() === (targetName || "").toLowerCase()
+    (repo) => repo.name?.toLowerCase() === String(targetName || "").toLowerCase(),
   );
+
   if (!target) return [];
 
   const tokens = new Set(
     [
       target.name,
       target.description || "",
-      (target.author || "") + "/" + target.name,
+      target.author,
       ...(Array.isArray(target.topics) ? target.topics : []),
       target.primary_language || target.language || "",
     ]
       .join(" ")
       .toLowerCase()
       .split(/[^a-z0-9]+/)
-      .filter((t) => t.length > 3)
+      .filter((token) => token.length > 3),
   );
 
-  const scored = repos
-    .filter((r) => r.name !== target.name)
-    .map((r) => {
+  return repos
+    .filter((repo) => repo.name !== target.name)
+    .map((repo) => {
       const text = [
-        r.name,
-        r.description || "",
-        (r.author || "") + "/" + r.name,
-        ...(Array.isArray(r.topics) ? r.topics : []),
-        r.primary_language || r.language || "",
+        repo.name,
+        repo.description || "",
+        repo.author,
+        ...(Array.isArray(repo.topics) ? repo.topics : []),
+        repo.primary_language || repo.language || "",
       ]
         .join(" ")
         .toLowerCase();
       let score = 0;
-      tokens.forEach((t) => {
-        if (text.includes(t)) score += 1;
+      tokens.forEach((token) => {
+        if (text.includes(token)) score += 1;
       });
-      return { repo: r, score };
+      return { repo, score };
     })
-    .sort((a, b) => b.score - a.score);
-
-  return scored.slice(0, 8).map((s) => s.repo);
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 8)
+    .map((item) => item.repo);
 }
 
-/**
- * Main MCP Server
- */
 class GitStarsServer {
   constructor() {
     this.server = new Server(
       {
         name: "git-stars-mcp",
-        version: "1.0.0",
+        version: "2.0.0",
       },
       {
         capabilities: {
           tools: {},
         },
-      }
+      },
     );
 
-    this.repos = [];
+    this.starredRepos = [];
     this.myRepos = [];
     this.stats = null;
+    this.repoSignals = [];
+    this.researchQueue = [];
+    this.skillExtractions = [];
+    this.mineHealth = [];
 
-    this.setupToolHandlers();
-
-    // Error handling
+    this.setupHandlers();
     this.server.onerror = (error) => console.error("[MCP Error]", error);
-    process.on("SIGINT", async () => {
-      await this.server.close();
-      process.exit(0);
+  }
+
+  async refresh() {
+    const datasets = await loadHouseDatasets(HOUSE_ROOT);
+    this.starredRepos = datasets.starredRepos;
+    this.myRepos = datasets.myRepos;
+
+    const derived = await generateDerivedHouseData(HOUSE_ROOT, datasets);
+    this.repoSignals = derived.repoSignals;
+    this.researchQueue = derived.researchQueue;
+    this.skillExtractions = derived.skillExtractions;
+    this.mineHealth = derived.mineHealth;
+
+    this.stats = await readJson(STATS_FILE, null);
+    if (!this.stats) {
+      this.stats = calculateStatistics(this.starredRepos);
+    }
+  }
+
+  repoPool() {
+    return [...this.myRepos, ...this.starredRepos];
+  }
+
+  resolveRepo(args) {
+    return resolveRepoRecord(args, {
+      starredRepos: this.starredRepos,
+      myRepos: this.myRepos,
     });
   }
 
-  setupToolHandlers() {
-    // List available tools
+  response(payload) {
+    return {
+      content: [
+        {
+          type: "text",
+          text: JSON.stringify(payload, null, 2),
+        },
+      ],
+    };
+  }
+
+  setupHandlers() {
     this.server.setRequestHandler(ListToolsRequestSchema, async () => ({
       tools: [
         {
           name: "list_starred_repos",
-          description: "List all starred GitHub repositories with optional pagination",
+          description: "List all starred repositories with optional pagination",
           inputSchema: {
             type: "object",
             properties: {
-              limit: {
-                type: "number",
-                description: "Maximum number of repos to return (default: 50)",
-                default: 50,
-              },
-              offset: {
-                type: "number",
-                description: "Number of repos to skip (default: 0)",
-                default: 0,
-              },
-              sortBy: {
-                type: "string",
-                description: "Sort field: stars, forks, name, date (default: stars)",
-                enum: ["stars", "forks", "name", "date"],
-                default: "stars",
-              },
+              limit: { type: "number", default: 50 },
+              offset: { type: "number", default: 0 },
+              sortBy: { type: "string", enum: ["stars", "forks", "name", "date"], default: "stars" },
             },
           },
         },
@@ -340,24 +221,10 @@ class GitStarsServer {
           inputSchema: {
             type: "object",
             properties: {
-              query: {
-                type: "string",
-                description: "Search query string",
-              },
-              language: {
-                type: "string",
-                description: "Filter by programming language (optional)",
-              },
-              minStars: {
-                type: "number",
-                description: "Minimum number of stars (default: 0)",
-                default: 0,
-              },
-              maxResults: {
-                type: "number",
-                description: "Maximum results to return (default: 50)",
-                default: 50,
-              },
+              query: { type: "string" },
+              language: { type: "string" },
+              minStars: { type: "number", default: 0 },
+              maxResults: { type: "number", default: 50 },
             },
             required: ["query"],
           },
@@ -368,14 +235,8 @@ class GitStarsServer {
           inputSchema: {
             type: "object",
             properties: {
-              name: {
-                type: "string",
-                description: "Repository name",
-              },
-              author: {
-                type: "string",
-                description: "Repository author/owner (optional)",
-              },
+              name: { type: "string" },
+              author: { type: "string" },
             },
             required: ["name"],
           },
@@ -383,10 +244,7 @@ class GitStarsServer {
         {
           name: "get_statistics",
           description: "Get comprehensive statistics about all starred repositories",
-          inputSchema: {
-            type: "object",
-            properties: {},
-          },
+          inputSchema: { type: "object", properties: {} },
         },
         {
           name: "get_language_breakdown",
@@ -394,11 +252,7 @@ class GitStarsServer {
           inputSchema: {
             type: "object",
             properties: {
-              topN: {
-                type: "number",
-                description: "Return top N languages (default: 20)",
-                default: 20,
-              },
+              topN: { type: "number", default: 20 },
             },
           },
         },
@@ -408,11 +262,7 @@ class GitStarsServer {
           inputSchema: {
             type: "object",
             properties: {
-              limit: {
-                type: "number",
-                description: "Number of topics to return (default: 20)",
-                default: 20,
-              },
+              limit: { type: "number", default: 20 },
             },
           },
         },
@@ -422,34 +272,13 @@ class GitStarsServer {
           inputSchema: {
             type: "object",
             properties: {
-              language: {
-                type: "string",
-                description: "Programming language",
-              },
-              topic: {
-                type: "string",
-                description: "Topic/tag",
-              },
-              license: {
-                type: "string",
-                description: "License type",
-              },
-              minStars: {
-                type: "number",
-                description: "Minimum stars",
-              },
-              maxStars: {
-                type: "number",
-                description: "Maximum stars",
-              },
-              minForks: {
-                type: "number",
-                description: "Minimum forks",
-              },
-              author: {
-                type: "string",
-                description: "Repository author",
-              },
+              language: { type: "string" },
+              topic: { type: "string" },
+              license: { type: "string" },
+              minStars: { type: "number" },
+              maxStars: { type: "number" },
+              minForks: { type: "number" },
+              author: { type: "string" },
             },
           },
         },
@@ -459,379 +288,418 @@ class GitStarsServer {
           inputSchema: {
             type: "object",
             properties: {
-              name: { type: "string", description: "Repository name" },
+              name: { type: "string" },
+            },
+            required: ["name"],
+          },
+        },
+        {
+          name: "list_news_signals",
+          description: "Return ranked News tab signals for watched, research, mine, or starred scope",
+          inputSchema: {
+            type: "object",
+            properties: {
+              scope: { type: "string", enum: ["watched", "research", "mine", "starred", "all"], default: "watched" },
+              limit: { type: "number", default: 12 },
+            },
+          },
+        },
+        {
+          name: "get_research_queue",
+          description: "Return the canonical research queue",
+          inputSchema: {
+            type: "object",
+            properties: {
+              status: { type: "string", enum: ["queued", "researching", "done", "dismissed"] },
+            },
+          },
+        },
+        {
+          name: "update_research_queue",
+          description: "Create or update a research queue item for a repository",
+          inputSchema: {
+            type: "object",
+            properties: {
+              name: { type: "string" },
+              author: { type: "string" },
+              status: { type: "string", enum: ["queued", "researching", "done", "dismissed"] },
+              notes: { type: "string" },
+              priority: { type: "string" },
             },
             required: ["name"],
           },
         },
         {
           name: "mark_for_research",
-          description: "Add a repository to the research queue with optional notes",
+          description: "Compatibility alias for update_research_queue with queued status",
           inputSchema: {
             type: "object",
             properties: {
-              name: { type: "string", description: "Repository name" },
-              notes: { type: "string", description: "Research notes" },
+              name: { type: "string" },
+              author: { type: "string" },
+              notes: { type: "string" },
             },
             required: ["name"],
           },
         },
         {
-          name: "find_repos_missing_readme",
-          description: "List repositories missing a README file (best for Mine scope).",
+          name: "get_adoption_candidates",
+          description: "Return top-ranked repositories for house, tool, service, or template adoption",
           inputSchema: {
             type: "object",
             properties: {
-              scope: {
-                type: "string",
-                enum: ["mine", "starred"],
-                description: "Which repo set to inspect (default: mine)",
-                default: "mine",
-              },
-              limit: {
-                type: "number",
-                description: "Maximum number of repos to return (default: 50)",
-                default: 50,
-              },
-              offset: {
-                type: "number",
-                description: "Number of repos to skip (default: 0)",
-                default: 0,
-              },
-              includeUnknown: {
-                type: "boolean",
-                description: "Include repos with unknown README status",
-                default: false,
-              },
+              limit: { type: "number", default: 10 },
+            },
+          },
+        },
+        {
+          name: "extract_repo_skills",
+          description: "Return the canonical skill extraction record for a repository",
+          inputSchema: {
+            type: "object",
+            properties: {
+              name: { type: "string" },
+              author: { type: "string" },
+            },
+            required: ["name"],
+          },
+        },
+        {
+          name: "generate_repo_mission",
+          description: "Generate a canonical Codex or Claude mission brief for a repository",
+          inputSchema: {
+            type: "object",
+            properties: {
+              name: { type: "string" },
+              author: { type: "string" },
+              target: { type: "string", enum: ["codex", "claude"] },
+            },
+            required: ["name", "target"],
+          },
+        },
+        {
+          name: "get_mine_health",
+          description: "Return owned-repo health records for Mine workflows",
+          inputSchema: {
+            type: "object",
+            properties: {
+              flag: { type: "string" },
+              visibility: { type: "string", enum: ["public", "private"] },
+            },
+          },
+        },
+        {
+          name: "find_repos_missing_readme",
+          description: "List repositories missing a README file (best for Mine scope)",
+          inputSchema: {
+            type: "object",
+            properties: {
+              scope: { type: "string", enum: ["mine", "starred"], default: "mine" },
+              limit: { type: "number", default: 50 },
+              offset: { type: "number", default: 0 },
+              includeUnknown: { type: "boolean", default: false },
             },
           },
         },
       ],
     }));
 
-    // Handle tool calls
     this.server.setRequestHandler(CallToolRequestSchema, async (request) => {
-      const { name, arguments: args } = request.params;
+      await this.refresh();
+      const { name, arguments: args = {} } = request.params;
 
       try {
         switch (name) {
           case "list_starred_repos":
-            return await this.handleListRepos(args);
+            return this.handleListRepos(args);
           case "search_repos":
-            return await this.handleSearch(args);
+            return this.handleSearch(args);
           case "get_repo_details":
-            return await this.handleGetDetails(args);
+            return this.handleGetDetails(args);
           case "get_statistics":
-            return await this.handleGetStats(args);
+            return this.handleGetStats();
           case "get_language_breakdown":
-            return await this.handleGetLanguages(args);
+            return this.handleGetLanguages(args);
           case "get_trending_topics":
-            return await this.handleGetTopics(args);
+            return this.handleGetTopics(args);
           case "filter_by_criteria":
-            return await this.handleFilter(args);
+            return this.handleFilter(args);
           case "find_similar_repos":
-            return await this.handleFindSimilar(args);
+            return this.handleFindSimilar(args);
+          case "list_news_signals":
+            return this.handleListNewsSignals(args);
+          case "get_research_queue":
+            return this.handleGetResearchQueue(args);
+          case "update_research_queue":
+            return await this.handleUpdateResearchQueue(args);
           case "mark_for_research":
             return await this.handleMarkForResearch(args);
+          case "get_adoption_candidates":
+            return this.handleGetAdoptionCandidates(args);
+          case "extract_repo_skills":
+            return this.handleExtractRepoSkills(args);
+          case "generate_repo_mission":
+            return this.handleGenerateRepoMission(args);
+          case "get_mine_health":
+            return this.handleGetMineHealth(args);
           case "find_repos_missing_readme":
-            return await this.handleMissingReadme(args);
+            return this.handleMissingReadme(args);
           default:
             throw new Error(`Unknown tool: ${name}`);
         }
       } catch (error) {
-        return {
-          content: [
-            {
-              type: "text",
-              text: JSON.stringify({ error: error.message }),
-            },
-          ],
-        };
+        return this.response({ error: error instanceof Error ? error.message : String(error) });
       }
     });
   }
 
-  async handleListRepos(args) {
+  handleListRepos(args) {
     const { limit = 50, offset = 0, sortBy = "stars" } = args;
-
-    let sorted = [...this.repos];
+    const repos = [...this.starredRepos];
 
     switch (sortBy) {
-      case "stars":
-        sorted.sort((a, b) => (b.stars || 0) - (a.stars || 0));
-        break;
       case "forks":
-        sorted.sort((a, b) => (b.forks || 0) - (a.forks || 0));
+        repos.sort((a, b) => (b.forks || 0) - (a.forks || 0));
         break;
       case "name":
-        sorted.sort((a, b) => (a.name || "").localeCompare(b.name || ""));
+        repos.sort((a, b) => (a.name || "").localeCompare(b.name || ""));
         break;
       case "date":
-        sorted.sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
+        repos.sort((a, b) => Date.parse(b.date || 0) - Date.parse(a.date || 0));
+        break;
+      default:
+        repos.sort((a, b) => (b.stars || 0) - (a.stars || 0));
         break;
     }
 
-    const results = sorted.slice(offset, offset + limit);
-
-    return {
-      content: [
-        {
-          type: "text",
-          text: JSON.stringify({
-            total: this.repos.length,
-            offset,
-            limit,
-            count: results.length,
-            repositories: results,
-          }, null, 2),
-        },
-      ],
-    };
-  }
-
-  async handleSearch(args) {
-    const results = searchRepos(this.repos, args.query, args);
-
-    return {
-      content: [
-        {
-          type: "text",
-          text: JSON.stringify({
-            query: args.query,
-            count: results.length,
-            repositories: results,
-          }, null, 2),
-        },
-      ],
-    };
-  }
-
-  async handleGetDetails(args) {
-    const { name, author } = args;
-
-    const repo = this.repos.find(r => {
-      const matchesName = r.name === name;
-      const matchesAuthor = !author || r.author === author;
-      return matchesName && matchesAuthor;
+    const repositories = repos.slice(offset, offset + limit);
+    return this.response({
+      total: repos.length,
+      offset,
+      limit,
+      count: repositories.length,
+      repositories,
     });
+  }
 
+  handleSearch(args) {
+    const repositories = searchRepos(this.repoPool(), args.query, args);
+    return this.response({
+      query: args.query,
+      count: repositories.length,
+      repositories,
+    });
+  }
+
+  handleGetDetails(args) {
+    const repo = this.resolveRepo(args);
     if (!repo) {
-      return {
-        content: [
-          {
-            type: "text",
-            text: JSON.stringify({ error: "Repository not found" }),
-          },
-        ],
-      };
+      return this.response({ error: "Repository not found" });
     }
 
-    return {
-      content: [
-        {
-          type: "text",
-          text: JSON.stringify(repo, null, 2),
-        },
-      ],
-    };
+    return this.response(repo);
   }
 
-  async handleGetStats(args) {
-    if (!this.stats) {
-      this.stats = calculateStats(this.repos);
-    }
-
-    return {
-      content: [
-        {
-          type: "text",
-          text: JSON.stringify(this.stats, null, 2),
-        },
-      ],
-    };
+  handleGetStats() {
+    return this.response(this.stats);
   }
 
-  async handleGetLanguages(args) {
-    const { topN = 20 } = args;
-
-    if (!this.stats) {
-      this.stats = calculateStats(this.repos);
-    }
-
-    const languages = Object.entries(this.stats.languages)
+  handleGetLanguages(args) {
+    const topN = args.topN ?? 20;
+    const languages = Object.entries(this.stats.languages || {})
       .slice(0, topN)
-      .map(([language, count]) => ({
+      .map(([language, details]) => ({
         language,
-        count,
-        percentage: ((count / this.repos.length) * 100).toFixed(2) + "%",
+        count: details.count,
+        percentage: details.percentage,
       }));
 
-    return {
-      content: [
-        {
-          type: "text",
-          text: JSON.stringify({ languages }, null, 2),
-        },
-      ],
-    };
+    return this.response({ languages });
   }
 
-  async handleGetTopics(args) {
-    const { limit = 20 } = args;
+  handleGetTopics(args) {
+    const limit = args.limit ?? 20;
+    const topics = Object.entries(this.stats.topics || {})
+      .slice(0, limit)
+      .map(([topic, details]) => ({
+        topic,
+        count: details.count,
+      }));
 
-    if (!this.stats) {
-      this.stats = calculateStats(this.repos);
+    return this.response({ topics });
+  }
+
+  handleFilter(args) {
+    const repositories = filterRepos(this.repoPool(), args);
+    return this.response({
+      criteria: args,
+      count: repositories.length,
+      repositories,
+    });
+  }
+
+  handleFindSimilar(args) {
+    const repositories = findSimilarRepos(this.repoPool(), args.name);
+    return this.response({
+      name: args.name,
+      count: repositories.length,
+      repositories,
+    });
+  }
+
+  handleListNewsSignals(args) {
+    const scope = args.scope ?? "watched";
+    const limit = args.limit ?? 12;
+    const signals = scope === "all"
+      ? this.repoSignals.slice(0, limit)
+      : listNewsSignals(this.repoSignals, scope, limit);
+
+    return this.response({
+      scope,
+      count: signals.length,
+      signals,
+    });
+  }
+
+  handleGetResearchQueue(args) {
+    const status = args.status;
+    const queue = status
+      ? this.researchQueue.filter((item) => item.status === status)
+      : this.researchQueue;
+
+    return this.response({
+      count: queue.length,
+      queue,
+    });
+  }
+
+  async handleUpdateResearchQueue(args) {
+    const repo = this.resolveRepo(args);
+    if (!repo) {
+      throw new Error("Repository not found");
     }
 
-    const topics = Object.entries(this.stats.topics)
-      .slice(0, limit)
-      .map(([topic, count]) => ({ topic, count }));
+    const item = await updateResearchQueue(HOUSE_ROOT, {
+      nwo: `${repo.author}/${repo.name}`,
+      status: args.status ?? "queued",
+      notes: args.notes ?? "",
+      priority: args.priority ?? "normal",
+    });
 
-    return {
-      content: [
-        {
-          type: "text",
-          text: JSON.stringify({ topics }, null, 2),
-        },
-      ],
-    };
-  }
-
-  async handleFilter(args) {
-    const results = filterRepos(this.repos, args);
-
-    return {
-      content: [
-        {
-          type: "text",
-          text: JSON.stringify({
-            criteria: args,
-            count: results.length,
-            repositories: results,
-          }, null, 2),
-        },
-      ],
-    };
-  }
-
-  async handleFindSimilar(args) {
-    const results = findSimilarRepos(this.repos, args.name);
-    return {
-      content: [
-        {
-          type: "text",
-          text: JSON.stringify(
-            {
-              name: args.name,
-              count: results.length,
-              repositories: results,
-            },
-            null,
-            2
-          ),
-        },
-      ],
-    };
+    return this.response({
+      updated: true,
+      item,
+    });
   }
 
   async handleMarkForResearch(args) {
-    const success = await addToResearchQueue({
-      repo: args.name,
-      notes: args.notes || "",
-      by: "git-stars-mcp",
+    const repo = this.resolveRepo(args);
+    if (!repo) {
+      throw new Error("Repository not found");
+    }
+
+    const item = await updateResearchQueue(HOUSE_ROOT, {
+      nwo: `${repo.author}/${repo.name}`,
+      status: "queued",
+      notes: args.notes ?? "",
+      priority: "normal",
     });
-    return {
-      content: [
-        {
-          type: "text",
-          text: JSON.stringify(
-            {
-              success,
-              name: args.name,
-              notes: args.notes || "",
-            },
-            null,
-            2
-          ),
-        },
-      ],
-    };
+
+    return this.response({
+      queued: true,
+      item,
+    });
   }
 
-  async handleMissingReadme(args) {
+  handleGetAdoptionCandidates(args) {
+    const limit = args.limit ?? 10;
+    const candidates = listAdoptionCandidates(this.repoSignals, limit);
+    return this.response({
+      count: candidates.length,
+      candidates,
+    });
+  }
+
+  handleExtractRepoSkills(args) {
+    const repo = this.resolveRepo(args);
+    if (!repo) {
+      throw new Error("Repository not found");
+    }
+
+    const extraction = findSkillExtraction(this.skillExtractions, `${repo.author}/${repo.name}`);
+    if (!extraction) {
+      throw new Error("Skill extraction not found");
+    }
+
+    return this.response(extraction);
+  }
+
+  handleGenerateRepoMission(args) {
+    const repo = this.resolveRepo(args);
+    if (!repo) {
+      throw new Error("Repository not found");
+    }
+
+    const extraction = findSkillExtraction(this.skillExtractions, `${repo.author}/${repo.name}`);
+    if (!extraction) {
+      throw new Error("Skill extraction not found");
+    }
+
+    const target = args.target === "claude" ? "claude" : "codex";
+    return this.response({
+      nwo: extraction.nwo,
+      target,
+      mission: target === "claude" ? extraction.claudeBrief : extraction.codexBrief,
+    });
+  }
+
+  handleGetMineHealth(args) {
+    let records = [...this.mineHealth];
+    if (args.visibility) {
+      records = records.filter((record) => record.visibility === args.visibility);
+    }
+    if (args.flag) {
+      records = records.filter((record) => record.healthFlags.includes(args.flag));
+    }
+
+    return this.response({
+      count: records.length,
+      records,
+    });
+  }
+
+  handleMissingReadme(args) {
     const {
       scope = "mine",
       limit = 50,
       offset = 0,
       includeUnknown = false,
-    } = args || {};
+    } = args;
 
-    const source =
-      scope === "starred"
-        ? this.repos
-        : this.myRepos.filter((repo) => repo.is_owner !== false);
-    if (!source || source.length === 0) {
-      return {
-        content: [
-          {
-            type: "text",
-            text: JSON.stringify(
-              {
-                scope,
-                count: 0,
-                repositories: [],
-                error: "No repositories loaded for this scope.",
-              },
-              null,
-              2
-            ),
-          },
-        ],
-      };
-    }
+    const source = scope === "starred"
+      ? this.starredRepos
+      : this.myRepos.filter((repo) => repo.is_owner !== false);
 
-    const missing = source.filter((repo) => {
-      if (repo.has_readme === false) return true;
-      if (includeUnknown && (repo.has_readme === null || repo.has_readme === undefined)) return true;
-      return false;
+    const repositories = source
+      .filter((repo) => {
+        if (repo.has_readme === false) return true;
+        return includeUnknown && (repo.has_readme === null || repo.has_readme === undefined);
+      })
+      .slice(offset, offset + limit);
+
+    return this.response({
+      scope,
+      total: source.length,
+      count: repositories.length,
+      repositories,
     });
-
-    const results = missing.slice(offset, offset + limit);
-
-    return {
-      content: [
-        {
-          type: "text",
-          text: JSON.stringify(
-            {
-              scope,
-              total: source.length,
-              missing_count: missing.length,
-              offset,
-              limit,
-              count: results.length,
-              repositories: results,
-            },
-            null,
-            2
-          ),
-        },
-      ],
-    };
   }
 
   async run() {
-    // Load data
-    console.error("Loading repository data...");
-    this.repos = await loadData();
-    console.error(`Loaded ${this.repos.length} repositories`);
-    this.myRepos = await loadMyRepos();
-    if (this.myRepos.length) {
-      console.error(`Loaded ${this.myRepos.length} my repos`);
-    }
-
-    // Try to load pre-computed stats
-    this.stats = await loadStats();
+    console.error("Loading Git Stars datasets...");
+    await this.refresh();
+    console.error(`Loaded ${this.starredRepos.length} starred repos and ${this.myRepos.length} owned/collab repos.`);
+    console.error(`Loaded ${this.repoSignals.length} signals, ${this.researchQueue.length} queue items, ${this.skillExtractions.length} skill extractions.`);
 
     const transport = new StdioServerTransport();
     await this.server.connect(transport);
@@ -839,6 +707,8 @@ class GitStarsServer {
   }
 }
 
-// Start server
 const server = new GitStarsServer();
-server.run().catch(console.error);
+server.run().catch((error) => {
+  console.error(error);
+  process.exit(1);
+});

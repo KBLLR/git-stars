@@ -17,7 +17,9 @@
     "sync:mine": "node scripts/my-repos.js",
     "generate:stats": "node src/analytics/statistics.js",
     "mcp": "node src/mcp-server/index.js",
-    "test": "npm run lint && npm run test:data"
+    "test:data": "node tests/run-tests.js",
+    "test:mcp": "node tests/test-mcp-server.js",
+    "test": "npm run lint && npm run test:data && npm run test:mcp"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.25.3",

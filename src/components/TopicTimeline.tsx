@@ -15,6 +15,13 @@ interface TopicTimelineProps {
   repos: Repo[];
 }
 
+interface TimelineDatum {
+  name: string;
+  dateObj: Date;
+  display: string;
+  [topic: string]: string | number | Date;
+}
+
 const COLORS = [
   '#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#a855f7', 
   '#ec4899', '#f43f5e', '#64748b', '#0ea5e9', '#84cc16'
@@ -54,7 +61,7 @@ export const TopicTimeline: React.FC<TopicTimelineProps> = ({ repos }) => {
     const maxDate = new Date(); // Today
 
     // 3. Create Continuous Week Buckets
-    const buckets: Record<string, any> = {};
+    const buckets: Record<string, TimelineDatum> = {};
     const current = new Date(minDate);
     
     while (current <= maxDate) {
@@ -63,7 +70,7 @@ export const TopicTimeline: React.FC<TopicTimelineProps> = ({ repos }) => {
       const week = getWeekNumber(current);
       const key = `${year}-W${week.toString().padStart(2, '0')}`;
       
-      const entry: any = { 
+      const entry: TimelineDatum = {
         name: key,
         dateObj: new Date(current), // for sorting/display
         display: current.toLocaleDateString(), // simplified
@@ -91,7 +98,8 @@ export const TopicTimeline: React.FC<TopicTimelineProps> = ({ repos }) => {
       if (buckets[key]) {
         repo.topics.forEach(topic => {
           if (topTopics.includes(topic)) {
-            buckets[key][topic]++;
+            const currentCount = typeof buckets[key][topic] === "number" ? buckets[key][topic] : 0;
+            buckets[key][topic] = currentCount + 1;
           }
         });
       }

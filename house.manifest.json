@@ -1,0 +1,168 @@
+{
+  "house_id": "git-stars",
+  "name": "Git Stars",
+  "version": "2.0.0",
+  "status": "active",
+  "tier": "lab",
+  "purpose": {
+    "domain": "dev-tools",
+    "mission": "Turn GitHub stars into an operating system for discovery, research, skill extraction, adoption, and owned-repo execution.",
+    "target_users": [
+      "developers",
+      "researchers",
+      "house operators"
+    ],
+    "key_outcomes": [
+      "Searchable repository intelligence",
+      "Canonical skills, rules, and flows",
+      "Adoption-ready repo classifications",
+      "Actionable Mine workspace maintenance"
+    ]
+  },
+  "personality": {
+    "voice": "Git Stars is a pragmatic repository intelligence house that favors typed workflows over prompt-only improvisation.",
+    "tone": "professional",
+    "theme": {
+      "primary_color": "#0f172a",
+      "secondary_color": "#334155",
+      "icon": "git-stars"
+    }
+  },
+  "agents": {
+    "roster": [
+      {
+        "agent_id": "git-stars:orchestrator",
+        "role_in_house": "lead",
+        "capabilities": ["routing", "coordination", "planning"]
+      },
+      {
+        "agent_id": "git-stars:repo-analyst",
+        "role_in_house": "specialist",
+        "capabilities": ["analytics", "intelligence", "adoption"]
+      },
+      {
+        "agent_id": "git-stars:repo-navigator",
+        "role_in_house": "specialist",
+        "capabilities": ["search", "discovery", "navigation"]
+      },
+      {
+        "agent_id": "git-stars:alignment-scout",
+        "role_in_house": "specialist",
+        "capabilities": ["research", "alignment", "adoption"]
+      },
+      {
+        "agent_id": "git-stars:tool-architect",
+        "role_in_house": "specialist",
+        "capabilities": ["skills", "mission-generation", "toolization"]
+      },
+      {
+        "agent_id": "git-stars:repo-ops",
+        "role_in_house": "specialist",
+        "capabilities": ["repo-ops", "maintenance", "execution"]
+      }
+    ],
+    "default_agent": "git-stars:orchestrator",
+    "routing_rules": [
+      {
+        "pattern": ".*search.*|.*find.*|.*filter.*|.*discover.*|.*similar.*|.*compare.*",
+        "capability": "search",
+        "agent_id": "git-stars:repo-navigator"
+      },
+      {
+        "pattern": ".*news.*|.*stats.*|.*trend.*|.*analytics.*|.*signal.*|.*highlights.*",
+        "capability": "analytics",
+        "agent_id": "git-stars:repo-analyst"
+      },
+      {
+        "pattern": ".*research.*|.*queue.*|.*adoption.*|.*align.*",
+        "capability": "research",
+        "agent_id": "git-stars:alignment-scout"
+      },
+      {
+        "pattern": ".*skill.*|.*rules.*|.*flows.*|.*codex.*|.*claude.*|.*mission.*|.*template.*",
+        "capability": "skills",
+        "agent_id": "git-stars:tool-architect"
+      },
+      {
+        "pattern": ".*mine.*|.*maintenance.*|.*readme.*|.*dependency.*|.*package.*",
+        "capability": "repo-ops",
+        "agent_id": "git-stars:repo-ops"
+      }
+    ]
+  },
+  "capabilities": {
+    "domains": [
+      "dev-tools",
+      "analytics",
+      "research",
+      "skills",
+      "repo-ops"
+    ],
+    "input_types": [
+      "text",
+      "url"
+    ],
+    "output_types": [
+      "stream",
+      "structured",
+      "text"
+    ],
+    "streaming": true,
+    "tool_calling": true
+  },
+  "dependencies": {
+    "services": [
+      "gateway",
+      "mlx-llm",
+      "mlx-rag"
+    ],
+    "models": [
+      "text/qwen2.5-14b-4bit"
+    ],
+    "houses": [],
+    "mcp_servers": [
+      "git-stars-mcp",
+      "house-functions",
+      "mlx-rag"
+    ]
+  },
+  "skills": {
+    "house_skills": [
+      "repo-discovery",
+      "repo-research",
+      "skill-extraction",
+      "repo-adoption",
+      "mine-execution"
+    ],
+    "shared_skills": [
+      "core-ops",
+      "mlx-chat",
+      "rag-query",
+      "github-workflow"
+    ]
+  },
+  "ui_modes": [
+    "chat",
+    "dashboard",
+    "research",
+    "code"
+  ],
+  "council_integration": {
+    "broadcast_events": [
+      "git-stars.status",
+      "git-stars.research.updated",
+      "git-stars.mission.generated",
+      "git-stars.adoption.scored"
+    ],
+    "subscribe_events": [
+      "task.request",
+      "council.directive",
+      "health.ping"
+    ],
+    "voting_weight": 0.7
+  },
+  "health": {
+    "endpoint": "/health",
+    "port": 8090
+  }
+}

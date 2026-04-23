@@ -1,14 +1,17 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
-import { X, Send, Bot, User as UserIcon, Loader, Wrench } from 'lucide-react';
-import { Repo } from '../types';
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { Bot, Loader, Send, User as UserIcon, Wrench, X } from "lucide-react";
+import type { Repo } from "../types";
+import type { GitStarsRoute } from "../lib/orchestrator";
 import {
   buildGitStarsTools,
   buildSystemPrompt,
   DEFAULT_AGENT_ID,
   EVENT_BUS_URL,
   HOUSE_ID,
-} from '../lib/orchestrator';
-import { OpenResponsesEvent, streamOpenResponses } from '../lib/openresponses-client';
+  routeGitStarsIntent,
+} from "../lib/orchestrator";
+import type { OpenResponsesEvent } from "../lib/openresponses-client";
+import { streamOpenResponses } from "../lib/openresponses-client";
 
 interface ChatPanelProps {
   isOpen: boolean;
@@ -18,11 +21,12 @@ interface ChatPanelProps {
   prefill?: string;
   autoSend?: boolean;
   onPrefillConsumed?: () => void;
+  onRunComplete?: () => void;
 }
 
 interface Message {
   id: string;
-  role: 'user' | 'assistant' | 'system';
+  role: "user" | "assistant" | "system";
   content: string;
   timestamp: number;
 }
@@ -31,7 +35,7 @@ interface ToolCall {
   id: string;
   name: string;
   arguments: string;
-  status: 'in_progress' | 'done';
+  status: "in_progress" | "done";
 }
 
 export function ChatPanel({
@@ -42,12 +46,14 @@ export function ChatPanel({
   prefill,
   autoSend = false,
   onPrefillConsumed,
+  onRunComplete,
 }: ChatPanelProps) {
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState("");
   const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [toolCalls, setToolCalls] = useState<Record<string, ToolCall>>({});
   const [defaultModel, setDefaultModel] = useState<string | null>(null);
+  const [activeRoute, setActiveRoute] = useState<GitStarsRoute | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const streamRef = useRef<AbortController | null>(null);
   const lastPrefillRef = useRef<string | null>(null);
@@ -56,26 +62,35 @@ export function ChatPanel({
 
   useEffect(() => {
     fetch(`${EVENT_BUS_URL}/settings`)
-      .then((res) => (res.ok ? res.json() : null))
-      .then((settings) => {
-        if (settings?.models?.default_model) {
+      .then(async (response) => (response.ok ? response.json() : null))
+      .then((settings: unknown) => {
+        if (
+          settings
+          && typeof settings === "object"
+          && "models" in settings
+          && settings.models
+          && typeof settings.models === "object"
+          && "default_model" in settings.models
+          && typeof settings.models.default_model === "string"
+        ) {
           setDefaultModel(settings.models.default_model);
         }
       })
-      .catch(() => null);
+      .catch(() => undefined);
   }, []);
 
   useEffect(() => {
     if (isOpen && repo) {
       setMessages([
         {
-          id: 'welcome',
-          role: 'assistant',
-          content: `Git Stars Orchestrator online. I can analyze **${repo.name}** or scan your wider star field.`,
+          id: "welcome",
+          role: "assistant",
+          content: `Git Stars Orchestrator online. I can analyze ${repo.author}/${repo.name}, route to a specialist, and call the house tools directly.`,
           timestamp: Date.now(),
         },
       ]);
       setToolCalls({});
+      setActiveRoute(null);
     }
   }, [isOpen, repo]);
 
@@ -85,124 +100,50 @@ export function ChatPanel({
     }
   }, [messages, toolCalls]);
 
-  useEffect(() => {
-    if (!isOpen) return;
-    if (!prefill) return;
-    if (lastPrefillRef.current === prefill) return;
-
-    lastPrefillRef.current = prefill;
-    setInput(prefill);
-    if (autoSend) {
-      handleSend(prefill);
-      onPrefillConsumed?.();
-    }
-  }, [isOpen, prefill, autoSend, onPrefillConsumed]);
-
-  const handleClose = () => {
+  function handleClose() {
     streamRef.current?.abort();
     streamRef.current = null;
     onClose();
-  };
+  }
 
-  const handleSend = async (override?: string) => {
-    if (!repo) return;
-    const content = (override ?? input).trim();
-    if (!content) return;
-
-    const userMsg: Message = {
-      id: Date.now().toString(),
-      role: 'user',
-      content,
-      timestamp: Date.now(),
-    };
-
-    const assistantId = `assistant-${Date.now()}`;
-
-    setMessages((prev) => [
-      ...prev,
-      userMsg,
-      { id: assistantId, role: 'assistant', content: '', timestamp: Date.now() },
-    ]);
-    setInput('');
-    setIsLoading(true);
-
-    const conversation = [
-      { role: 'system', content: buildSystemPrompt(repo) },
-      ...messages.map((m) => ({ role: m.role, content: m.content })),
-      { role: 'user', content },
-    ];
-
-    streamRef.current?.abort();
-
-    streamRef.current = streamOpenResponses({
-      endpoint: `${EVENT_BUS_URL}/chat`,
-      body: {
-        model: defaultModel || 'local-model',
-        messages: conversation,
-        agent_id: agentId,
-        house_id: HOUSE_ID,
-        tools,
-        tool_choice: 'auto',
-      },
-      onEvent: (event: OpenResponsesEvent) => {
-        handleStreamEvent(event, assistantId);
-      },
-      onComplete: () => {
-        setIsLoading(false);
-      },
-      onError: (error) => {
-        setIsLoading(false);
-        setMessages((prev) => [
-          ...prev,
-          {
-            id: `error-${Date.now()}`,
-            role: 'assistant',
-            content: `Tooling error: ${error.message}`,
-            timestamp: Date.now(),
-          },
-        ]);
-      },
-    });
-  };
-
-  const handleStreamEvent = (event: OpenResponsesEvent, assistantId: string) => {
-    if (event.type === 'response.output_text.delta' && event.delta) {
-      setMessages((prev) =>
-        prev.map((msg) =>
-          msg.id === assistantId
-            ? { ...msg, content: msg.content + event.delta }
-            : msg
-        )
+  function handleStreamEvent(event: OpenResponsesEvent, assistantId: string) {
+    if (event.type === "response.output_text.delta" && event.delta) {
+      setMessages((previous) =>
+        previous.map((message) =>
+          message.id === assistantId
+            ? { ...message, content: `${message.content}${event.delta}` }
+            : message,
+        ),
       );
       return;
     }
 
-    if (event.type === 'response.output_item.added' && event.item?.type === 'function_call') {
+    if (event.type === "response.output_item.added" && event.item?.type === "function_call") {
       const callId = event.item.call_id || event.item_id || `call-${Date.now()}`;
-      setToolCalls((prev) => ({
-        ...prev,
+      setToolCalls((previous) => ({
+        ...previous,
         [callId]: {
           id: callId,
-          name: event.item?.name || 'tool',
-          arguments: event.item?.arguments || '',
-          status: 'in_progress',
+          name: event.item?.name || "tool",
+          arguments: event.item?.arguments || "",
+          status: "in_progress",
         },
       }));
       return;
     }
 
-    if (event.type === 'response.function_call_arguments.delta') {
+    if (event.type === "response.function_call_arguments.delta") {
       const callId = event.call_id || event.item_id;
       if (!callId || !event.delta) return;
-      setToolCalls((prev) => {
-        const existing = prev[callId] || {
+      setToolCalls((previous) => {
+        const existing = previous[callId] || {
           id: callId,
-          name: 'tool',
-          arguments: '',
-          status: 'in_progress',
+          name: "tool",
+          arguments: "",
+          status: "in_progress" as const,
         };
         return {
-          ...prev,
+          ...previous,
           [callId]: {
             ...existing,
             arguments: `${existing.arguments}${event.delta}`,
@@ -212,18 +153,94 @@ export function ChatPanel({
       return;
     }
 
-    if (event.type === 'response.output_item.done' && event.item?.type === 'function_call') {
+    if (event.type === "response.output_item.done" && event.item?.type === "function_call") {
       const callId = event.item.call_id || event.item_id;
       if (!callId) return;
-      setToolCalls((prev) => ({
-        ...prev,
+      setToolCalls((previous) => ({
+        ...previous,
         [callId]: {
-          ...prev[callId],
-          status: 'done',
+          ...previous[callId],
+          status: "done",
         },
       }));
     }
-  };
+  }
+
+  const handleSend = useCallback((override?: string) => {
+    if (!repo) return;
+    const content = (override ?? input).trim();
+    if (!content) return;
+
+    const route = routeGitStarsIntent(content);
+    setActiveRoute(route);
+
+    const userMessage: Message = {
+      id: Date.now().toString(),
+      role: "user",
+      content,
+      timestamp: Date.now(),
+    };
+
+    const assistantId = `assistant-${Date.now()}`;
+
+    setMessages((previous) => [
+      ...previous,
+      userMessage,
+      { id: assistantId, role: "assistant", content: "", timestamp: Date.now() },
+    ]);
+    setInput("");
+    setIsLoading(true);
+
+    const conversation = [
+      { role: "system", content: buildSystemPrompt(repo, route) },
+      ...messages.map((message) => ({ role: message.role, content: message.content })),
+      { role: "user", content },
+    ];
+
+    streamRef.current?.abort();
+    streamRef.current = streamOpenResponses({
+      endpoint: `${EVENT_BUS_URL}/chat`,
+      body: {
+        model: defaultModel || "local-model",
+        messages: conversation,
+        agent_id: route.agentId || agentId,
+        house_id: HOUSE_ID,
+        tools,
+        tool_choice: "auto",
+      },
+      onEvent: (event) => {
+        handleStreamEvent(event, assistantId);
+      },
+      onComplete: () => {
+        setIsLoading(false);
+        onRunComplete?.();
+      },
+      onError: (error) => {
+        setIsLoading(false);
+        setMessages((previous) => [
+          ...previous,
+          {
+            id: `error-${Date.now()}`,
+            role: "assistant",
+            content: `Tooling error: ${error.message}`,
+            timestamp: Date.now(),
+          },
+        ]);
+      },
+    });
+  }, [agentId, defaultModel, input, messages, onRunComplete, repo, tools]);
+
+  useEffect(() => {
+    if (!isOpen || !prefill) return;
+    if (lastPrefillRef.current === prefill) return;
+
+    lastPrefillRef.current = prefill;
+    setInput(prefill);
+    if (autoSend) {
+      handleSend(prefill);
+      onPrefillConsumed?.();
+    }
+  }, [autoSend, handleSend, isOpen, onPrefillConsumed, prefill]);
 
   if (!isOpen) return null;
 
@@ -236,7 +253,10 @@ export function ChatPanel({
           </div>
           <div>
             <div className="orchestrator-name">Orchestrator</div>
-            <div className="orchestrator-sub">{repo ? `${repo.author}/${repo.name}` : 'No repo selected'}</div>
+            <div className="orchestrator-sub">{repo ? `${repo.author}/${repo.name}` : "No repo selected"}</div>
+            {activeRoute ? (
+              <div className="orchestrator-sub">{activeRoute.label} · {activeRoute.capability}</div>
+            ) : null}
           </div>
         </div>
         <button onClick={handleClose} className="orchestrator-close">
@@ -245,24 +265,22 @@ export function ChatPanel({
       </div>
 
       <div className="orchestrator-actions">
-        <button className="chip chip-tag" onClick={() => handleSend('Summarize this repo and its risks.')}>Summary</button>
-        <button className="chip chip-tag" onClick={() => handleSend('Find similar repositories and explain why.')}>Similar</button>
-        <button className="chip chip-tag" onClick={() => handleSend('List the key topics and how active they are.')}>Topics</button>
-        <button className="chip chip-tag" onClick={() => handleSend('Mark this repo for research with notes on why it matters.')}>Queue</button>
+        <button className="chip chip-tag" onClick={() => handleSend("Summarize the repo, the adoption fit, and the next action.")}>Summary</button>
+        <button className="chip chip-tag" onClick={() => handleSend("Find similar repos and explain the best match.")}>Similar</button>
+        <button className="chip chip-tag" onClick={() => handleSend("Queue this repo for research and explain why it matters.")}>Queue</button>
+        <button className="chip chip-tag" onClick={() => handleSend("Generate a Codex mission for this repo.")}>Codex</button>
       </div>
 
       <div ref={scrollRef} className="orchestrator-messages">
-        {messages.map((msg) => (
-          <div key={msg.id} className={`message-row ${msg.role}`}>
+        {messages.map((message) => (
+          <div key={message.id} className={`message-row ${message.role}`}>
             <div className="message-avatar">
-              {msg.role === 'assistant' ? <Bot size={16} /> : <UserIcon size={16} />}
+              {message.role === "assistant" ? <Bot size={16} /> : <UserIcon size={16} />}
             </div>
-            <div className="message-bubble">
-              {msg.content}
-            </div>
+            <div className="message-bubble">{message.content}</div>
           </div>
         ))}
-        {isLoading && (
+        {isLoading ? (
           <div className="message-row assistant">
             <div className="message-avatar">
               <Bot size={16} />
@@ -271,7 +289,7 @@ export function ChatPanel({
               <Loader size={14} className="spin" /> Thinking...
             </div>
           </div>
-        )}
+        ) : null}
       </div>
 
       <div className="orchestrator-tools">
@@ -280,15 +298,15 @@ export function ChatPanel({
         </div>
         <div className="tools-list">
           {Object.values(toolCalls).length === 0 ? (
-            <div className="tool-empty">No tool calls yet.</div>
+            <div className="text-muted">No tool activity yet.</div>
           ) : (
             Object.values(toolCalls).map((call) => (
-              <div key={call.id} className="tool-item">
-                <div className="tool-name">
-                  {call.name}
-                  <span className={`tool-status ${call.status}`}>{call.status}</span>
+              <div key={call.id} className="tool-call">
+                <div className="tool-call__header">
+                  <strong>{call.name}</strong>
+                  <span>{call.status === "done" ? "done" : "running"}</span>
                 </div>
-                <div className="tool-args">{call.arguments || '...'}</div>
+                <pre>{call.arguments || "{}"}</pre>
               </div>
             ))
           )}
@@ -297,11 +315,12 @@ export function ChatPanel({
 
       <div className="orchestrator-input">
         <input
-          type="text"
           value={input}
-          onChange={(e) => setInput(e.target.value)}
-          onKeyDown={(e) => e.key === 'Enter' && handleSend()}
+          onChange={(event) => setInput(event.target.value)}
           placeholder="Ask the orchestrator..."
+          onKeyDown={(event) => {
+            if (event.key === "Enter") handleSend();
+          }}
         />
         <button onClick={() => handleSend()} disabled={!input.trim() || isLoading}>
           <Send size={16} />

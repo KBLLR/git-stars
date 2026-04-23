@@ -6,6 +6,27 @@ import { Download, Activity, Server, Database } from 'lucide-react';
 const EVENT_BUS_URL = import.meta.env.VITE_EVENT_BUS_URL || '/bus';
 const EVENT_BUS_SSE_URL = `${EVENT_BUS_URL}/events?agency=git-stars`;
 
+type AgentEventWithDetails = AgentEvent & {
+  data?: unknown;
+  tool_name?: string;
+  response_id?: string;
+};
+
+function renderEventDetails(event: AgentEvent) {
+  const typedEvent = event as AgentEventWithDetails;
+
+  if (typedEvent.data !== undefined) {
+    return JSON.stringify(typedEvent.data);
+  }
+  if (typeof typedEvent.tool_name === "string") {
+    return `Call: ${typedEvent.tool_name}`;
+  }
+  if (typeof typedEvent.response_id === "string") {
+    return `Resp: ${typedEvent.response_id}`;
+  }
+  return JSON.stringify(event);
+}
+
  export const ActivityLog: React.FC = () => {
   const [events, setEvents] = useState<AgentEvent[]>([]);
   const [filterType, setFilterType] = useState<string>('all');
@@ -137,10 +158,7 @@ const EVENT_BUS_SSE_URL = `${EVENT_BUS_URL}/events?agency=git-stars`;
                                 </span>
                             </td>
                             <td className="text-muted" style={{ maxWidth: '400px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                                {'data' in event ? JSON.stringify((event as any).data) 
-                                 : 'tool_name' in event ? `Call: ${(event as any).tool_name}`
-                                 : 'response_id' in event ? `Resp: ${(event as any).response_id}` 
-                                 : JSON.stringify(event)}
+                                {renderEventDetails(event)}
                             </td>
                         </tr>
                     ))

@@ -79,9 +79,9 @@ export function RepoCard({ repo, onClick, onChat, onResearch, onSimilar, onConte
          <button 
            className="action-btn primary"
            onClick={(e) => { e.stopPropagation(); onChat?.(repo); }}
-           title="Open readme actions"
+           title="Open orchestrator"
          >
-           <MessageSquare size={14} /> Actions
+           <MessageSquare size={14} /> Orchestrate
          </button>
          <button 
             className="action-btn"
