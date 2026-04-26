@@ -229,7 +229,7 @@ async function generate() {
     await generateDerivedHouseData(path.resolve(__dirname, ".."), {
       starredRepos: flattenedData,
     });
-    console.log("Generated repo-signals, research-queue, skill-extractions, and mine-health snapshots.");
+    console.log("Generated Vega Lab repo signals, research queue, skill extractions, mine health, inspections, actions, and automation snapshots.");
 
   } catch (error) {
     console.error("Error during generation:", error);

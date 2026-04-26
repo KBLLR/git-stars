@@ -1,0 +1,2011 @@
+[
+  {
+    "nwo": "KBLLR/3D-model-viewer-configurator",
+    "inspectedAt": "2025-06-18T03:37:27.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [
+        "npm"
+      ],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "No test/check/lint script detected from package metadata."
+    ],
+    "risks": [
+      "Maintenance work has no obvious verification command."
+    ]
+  },
+  {
+    "nwo": "KBLLR/3DKNIGHT",
+    "inspectedAt": "2022-05-29T19:31:51.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "Repository appears stale based on last activity."
+    ],
+    "risks": [
+      "Dependencies, build targets, or deployment assumptions may be outdated."
+    ]
+  },
+  {
+    "nwo": "KBLLR/3DKNIGHT.art",
+    "inspectedAt": "2025-10-09T17:21:52.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [],
+    "risks": []
+  },
+  {
+    "nwo": "KBLLR/3dmodel-splats-stager",
+    "inspectedAt": "2025-11-17T01:49:33.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [
+        "npm"
+      ],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "No test/check/lint script detected from package metadata.",
+      "No build script detected from package metadata.",
+      "No workflow or deployment config detected in synced key files."
+    ],
+    "risks": [
+      "Maintenance work has no obvious verification command.",
+      "Deployment readiness is unclear."
+    ]
+  },
+  {
+    "nwo": "KBLLR/ada-agents",
+    "inspectedAt": "2025-11-17T01:14:37.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [
+        "pip"
+      ],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "No test/check/lint script detected from package metadata."
+    ],
+    "risks": [
+      "Maintenance work has no obvious verification command."
+    ]
+  },
+  {
+    "nwo": "KBLLR/ai-comic-factory",
+    "inspectedAt": "2025-07-16T20:22:31.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [
+        "npm"
+      ],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "No test/check/lint script detected from package metadata.",
+      "No build script detected from package metadata.",
+      "No workflow or deployment config detected in synced key files."
+    ],
+    "risks": [
+      "Maintenance work has no obvious verification command.",
+      "Deployment readiness is unclear."
+    ]
+  },
+  {
+    "nwo": "KBLLR/Auto-GPT",
+    "inspectedAt": "2025-07-16T20:29:43.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [
+        "pip"
+      ],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "No test/check/lint script detected from package metadata."
+    ],
+    "risks": [
+      "Maintenance work has no obvious verification command."
+    ]
+  },
+  {
+    "nwo": "KBLLR/avatar-os",
+    "inspectedAt": "2025-06-17T21:10:26.000Z",
+    "files": {
+      "hasReadme": false,
+      "packageManagers": [],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "README missing from the synced repository snapshot."
+    ],
+    "risks": [
+      "New contributors and agents lack a clear entrypoint."
+    ]
+  },
+  {
+    "nwo": "KBLLR/Avatars-Lab",
+    "inspectedAt": "2025-12-28T19:43:56.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [
+        "npm"
+      ],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "No test/check/lint script detected from package metadata.",
+      "No build script detected from package metadata.",
+      "No workflow or deployment config detected in synced key files."
+    ],
+    "risks": [
+      "Maintenance work has no obvious verification command.",
+      "Deployment readiness is unclear."
+    ]
+  },
+  {
+    "nwo": "KBLLR/Blender-GPT",
+    "inspectedAt": "2024-09-09T20:11:08.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "Repository appears stale based on last activity."
+    ],
+    "risks": [
+      "Dependencies, build targets, or deployment assumptions may be outdated."
+    ]
+  },
+  {
+    "nwo": "KBLLR/ccapture.js",
+    "inspectedAt": "2022-12-04T17:17:23.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "Repository appears stale based on last activity."
+    ],
+    "risks": [
+      "Dependencies, build targets, or deployment assumptions may be outdated."
+    ]
+  },
+  {
+    "nwo": "KBLLR/ChatDev",
+    "inspectedAt": "2025-07-17T15:33:54.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [
+        "pip"
+      ],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "No test/check/lint script detected from package metadata."
+    ],
+    "risks": [
+      "Maintenance work has no obvious verification command."
+    ]
+  },
+  {
+    "nwo": "KBLLR/city-blocks",
+    "inspectedAt": "2025-11-10T04:51:23.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [
+        "npm"
+      ],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "No test/check/lint script detected from package metadata."
+    ],
+    "risks": [
+      "Maintenance work has no obvious verification command."
+    ]
+  },
+  {
+    "nwo": "KBLLR/code-platformer-ai",
+    "inspectedAt": "2026-02-02T09:23:52.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [
+        "npm"
+      ],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "No test/check/lint script detected from package metadata."
+    ],
+    "risks": [
+      "Maintenance work has no obvious verification command."
+    ]
+  },
+  {
+    "nwo": "KBLLR/code-smart-campus",
+    "inspectedAt": "2025-12-15T00:08:19.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [
+        "npm"
+      ],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "No test/check/lint script detected from package metadata.",
+      "No build script detected from package metadata.",
+      "No workflow or deployment config detected in synced key files."
+    ],
+    "risks": [
+      "Maintenance work has no obvious verification command.",
+      "Deployment readiness is unclear."
+    ]
+  },
+  {
+    "nwo": "KBLLR/cog-sdxl",
+    "inspectedAt": "2023-09-15T14:34:18.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "Repository appears stale based on last activity."
+    ],
+    "risks": [
+      "Dependencies, build targets, or deployment assumptions may be outdated."
+    ]
+  },
+  {
+    "nwo": "KBLLR/D-KNIGHT-NFT",
+    "inspectedAt": "2022-03-24T05:12:13.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "Repository appears stale based on last activity."
+    ],
+    "risks": [
+      "Dependencies, build targets, or deployment assumptions may be outdated."
+    ]
+  },
+  {
+    "nwo": "KBLLR/dam-test",
+    "inspectedAt": "2025-02-12T19:06:32.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "Repository appears stale based on last activity."
+    ],
+    "risks": [
+      "Dependencies, build targets, or deployment assumptions may be outdated."
+    ]
+  },
+  {
+    "nwo": "KBLLR/Deep-Dive-Into-AI-With-MLX-PyTorch",
+    "inspectedAt": "2024-03-05T17:27:49.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [
+        "pip"
+      ],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "No test/check/lint script detected from package metadata.",
+      "No build script detected from package metadata.",
+      "No workflow or deployment config detected in synced key files.",
+      "Repository appears stale based on last activity."
+    ],
+    "risks": [
+      "Maintenance work has no obvious verification command.",
+      "Deployment readiness is unclear.",
+      "Dependencies, build targets, or deployment assumptions may be outdated."
+    ]
+  },
+  {
+    "nwo": "KBLLR/dja_panel_dashboard",
+    "inspectedAt": "2024-08-14T11:21:38.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [
+        "npm"
+      ],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "No test/check/lint script detected from package metadata.",
+      "No build script detected from package metadata.",
+      "No workflow or deployment config detected in synced key files.",
+      "Repository appears stale based on last activity."
+    ],
+    "risks": [
+      "Maintenance work has no obvious verification command.",
+      "Deployment readiness is unclear.",
+      "Dependencies, build targets, or deployment assumptions may be outdated."
+    ]
+  },
+  {
+    "nwo": "KBLLR/DJA-candidates-dashboard",
+    "inspectedAt": "2024-07-28T13:25:36.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [
+        "npm"
+      ],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "No test/check/lint script detected from package metadata.",
+      "No build script detected from package metadata.",
+      "No workflow or deployment config detected in synced key files.",
+      "Repository appears stale based on last activity."
+    ],
+    "risks": [
+      "Maintenance work has no obvious verification command.",
+      "Deployment readiness is unclear.",
+      "Dependencies, build targets, or deployment assumptions may be outdated."
+    ]
+  },
+  {
+    "nwo": "KBLLR/dja-db",
+    "inspectedAt": "2024-08-08T04:54:39.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [
+        "npm"
+      ],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "No test/check/lint script detected from package metadata.",
+      "No build script detected from package metadata.",
+      "No workflow or deployment config detected in synced key files.",
+      "Repository appears stale based on last activity."
+    ],
+    "risks": [
+      "Maintenance work has no obvious verification command.",
+      "Deployment readiness is unclear.",
+      "Dependencies, build targets, or deployment assumptions may be outdated."
+    ]
+  },
+  {
+    "nwo": "KBLLR/dja-nominations-tool",
+    "inspectedAt": "2024-08-14T12:48:30.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [
+        "npm"
+      ],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "No test/check/lint script detected from package metadata.",
+      "Repository appears stale based on last activity."
+    ],
+    "risks": [
+      "Maintenance work has no obvious verification command.",
+      "Dependencies, build targets, or deployment assumptions may be outdated."
+    ]
+  },
+  {
+    "nwo": "KBLLR/Do-Project",
+    "inspectedAt": "2023-10-11T21:17:08.000Z",
+    "files": {
+      "hasReadme": false,
+      "packageManagers": [],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "README missing from the synced repository snapshot.",
+      "No workflow or deployment config detected in synced key files.",
+      "Repository appears stale based on last activity."
+    ],
+    "risks": [
+      "New contributors and agents lack a clear entrypoint.",
+      "Deployment readiness is unclear.",
+      "Dependencies, build targets, or deployment assumptions may be outdated."
+    ]
+  },
+  {
+    "nwo": "KBLLR/Documentation_learnings-MMXX-MMXXII",
+    "inspectedAt": "2025-10-09T09:24:50.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [
+        "npm"
+      ],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "No test/check/lint script detected from package metadata."
+    ],
+    "risks": [
+      "Maintenance work has no obvious verification command."
+    ]
+  },
+  {
+    "nwo": "KBLLR/dsjlf3",
+    "inspectedAt": "2023-04-05T14:01:42.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [
+        "npm"
+      ],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "No test/check/lint script detected from package metadata.",
+      "Repository appears stale based on last activity."
+    ],
+    "risks": [
+      "Maintenance work has no obvious verification command.",
+      "Dependencies, build targets, or deployment assumptions may be outdated."
+    ]
+  },
+  {
+    "nwo": "KBLLR/empathic-ai",
+    "inspectedAt": "2025-10-01T10:13:37.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [
+        "npm"
+      ],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "No test/check/lint script detected from package metadata.",
+      "No build script detected from package metadata.",
+      "No workflow or deployment config detected in synced key files."
+    ],
+    "risks": [
+      "Maintenance work has no obvious verification command.",
+      "Deployment readiness is unclear."
+    ]
+  },
+  {
+    "nwo": "KBLLR/Final-MariCoin",
+    "inspectedAt": "2025-10-09T14:25:50.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [],
+    "risks": []
+  },
+  {
+    "nwo": "KBLLR/flirtcopilot",
+    "inspectedAt": "2025-11-17T01:52:43.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [
+        "npm"
+      ],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "No test/check/lint script detected from package metadata."
+    ],
+    "risks": [
+      "Maintenance work has no obvious verification command."
+    ]
+  },
+  {
+    "nwo": "KBLLR/flowmap-effect",
+    "inspectedAt": "2019-09-26T04:29:50.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "Repository appears stale based on last activity."
+    ],
+    "risks": [
+      "Dependencies, build targets, or deployment assumptions may be outdated."
+    ]
+  },
+  {
+    "nwo": "KBLLR/full-stack-documentation-site",
+    "inspectedAt": "2023-10-14T07:25:18.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "No workflow or deployment config detected in synced key files.",
+      "Repository appears stale based on last activity."
+    ],
+    "risks": [
+      "Deployment readiness is unclear.",
+      "Dependencies, build targets, or deployment assumptions may be outdated."
+    ]
+  },
+  {
+    "nwo": "KBLLR/gen_avatar_debate",
+    "inspectedAt": "2025-11-16T20:58:46.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [
+        "npm"
+      ],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "No test/check/lint script detected from package metadata."
+    ],
+    "risks": [
+      "Maintenance work has no obvious verification command."
+    ]
+  },
+  {
+    "nwo": "KBLLR/gen-idea-lab",
+    "inspectedAt": "2026-01-06T02:58:58.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [
+        "npm"
+      ],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "No test/check/lint script detected from package metadata.",
+      "No build script detected from package metadata.",
+      "No workflow or deployment config detected in synced key files."
+    ],
+    "risks": [
+      "Maintenance work has no obvious verification command.",
+      "Deployment readiness is unclear."
+    ]
+  },
+  {
+    "nwo": "KBLLR/git-stars",
+    "inspectedAt": "2026-02-04T00:27:32.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [],
+    "risks": []
+  },
+  {
+    "nwo": "KBLLR/glTF_3Dmodel-Configurator",
+    "inspectedAt": "2023-03-12T09:59:20.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [
+        "npm"
+      ],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "No test/check/lint script detected from package metadata.",
+      "Repository appears stale based on last activity."
+    ],
+    "risks": [
+      "Maintenance work has no obvious verification command.",
+      "Dependencies, build targets, or deployment assumptions may be outdated."
+    ]
+  },
+  {
+    "nwo": "KBLLR/gpt-3_chrome_extension",
+    "inspectedAt": "2022-11-29T19:16:06.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "No workflow or deployment config detected in synced key files.",
+      "Repository appears stale based on last activity."
+    ],
+    "risks": [
+      "Deployment readiness is unclear.",
+      "Dependencies, build targets, or deployment assumptions may be outdated."
+    ]
+  },
+  {
+    "nwo": "KBLLR/gpt4o-voice-preview-main",
+    "inspectedAt": "2024-05-22T16:06:10.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [
+        "pip"
+      ],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "No test/check/lint script detected from package metadata.",
+      "Repository appears stale based on last activity."
+    ],
+    "risks": [
+      "Maintenance work has no obvious verification command.",
+      "Dependencies, build targets, or deployment assumptions may be outdated."
+    ]
+  },
+  {
+    "nwo": "KBLLR/Habi-eco",
+    "inspectedAt": "2021-05-13T20:01:53.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "Repository appears stale based on last activity."
+    ],
+    "risks": [
+      "Dependencies, build targets, or deployment assumptions may be outdated."
+    ]
+  },
+  {
+    "nwo": "KBLLR/Hands-On-Image-Generation-with-TensorFlow-2.0",
+    "inspectedAt": "2023-03-24T22:40:46.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "Repository appears stale based on last activity."
+    ],
+    "risks": [
+      "Dependencies, build targets, or deployment assumptions may be outdated."
+    ]
+  },
+  {
+    "nwo": "KBLLR/HCI_modules_test001",
+    "inspectedAt": "2025-10-10T13:48:42.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [
+        "npm"
+      ],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "No test/check/lint script detected from package metadata."
+    ],
+    "risks": [
+      "Maintenance work has no obvious verification command."
+    ]
+  },
+  {
+    "nwo": "KBLLR/HomeLab",
+    "inspectedAt": "2023-09-12T14:24:57.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [
+        "npm"
+      ],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "No test/check/lint script detected from package metadata.",
+      "Repository appears stale based on last activity."
+    ],
+    "risks": [
+      "Maintenance work has no obvious verification command.",
+      "Dependencies, build targets, or deployment assumptions may be outdated."
+    ]
+  },
+  {
+    "nwo": "KBLLR/HomeLab_flame",
+    "inspectedAt": "2023-08-12T13:29:12.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "No workflow or deployment config detected in synced key files.",
+      "Repository appears stale based on last activity."
+    ],
+    "risks": [
+      "Deployment readiness is unclear.",
+      "Dependencies, build targets, or deployment assumptions may be outdated."
+    ]
+  },
+  {
+    "nwo": "KBLLR/htdi-agentic-framework",
+    "inspectedAt": "2025-11-17T08:38:26.000Z",
+    "files": {
+      "hasReadme": false,
+      "packageManagers": [
+        "npm"
+      ],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "README missing from the synced repository snapshot.",
+      "No test/check/lint script detected from package metadata."
+    ],
+    "risks": [
+      "New contributors and agents lack a clear entrypoint.",
+      "Maintenance work has no obvious verification command."
+    ]
+  },
+  {
+    "nwo": "KBLLR/htdi-agentic-lab",
+    "inspectedAt": "2025-12-01T08:08:49.000Z",
+    "files": {
+      "hasReadme": false,
+      "packageManagers": [
+        "npm"
+      ],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "README missing from the synced repository snapshot.",
+      "No test/check/lint script detected from package metadata."
+    ],
+    "risks": [
+      "New contributors and agents lack a clear entrypoint.",
+      "Maintenance work has no obvious verification command."
+    ]
+  },
+  {
+    "nwo": "KBLLR/htdi-project",
+    "inspectedAt": "2025-11-19T15:46:18.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [
+        "npm"
+      ],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "No test/check/lint script detected from package metadata."
+    ],
+    "risks": [
+      "Maintenance work has no obvious verification command."
+    ]
+  },
+  {
+    "nwo": "KBLLR/icon-generator",
+    "inspectedAt": "2025-10-15T22:16:19.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [
+        "npm"
+      ],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "No test/check/lint script detected from package metadata."
+    ],
+    "risks": [
+      "Maintenance work has no obvious verification command."
+    ]
+  },
+  {
+    "nwo": "KBLLR/imgui-js",
+    "inspectedAt": "2022-01-29T13:55:46.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "No workflow or deployment config detected in synced key files.",
+      "Repository appears stale based on last activity."
+    ],
+    "risks": [
+      "Deployment readiness is unclear.",
+      "Dependencies, build targets, or deployment assumptions may be outdated."
+    ]
+  },
+  {
+    "nwo": "KBLLR/infoq-mini-book",
+    "inspectedAt": "2023-09-06T23:39:08.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "Repository appears stale based on last activity.",
+      "Repository has template/scaffold signals."
+    ],
+    "risks": [
+      "Dependencies, build targets, or deployment assumptions may be outdated."
+    ]
+  },
+  {
+    "nwo": "KBLLR/javascript-algorithms",
+    "inspectedAt": "2023-02-04T08:19:08.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "Repository appears stale based on last activity."
+    ],
+    "risks": [
+      "Dependencies, build targets, or deployment assumptions may be outdated."
+    ]
+  },
+  {
+    "nwo": "KBLLR/JSTouchController",
+    "inspectedAt": "2012-06-13T14:37:59.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "Repository appears stale based on last activity."
+    ],
+    "risks": [
+      "Dependencies, build targets, or deployment assumptions may be outdated."
+    ]
+  },
+  {
+    "nwo": "KBLLR/KBLLR_generative_AI23",
+    "inspectedAt": "2026-02-03T18:04:03.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [
+        "npm"
+      ],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "No test/check/lint script detected from package metadata."
+    ],
+    "risks": [
+      "Maintenance work has no obvious verification command."
+    ]
+  },
+  {
+    "nwo": "KBLLR/kbllr_graphics_",
+    "inspectedAt": "2023-07-07T07:02:56.000Z",
+    "files": {
+      "hasReadme": false,
+      "packageManagers": [],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "README missing from the synced repository snapshot.",
+      "Repository appears stale based on last activity."
+    ],
+    "risks": [
+      "New contributors and agents lack a clear entrypoint.",
+      "Dependencies, build targets, or deployment assumptions may be outdated."
+    ]
+  },
+  {
+    "nwo": "KBLLR/kbllr-graphics-threejs",
+    "inspectedAt": "2025-10-15T21:10:40.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [
+        "npm"
+      ],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "No test/check/lint script detected from package metadata.",
+      "No build script detected from package metadata.",
+      "No workflow or deployment config detected in synced key files."
+    ],
+    "risks": [
+      "Maintenance work has no obvious verification command.",
+      "Deployment readiness is unclear."
+    ]
+  },
+  {
+    "nwo": "KBLLR/KBLLR-template-ThreeJS",
+    "inspectedAt": "2025-10-18T14:19:46.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [
+        "npm"
+      ],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "No test/check/lint script detected from package metadata.",
+      "Repository has template/scaffold signals."
+    ],
+    "risks": [
+      "Maintenance work has no obvious verification command."
+    ]
+  },
+  {
+    "nwo": "KBLLR/LANDING_PAGE-001",
+    "inspectedAt": "2025-10-11T10:16:37.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [
+        "npm"
+      ],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "No test/check/lint script detected from package metadata.",
+      "No build script detected from package metadata.",
+      "No workflow or deployment config detected in synced key files."
+    ],
+    "risks": [
+      "Maintenance work has no obvious verification command.",
+      "Deployment readiness is unclear."
+    ]
+  },
+  {
+    "nwo": "KBLLR/le-belle-epoch",
+    "inspectedAt": "2025-12-28T23:22:47.000Z",
+    "files": {
+      "hasReadme": false,
+      "packageManagers": [],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "README missing from the synced repository snapshot."
+    ],
+    "risks": [
+      "New contributors and agents lack a clear entrypoint."
+    ]
+  },
+  {
+    "nwo": "KBLLR/Leagentdiary",
+    "inspectedAt": "2025-11-18T21:54:17.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [
+        "npm"
+      ],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "No test/check/lint script detected from package metadata.",
+      "No build script detected from package metadata.",
+      "No workflow or deployment config detected in synced key files."
+    ],
+    "risks": [
+      "Maintenance work has no obvious verification command.",
+      "Deployment readiness is unclear."
+    ]
+  },
+  {
+    "nwo": "KBLLR/livekit-project-idea-lab",
+    "inspectedAt": "2025-10-05T15:39:24.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [
+        "npm"
+      ],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "No test/check/lint script detected from package metadata.",
+      "No build script detected from package metadata.",
+      "No workflow or deployment config detected in synced key files."
+    ],
+    "risks": [
+      "Maintenance work has no obvious verification command.",
+      "Deployment readiness is unclear."
+    ]
+  },
+  {
+    "nwo": "KBLLR/macbook-keyboard",
+    "inspectedAt": "2021-04-30T15:06:31.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "Repository appears stale based on last activity."
+    ],
+    "risks": [
+      "Dependencies, build targets, or deployment assumptions may be outdated."
+    ]
+  },
+  {
+    "nwo": "KBLLR/MariCoin",
+    "inspectedAt": "2025-07-22T19:38:16.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [],
+    "risks": []
+  },
+  {
+    "nwo": "KBLLR/MCOIN-Case",
+    "inspectedAt": "2022-01-17T07:12:23.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "Repository appears stale based on last activity."
+    ],
+    "risks": [
+      "Dependencies, build targets, or deployment assumptions may be outdated."
+    ]
+  },
+  {
+    "nwo": "KBLLR/memoryblocks",
+    "inspectedAt": "2025-11-23T09:46:11.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [
+        "npm"
+      ],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "No test/check/lint script detected from package metadata.",
+      "No build script detected from package metadata.",
+      "No workflow or deployment config detected in synced key files."
+    ],
+    "risks": [
+      "Maintenance work has no obvious verification command.",
+      "Deployment readiness is unclear."
+    ]
+  },
+  {
+    "nwo": "KBLLR/mindmesh",
+    "inspectedAt": "2025-05-04T17:25:59.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [
+        "pip"
+      ],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "No test/check/lint script detected from package metadata."
+    ],
+    "risks": [
+      "Maintenance work has no obvious verification command."
+    ]
+  },
+  {
+    "nwo": "KBLLR/mlx-openai-server-lab",
+    "inspectedAt": "2025-11-20T15:37:28.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [
+        "pip"
+      ],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "No test/check/lint script detected from package metadata.",
+      "No build script detected from package metadata.",
+      "No workflow or deployment config detected in synced key files."
+    ],
+    "risks": [
+      "Maintenance work has no obvious verification command.",
+      "Deployment readiness is unclear."
+    ]
+  },
+  {
+    "nwo": "KBLLR/mlx-rag-lab",
+    "inspectedAt": "2025-12-03T23:28:00.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [
+        "pip"
+      ],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "No test/check/lint script detected from package metadata."
+    ],
+    "risks": [
+      "Maintenance work has no obvious verification command."
+    ]
+  },
+  {
+    "nwo": "KBLLR/modal-apps-lab",
+    "inspectedAt": "2025-11-17T13:01:13.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [
+        "pip"
+      ],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "No test/check/lint script detected from package metadata.",
+      "No build script detected from package metadata.",
+      "No workflow or deployment config detected in synced key files."
+    ],
+    "risks": [
+      "Maintenance work has no obvious verification command.",
+      "Deployment readiness is unclear."
+    ]
+  },
+  {
+    "nwo": "KBLLR/moonsyc",
+    "inspectedAt": "2025-11-15T21:21:45.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [
+        "npm"
+      ],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "No test/check/lint script detected from package metadata."
+    ],
+    "risks": [
+      "Maintenance work has no obvious verification command."
+    ]
+  },
+  {
+    "nwo": "KBLLR/my-room-in-3d",
+    "inspectedAt": "2021-09-13T11:44:39.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "Repository appears stale based on last activity."
+    ],
+    "risks": [
+      "Dependencies, build targets, or deployment assumptions may be outdated."
+    ]
+  },
+  {
+    "nwo": "KBLLR/oblik_3d-visualiser",
+    "inspectedAt": "2024-02-12T19:02:26.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [
+        "npm"
+      ],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "No test/check/lint script detected from package metadata.",
+      "No build script detected from package metadata.",
+      "No workflow or deployment config detected in synced key files.",
+      "Repository appears stale based on last activity."
+    ],
+    "risks": [
+      "Maintenance work has no obvious verification command.",
+      "Deployment readiness is unclear.",
+      "Dependencies, build targets, or deployment assumptions may be outdated."
+    ]
+  },
+  {
+    "nwo": "KBLLR/OBLIK-3D-Furniture-Configurator",
+    "inspectedAt": "2023-04-21T14:53:11.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [
+        "npm"
+      ],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "No test/check/lint script detected from package metadata.",
+      "Repository appears stale based on last activity."
+    ],
+    "risks": [
+      "Maintenance work has no obvious verification command.",
+      "Dependencies, build targets, or deployment assumptions may be outdated."
+    ]
+  },
+  {
+    "nwo": "KBLLR/panorama-to-cubemap",
+    "inspectedAt": "2025-10-18T04:17:29.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [
+        "npm"
+      ],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "No test/check/lint script detected from package metadata.",
+      "No build script detected from package metadata.",
+      "No workflow or deployment config detected in synced key files."
+    ],
+    "risks": [
+      "Maintenance work has no obvious verification command.",
+      "Deployment readiness is unclear."
+    ]
+  },
+  {
+    "nwo": "KBLLR/project_anja",
+    "inspectedAt": "2025-11-17T04:02:56.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [
+        "npm"
+      ],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "No test/check/lint script detected from package metadata."
+    ],
+    "risks": [
+      "Maintenance work has no obvious verification command."
+    ]
+  },
+  {
+    "nwo": "KBLLR/Resizable.js",
+    "inspectedAt": "2021-05-08T17:59:39.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "Repository appears stale based on last activity."
+    ],
+    "risks": [
+      "Dependencies, build targets, or deployment assumptions may be outdated."
+    ]
+  },
+  {
+    "nwo": "KBLLR/roop",
+    "inspectedAt": "2023-08-17T08:48:39.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "Repository appears stale based on last activity."
+    ],
+    "risks": [
+      "Dependencies, build targets, or deployment assumptions may be outdated."
+    ]
+  },
+  {
+    "nwo": "KBLLR/sdxl_lighting",
+    "inspectedAt": "2024-02-27T23:48:19.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [
+        "npm"
+      ],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "No test/check/lint script detected from package metadata.",
+      "Repository appears stale based on last activity."
+    ],
+    "risks": [
+      "Maintenance work has no obvious verification command.",
+      "Dependencies, build targets, or deployment assumptions may be outdated."
+    ]
+  },
+  {
+    "nwo": "KBLLR/secretsbank",
+    "inspectedAt": "2025-12-01T08:12:07.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [
+        "pip"
+      ],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "No test/check/lint script detected from package metadata."
+    ],
+    "risks": [
+      "Maintenance work has no obvious verification command."
+    ]
+  },
+  {
+    "nwo": "KBLLR/Shap-e_Img-to-3D_google_collab",
+    "inspectedAt": "2023-05-13T19:43:02.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "Repository appears stale based on last activity."
+    ],
+    "risks": [
+      "Dependencies, build targets, or deployment assumptions may be outdated."
+    ]
+  },
+  {
+    "nwo": "KBLLR/Sieve",
+    "inspectedAt": "2021-05-14T18:48:39.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "No workflow or deployment config detected in synced key files.",
+      "Repository appears stale based on last activity."
+    ],
+    "risks": [
+      "Deployment readiness is unclear.",
+      "Dependencies, build targets, or deployment assumptions may be outdated."
+    ]
+  },
+  {
+    "nwo": "KBLLR/simple-flask-api-restx",
+    "inspectedAt": "2025-02-04T12:41:49.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [
+        "pip"
+      ],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "No test/check/lint script detected from package metadata.",
+      "No build script detected from package metadata.",
+      "No workflow or deployment config detected in synced key files.",
+      "Repository appears stale based on last activity."
+    ],
+    "risks": [
+      "Maintenance work has no obvious verification command.",
+      "Deployment readiness is unclear.",
+      "Dependencies, build targets, or deployment assumptions may be outdated."
+    ]
+  },
+  {
+    "nwo": "KBLLR/Speech-Services-Azure",
+    "inspectedAt": "2025-04-03T00:46:35.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "No workflow or deployment config detected in synced key files.",
+      "Repository appears stale based on last activity."
+    ],
+    "risks": [
+      "Deployment readiness is unclear.",
+      "Dependencies, build targets, or deployment assumptions may be outdated."
+    ]
+  },
+  {
+    "nwo": "KBLLR/StableCascade",
+    "inspectedAt": "2024-02-21T07:51:35.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "Repository appears stale based on last activity."
+    ],
+    "risks": [
+      "Dependencies, build targets, or deployment assumptions may be outdated."
+    ]
+  },
+  {
+    "nwo": "KBLLR/talking-heads-papers",
+    "inspectedAt": "2025-07-13T18:31:50.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [
+        "pip"
+      ],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "No test/check/lint script detected from package metadata."
+    ],
+    "risks": [
+      "Maintenance work has no obvious verification command."
+    ]
+  },
+  {
+    "nwo": "KBLLR/testing-AlienJs",
+    "inspectedAt": "2022-04-09T15:42:47.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [
+        "npm"
+      ],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "No test/check/lint script detected from package metadata.",
+      "Repository appears stale based on last activity."
+    ],
+    "risks": [
+      "Maintenance work has no obvious verification command.",
+      "Dependencies, build targets, or deployment assumptions may be outdated."
+    ]
+  },
+  {
+    "nwo": "KBLLR/the-generalist-ai",
+    "inspectedAt": "2023-10-14T10:32:11.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [
+        "npm"
+      ],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "No test/check/lint script detected from package metadata.",
+      "Repository appears stale based on last activity."
+    ],
+    "risks": [
+      "Maintenance work has no obvious verification command.",
+      "Dependencies, build targets, or deployment assumptions may be outdated."
+    ]
+  },
+  {
+    "nwo": "KBLLR/the-meta-chronicle",
+    "inspectedAt": "2026-01-22T04:54:02.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [
+        "npm"
+      ],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "No test/check/lint script detected from package metadata.",
+      "No build script detected from package metadata.",
+      "No workflow or deployment config detected in synced key files."
+    ],
+    "risks": [
+      "Maintenance work has no obvious verification command.",
+      "Deployment readiness is unclear."
+    ]
+  },
+  {
+    "nwo": "KBLLR/THREE.CubemapToEquirectangular",
+    "inspectedAt": "2021-04-15T09:33:38.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "No workflow or deployment config detected in synced key files.",
+      "Repository appears stale based on last activity."
+    ],
+    "risks": [
+      "Deployment readiness is unclear.",
+      "Dependencies, build targets, or deployment assumptions may be outdated."
+    ]
+  },
+  {
+    "nwo": "KBLLR/Three.js-TypeScript-Boilerplate",
+    "inspectedAt": "2022-05-25T21:08:42.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "Repository appears stale based on last activity.",
+      "Repository has template/scaffold signals."
+    ],
+    "risks": [
+      "Dependencies, build targets, or deployment assumptions may be outdated."
+    ]
+  },
+  {
+    "nwo": "KBLLR/ThreeBoilerplate",
+    "inspectedAt": "2023-03-06T10:39:35.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [
+        "npm"
+      ],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "No test/check/lint script detected from package metadata.",
+      "Repository appears stale based on last activity.",
+      "Repository has template/scaffold signals."
+    ],
+    "risks": [
+      "Maintenance work has no obvious verification command.",
+      "Dependencies, build targets, or deployment assumptions may be outdated."
+    ]
+  },
+  {
+    "nwo": "KBLLR/Threejs-nerf-visualizer",
+    "inspectedAt": "2025-10-13T17:02:04.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [
+        "npm"
+      ],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "No test/check/lint script detected from package metadata.",
+      "No build script detected from package metadata.",
+      "No workflow or deployment config detected in synced key files."
+    ],
+    "risks": [
+      "Maintenance work has no obvious verification command.",
+      "Deployment readiness is unclear."
+    ]
+  },
+  {
+    "nwo": "KBLLR/threejs-template-simple",
+    "inspectedAt": "2022-09-01T22:32:39.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "Repository appears stale based on last activity.",
+      "Repository has template/scaffold signals."
+    ],
+    "risks": [
+      "Dependencies, build targets, or deployment assumptions may be outdated."
+    ]
+  },
+  {
+    "nwo": "KBLLR/threejs-Vite-template-complex",
+    "inspectedAt": "2022-12-12T20:30:52.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "No workflow or deployment config detected in synced key files.",
+      "Repository appears stale based on last activity.",
+      "Repository has template/scaffold signals."
+    ],
+    "risks": [
+      "Deployment readiness is unclear.",
+      "Dependencies, build targets, or deployment assumptions may be outdated."
+    ]
+  },
+  {
+    "nwo": "KBLLR/ThreeJS-Webpack-ES6-Boilerplate",
+    "inspectedAt": "2022-04-28T03:16:41.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "Repository appears stale based on last activity.",
+      "Repository has template/scaffold signals."
+    ],
+    "risks": [
+      "Dependencies, build targets, or deployment assumptions may be outdated."
+    ]
+  },
+  {
+    "nwo": "KBLLR/tldraw-mlx",
+    "inspectedAt": "2023-12-12T13:55:38.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [
+        "npm"
+      ],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "No test/check/lint script detected from package metadata.",
+      "No build script detected from package metadata.",
+      "No workflow or deployment config detected in synced key files.",
+      "Repository appears stale based on last activity.",
+      "Repository has template/scaffold signals."
+    ],
+    "risks": [
+      "Maintenance work has no obvious verification command.",
+      "Deployment readiness is unclear.",
+      "Dependencies, build targets, or deployment assumptions may be outdated."
+    ]
+  },
+  {
+    "nwo": "KBLLR/v0-cyberpunk-dashboard-design",
+    "inspectedAt": "2025-07-03T11:49:38.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [
+        "npm"
+      ],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "No test/check/lint script detected from package metadata.",
+      "No build script detected from package metadata.",
+      "No workflow or deployment config detected in synced key files."
+    ],
+    "risks": [
+      "Maintenance work has no obvious verification command.",
+      "Deployment readiness is unclear."
+    ]
+  },
+  {
+    "nwo": "KBLLR/validator",
+    "inspectedAt": "2025-01-25T14:05:49.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [
+        "pip"
+      ],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "No test/check/lint script detected from package metadata.",
+      "Repository appears stale based on last activity."
+    ],
+    "risks": [
+      "Maintenance work has no obvious verification command.",
+      "Dependencies, build targets, or deployment assumptions may be outdated."
+    ]
+  },
+  {
+    "nwo": "KBLLR/webgi-scene",
+    "inspectedAt": "2025-09-23T22:21:30.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [
+        "npm"
+      ],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "No test/check/lint script detected from package metadata.",
+      "No build script detected from package metadata.",
+      "No workflow or deployment config detected in synced key files."
+    ],
+    "risks": [
+      "Maintenance work has no obvious verification command.",
+      "Deployment readiness is unclear."
+    ]
+  },
+  {
+    "nwo": "KBLLR/webgl-shader-examples",
+    "inspectedAt": "2019-02-22T17:28:33.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "Repository appears stale based on last activity."
+    ],
+    "risks": [
+      "Dependencies, build targets, or deployment assumptions may be outdated."
+    ]
+  },
+  {
+    "nwo": "KBLLR/whisperkittools",
+    "inspectedAt": "2024-01-30T14:11:53.000Z",
+    "files": {
+      "hasReadme": true,
+      "packageManagers": [],
+      "workflows": [],
+      "deploymentConfigs": [],
+      "testScripts": [],
+      "buildScripts": []
+    },
+    "findings": [
+      "Repository appears stale based on last activity."
+    ],
+    "risks": [
+      "Dependencies, build targets, or deployment assumptions may be outdated."
+    ]
+  }
+]

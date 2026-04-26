@@ -24,6 +24,18 @@ export interface Repo {
   has_readme?: boolean | null;
   is_owner?: boolean;
   is_fork?: boolean;
+  key_files?: RepoKeyFiles;
+}
+
+export interface RepoKeyFiles {
+  packageJson?: {
+    scripts?: Record<string, string>;
+    dependencies?: Record<string, string>;
+    devDependencies?: Record<string, string>;
+  } | null;
+  packageManagers?: string[];
+  workflows?: string[];
+  deploymentConfigs?: string[];
 }
 
 export interface LanguageGroup {
@@ -84,4 +96,80 @@ export interface MineHealthRecord {
   updatedAt: string;
   healthFlags: string[];
   recommendedActions: string[];
+}
+
+export type ActionItemStatus = 'open' | 'reviewing' | 'accepted' | 'dismissed' | 'done';
+export type ActionItemKind = 'readme' | 'maintenance' | 'deployment' | 'testing' | 'dependency' | 'research' | 'skill' | 'template' | 'adoption';
+
+export interface RepoInspection {
+  nwo: string;
+  inspectedAt: string;
+  files: {
+    hasReadme: boolean | null;
+    packageManagers: string[];
+    workflows: string[];
+    deploymentConfigs: string[];
+    testScripts: string[];
+    buildScripts: string[];
+  };
+  findings: string[];
+  risks: string[];
+}
+
+export interface ActionItem {
+  id: string;
+  kind: ActionItemKind;
+  status: ActionItemStatus;
+  priority: 'low' | 'normal' | 'high' | 'critical';
+  nwo: string;
+  title: string;
+  summary: string;
+  evidence: string[];
+  linkedSkills: string[];
+  linkedRules: string[];
+  linkedFlows: string[];
+  draft: string;
+  source: 'daily-ops' | 'weekly-research' | 'manual';
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface AutomationRunRecord {
+  id: string;
+  kind: 'daily-ops' | 'weekly-research';
+  startedAt: string;
+  completedAt: string;
+  status: 'success' | 'partial' | 'failed';
+  createdActionItemIds: string[];
+  notes: string[];
+}
+
+export interface OpsDigest {
+  generatedAt: string;
+  summary: string;
+  counts: {
+    openActions: number;
+    criticalActions: number;
+    ownedRepos: number;
+    researchQueue: number;
+  };
+  highlights: string[];
+  recommendedActions: Array<{
+    id: string;
+    nwo: string;
+    title: string;
+    priority: ActionItem['priority'];
+    kind: ActionItemKind;
+  }>;
+  actionItemIds: string[];
+}
+
+export interface WeeklyResearchReview {
+  generatedAt: string;
+  summary: string;
+  brightStars: string[];
+  adoptionCandidates: string[];
+  skillCandidates: string[];
+  researchCandidates: string[];
+  actionItemIds: string[];
 }

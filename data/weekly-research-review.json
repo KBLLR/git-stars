@@ -1,0 +1,55 @@
+{
+  "generatedAt": "2026-04-22T22:00:00.000Z",
+  "summary": "Weekly Vega Lab review for bright-star adoption, skill extraction, and research queue movement.",
+  "brightStars": [
+    "KBLLR/talking-heads-papers",
+    "KBLLR/ChatDev",
+    "KBLLR/Leagentdiary",
+    "KBLLR/gpt-3_chrome_extension",
+    "KBLLR/mlx-rag-lab",
+    "KBLLR/mindmesh",
+    "KBLLR/3dmodel-splats-stager",
+    "KBLLR/tldraw-mlx"
+  ],
+  "adoptionCandidates": [
+    "KBLLR/talking-heads-papers",
+    "KBLLR/ChatDev",
+    "KBLLR/Leagentdiary",
+    "KBLLR/gpt-3_chrome_extension",
+    "KBLLR/mlx-rag-lab",
+    "KBLLR/mindmesh",
+    "KBLLR/3dmodel-splats-stager",
+    "KBLLR/tldraw-mlx"
+  ],
+  "skillCandidates": [
+    "KBLLR/ChatDev",
+    "KBLLR/Leagentdiary",
+    "KBLLR/gpt-3_chrome_extension",
+    "KBLLR/tldraw-mlx",
+    "KBLLR/code-smart-campus",
+    "KBLLR/ada-agents",
+    "KBLLR/moonsyc",
+    "KBLLR/KBLLR-template-ThreeJS"
+  ],
+  "researchCandidates": [
+    "KBLLR/talking-heads-papers",
+    "KBLLR/whisperkittools",
+    "comet-ml/opik",
+    "MemPalace/mempalace",
+    "NVIDIAGameWorks/kaolin",
+    "HKUDS/DeepCode",
+    "SalesforceAIResearch/MCP-Universe",
+    "marcomusy/vedo"
+  ],
+  "actionItemIds": [
+    "vega-lab:template:kbllr-kbllr-template-threejs",
+    "vega-lab:skill:kbllr-chatdev",
+    "vega-lab:template:kbllr-tldraw-mlx",
+    "vega-lab:template:kbllr-infoq-mini-book",
+    "vega-lab:template:kbllr-threeboilerplate",
+    "vega-lab:template:kbllr-threejs-vite-template-complex",
+    "vega-lab:template:kbllr-threejs-template-simple",
+    "vega-lab:template:kbllr-three-js-typescript-boilerplate",
+    "vega-lab:template:kbllr-threejs-webpack-es6-boilerplate"
+  ]
+}

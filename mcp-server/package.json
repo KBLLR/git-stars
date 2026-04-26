@@ -1,7 +1,7 @@
 {
-    "name": "git-stars-mcp",
-    "version": "1.0.0",
-    "description": "MCP Server for Git Stars House",
+    "name": "vega-lab-mcp",
+    "version": "3.0.0",
+    "description": "MCP Server for Vega Lab",
     "main": "index.js",
     "scripts": {
         "start": "node index.js"

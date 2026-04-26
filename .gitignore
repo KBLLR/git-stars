@@ -33,8 +33,22 @@ yarn-error.log
 scripts/.cache/
 coverage/
 
-# Directories
+# Generated Vega Lab data artifacts
 data/
+!data/
+data/*
+!data/data.json
+!data/my-repos.json
+!data/stats.json
+!data/repo-signals.json
+!data/research-queue.json
+!data/skill-extractions.json
+!data/mine-health.json
+!data/repo-inspections.json
+!data/action-items.json
+!data/automation-runs.json
+!data/ops-digest.json
+!data/weekly-research-review.json
 
 # npm lock file that will be generated in yarn projects
 

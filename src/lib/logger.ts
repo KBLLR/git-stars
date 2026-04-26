@@ -2,7 +2,9 @@ import { AgentEvent, createCustomEvent, HouseId } from '@agent-events';
 import { Repo } from '../types';
 
 const EVENT_BUS_URL = import.meta.env.VITE_EVENT_BUS_URL || '/bus';
-const HOUSE_ID: HouseId = 'git-stars';
+const HOUSE_ID: HouseId = 'vega-lab';
+const CACHE_KEY = 'vega-lab:activity-cache';
+const LEGACY_CACHE_KEY = 'git-stars:activity-cache';
 
 // Standard event types for this house
 const REPO_VIEWED_TYPE = 'repo.viewed';
@@ -41,12 +43,12 @@ export const logger = {
    */
   saveToLocalCache(event: AgentEvent) {
     try {
-      const stored = localStorage.getItem('git-stars:activity-cache');
+      const stored = localStorage.getItem(CACHE_KEY) || localStorage.getItem(LEGACY_CACHE_KEY);
       const events: AgentEvent[] = stored ? JSON.parse(stored) : [];
       events.unshift(event); // Newest first
       // Keep only last 100 for cache
       if (events.length > 100) events.length = 100;
-      localStorage.setItem('git-stars:activity-cache', JSON.stringify(events));
+      localStorage.setItem(CACHE_KEY, JSON.stringify(events));
     } catch (e) {
       console.error('Failed to save to local cache', e);
     }
@@ -70,7 +72,7 @@ export const logger = {
    */
   getCachedEvents(): AgentEvent[] {
     try {
-      const stored = localStorage.getItem('git-stars:activity-cache');
+      const stored = localStorage.getItem(CACHE_KEY) || localStorage.getItem(LEGACY_CACHE_KEY);
       return stored ? JSON.parse(stored) : [];
     } catch {
       return [];

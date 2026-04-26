@@ -1,4 +1,4 @@
-name: Nightly House Data Refresh
+name: Daily Vega Lab Ops Refresh
 
 on:
   schedule:
@@ -6,14 +6,14 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: git-stars-nightly-house-data
+  group: vega-lab-daily-ops-data
   cancel-in-progress: false
 
 permissions:
   contents: write
 
 jobs:
-  update-house-data:
+  update-vega-lab-data:
     runs-on: ubuntu-latest
 
     steps:
@@ -52,17 +52,17 @@ jobs:
       - name: Verify generated datasets
         run: pnpm run test:data
 
-      - name: Commit and push generated house data
+      - name: Commit and push generated Vega Lab data
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
           if [[ -n $(git status --porcelain -- data/*.json public/*.json README.md) ]]; then
             git add data/*.json public/*.json README.md
-            git commit -m "chore(data): refresh house snapshots [skip ci]"
+            git commit -m "chore(data): refresh vega lab snapshots [skip ci]"
             git pull --rebase origin main
             git push origin HEAD:main
-            echo "House data updated and pushed to main."
+            echo "Vega Lab data updated and pushed to main."
           else
             echo "No generated data changes detected."
           fi

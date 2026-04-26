@@ -1,13 +1,13 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Bot, Loader, Send, User as UserIcon, Wrench, X } from "lucide-react";
 import type { Repo } from "../types";
-import type { GitStarsRoute } from "../lib/orchestrator";
+import type { VegaLabRoute } from "../lib/orchestrator";
 import {
-  buildGitStarsTools,
+  buildVegaLabTools,
   buildSystemPrompt,
   DEFAULT_AGENT_ID,
   HOUSE_ID,
-  routeGitStarsIntent,
+  routeVegaLabIntent,
 } from "../lib/orchestrator";
 import type { OpenResponsesEvent } from "../lib/openresponses-client";
 import { streamOpenResponses } from "../lib/openresponses-client";
@@ -53,7 +53,7 @@ export function ChatPanel({
   const [isLoading, setIsLoading] = useState(false);
   const [toolCalls, setToolCalls] = useState<Record<string, ToolCall>>({});
   const [defaultModel, setDefaultModel] = useState<string | null>(null);
-  const [activeRoute, setActiveRoute] = useState<GitStarsRoute | null>(null);
+  const [activeRoute, setActiveRoute] = useState<VegaLabRoute | null>(null);
   const [runtimeTarget, setRuntimeTarget] = useState(() =>
     resolveRuntimeTarget(loadRuntimeSettings()),
   );
@@ -61,7 +61,7 @@ export function ChatPanel({
   const streamRef = useRef<AbortController | null>(null);
   const lastPrefillRef = useRef<string | null>(null);
 
-  const tools = useMemo(() => buildGitStarsTools(), []);
+  const tools = useMemo(() => buildVegaLabTools(), []);
 
   useEffect(() => {
     fetch(`${runtimeTarget.busUrl}/settings`)
@@ -100,7 +100,7 @@ export function ChatPanel({
         {
           id: "welcome",
           role: "assistant",
-          content: `Git Stars Orchestrator online. I can analyze ${repo.author}/${repo.name}, route to a specialist, and call the house tools directly.`,
+          content: `Vega Lab Orchestrator online. I can analyze ${repo.author}/${repo.name}, route to a specialist, and call the OpenResponses house tools directly.`,
           timestamp: Date.now(),
         },
       ]);
@@ -186,7 +186,7 @@ export function ChatPanel({
     const content = (override ?? input).trim();
     if (!content) return;
 
-    const route = routeGitStarsIntent(content);
+    const route = routeVegaLabIntent(content);
     setActiveRoute(route);
 
     const userMessage: Message = {

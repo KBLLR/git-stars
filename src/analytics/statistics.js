@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * Statistics Generator for git-stars
+ * Statistics Generator for Vega Lab
  * Generates comprehensive statistics from starred repository data
  */
 

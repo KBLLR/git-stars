@@ -4,11 +4,12 @@ import DOMPurify from "dompurify";
 import { ExternalLink, Sparkles, Wand2, X } from "lucide-react";
 import type { Repo } from "../types";
 import { streamOpenResponses } from "../lib/openresponses-client";
-import type { ActionPreset, GitStarsRoute } from "../lib/orchestrator";
+import type { ActionPreset, VegaLabRoute } from "../lib/orchestrator";
 import {
-  buildGitStarsTools,
+  buildVegaLabTools,
   buildSystemPrompt,
-  routeGitStarsIntent,
+  HOUSE_ID,
+  routeVegaLabIntent,
 } from "../lib/orchestrator";
 import { getRepoAboutUrl } from "../lib/repo-links";
 import { loadRuntimeSettings, resolveRuntimeTarget, SETTINGS_EVENT } from "../lib/settings";
@@ -56,7 +57,7 @@ export function ReadmePanel({
   const [overlayTitle, setOverlayTitle] = useState("");
   const [overlayContent, setOverlayContent] = useState("");
   const [isRunning, setIsRunning] = useState(false);
-  const [activeRoute, setActiveRoute] = useState<GitStarsRoute | null>(null);
+  const [activeRoute, setActiveRoute] = useState<VegaLabRoute | null>(null);
   const lastActionRef = useRef<string | null>(null);
   const streamRef = useRef<AbortController | null>(null);
 
@@ -78,7 +79,7 @@ export function ReadmePanel({
   const runAction = useCallback((prompt: string, title: string) => {
     if (!repo) return;
     const actionId = `action-${Date.now()}`;
-    const route = routeGitStarsIntent(prompt);
+    const route = routeVegaLabIntent(prompt);
     const excerpt = rawMarkdown.slice(0, 4000);
     const conversation = [
       {
@@ -106,10 +107,10 @@ export function ReadmePanel({
       body: {
         model: selectedModel || runtimeTarget.model || "local-model",
         messages: conversation,
-        tools: buildGitStarsTools(),
+        tools: buildVegaLabTools(),
         tool_choice: "auto",
         agent_id: route.agentId,
-        house_id: "git-stars",
+        house_id: HOUSE_ID,
       },
       onEvent: (event) => {
         if (event.type === "response.output_text.delta" && event.delta) {

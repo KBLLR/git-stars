@@ -1,11 +1,11 @@
 ---
 name: skill-extraction
-description: Extract canonical skills, rules, flows, and mission briefs from a repository in Git Stars. Use when the user asks for SKILLS, RULES, FLOWS, Codex missions, Claude missions, or toolization output.
+description: Extract canonical skills, rules, flows, and mission briefs from a repository in Vega Lab. Use when the user asks for SKILLS, RULES, FLOWS, Codex missions, Claude missions, or toolization output.
 ---
 
 # Skill Extraction
 
-This skill turns repo metadata into reusable Git Stars house outputs.
+This skill turns repo metadata into reusable Vega Lab house outputs.
 
 ## Workflow
 

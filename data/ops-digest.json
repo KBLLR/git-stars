@@ -1,0 +1,90 @@
+{
+  "generatedAt": "2026-04-22T22:00:00.000Z",
+  "summary": "159 open Vega Lab actions across 98 owned repositories.",
+  "counts": {
+    "openActions": 159,
+    "criticalActions": 6,
+    "ownedRepos": 98,
+    "researchQueue": 0
+  },
+  "highlights": [
+    "Make le-belle-epoch README-ready: The repo needs a clear human and agent entrypoint before broader ecosystem use.",
+    "Make htdi-agentic-lab README-ready: The repo needs a clear human and agent entrypoint before broader ecosystem use.",
+    "Make htdi-agentic-framework README-ready: The repo needs a clear human and agent entrypoint before broader ecosystem use.",
+    "Make avatar-os README-ready: The repo needs a clear human and agent entrypoint before broader ecosystem use.",
+    "Make Do-Project README-ready: The repo needs a clear human and agent entrypoint before broader ecosystem use.",
+    "Make kbllr_graphics_ README-ready: The repo needs a clear human and agent entrypoint before broader ecosystem use."
+  ],
+  "recommendedActions": [
+    {
+      "id": "vega-lab:readme:kbllr-le-belle-epoch",
+      "nwo": "KBLLR/le-belle-epoch",
+      "title": "Make le-belle-epoch README-ready",
+      "priority": "high",
+      "kind": "readme"
+    },
+    {
+      "id": "vega-lab:readme:kbllr-htdi-agentic-lab",
+      "nwo": "KBLLR/htdi-agentic-lab",
+      "title": "Make htdi-agentic-lab README-ready",
+      "priority": "high",
+      "kind": "readme"
+    },
+    {
+      "id": "vega-lab:readme:kbllr-htdi-agentic-framework",
+      "nwo": "KBLLR/htdi-agentic-framework",
+      "title": "Make htdi-agentic-framework README-ready",
+      "priority": "high",
+      "kind": "readme"
+    },
+    {
+      "id": "vega-lab:readme:kbllr-avatar-os",
+      "nwo": "KBLLR/avatar-os",
+      "title": "Make avatar-os README-ready",
+      "priority": "high",
+      "kind": "readme"
+    },
+    {
+      "id": "vega-lab:readme:kbllr-do-project",
+      "nwo": "KBLLR/Do-Project",
+      "title": "Make Do-Project README-ready",
+      "priority": "high",
+      "kind": "readme"
+    },
+    {
+      "id": "vega-lab:readme:kbllr-kbllr-graphics-",
+      "nwo": "KBLLR/kbllr_graphics_",
+      "title": "Make kbllr_graphics_ README-ready",
+      "priority": "high",
+      "kind": "readme"
+    },
+    {
+      "id": "vega-lab:testing:kbllr-kbllr-generative-ai23",
+      "nwo": "KBLLR/KBLLR_generative_AI23",
+      "title": "Define verification for KBLLR_generative_AI23",
+      "priority": "normal",
+      "kind": "testing"
+    },
+    {
+      "id": "vega-lab:testing:kbllr-code-platformer-ai",
+      "nwo": "KBLLR/code-platformer-ai",
+      "title": "Define verification for code-platformer-ai",
+      "priority": "normal",
+      "kind": "testing"
+    }
+  ],
+  "actionItemIds": [
+    "vega-lab:readme:kbllr-le-belle-epoch",
+    "vega-lab:readme:kbllr-htdi-agentic-lab",
+    "vega-lab:readme:kbllr-htdi-agentic-framework",
+    "vega-lab:readme:kbllr-avatar-os",
+    "vega-lab:readme:kbllr-do-project",
+    "vega-lab:readme:kbllr-kbllr-graphics-",
+    "vega-lab:testing:kbllr-kbllr-generative-ai23",
+    "vega-lab:testing:kbllr-code-platformer-ai",
+    "vega-lab:testing:kbllr-the-meta-chronicle",
+    "vega-lab:deployment:kbllr-the-meta-chronicle",
+    "vega-lab:testing:kbllr-gen-idea-lab",
+    "vega-lab:deployment:kbllr-gen-idea-lab"
+  ]
+}

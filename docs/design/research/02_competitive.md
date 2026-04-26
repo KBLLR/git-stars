@@ -6,7 +6,7 @@
 
 ## Executive Summary
 
-This research examines five products that excel in areas relevant to Git-Stars: **information density**, **card-based layouts**, **theming systems**, **developer UX**, and **accessibility**. The goal is to extract patterns to **emulate** and anti-patterns to **avoid**.
+This research examines five products that excel in areas relevant to Vega Lab: **information density**, **card-based layouts**, **theming systems**, **developer UX**, and **accessibility**. The goal is to extract patterns to **emulate** and anti-patterns to **avoid**.
 
 ### Products Analyzed
 1. **GitHub.com** — Repository browsing and search

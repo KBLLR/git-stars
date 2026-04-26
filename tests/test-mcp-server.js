@@ -14,6 +14,8 @@ const projectRoot = path.resolve(__dirname, "..");
 const serverPath = path.resolve(projectRoot, "src/mcp-server/index.js");
 const researchQueueDataPath = path.resolve(projectRoot, "data/research-queue.json");
 const researchQueuePublicPath = path.resolve(projectRoot, "public/research-queue.json");
+const actionItemsDataPath = path.resolve(projectRoot, "data/action-items.json");
+const actionItemsPublicPath = path.resolve(projectRoot, "public/action-items.json");
 
 async function ensureDataMirror() {
   const requiredFiles = [
@@ -23,6 +25,11 @@ async function ensureDataMirror() {
     "research-queue.json",
     "skill-extractions.json",
     "mine-health.json",
+    "repo-inspections.json",
+    "action-items.json",
+    "automation-runs.json",
+    "ops-digest.json",
+    "weekly-research-review.json",
   ];
 
   await fs.mkdir(path.resolve(projectRoot, "data"), { recursive: true });
@@ -51,6 +58,7 @@ async function main() {
   console.log("Testing MCP Server...\n");
   await ensureDataMirror();
   const originalResearchQueue = JSON.parse(await fs.readFile(researchQueueDataPath, "utf8"));
+  const originalActionItems = JSON.parse(await fs.readFile(actionItemsDataPath, "utf8"));
 
   const transport = new StdioClientTransport({
     command: "node",
@@ -67,7 +75,7 @@ async function main() {
 
   const client = new Client(
     {
-      name: "git-stars-test-client",
+      name: "vega-lab-test-client",
       version: "1.0.0",
     },
     {
@@ -88,9 +96,26 @@ async function main() {
       "extract_repo_skills",
       "generate_repo_mission",
       "get_mine_health",
+      "list_action_items",
+      "update_action_item",
+      "inspect_owned_repo",
+      "get_repo_inspection",
+      "generate_ops_digest",
+      "generate_weekly_research_review",
+      "draft_action_item",
+      "get_runtime_health",
     ].forEach((toolName) => {
       assert.ok(toolNames.has(toolName), `Expected MCP tool to exist: ${toolName}`);
     });
+
+    const runtimeHealth = parseTextPayload(await client.callTool({
+      name: "get_runtime_health",
+      arguments: {},
+    }));
+    assert.equal(runtimeHealth.houseId, "vega-lab", "Runtime health should expose the Vega Lab house id");
+    assert.equal(runtimeHealth.runtimeContract, "openresponses", "Runtime health should expose OpenResponses as the contract");
+    assert.equal(runtimeHealth.localBus.target, "http://127.0.0.1:8085", "Runtime health should expose the local MLX bus target");
+    assert.equal(typeof runtimeHealth.datasets.actionItems, "number", "Runtime health should include action item count");
 
     const statsResult = parseTextPayload(await client.callTool({
       name: "get_statistics",
@@ -210,12 +235,77 @@ async function main() {
       "Mine health records should include deterministic flags and actions",
     );
 
+    const [mineAuthor, mineName] = String(mineHealth.records[0].nwo || "").split("/");
+    assert.ok(mineAuthor && mineName, "Mine health should include a valid owned repo nwo");
+
+    const repoInspection = parseTextPayload(await client.callTool({
+      name: "inspect_owned_repo",
+      arguments: { author: mineAuthor, name: mineName },
+    }));
+    assert.equal(repoInspection.nwo, `${mineAuthor}/${mineName}`, "Repo inspection should match the owned target repo");
+    assert.ok(repoInspection.files && typeof repoInspection.files === "object", "Repo inspection should include file evidence");
+    assert.ok(Array.isArray(repoInspection.findings), "Repo inspection should expose findings");
+
+    const storedInspection = parseTextPayload(await client.callTool({
+      name: "get_repo_inspection",
+      arguments: { author: mineAuthor, name: mineName },
+    }));
+    assert.equal(storedInspection.nwo, `${mineAuthor}/${mineName}`, "Stored repo inspection should match the owned target repo");
+
+    const actionList = parseTextPayload(await client.callTool({
+      name: "list_action_items",
+      arguments: { limit: 10 },
+    }));
+    assert.ok(Array.isArray(actionList.items), "Action item listing should return an array");
+
+    if (actionList.items.length > 0) {
+      const actionUpdate = parseTextPayload(await client.callTool({
+        name: "update_action_item",
+        arguments: {
+          id: actionList.items[0].id,
+          status: "reviewing",
+          notes: "Automated MCP action status verification",
+        },
+      }));
+      assert.equal(actionUpdate.updated, true, "Action item update should report success");
+      assert.equal(actionUpdate.item.status, "reviewing", "Action item update should persist the requested status");
+    }
+
+    const draftedAction = parseTextPayload(await client.callTool({
+      name: "draft_action_item",
+      arguments: {
+        author: mineAuthor,
+        name: mineName,
+        kind: "research",
+        source: "manual",
+      },
+    }));
+    assert.equal(draftedAction.drafted, true, "Draft action item should report success");
+    assert.ok(draftedAction.item.id.startsWith("vega-lab:"), "Draft action item should use the Vega Lab namespace");
+
+    const opsDigest = parseTextPayload(await client.callTool({
+      name: "generate_ops_digest",
+      arguments: {},
+    }));
+    assert.equal(typeof opsDigest.summary, "string", "Ops digest should contain a summary");
+    assert.ok(Array.isArray(opsDigest.recommendedActions), "Ops digest should contain recommended actions");
+
+    const weeklyReview = parseTextPayload(await client.callTool({
+      name: "generate_weekly_research_review",
+      arguments: {},
+    }));
+    assert.equal(typeof weeklyReview.summary, "string", "Weekly research review should contain a summary");
+    assert.ok(Array.isArray(weeklyReview.brightStars), "Weekly research review should contain bright-star candidates");
+
     console.log("✅ MCP Server test completed");
   } finally {
     await client.close().catch(() => undefined);
     const restoredQueue = `${JSON.stringify(originalResearchQueue, null, 2)}\n`;
     await fs.writeFile(researchQueueDataPath, restoredQueue, "utf8");
     await fs.writeFile(researchQueuePublicPath, restoredQueue, "utf8");
+    const restoredActions = `${JSON.stringify(originalActionItems, null, 2)}\n`;
+    await fs.writeFile(actionItemsDataPath, restoredActions, "utf8");
+    await fs.writeFile(actionItemsPublicPath, restoredActions, "utf8");
     await generateDerivedHouseData(projectRoot);
   }
 }

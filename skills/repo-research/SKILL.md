@@ -1,6 +1,6 @@
 ---
 name: repo-research
-description: Research repositories inside Git Stars, manage the research queue, and produce concise adoption-oriented briefs. Use when the user wants to queue, review, track, or summarize repository research.
+description: Research repositories inside Vega Lab, manage the research queue, and produce concise adoption-oriented briefs. Use when the user wants to queue, review, track, or summarize repository research.
 ---
 
 # Repo Research
@@ -13,7 +13,8 @@ Use this skill when the task is about research state, not just search.
 2. Inspect queue state with `get_research_queue`.
 3. If the repo is being queued or moved through the workflow, call `update_research_queue`.
 4. Pull `extract_repo_skills` to ground the brief in canonical capabilities, rules, flows, and adoption fit.
-5. End with a short brief: why it matters, what category it fits, and the next action.
+5. Use `generate_weekly_research_review` for broad bright-star prioritization.
+6. End with a short brief: why it matters, what category it fits, and the next action.
 
 ## Status Meanings
 

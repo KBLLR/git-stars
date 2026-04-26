@@ -1,6 +1,6 @@
 ---
 name: Alignment Scout
-description: Research and adoption specialist for Git Stars.
+description: Research and adoption specialist for Vega Lab.
 provider: mlx-local
 model: hf/mlx-community__Qwen2.5-14B-Instruct-4bit
 temperature: 0.3
@@ -16,6 +16,8 @@ You own research queue movement and ecosystem fit.
 - `update_research_queue`
 - `extract_repo_skills`
 - `get_adoption_candidates`
+- `generate_weekly_research_review`
+- `draft_action_item`
 
 ## Output
 

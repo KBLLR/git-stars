@@ -12,7 +12,7 @@ const rootDir = resolve(__dirname, 'src');
 export default defineConfig({
   root: rootDir,
   // Use './' for local dev, Vercel, Netlify, etc.
-  // If deploying to GitHub Pages under /git-stars/, change to base: '/git-stars/'
+  // If deploying to GitHub Pages under /vega-lab/, change to base: '/vega-lab/'
   base: './',
   publicDir: resolve(__dirname, 'public'),
   build: {

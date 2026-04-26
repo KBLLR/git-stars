@@ -7,9 +7,16 @@ const RESEARCH_QUEUE_FILE = "research-queue.json";
 const REPO_SIGNALS_FILE = "repo-signals.json";
 const SKILL_EXTRACTIONS_FILE = "skill-extractions.json";
 const MINE_HEALTH_FILE = "mine-health.json";
+const ACTION_ITEMS_FILE = "action-items.json";
+const REPO_INSPECTIONS_FILE = "repo-inspections.json";
+const AUTOMATION_RUNS_FILE = "automation-runs.json";
+const OPS_DIGEST_FILE = "ops-digest.json";
+const WEEKLY_RESEARCH_REVIEW_FILE = "weekly-research-review.json";
 
 const RESEARCH_STATUSES = new Set(["queued", "researching", "done", "dismissed"]);
 const ADOPTION_KINDS = new Set(["house", "tool", "service", "template", "ignore"]);
+const ACTION_STATUSES = new Set(["open", "reviewing", "accepted", "dismissed", "done"]);
+const ACTION_KINDS = new Set(["readme", "maintenance", "deployment", "testing", "dependency", "research", "skill", "template", "adoption"]);
 
 const CAPABILITY_RULES = [
   { capability: "mcp-tooling", keywords: ["mcp", "model context protocol", "tool calling", "tool-calling"] },
@@ -42,6 +49,20 @@ function repoNwo(repo) {
 
 function nwoKey(nwo) {
   return String(nwo || "").trim().toLowerCase();
+}
+
+function actionId(kind, nwo) {
+  return `vega-lab:${kind}:${nwoKey(nwo).replace(/[^a-z0-9]+/g, "-")}`;
+}
+
+function snapshotTimestamp(repos, researchQueue = []) {
+  const timestamps = [
+    ...toArray(repos).map((repo) => repoUpdatedAt(repo).getTime()),
+    ...toArray(researchQueue).map((item) => Date.parse(item.updatedAt || item.createdAt || "")),
+  ].filter((value) => Number.isFinite(value) && value > 0);
+
+  if (timestamps.length === 0) return new Date(0).toISOString();
+  return new Date(Math.max(...timestamps)).toISOString();
 }
 
 function parseDate(value) {
@@ -289,7 +310,7 @@ function buildSummary(repo, adoptionKind, houseSkills, capabilities) {
     ? repo.description
     : `${repo.name} is a candidate for ${adoptionKind} adoption.`;
 
-  return `${description} Primary Git Stars fit: ${firstSkill} via ${firstCapability}.`;
+  return `${description} Primary Vega Lab fit: ${firstSkill} via ${firstCapability}.`;
 }
 
 function buildResearchReasons(repo, extraction, staleness, isMine) {
@@ -385,6 +406,368 @@ function buildMineHealth(repo, extraction) {
   };
 }
 
+function getRepoKeyFiles(repo) {
+  return repo.key_files && typeof repo.key_files === "object" ? repo.key_files : {};
+}
+
+function packageScripts(repo) {
+  const packageJson = getRepoKeyFiles(repo).packageJson;
+  return packageJson && typeof packageJson === "object" && packageJson.scripts
+    ? packageJson.scripts
+    : {};
+}
+
+function inferPackageManagers(repo) {
+  const keyFiles = getRepoKeyFiles(repo);
+  const managers = toArray(keyFiles.packageManagers);
+  if (managers.length > 0) return unique(managers);
+
+  const language = repo.primary_language || repo.language || "";
+  if (["JavaScript", "TypeScript", "Vue", "Svelte", "Astro"].includes(language)) {
+    return ["npm"];
+  }
+  if (language === "Python") return ["pip"];
+  if (language === "Rust") return ["cargo"];
+  if (language === "Swift") return ["swiftpm"];
+  return [];
+}
+
+function buildRepoInspection(repo, extraction) {
+  const keyFiles = getRepoKeyFiles(repo);
+  const scripts = packageScripts(repo);
+  const scriptEntries = Object.entries(scripts);
+  const testScripts = scriptEntries
+    .filter(([name]) => /test|check|lint/i.test(name))
+    .map(([name]) => name);
+  const buildScripts = scriptEntries
+    .filter(([name]) => /build|compile|bundle/i.test(name))
+    .map(([name]) => name);
+  const packageManagers = inferPackageManagers(repo);
+  const workflows = toArray(keyFiles.workflows);
+  const deploymentConfigs = toArray(keyFiles.deploymentConfigs);
+  const findings = [];
+  const risks = [];
+  const isAppLike = extraction.adoptionKind === "house" || extraction.capabilities.some((capability) => ["frontend-ui", "backend-service"].includes(capability));
+  const isPackageLike = packageManagers.length > 0;
+
+  if (repo.has_readme === false) {
+    findings.push("README missing from the synced repository snapshot.");
+    risks.push("New contributors and agents lack a clear entrypoint.");
+  } else if (repo.has_readme === null || repo.has_readme === undefined) {
+    findings.push("README status is unknown.");
+  }
+
+  if (isPackageLike && testScripts.length === 0) {
+    findings.push("No test/check/lint script detected from package metadata.");
+    risks.push("Maintenance work has no obvious verification command.");
+  }
+
+  if (isPackageLike && buildScripts.length === 0 && isAppLike) {
+    findings.push("No build script detected from package metadata.");
+  }
+
+  if (isAppLike && workflows.length === 0 && deploymentConfigs.length === 0) {
+    findings.push("No workflow or deployment config detected in synced key files.");
+    risks.push("Deployment readiness is unclear.");
+  }
+
+  if (computeStaleness(repo) === "stale") {
+    findings.push("Repository appears stale based on last activity.");
+    risks.push("Dependencies, build targets, or deployment assumptions may be outdated.");
+  }
+
+  if (extraction.adoptionKind === "template") {
+    findings.push("Repository has template/scaffold signals.");
+  }
+
+  return {
+    nwo: repoNwo(repo),
+    inspectedAt: repoUpdatedAt(repo).toISOString(),
+    files: {
+      hasReadme: repo.has_readme ?? null,
+      packageManagers,
+      workflows,
+      deploymentConfigs,
+      testScripts,
+      buildScripts,
+    },
+    findings: unique(findings),
+    risks: unique(risks),
+  };
+}
+
+function buildActionDraft(kind, repo, extraction, inspection) {
+  const nwo = repoNwo(repo);
+  const rules = extraction.rules.length > 0 ? extraction.rules.join(" ") : "Keep scope narrow and evidence-based.";
+  const evidence = inspection.findings.slice(0, 3).join(" ");
+
+  switch (kind) {
+    case "readme":
+      return `Draft a README readiness pass for ${nwo}: document purpose, local setup, primary commands, data/runtime assumptions, and a short maintenance section. Evidence: ${evidence}`;
+    case "maintenance":
+      return `Draft a maintenance plan for ${nwo}: verify dependencies, run available checks, update stale assumptions, and identify a smallest useful PR. Rules: ${rules}`;
+    case "deployment":
+      return `Draft a deployment readiness brief for ${nwo}: identify expected host, build command, env vars, workflow status, and verification URL checks. Evidence: ${evidence}`;
+    case "testing":
+      return `Draft a verification plan for ${nwo}: add or document lint/test/build commands and define the smallest smoke test agents should run before edits.`;
+    case "skill":
+      return `Extract a reusable Vega Lab skill/rule/flow package from ${nwo}, grounded in capabilities: ${extraction.capabilities.join(", ") || "general engineering"}.`;
+    case "template":
+      return `Draft a template extraction plan for ${nwo}: isolate reusable scaffold decisions, required configuration, and what must be removed before reuse.`;
+    case "research":
+      return `Write a research brief for ${nwo}: why it matters, what core-x can learn, adoption fit, and next action.`;
+    case "adoption":
+      return `Draft an adoption decision for ${nwo}: classify as ${extraction.adoptionKind}, justify the score, list risks, and define integration boundaries.`;
+    default:
+      return `Draft the next Vega Lab action for ${nwo}.`;
+  }
+}
+
+function actionBase({ kind, priority, repo, extraction, inspection, title, summary, source = "daily-ops" }) {
+  const nwo = repoNwo(repo);
+  const updatedAt = inspection.inspectedAt;
+  return {
+    id: actionId(kind, nwo),
+    kind,
+    status: "open",
+    priority,
+    nwo,
+    title,
+    summary,
+    evidence: unique([...inspection.findings, ...inspection.risks]).slice(0, 5),
+    linkedSkills: extraction.houseSkills,
+    linkedRules: extraction.rules,
+    linkedFlows: extraction.flows,
+    draft: buildActionDraft(kind, repo, extraction, inspection),
+    source,
+    createdAt: updatedAt,
+    updatedAt,
+  };
+}
+
+function mergeActionItem(generated, existingMap) {
+  const existing = existingMap.get(generated.id);
+  if (!existing) return generated;
+
+  return {
+    ...generated,
+    status: ACTION_STATUSES.has(existing.status) ? existing.status : generated.status,
+    createdAt: existing.createdAt || generated.createdAt,
+    updatedAt: existing.updatedAt || generated.updatedAt,
+    draft: existing.draft || generated.draft,
+  };
+}
+
+function buildActionItems({ repos, repoSignals, skillExtractions, mineHealth, repoInspections, existingActionItems }) {
+  const repoMap = new Map(toArray(repos).map((repo) => [nwoKey(repoNwo(repo)), repo]));
+  const extractionMap = new Map(toArray(skillExtractions).map((item) => [nwoKey(item.nwo), item]));
+  const inspectionMap = new Map(toArray(repoInspections).map((item) => [nwoKey(item.nwo), item]));
+  const existingMap = new Map(toArray(existingActionItems).map((item) => [item.id, item]));
+  const generated = [];
+
+  for (const health of toArray(mineHealth)) {
+    const repo = repoMap.get(nwoKey(health.nwo));
+    const extraction = extractionMap.get(nwoKey(health.nwo));
+    const inspection = inspectionMap.get(nwoKey(health.nwo));
+    if (!repo || !extraction || !inspection) continue;
+
+    if (health.healthFlags.includes("missing-readme")) {
+      generated.push(actionBase({
+        kind: "readme",
+        priority: "high",
+        repo,
+        extraction,
+        inspection,
+        title: `Make ${repo.name} README-ready`,
+        summary: "The repo needs a clear human and agent entrypoint before broader ecosystem use.",
+      }));
+    }
+
+    if (health.healthFlags.includes("stale")) {
+      generated.push(actionBase({
+        kind: "maintenance",
+        priority: "normal",
+        repo,
+        extraction,
+        inspection,
+        title: `Run a maintenance pass on ${repo.name}`,
+        summary: "Stale activity increases dependency, workflow, and deployment risk.",
+      }));
+    }
+
+    if (inspection.files.packageManagers.length > 0 && inspection.files.testScripts.length === 0) {
+      generated.push(actionBase({
+        kind: "testing",
+        priority: "normal",
+        repo,
+        extraction,
+        inspection,
+        title: `Define verification for ${repo.name}`,
+        summary: "Package metadata does not expose an obvious test, check, or lint command.",
+      }));
+    }
+
+    if (inspection.risks.some((risk) => risk.includes("Deployment"))) {
+      generated.push(actionBase({
+        kind: "deployment",
+        priority: "normal",
+        repo,
+        extraction,
+        inspection,
+        title: `Clarify deployment readiness for ${repo.name}`,
+        summary: "Vega Lab could not detect workflow or deployment configuration from synced key files.",
+      }));
+    }
+
+    if (health.healthFlags.includes("template-candidate")) {
+      generated.push(actionBase({
+        kind: "template",
+        priority: "normal",
+        repo,
+        extraction,
+        inspection,
+        title: `Evaluate ${repo.name} as a reusable template`,
+        summary: "The repo has scaffold signals that may become a reusable core-x pattern.",
+        source: "weekly-research",
+      }));
+    }
+  }
+
+  for (const signal of toArray(repoSignals).slice(0, 50)) {
+    const repo = repoMap.get(nwoKey(signal.nwo));
+    const extraction = extractionMap.get(nwoKey(signal.nwo));
+    const inspection = inspectionMap.get(nwoKey(signal.nwo)) ?? {
+      nwo: signal.nwo,
+      inspectedAt: signal.lastActivityAt,
+      files: { hasReadme: null, packageManagers: [], workflows: [], deploymentConfigs: [], testScripts: [], buildScripts: [] },
+      findings: signal.reasons,
+      risks: [],
+    };
+    if (!repo || !extraction) continue;
+
+    if (signal.adoptionScore >= 80 && signal.adoptionKind !== "ignore") {
+      generated.push(actionBase({
+        kind: "adoption",
+        priority: "high",
+        repo,
+        extraction,
+        inspection,
+        title: `Decide adoption path for ${repo.name}`,
+        summary: `${signal.adoptionKind} candidate with score ${signal.adoptionScore}.`,
+        source: "weekly-research",
+      }));
+    }
+
+    if (signal.houseSkills.includes("skill-extraction") && signal.adoptionScore >= 65) {
+      generated.push(actionBase({
+        kind: "skill",
+        priority: "normal",
+        repo,
+        extraction,
+        inspection,
+        title: `Extract reusable skill signals from ${repo.name}`,
+        summary: "The repo maps to tooling, agents, templates, or workflows that can teach core-x.",
+        source: "weekly-research",
+      }));
+    }
+  }
+
+  const byId = new Map();
+  for (const item of generated) {
+    if (!byId.has(item.id)) {
+      byId.set(item.id, mergeActionItem(item, existingMap));
+    }
+  }
+  for (const item of toArray(existingActionItems)) {
+    if (item?.id && !byId.has(item.id)) {
+      byId.set(item.id, item);
+    }
+  }
+
+  return [...byId.values()].sort((a, b) => {
+    const priority = { critical: 0, high: 1, normal: 2, low: 3 };
+    if (priority[a.priority] !== priority[b.priority]) return priority[a.priority] - priority[b.priority];
+    return Date.parse(b.updatedAt) - Date.parse(a.updatedAt);
+  });
+}
+
+function buildOpsDigest({ timestamp, actionItems, myRepos, researchQueue }) {
+  const openItems = toArray(actionItems).filter((item) => item.status === "open" || item.status === "reviewing");
+  const criticalItems = openItems.filter((item) => item.priority === "critical" || item.priority === "high");
+  const highlights = openItems.slice(0, 6).map((item) => `${item.title}: ${item.summary}`);
+
+  return {
+    generatedAt: timestamp,
+    summary: `${openItems.length} open Vega Lab actions across ${toArray(myRepos).length} owned repositories.`,
+    counts: {
+      openActions: openItems.length,
+      criticalActions: criticalItems.length,
+      ownedRepos: toArray(myRepos).length,
+      researchQueue: toArray(researchQueue).length,
+    },
+    highlights,
+    recommendedActions: openItems.slice(0, 8).map((item) => ({
+      id: item.id,
+      nwo: item.nwo,
+      title: item.title,
+      priority: item.priority,
+      kind: item.kind,
+    })),
+    actionItemIds: openItems.slice(0, 12).map((item) => item.id),
+  };
+}
+
+function buildWeeklyResearchReview({ timestamp, actionItems, repoSignals }) {
+  const adoptionCandidates = toArray(repoSignals)
+    .filter((signal) => signal.adoptionKind !== "ignore")
+    .slice(0, 8)
+    .map((signal) => signal.nwo);
+  const skillCandidates = toArray(repoSignals)
+    .filter((signal) => signal.houseSkills.includes("skill-extraction"))
+    .slice(0, 8)
+    .map((signal) => signal.nwo);
+  const researchCandidates = toArray(repoSignals)
+    .filter((signal) => signal.scope === "research" || signal.capabilities.includes("research-intelligence"))
+    .slice(0, 8)
+    .map((signal) => signal.nwo);
+
+  return {
+    generatedAt: timestamp,
+    summary: "Weekly Vega Lab review for bright-star adoption, skill extraction, and research queue movement.",
+    brightStars: adoptionCandidates,
+    adoptionCandidates,
+    skillCandidates,
+    researchCandidates,
+    actionItemIds: toArray(actionItems)
+      .filter((item) => item.source === "weekly-research")
+      .slice(0, 12)
+      .map((item) => item.id),
+  };
+}
+
+function buildAutomationRuns({ timestamp, actionItems }) {
+  return [
+    {
+      id: "vega-lab:daily-ops:last",
+      kind: "daily-ops",
+      startedAt: timestamp,
+      completedAt: timestamp,
+      status: "success",
+      createdActionItemIds: toArray(actionItems).filter((item) => item.source === "daily-ops").map((item) => item.id),
+      notes: ["Generated draft-only owned-repo action items and ops digest."],
+    },
+    {
+      id: "vega-lab:weekly-research:last",
+      kind: "weekly-research",
+      startedAt: timestamp,
+      completedAt: timestamp,
+      status: "success",
+      createdActionItemIds: toArray(actionItems).filter((item) => item.source === "weekly-research").map((item) => item.id),
+      notes: ["Generated draft-only adoption, research, and skill extraction recommendations."],
+    },
+  ];
+}
+
 function buildRepoSignal(repo, extraction, queueItem, isMine) {
   const staleness = computeStaleness(repo);
   const adoptionScore = computeAdoptionScore(repo, extraction.capabilities, extraction.adoptionKind, isMine);
@@ -471,15 +854,18 @@ export async function loadHouseDatasets(rootDir) {
     ?? await readJson(path.join(publicDir, MY_REPOS_FILE), []);
   const researchQueue = await readJson(path.join(dataDir, RESEARCH_QUEUE_FILE), null)
     ?? await readJson(path.join(publicDir, RESEARCH_QUEUE_FILE), []);
+  const actionItems = await readJson(path.join(dataDir, ACTION_ITEMS_FILE), null)
+    ?? await readJson(path.join(publicDir, ACTION_ITEMS_FILE), []);
 
   return {
     starredRepos: Array.isArray(starredRepos) ? starredRepos : [],
     myRepos: Array.isArray(myRepos) ? myRepos : [],
     researchQueue: Array.isArray(researchQueue) ? researchQueue : [],
+    actionItems: Array.isArray(actionItems) ? actionItems : [],
   };
 }
 
-export function buildDerivedHouseData({ starredRepos, myRepos, researchQueue }) {
+export function buildDerivedHouseData({ starredRepos, myRepos, researchQueue, actionItems = [] }) {
   const repoMap = new Map();
   const mineKeys = new Set();
 
@@ -499,6 +885,7 @@ export function buildDerivedHouseData({ starredRepos, myRepos, researchQueue }) 
   const skillExtractions = [];
   const repoSignals = [];
   const mineHealth = [];
+  const repoInspections = [];
 
   for (const repo of repoMap.values()) {
     const key = nwoKey(repoNwo(repo));
@@ -508,14 +895,45 @@ export function buildDerivedHouseData({ starredRepos, myRepos, researchQueue }) 
 
     if (mineKeys.has(key)) {
       mineHealth.push(buildMineHealth(repo, extraction));
+      repoInspections.push(buildRepoInspection(repo, extraction));
     }
   }
 
+  const sortedSignals = repoSignals.sort(compareSignals);
+  const sortedExtractions = skillExtractions.sort((a, b) => a.nwo.localeCompare(b.nwo));
+  const sortedMineHealth = mineHealth.sort((a, b) => Date.parse(b.updatedAt) - Date.parse(a.updatedAt));
+  const sortedInspections = repoInspections.sort((a, b) => a.nwo.localeCompare(b.nwo));
+  const generatedActionItems = buildActionItems({
+    repos: [...repoMap.values()],
+    repoSignals: sortedSignals,
+    skillExtractions: sortedExtractions,
+    mineHealth: sortedMineHealth,
+    repoInspections: sortedInspections,
+    existingActionItems: actionItems,
+  });
+  const timestamp = snapshotTimestamp([...repoMap.values()], normalizedQueue);
+  const opsDigest = buildOpsDigest({
+    timestamp,
+    actionItems: generatedActionItems,
+    myRepos,
+    researchQueue: normalizedQueue,
+  });
+  const weeklyResearchReview = buildWeeklyResearchReview({
+    timestamp,
+    actionItems: generatedActionItems,
+    repoSignals: sortedSignals,
+  });
+
   return {
     researchQueue: normalizedQueue.sort((a, b) => Date.parse(b.updatedAt) - Date.parse(a.updatedAt)),
-    repoSignals: repoSignals.sort(compareSignals),
-    skillExtractions: skillExtractions.sort((a, b) => a.nwo.localeCompare(b.nwo)),
-    mineHealth: mineHealth.sort((a, b) => Date.parse(b.updatedAt) - Date.parse(a.updatedAt)),
+    repoSignals: sortedSignals,
+    skillExtractions: sortedExtractions,
+    mineHealth: sortedMineHealth,
+    repoInspections: sortedInspections,
+    actionItems: generatedActionItems,
+    opsDigest,
+    weeklyResearchReview,
+    automationRuns: buildAutomationRuns({ timestamp, actionItems: generatedActionItems }),
   };
 }
 
@@ -526,6 +944,11 @@ export async function writeDerivedHouseData(rootDir, payload) {
     [REPO_SIGNALS_FILE, payload.repoSignals],
     [SKILL_EXTRACTIONS_FILE, payload.skillExtractions],
     [MINE_HEALTH_FILE, payload.mineHealth],
+    [REPO_INSPECTIONS_FILE, payload.repoInspections],
+    [ACTION_ITEMS_FILE, payload.actionItems],
+    [OPS_DIGEST_FILE, payload.opsDigest],
+    [WEEKLY_RESEARCH_REVIEW_FILE, payload.weeklyResearchReview],
+    [AUTOMATION_RUNS_FILE, payload.automationRuns],
   ];
 
   for (const [filename, data] of outputs) {
@@ -540,6 +963,7 @@ export async function generateDerivedHouseData(rootDir, overrides = {}) {
     starredRepos: overrides.starredRepos ?? datasets.starredRepos,
     myRepos: overrides.myRepos ?? datasets.myRepos,
     researchQueue: overrides.researchQueue ?? datasets.researchQueue,
+    actionItems: overrides.actionItems ?? datasets.actionItems,
   });
 
   await writeDerivedHouseData(rootDir, payload);
@@ -577,9 +1001,73 @@ export async function updateResearchQueue(rootDir, { nwo, status = "queued", not
     starredRepos: datasets.starredRepos,
     myRepos: datasets.myRepos,
     researchQueue: nextQueue,
+    actionItems: datasets.actionItems,
   });
 
   return payload.researchQueue.find((item) => nwoKey(item.nwo) === key) ?? null;
+}
+
+export async function updateActionItem(rootDir, { id, status, notes = "" }) {
+  const datasets = await loadHouseDatasets(rootDir);
+  const current = buildDerivedHouseData(datasets).actionItems;
+  const index = current.findIndex((item) => item.id === id);
+  if (index < 0) return null;
+
+  const timestamp = new Date().toISOString();
+  current[index] = {
+    ...current[index],
+    status: ACTION_STATUSES.has(status) ? status : current[index].status,
+    draft: notes ? `${current[index].draft}\n\nReview notes: ${notes}` : current[index].draft,
+    updatedAt: timestamp,
+  };
+
+  const payload = await generateDerivedHouseData(rootDir, {
+    starredRepos: datasets.starredRepos,
+    myRepos: datasets.myRepos,
+    researchQueue: datasets.researchQueue,
+    actionItems: current,
+  });
+
+  return payload.actionItems.find((item) => item.id === id) ?? null;
+}
+
+export async function draftActionItem(rootDir, { kind, name, author, source = "manual" }) {
+  const datasets = await loadHouseDatasets(rootDir);
+  const payload = buildDerivedHouseData(datasets);
+  const repo = resolveRepoRecord({ name, author }, datasets);
+  if (!repo) return null;
+
+  const nwo = repoNwo(repo);
+  const extraction = findSkillExtraction(payload.skillExtractions, nwo);
+  if (!extraction) return null;
+
+  const inspection = findRepoInspection(payload.repoInspections, nwo) ?? {
+    nwo,
+    inspectedAt: repoUpdatedAt(repo).toISOString(),
+    files: { hasReadme: repo.has_readme ?? null, packageManagers: [], workflows: [], deploymentConfigs: [], testScripts: [], buildScripts: [] },
+    findings: [],
+    risks: [],
+  };
+  const nextKind = ACTION_KINDS.has(kind) ? kind : "research";
+  const manualItem = actionBase({
+    kind: nextKind,
+    priority: "normal",
+    repo,
+    extraction,
+    inspection,
+    title: `Draft ${nextKind} action for ${repo.name}`,
+    summary: "Manual Vega Lab draft action created from the current repository context.",
+    source,
+  });
+  const existing = payload.actionItems.filter((item) => item.id !== manualItem.id);
+  const regenerated = await generateDerivedHouseData(rootDir, {
+    starredRepos: datasets.starredRepos,
+    myRepos: datasets.myRepos,
+    researchQueue: datasets.researchQueue,
+    actionItems: [manualItem, ...existing],
+  });
+
+  return regenerated.actionItems.find((item) => item.id === manualItem.id) ?? manualItem;
 }
 
 export function resolveRepoRecord({ name, author }, datasets) {
@@ -593,6 +1081,18 @@ export function resolveRepoRecord({ name, author }, datasets) {
 
 export function findSkillExtraction(skillExtractions, nwo) {
   return toArray(skillExtractions).find((item) => nwoKey(item.nwo) === nwoKey(nwo)) ?? null;
+}
+
+export function findRepoInspection(repoInspections, nwo) {
+  return toArray(repoInspections).find((item) => nwoKey(item.nwo) === nwoKey(nwo)) ?? null;
+}
+
+export function listActionItems(actionItems, filters = {}) {
+  return toArray(actionItems)
+    .filter((item) => !filters.status || item.status === filters.status)
+    .filter((item) => !filters.kind || item.kind === filters.kind)
+    .filter((item) => !filters.priority || item.priority === filters.priority)
+    .slice(0, filters.limit ?? 50);
 }
 
 export function listAdoptionCandidates(repoSignals, limit = 10) {
@@ -617,8 +1117,13 @@ export function listNewsSignals(repoSignals, scope = "watched", limit = 12) {
 }
 
 export {
+  ACTION_ITEMS_FILE,
+  AUTOMATION_RUNS_FILE,
   MINE_HEALTH_FILE,
+  OPS_DIGEST_FILE,
+  REPO_INSPECTIONS_FILE,
   REPO_SIGNALS_FILE,
   RESEARCH_QUEUE_FILE,
   SKILL_EXTRACTIONS_FILE,
+  WEEKLY_RESEARCH_REVIEW_FILE,
 };

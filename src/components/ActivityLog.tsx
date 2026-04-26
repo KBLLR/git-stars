@@ -4,7 +4,7 @@ import { logger } from "../lib/logger";
 import { Download, Activity, Server, Database } from "lucide-react";
 
 const EVENT_BUS_URL = import.meta.env.VITE_EVENT_BUS_URL || "/bus";
-const EVENT_BUS_SSE_URL = `${EVENT_BUS_URL}/events?agency=git-stars`;
+const EVENT_BUS_SSE_URL = `${EVENT_BUS_URL}/events?agency=vega-lab`;
 
 type AgentEventWithDetails = AgentEvent & {
   data?: unknown;
@@ -65,7 +65,8 @@ export const ActivityLog: React.FC = () => {
   const filteredEvents = events.filter((event) =>
     filterType === "all"
     || event.type === filterType
-    || (filterType === "git-stars" && event.type.startsWith("git-stars:"))
+    || (filterType === "vega-lab" && event.type.startsWith("vega-lab:"))
+    || (filterType === "vega-lab" && event.type.startsWith("git-stars:"))
   );
 
   const downloadJson = () => {
@@ -74,14 +75,14 @@ export const ActivityLog: React.FC = () => {
     const href = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = href;
-    link.download = `git-stars-activity-${new Date().toISOString()}.json`;
+    link.download = `vega-lab-activity-${new Date().toISOString()}.json`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
   };
 
   const getEventIcon = (type: string) => {
-    if (type.startsWith("git-stars")) return <Activity size={16} className="text-blue-500" />;
+    if (type.startsWith("vega-lab") || type.startsWith("git-stars")) return <Activity size={16} className="text-blue-500" />;
     if (type.startsWith("response")) return <Server size={16} className="text-purple-500" />;
     if (type.startsWith("tool")) return <Database size={16} className="text-orange-500" />;
     return <Activity size={16} className="text-gray-400" />;
@@ -97,7 +98,7 @@ export const ActivityLog: React.FC = () => {
               ? <span className="status-badge live">Live</span>
               : <span className="status-badge offline">Cached (Offline)</span>}
           </h2>
-          <p className="text-muted">Real-time events from the git-stars orchestrator & ecosystem</p>
+          <p className="text-muted">Real-time events from the Vega Lab orchestrator and core-x ecosystem</p>
         </div>
 
         <div style={{ display: "flex", gap: "12px" }}>
@@ -107,7 +108,7 @@ export const ActivityLog: React.FC = () => {
             className="filter-select"
           >
             <option value="all">All Events</option>
-            <option value="git-stars">Git Stars Custom</option>
+            <option value="vega-lab">Vega Lab Custom</option>
             <option value="response.completed">Response Completed</option>
             <option value="tool.call">Tool Calls</option>
           </select>

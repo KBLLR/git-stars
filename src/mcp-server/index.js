@@ -11,12 +11,16 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { calculateStatistics } from "../analytics/statistics.js";
 import {
+  draftActionItem,
+  findRepoInspection,
   findSkillExtraction,
   generateDerivedHouseData,
   listAdoptionCandidates,
+  listActionItems,
   listNewsSignals,
   loadHouseDatasets,
   resolveRepoRecord,
+  updateActionItem,
   updateResearchQueue,
 } from "../server/house-model.js";
 
@@ -29,6 +33,11 @@ const REPO_SIGNALS_FILE = path.join(DATA_DIR, "repo-signals.json");
 const RESEARCH_QUEUE_FILE = path.join(DATA_DIR, "research-queue.json");
 const SKILL_EXTRACTIONS_FILE = path.join(DATA_DIR, "skill-extractions.json");
 const MINE_HEALTH_FILE = path.join(DATA_DIR, "mine-health.json");
+const ACTION_ITEMS_FILE = path.join(DATA_DIR, "action-items.json");
+const REPO_INSPECTIONS_FILE = path.join(DATA_DIR, "repo-inspections.json");
+const AUTOMATION_RUNS_FILE = path.join(DATA_DIR, "automation-runs.json");
+const OPS_DIGEST_FILE = path.join(DATA_DIR, "ops-digest.json");
+const WEEKLY_RESEARCH_REVIEW_FILE = path.join(DATA_DIR, "weekly-research-review.json");
 
 async function readJson(filePath, fallback) {
   try {
@@ -135,12 +144,12 @@ function findSimilarRepos(repos, targetName) {
     .map((item) => item.repo);
 }
 
-class GitStarsServer {
+class VegaLabServer {
   constructor() {
     this.server = new Server(
       {
-        name: "git-stars-mcp",
-        version: "2.0.0",
+        name: "vega-lab-mcp",
+        version: "3.0.0",
       },
       {
         capabilities: {
@@ -156,6 +165,11 @@ class GitStarsServer {
     this.researchQueue = [];
     this.skillExtractions = [];
     this.mineHealth = [];
+    this.actionItems = [];
+    this.repoInspections = [];
+    this.automationRuns = [];
+    this.opsDigest = null;
+    this.weeklyResearchReview = null;
 
     this.setupHandlers();
     this.server.onerror = (error) => console.error("[MCP Error]", error);
@@ -171,6 +185,11 @@ class GitStarsServer {
     this.researchQueue = derived.researchQueue;
     this.skillExtractions = derived.skillExtractions;
     this.mineHealth = derived.mineHealth;
+    this.actionItems = derived.actionItems;
+    this.repoInspections = derived.repoInspections;
+    this.automationRuns = derived.automationRuns;
+    this.opsDigest = derived.opsDigest;
+    this.weeklyResearchReview = derived.weeklyResearchReview;
 
     this.stats = await readJson(STATS_FILE, null);
     if (!this.stats) {
@@ -401,6 +420,85 @@ class GitStarsServer {
             },
           },
         },
+        {
+          name: "list_action_items",
+          description: "List durable Vega Lab inbox action items with optional filters",
+          inputSchema: {
+            type: "object",
+            properties: {
+              status: { type: "string", enum: ["open", "reviewing", "accepted", "dismissed", "done"] },
+              kind: { type: "string", enum: ["readme", "maintenance", "deployment", "testing", "dependency", "research", "skill", "template", "adoption"] },
+              priority: { type: "string", enum: ["low", "normal", "high", "critical"] },
+              limit: { type: "number", default: 50 },
+            },
+          },
+        },
+        {
+          name: "update_action_item",
+          description: "Update a Vega Lab action item status and optional review notes",
+          inputSchema: {
+            type: "object",
+            properties: {
+              id: { type: "string" },
+              status: { type: "string", enum: ["open", "reviewing", "accepted", "dismissed", "done"] },
+              notes: { type: "string" },
+            },
+            required: ["id", "status"],
+          },
+        },
+        {
+          name: "inspect_owned_repo",
+          description: "Return the key-file inspection record for an owned repository",
+          inputSchema: {
+            type: "object",
+            properties: {
+              name: { type: "string" },
+              author: { type: "string" },
+            },
+            required: ["name"],
+          },
+        },
+        {
+          name: "get_repo_inspection",
+          description: "Compatibility alias for inspect_owned_repo",
+          inputSchema: {
+            type: "object",
+            properties: {
+              name: { type: "string" },
+              author: { type: "string" },
+            },
+            required: ["name"],
+          },
+        },
+        {
+          name: "generate_ops_digest",
+          description: "Return the latest Vega Lab daily ops digest",
+          inputSchema: { type: "object", properties: {} },
+        },
+        {
+          name: "generate_weekly_research_review",
+          description: "Return the latest Vega Lab weekly research and skill extraction review",
+          inputSchema: { type: "object", properties: {} },
+        },
+        {
+          name: "draft_action_item",
+          description: "Create or refresh a manual draft-only Vega Lab action item",
+          inputSchema: {
+            type: "object",
+            properties: {
+              kind: { type: "string", enum: ["readme", "maintenance", "deployment", "testing", "dependency", "research", "skill", "template", "adoption"] },
+              name: { type: "string" },
+              author: { type: "string" },
+              source: { type: "string", enum: ["daily-ops", "weekly-research", "manual"], default: "manual" },
+            },
+            required: ["kind", "name"],
+          },
+        },
+        {
+          name: "get_runtime_health",
+          description: "Return local OpenResponses, dataset, and tool availability expectations for Vega Lab",
+          inputSchema: { type: "object", properties: {} },
+        },
       ],
     }));
 
@@ -444,6 +542,21 @@ class GitStarsServer {
             return this.handleGetMineHealth(args);
           case "find_repos_missing_readme":
             return this.handleMissingReadme(args);
+          case "list_action_items":
+            return this.handleListActionItems(args);
+          case "update_action_item":
+            return await this.handleUpdateActionItem(args);
+          case "inspect_owned_repo":
+          case "get_repo_inspection":
+            return this.handleInspectOwnedRepo(args);
+          case "generate_ops_digest":
+            return this.handleGenerateOpsDigest();
+          case "generate_weekly_research_review":
+            return this.handleGenerateWeeklyResearchReview();
+          case "draft_action_item":
+            return await this.handleDraftActionItem(args);
+          case "get_runtime_health":
+            return this.handleGetRuntimeHealth();
           default:
             throw new Error(`Unknown tool: ${name}`);
         }
@@ -695,11 +808,123 @@ class GitStarsServer {
     });
   }
 
+  handleListActionItems(args) {
+    const items = listActionItems(this.actionItems, args);
+    return this.response({
+      count: items.length,
+      items,
+    });
+  }
+
+  async handleUpdateActionItem(args) {
+    const item = await updateActionItem(HOUSE_ROOT, {
+      id: args.id,
+      status: args.status,
+      notes: args.notes ?? "",
+    });
+    if (!item) {
+      throw new Error("Action item not found");
+    }
+
+    return this.response({
+      updated: true,
+      item,
+    });
+  }
+
+  handleInspectOwnedRepo(args) {
+    const repo = this.resolveRepo(args);
+    if (!repo) {
+      throw new Error("Repository not found");
+    }
+
+    const inspection = findRepoInspection(this.repoInspections, `${repo.author}/${repo.name}`);
+    if (!inspection) {
+      throw new Error("Repo inspection not found");
+    }
+
+    return this.response({
+      inspected: true,
+      ...inspection,
+    });
+  }
+
+  handleGenerateOpsDigest() {
+    return this.response(this.opsDigest);
+  }
+
+  handleGenerateWeeklyResearchReview() {
+    return this.response(this.weeklyResearchReview);
+  }
+
+  async handleDraftActionItem(args) {
+    const item = await draftActionItem(HOUSE_ROOT, {
+      kind: args.kind,
+      name: args.name,
+      author: args.author,
+      source: args.source ?? "manual",
+    });
+    if (!item) {
+      throw new Error("Could not draft action item");
+    }
+
+    return this.response({
+      drafted: true,
+      item,
+    });
+  }
+
+  handleGetRuntimeHealth() {
+    return this.response({
+      houseId: "vega-lab",
+      legacyHouseId: "git-stars",
+      runtimeContract: "openresponses",
+      local: {
+        busUrl: "/bus",
+        proxiedTarget: "http://127.0.0.1:8085",
+        chatEndpoint: "/bus/chat",
+        settingsEndpoint: "/bus/settings",
+        eventsEndpoint: "/bus/events?agency=vega-lab",
+      },
+      localBus: {
+        url: "/bus",
+        target: "http://127.0.0.1:8085",
+        status: "expected",
+      },
+      datasets: {
+        starredRepos: this.starredRepos.length,
+        myRepos: this.myRepos.length,
+        repoSignals: this.repoSignals.length,
+        researchQueue: this.researchQueue.length,
+        skillExtractions: this.skillExtractions.length,
+        mineHealth: this.mineHealth.length,
+        repoInspections: this.repoInspections.length,
+        actionItems: this.actionItems.length,
+      },
+      artifacts: [
+        STATS_FILE,
+        REPO_SIGNALS_FILE,
+        RESEARCH_QUEUE_FILE,
+        SKILL_EXTRACTIONS_FILE,
+        MINE_HEALTH_FILE,
+        REPO_INSPECTIONS_FILE,
+        ACTION_ITEMS_FILE,
+        OPS_DIGEST_FILE,
+        WEEKLY_RESEARCH_REVIEW_FILE,
+        AUTOMATION_RUNS_FILE,
+      ],
+      tools: {
+        total: 25,
+        draftOnly: true,
+      },
+    });
+  }
+
   async run() {
-    console.error("Loading Git Stars datasets...");
+    console.error("Loading Vega Lab datasets...");
     await this.refresh();
     console.error(`Loaded ${this.starredRepos.length} starred repos and ${this.myRepos.length} owned/collab repos.`);
-    console.error(`Loaded ${this.repoSignals.length} signals, ${this.researchQueue.length} queue items, ${this.skillExtractions.length} skill extractions.`);
+    console.error(`Loaded ${this.repoSignals.length} signals, ${this.researchQueue.length} queue items, ${this.skillExtractions.length} skill extractions, ${this.actionItems.length} actions.`);
 
     const transport = new StdioServerTransport();
     await this.server.connect(transport);
@@ -707,7 +932,7 @@ class GitStarsServer {
   }
 }
 
-const server = new GitStarsServer();
+const server = new VegaLabServer();
 server.run().catch((error) => {
   console.error(error);
   process.exit(1);

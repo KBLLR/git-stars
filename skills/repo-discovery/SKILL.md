@@ -1,11 +1,11 @@
 ---
 name: repo-discovery
-description: Discover, filter, compare, and cluster GitHub repositories inside Git Stars. Use when the user wants search, similar repos, topic scans, language breakdowns, or shortlist generation from starred repositories.
+description: Discover, filter, compare, and cluster GitHub repositories inside Vega Lab. Use when the user wants search, similar repos, topic scans, language breakdowns, or shortlist generation from starred repositories.
 ---
 
 # Repo Discovery
 
-Use this skill for search and comparison tasks across `git-stars`.
+Use this skill for search and comparison tasks across `vega-lab`.
 
 ## Workflow
 

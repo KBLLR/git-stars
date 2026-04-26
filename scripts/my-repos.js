@@ -60,6 +60,98 @@ async function hasReadme(owner, repo) {
   }
 }
 
+async function getContent(owner, repo, filePath) {
+  try {
+    const { data } = await octokit.repos.getContent({ owner, repo, path: filePath });
+    if (!("content" in data) || data.type !== "file") return null;
+    return Buffer.from(data.content, "base64").toString("utf8");
+  } catch (error) {
+    if (error.status !== 404) {
+      console.warn(`Key file check failed for ${owner}/${repo}/${filePath}: ${error.message}`);
+    }
+    return null;
+  }
+}
+
+async function pathExists(owner, repo, filePath) {
+  try {
+    await octokit.repos.getContent({ owner, repo, path: filePath });
+    return true;
+  } catch (error) {
+    if (error.status !== 404) {
+      console.warn(`Path check failed for ${owner}/${repo}/${filePath}: ${error.message}`);
+    }
+    return false;
+  }
+}
+
+async function listWorkflowFiles(owner, repo) {
+  try {
+    const { data } = await octokit.repos.getContent({ owner, repo, path: ".github/workflows" });
+    if (!Array.isArray(data)) return [];
+    return data.filter((entry) => entry.type === "file").map((entry) => entry.name);
+  } catch (error) {
+    if (error.status !== 404) {
+      console.warn(`Workflow check failed for ${owner}/${repo}: ${error.message}`);
+    }
+    return [];
+  }
+}
+
+async function getKeyFiles(owner, repo) {
+  const [
+    packageJsonRaw,
+    workflows,
+    hasPnpmLock,
+    hasYarnLock,
+    hasPackageLock,
+    hasVercel,
+    hasNetlify,
+    hasDockerfile,
+  ] = await Promise.all([
+    getContent(owner, repo, "package.json"),
+    listWorkflowFiles(owner, repo),
+    pathExists(owner, repo, "pnpm-lock.yaml"),
+    pathExists(owner, repo, "yarn.lock"),
+    pathExists(owner, repo, "package-lock.json"),
+    pathExists(owner, repo, "vercel.json"),
+    pathExists(owner, repo, "netlify.toml"),
+    pathExists(owner, repo, "Dockerfile"),
+  ]);
+
+  const packageManagers = [];
+  if (packageJsonRaw) packageManagers.push("npm");
+  if (hasPnpmLock) packageManagers.push("pnpm");
+  if (hasYarnLock) packageManagers.push("yarn");
+  if (hasPackageLock) packageManagers.push("npm-lock");
+
+  const deploymentConfigs = [];
+  if (hasVercel) deploymentConfigs.push("vercel.json");
+  if (hasNetlify) deploymentConfigs.push("netlify.toml");
+  if (hasDockerfile) deploymentConfigs.push("Dockerfile");
+
+  let packageJson = null;
+  if (packageJsonRaw) {
+    try {
+      const parsed = JSON.parse(packageJsonRaw);
+      packageJson = {
+        scripts: parsed.scripts || {},
+        dependencies: parsed.dependencies || {},
+        devDependencies: parsed.devDependencies || {},
+      };
+    } catch {
+      packageJson = null;
+    }
+  }
+
+  return {
+    packageJson,
+    packageManagers,
+    workflows,
+    deploymentConfigs,
+  };
+}
+
 async function mapWithConcurrency(items, limit, handler) {
   const results = new Array(items.length);
   let index = 0;
@@ -84,8 +176,11 @@ async function getMyRepos() {
 
   const normalized = repos.map((repo) => normalizeRepo(repo, login));
   const enriched = await mapWithConcurrency(normalized, 5, async (repo) => {
-    const has_readme = await hasReadme(repo.author, repo.name);
-    return { ...repo, has_readme };
+    const [has_readme, key_files] = await Promise.all([
+      hasReadme(repo.author, repo.name),
+      getKeyFiles(repo.author, repo.name),
+    ]);
+    return { ...repo, has_readme, key_files };
   });
 
   return enriched;

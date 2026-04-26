@@ -5,6 +5,7 @@ import {
   BarChart3,
   Compass,
   Github,
+  Inbox,
   LayoutGrid,
   Search,
   Star,
@@ -20,14 +21,18 @@ import { ActivityLog } from "./components/ActivityLog";
 import { HighlightsPanel } from "./components/HighlightsPanel";
 import { MyReposPanel } from "./components/MyReposPanel";
 import { RuntimeSettingsPanel } from "./components/RuntimeSettingsPanel";
+import { OpsInboxPanel } from "./components/OpsInboxPanel";
 import { logger } from "./lib/logger";
 import { getReadmeActionPresets } from "./lib/orchestrator";
 import type {
   LanguageGroup,
+  ActionItem,
   MineHealthRecord,
+  OpsDigest,
   Repo,
   RepoSignal,
   ResearchQueueItem,
+  WeeklyResearchReview,
 } from "./types";
 
 async function fetchJson<T>(paths: string[]): Promise<T | null> {
@@ -60,7 +65,7 @@ function App() {
   const [allRepos, setAllRepos] = useState<Repo[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [view, setView] = useState<"cards" | "table" | "statistics" | "activity" | "news" | "mine">("cards");
+  const [view, setView] = useState<"cards" | "table" | "statistics" | "activity" | "news" | "mine" | "ops">("cards");
 
   const [selectedRepo, setSelectedRepo] = useState<Repo | null>(null);
   const [isReadmeOpen, setIsReadmeOpen] = useState(false);
@@ -76,6 +81,9 @@ function App() {
   const [repoSignals, setRepoSignals] = useState<RepoSignal[]>([]);
   const [researchQueue, setResearchQueue] = useState<ResearchQueueItem[]>([]);
   const [mineHealth, setMineHealth] = useState<MineHealthRecord[]>([]);
+  const [actionItems, setActionItems] = useState<ActionItem[]>([]);
+  const [opsDigest, setOpsDigest] = useState<OpsDigest | null>(null);
+  const [weeklyResearchReview, setWeeklyResearchReview] = useState<WeeklyResearchReview | null>(null);
   const [contextMenu, setContextMenu] = useState<{ x: number; y: number; repo: Repo } | null>(null);
 
   const [searchTerm, setSearchTerm] = useState("");
@@ -89,16 +97,22 @@ function App() {
   const repoKey = (repo: Repo) => `${repo.author}/${repo.name}`;
 
   const refreshHouseData = async () => {
-    const [signals, queue, health] = await Promise.all([
+    const [signals, queue, health, actions, digest, weekly] = await Promise.all([
       fetchJson<RepoSignal[]>(["/repo-signals.json", "/data/repo-signals.json"]),
       fetchJson<ResearchQueueItem[]>(["/research-queue.json", "/data/research-queue.json"]),
       fetchJson<MineHealthRecord[]>(["/mine-health.json", "/data/mine-health.json"]),
+      fetchJson<ActionItem[]>(["/action-items.json", "/data/action-items.json"]),
+      fetchJson<OpsDigest>(["/ops-digest.json", "/data/ops-digest.json"]),
+      fetchJson<WeeklyResearchReview>(["/weekly-research-review.json", "/data/weekly-research-review.json"]),
     ]);
 
     startTransition(() => {
       setRepoSignals(Array.isArray(signals) ? signals : []);
       setResearchQueue(Array.isArray(queue) ? queue : []);
       setMineHealth(Array.isArray(health) ? health : []);
+      setActionItems(Array.isArray(actions) ? actions : []);
+      setOpsDigest(digest && !Array.isArray(digest) ? digest : null);
+      setWeeklyResearchReview(weekly && !Array.isArray(weekly) ? weekly : null);
     });
   };
 
@@ -136,8 +150,8 @@ function App() {
 
   const handleResearch = (repo: Repo) => {
     logger.logEvent({
-      type: "git-stars:research_started",
-      house_id: "git-stars",
+      type: "vega-lab:research_started",
+      house_id: "vega-lab",
       timestamp: new Date().toISOString(),
       data: {
         action: "research",
@@ -155,7 +169,7 @@ function App() {
   const handleSimilar = (repo: Repo) => {
     logger.logEvent({
       type: "tool.call",
-      house_id: "git-stars",
+      house_id: "vega-lab",
       timestamp: new Date().toISOString(),
       tool_name: "find_similar_repos",
       tool_id: `similar-${Date.now()}`,
@@ -227,11 +241,11 @@ function App() {
 
   useEffect(() => {
     try {
-      const storedBookmarks = localStorage.getItem("git-stars:bookmarks");
+      const storedBookmarks = localStorage.getItem("vega-lab:bookmarks") || localStorage.getItem("git-stars:bookmarks");
       if (storedBookmarks) setBookmarks(JSON.parse(storedBookmarks) as Repo[]);
-      const storedHistory = localStorage.getItem("git-stars:history");
+      const storedHistory = localStorage.getItem("vega-lab:history") || localStorage.getItem("git-stars:history");
       if (storedHistory) setHistory(JSON.parse(storedHistory) as Repo[]);
-      const storedMine = localStorage.getItem("git-stars:my-repos");
+      const storedMine = localStorage.getItem("vega-lab:my-repos") || localStorage.getItem("git-stars:my-repos");
       if (storedMine) setMyRepos(JSON.parse(storedMine) as Repo[]);
     } catch {
       // ignore storage errors
@@ -240,7 +254,7 @@ function App() {
 
   useEffect(() => {
     try {
-      localStorage.setItem("git-stars:bookmarks", JSON.stringify(bookmarks));
+      localStorage.setItem("vega-lab:bookmarks", JSON.stringify(bookmarks));
     } catch {
       // ignore
     }
@@ -248,7 +262,7 @@ function App() {
 
   useEffect(() => {
     try {
-      localStorage.setItem("git-stars:history", JSON.stringify(history));
+      localStorage.setItem("vega-lab:history", JSON.stringify(history));
     } catch {
       // ignore
     }
@@ -256,7 +270,7 @@ function App() {
 
   useEffect(() => {
     try {
-      localStorage.setItem("git-stars:my-repos", JSON.stringify(myRepos));
+      localStorage.setItem("vega-lab:my-repos", JSON.stringify(myRepos));
     } catch {
       // ignore
     }
@@ -389,7 +403,7 @@ function App() {
           }}
         >
           <Github size={28} />
-          <span>GitStars</span>
+          <span>Vega Lab</span>
         </a>
 
         <div className="nav-capsule">
@@ -408,6 +422,9 @@ function App() {
           <button onClick={() => setView("news")} className={`nav-item ${view === "news" ? "active" : ""}`}>
             <Compass size={16} /> News
           </button>
+          <button onClick={() => setView("ops")} className={`nav-item ${view === "ops" ? "active" : ""}`}>
+            <Inbox size={16} /> Ops
+          </button>
           <button onClick={() => setView("mine")} className={`nav-item ${view === "mine" ? "active" : ""}`}>
             <User size={16} /> Mine
           </button>
@@ -416,13 +433,13 @@ function App() {
         <div className="header-stats">
           <div className="stat-badge" title="Total Stars">
             <Star size={14} fill="currentColor" className="text-muted" />
-            {view === "mine" ? processedMineRepos.length : processedRepos.length} Repos
+            {view === "ops" ? actionItems.filter((item) => item.status === "open").length : view === "mine" ? processedMineRepos.length : processedRepos.length} {view === "ops" ? "Open" : "Repos"}
           </div>
           <RuntimeSettingsPanel />
         </div>
       </header>
 
-      {view !== "statistics" && view !== "activity" && view !== "news" && (
+      {view !== "statistics" && view !== "activity" && view !== "news" && view !== "ops" && (
         <div className="filters-container">
           {view === "mine" ? (
             <>
@@ -501,15 +518,27 @@ function App() {
             myRepos={myRepos}
             repoSignals={repoSignals}
             researchQueue={researchQueue}
+            actionItems={actionItems}
+            opsDigest={opsDigest}
             bookmarks={bookmarks}
             history={history}
             onSelectRepo={handleRepoClick}
             onLaunchAction={(repo, prompt) => openReadmeWithAction(repo, prompt, true)}
           />
+        ) : view === "ops" ? (
+          <OpsInboxPanel
+            actionItems={actionItems}
+            opsDigest={opsDigest}
+            weeklyResearchReview={weeklyResearchReview}
+            repos={[...myRepos, ...allRepos]}
+            onSelectRepo={handleRepoClick}
+            onLaunchAction={(repo, prompt) => openChatWithPrefill(repo, prompt, true)}
+          />
         ) : view === "mine" ? (
           <MyReposPanel
             myRepos={processedMineRepos}
             mineHealth={mineHealth}
+            actionItems={actionItems}
             onLaunchAction={(repo, prompt, useChat) => {
               if (useChat) {
                 openChatWithPrefill(repo, prompt, true);

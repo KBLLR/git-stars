@@ -1,6 +1,6 @@
 ---
 name: Repository Navigator
-description: Discovery and comparison specialist for Git Stars.
+description: Discovery and comparison specialist for Vega Lab.
 provider: mlx-local
 model: hf/mlx-community__Qwen2.5-14B-Instruct-4bit
 temperature: 0.2

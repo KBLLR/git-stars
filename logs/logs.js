@@ -78,7 +78,7 @@ function exportLogs() {
   const url = URL.createObjectURL(blob);
   const anchor = document.createElement('a');
   anchor.href = url;
-  anchor.download = 'git-stars-activity.json';
+  anchor.download = 'vega-lab-activity.json';
   document.body.appendChild(anchor);
   anchor.click();
   document.body.removeChild(anchor);

@@ -1,0 +1,304 @@
+{
+  "$schema": "../../../htdi-collective-agency/schemas/house-orchestrator.schema.json",
+  "id": "orchestrator:vega-lab",
+  "legacy_ids": ["orchestrator:git-stars"],
+  "house_id": "vega-lab",
+  "legacy_house_ids": ["git-stars"],
+  "name": "Vega Lab Orchestrator",
+  "version": "3.0.0",
+  "status": "active",
+  "personality": {
+    "voice": "technical",
+    "tone": "professional",
+    "style_guide": "Clear, concise communication focused on repository intelligence, evidence trails, research state, adoption fit, local runtime health, and owned-repo execution.",
+    "pronouns": "we/our",
+    "signature_phrases": [],
+    "avatar": "/assets/vega-lab.png",
+    "theme": {
+      "primary_color": "#3B82F6",
+      "secondary_color": "#0F172A",
+      "icon": "code"
+    }
+  },
+  "runtime": {
+    "contract": "openresponses",
+    "authority": "draft-only",
+    "local_first": true,
+    "local_bus": "/bus",
+    "local_bus_target": "http://127.0.0.1:8085",
+    "web_mode": "deployment-testing-only"
+  },
+  "shared_resources": {
+    "filesystem": {
+      "root_paths": ["houses/vega-lab", "houses/git-stars"],
+      "workspace": "var/workspace",
+      "artifacts": "var/artifacts"
+    },
+    "knowledge": {
+      "collections": ["house:vega-lab:docs"],
+      "legacy_collections": ["house:git-stars:docs"],
+      "embeddings_model": "/Users/davidcaballero/core-x-kbllr_0/model-zoo/models/embeddings/all-minilm-l6-v2-4bit",
+      "rag_endpoint": "http://localhost:8090/v1/search",
+      "vector_db": "lancedb"
+    },
+    "skills": [
+      "repo-discovery",
+      "repo-research",
+      "skill-extraction",
+      "repo-adoption",
+      "mine-execution"
+    ],
+    "tools": [
+      "fs_list",
+      "fs_read",
+      "rag_search",
+      "list_starred_repos",
+      "search_repos",
+      "get_repo_details",
+      "get_statistics",
+      "get_language_breakdown",
+      "get_trending_topics",
+      "filter_by_criteria",
+      "find_similar_repos",
+      "list_news_signals",
+      "get_research_queue",
+      "update_research_queue",
+      "mark_for_research",
+      "get_adoption_candidates",
+      "extract_repo_skills",
+      "generate_repo_mission",
+      "get_mine_health",
+      "find_repos_missing_readme",
+      "list_action_items",
+      "update_action_item",
+      "inspect_owned_repo",
+      "get_repo_inspection",
+      "generate_ops_digest",
+      "generate_weekly_research_review",
+      "draft_action_item",
+      "get_runtime_health"
+    ],
+    "mcp_servers": [
+      "house-functions",
+      "mlx-rag",
+      "vega-lab-mcp"
+    ]
+  },
+  "agents": {
+    "roster": [
+      {
+        "agent_id": "vega-lab:orchestrator",
+        "role_in_house": "lead",
+        "delegation_priority": 100,
+        "capabilities": ["routing", "planning", "coordination", "runtime-health"]
+      },
+      {
+        "agent_id": "vega-lab:repo-analyst",
+        "role_in_house": "specialist",
+        "delegation_priority": 90,
+        "capabilities": ["analytics", "intelligence", "adoption", "ops-digest"]
+      },
+      {
+        "agent_id": "vega-lab:repo-navigator",
+        "role_in_house": "specialist",
+        "delegation_priority": 88,
+        "capabilities": ["search", "discovery", "navigation"]
+      },
+      {
+        "agent_id": "vega-lab:alignment-scout",
+        "role_in_house": "specialist",
+        "delegation_priority": 86,
+        "capabilities": ["research", "alignment", "adoption", "weekly-review"]
+      },
+      {
+        "agent_id": "vega-lab:tool-architect",
+        "role_in_house": "specialist",
+        "delegation_priority": 84,
+        "capabilities": ["skills", "mission-generation", "toolization"]
+      },
+      {
+        "agent_id": "vega-lab:repo-ops",
+        "role_in_house": "specialist",
+        "delegation_priority": 82,
+        "capabilities": ["repo-ops", "maintenance", "execution", "action-inbox"]
+      }
+    ],
+    "default_agent": "vega-lab:orchestrator",
+    "routing_rules": [
+      {
+        "pattern": ".*search.*|.*find.*|.*filter.*|.*discover.*|.*similar.*|.*compare.*",
+        "capability": "search",
+        "agent_id": "vega-lab:repo-navigator"
+      },
+      {
+        "pattern": ".*news.*|.*stats.*|.*trend.*|.*analytics.*|.*signal.*|.*highlights.*|.*digest.*",
+        "capability": "analytics",
+        "agent_id": "vega-lab:repo-analyst"
+      },
+      {
+        "pattern": ".*research.*|.*queue.*|.*adoption.*|.*align.*|.*weekly.*",
+        "capability": "research",
+        "agent_id": "vega-lab:alignment-scout"
+      },
+      {
+        "pattern": ".*skill.*|.*rules.*|.*flows.*|.*codex.*|.*claude.*|.*mission.*|.*template.*",
+        "capability": "skills",
+        "agent_id": "vega-lab:tool-architect"
+      },
+      {
+        "pattern": ".*mine.*|.*maintenance.*|.*readme.*|.*dependency.*|.*package.*|.*deploy.*|.*inbox.*|.*action.*",
+        "capability": "repo-ops",
+        "agent_id": "vega-lab:repo-ops"
+      },
+      {
+        "pattern": ".*runtime.*|.*mlx.*|.*openresponses.*|.*bus.*|.*health.*",
+        "capability": "runtime-health",
+        "agent_id": "vega-lab:orchestrator"
+      }
+    ]
+  },
+  "capabilities": {
+    "domains": ["code", "research", "analysis", "adoption", "repo-ops", "local-runtime"],
+    "input_types": ["text", "url"],
+    "output_types": ["text", "structured"],
+    "streaming": true,
+    "tool_calling": true,
+    "max_context_window": 32768
+  },
+  "council_integration": {
+    "council_member_id": "council:vega-lab",
+    "legacy_council_member_ids": ["council:git-stars"],
+    "broadcast_events": [
+      "response.in_progress",
+      "response.output_text.delta",
+      "response.completed",
+      "vega-lab.research.updated",
+      "vega-lab.mission.generated",
+      "vega-lab.adoption.scored",
+      "vega-lab.action.drafted",
+      "vega-lab.runtime.health"
+    ],
+    "subscribe_events": [
+      "council.task.delegated",
+      "council.motion.proposed",
+      "council.vote.required",
+      "council.house.capabilities"
+    ],
+    "voting_weight": 0.2,
+    "delegation_accepts": ["code", "research", "analysis", "repo-ops"]
+  },
+  "workflows": {
+    "flows": [
+      {
+        "id": "news-digest-refresh",
+        "name": "News Digest Refresh",
+        "description": "Refresh hybrid News signals, then summarize the most relevant updates, evidence, and adoption moves.",
+        "trigger": {
+          "event": "task.news",
+          "pattern": ".*news.*|.*highlight.*|.*signal.*|.*trend.*"
+        },
+        "steps": [
+          { "step_id": "signals", "agent_id": "vega-lab:repo-analyst", "action": "list_news_signals", "output_to": "summary" },
+          { "step_id": "digest", "agent_id": "vega-lab:repo-analyst", "action": "generate_ops_digest", "input_from": "signals", "output_to": "summary" }
+        ]
+      },
+      {
+        "id": "research-queue-flow",
+        "name": "Research Queue Flow",
+        "description": "Queue a repo, extract fit, and produce a short research brief.",
+        "trigger": {
+          "event": "task.research",
+          "pattern": ".*research.*|.*queue.*|.*align.*"
+        },
+        "steps": [
+          { "step_id": "queue", "agent_id": "vega-lab:alignment-scout", "action": "update_research_queue", "output_to": "extract" },
+          { "step_id": "extract", "agent_id": "vega-lab:alignment-scout", "action": "extract_repo_skills", "input_from": "queue", "output_to": "brief" },
+          { "step_id": "action", "agent_id": "vega-lab:repo-ops", "action": "draft_action_item", "input_from": "brief" }
+        ]
+      },
+      {
+        "id": "skill-extraction-flow",
+        "name": "Skill Extraction Flow",
+        "description": "Extract canonical skills, rules, flows, and optional model-specific missions.",
+        "trigger": {
+          "event": "task.skills",
+          "pattern": ".*skill.*|.*rules.*|.*flows.*|.*codex.*|.*claude.*|.*mission.*"
+        },
+        "steps": [
+          { "step_id": "extract", "agent_id": "vega-lab:tool-architect", "action": "extract_repo_skills", "output_to": "mission" },
+          { "step_id": "mission", "agent_id": "vega-lab:tool-architect", "action": "generate_repo_mission", "input_from": "extract" }
+        ]
+      },
+      {
+        "id": "adoption-decision-flow",
+        "name": "Adoption Decision Flow",
+        "description": "Evaluate adoption fit and convert it into a category and next action.",
+        "trigger": {
+          "event": "task.adoption",
+          "pattern": ".*adopt.*|.*fit.*|.*integrate.*|.*house.*|.*tool.*|.*template.*"
+        },
+        "steps": [
+          { "step_id": "extract", "agent_id": "vega-lab:alignment-scout", "action": "extract_repo_skills", "output_to": "rank" },
+          { "step_id": "rank", "agent_id": "vega-lab:repo-analyst", "action": "get_adoption_candidates", "input_from": "extract", "output_to": "decision" },
+          { "step_id": "action", "agent_id": "vega-lab:repo-ops", "action": "draft_action_item", "input_from": "decision" }
+        ]
+      },
+      {
+        "id": "mine-execution-flow",
+        "name": "Mine Execution Flow",
+        "description": "Inspect owned-repo health, identify readiness gaps, and draft execution actions.",
+        "trigger": {
+          "event": "task.mine",
+          "pattern": ".*mine.*|.*maintenance.*|.*readme.*|.*dependency.*|.*package.*|.*deploy.*"
+        },
+        "steps": [
+          { "step_id": "health", "agent_id": "vega-lab:repo-ops", "action": "get_mine_health", "output_to": "inspection" },
+          { "step_id": "inspection", "agent_id": "vega-lab:repo-ops", "action": "inspect_owned_repo", "input_from": "health", "output_to": "actions" },
+          { "step_id": "actions", "agent_id": "vega-lab:repo-ops", "action": "list_action_items", "input_from": "inspection" }
+        ]
+      },
+      {
+        "id": "daily-ops-automation",
+        "name": "Daily Ops Automation",
+        "description": "Refresh snapshots, inspect owned repos, generate an ops digest, and draft action inbox items. This flow is draft-only.",
+        "trigger": {
+          "event": "automation.daily-ops",
+          "pattern": ".*daily.*ops.*"
+        },
+        "authority": "draft-only",
+        "steps": [
+          { "step_id": "health", "agent_id": "vega-lab:orchestrator", "action": "get_runtime_health", "output_to": "inspection" },
+          { "step_id": "inspection", "agent_id": "vega-lab:repo-ops", "action": "get_mine_health", "output_to": "digest" },
+          { "step_id": "digest", "agent_id": "vega-lab:repo-analyst", "action": "generate_ops_digest", "input_from": "inspection", "output_to": "inbox" },
+          { "step_id": "inbox", "agent_id": "vega-lab:repo-ops", "action": "list_action_items", "input_from": "digest" }
+        ]
+      },
+      {
+        "id": "weekly-research-automation",
+        "name": "Weekly Research Automation",
+        "description": "Rank bright-star candidates, update research recommendations, identify reusable skills, rules, and flows, and generate the weekly review. This flow is draft-only.",
+        "trigger": {
+          "event": "automation.weekly-research",
+          "pattern": ".*weekly.*research.*"
+        },
+        "authority": "draft-only",
+        "steps": [
+          { "step_id": "candidates", "agent_id": "vega-lab:repo-analyst", "action": "get_adoption_candidates", "output_to": "review" },
+          { "step_id": "review", "agent_id": "vega-lab:alignment-scout", "action": "generate_weekly_research_review", "input_from": "candidates", "output_to": "actions" },
+          { "step_id": "actions", "agent_id": "vega-lab:repo-ops", "action": "list_action_items", "input_from": "review" }
+        ]
+      }
+    ]
+  },
+  "endpoints": {
+    "base_url": "http://localhost:5173",
+    "responses": "/bus/v1/responses",
+    "capabilities": "/bus/capabilities",
+    "runtime_health": "/bus/settings"
+  },
+  "_envelope": {
+    "created_at": "2026-02-03T13:50:29.829340Z",
+    "updated_at": "2026-04-27T00:00:00.000000Z",
+    "generated_by": "vega-lab-local-first-revamp"
+  }
+}

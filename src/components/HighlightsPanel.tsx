@@ -1,10 +1,12 @@
-import type { Repo, RepoSignal, ResearchQueueItem } from "../types";
+import type { ActionItem, OpsDigest, Repo, RepoSignal, ResearchQueueItem } from "../types";
 
 interface HighlightsPanelProps {
   repos: Repo[];
   myRepos: Repo[];
   repoSignals: RepoSignal[];
   researchQueue: ResearchQueueItem[];
+  actionItems: ActionItem[];
+  opsDigest: OpsDigest | null;
   bookmarks: Repo[];
   history: Repo[];
   onSelectRepo: (repo: Repo) => void;
@@ -30,6 +32,8 @@ export function HighlightsPanel({
   myRepos,
   repoSignals,
   researchQueue,
+  actionItems,
+  opsDigest,
   bookmarks,
   history,
   onSelectRepo,
@@ -49,6 +53,15 @@ export function HighlightsPanel({
     .slice(0, 6);
 
   const recommendedActions = [
+    ...actionItems
+      .filter((item) => item.status === "open" || item.status === "reviewing")
+      .slice(0, 3)
+      .map((item) => ({
+        title: item.title,
+        detail: item.summary,
+        repo: findRepo(repoPool, item.nwo),
+        prompt: `Review Vega Lab action item ${item.id}. Use list_action_items and produce the next review step.`,
+      })),
     ...researchQueue
       .filter((item) => item.status !== "done" && item.status !== "dismissed")
       .slice(0, 2)
@@ -77,10 +90,9 @@ export function HighlightsPanel({
   return (
     <div className="highlights-view">
       <section className="highlights-hero">
-        <h2>Hybrid Intelligence</h2>
+        <h2>Vega Lab Intelligence</h2>
         <p>
-          Recent updates, adoption signals, queued research, skill opportunities, and next actions
-          are all grounded in the same house data.
+          {opsDigest?.summary || "Recent updates, adoption signals, queued research, skill opportunities, and ops actions are grounded in the same house data."}
         </p>
       </section>
 
@@ -158,7 +170,7 @@ export function HighlightsPanel({
         </div>
 
         <div className="highlight-card">
-          <h3>Recommended Next Actions</h3>
+          <h3>Ops Inbox</h3>
           <ul>
             {recommendedActions.map((action) => (
               <li key={action.title}>

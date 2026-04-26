@@ -1,9 +1,10 @@
 import type { JSX } from "react";
-import type { MineHealthRecord, Repo } from "../types";
+import type { ActionItem, MineHealthRecord, Repo } from "../types";
 
 interface MyReposPanelProps {
   myRepos: Repo[];
   mineHealth: MineHealthRecord[];
+  actionItems: ActionItem[];
   renderRepoCard: (repo: Repo) => JSX.Element;
   onLaunchAction: (repo: Repo, prompt: string, useChat?: boolean) => void;
 }
@@ -18,20 +19,23 @@ function uniqueById(repos: Repo[]) {
   });
 }
 
-export function MyReposPanel({ myRepos, mineHealth, renderRepoCard, onLaunchAction }: MyReposPanelProps) {
+export function MyReposPanel({ myRepos, mineHealth, actionItems, renderRepoCard, onLaunchAction }: MyReposPanelProps) {
   const owned = uniqueById(myRepos);
   const healthByNwo = new Map(mineHealth.map((record) => [record.nwo, record]));
 
   const missingReadme = owned.filter((repo) => healthByNwo.get(`${repo.author}/${repo.name}`)?.healthFlags.includes("missing-readme"));
   const staleRepos = owned.filter((repo) => healthByNwo.get(`${repo.author}/${repo.name}`)?.healthFlags.includes("stale"));
   const templateCandidates = owned.filter((repo) => healthByNwo.get(`${repo.author}/${repo.name}`)?.healthFlags.includes("template-candidate"));
+  const openMineActions = actionItems.filter((item) => (
+    item.status === "open" || item.status === "reviewing"
+  ) && owned.some((repo) => `${repo.author}/${repo.name}` === item.nwo));
 
   return (
     <div className="my-repos-view">
       <section className="highlights-hero">
         <h2>Execution Workspace</h2>
         <p>
-          Mine is now for action: README coverage, maintenance work, template extraction, and model-ready mission briefs.
+          Mine is now for action: README coverage, maintenance work, deployment readiness, template extraction, and model-ready mission briefs.
         </p>
       </section>
 
@@ -78,6 +82,27 @@ export function MyReposPanel({ myRepos, mineHealth, renderRepoCard, onLaunchActi
               </li>
             ))}
             {templateCandidates.length === 0 && <p>No template candidates in the current Mine selection.</p>}
+          </ul>
+        </div>
+
+        <div className="highlight-card">
+          <h3>Ops Inbox</h3>
+          <p>{openMineActions.length} draft actions are waiting for review.</p>
+          <ul>
+            {openMineActions.slice(0, 5).map((item) => {
+              const repo = owned.find((candidate) => `${candidate.author}/${candidate.name}` === item.nwo);
+              return (
+                <li key={item.id}>
+                  <button
+                    disabled={!repo}
+                    onClick={() => repo && onLaunchAction(repo, `Review Vega Lab action item ${item.id} and produce the next step.`, true)}
+                  >
+                    {item.title} <span>{item.priority}</span>
+                  </button>
+                </li>
+              );
+            })}
+            {openMineActions.length === 0 && <p>No open Mine actions.</p>}
           </ul>
         </div>
 

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Settings2 } from 'lucide-react';
+import { Activity, Settings2 } from 'lucide-react';
 import {
   DEFAULT_RUNTIME_SETTINGS,
   RuntimeMode,
@@ -11,10 +11,55 @@ import {
 export function RuntimeSettingsPanel() {
   const [open, setOpen] = useState(false);
   const [draft, setDraft] = useState<RuntimeSettings>(DEFAULT_RUNTIME_SETTINGS);
+  const [health, setHealth] = useState<{ status: 'checking' | 'live' | 'offline'; detail: string; model?: string }>({
+    status: 'checking',
+    detail: 'Checking OpenResponses bus',
+  });
 
   useEffect(() => {
     setDraft(loadRuntimeSettings());
   }, []);
+
+  useEffect(() => {
+    let cancelled = false;
+    const target = draft.mode === 'web' ? draft.webBusUrl : draft.localBusUrl;
+
+    setHealth({ status: 'checking', detail: 'Checking OpenResponses bus' });
+    fetch(`${target}/settings`)
+      .then(async (response) => {
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        return response.json() as Promise<unknown>;
+      })
+      .then((settings) => {
+        if (cancelled) return;
+        const defaultModel =
+          settings
+          && typeof settings === 'object'
+          && 'models' in settings
+          && settings.models
+          && typeof settings.models === 'object'
+          && 'default_model' in settings.models
+          && typeof settings.models.default_model === 'string'
+            ? settings.models.default_model
+            : undefined;
+        setHealth({
+          status: 'live',
+          detail: draft.mode === 'local' ? 'Local OpenResponses ready' : 'Web OpenResponses ready',
+          model: defaultModel,
+        });
+      })
+      .catch((error: Error) => {
+        if (cancelled) return;
+        setHealth({
+          status: 'offline',
+          detail: `${target}/settings unavailable: ${error.message}`,
+        });
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [draft.localBusUrl, draft.mode, draft.webBusUrl]);
 
   const updateField = <K extends keyof RuntimeSettings>(key: K, value: RuntimeSettings[K]) => {
     setDraft((prev) => ({ ...prev, [key]: value }));
@@ -39,12 +84,21 @@ export function RuntimeSettingsPanel() {
         title="Runtime settings"
       >
         <Settings2 size={16} /> Runtime
+        <span className={`runtime-settings__dot ${health.status}`} />
       </button>
 
       {open && (
         <div className="runtime-settings__panel">
-          <h3>Runtime settings</h3>
-          <p>Use local mode for MLX. Switch to web mode for remote/free API tests.</p>
+          <h3>Vega Lab runtime</h3>
+          <p>OpenResponses is the contract. Local mode targets the MLX-backed bus.</p>
+
+          <div className={`runtime-settings__health ${health.status}`}>
+            <Activity size={14} />
+            <div>
+              <strong>{health.status === 'live' ? 'OpenResponses live' : health.status === 'checking' ? 'Checking runtime' : 'Runtime offline'}</strong>
+              <span>{health.model || health.detail}</span>
+            </div>
+          </div>
 
           <label>
             Mode
@@ -58,7 +112,7 @@ export function RuntimeSettingsPanel() {
           </label>
 
           <label>
-            Local model
+            Local MLX model
             <input
               value={draft.localModel}
               onChange={(e) => updateField('localModel', e.target.value)}
@@ -67,7 +121,7 @@ export function RuntimeSettingsPanel() {
           </label>
 
           <label>
-            Local bus URL
+            Local OpenResponses bus
             <input
               value={draft.localBusUrl}
               onChange={(e) => updateField('localBusUrl', e.target.value)}
@@ -85,7 +139,7 @@ export function RuntimeSettingsPanel() {
           </label>
 
           <label>
-            Web bus URL
+            Web OpenResponses bus
             <input
               value={draft.webBusUrl}
               onChange={(e) => updateField('webBusUrl', e.target.value)}

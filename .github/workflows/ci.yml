@@ -1,4 +1,4 @@
-name: CI
+name: Vega Lab CI
 
 on:
   pull_request:
@@ -8,7 +8,7 @@ on:
       - codex/**
 
 concurrency:
-  group: git-stars-ci-${{ github.ref }}
+  group: vega-lab-ci-${{ github.ref }}
   cancel-in-progress: true
 
 permissions:

@@ -1,7 +1,9 @@
 import type { Repo } from "../types";
 
-export const HOUSE_ID = "git-stars";
-export const DEFAULT_AGENT_ID = "git-stars:orchestrator";
+export const VEGA_LAB_HOUSE_ID = "vega-lab";
+export const LEGACY_HOUSE_ID = "git-stars";
+export const HOUSE_ID = VEGA_LAB_HOUSE_ID;
+export const DEFAULT_AGENT_ID = "vega-lab:orchestrator";
 export const EVENT_BUS_URL = import.meta.env.VITE_EVENT_BUS_URL || "/bus";
 
 export interface ChatMessage {
@@ -10,11 +12,13 @@ export interface ChatMessage {
   tool_call_id?: string;
 }
 
-export interface GitStarsRoute {
+export interface VegaLabRoute {
   capability: string;
   agentId: string;
   label: string;
 }
+
+export type GitStarsRoute = VegaLabRoute;
 
 export interface ActionPreset {
   label: string;
@@ -23,12 +27,12 @@ export interface ActionPreset {
   variant?: "primary" | "default";
 }
 
-const ROUTES: Array<{ pattern: RegExp; route: GitStarsRoute }> = [
+const ROUTES: Array<{ pattern: RegExp; route: VegaLabRoute }> = [
   {
     pattern: /\b(search|find|filter|discover|similar|compare|topic)\b/i,
     route: {
       capability: "repo-discovery",
-      agentId: "git-stars:repo-navigator",
+      agentId: "vega-lab:repo-navigator",
       label: "Repository Navigator",
     },
   },
@@ -36,7 +40,7 @@ const ROUTES: Array<{ pattern: RegExp; route: GitStarsRoute }> = [
     pattern: /\b(news|trend|stats|analytics|intelligence|signal|highlights)\b/i,
     route: {
       capability: "star-intelligence",
-      agentId: "git-stars:repo-analyst",
+      agentId: "vega-lab:repo-analyst",
       label: "Repository Analyst",
     },
   },
@@ -44,7 +48,7 @@ const ROUTES: Array<{ pattern: RegExp; route: GitStarsRoute }> = [
     pattern: /\b(research|queue|adoption|align|house integration|fit)\b/i,
     route: {
       capability: "repo-research",
-      agentId: "git-stars:alignment-scout",
+      agentId: "vega-lab:alignment-scout",
       label: "Alignment Scout",
     },
   },
@@ -52,7 +56,7 @@ const ROUTES: Array<{ pattern: RegExp; route: GitStarsRoute }> = [
     pattern: /\b(skill|rules|flows|codex|claude|mission|template)\b/i,
     route: {
       capability: "skill-extraction",
-      agentId: "git-stars:tool-architect",
+      agentId: "vega-lab:tool-architect",
       label: "Tool Architect",
     },
   },
@@ -60,17 +64,17 @@ const ROUTES: Array<{ pattern: RegExp; route: GitStarsRoute }> = [
     pattern: /\b(readme|maintain|maintenance|dependency|package|mine|private|repo ops)\b/i,
     route: {
       capability: "mine-execution",
-      agentId: "git-stars:repo-ops",
+      agentId: "vega-lab:repo-ops",
       label: "Repo Ops",
     },
   },
 ];
 
-export function routeGitStarsIntent(input: string, isMineContext = false): GitStarsRoute {
+export function routeVegaLabIntent(input: string, isMineContext = false): VegaLabRoute {
   if (isMineContext) {
     return {
       capability: "mine-execution",
-      agentId: "git-stars:repo-ops",
+      agentId: "vega-lab:repo-ops",
       label: "Repo Ops",
     };
   }
@@ -79,11 +83,13 @@ export function routeGitStarsIntent(input: string, isMineContext = false): GitSt
   return match?.route ?? {
     capability: "orchestration",
     agentId: DEFAULT_AGENT_ID,
-    label: "Git Stars Orchestrator",
+    label: "Vega Lab Orchestrator",
   };
 }
 
-export function buildSystemPrompt(repo?: Repo | null, route?: GitStarsRoute): string {
+export const routeGitStarsIntent = routeVegaLabIntent;
+
+export function buildSystemPrompt(repo?: Repo | null, route?: VegaLabRoute): string {
   const context = repo
     ? `Current repo focus:
 - Name: ${repo.author}/${repo.name}
@@ -102,10 +108,11 @@ export function buildSystemPrompt(repo?: Repo | null, route?: GitStarsRoute): st
 - Label: ${route.label}`
     : "Active route: orchestrator default.";
 
-  return `You are the Git Stars house. Work from canonical tools and derived house data, not generic guessing.
+  return `You are Vega Lab, the core-x Git universe intelligence lab. Work from canonical tools and derived house data, not generic guessing.
 Always prefer typed tools over freeform inference when repo facts, queue state, adoption fit, skills, missions, or mine health are requested.
 When a mission brief is requested, call generate_repo_mission.
 When research state changes, call update_research_queue.
+When an inbox action is requested, call list_action_items, draft_action_item, or update_action_item.
 Keep answers concise, structured, and action-oriented.
 
 ${routeContext}
@@ -113,7 +120,7 @@ ${routeContext}
 ${context}`;
 }
 
-export function buildGitStarsTools() {
+export function buildVegaLabTools() {
   return [
     {
       type: "function",
@@ -395,8 +402,98 @@ export function buildGitStarsTools() {
         },
       },
     },
+    {
+      type: "function",
+      function: {
+        name: "list_action_items",
+        description: "List durable Vega Lab Ops Inbox action items.",
+        parameters: {
+          type: "object",
+          properties: {
+            status: { type: "string", enum: ["open", "reviewing", "accepted", "dismissed", "done"] },
+            kind: { type: "string", enum: ["readme", "maintenance", "deployment", "testing", "dependency", "research", "skill", "template", "adoption"] },
+            priority: { type: "string", enum: ["low", "normal", "high", "critical"] },
+            limit: { type: "number", description: "Max results" },
+          },
+        },
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "update_action_item",
+        description: "Update a Vega Lab action item status.",
+        parameters: {
+          type: "object",
+          properties: {
+            id: { type: "string" },
+            status: { type: "string", enum: ["open", "reviewing", "accepted", "dismissed", "done"] },
+            notes: { type: "string" },
+          },
+          required: ["id", "status"],
+        },
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "inspect_owned_repo",
+        description: "Return key-file inspection findings for an owned repository.",
+        parameters: {
+          type: "object",
+          properties: {
+            name: { type: "string" },
+            author: { type: "string" },
+          },
+          required: ["name"],
+        },
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "draft_action_item",
+        description: "Create or refresh a draft-only Vega Lab action item.",
+        parameters: {
+          type: "object",
+          properties: {
+            kind: { type: "string", enum: ["readme", "maintenance", "deployment", "testing", "dependency", "research", "skill", "template", "adoption"] },
+            name: { type: "string" },
+            author: { type: "string" },
+            source: { type: "string", enum: ["daily-ops", "weekly-research", "manual"] },
+          },
+          required: ["kind", "name"],
+        },
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "generate_ops_digest",
+        description: "Return the latest Vega Lab daily ops digest.",
+        parameters: { type: "object", properties: {} },
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "generate_weekly_research_review",
+        description: "Return the latest weekly research and skill extraction review.",
+        parameters: { type: "object", properties: {} },
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "get_runtime_health",
+        description: "Return OpenResponses local runtime and dataset health expectations.",
+        parameters: { type: "object", properties: {} },
+      },
+    },
   ];
 }
+
+export const buildGitStarsTools = buildVegaLabTools;
 
 const GENERAL_ACTIONS: ActionPreset[] = [
   {
@@ -462,7 +559,7 @@ const MINE_ACTIONS: ActionPreset[] = [
   {
     label: "Adoption fit",
     title: "Adoption fit",
-    prompt: "Use extract_repo_skills to explain how this owned repo fits into Git Stars adoption workflows.",
+    prompt: "Use extract_repo_skills to explain how this owned repo fits into Vega Lab adoption workflows.",
   },
   {
     label: "Extract skills",

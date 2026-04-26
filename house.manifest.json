@@ -1,12 +1,13 @@
 {
-  "house_id": "git-stars",
-  "name": "Git Stars",
-  "version": "2.0.0",
+  "house_id": "vega-lab",
+  "legacy_house_ids": ["git-stars"],
+  "name": "Vega Lab",
+  "version": "3.0.0",
   "status": "active",
   "tier": "lab",
   "purpose": {
     "domain": "dev-tools",
-    "mission": "Turn GitHub stars into an operating system for discovery, research, skill extraction, adoption, and owned-repo execution.",
+    "mission": "Operate the core-x Git universe intelligence lab: discover bright-star repositories, extract reusable skills, rules, and flows, and maintain owned repositories through draft-only action items.",
     "target_users": [
       "developers",
       "researchers",
@@ -16,77 +17,91 @@
       "Searchable repository intelligence",
       "Canonical skills, rules, and flows",
       "Adoption-ready repo classifications",
-      "Actionable Mine workspace maintenance"
+      "Owned-repo maintenance action items",
+      "Local-first OpenResponses runtime confidence"
     ]
   },
+  "runtime": {
+    "contract": "openresponses",
+    "local_first": true,
+    "local_bus": "/bus",
+    "local_bus_target": "http://127.0.0.1:8085",
+    "default_model": "mlx-community/Qwen2.5-Coder-14B-Instruct-4bit",
+    "web_mode": "deployment-testing-only"
+  },
   "personality": {
-    "voice": "Git Stars is a pragmatic repository intelligence house that favors typed workflows over prompt-only improvisation.",
+    "voice": "Vega Lab is a pragmatic repository intelligence house that favors typed workflows, evidence, and draft-only operations over prompt-only improvisation.",
     "tone": "professional",
     "theme": {
       "primary_color": "#0f172a",
       "secondary_color": "#334155",
-      "icon": "git-stars"
+      "icon": "vega-lab"
     }
   },
   "agents": {
     "roster": [
       {
-        "agent_id": "git-stars:orchestrator",
+        "agent_id": "vega-lab:orchestrator",
         "role_in_house": "lead",
-        "capabilities": ["routing", "coordination", "planning"]
+        "capabilities": ["routing", "coordination", "planning", "runtime-health"]
       },
       {
-        "agent_id": "git-stars:repo-analyst",
+        "agent_id": "vega-lab:repo-analyst",
         "role_in_house": "specialist",
-        "capabilities": ["analytics", "intelligence", "adoption"]
+        "capabilities": ["analytics", "intelligence", "adoption", "ops-digest"]
       },
       {
-        "agent_id": "git-stars:repo-navigator",
+        "agent_id": "vega-lab:repo-navigator",
         "role_in_house": "specialist",
         "capabilities": ["search", "discovery", "navigation"]
       },
       {
-        "agent_id": "git-stars:alignment-scout",
+        "agent_id": "vega-lab:alignment-scout",
         "role_in_house": "specialist",
-        "capabilities": ["research", "alignment", "adoption"]
+        "capabilities": ["research", "alignment", "adoption", "weekly-review"]
       },
       {
-        "agent_id": "git-stars:tool-architect",
+        "agent_id": "vega-lab:tool-architect",
         "role_in_house": "specialist",
         "capabilities": ["skills", "mission-generation", "toolization"]
       },
       {
-        "agent_id": "git-stars:repo-ops",
+        "agent_id": "vega-lab:repo-ops",
         "role_in_house": "specialist",
-        "capabilities": ["repo-ops", "maintenance", "execution"]
+        "capabilities": ["repo-ops", "maintenance", "execution", "action-inbox"]
       }
     ],
-    "default_agent": "git-stars:orchestrator",
+    "default_agent": "vega-lab:orchestrator",
     "routing_rules": [
       {
         "pattern": ".*search.*|.*find.*|.*filter.*|.*discover.*|.*similar.*|.*compare.*",
         "capability": "search",
-        "agent_id": "git-stars:repo-navigator"
+        "agent_id": "vega-lab:repo-navigator"
       },
       {
-        "pattern": ".*news.*|.*stats.*|.*trend.*|.*analytics.*|.*signal.*|.*highlights.*",
+        "pattern": ".*news.*|.*stats.*|.*trend.*|.*analytics.*|.*signal.*|.*highlights.*|.*digest.*",
         "capability": "analytics",
-        "agent_id": "git-stars:repo-analyst"
+        "agent_id": "vega-lab:repo-analyst"
       },
       {
-        "pattern": ".*research.*|.*queue.*|.*adoption.*|.*align.*",
+        "pattern": ".*research.*|.*queue.*|.*adoption.*|.*align.*|.*weekly.*",
         "capability": "research",
-        "agent_id": "git-stars:alignment-scout"
+        "agent_id": "vega-lab:alignment-scout"
       },
       {
         "pattern": ".*skill.*|.*rules.*|.*flows.*|.*codex.*|.*claude.*|.*mission.*|.*template.*",
         "capability": "skills",
-        "agent_id": "git-stars:tool-architect"
+        "agent_id": "vega-lab:tool-architect"
       },
       {
-        "pattern": ".*mine.*|.*maintenance.*|.*readme.*|.*dependency.*|.*package.*",
+        "pattern": ".*mine.*|.*maintenance.*|.*readme.*|.*dependency.*|.*package.*|.*deploy.*|.*inbox.*|.*action.*",
         "capability": "repo-ops",
-        "agent_id": "git-stars:repo-ops"
+        "agent_id": "vega-lab:repo-ops"
+      },
+      {
+        "pattern": ".*runtime.*|.*mlx.*|.*openresponses.*|.*bus.*|.*health.*",
+        "capability": "runtime-health",
+        "agent_id": "vega-lab:orchestrator"
       }
     ]
   },
@@ -96,32 +111,27 @@
       "analytics",
       "research",
       "skills",
-      "repo-ops"
+      "repo-ops",
+      "local-runtime"
     ],
-    "input_types": [
-      "text",
-      "url"
-    ],
-    "output_types": [
-      "stream",
-      "structured",
-      "text"
-    ],
+    "input_types": ["text", "url"],
+    "output_types": ["stream", "structured", "text"],
     "streaming": true,
-    "tool_calling": true
+    "tool_calling": true,
+    "authority": "draft-only"
   },
   "dependencies": {
     "services": [
-      "gateway",
-      "mlx-llm",
+      "event-bus",
+      "mlx-openresponses",
       "mlx-rag"
     ],
     "models": [
-      "text/qwen2.5-14b-4bit"
+      "mlx-community/Qwen2.5-Coder-14B-Instruct-4bit"
     ],
     "houses": [],
     "mcp_servers": [
-      "git-stars-mcp",
+      "vega-lab-mcp",
       "house-functions",
       "mlx-rag"
     ]
@@ -145,14 +155,17 @@
     "chat",
     "dashboard",
     "research",
+    "ops",
     "code"
   ],
   "council_integration": {
     "broadcast_events": [
-      "git-stars.status",
-      "git-stars.research.updated",
-      "git-stars.mission.generated",
-      "git-stars.adoption.scored"
+      "vega-lab.status",
+      "vega-lab.research.updated",
+      "vega-lab.mission.generated",
+      "vega-lab.adoption.scored",
+      "vega-lab.action.drafted",
+      "vega-lab.runtime.health"
     ],
     "subscribe_events": [
       "task.request",

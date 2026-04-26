@@ -1005,6 +1005,105 @@ table.repo-table {
   font-size: 0.75rem;
 }
 
+/* --- Ops Inbox --- */
+.ops-view {
+  padding: 24px clamp(16px, 4vw, 48px) 140px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.ops-hero {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.ops-metrics,
+.ops-toolbar,
+.ops-item header,
+.ops-item footer,
+.ops-evidence,
+.ops-links {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.ops-metrics span,
+.ops-evidence span,
+.ops-links span,
+.ops-priority,
+.ops-kind,
+.ops-status {
+  border: 1px solid var(--card-border);
+  background: var(--card-soft);
+  color: var(--card-ink);
+  border-radius: var(--radius-pill);
+  padding: 4px 9px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.ops-toolbar {
+  margin-bottom: 18px;
+}
+
+.ops-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 18px;
+}
+
+.ops-item {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ops-item h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.ops-item p {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+}
+
+.ops-priority.high,
+.ops-priority.critical {
+  background: rgba(239, 68, 68, 0.1);
+  border-color: rgba(239, 68, 68, 0.35);
+  color: #991b1b;
+}
+
+.ops-item footer {
+  margin-top: auto;
+  justify-content: flex-end;
+}
+
+.ops-item footer button {
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  background: var(--card-soft);
+  color: var(--card-ink);
+  padding: 8px 12px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.ops-item footer button.primary {
+  background: var(--card-ink);
+  color: var(--card-bg);
+}
+
 .topic-chips {
   display: flex;
   flex-wrap: wrap;

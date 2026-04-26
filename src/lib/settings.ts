@@ -10,8 +10,10 @@ export interface RuntimeSettings {
   webBusUrl: string;
 }
 
-export const SETTINGS_STORAGE_KEY = 'git-stars:runtime-settings';
-export const SETTINGS_EVENT = 'git-stars:settings-changed';
+export const SETTINGS_STORAGE_KEY = 'vega-lab:runtime-settings';
+export const LEGACY_SETTINGS_STORAGE_KEY = 'git-stars:runtime-settings';
+export const SETTINGS_EVENT = 'vega-lab:settings-changed';
+export const LEGACY_SETTINGS_EVENT = 'git-stars:settings-changed';
 
 export const DEFAULT_RUNTIME_SETTINGS: RuntimeSettings = {
   mode: 'local',
@@ -33,7 +35,8 @@ export function loadRuntimeSettings(): RuntimeSettings {
   }
 
   try {
-    const raw = window.localStorage.getItem(SETTINGS_STORAGE_KEY);
+    const raw = window.localStorage.getItem(SETTINGS_STORAGE_KEY)
+      || window.localStorage.getItem(LEGACY_SETTINGS_STORAGE_KEY);
     if (!raw) return DEFAULT_RUNTIME_SETTINGS;
     const parsed = JSON.parse(raw) as Partial<RuntimeSettings>;
     return {
@@ -59,6 +62,7 @@ export function saveRuntimeSettings(settings: RuntimeSettings) {
   };
   window.localStorage.setItem(SETTINGS_STORAGE_KEY, JSON.stringify(normalized));
   window.dispatchEvent(new CustomEvent(SETTINGS_EVENT, { detail: normalized }));
+  window.dispatchEvent(new CustomEvent(LEGACY_SETTINGS_EVENT, { detail: normalized }));
 }
 
 export function resolveRuntimeTarget(settings: RuntimeSettings) {
