@@ -20,7 +20,8 @@ import {
   loadRuntimeSettings,
   saveRuntimeSettings,
 } from '../lib/settings';
-import { fetchRuntimeHealth, fetchRuntimeModels } from '../lib/runtime-client';
+import type { RuntimeModelOption } from '../lib/runtime-client';
+import { fetchRuntimeHealth, fetchRuntimeModelCatalog } from '../lib/runtime-client';
 
 type RuntimeHealth = {
   status: 'checking' | 'live' | 'offline';
@@ -28,10 +29,24 @@ type RuntimeHealth = {
   model?: string;
 };
 
+function modelMatches(option: RuntimeModelOption, modelId: string) {
+  if (option.id === modelId) return true;
+  if (option.aliases?.includes(modelId)) return true;
+  return option.id.endsWith(`/${modelId}`) || modelId.endsWith(`/${option.id}`);
+}
+
 export function RuntimeSettingsPanel() {
   const [open, setOpen] = useState(false);
   const [draft, setDraft] = useState<RuntimeSettings>(DEFAULT_RUNTIME_SETTINGS);
-  const [localModels, setLocalModels] = useState<string[]>([]);
+  const [localModelOptions, setLocalModelOptions] = useState<RuntimeModelOption[]>([]);
+  const [localModelCounts, setLocalModelCounts] = useState({
+    total: 0,
+    hidden: 0,
+    served: 0,
+    zooLocal: 0,
+    zooCandidates: 0,
+    incomplete: 0,
+  });
   const [localModelsStatus, setLocalModelsStatus] = useState<'idle' | 'loading' | 'ready' | 'empty' | 'error'>('idle');
   const [health, setHealth] = useState<RuntimeHealth>({
     status: 'checking',
@@ -40,6 +55,10 @@ export function RuntimeSettingsPanel() {
 
   const selectedProvider = getInferenceProviderPreset(draft.inferenceProvider);
   const activeRuntimeLabel = draft.mode === 'local' ? 'Local MLX' : 'Inference';
+  const servedModelOptions = localModelOptions.filter((model) => model.served);
+  const localZooModelOptions = localModelOptions.filter((model) => !model.served && model.source === 'model-zoo-local');
+  const candidateModelOptions = localModelOptions.filter((model) => !model.served && model.source === 'model-zoo-candidate');
+  const selectedModelOption = localModelOptions.find((option) => modelMatches(option, draft.localModel));
 
   useEffect(() => {
     setDraft(loadRuntimeSettings());
@@ -76,24 +95,38 @@ export function RuntimeSettingsPanel() {
   const refreshLocalModels = useCallback(() => {
     const target = draft.localBusUrl || DEFAULT_RUNTIME_SETTINGS.localBusUrl;
     setLocalModelsStatus('loading');
-    fetchRuntimeModels(target)
-      .then((models) => {
-        setLocalModels(models);
+    fetchRuntimeModelCatalog(target)
+      .then((catalog) => {
+        const models = catalog.options;
+        setLocalModelOptions(models);
+        setLocalModelCounts({
+          total: catalog.totalModels,
+          hidden: catalog.hiddenModels,
+          served: catalog.servedModels.length,
+          zooLocal: catalog.zooLocalModels,
+          zooCandidates: catalog.zooCandidateModels,
+          incomplete: catalog.incompleteModels,
+        });
         setLocalModelsStatus(models.length > 0 ? 'ready' : 'empty');
         if (models.length === 0) return;
         setDraft((prev) => {
-          if (models.includes(prev.localModel)) return prev;
+          if (models.some((model) => modelMatches(model, prev.localModel))) return prev;
           const healthMatch = health.model
-            ? models.find((model) => health.model === model || health.model?.endsWith(`/${model}`))
+            ? models.find((model) => modelMatches(model, health.model || ''))
             : undefined;
+          const preferred = healthMatch
+            || models.find((model) => model.served)
+            || models.find((model) => model.loadable)
+            || models[0];
           return {
             ...prev,
-            localModel: healthMatch || models[0],
+            localModel: preferred.id,
           };
         });
       })
       .catch(() => {
-        setLocalModels([]);
+        setLocalModelOptions([]);
+        setLocalModelCounts({ total: 0, hidden: 0, served: 0, zooLocal: 0, zooCandidates: 0, incomplete: 0 });
         setLocalModelsStatus('error');
       });
   }, [draft.localBusUrl, health.model]);
@@ -130,6 +163,23 @@ export function RuntimeSettingsPanel() {
     setDraft(DEFAULT_RUNTIME_SETTINGS);
     saveRuntimeSettings(DEFAULT_RUNTIME_SETTINGS);
   };
+
+  const modelPickerValue = selectedModelOption?.id || '';
+  const formatModelOption = (model: RuntimeModelOption) => {
+    if (model.served) return `${model.id} - served now`;
+    if (model.status === 'local-loadable') return `${model.id} - local zoo, loadable`;
+    if (model.status === 'local-incomplete') return `${model.id} - local zoo, incomplete`;
+    return `${model.id} - registry candidate`;
+  };
+  const renderModelGroup = (label: string, models: RuntimeModelOption[]) => (
+    models.length > 0 ? (
+      <optgroup label={`${label} (${models.length})`}>
+        {models.map((model) => (
+          <option key={`${label}-${model.id}`} value={model.id}>{formatModelOption(model)}</option>
+        ))}
+      </optgroup>
+    ) : null
+  );
 
   return (
     <div className="runtime-settings">
@@ -194,37 +244,54 @@ export function RuntimeSettingsPanel() {
               <span>Local OpenResponses</span>
             </div>
             <label>
-              MLX model
-              {localModels.length > 0 ? (
+              MLX model picker
+              {localModelOptions.length > 0 ? (
                 <select
-                  value={localModels.includes(draft.localModel) ? draft.localModel : ''}
+                  value={modelPickerValue}
                   onChange={(event) => updateField('localModel', event.target.value)}
                 >
-                  {!localModels.includes(draft.localModel) ? (
+                  {!selectedModelOption ? (
                     <option value="">Choose a local model</option>
                   ) : null}
-                  {localModels.map((model) => (
-                    <option key={model} value={model}>{model}</option>
-                  ))}
+                  {renderModelGroup('Served by MLX gateway', servedModelOptions)}
+                  {renderModelGroup('Model-zoo local', localZooModelOptions)}
+                  {renderModelGroup('Model-zoo registry', candidateModelOptions)}
                 </select>
               ) : null}
+            </label>
+            <label>
+              Manual model id
               <input
                 value={draft.localModel}
                 onChange={(event) => updateField('localModel', event.target.value)}
                 placeholder={DEFAULT_RUNTIME_SETTINGS.localModel}
               />
             </label>
+            {selectedModelOption && !selectedModelOption.served ? (
+              <div className={`runtime-settings__model-note ${selectedModelOption.loadable ? 'loadable' : 'warning'}`}>
+                <strong>
+                  {selectedModelOption.loadable ? 'Model-zoo option' : 'Not served by gateway'}
+                </strong>
+                <span>
+                  {selectedModelOption.loadable
+                    ? `${selectedModelOption.id} exists in model-zoo but is not currently reported by /v1/models. Start or reload mlx-llm with this model before chat.`
+                    : `${selectedModelOption.id} is known by the model-zoo registry, but Vega Lab did not find complete local weights/config for it.`}
+                </span>
+              </div>
+            ) : null}
             <div className="runtime-settings__model-row">
               <span>
                 {localModelsStatus === 'loading'
-                  ? 'Discovering local MLX models...'
+                  ? 'Discovering served MLX models and model-zoo inventory...'
                   : localModelsStatus === 'ready'
-                    ? `${localModels.length} local model${localModels.length === 1 ? '' : 's'} available`
+                    ? `${localModelCounts.served} served text LLM${localModelCounts.served === 1 ? '' : 's'}; ${localModelCounts.zooLocal} model-zoo text entr${localModelCounts.zooLocal === 1 ? 'y' : 'ies'}; ${localModelCounts.zooCandidates} registry candidate${localModelCounts.zooCandidates === 1 ? '' : 's'}; ${localModelCounts.hidden} non-text gateway model${localModelCounts.hidden === 1 ? '' : 's'} hidden`
                     : localModelsStatus === 'empty'
-                      ? 'Gateway is reachable, but no LLM models were reported.'
+                      ? localModelCounts.total > 0
+                        ? `${localModelCounts.total} local model${localModelCounts.total === 1 ? '' : 's'} found, but none are text LLMs.`
+                        : 'No served LLMs or model-zoo snapshot options were found.'
                       : localModelsStatus === 'error'
-                        ? 'Could not read /v1/models. Manual entry is still available.'
-                        : 'Local model discovery uses /bus/v1/models.'}
+                        ? 'Could not read local model sources. Manual entry is still available.'
+                        : 'Model discovery merges /bus/v1/models with public/model-zoo-text-models.json.'}
               </span>
               <button type="button" onClick={refreshLocalModels}>
                 <RefreshCw size={13} />

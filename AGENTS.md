@@ -21,7 +21,7 @@
 ## Local Runtime
 
 - Local mode defaults to `/bus`
-- Vite proxies `/bus` to `http://127.0.0.1:8085`
+- Vite proxies `/bus` to `http://127.0.0.1:8090`
 - The Event Bus must expose OpenResponses-compatible settings, response streaming, and tool-call events
 - Web mode is for deployed testing only
 

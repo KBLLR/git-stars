@@ -95,7 +95,7 @@ export const INFERENCE_PROVIDER_PRESETS: InferenceProviderPreset[] = [
 
 export const DEFAULT_RUNTIME_SETTINGS: RuntimeSettings = {
   mode: 'local',
-  localModel: 'mlx-community/Qwen2.5-Coder-14B-Instruct-4bit',
+  localModel: 'text/Meta-Llama-3.1-8B-Instruct-4bit',
   localBusUrl: EVENT_BUS_URL,
   inferenceProvider: 'gemini',
   inferenceModel: 'gemini-2.5-flash',

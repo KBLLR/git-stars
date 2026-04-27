@@ -15,6 +15,7 @@
     "preview": "vite preview",
     "build:data": "node scripts/generator.js",
     "sync:mine": "node scripts/my-repos.js",
+    "sync:model-zoo": "node scripts/model-zoo-snapshot.js",
     "generate:stats": "node src/analytics/statistics.js",
     "mcp": "node src/mcp-server/index.js",
     "test:data": "node tests/run-tests.js",

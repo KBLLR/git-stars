@@ -67,6 +67,7 @@ const actionItems = assertMirroredJson("action-items.json");
 const automationRuns = assertMirroredJson("automation-runs.json");
 const opsDigest = assertMirroredJson("ops-digest.json");
 const weeklyResearchReview = assertMirroredJson("weekly-research-review.json");
+const modelZooTextModels = assertMirroredJson("model-zoo-text-models.json");
 
 assert.ok(Array.isArray(repoSignals) && repoSignals.length > 0, "repo-signals.json should contain ranked signals");
 assert.ok(Array.isArray(researchQueue), "research-queue.json should contain an array");
@@ -77,6 +78,7 @@ assert.ok(Array.isArray(actionItems), "action-items.json should contain durable 
 assert.ok(Array.isArray(automationRuns), "automation-runs.json should contain automation run records");
 assert.equal(typeof opsDigest.summary, "string", "ops-digest.json should contain a summary");
 assert.equal(typeof weeklyResearchReview.summary, "string", "weekly-research-review.json should contain a summary");
+assert.ok(Array.isArray(modelZooTextModels.models), "model-zoo-text-models.json should contain a model list");
 
 const firstSignal = repoSignals[0];
 assert.equal(typeof firstSignal.nwo, "string", "RepoSignal.nwo should be present");

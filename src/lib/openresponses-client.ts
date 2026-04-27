@@ -49,10 +49,29 @@ function normalizeResponseBody(body: Record<string, unknown>): Record<string, un
 
   const messages = body.messages as Array<{ role?: string; content?: string }>;
   const system = messages.find((message) => message.role === "system")?.content;
-  const input = messages
+  const visibleMessages = messages
     .filter((message) => message.role !== "system")
-    .map((message) => `${message.role || "user"}: ${message.content || ""}`)
-    .join("\n\n");
+    .map((message) => ({
+      role: message.role || "user",
+      content: (message.content || "").trim(),
+    }))
+    .filter((message) => {
+      if (!message.content) return false;
+      return !message.content.startsWith("Vega Lab Orchestrator online.");
+    });
+  const lastUserIndex = visibleMessages.map((message) => message.role).lastIndexOf("user");
+  const lastUser = lastUserIndex >= 0
+    ? visibleMessages[lastUserIndex]
+    : visibleMessages[visibleMessages.length - 1];
+  const recentContext = lastUserIndex > 0
+    ? visibleMessages.slice(Math.max(0, lastUserIndex - 6), lastUserIndex)
+    : [];
+  const input = [
+    recentContext.length > 0
+      ? `Recent context:\n${recentContext.map((message) => `${message.role}: ${message.content}`).join("\n\n")}`
+      : null,
+    `Current user request:\n${lastUser?.content || system || ""}`,
+  ].filter(Boolean).join("\n\n");
 
   const rest = { ...body };
   delete rest.messages;

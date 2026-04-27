@@ -465,6 +465,33 @@ body {
   padding: 6px 9px;
 }
 
+.runtime-settings__model-note {
+  display: grid;
+  gap: 4px;
+  padding: 10px 11px;
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.66);
+  color: var(--card-muted);
+  font-size: 0.76rem;
+  line-height: 1.38;
+}
+
+.runtime-settings__model-note strong {
+  color: var(--card-ink);
+  font-size: 0.78rem;
+}
+
+.runtime-settings__model-note.loadable {
+  border-color: rgba(47, 143, 70, 0.28);
+  background: rgba(47, 143, 70, 0.08);
+}
+
+.runtime-settings__model-note.warning {
+  border-color: rgba(217, 74, 43, 0.28);
+  background: rgba(217, 74, 43, 0.08);
+}
+
 .runtime-settings__provider-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
