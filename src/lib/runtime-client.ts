@@ -4,7 +4,21 @@ export interface RuntimeHealthSummary {
   model?: string;
 }
 
-type ModelDescriptor = string | { id?: string; model?: string; name?: string };
+type ModelDescriptor = string | {
+  id?: string;
+  model?: string;
+  name?: string;
+  owned_by?: string;
+  _audio_lane?: string;
+  _service?: string;
+};
+
+function isLlmModel(item: ModelDescriptor): boolean {
+  if (typeof item === 'string') return true;
+  const id = item.id || item.model || item.name || '';
+  if (item._audio_lane || item.owned_by === 'mlx-audio') return false;
+  return item._service === 'mlx-llm' || id.startsWith('text/') || (!item._service && Boolean(id));
+}
 
 function normalizeModelList(data: unknown): string[] {
   const list = Array.isArray(data)
@@ -16,6 +30,7 @@ function normalizeModelList(data: unknown): string[] {
         : [];
 
   return (list as ModelDescriptor[])
+    .filter(isLlmModel)
     .map((item) => (typeof item === 'string' ? item : item?.id || item?.model || item?.name || null))
     .filter((item): item is string => Boolean(item));
 }

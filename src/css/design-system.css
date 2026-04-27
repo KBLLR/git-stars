@@ -410,7 +410,8 @@ body {
   letter-spacing: 0.01em;
 }
 
-.runtime-settings__section input {
+.runtime-settings__section input,
+.runtime-settings__section select {
   width: 100%;
   box-sizing: border-box;
   border: 1px solid var(--card-border);
@@ -424,9 +425,44 @@ body {
   outline: none;
 }
 
-.runtime-settings__section input:focus {
+.runtime-settings__section select {
+  appearance: none;
+  cursor: pointer;
+}
+
+.runtime-settings__section input:focus,
+.runtime-settings__section select:focus {
   border-color: var(--card-ink);
   box-shadow: 0 0 0 3px rgba(31, 31, 31, 0.08);
+}
+
+.runtime-settings__model-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 10px;
+  border: 1px dashed var(--card-border);
+  border-radius: 14px;
+  color: var(--card-muted);
+  font-size: 0.76rem;
+  line-height: 1.35;
+}
+
+.runtime-settings__model-row button {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  flex: 0 0 auto;
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-pill);
+  background: var(--card-soft);
+  color: var(--card-ink);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 6px 9px;
 }
 
 .runtime-settings__provider-grid {

@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import {
   Activity,
   Cpu,
   ExternalLink,
   KeyRound,
+  RefreshCw,
   ServerCog,
   ShieldCheck,
   SlidersHorizontal,
@@ -19,7 +20,7 @@ import {
   loadRuntimeSettings,
   saveRuntimeSettings,
 } from '../lib/settings';
-import { fetchRuntimeHealth } from '../lib/runtime-client';
+import { fetchRuntimeHealth, fetchRuntimeModels } from '../lib/runtime-client';
 
 type RuntimeHealth = {
   status: 'checking' | 'live' | 'offline';
@@ -30,6 +31,8 @@ type RuntimeHealth = {
 export function RuntimeSettingsPanel() {
   const [open, setOpen] = useState(false);
   const [draft, setDraft] = useState<RuntimeSettings>(DEFAULT_RUNTIME_SETTINGS);
+  const [localModels, setLocalModels] = useState<string[]>([]);
+  const [localModelsStatus, setLocalModelsStatus] = useState<'idle' | 'loading' | 'ready' | 'empty' | 'error'>('idle');
   const [health, setHealth] = useState<RuntimeHealth>({
     status: 'checking',
     detail: 'Checking OpenResponses gateway',
@@ -69,6 +72,36 @@ export function RuntimeSettingsPanel() {
       cancelled = true;
     };
   }, [draft.inferenceBusUrl, draft.localBusUrl, draft.mode]);
+
+  const refreshLocalModels = useCallback(() => {
+    const target = draft.localBusUrl || DEFAULT_RUNTIME_SETTINGS.localBusUrl;
+    setLocalModelsStatus('loading');
+    fetchRuntimeModels(target)
+      .then((models) => {
+        setLocalModels(models);
+        setLocalModelsStatus(models.length > 0 ? 'ready' : 'empty');
+        if (models.length === 0) return;
+        setDraft((prev) => {
+          if (models.includes(prev.localModel)) return prev;
+          const healthMatch = health.model
+            ? models.find((model) => health.model === model || health.model?.endsWith(`/${model}`))
+            : undefined;
+          return {
+            ...prev,
+            localModel: healthMatch || models[0],
+          };
+        });
+      })
+      .catch(() => {
+        setLocalModels([]);
+        setLocalModelsStatus('error');
+      });
+  }, [draft.localBusUrl, health.model]);
+
+  useEffect(() => {
+    if (!open) return;
+    refreshLocalModels();
+  }, [open, refreshLocalModels]);
 
   const updateField = <K extends keyof RuntimeSettings>(key: K, value: RuntimeSettings[K]) => {
     setDraft((prev) => ({ ...prev, [key]: value }));
@@ -162,12 +195,42 @@ export function RuntimeSettingsPanel() {
             </div>
             <label>
               MLX model
+              {localModels.length > 0 ? (
+                <select
+                  value={localModels.includes(draft.localModel) ? draft.localModel : ''}
+                  onChange={(event) => updateField('localModel', event.target.value)}
+                >
+                  {!localModels.includes(draft.localModel) ? (
+                    <option value="">Choose a local model</option>
+                  ) : null}
+                  {localModels.map((model) => (
+                    <option key={model} value={model}>{model}</option>
+                  ))}
+                </select>
+              ) : null}
               <input
                 value={draft.localModel}
                 onChange={(event) => updateField('localModel', event.target.value)}
                 placeholder={DEFAULT_RUNTIME_SETTINGS.localModel}
               />
             </label>
+            <div className="runtime-settings__model-row">
+              <span>
+                {localModelsStatus === 'loading'
+                  ? 'Discovering local MLX models...'
+                  : localModelsStatus === 'ready'
+                    ? `${localModels.length} local model${localModels.length === 1 ? '' : 's'} available`
+                    : localModelsStatus === 'empty'
+                      ? 'Gateway is reachable, but no LLM models were reported.'
+                      : localModelsStatus === 'error'
+                        ? 'Could not read /v1/models. Manual entry is still available.'
+                        : 'Local model discovery uses /bus/v1/models.'}
+              </span>
+              <button type="button" onClick={refreshLocalModels}>
+                <RefreshCw size={13} />
+                Refresh
+              </button>
+            </div>
             <label>
               Local bus URL
               <input
