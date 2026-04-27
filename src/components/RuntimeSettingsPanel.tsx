@@ -19,6 +19,7 @@ import {
   loadRuntimeSettings,
   saveRuntimeSettings,
 } from '../lib/settings';
+import { fetchRuntimeHealth } from '../lib/runtime-client';
 
 type RuntimeHealth = {
   status: 'checking' | 'live' | 'offline';
@@ -47,34 +48,20 @@ export function RuntimeSettingsPanel() {
     const runtimeLabel = draft.mode === 'local' ? 'Local MLX gateway' : 'Inference gateway';
 
     setHealth({ status: 'checking', detail: `Checking ${runtimeLabel}` });
-    fetch(`${target || DEFAULT_RUNTIME_SETTINGS.localBusUrl}/settings`)
-      .then(async (response) => {
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
-        return response.json() as Promise<unknown>;
-      })
-      .then((settings) => {
+    fetchRuntimeHealth(target || DEFAULT_RUNTIME_SETTINGS.localBusUrl)
+      .then((summary) => {
         if (cancelled) return;
-        const defaultModel =
-          settings
-          && typeof settings === 'object'
-          && 'models' in settings
-          && settings.models
-          && typeof settings.models === 'object'
-          && 'default_model' in settings.models
-          && typeof settings.models.default_model === 'string'
-            ? settings.models.default_model
-            : undefined;
         setHealth({
-          status: 'live',
-          detail: `${runtimeLabel} ready`,
-          model: defaultModel,
+          status: summary.status,
+          detail: `${runtimeLabel}: ${summary.detail}`,
+          model: summary.model,
         });
       })
       .catch((error: Error) => {
         if (cancelled) return;
         setHealth({
           status: 'offline',
-          detail: `${target || DEFAULT_RUNTIME_SETTINGS.localBusUrl}/settings unavailable: ${error.message}`,
+          detail: `${target || DEFAULT_RUNTIME_SETTINGS.localBusUrl}/health unavailable: ${error.message}`,
         });
       });
 
@@ -155,7 +142,7 @@ export function RuntimeSettingsPanel() {
             >
               <Cpu size={18} />
               <span>Local MLX</span>
-              <small>/bus to 127.0.0.1:8085</small>
+              <small>/bus to 127.0.0.1:8090</small>
             </button>
             <button
               type="button"

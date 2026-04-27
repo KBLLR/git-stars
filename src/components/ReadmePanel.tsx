@@ -4,6 +4,7 @@ import DOMPurify from "dompurify";
 import { ExternalLink, Sparkles, Wand2, X } from "lucide-react";
 import type { Repo } from "../types";
 import { streamOpenResponses } from "../lib/openresponses-client";
+import { fetchRuntimeModels } from "../lib/runtime-client";
 import type { ActionPreset, VegaLabRoute } from "../lib/orchestrator";
 import {
   buildVegaLabTools,
@@ -30,8 +31,6 @@ interface ChatMessage {
   role: "user" | "assistant";
   content: string;
 }
-
-type ModelDescriptor = string | { id?: string; model?: string };
 
 export function ReadmePanel({
   isOpen,
@@ -103,7 +102,7 @@ export function ReadmePanel({
 
     streamRef.current?.abort();
     streamRef.current = streamOpenResponses({
-      endpoint: `${runtimeTarget.busUrl}/chat`,
+      endpoint: `${runtimeTarget.busUrl}/v1/responses`,
       body: {
         model: selectedModel || runtimeTarget.model || "local-model",
         messages: conversation,
@@ -168,22 +167,11 @@ export function ReadmePanel({
   useEffect(() => {
     if (!isOpen) return;
 
-    fetch(`${runtimeTarget.busUrl}/models?task_kind=llm`)
-      .then(async (response) => (response.ok ? response.json() : null))
-      .then((data: unknown) => {
-        const list = Array.isArray(data)
-          ? data
-          : Array.isArray((data as { models?: unknown[] } | null)?.models)
-            ? (data as { models: unknown[] }).models
-            : Array.isArray((data as { data?: unknown[] } | null)?.data)
-              ? (data as { data: unknown[] }).data
-              : [];
-        const normalized = (list as ModelDescriptor[])
-          .map((item) => (typeof item === "string" ? item : item?.id || item?.model || null))
-          .filter((item): item is string => Boolean(item));
-        if (normalized.length > 0) {
-          setModels(normalized);
-          setSelectedModel((previous) => (normalized.includes(previous) ? previous : normalized[0]));
+    fetchRuntimeModels(runtimeTarget.busUrl)
+      .then((runtimeModels) => {
+        if (runtimeModels.length > 0) {
+          setModels(runtimeModels);
+          setSelectedModel((previous) => (runtimeModels.includes(previous) ? previous : runtimeModels[0]));
           return;
         }
         setModels([]);

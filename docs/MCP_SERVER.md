@@ -6,8 +6,8 @@
 
 - Server name: `vega-lab-mcp`
 - Legacy name: `git-stars-mcp`
-- Runtime contract: OpenResponses via the local Event Bus
-- Local bus: `/bus`, proxied to `http://127.0.0.1:8085`
+- Runtime contract: OpenResponses via the local MLX Gateway
+- Local bus: `/bus`, proxied to `http://127.0.0.1:8090`
 
 ## Run
 

@@ -10,7 +10,7 @@ Vega Lab needs one operational layer for the UI, local MLX models, the orchestra
 
 ## Decision
 
-Use typed MCP tools as the house tool surface and OpenResponses as the runtime contract. Local mode routes through `/bus`, proxied to `http://127.0.0.1:8085`, so MLX-backed local models are the default path.
+Use typed MCP tools as the house tool surface and OpenResponses as the runtime contract. Local mode routes through `/bus`, proxied to `http://127.0.0.1:8090`, so MLX-backed local models are the default path.
 
 `src/mcp-server/index.js` is the single MCP entrypoint. It reads raw repository snapshots and writes derived intelligence artifacts into both `data/` and `public/`.
 

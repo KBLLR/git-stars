@@ -114,7 +114,7 @@ async function main() {
     }));
     assert.equal(runtimeHealth.houseId, "vega-lab", "Runtime health should expose the Vega Lab house id");
     assert.equal(runtimeHealth.runtimeContract, "openresponses", "Runtime health should expose OpenResponses as the contract");
-    assert.equal(runtimeHealth.localBus.target, "http://127.0.0.1:8085", "Runtime health should expose the local MLX bus target");
+    assert.equal(runtimeHealth.localBus.target, "http://127.0.0.1:8090", "Runtime health should expose the local MLX gateway target");
     assert.equal(typeof runtimeHealth.datasets.actionItems, "number", "Runtime health should include action item count");
 
     const statsResult = parseTextPayload(await client.callTool({

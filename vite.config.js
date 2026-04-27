@@ -8,6 +8,9 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const rootDir = resolve(__dirname, 'src');
+const openResponsesTarget = process.env.VITE_EVENT_BUS_PROXY_TARGET
+  || process.env.VITE_LOCAL_OPENRESPONSES_URL
+  || 'http://127.0.0.1:8090';
 
 export default defineConfig({
   root: rootDir,
@@ -31,8 +34,9 @@ export default defineConfig({
     open: true,
     proxy: {
       '/bus': {
-        target: 'http://127.0.0.1:8085',
+        target: openResponsesTarget,
         changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/bus/, ''),
       },
     },
   },

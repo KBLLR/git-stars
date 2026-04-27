@@ -881,14 +881,14 @@ class VegaLabServer {
       runtimeContract: "openresponses",
       local: {
         busUrl: "/bus",
-        proxiedTarget: "http://127.0.0.1:8085",
-        chatEndpoint: "/bus/chat",
-        settingsEndpoint: "/bus/settings",
-        eventsEndpoint: "/bus/events?agency=vega-lab",
+        proxiedTarget: "http://127.0.0.1:8090",
+        responsesEndpoint: "/bus/v1/responses",
+        modelsEndpoint: "/bus/v1/models",
+        healthEndpoint: "/bus/health",
       },
       localBus: {
         url: "/bus",
-        target: "http://127.0.0.1:8085",
+        target: "http://127.0.0.1:8090",
         status: "expected",
       },
       datasets: {

@@ -44,6 +44,25 @@ export interface StreamOptions {
   signal?: AbortSignal;
 }
 
+function normalizeResponseBody(body: Record<string, unknown>): Record<string, unknown> {
+  if (!Array.isArray(body.messages) || body.input) return body;
+
+  const messages = body.messages as Array<{ role?: string; content?: string }>;
+  const system = messages.find((message) => message.role === "system")?.content;
+  const input = messages
+    .filter((message) => message.role !== "system")
+    .map((message) => `${message.role || "user"}: ${message.content || ""}`)
+    .join("\n\n");
+
+  const rest = { ...body };
+  delete rest.messages;
+  return {
+    ...rest,
+    ...(system ? { instructions: system } : {}),
+    input: input || system || "",
+  };
+}
+
 async function parseSSEStream(
   reader: ReadableStreamDefaultReader<Uint8Array>,
   onEvent: (event: OpenResponsesEvent) => void,
@@ -89,7 +108,7 @@ export function streamOpenResponses(options: StreamOptions): AbortController {
       "Content-Type": "application/json",
       "Accept": "text/event-stream",
     },
-    body: JSON.stringify({ ...body, stream: true }),
+    body: JSON.stringify(normalizeResponseBody({ ...body, stream: true })),
     signal: controller.signal,
   })
     .then(async (response) => {

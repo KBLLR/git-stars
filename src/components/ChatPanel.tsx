@@ -11,6 +11,7 @@ import {
 } from "../lib/orchestrator";
 import type { OpenResponsesEvent } from "../lib/openresponses-client";
 import { streamOpenResponses } from "../lib/openresponses-client";
+import { fetchRuntimeModels } from "../lib/runtime-client";
 import { loadRuntimeSettings, resolveRuntimeTarget, SETTINGS_EVENT } from "../lib/settings";
 
 interface ChatPanelProps {
@@ -64,23 +65,10 @@ export function ChatPanel({
   const tools = useMemo(() => buildVegaLabTools(), []);
 
   useEffect(() => {
-    fetch(`${runtimeTarget.busUrl}/settings`)
-      .then(async (response) => (response.ok ? response.json() : null))
-      .then((settings: unknown) => {
-        if (
-          settings
-          && typeof settings === "object"
-          && "models" in settings
-          && settings.models
-          && typeof settings.models === "object"
-          && "default_model" in settings.models
-          && typeof settings.models.default_model === "string"
-        ) {
-          setDefaultModel(settings.models.default_model);
-        }
-      })
+    fetchRuntimeModels(runtimeTarget.busUrl)
+      .then((models) => setDefaultModel(models[0] || runtimeTarget.model || null))
       .catch(() => undefined);
-  }, [runtimeTarget.busUrl]);
+  }, [runtimeTarget.busUrl, runtimeTarget.model]);
 
   useEffect(() => {
     const applySettings = () => {
@@ -214,7 +202,7 @@ export function ChatPanel({
 
     streamRef.current?.abort();
     streamRef.current = streamOpenResponses({
-      endpoint: `${runtimeTarget.busUrl}/chat`,
+      endpoint: `${runtimeTarget.busUrl}/v1/responses`,
       body: {
         model: runtimeTarget.model || defaultModel || "local-model",
         messages: conversation,

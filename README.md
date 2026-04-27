@@ -2,7 +2,7 @@
 
 Vega Lab is the core-x Git universe ops center. It turns GitHub stars and owned repositories into searchable intelligence, canonical skills/rules/flows, adoption decisions, and draft-only maintenance actions.
 
-The app is local-first. The runtime contract is OpenResponses, and local mode defaults to the MLX-backed Event Bus at `/bus`, proxied to `http://127.0.0.1:8085`. Web mode exists for deployed testing only.
+The app is local-first. The runtime contract is OpenResponses, and local mode defaults to `/bus`, proxied to the MLX Gateway at `http://127.0.0.1:8090`. Web mode exists for deployed testing only.
 
 ## Operating Model
 
@@ -64,11 +64,13 @@ pnpm run build
 
 ## Local Runtime
 
-Start the MLX/OpenResponses Event Bus separately, then run the app. Vite proxies `/bus` to:
+Start the MLX/OpenResponses Gateway separately, then run the app. Vite proxies `/bus` to:
 
 ```text
-http://127.0.0.1:8085
+http://127.0.0.1:8090
 ```
+
+Override the proxy target with `VITE_EVENT_BUS_PROXY_TARGET` or `VITE_LOCAL_OPENRESPONSES_URL` when the gateway runs elsewhere.
 
 Runtime Settings shows the active mode, model, bus URL, tool availability, and failure state. Local mode is the default expected path.
 
