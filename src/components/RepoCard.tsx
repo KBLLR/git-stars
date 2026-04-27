@@ -51,7 +51,7 @@ export function RepoCard({ repo, onClick, onChat, onResearch, onSimilar, onConte
         <div className="metric-item">
           <GitFork size={14} /> {repo.forks}
         </div>
-        <div className="metric-item">
+        <div className="metric-item metric-item--date">
           <Calendar size={14} className="text-muted" /> 
            Last active: {repo.last_updated}
         </div>

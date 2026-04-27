@@ -1,20 +1,41 @@
 import { useEffect, useState } from 'react';
-import { Activity, Settings2 } from 'lucide-react';
+import {
+  Activity,
+  Cpu,
+  ExternalLink,
+  KeyRound,
+  ServerCog,
+  ShieldCheck,
+  SlidersHorizontal,
+  Sparkles,
+} from 'lucide-react';
 import {
   DEFAULT_RUNTIME_SETTINGS,
+  INFERENCE_PROVIDER_PRESETS,
+  InferenceProviderPreset,
   RuntimeMode,
   RuntimeSettings,
+  getInferenceProviderPreset,
   loadRuntimeSettings,
   saveRuntimeSettings,
 } from '../lib/settings';
 
+type RuntimeHealth = {
+  status: 'checking' | 'live' | 'offline';
+  detail: string;
+  model?: string;
+};
+
 export function RuntimeSettingsPanel() {
   const [open, setOpen] = useState(false);
   const [draft, setDraft] = useState<RuntimeSettings>(DEFAULT_RUNTIME_SETTINGS);
-  const [health, setHealth] = useState<{ status: 'checking' | 'live' | 'offline'; detail: string; model?: string }>({
+  const [health, setHealth] = useState<RuntimeHealth>({
     status: 'checking',
-    detail: 'Checking OpenResponses bus',
+    detail: 'Checking OpenResponses gateway',
   });
+
+  const selectedProvider = getInferenceProviderPreset(draft.inferenceProvider);
+  const activeRuntimeLabel = draft.mode === 'local' ? 'Local MLX' : 'Inference';
 
   useEffect(() => {
     setDraft(loadRuntimeSettings());
@@ -22,10 +43,11 @@ export function RuntimeSettingsPanel() {
 
   useEffect(() => {
     let cancelled = false;
-    const target = draft.mode === 'web' ? draft.webBusUrl : draft.localBusUrl;
+    const target = draft.mode === 'inference' ? draft.inferenceBusUrl : draft.localBusUrl;
+    const runtimeLabel = draft.mode === 'local' ? 'Local MLX gateway' : 'Inference gateway';
 
-    setHealth({ status: 'checking', detail: 'Checking OpenResponses bus' });
-    fetch(`${target}/settings`)
+    setHealth({ status: 'checking', detail: `Checking ${runtimeLabel}` });
+    fetch(`${target || DEFAULT_RUNTIME_SETTINGS.localBusUrl}/settings`)
       .then(async (response) => {
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
         return response.json() as Promise<unknown>;
@@ -44,7 +66,7 @@ export function RuntimeSettingsPanel() {
             : undefined;
         setHealth({
           status: 'live',
-          detail: draft.mode === 'local' ? 'Local OpenResponses ready' : 'Web OpenResponses ready',
+          detail: `${runtimeLabel} ready`,
           model: defaultModel,
         });
       })
@@ -52,17 +74,31 @@ export function RuntimeSettingsPanel() {
         if (cancelled) return;
         setHealth({
           status: 'offline',
-          detail: `${target}/settings unavailable: ${error.message}`,
+          detail: `${target || DEFAULT_RUNTIME_SETTINGS.localBusUrl}/settings unavailable: ${error.message}`,
         });
       });
 
     return () => {
       cancelled = true;
     };
-  }, [draft.localBusUrl, draft.mode, draft.webBusUrl]);
+  }, [draft.inferenceBusUrl, draft.localBusUrl, draft.mode]);
 
   const updateField = <K extends keyof RuntimeSettings>(key: K, value: RuntimeSettings[K]) => {
     setDraft((prev) => ({ ...prev, [key]: value }));
+  };
+
+  const applyMode = (mode: RuntimeMode) => {
+    updateField('mode', mode);
+  };
+
+  const applyProvider = (provider: InferenceProviderPreset) => {
+    setDraft((prev) => ({
+      ...prev,
+      inferenceProvider: provider.id,
+      inferenceModel: provider.defaultModel,
+      inferenceApiBaseUrl: provider.apiBaseUrl,
+      inferenceKeyEnv: provider.keyEnv,
+    }));
   };
 
   const save = () => {
@@ -79,77 +115,151 @@ export function RuntimeSettingsPanel() {
     <div className="runtime-settings">
       <button
         type="button"
-        className="runtime-settings__toggle"
+        className={`runtime-settings__toggle ${open ? 'active' : ''}`}
         onClick={() => setOpen((prev) => !prev)}
-        title="Runtime settings"
+        title="Vega Lab settings"
+        aria-expanded={open}
       >
-        <Settings2 size={16} /> Runtime
+        <SlidersHorizontal size={16} />
+        <span className="runtime-settings__toggle-label">Settings</span>
+        <span className="runtime-settings__toggle-mode">{activeRuntimeLabel}</span>
         <span className={`runtime-settings__dot ${health.status}`} />
       </button>
 
       {open && (
-        <div className="runtime-settings__panel">
-          <h3>Vega Lab runtime</h3>
-          <p>OpenResponses is the contract. Local mode targets the MLX-backed bus.</p>
+        <div className="runtime-settings__panel" role="dialog" aria-label="Vega Lab settings">
+          <div className="runtime-settings__header">
+            <div>
+              <h3>Vega Lab Settings</h3>
+              <p>OpenResponses is the runtime contract. Local stays MLX-first; inference is for deployed testing.</p>
+            </div>
+            <div className="runtime-settings__badge">
+              <ShieldCheck size={14} />
+              No browser keys
+            </div>
+          </div>
 
           <div className={`runtime-settings__health ${health.status}`}>
-            <Activity size={14} />
+            <Activity size={16} />
             <div>
-              <strong>{health.status === 'live' ? 'OpenResponses live' : health.status === 'checking' ? 'Checking runtime' : 'Runtime offline'}</strong>
+              <strong>{health.status === 'live' ? 'Runtime online' : health.status === 'checking' ? 'Checking runtime' : 'Runtime offline'}</strong>
               <span>{health.model || health.detail}</span>
             </div>
           </div>
 
-          <label>
-            Mode
-            <select
-              value={draft.mode}
-              onChange={(e) => updateField('mode', e.target.value as RuntimeMode)}
+          <div className="runtime-settings__mode-grid" aria-label="Runtime mode">
+            <button
+              type="button"
+              className={`runtime-settings__mode ${draft.mode === 'local' ? 'active' : ''}`}
+              onClick={() => applyMode('local')}
             >
-              <option value="local">Local (MLX)</option>
-              <option value="web">Web API</option>
-            </select>
-          </label>
+              <Cpu size={18} />
+              <span>Local MLX</span>
+              <small>/bus to 127.0.0.1:8085</small>
+            </button>
+            <button
+              type="button"
+              className={`runtime-settings__mode ${draft.mode === 'inference' ? 'active' : ''}`}
+              onClick={() => applyMode('inference')}
+            >
+              <Sparkles size={18} />
+              <span>Inference API</span>
+              <small>Free-tier provider adapter</small>
+            </button>
+          </div>
 
-          <label>
-            Local MLX model
-            <input
-              value={draft.localModel}
-              onChange={(e) => updateField('localModel', e.target.value)}
-              placeholder="local-model"
-            />
-          </label>
+          <section className="runtime-settings__section">
+            <div className="runtime-settings__section-title">
+              <ServerCog size={15} />
+              <span>Local OpenResponses</span>
+            </div>
+            <label>
+              MLX model
+              <input
+                value={draft.localModel}
+                onChange={(event) => updateField('localModel', event.target.value)}
+                placeholder={DEFAULT_RUNTIME_SETTINGS.localModel}
+              />
+            </label>
+            <label>
+              Local bus URL
+              <input
+                value={draft.localBusUrl}
+                onChange={(event) => updateField('localBusUrl', event.target.value)}
+                placeholder="/bus"
+              />
+            </label>
+          </section>
 
-          <label>
-            Local OpenResponses bus
-            <input
-              value={draft.localBusUrl}
-              onChange={(e) => updateField('localBusUrl', e.target.value)}
-              placeholder="/bus"
-            />
-          </label>
+          <section className="runtime-settings__section">
+            <div className="runtime-settings__section-title">
+              <Sparkles size={15} />
+              <span>Inference Provider</span>
+            </div>
+            <div className="runtime-settings__provider-grid">
+              {INFERENCE_PROVIDER_PRESETS.map((provider) => (
+                <button
+                  type="button"
+                  key={provider.id}
+                  className={`runtime-settings__provider ${provider.id === draft.inferenceProvider ? 'active' : ''}`}
+                  onClick={() => applyProvider(provider)}
+                >
+                  <span>{provider.label}</span>
+                  <small>{provider.defaultModel}</small>
+                </button>
+              ))}
+            </div>
 
-          <label>
-            Web model
-            <input
-              value={draft.webModel}
-              onChange={(e) => updateField('webModel', e.target.value)}
-              placeholder="gemini-2.5-flash"
-            />
-          </label>
+            <div className="runtime-settings__provider-note">
+              <span>{selectedProvider.freeTier}</span>
+              <a href={selectedProvider.docsUrl} target="_blank" rel="noreferrer" onClick={(event) => event.stopPropagation()}>
+                Docs <ExternalLink size={12} />
+              </a>
+            </div>
 
-          <label>
-            Web OpenResponses bus
-            <input
-              value={draft.webBusUrl}
-              onChange={(e) => updateField('webBusUrl', e.target.value)}
-              placeholder="https://your-web-bus.example.com"
-            />
-          </label>
+            <label>
+              Inference model
+              <input
+                value={draft.inferenceModel}
+                onChange={(event) => updateField('inferenceModel', event.target.value)}
+                placeholder={selectedProvider.defaultModel}
+              />
+            </label>
+            <label>
+              OpenResponses gateway URL
+              <input
+                value={draft.inferenceBusUrl}
+                onChange={(event) => updateField('inferenceBusUrl', event.target.value)}
+                placeholder="https://your-openresponses-bus.example.com"
+              />
+            </label>
+            <label>
+              Provider API base URL
+              <input
+                value={draft.inferenceApiBaseUrl}
+                onChange={(event) => updateField('inferenceApiBaseUrl', event.target.value)}
+                placeholder={selectedProvider.apiBaseUrl}
+              />
+            </label>
+            <label>
+              Server env key name
+              <span className="runtime-settings__input-icon">
+                <KeyRound size={14} />
+                <input
+                  value={draft.inferenceKeyEnv}
+                  onChange={(event) => updateField('inferenceKeyEnv', event.target.value)}
+                  placeholder={selectedProvider.keyEnv}
+                />
+              </span>
+            </label>
+            <p className="runtime-settings__hint">
+              Put provider tokens in the Event Bus or deployment environment. Vega Lab stores only routing metadata here.
+            </p>
+          </section>
 
           <div className="runtime-settings__actions">
-            <button type="button" onClick={save}>Save</button>
             <button type="button" onClick={reset} className="ghost">Reset</button>
+            <button type="button" onClick={save}>Save settings</button>
           </div>
         </div>
       )}
