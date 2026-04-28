@@ -246,7 +246,7 @@
     "endpoints": {
       "dev": "http://localhost:5173",
       "local_bus": "http://127.0.0.1:8090",
-      "production": "https://vega-lab.vercel.app"
+      "production": "https://vega-lab-kbllr-projects.vercel.app"
     },
     "dependencies": {
       "vite": "^7.3.1",
