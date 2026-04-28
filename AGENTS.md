@@ -29,8 +29,9 @@
 
 - Raw starred repos: `data/data.json` and `public/data.json`
 - Owned/collab repos: `data/my-repos.json` and `public/my-repos.json`
-- Derived intelligence: `repo-signals.json`, `research-queue.json`, `skill-extractions.json`, `mine-health.json`, `repo-inspections.json`, `action-items.json`, `automation-runs.json`, `ops-digest.json`, `weekly-research-review.json`
+- Derived intelligence: `repo-signals.json`, `research-queue.json`, `skill-extractions.json`, `mine-health.json`, `repo-inspections.json`, `action-items.json`, `automation-runs.json`, `ops-digest.json`, `weekly-research-review.json`, `template-kits.json`, `repo-ops-kits.json`
 - Every derived artifact must be mirrored in both `data/` and `public/`
+- Template sources live under `templates/` and must stay draft-only until an explicit execution step writes into another repo.
 
 ## Skills
 
@@ -44,7 +45,8 @@
 
 - Install: `pnpm install`
 - Dev: `pnpm run dev`
-- Data refresh: `pnpm run build:data && pnpm run sync:mine && pnpm run generate:stats`
+- Data refresh: `GITHUB_TOKEN=<your_pat> pnpm run build:data && GITHUB_TOKEN=<your_pat> pnpm run sync:mine && pnpm run generate:stats && pnpm run test:data`
+- CI data refresh requires the repository secret `GH_PAT`; it must be a personal GitHub token with access to public stars plus owned/private/collaborative repositories.
 - Tests: `pnpm test`
 - Build: `pnpm run build`
 
@@ -53,4 +55,5 @@
 - Preserve the visual design direction unless the user explicitly asks for design changes.
 - Prefer typed tools and durable JSON artifacts over prompt-only behavior.
 - Keep old `git-stars:*` local storage and agent aliases readable for one migration cycle, but write new state under `vega-lab:*`.
-- Automations may draft action items and mission briefs only. Do not open PRs, merge, deploy, or mutate other repositories without explicit human approval.
+- Active mission targets are Codex, Claude, and local MLX. Jules is historical template vocabulary, not a Vega Lab target.
+- Automations may draft action items, Ops kits, and mission briefs only. Do not open PRs, merge, deploy, or mutate other repositories without explicit human approval.

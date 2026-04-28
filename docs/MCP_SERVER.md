@@ -38,7 +38,9 @@ Research, adoption, and skills:
 - `mark_for_research`
 - `get_adoption_candidates`
 - `extract_repo_skills`
+- `list_template_kits`
 - `generate_repo_mission`
+- `generate_repo_ops_kit`
 
 Mine and ops:
 
@@ -71,9 +73,11 @@ The server reads and writes purposeful JSON artifacts in `data/` and mirrors the
 - `automation-runs.json`
 - `ops-digest.json`
 - `weekly-research-review.json`
+- `template-kits.json`
+- `repo-ops-kits.json`
 
-`update_research_queue`, `update_action_item`, and `draft_action_item` are stateful. Tests restore mutated files after exercising those paths.
+`update_research_queue`, `update_action_item`, `draft_action_item`, and `generate_repo_ops_kit` are stateful. Tests restore mutated files after exercising those paths.
 
 ## Authority
 
-The MCP server may draft action items, inspections, digests, and mission briefs. It must not open PRs, merge, deploy, or mutate other repositories.
+The MCP server may draft action items, inspections, Ops kits, digests, and mission briefs. It must not open PRs, merge, deploy, or mutate other repositories.

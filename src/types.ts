@@ -47,6 +47,7 @@ export type RepoSignalScope = 'starred' | 'mine' | 'research';
 export type RepoStaleness = 'active' | 'watch' | 'stale';
 export type ResearchStatus = 'queued' | 'researching' | 'done' | 'dismissed' | 'untracked';
 export type AdoptionKind = 'house' | 'tool' | 'service' | 'template' | 'ignore';
+export type MissionTarget = 'codex' | 'claude' | 'mlx';
 
 export interface RepoSignal {
   nwo: string;
@@ -132,6 +133,34 @@ export interface ActionItem {
   source: 'daily-ops' | 'weekly-research' | 'manual';
   createdAt: string;
   updatedAt: string;
+}
+
+export interface TemplateKit {
+  id: string;
+  label: string;
+  description: string;
+  artifactKinds: string[];
+  targets: MissionTarget[];
+  templatePaths: string[];
+}
+
+export type OpsKitArtifactKind = 'readme' | 'agents' | 'maintenance' | 'deployment' | 'testing' | 'action-item';
+
+export interface OpsKitArtifact {
+  kind: OpsKitArtifactKind;
+  title: string;
+  suggestedPath: string;
+  body: string;
+  evidence: string[];
+}
+
+export interface RepoOpsKit {
+  nwo: string;
+  generatedAt: string;
+  target: MissionTarget;
+  artifacts: OpsKitArtifact[];
+  evidence: string[];
+  recommendedActions: string[];
 }
 
 export interface AutomationRunRecord {

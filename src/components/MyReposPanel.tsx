@@ -107,13 +107,13 @@ export function MyReposPanel({ myRepos, mineHealth, actionItems, renderRepoCard,
         </div>
 
         <div className="highlight-card">
-          <h3>Mission Briefs</h3>
-          <p>Generate implementation-ready missions for owned repos without leaving Mine.</p>
+          <h3>Ops Kits</h3>
+          <p>Generate MLX-ready draft kits for owned repos without leaving Mine.</p>
           <ul>
             {owned.slice(0, 5).map((repo) => (
               <li key={`${repo.author}/${repo.name}`}>
-                <button onClick={() => onLaunchAction(repo, "Generate a Codex mission for this repo.", true)}>
-                  {repo.name} <span>Codex</span>
+                <button onClick={() => onLaunchAction(repo, "Call generate_repo_ops_kit with target mlx for this repo and summarize the generated artifacts.", true)}>
+                  {repo.name} <span>MLX Ops</span>
                 </button>
               </li>
             ))}

@@ -25,8 +25,8 @@
     "contract": "openresponses",
     "local_first": true,
     "local_bus": "/bus",
-    "local_bus_target": "http://127.0.0.1:8085",
-    "default_model": "mlx-community/Qwen2.5-Coder-14B-Instruct-4bit",
+    "local_bus_target": "http://127.0.0.1:8090",
+    "default_model": "text/Meta-Llama-3.1-8B-Instruct-4bit",
     "web_mode": "deployment-testing-only"
   },
   "personality": {
@@ -63,12 +63,12 @@
       {
         "agent_id": "vega-lab:tool-architect",
         "role_in_house": "specialist",
-        "capabilities": ["skills", "mission-generation", "toolization"]
+        "capabilities": ["skills", "mission-generation", "template-kits", "toolization"]
       },
       {
         "agent_id": "vega-lab:repo-ops",
         "role_in_house": "specialist",
-        "capabilities": ["repo-ops", "maintenance", "execution", "action-inbox"]
+        "capabilities": ["repo-ops", "maintenance", "execution", "action-inbox", "ops-kit"]
       }
     ],
     "default_agent": "vega-lab:orchestrator",
@@ -89,12 +89,12 @@
         "agent_id": "vega-lab:alignment-scout"
       },
       {
-        "pattern": ".*skill.*|.*rules.*|.*flows.*|.*codex.*|.*claude.*|.*mission.*|.*template.*",
+        "pattern": ".*skill.*|.*rules.*|.*flows.*|.*codex.*|.*claude.*|.*mlx.*|.*mission.*|.*template.*",
         "capability": "skills",
         "agent_id": "vega-lab:tool-architect"
       },
       {
-        "pattern": ".*mine.*|.*maintenance.*|.*readme.*|.*dependency.*|.*package.*|.*deploy.*|.*inbox.*|.*action.*",
+        "pattern": ".*mine.*|.*maintenance.*|.*readme.*|.*agents.*|.*ops kit.*|.*dependency.*|.*package.*|.*deploy.*|.*test.*|.*inbox.*|.*action.*",
         "capability": "repo-ops",
         "agent_id": "vega-lab:repo-ops"
       },
@@ -112,6 +112,7 @@
       "research",
       "skills",
       "repo-ops",
+      "template-kits",
       "local-runtime"
     ],
     "input_types": ["text", "url"],
@@ -127,7 +128,7 @@
       "mlx-rag"
     ],
     "models": [
-      "mlx-community/Qwen2.5-Coder-14B-Instruct-4bit"
+      "text/Meta-Llama-3.1-8B-Instruct-4bit"
     ],
     "houses": [],
     "mcp_servers": [
@@ -165,6 +166,7 @@
       "vega-lab.mission.generated",
       "vega-lab.adoption.scored",
       "vega-lab.action.drafted",
+      "vega-lab.ops-kit.generated",
       "vega-lab.runtime.health"
     ],
     "subscribe_events": [

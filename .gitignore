@@ -50,6 +50,8 @@ data/*
 !data/ops-digest.json
 !data/weekly-research-review.json
 !data/model-zoo-text-models.json
+!data/template-kits.json
+!data/repo-ops-kits.json
 
 # npm lock file that will be generated in yarn projects
 

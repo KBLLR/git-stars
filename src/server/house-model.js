@@ -12,11 +12,56 @@ const REPO_INSPECTIONS_FILE = "repo-inspections.json";
 const AUTOMATION_RUNS_FILE = "automation-runs.json";
 const OPS_DIGEST_FILE = "ops-digest.json";
 const WEEKLY_RESEARCH_REVIEW_FILE = "weekly-research-review.json";
+const TEMPLATE_KITS_FILE = "template-kits.json";
+const REPO_OPS_KITS_FILE = "repo-ops-kits.json";
 
 const RESEARCH_STATUSES = new Set(["queued", "researching", "done", "dismissed"]);
 const ADOPTION_KINDS = new Set(["house", "tool", "service", "template", "ignore"]);
 const ACTION_STATUSES = new Set(["open", "reviewing", "accepted", "dismissed", "done"]);
 const ACTION_KINDS = new Set(["readme", "maintenance", "deployment", "testing", "dependency", "research", "skill", "template", "adoption"]);
+const MISSION_TARGETS = new Set(["codex", "claude", "mlx"]);
+
+const TEMPLATE_KITS = [
+  {
+    id: "vega-lab:house-reference",
+    label: "House Reference Templates",
+    description: "Reusable Vega Lab house sources for README, AGENTS, SKILLS, RULES, and WORKFLOWS artifacts.",
+    artifactKinds: ["readme", "agents", "skills", "rules", "workflows"],
+    targets: ["codex", "claude", "mlx"],
+    templatePaths: [
+      "templates/house/README.md",
+      "templates/house/AGENTS.md",
+      "templates/house/SKILLS.md",
+      "templates/house/RULES.md",
+      "templates/house/WORKFLOWS.md",
+      "templates/context/core-x-ecosystem.md",
+      "templates/context/vega-lab-role.md",
+      "templates/context/tech-stack-defaults.md",
+      "templates/context/good-candidate-criteria.md",
+      "templates/context/mlx-openresponses-policy.md",
+    ],
+  },
+  {
+    id: "vega-lab:repo-ops-kit",
+    label: "Repo Ops Kit",
+    description: "Draft-only repo readiness kit covering README, AGENTS, maintenance, deployment, testing, and inbox actions.",
+    artifactKinds: ["readme", "agents", "maintenance", "deployment", "testing", "action-item"],
+    targets: ["codex", "claude", "mlx"],
+    templatePaths: [
+      "templates/ops/README_DRAFT.md",
+      "templates/ops/AGENTS_DRAFT.md",
+      "templates/ops/MAINTENANCE_PLAN.md",
+      "templates/ops/DEPLOYMENT_PLAN.md",
+      "templates/ops/TEST_PLAN.md",
+      "templates/ops/ACTION_ITEM.md",
+      "templates/context/core-x-ecosystem.md",
+      "templates/context/vega-lab-role.md",
+      "templates/context/tech-stack-defaults.md",
+      "templates/context/good-candidate-criteria.md",
+      "templates/context/mlx-openresponses-policy.md",
+    ],
+  },
+];
 
 const CAPABILITY_RULES = [
   { capability: "mcp-tooling", keywords: ["mcp", "model context protocol", "tool calling", "tool-calling"] },
@@ -53,6 +98,21 @@ function nwoKey(nwo) {
 
 function actionId(kind, nwo) {
   return `vega-lab:${kind}:${nwoKey(nwo).replace(/[^a-z0-9]+/g, "-")}`;
+}
+
+function normalizeMissionTarget(target = "mlx") {
+  const nextTarget = String(target || "mlx").trim().toLowerCase();
+  if (!MISSION_TARGETS.has(nextTarget)) {
+    throw new Error(`Unsupported mission target: ${target}. Supported targets: codex, claude, mlx.`);
+  }
+  return nextTarget;
+}
+
+function missionTargetLabel(target) {
+  const normalizedTarget = normalizeMissionTarget(target);
+  if (normalizedTarget === "claude") return "Claude";
+  if (normalizedTarget === "mlx") return "Local MLX";
+  return "Codex";
 }
 
 function snapshotTimestamp(repos, researchQueue = []) {
@@ -283,11 +343,15 @@ function deriveFlows(adoptionKind, houseSkills, isMine, researchStatus) {
 }
 
 function buildMissionBrief(extraction, target) {
-  const label = target === "claude" ? "Claude" : "Codex";
+  const normalizedTarget = normalizeMissionTarget(target);
+  const label = missionTargetLabel(normalizedTarget);
   const steps = extraction.flows.map((flow, index) => `${index + 1}. ${flow}`).join("\n");
   const rules = extraction.rules.map((rule) => `- ${rule}`).join("\n");
   const skills = extraction.houseSkills.join(", ") || "none";
   const capabilities = extraction.capabilities.join(", ") || "none";
+  const deliverable = normalizedTarget === "mlx"
+    ? "produce a local MLX/OpenResponses-ready plan with concise, tool-grounded steps and explicit missing-data callouts."
+    : `produce an actionable ${label.toLowerCase()}-ready plan grounded in the repo's capabilities and adoption fit.`;
 
   return [
     `# ${label} Mission: ${extraction.nwo}`,
@@ -299,8 +363,12 @@ function buildMissionBrief(extraction, target) {
     rules || "- Keep scope narrow and evidence-based.",
     "Flow:",
     steps || "1. research-queue-flow",
-    `Deliverable: produce an actionable ${label.toLowerCase()}-ready plan grounded in the repo's capabilities and adoption fit.`,
+    `Deliverable: ${deliverable}`,
   ].join("\n");
+}
+
+export function buildMissionBriefForTarget(extraction, target) {
+  return buildMissionBrief(extraction, target);
 }
 
 function buildSummary(repo, adoptionKind, houseSkills, capabilities) {
@@ -365,7 +433,7 @@ function buildSkillExtraction(repo, queueItem, isMine) {
 function buildMineHealth(repo, extraction) {
   const updatedAt = repoUpdatedAt(repo).toISOString();
   const healthFlags = [];
-  const recommendedActions = ["codex-mission", "claude-mission"];
+  const recommendedActions = ["mlx-mission", "ops-kit", "codex-mission", "claude-mission"];
 
   if (repo.has_readme === false) {
     healthFlags.push("missing-readme");
@@ -768,6 +836,280 @@ function buildAutomationRuns({ timestamp, actionItems }) {
   ];
 }
 
+function buildTemplateKits() {
+  return TEMPLATE_KITS.map((kit) => ({
+    ...kit,
+    artifactKinds: [...kit.artifactKinds],
+    targets: [...kit.targets],
+    templatePaths: [...kit.templatePaths],
+  }));
+}
+
+function listText(items, fallback = "None detected.") {
+  const values = toArray(items).filter(Boolean);
+  if (values.length === 0) return `- ${fallback}`;
+  return values.map((item) => `- ${item}`).join("\n");
+}
+
+function inlineList(items, fallback = "none") {
+  const values = toArray(items).filter(Boolean);
+  return values.length > 0 ? values.join(", ") : fallback;
+}
+
+function scriptCommands(scriptNames) {
+  return toArray(scriptNames).map((scriptName) => `npm run ${scriptName}`);
+}
+
+function buildOpsKitEvidence({ repo, extraction, inspection, health, actionItems }) {
+  return unique([
+    `Repository: ${repoNwo(repo)}`,
+    repo.description && repo.description !== "No description" ? `Description: ${repo.description}` : null,
+    `Adoption kind: ${extraction.adoptionKind}`,
+    `Capabilities: ${inlineList(extraction.capabilities)}`,
+    `House skills: ${inlineList(extraction.houseSkills)}`,
+    ...toArray(inspection?.findings).map((finding) => `Finding: ${finding}`),
+    ...toArray(inspection?.risks).map((risk) => `Risk: ${risk}`),
+    ...toArray(health?.healthFlags).map((flag) => `Health flag: ${flag}`),
+    ...toArray(actionItems).slice(0, 4).map((item) => `Action item: ${item.title}`),
+  ]).slice(0, 12);
+}
+
+function buildRepoOpsKitArtifacts({ repo, extraction, inspection, health, actionItems, target, evidence }) {
+  const nwo = repoNwo(repo);
+  const targetLabel = missionTargetLabel(target);
+  const packageManagers = inspection?.files?.packageManagers ?? [];
+  const workflows = inspection?.files?.workflows ?? [];
+  const deploymentConfigs = inspection?.files?.deploymentConfigs ?? [];
+  const testCommands = scriptCommands(inspection?.files?.testScripts ?? []);
+  const buildCommands = scriptCommands(inspection?.files?.buildScripts ?? []);
+  const verificationCommands = unique([...testCommands, ...buildCommands]);
+  const healthFlags = health?.healthFlags ?? [];
+  const recommendedActions = health?.recommendedActions ?? [];
+  const rules = extraction.rules.length > 0 ? extraction.rules : ["Keep scope narrow and evidence-based."];
+  const linkedActions = toArray(actionItems).map((item) => `${item.kind}: ${item.title}`);
+
+  return [
+    {
+      kind: "readme",
+      title: `${repo.name} README Draft`,
+      suggestedPath: "README.md",
+      body: [
+        `# ${repo.name}`,
+        "",
+        repo.description && repo.description !== "No description"
+          ? repo.description
+          : `${repo.name} needs a concise purpose statement before broader core-x adoption.`,
+        "",
+        "## Vega Lab Fit",
+        `- Classification: ${extraction.adoptionKind}`,
+        `- Capabilities: ${inlineList(extraction.capabilities)}`,
+        `- House skills: ${inlineList(extraction.houseSkills)}`,
+        "",
+        "## Local Setup",
+        `- Package managers: ${inlineList(packageManagers)}`,
+        "- Document install, dev, build, and verification commands before broad reuse.",
+        "- Keep runtime assumptions explicit; prefer local MLX/OpenResponses for model-assisted work.",
+        "",
+        "## Verification",
+        listText(verificationCommands, "Define a lint/test/build command before code edits."),
+        "",
+        "## Evidence",
+        listText(evidence.slice(0, 6)),
+      ].join("\n"),
+      evidence: evidence.slice(0, 6),
+    },
+    {
+      kind: "agents",
+      title: `${repo.name} AGENTS Draft`,
+      suggestedPath: "AGENTS.md",
+      body: [
+        `# ${repo.name} Agents`,
+        "",
+        "## Product Truth",
+        `- Repository: ${nwo}`,
+        `- Vega Lab classification: ${extraction.adoptionKind}`,
+        `- Active mission target: ${targetLabel}`,
+        "",
+        "## Operating Rules",
+        listText(rules),
+        "",
+        "## Commands",
+        listText(verificationCommands, "Add the smallest reliable verification command."),
+        "",
+        "## Agent Boundaries",
+        "- Do not mutate deployment, secrets, or release configuration without explicit approval.",
+        "- Prefer draft plans and reviewable diffs over broad automation.",
+        "- Preserve existing product direction; use Vega Lab evidence before adding new abstractions.",
+      ].join("\n"),
+      evidence: evidence.slice(0, 6),
+    },
+    {
+      kind: "maintenance",
+      title: `${repo.name} Maintenance Plan`,
+      suggestedPath: "docs/maintenance-plan.md",
+      body: [
+        `# Maintenance Plan: ${nwo}`,
+        "",
+        "## Current Signals",
+        listText([
+          ...healthFlags.map((flag) => `Health flag: ${flag}`),
+          ...toArray(inspection?.findings),
+        ], "No maintenance flags detected."),
+        "",
+        "## Recommended Pass",
+        listText([
+          "Confirm install path and package manager.",
+          "Run available verification commands before editing.",
+          "Patch stale docs, commands, and workflow assumptions first.",
+          "Open the smallest useful PR only after human approval.",
+          ...recommendedActions.map((action) => `Vega Lab action: ${action}`),
+        ]),
+        "",
+        "## Evidence",
+        listText(evidence.slice(0, 8)),
+      ].join("\n"),
+      evidence: evidence.slice(0, 8),
+    },
+    {
+      kind: "deployment",
+      title: `${repo.name} Deployment Plan`,
+      suggestedPath: "docs/deployment-plan.md",
+      body: [
+        `# Deployment Plan: ${nwo}`,
+        "",
+        "## Known Deployment Evidence",
+        listText([
+          ...workflows.map((workflow) => `Workflow: ${workflow}`),
+          ...deploymentConfigs.map((config) => `Deployment config: ${config}`),
+        ], "No workflow or deployment config detected in synced key files."),
+        "",
+        "## Draft Checks",
+        listText([
+          "Identify expected host and runtime.",
+          "Document build command, output directory, and required environment variables.",
+          "Verify preview URL and production URL checks.",
+          "Keep deploy authority manual; Vega Lab drafts plans and inbox items only.",
+        ]),
+        "",
+        "## Evidence",
+        listText(evidence.slice(0, 8)),
+      ].join("\n"),
+      evidence: evidence.slice(0, 8),
+    },
+    {
+      kind: "testing",
+      title: `${repo.name} Test Plan`,
+      suggestedPath: "docs/test-plan.md",
+      body: [
+        `# Test Plan: ${nwo}`,
+        "",
+        "## Available Commands",
+        listText(verificationCommands, "No test/check/build script detected from synced package metadata."),
+        "",
+        "## Minimum Verification Contract",
+        listText([
+          "Document one install command.",
+          "Document one fast smoke command.",
+          "Document one release/build command when deployable.",
+          "If no commands exist, create a tracked issue or action item before implementation work.",
+        ]),
+        "",
+        "## Evidence",
+        listText(evidence.slice(0, 8)),
+      ].join("\n"),
+      evidence: evidence.slice(0, 8),
+    },
+    {
+      kind: "action-item",
+      title: `${repo.name} Action Item Draft`,
+      suggestedPath: "ops/action-item.md",
+      body: [
+        `# Action Item Draft: ${nwo}`,
+        "",
+        "## Recommended Actions",
+        listText(linkedActions.length > 0 ? linkedActions : recommendedActions, "No existing inbox item; draft README, maintenance, or adoption review based on the evidence."),
+        "",
+        "## Mission Target",
+        `- ${targetLabel}`,
+        "",
+        "## Evidence",
+        listText(evidence.slice(0, 10)),
+      ].join("\n"),
+      evidence: evidence.slice(0, 10),
+    },
+  ];
+}
+
+function buildRepoOpsKit({ repo, extraction, inspection, health, actionItems = [], target = "mlx" }) {
+  const normalizedTarget = normalizeMissionTarget(target);
+  const evidence = buildOpsKitEvidence({ repo, extraction, inspection, health, actionItems });
+  const artifacts = buildRepoOpsKitArtifacts({
+    repo,
+    extraction,
+    inspection,
+    health,
+    actionItems,
+    target: normalizedTarget,
+    evidence,
+  });
+
+  return {
+    nwo: repoNwo(repo),
+    generatedAt: inspection?.inspectedAt || repoUpdatedAt(repo).toISOString(),
+    target: normalizedTarget,
+    artifacts,
+    evidence,
+    recommendedActions: unique([
+      ...toArray(health?.recommendedActions),
+      ...toArray(actionItems).map((item) => `${item.kind}:${item.id}`),
+      "review-draft-only",
+    ]),
+  };
+}
+
+function repoOpsKitKey(kit) {
+  const rawTarget = String(kit.target || "mlx").trim().toLowerCase();
+  const target = MISSION_TARGETS.has(rawTarget) ? rawTarget : "mlx";
+  return `${nwoKey(kit.nwo)}:${target}`;
+}
+
+function buildRepoOpsKits({ repos, skillExtractions, mineHealth, repoInspections, actionItems, existingRepoOpsKits }) {
+  const repoMap = new Map(toArray(repos).map((repo) => [nwoKey(repoNwo(repo)), repo]));
+  const extractionMap = new Map(toArray(skillExtractions).map((item) => [nwoKey(item.nwo), item]));
+  const inspectionMap = new Map(toArray(repoInspections).map((item) => [nwoKey(item.nwo), item]));
+  const healthMap = new Map(toArray(mineHealth).map((item) => [nwoKey(item.nwo), item]));
+  const kits = new Map();
+
+  for (const health of toArray(mineHealth)) {
+    const repo = repoMap.get(nwoKey(health.nwo));
+    const extraction = extractionMap.get(nwoKey(health.nwo));
+    if (!repo || !extraction) continue;
+    const relatedActions = toArray(actionItems).filter((item) => nwoKey(item.nwo) === nwoKey(health.nwo));
+    const kit = buildRepoOpsKit({
+      repo,
+      extraction,
+      inspection: inspectionMap.get(nwoKey(health.nwo)),
+      health,
+      actionItems: relatedActions,
+      target: "mlx",
+    });
+    kits.set(repoOpsKitKey(kit), kit);
+  }
+
+  for (const existing of toArray(existingRepoOpsKits)) {
+    if (!existing?.nwo) continue;
+    const key = repoOpsKitKey(existing);
+    if (!kits.has(key)) {
+      kits.set(key, existing);
+    }
+  }
+
+  return [...kits.values()].sort((a, b) => {
+    const nwoCompare = a.nwo.localeCompare(b.nwo);
+    return nwoCompare !== 0 ? nwoCompare : a.target.localeCompare(b.target);
+  });
+}
+
 function buildRepoSignal(repo, extraction, queueItem, isMine) {
   const staleness = computeStaleness(repo);
   const adoptionScore = computeAdoptionScore(repo, extraction.capabilities, extraction.adoptionKind, isMine);
@@ -856,16 +1198,19 @@ export async function loadHouseDatasets(rootDir) {
     ?? await readJson(path.join(publicDir, RESEARCH_QUEUE_FILE), []);
   const actionItems = await readJson(path.join(dataDir, ACTION_ITEMS_FILE), null)
     ?? await readJson(path.join(publicDir, ACTION_ITEMS_FILE), []);
+  const repoOpsKits = await readJson(path.join(dataDir, REPO_OPS_KITS_FILE), null)
+    ?? await readJson(path.join(publicDir, REPO_OPS_KITS_FILE), []);
 
   return {
     starredRepos: Array.isArray(starredRepos) ? starredRepos : [],
     myRepos: Array.isArray(myRepos) ? myRepos : [],
     researchQueue: Array.isArray(researchQueue) ? researchQueue : [],
     actionItems: Array.isArray(actionItems) ? actionItems : [],
+    repoOpsKits: Array.isArray(repoOpsKits) ? repoOpsKits : [],
   };
 }
 
-export function buildDerivedHouseData({ starredRepos, myRepos, researchQueue, actionItems = [] }) {
+export function buildDerivedHouseData({ starredRepos, myRepos, researchQueue, actionItems = [], repoOpsKits = [] }) {
   const repoMap = new Map();
   const mineKeys = new Set();
 
@@ -923,6 +1268,14 @@ export function buildDerivedHouseData({ starredRepos, myRepos, researchQueue, ac
     actionItems: generatedActionItems,
     repoSignals: sortedSignals,
   });
+  const generatedRepoOpsKits = buildRepoOpsKits({
+    repos: [...repoMap.values()],
+    skillExtractions: sortedExtractions,
+    mineHealth: sortedMineHealth,
+    repoInspections: sortedInspections,
+    actionItems: generatedActionItems,
+    existingRepoOpsKits: repoOpsKits,
+  });
 
   return {
     researchQueue: normalizedQueue.sort((a, b) => Date.parse(b.updatedAt) - Date.parse(a.updatedAt)),
@@ -934,6 +1287,8 @@ export function buildDerivedHouseData({ starredRepos, myRepos, researchQueue, ac
     opsDigest,
     weeklyResearchReview,
     automationRuns: buildAutomationRuns({ timestamp, actionItems: generatedActionItems }),
+    templateKits: buildTemplateKits(),
+    repoOpsKits: generatedRepoOpsKits,
   };
 }
 
@@ -949,6 +1304,8 @@ export async function writeDerivedHouseData(rootDir, payload) {
     [OPS_DIGEST_FILE, payload.opsDigest],
     [WEEKLY_RESEARCH_REVIEW_FILE, payload.weeklyResearchReview],
     [AUTOMATION_RUNS_FILE, payload.automationRuns],
+    [TEMPLATE_KITS_FILE, payload.templateKits],
+    [REPO_OPS_KITS_FILE, payload.repoOpsKits],
   ];
 
   for (const [filename, data] of outputs) {
@@ -964,6 +1321,7 @@ export async function generateDerivedHouseData(rootDir, overrides = {}) {
     myRepos: overrides.myRepos ?? datasets.myRepos,
     researchQueue: overrides.researchQueue ?? datasets.researchQueue,
     actionItems: overrides.actionItems ?? datasets.actionItems,
+    repoOpsKits: overrides.repoOpsKits ?? datasets.repoOpsKits,
   });
 
   await writeDerivedHouseData(rootDir, payload);
@@ -1070,6 +1428,51 @@ export async function draftActionItem(rootDir, { kind, name, author, source = "m
   return regenerated.actionItems.find((item) => item.id === manualItem.id) ?? manualItem;
 }
 
+export function listTemplateKits() {
+  return buildTemplateKits();
+}
+
+export async function generateRepoOpsKit(rootDir, { name, author, target = "mlx" }) {
+  const normalizedTarget = normalizeMissionTarget(target);
+  const datasets = await loadHouseDatasets(rootDir);
+  const payload = buildDerivedHouseData(datasets);
+  const repo = resolveRepoRecord({ name, author }, datasets);
+  if (!repo) return null;
+
+  const nwo = repoNwo(repo);
+  const extraction = findSkillExtraction(payload.skillExtractions, nwo);
+  if (!extraction) return null;
+
+  const inspection = findRepoInspection(payload.repoInspections, nwo)
+    ?? buildRepoInspection(repo, extraction);
+  const health = findMineHealthRecord(payload.mineHealth, nwo)
+    ?? buildMineHealth(repo, extraction);
+  const relatedActions = toArray(payload.actionItems).filter((item) => nwoKey(item.nwo) === nwoKey(nwo));
+  const kit = buildRepoOpsKit({
+    repo,
+    extraction,
+    inspection,
+    health,
+    actionItems: relatedActions,
+    target: normalizedTarget,
+  });
+
+  const nextKits = new Map(toArray(payload.repoOpsKits).map((item) => [repoOpsKitKey(item), item]));
+  nextKits.set(repoOpsKitKey(kit), kit);
+  const repoOpsKits = [...nextKits.values()].sort((a, b) => {
+    const nwoCompare = a.nwo.localeCompare(b.nwo);
+    return nwoCompare !== 0 ? nwoCompare : a.target.localeCompare(b.target);
+  });
+
+  await writeDerivedHouseData(rootDir, {
+    ...payload,
+    repoOpsKits,
+    templateKits: buildTemplateKits(),
+  });
+
+  return kit;
+}
+
 export function resolveRepoRecord({ name, author }, datasets) {
   const repos = [...toArray(datasets.myRepos), ...toArray(datasets.starredRepos)];
   return repos.find((repo) => {
@@ -1085,6 +1488,10 @@ export function findSkillExtraction(skillExtractions, nwo) {
 
 export function findRepoInspection(repoInspections, nwo) {
   return toArray(repoInspections).find((item) => nwoKey(item.nwo) === nwoKey(nwo)) ?? null;
+}
+
+export function findMineHealthRecord(mineHealth, nwo) {
+  return toArray(mineHealth).find((item) => nwoKey(item.nwo) === nwoKey(nwo)) ?? null;
 }
 
 export function listActionItems(actionItems, filters = {}) {
@@ -1121,9 +1528,11 @@ export {
   AUTOMATION_RUNS_FILE,
   MINE_HEALTH_FILE,
   OPS_DIGEST_FILE,
+  REPO_OPS_KITS_FILE,
   REPO_INSPECTIONS_FILE,
   REPO_SIGNALS_FILE,
   RESEARCH_QUEUE_FILE,
   SKILL_EXTRACTIONS_FILE,
+  TEMPLATE_KITS_FILE,
   WEEKLY_RESEARCH_REVIEW_FILE,
 };

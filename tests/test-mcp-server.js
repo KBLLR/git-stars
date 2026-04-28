@@ -16,6 +16,8 @@ const researchQueueDataPath = path.resolve(projectRoot, "data/research-queue.jso
 const researchQueuePublicPath = path.resolve(projectRoot, "public/research-queue.json");
 const actionItemsDataPath = path.resolve(projectRoot, "data/action-items.json");
 const actionItemsPublicPath = path.resolve(projectRoot, "public/action-items.json");
+const repoOpsKitsDataPath = path.resolve(projectRoot, "data/repo-ops-kits.json");
+const repoOpsKitsPublicPath = path.resolve(projectRoot, "public/repo-ops-kits.json");
 
 async function ensureDataMirror() {
   const requiredFiles = [
@@ -30,6 +32,8 @@ async function ensureDataMirror() {
     "automation-runs.json",
     "ops-digest.json",
     "weekly-research-review.json",
+    "template-kits.json",
+    "repo-ops-kits.json",
   ];
 
   await fs.mkdir(path.resolve(projectRoot, "data"), { recursive: true });
@@ -59,6 +63,7 @@ async function main() {
   await ensureDataMirror();
   const originalResearchQueue = JSON.parse(await fs.readFile(researchQueueDataPath, "utf8"));
   const originalActionItems = JSON.parse(await fs.readFile(actionItemsDataPath, "utf8"));
+  const originalRepoOpsKits = JSON.parse(await fs.readFile(repoOpsKitsDataPath, "utf8"));
 
   const transport = new StdioClientTransport({
     command: "node",
@@ -94,7 +99,9 @@ async function main() {
       "update_research_queue",
       "get_adoption_candidates",
       "extract_repo_skills",
+      "list_template_kits",
       "generate_repo_mission",
+      "generate_repo_ops_kit",
       "get_mine_health",
       "list_action_items",
       "update_action_item",
@@ -116,6 +123,8 @@ async function main() {
     assert.equal(runtimeHealth.runtimeContract, "openresponses", "Runtime health should expose OpenResponses as the contract");
     assert.equal(runtimeHealth.localBus.target, "http://127.0.0.1:8090", "Runtime health should expose the local MLX gateway target");
     assert.equal(typeof runtimeHealth.datasets.actionItems, "number", "Runtime health should include action item count");
+    assert.equal(typeof runtimeHealth.datasets.templateKits, "number", "Runtime health should include template kit count");
+    assert.equal(typeof runtimeHealth.datasets.repoOpsKits, "number", "Runtime health should include repo ops kit count");
 
     const statsResult = parseTextPayload(await client.callTool({
       name: "get_statistics",
@@ -197,6 +206,14 @@ async function main() {
     assert.ok(Array.isArray(extractionResult.rules), "Skill extraction should expose rules");
     assert.ok(Array.isArray(extractionResult.flows), "Skill extraction should expose flows");
 
+    const templateKits = parseTextPayload(await client.callTool({
+      name: "list_template_kits",
+      arguments: {},
+    }));
+    assert.ok(Array.isArray(templateKits.kits), "Template kit listing should return kits");
+    assert.ok(templateKits.kits.some((kit) => kit.id === "vega-lab:repo-ops-kit"), "Template kits should include the repo Ops kit");
+    assert.ok(templateKits.kits.some((kit) => kit.id === "vega-lab:house-reference"), "Template kits should include house reference templates");
+
     const codexMission = parseTextPayload(await client.callTool({
       name: "generate_repo_mission",
       arguments: { author, name, target: "codex" },
@@ -212,6 +229,20 @@ async function main() {
     assert.equal(claudeMission.target, "claude", "Claude mission should report its target");
     assert.equal(typeof claudeMission.mission, "string", "Claude mission should be a string");
     assert.ok(claudeMission.mission.length > 20, "Claude mission should be non-trivial");
+
+    const mlxMission = parseTextPayload(await client.callTool({
+      name: "generate_repo_mission",
+      arguments: { author, name, target: "mlx" },
+    }));
+    assert.equal(mlxMission.target, "mlx", "MLX mission should report its target");
+    assert.equal(typeof mlxMission.mission, "string", "MLX mission should be a string");
+    assert.ok(mlxMission.mission.includes("Local MLX"), "MLX mission should be explicitly local-targeted");
+
+    const rejectedMission = parseTextPayload(await client.callTool({
+      name: "generate_repo_mission",
+      arguments: { author, name, target: "jules" },
+    }));
+    assert.ok(rejectedMission.error?.includes("Unsupported mission target"), "Unsupported mission targets such as Jules should be rejected");
 
     const adoptionResult = parseTextPayload(await client.callTool({
       name: "get_adoption_candidates",
@@ -251,6 +282,18 @@ async function main() {
       arguments: { author: mineAuthor, name: mineName },
     }));
     assert.equal(storedInspection.nwo, `${mineAuthor}/${mineName}`, "Stored repo inspection should match the owned target repo");
+
+    const repoOpsKit = parseTextPayload(await client.callTool({
+      name: "generate_repo_ops_kit",
+      arguments: { author: mineAuthor, name: mineName, target: "mlx" },
+    }));
+    assert.equal(repoOpsKit.nwo, `${mineAuthor}/${mineName}`, "Repo Ops kit should match the owned target repo");
+    assert.equal(repoOpsKit.target, "mlx", "Repo Ops kit should default to the local MLX target when requested");
+    const opsArtifactKinds = new Set(repoOpsKit.artifacts.map((artifact) => artifact.kind));
+    ["readme", "agents", "maintenance", "deployment", "testing", "action-item"].forEach((kind) => {
+      assert.ok(opsArtifactKinds.has(kind), `Repo Ops kit should include a ${kind} artifact`);
+    });
+    assert.ok(Array.isArray(repoOpsKit.evidence) && repoOpsKit.evidence.length > 0, "Repo Ops kit should include evidence");
 
     const actionList = parseTextPayload(await client.callTool({
       name: "list_action_items",
@@ -306,6 +349,9 @@ async function main() {
     const restoredActions = `${JSON.stringify(originalActionItems, null, 2)}\n`;
     await fs.writeFile(actionItemsDataPath, restoredActions, "utf8");
     await fs.writeFile(actionItemsPublicPath, restoredActions, "utf8");
+    const restoredRepoOpsKits = `${JSON.stringify(originalRepoOpsKits, null, 2)}\n`;
+    await fs.writeFile(repoOpsKitsDataPath, restoredRepoOpsKits, "utf8");
+    await fs.writeFile(repoOpsKitsPublicPath, restoredRepoOpsKits, "utf8");
     await generateDerivedHouseData(projectRoot);
   }
 }

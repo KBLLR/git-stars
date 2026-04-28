@@ -8,6 +8,8 @@
     "updatedAt": "2026-02-04T00:27:32.000Z",
     "healthFlags": [],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission"
     ]
@@ -23,6 +25,8 @@
       "private"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission"
     ]
@@ -36,6 +40,8 @@
     "updatedAt": "2026-02-02T09:23:52.000Z",
     "healthFlags": [],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "house-integration"
@@ -52,6 +58,8 @@
       "private"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "house-integration"
@@ -66,6 +74,8 @@
     "updatedAt": "2026-01-06T02:58:58.000Z",
     "healthFlags": [],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "house-integration"
@@ -82,6 +92,8 @@
       "missing-readme"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "write-readme"
@@ -96,6 +108,8 @@
     "updatedAt": "2025-12-28T19:43:56.000Z",
     "healthFlags": [],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "house-integration"
@@ -110,6 +124,8 @@
     "updatedAt": "2025-12-15T00:08:19.000Z",
     "healthFlags": [],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "house-integration"
@@ -124,6 +140,8 @@
     "updatedAt": "2025-12-03T23:28:00.000Z",
     "healthFlags": [],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "house-integration"
@@ -140,6 +158,8 @@
       "private"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "house-integration"
@@ -157,6 +177,8 @@
       "private"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "write-readme",
@@ -172,6 +194,8 @@
     "updatedAt": "2025-11-23T09:46:11.000Z",
     "healthFlags": [],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "house-integration"
@@ -188,6 +212,8 @@
       "fork"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "house-integration"
@@ -202,6 +228,8 @@
     "updatedAt": "2025-11-19T15:46:18.000Z",
     "healthFlags": [],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission"
     ]
@@ -215,6 +243,8 @@
     "updatedAt": "2025-11-18T21:54:17.000Z",
     "healthFlags": [],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "house-integration"
@@ -231,6 +261,8 @@
       "private"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "house-integration"
@@ -248,6 +280,8 @@
       "private"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "write-readme",
@@ -265,6 +299,8 @@
       "private"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission"
     ]
@@ -280,6 +316,8 @@
       "private"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission"
     ]
@@ -293,6 +331,8 @@
     "updatedAt": "2025-11-17T01:49:33.000Z",
     "healthFlags": [],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "house-integration"
@@ -309,6 +349,8 @@
       "private"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "house-integration"
@@ -325,6 +367,8 @@
       "private"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission"
     ]
@@ -340,6 +384,8 @@
       "private"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "house-integration"
@@ -354,6 +400,8 @@
     "updatedAt": "2025-11-10T04:51:23.000Z",
     "healthFlags": [],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission"
     ]
@@ -370,6 +418,8 @@
       "template-candidate"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "template-plan",
@@ -387,6 +437,8 @@
       "fork"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "house-integration"
@@ -403,6 +455,8 @@
       "private"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission"
     ]
@@ -416,6 +470,8 @@
     "updatedAt": "2025-10-15T21:10:40.000Z",
     "healthFlags": [],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "house-integration"
@@ -432,6 +488,8 @@
       "private"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "house-integration"
@@ -446,6 +504,8 @@
     "updatedAt": "2025-10-11T10:16:37.000Z",
     "healthFlags": [],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "house-integration"
@@ -462,6 +522,8 @@
       "private"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission"
     ]
@@ -475,6 +537,8 @@
     "updatedAt": "2025-10-09T17:21:52.000Z",
     "healthFlags": [],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission"
     ]
@@ -490,6 +554,8 @@
       "private"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission"
     ]
@@ -505,6 +571,8 @@
       "private"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission"
     ]
@@ -520,6 +588,8 @@
       "private"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "house-integration"
@@ -536,6 +606,8 @@
       "private"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "house-integration"
@@ -550,6 +622,8 @@
     "updatedAt": "2025-09-23T22:21:30.000Z",
     "healthFlags": [],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "house-integration"
@@ -566,6 +640,8 @@
       "private"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission"
     ]
@@ -581,6 +657,8 @@
       "fork"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "house-integration"
@@ -597,6 +675,8 @@
       "fork"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "house-integration"
@@ -613,6 +693,8 @@
       "fork"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "house-integration"
@@ -629,6 +711,8 @@
       "fork"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "house-integration"
@@ -645,6 +729,8 @@
       "private"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "house-integration"
@@ -659,6 +745,8 @@
     "updatedAt": "2025-06-18T03:37:27.000Z",
     "healthFlags": [],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "house-integration"
@@ -675,6 +763,8 @@
       "missing-readme"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "write-readme"
@@ -691,6 +781,8 @@
       "private"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "house-integration"
@@ -707,6 +799,8 @@
       "stale"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "maintenance-plan",
@@ -725,6 +819,8 @@
       "private"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "maintenance-plan"
@@ -741,6 +837,8 @@
       "stale"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "maintenance-plan",
@@ -758,6 +856,8 @@
       "stale"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "maintenance-plan",
@@ -776,6 +876,8 @@
       "fork"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "maintenance-plan",
@@ -794,6 +896,8 @@
       "private"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "maintenance-plan"
@@ -811,6 +915,8 @@
       "private"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "maintenance-plan",
@@ -829,6 +935,8 @@
       "private"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "maintenance-plan",
@@ -847,6 +955,8 @@
       "private"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "maintenance-plan",
@@ -864,6 +974,8 @@
       "stale"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "maintenance-plan",
@@ -882,6 +994,8 @@
       "fork"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "maintenance-plan",
@@ -900,6 +1014,8 @@
       "private"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "maintenance-plan"
@@ -917,6 +1033,8 @@
       "fork"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "maintenance-plan"
@@ -933,6 +1051,8 @@
       "stale"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "maintenance-plan",
@@ -951,6 +1071,8 @@
       "fork"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "maintenance-plan",
@@ -969,6 +1091,8 @@
       "template-candidate"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "maintenance-plan",
@@ -988,6 +1112,8 @@
       "private"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "maintenance-plan",
@@ -1006,6 +1132,8 @@
       "private"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "maintenance-plan",
@@ -1024,6 +1152,8 @@
       "stale"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "write-readme",
@@ -1043,6 +1173,8 @@
       "fork"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "maintenance-plan",
@@ -1061,6 +1193,8 @@
       "private"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "maintenance-plan"
@@ -1079,6 +1213,8 @@
       "template-candidate"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "maintenance-plan",
@@ -1098,6 +1234,8 @@
       "fork"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "maintenance-plan"
@@ -1115,6 +1253,8 @@
       "fork"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "maintenance-plan",
@@ -1133,6 +1273,8 @@
       "stale"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "write-readme",
@@ -1150,6 +1292,8 @@
       "stale"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "maintenance-plan"
@@ -1166,6 +1310,8 @@
       "stale"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "maintenance-plan"
@@ -1182,6 +1328,8 @@
       "stale"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "maintenance-plan"
@@ -1199,6 +1347,8 @@
       "fork"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "maintenance-plan"
@@ -1216,6 +1366,8 @@
       "private"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "maintenance-plan",
@@ -1235,6 +1387,8 @@
       "template-candidate"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "maintenance-plan",
@@ -1254,6 +1408,8 @@
       "fork"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "maintenance-plan",
@@ -1273,6 +1429,8 @@
       "template-candidate"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "maintenance-plan",
@@ -1292,6 +1450,8 @@
       "fork"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "maintenance-plan",
@@ -1310,6 +1470,8 @@
       "fork"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "maintenance-plan",
@@ -1329,6 +1491,8 @@
       "template-candidate"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "maintenance-plan",
@@ -1348,6 +1512,8 @@
       "private"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "maintenance-plan"
@@ -1366,6 +1532,8 @@
       "template-candidate"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "maintenance-plan",
@@ -1386,6 +1554,8 @@
       "template-candidate"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "maintenance-plan",
@@ -1404,6 +1574,8 @@
       "stale"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "maintenance-plan"
@@ -1420,6 +1592,8 @@
       "stale"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "maintenance-plan"
@@ -1437,6 +1611,8 @@
       "fork"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "maintenance-plan",
@@ -1455,6 +1631,8 @@
       "private"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "maintenance-plan"
@@ -1472,6 +1650,8 @@
       "fork"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "maintenance-plan"
@@ -1488,6 +1668,8 @@
       "stale"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "maintenance-plan",
@@ -1505,6 +1687,8 @@
       "stale"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "maintenance-plan"
@@ -1522,6 +1706,8 @@
       "fork"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "maintenance-plan",
@@ -1540,6 +1726,8 @@
       "fork"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "maintenance-plan"
@@ -1557,6 +1745,8 @@
       "fork"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "maintenance-plan",
@@ -1575,6 +1765,8 @@
       "fork"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "maintenance-plan"
@@ -1592,6 +1784,8 @@
       "fork"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "maintenance-plan"
@@ -1609,6 +1803,8 @@
       "fork"
     ],
     "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
       "codex-mission",
       "claude-mission",
       "maintenance-plan"

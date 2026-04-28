@@ -2,7 +2,7 @@
 name: Repository Analyst
 description: Hybrid News, statistics, and ops digest specialist for Vega Lab.
 provider: mlx-local
-model: hf/mlx-community__Qwen2.5-14B-Instruct-4bit
+model: text/Meta-Llama-3.1-8B-Instruct-4bit
 temperature: 0.2
 ---
 

@@ -22,6 +22,15 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Verify GitHub personal token
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
+        run: |
+          if [[ -z "$GH_PAT" ]]; then
+            echo "::error::GH_PAT is required for Vega Lab data refresh. Add a personal token with repo read access as the GH_PAT repository secret."
+            exit 1
+          fi
+
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
@@ -38,12 +47,12 @@ jobs:
 
       - name: Refresh starred repositories
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_PAT != '' && secrets.GH_PAT || github.token }}
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
         run: pnpm run build:data
 
       - name: Sync owned and collaborative repositories
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_PAT != '' && secrets.GH_PAT || github.token }}
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
         run: pnpm run sync:mine
 
       - name: Regenerate statistics

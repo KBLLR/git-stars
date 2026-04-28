@@ -11,13 +11,16 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { calculateStatistics } from "../analytics/statistics.js";
 import {
+  buildMissionBriefForTarget,
   draftActionItem,
   findRepoInspection,
   findSkillExtraction,
   generateDerivedHouseData,
+  generateRepoOpsKit,
   listAdoptionCandidates,
   listActionItems,
   listNewsSignals,
+  listTemplateKits,
   loadHouseDatasets,
   resolveRepoRecord,
   updateActionItem,
@@ -38,6 +41,8 @@ const REPO_INSPECTIONS_FILE = path.join(DATA_DIR, "repo-inspections.json");
 const AUTOMATION_RUNS_FILE = path.join(DATA_DIR, "automation-runs.json");
 const OPS_DIGEST_FILE = path.join(DATA_DIR, "ops-digest.json");
 const WEEKLY_RESEARCH_REVIEW_FILE = path.join(DATA_DIR, "weekly-research-review.json");
+const TEMPLATE_KITS_FILE = path.join(DATA_DIR, "template-kits.json");
+const REPO_OPS_KITS_FILE = path.join(DATA_DIR, "repo-ops-kits.json");
 
 async function readJson(filePath, fallback) {
   try {
@@ -170,6 +175,8 @@ class VegaLabServer {
     this.automationRuns = [];
     this.opsDigest = null;
     this.weeklyResearchReview = null;
+    this.templateKits = [];
+    this.repoOpsKits = [];
 
     this.setupHandlers();
     this.server.onerror = (error) => console.error("[MCP Error]", error);
@@ -190,6 +197,8 @@ class VegaLabServer {
     this.automationRuns = derived.automationRuns;
     this.opsDigest = derived.opsDigest;
     this.weeklyResearchReview = derived.weeklyResearchReview;
+    this.templateKits = derived.templateKits;
+    this.repoOpsKits = derived.repoOpsKits;
 
     this.stats = await readJson(STATS_FILE, null);
     if (!this.stats) {
@@ -384,16 +393,34 @@ class VegaLabServer {
           },
         },
         {
+          name: "list_template_kits",
+          description: "List Vega Lab template kits and their source template paths",
+          inputSchema: { type: "object", properties: {} },
+        },
+        {
           name: "generate_repo_mission",
-          description: "Generate a canonical Codex or Claude mission brief for a repository",
+          description: "Generate a canonical Codex, Claude, or local MLX mission brief for a repository",
           inputSchema: {
             type: "object",
             properties: {
               name: { type: "string" },
               author: { type: "string" },
-              target: { type: "string", enum: ["codex", "claude"] },
+              target: { type: "string", enum: ["codex", "claude", "mlx"] },
             },
             required: ["name", "target"],
+          },
+        },
+        {
+          name: "generate_repo_ops_kit",
+          description: "Generate a draft-only README, AGENTS, maintenance, deployment, testing, and action-item kit for a repository",
+          inputSchema: {
+            type: "object",
+            properties: {
+              name: { type: "string" },
+              author: { type: "string" },
+              target: { type: "string", enum: ["codex", "claude", "mlx"], default: "mlx" },
+            },
+            required: ["name"],
           },
         },
         {
@@ -536,8 +563,12 @@ class VegaLabServer {
             return this.handleGetAdoptionCandidates(args);
           case "extract_repo_skills":
             return this.handleExtractRepoSkills(args);
+          case "list_template_kits":
+            return this.handleListTemplateKits();
           case "generate_repo_mission":
             return this.handleGenerateRepoMission(args);
+          case "generate_repo_ops_kit":
+            return await this.handleGenerateRepoOpsKit(args);
           case "get_mine_health":
             return this.handleGetMineHealth(args);
           case "find_repos_missing_readme":
@@ -747,6 +778,14 @@ class VegaLabServer {
     return this.response(extraction);
   }
 
+  handleListTemplateKits() {
+    const kits = this.templateKits.length > 0 ? this.templateKits : listTemplateKits();
+    return this.response({
+      count: kits.length,
+      kits,
+    });
+  }
+
   handleGenerateRepoMission(args) {
     const repo = this.resolveRepo(args);
     if (!repo) {
@@ -758,12 +797,28 @@ class VegaLabServer {
       throw new Error("Skill extraction not found");
     }
 
-    const target = args.target === "claude" ? "claude" : "codex";
+    const target = String(args.target ?? "mlx").toLowerCase();
+    const mission = buildMissionBriefForTarget(extraction, target);
     return this.response({
       nwo: extraction.nwo,
       target,
-      mission: target === "claude" ? extraction.claudeBrief : extraction.codexBrief,
+      mission,
     });
+  }
+
+  async handleGenerateRepoOpsKit(args) {
+    const kit = await generateRepoOpsKit(HOUSE_ROOT, {
+      name: args.name,
+      author: args.author,
+      target: args.target ?? "mlx",
+    });
+    if (!kit) {
+      throw new Error("Could not generate repo ops kit");
+    }
+
+    this.repoOpsKits = this.repoOpsKits.filter((item) => !(item.nwo === kit.nwo && item.target === kit.target));
+    this.repoOpsKits.push(kit);
+    return this.response(kit);
   }
 
   handleGetMineHealth(args) {
@@ -900,6 +955,8 @@ class VegaLabServer {
         mineHealth: this.mineHealth.length,
         repoInspections: this.repoInspections.length,
         actionItems: this.actionItems.length,
+        templateKits: this.templateKits.length,
+        repoOpsKits: this.repoOpsKits.length,
       },
       artifacts: [
         STATS_FILE,
@@ -912,9 +969,11 @@ class VegaLabServer {
         OPS_DIGEST_FILE,
         WEEKLY_RESEARCH_REVIEW_FILE,
         AUTOMATION_RUNS_FILE,
+        TEMPLATE_KITS_FILE,
+        REPO_OPS_KITS_FILE,
       ],
       tools: {
-        total: 25,
+        total: 27,
         draftOnly: true,
       },
     });

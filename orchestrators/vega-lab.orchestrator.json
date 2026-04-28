@@ -25,7 +25,7 @@
     "authority": "draft-only",
     "local_first": true,
     "local_bus": "/bus",
-    "local_bus_target": "http://127.0.0.1:8085",
+    "local_bus_target": "http://127.0.0.1:8090",
     "web_mode": "deployment-testing-only"
   },
   "shared_resources": {
@@ -66,7 +66,9 @@
       "mark_for_research",
       "get_adoption_candidates",
       "extract_repo_skills",
+      "list_template_kits",
       "generate_repo_mission",
+      "generate_repo_ops_kit",
       "get_mine_health",
       "find_repos_missing_readme",
       "list_action_items",
@@ -114,13 +116,13 @@
         "agent_id": "vega-lab:tool-architect",
         "role_in_house": "specialist",
         "delegation_priority": 84,
-        "capabilities": ["skills", "mission-generation", "toolization"]
+        "capabilities": ["skills", "mission-generation", "template-kits", "toolization"]
       },
       {
         "agent_id": "vega-lab:repo-ops",
         "role_in_house": "specialist",
         "delegation_priority": 82,
-        "capabilities": ["repo-ops", "maintenance", "execution", "action-inbox"]
+        "capabilities": ["repo-ops", "maintenance", "execution", "action-inbox", "ops-kit"]
       }
     ],
     "default_agent": "vega-lab:orchestrator",
@@ -141,12 +143,12 @@
         "agent_id": "vega-lab:alignment-scout"
       },
       {
-        "pattern": ".*skill.*|.*rules.*|.*flows.*|.*codex.*|.*claude.*|.*mission.*|.*template.*",
+        "pattern": ".*skill.*|.*rules.*|.*flows.*|.*codex.*|.*claude.*|.*mlx.*|.*mission.*|.*template.*",
         "capability": "skills",
         "agent_id": "vega-lab:tool-architect"
       },
       {
-        "pattern": ".*mine.*|.*maintenance.*|.*readme.*|.*dependency.*|.*package.*|.*deploy.*|.*inbox.*|.*action.*",
+        "pattern": ".*mine.*|.*maintenance.*|.*readme.*|.*agents.*|.*ops kit.*|.*dependency.*|.*package.*|.*deploy.*|.*test.*|.*inbox.*|.*action.*",
         "capability": "repo-ops",
         "agent_id": "vega-lab:repo-ops"
       },
@@ -158,7 +160,7 @@
     ]
   },
   "capabilities": {
-    "domains": ["code", "research", "analysis", "adoption", "repo-ops", "local-runtime"],
+    "domains": ["code", "research", "analysis", "adoption", "repo-ops", "template-kits", "local-runtime"],
     "input_types": ["text", "url"],
     "output_types": ["text", "structured"],
     "streaming": true,
@@ -176,6 +178,7 @@
       "vega-lab.mission.generated",
       "vega-lab.adoption.scored",
       "vega-lab.action.drafted",
+      "vega-lab.ops-kit.generated",
       "vega-lab.runtime.health"
     ],
     "subscribe_events": [
@@ -222,11 +225,12 @@
         "description": "Extract canonical skills, rules, flows, and optional model-specific missions.",
         "trigger": {
           "event": "task.skills",
-          "pattern": ".*skill.*|.*rules.*|.*flows.*|.*codex.*|.*claude.*|.*mission.*"
+          "pattern": ".*skill.*|.*rules.*|.*flows.*|.*codex.*|.*claude.*|.*mlx.*|.*mission.*|.*ops kit.*"
         },
         "steps": [
           { "step_id": "extract", "agent_id": "vega-lab:tool-architect", "action": "extract_repo_skills", "output_to": "mission" },
-          { "step_id": "mission", "agent_id": "vega-lab:tool-architect", "action": "generate_repo_mission", "input_from": "extract" }
+          { "step_id": "mission", "agent_id": "vega-lab:tool-architect", "action": "generate_repo_mission", "input_from": "extract" },
+          { "step_id": "ops-kit", "agent_id": "vega-lab:repo-ops", "action": "generate_repo_ops_kit", "input_from": "extract" }
         ]
       },
       {
@@ -249,12 +253,13 @@
         "description": "Inspect owned-repo health, identify readiness gaps, and draft execution actions.",
         "trigger": {
           "event": "task.mine",
-          "pattern": ".*mine.*|.*maintenance.*|.*readme.*|.*dependency.*|.*package.*|.*deploy.*"
+          "pattern": ".*mine.*|.*maintenance.*|.*readme.*|.*agents.*|.*ops kit.*|.*dependency.*|.*package.*|.*deploy.*|.*test.*"
         },
         "steps": [
           { "step_id": "health", "agent_id": "vega-lab:repo-ops", "action": "get_mine_health", "output_to": "inspection" },
           { "step_id": "inspection", "agent_id": "vega-lab:repo-ops", "action": "inspect_owned_repo", "input_from": "health", "output_to": "actions" },
-          { "step_id": "actions", "agent_id": "vega-lab:repo-ops", "action": "list_action_items", "input_from": "inspection" }
+          { "step_id": "kit", "agent_id": "vega-lab:repo-ops", "action": "generate_repo_ops_kit", "input_from": "inspection", "output_to": "actions" },
+          { "step_id": "actions", "agent_id": "vega-lab:repo-ops", "action": "list_action_items", "input_from": "kit" }
         ]
       },
       {

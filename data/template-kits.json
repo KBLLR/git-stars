@@ -1,0 +1,62 @@
+[
+  {
+    "id": "vega-lab:house-reference",
+    "label": "House Reference Templates",
+    "description": "Reusable Vega Lab house sources for README, AGENTS, SKILLS, RULES, and WORKFLOWS artifacts.",
+    "artifactKinds": [
+      "readme",
+      "agents",
+      "skills",
+      "rules",
+      "workflows"
+    ],
+    "targets": [
+      "codex",
+      "claude",
+      "mlx"
+    ],
+    "templatePaths": [
+      "templates/house/README.md",
+      "templates/house/AGENTS.md",
+      "templates/house/SKILLS.md",
+      "templates/house/RULES.md",
+      "templates/house/WORKFLOWS.md",
+      "templates/context/core-x-ecosystem.md",
+      "templates/context/vega-lab-role.md",
+      "templates/context/tech-stack-defaults.md",
+      "templates/context/good-candidate-criteria.md",
+      "templates/context/mlx-openresponses-policy.md"
+    ]
+  },
+  {
+    "id": "vega-lab:repo-ops-kit",
+    "label": "Repo Ops Kit",
+    "description": "Draft-only repo readiness kit covering README, AGENTS, maintenance, deployment, testing, and inbox actions.",
+    "artifactKinds": [
+      "readme",
+      "agents",
+      "maintenance",
+      "deployment",
+      "testing",
+      "action-item"
+    ],
+    "targets": [
+      "codex",
+      "claude",
+      "mlx"
+    ],
+    "templatePaths": [
+      "templates/ops/README_DRAFT.md",
+      "templates/ops/AGENTS_DRAFT.md",
+      "templates/ops/MAINTENANCE_PLAN.md",
+      "templates/ops/DEPLOYMENT_PLAN.md",
+      "templates/ops/TEST_PLAN.md",
+      "templates/ops/ACTION_ITEM.md",
+      "templates/context/core-x-ecosystem.md",
+      "templates/context/vega-lab-role.md",
+      "templates/context/tech-stack-defaults.md",
+      "templates/context/good-candidate-criteria.md",
+      "templates/context/mlx-openresponses-policy.md"
+    ]
+  }
+]

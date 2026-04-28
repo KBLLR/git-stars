@@ -53,7 +53,7 @@ const ROUTES: Array<{ pattern: RegExp; route: VegaLabRoute }> = [
     },
   },
   {
-    pattern: /\b(skill|rules|flows|codex|claude|mission|template)\b/i,
+    pattern: /\b(skill|rules|flows|codex|claude|mlx|mission|template)\b/i,
     route: {
       capability: "skill-extraction",
       agentId: "vega-lab:tool-architect",
@@ -61,7 +61,7 @@ const ROUTES: Array<{ pattern: RegExp; route: VegaLabRoute }> = [
     },
   },
   {
-    pattern: /\b(readme|maintain|maintenance|dependency|package|mine|private|repo ops)\b/i,
+    pattern: /\b(readme|agents draft|ops kit|maintain|maintenance|dependency|package|mine|private|repo ops|deployment plan|test plan)\b/i,
     route: {
       capability: "mine-execution",
       agentId: "vega-lab:repo-ops",
@@ -110,9 +110,11 @@ export function buildSystemPrompt(repo?: Repo | null, route?: VegaLabRoute): str
 
   return `You are Vega Lab, the core-x Git universe intelligence lab. Work from canonical tools and derived house data, not generic guessing.
 Always prefer typed tools over freeform inference when repo facts, queue state, adoption fit, skills, missions, or mine health are requested.
-When a mission brief is requested, call generate_repo_mission.
+When an Ops kit, README draft, AGENTS draft, deployment plan, or test plan is requested, call generate_repo_ops_kit and return the relevant artifacts.
+When a mission brief is requested, call generate_repo_mission. Supported mission targets are codex, claude, and mlx; default to mlx for local runtime work.
 When research state changes, call update_research_queue.
 When an inbox action is requested, call list_action_items, draft_action_item, or update_action_item.
+Jules is not an active Vega Lab target. If asked, state that it is historical template vocabulary and use codex, claude, or mlx instead.
 Do not invent repository facts, tool results, model availability, or local runtime status. If a tool or dataset is unavailable, say exactly what is missing.
 
 Response contract:
@@ -353,8 +355,16 @@ export function buildVegaLabTools() {
     {
       type: "function",
       function: {
+        name: "list_template_kits",
+        description: "List Vega Lab template kits and source template paths.",
+        parameters: { type: "object", properties: {} },
+      },
+    },
+    {
+      type: "function",
+      function: {
         name: "generate_repo_mission",
-        description: "Generate a canonical Codex or Claude mission brief for a repository.",
+        description: "Generate a canonical Codex, Claude, or local MLX mission brief for a repository.",
         parameters: {
           type: "object",
           properties: {
@@ -362,11 +372,31 @@ export function buildVegaLabTools() {
             author: { type: "string", description: "Repository owner (optional)" },
             target: {
               type: "string",
-              enum: ["codex", "claude"],
+              enum: ["codex", "claude", "mlx"],
               description: "Mission output target",
             },
           },
           required: ["name", "target"],
+        },
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "generate_repo_ops_kit",
+        description: "Generate a draft-only README, AGENTS, maintenance, deployment, testing, and action-item kit for a repo.",
+        parameters: {
+          type: "object",
+          properties: {
+            name: { type: "string", description: "Repository name" },
+            author: { type: "string", description: "Repository owner (optional)" },
+            target: {
+              type: "string",
+              enum: ["codex", "claude", "mlx"],
+              description: "Output target adapter (default mlx)",
+            },
+          },
+          required: ["name"],
         },
       },
     },
@@ -506,49 +536,79 @@ export const buildGitStarsTools = buildVegaLabTools;
 
 const GENERAL_ACTIONS: ActionPreset[] = [
   {
-    label: "Research brief",
-    title: "Research brief",
-    prompt: "Use get_repo_details, get_research_queue, and extract_repo_skills to produce a short research brief with adoption fit and next actions.",
+    label: "Ops kit",
+    title: "Ops kit",
+    prompt: "Call generate_repo_ops_kit with target mlx and summarize the README, AGENTS, maintenance, deployment, testing, and action-item artifacts.",
+    variant: "primary",
   },
   {
-    label: "Adoption fit",
-    title: "Adoption fit",
-    prompt: "Use extract_repo_skills and get_adoption_candidates to classify this repo as a house, tool, service, template, or ignore candidate.",
+    label: "README draft",
+    title: "README draft",
+    prompt: "Call generate_repo_ops_kit with target mlx and return only the README artifact with its evidence.",
   },
   {
-    label: "Extract skills",
-    title: "Extract skills",
-    prompt: "Call extract_repo_skills and return the canonical skills, rules, flows, and adoption classification for this repo.",
+    label: "AGENTS draft",
+    title: "AGENTS draft",
+    prompt: "Call generate_repo_ops_kit with target mlx and return only the AGENTS artifact with operating rules and commands.",
+  },
+  {
+    label: "Deployment plan",
+    title: "Deployment plan",
+    prompt: "Call generate_repo_ops_kit with target mlx and return the deployment artifact with known evidence and missing checks.",
+  },
+  {
+    label: "Test plan",
+    title: "Test plan",
+    prompt: "Call generate_repo_ops_kit with target mlx and return the testing artifact with verification commands or gaps.",
+  },
+  {
+    label: "MLX mission",
+    title: "MLX mission",
+    prompt: "Call generate_repo_mission with target mlx and return the resulting local MLX mission brief.",
   },
   {
     label: "Codex mission",
     title: "Codex mission",
     prompt: "Call generate_repo_mission with target codex and return the resulting mission brief.",
-    variant: "primary",
   },
   {
     label: "Claude mission",
     title: "Claude mission",
     prompt: "Call generate_repo_mission with target claude and return the resulting mission brief.",
-  },
-  {
-    label: "Template plan",
-    title: "Template plan",
-    prompt: "Use extract_repo_skills and get_mine_health if relevant, then explain whether this repo should become a reusable template and what would need to change.",
-  },
-  {
-    label: "Maintenance plan",
-    title: "Maintenance plan",
-    prompt: "Use get_mine_health and extract_repo_skills to produce a maintenance and readiness plan for this repo.",
   },
 ];
 
 const MINE_ACTIONS: ActionPreset[] = [
   {
-    label: "Maintenance plan",
-    title: "Maintenance plan",
-    prompt: "Use get_mine_health and extract_repo_skills to produce a maintenance and execution plan for this owned repo.",
+    label: "Ops kit",
+    title: "Ops kit",
+    prompt: "Call generate_repo_ops_kit with target mlx and summarize the README, AGENTS, maintenance, deployment, testing, and action-item artifacts for this owned repo.",
     variant: "primary",
+  },
+  {
+    label: "README draft",
+    title: "README draft",
+    prompt: "Call generate_repo_ops_kit with target mlx and return only the README artifact with its evidence.",
+  },
+  {
+    label: "AGENTS draft",
+    title: "AGENTS draft",
+    prompt: "Call generate_repo_ops_kit with target mlx and return only the AGENTS artifact with operating rules and commands.",
+  },
+  {
+    label: "Deployment plan",
+    title: "Deployment plan",
+    prompt: "Call generate_repo_ops_kit with target mlx and return the deployment artifact with known evidence and missing checks.",
+  },
+  {
+    label: "Test plan",
+    title: "Test plan",
+    prompt: "Call generate_repo_ops_kit with target mlx and return the testing artifact with verification commands or gaps.",
+  },
+  {
+    label: "MLX mission",
+    title: "MLX mission",
+    prompt: "Call generate_repo_mission with target mlx and return the resulting local MLX mission brief.",
   },
   {
     label: "Codex mission",
@@ -559,21 +619,6 @@ const MINE_ACTIONS: ActionPreset[] = [
     label: "Claude mission",
     title: "Claude mission",
     prompt: "Call generate_repo_mission with target claude and return the resulting mission brief.",
-  },
-  {
-    label: "Template plan",
-    title: "Template plan",
-    prompt: "Use extract_repo_skills and get_mine_health to decide whether this owned repo should be promoted into a reusable template.",
-  },
-  {
-    label: "Adoption fit",
-    title: "Adoption fit",
-    prompt: "Use extract_repo_skills to explain how this owned repo fits into Vega Lab adoption workflows.",
-  },
-  {
-    label: "Extract skills",
-    title: "Extract skills",
-    prompt: "Call extract_repo_skills and return the canonical skills, rules, flows, and adoption classification for this repo.",
   },
 ];
 

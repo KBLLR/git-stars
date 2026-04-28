@@ -68,6 +68,8 @@ const automationRuns = assertMirroredJson("automation-runs.json");
 const opsDigest = assertMirroredJson("ops-digest.json");
 const weeklyResearchReview = assertMirroredJson("weekly-research-review.json");
 const modelZooTextModels = assertMirroredJson("model-zoo-text-models.json");
+const templateKits = assertMirroredJson("template-kits.json");
+const repoOpsKits = assertMirroredJson("repo-ops-kits.json");
 
 assert.ok(Array.isArray(repoSignals) && repoSignals.length > 0, "repo-signals.json should contain ranked signals");
 assert.ok(Array.isArray(researchQueue), "research-queue.json should contain an array");
@@ -79,6 +81,8 @@ assert.ok(Array.isArray(automationRuns), "automation-runs.json should contain au
 assert.equal(typeof opsDigest.summary, "string", "ops-digest.json should contain a summary");
 assert.equal(typeof weeklyResearchReview.summary, "string", "weekly-research-review.json should contain a summary");
 assert.ok(Array.isArray(modelZooTextModels.models), "model-zoo-text-models.json should contain a model list");
+assert.ok(Array.isArray(templateKits) && templateKits.length >= 2, "template-kits.json should contain the house and ops template kits");
+assert.ok(Array.isArray(repoOpsKits), "repo-ops-kits.json should contain generated repo Ops kits");
 
 const firstSignal = repoSignals[0];
 assert.equal(typeof firstSignal.nwo, "string", "RepoSignal.nwo should be present");
@@ -124,6 +128,22 @@ if (actionItems.length > 0) {
   assert.ok(["open", "reviewing", "accepted", "dismissed", "done"].includes(firstAction.status), "ActionItem.status should be valid");
   assert.ok(Array.isArray(firstAction.evidence), "ActionItem.evidence should be an array");
   assert.ok(Array.isArray(firstAction.linkedSkills), "ActionItem.linkedSkills should be an array");
+}
+
+const opsKitIds = new Set(repoOpsKits.map((kit) => `${kit.nwo}:${kit.target}`));
+assert.equal(opsKitIds.size, repoOpsKits.length, "Repo Ops kits should be de-duplicated by nwo and target");
+const opsTemplateKit = templateKits.find((kit) => kit.id === "vega-lab:repo-ops-kit");
+assert.ok(opsTemplateKit, "Template kits should include the Vega Lab repo Ops kit");
+assert.ok(opsTemplateKit.targets.includes("mlx"), "Repo Ops kit should support the local MLX target");
+
+if (repoOpsKits.length > 0) {
+  const firstOpsKit = repoOpsKits[0];
+  const artifactKinds = new Set(firstOpsKit.artifacts.map((artifact) => artifact.kind));
+  ["readme", "agents", "maintenance", "deployment", "testing", "action-item"].forEach((kind) => {
+    assert.ok(artifactKinds.has(kind), `Repo Ops kit should include a ${kind} artifact`);
+  });
+  assert.equal(firstOpsKit.target, "mlx", "Generated Repo Ops kits should default to the local MLX target");
+  assert.ok(Array.isArray(firstOpsKit.evidence), "Repo Ops kit should include evidence");
 }
 
 const runtimeRun = automationRuns.find((run) => run.id === "vega-lab:daily-ops:last");

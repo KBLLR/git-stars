@@ -18,6 +18,7 @@ Use typed MCP tools as the house tool surface and OpenResponses as the runtime c
 
 - The UI and orchestrator share the same data contract.
 - Actions become durable inbox records instead of transient prompts.
-- Claude and Codex missions are adapter formats over one canonical extraction record.
+- Claude, Codex, and local MLX missions are adapter formats over one canonical extraction record.
+- Template-backed Ops kits turn repo evidence into draft README, AGENTS, maintenance, deployment, testing, and action-item artifacts.
 - Automations stay draft-only and produce reviewable JSON artifacts.
 - Legacy `git-stars:*` aliases remain only for one migration cycle.

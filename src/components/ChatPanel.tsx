@@ -63,6 +63,7 @@ export function ChatPanel({
   const lastPrefillRef = useRef<string | null>(null);
 
   const tools = useMemo(() => buildVegaLabTools(), []);
+  const activeMissionTarget = runtimeTarget.mode === "local" ? "mlx" : "codex";
 
   useEffect(() => {
     fetchRuntimeModels(runtimeTarget.busUrl)
@@ -268,10 +269,10 @@ export function ChatPanel({
       </div>
 
       <div className="orchestrator-actions">
-        <button className="chip chip-tag" onClick={() => handleSend("Summarize the repo, the adoption fit, and the next action.")}>Summary</button>
-        <button className="chip chip-tag" onClick={() => handleSend("Find similar repos and explain the best match.")}>Similar</button>
-        <button className="chip chip-tag" onClick={() => handleSend("Queue this repo for research and explain why it matters.")}>Queue</button>
-        <button className="chip chip-tag" onClick={() => handleSend("Generate a Codex mission for this repo.")}>Codex</button>
+        <button className="chip chip-tag" onClick={() => handleSend("Use get_repo_details and extract_repo_skills to produce a concise repo brief with adoption fit and next action.")}>Brief</button>
+        <button className="chip chip-tag" onClick={() => handleSend(`Call generate_repo_ops_kit with target ${activeMissionTarget} and summarize the generated draft artifacts.`)}>Ops Kit</button>
+        <button className="chip chip-tag" onClick={() => handleSend("Call update_research_queue with status queued and explain why this repo belongs in the research queue.")}>Queue</button>
+        <button className="chip chip-tag" onClick={() => handleSend(`Call generate_repo_mission with target ${activeMissionTarget} and return the mission brief.`)}>Mission</button>
       </div>
 
       <div ref={scrollRef} className="orchestrator-messages">

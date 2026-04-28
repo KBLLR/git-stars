@@ -19081,30 +19081,6 @@
     ]
   },
   {
-    "nwo": "unpkg/unpkg",
-    "name": "unpkg",
-    "author": "unpkg",
-    "description": "The CDN for everything on npm",
-    "scope": "starred",
-    "lastActivityAt": "2025-04-27T22:00:00.000Z",
-    "staleness": "watch",
-    "researchStatus": "untracked",
-    "adoptionScore": 77,
-    "adoptionKind": "house",
-    "reasons": [
-      "Adoption kind: house",
-      "Primary skills: repo-discovery, repo-adoption",
-      "Medium-term activity suggests this repo should stay on the watchlist."
-    ],
-    "houseSkills": [
-      "repo-discovery",
-      "repo-adoption"
-    ],
-    "capabilities": [
-      "frontend-ui"
-    ]
-  },
-  {
     "nwo": "MoonInTheRiver/DiffSinger",
     "name": "DiffSinger",
     "author": "MoonInTheRiver",
@@ -25657,29 +25633,6 @@
     ]
   },
   {
-    "nwo": "buaacyw/MeshAnythingV2",
-    "name": "MeshAnythingV2",
-    "author": "buaacyw",
-    "description": "[ICCV 2025] From anything to mesh like human artists. Official impl. of \"MeshAnything V2: Artist-Created Mesh Generation With Adjacent Mesh Tokenization\"",
-    "scope": "starred",
-    "lastActivityAt": "2025-04-27T22:00:00.000Z",
-    "staleness": "watch",
-    "researchStatus": "untracked",
-    "adoptionScore": 69,
-    "adoptionKind": "tool",
-    "reasons": [
-      "Adoption kind: tool",
-      "Primary skills: repo-adoption",
-      "Medium-term activity suggests this repo should stay on the watchlist."
-    ],
-    "houseSkills": [
-      "repo-adoption"
-    ],
-    "capabilities": [
-      "ml-ai"
-    ]
-  },
-  {
     "nwo": "HugoTini/DeepBump",
     "name": "DeepBump",
     "author": "HugoTini",
@@ -29535,6 +29488,30 @@
       "Adoption kind: house",
       "Primary skills: repo-discovery, repo-adoption",
       "Medium-term activity suggests this repo should stay on the watchlist."
+    ],
+    "houseSkills": [
+      "repo-discovery",
+      "repo-adoption"
+    ],
+    "capabilities": [
+      "frontend-ui"
+    ]
+  },
+  {
+    "nwo": "unpkg/unpkg",
+    "name": "unpkg",
+    "author": "unpkg",
+    "description": "The CDN for everything on npm",
+    "scope": "starred",
+    "lastActivityAt": "2025-04-27T22:00:00.000Z",
+    "staleness": "stale",
+    "researchStatus": "untracked",
+    "adoptionScore": 64,
+    "adoptionKind": "house",
+    "reasons": [
+      "Adoption kind: house",
+      "Primary skills: repo-discovery, repo-adoption",
+      "Stale activity suggests higher maintenance risk."
     ],
     "houseSkills": [
       "repo-discovery",
@@ -36638,6 +36615,29 @@
     ]
   },
   {
+    "nwo": "buaacyw/MeshAnythingV2",
+    "name": "MeshAnythingV2",
+    "author": "buaacyw",
+    "description": "[ICCV 2025] From anything to mesh like human artists. Official impl. of \"MeshAnything V2: Artist-Created Mesh Generation With Adjacent Mesh Tokenization\"",
+    "scope": "starred",
+    "lastActivityAt": "2025-04-27T22:00:00.000Z",
+    "staleness": "stale",
+    "researchStatus": "untracked",
+    "adoptionScore": 56,
+    "adoptionKind": "tool",
+    "reasons": [
+      "Adoption kind: tool",
+      "Primary skills: repo-adoption",
+      "Stale activity suggests higher maintenance risk."
+    ],
+    "houseSkills": [
+      "repo-adoption"
+    ],
+    "capabilities": [
+      "ml-ai"
+    ]
+  },
+  {
     "nwo": "huchenlei/ComfyUI_omost",
     "name": "ComfyUI_omost",
     "author": "huchenlei",
@@ -39903,27 +39903,6 @@
       "Medium-term activity suggests this repo should stay on the watchlist."
     ],
     "houseSkills": [],
-    "capabilities": []
-  },
-  {
-    "nwo": "boytchev/texture-generator",
-    "name": "texture-generator",
-    "author": "boytchev",
-    "description": "Procedural equirectangular texture generator",
-    "scope": "starred",
-    "lastActivityAt": "2025-04-27T22:00:00.000Z",
-    "staleness": "watch",
-    "researchStatus": "untracked",
-    "adoptionScore": 52,
-    "adoptionKind": "house",
-    "reasons": [
-      "Adoption kind: house",
-      "Primary skills: repo-adoption",
-      "Medium-term activity suggests this repo should stay on the watchlist."
-    ],
-    "houseSkills": [
-      "repo-adoption"
-    ],
     "capabilities": []
   },
   {
@@ -47526,6 +47505,27 @@
       "Medium-term activity suggests this repo should stay on the watchlist."
     ],
     "houseSkills": [],
+    "capabilities": []
+  },
+  {
+    "nwo": "boytchev/texture-generator",
+    "name": "texture-generator",
+    "author": "boytchev",
+    "description": "Procedural equirectangular texture generator",
+    "scope": "starred",
+    "lastActivityAt": "2025-04-27T22:00:00.000Z",
+    "staleness": "stale",
+    "researchStatus": "untracked",
+    "adoptionScore": 39,
+    "adoptionKind": "house",
+    "reasons": [
+      "Adoption kind: house",
+      "Primary skills: repo-adoption",
+      "Stale activity suggests higher maintenance risk."
+    ],
+    "houseSkills": [
+      "repo-adoption"
+    ],
     "capabilities": []
   },
   {
