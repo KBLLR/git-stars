@@ -14,6 +14,7 @@ const __dirname = path.dirname(__filename);
 
 const DATA_FILE = path.resolve(__dirname, "../../data/data.json");
 const STATS_FILE = path.resolve(__dirname, "../../data/stats.json");
+const PUBLIC_STATS_FILE = path.resolve(__dirname, "../../public/stats.json");
 
 /**
  * Load repository data
@@ -359,14 +360,19 @@ async function generateStatistics() {
 
     const stats = calculateStatistics(repos);
 
-    // Ensure data directory exists
+    // Ensure mirrored output directories exist
     const dataDir = path.dirname(STATS_FILE);
+    const publicDir = path.dirname(PUBLIC_STATS_FILE);
     await fs.mkdir(dataDir, { recursive: true });
+    await fs.mkdir(publicDir, { recursive: true });
 
-    // Save statistics
-    await fs.writeFile(STATS_FILE, JSON.stringify(stats, null, 2));
+    // Save statistics to both runtime data sources
+    const serializedStats = JSON.stringify(stats, null, 2);
+    await fs.writeFile(STATS_FILE, serializedStats);
+    await fs.writeFile(PUBLIC_STATS_FILE, serializedStats);
 
     console.log(`Statistics saved to ${STATS_FILE}`);
+    console.log(`Statistics mirrored to ${PUBLIC_STATS_FILE}`);
     console.log("\nSummary:");
     console.log(`  Total repositories: ${stats.summary.total_repos}`);
     console.log(`  Total stars: ${stats.summary.total_stars.toLocaleString()}`);

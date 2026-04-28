@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-04-22T22:00:00.000Z",
+  "generatedAt": "2026-04-28T07:08:39.000Z",
   "summary": "Weekly Vega Lab review for bright-star adoption, skill extraction, and research queue movement.",
   "brightStars": [
+    "KBLLR/Leagentdiary",
     "KBLLR/talking-heads-papers",
     "KBLLR/ChatDev",
-    "KBLLR/Leagentdiary",
     "KBLLR/gpt-3_chrome_extension",
     "KBLLR/mlx-rag-lab",
     "KBLLR/mindmesh",
@@ -12,9 +12,9 @@
     "KBLLR/tldraw-mlx"
   ],
   "adoptionCandidates": [
+    "KBLLR/Leagentdiary",
     "KBLLR/talking-heads-papers",
     "KBLLR/ChatDev",
-    "KBLLR/Leagentdiary",
     "KBLLR/gpt-3_chrome_extension",
     "KBLLR/mlx-rag-lab",
     "KBLLR/mindmesh",
@@ -22,14 +22,14 @@
     "KBLLR/tldraw-mlx"
   ],
   "skillCandidates": [
-    "KBLLR/ChatDev",
     "KBLLR/Leagentdiary",
+    "KBLLR/ChatDev",
     "KBLLR/gpt-3_chrome_extension",
     "KBLLR/tldraw-mlx",
     "KBLLR/code-smart-campus",
     "KBLLR/ada-agents",
     "KBLLR/moonsyc",
-    "KBLLR/KBLLR-template-ThreeJS"
+    "KBLLR/gen-idea-lab"
   ],
   "researchCandidates": [
     "KBLLR/talking-heads-papers",
@@ -42,6 +42,7 @@
     "marcomusy/vedo"
   ],
   "actionItemIds": [
+    "vega-lab:skill:kbllr-leagentdiary",
     "vega-lab:template:kbllr-kbllr-template-threejs",
     "vega-lab:skill:kbllr-chatdev",
     "vega-lab:template:kbllr-tldraw-mlx",

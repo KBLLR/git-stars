@@ -1,11 +1,180 @@
 [
   {
-    "nwo": "KBLLR/git-stars",
-    "name": "git-stars",
+    "nwo": "KBLLR/vega-lab",
+    "name": "vega-lab",
     "author": "KBLLR",
     "visibility": "public",
     "hasReadme": true,
-    "updatedAt": "2026-02-04T00:27:32.000Z",
+    "updatedAt": "2026-04-28T07:08:39.000Z",
+    "healthFlags": [],
+    "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
+      "codex-mission",
+      "claude-mission",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/core-x",
+    "name": "core-x",
+    "author": "KBLLR",
+    "visibility": "private",
+    "hasReadme": false,
+    "updatedAt": "2026-04-28T03:09:14.000Z",
+    "healthFlags": [
+      "missing-readme",
+      "private"
+    ],
+    "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
+      "codex-mission",
+      "claude-mission",
+      "write-readme",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/rigging-palace",
+    "name": "rigging-palace",
+    "author": "KBLLR",
+    "visibility": "private",
+    "hasReadme": true,
+    "updatedAt": "2026-04-27T22:24:04.000Z",
+    "healthFlags": [
+      "private"
+    ],
+    "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
+      "codex-mission",
+      "claude-mission"
+    ]
+  },
+  {
+    "nwo": "KBLLR/gen-idea-lab",
+    "name": "gen-idea-lab",
+    "author": "KBLLR",
+    "visibility": "private",
+    "hasReadme": true,
+    "updatedAt": "2026-04-26T19:40:13.000Z",
+    "healthFlags": [
+      "private"
+    ],
+    "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
+      "codex-mission",
+      "claude-mission",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/memoryblocks",
+    "name": "memoryblocks",
+    "author": "KBLLR",
+    "visibility": "private",
+    "hasReadme": true,
+    "updatedAt": "2026-04-26T12:37:26.000Z",
+    "healthFlags": [
+      "private"
+    ],
+    "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
+      "codex-mission",
+      "claude-mission",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/htdi-project",
+    "name": "htdi-project",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": true,
+    "updatedAt": "2026-04-23T18:49:36.000Z",
+    "healthFlags": [],
+    "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
+      "codex-mission",
+      "claude-mission"
+    ]
+  },
+  {
+    "nwo": "KBLLR/code-platformer-ai",
+    "name": "code-platformer-ai",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": true,
+    "updatedAt": "2026-04-13T09:49:25.000Z",
+    "healthFlags": [],
+    "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
+      "codex-mission",
+      "claude-mission",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/Leagentdiary",
+    "name": "Leagentdiary",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": true,
+    "updatedAt": "2026-04-12T05:23:57.000Z",
+    "healthFlags": [],
+    "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
+      "codex-mission",
+      "claude-mission",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/le-belle-epoch",
+    "name": "le-belle-epoch",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": true,
+    "updatedAt": "2026-04-11T12:59:29.000Z",
+    "healthFlags": [],
+    "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
+      "codex-mission",
+      "claude-mission",
+      "house-integration"
+    ]
+  },
+  {
+    "nwo": "KBLLR/flirtcopilot",
+    "name": "flirtcopilot",
+    "author": "KBLLR",
+    "visibility": "private",
+    "hasReadme": true,
+    "updatedAt": "2026-03-12T11:31:18.000Z",
+    "healthFlags": [
+      "private"
+    ],
+    "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
+      "codex-mission",
+      "claude-mission"
+    ]
+  },
+  {
+    "nwo": "KBLLR/kbllr-docs",
+    "name": "kbllr-docs",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": true,
+    "updatedAt": "2026-03-07T15:55:53.000Z",
     "healthFlags": [],
     "recommendedActions": [
       "mlx-mission",
@@ -20,7 +189,7 @@
     "author": "KBLLR",
     "visibility": "private",
     "hasReadme": true,
-    "updatedAt": "2026-02-03T18:04:03.000Z",
+    "updatedAt": "2026-03-07T05:27:26.000Z",
     "healthFlags": [
       "private"
     ],
@@ -29,22 +198,6 @@
       "ops-kit",
       "codex-mission",
       "claude-mission"
-    ]
-  },
-  {
-    "nwo": "KBLLR/code-platformer-ai",
-    "name": "code-platformer-ai",
-    "author": "KBLLR",
-    "visibility": "public",
-    "hasReadme": true,
-    "updatedAt": "2026-02-02T09:23:52.000Z",
-    "healthFlags": [],
-    "recommendedActions": [
-      "mlx-mission",
-      "ops-kit",
-      "codex-mission",
-      "claude-mission",
-      "house-integration"
     ]
   },
   {
@@ -63,40 +216,6 @@
       "codex-mission",
       "claude-mission",
       "house-integration"
-    ]
-  },
-  {
-    "nwo": "KBLLR/gen-idea-lab",
-    "name": "gen-idea-lab",
-    "author": "KBLLR",
-    "visibility": "public",
-    "hasReadme": true,
-    "updatedAt": "2026-01-06T02:58:58.000Z",
-    "healthFlags": [],
-    "recommendedActions": [
-      "mlx-mission",
-      "ops-kit",
-      "codex-mission",
-      "claude-mission",
-      "house-integration"
-    ]
-  },
-  {
-    "nwo": "KBLLR/le-belle-epoch",
-    "name": "le-belle-epoch",
-    "author": "KBLLR",
-    "visibility": "public",
-    "hasReadme": false,
-    "updatedAt": "2025-12-28T23:22:47.000Z",
-    "healthFlags": [
-      "missing-readme"
-    ],
-    "recommendedActions": [
-      "mlx-mission",
-      "ops-kit",
-      "codex-mission",
-      "claude-mission",
-      "write-readme"
     ]
   },
   {
@@ -186,22 +305,6 @@
     ]
   },
   {
-    "nwo": "KBLLR/memoryblocks",
-    "name": "memoryblocks",
-    "author": "KBLLR",
-    "visibility": "public",
-    "hasReadme": true,
-    "updatedAt": "2025-11-23T09:46:11.000Z",
-    "healthFlags": [],
-    "recommendedActions": [
-      "mlx-mission",
-      "ops-kit",
-      "codex-mission",
-      "claude-mission",
-      "house-integration"
-    ]
-  },
-  {
     "nwo": "KBLLR/mlx-openai-server-lab",
     "name": "mlx-openai-server-lab",
     "author": "KBLLR",
@@ -211,37 +314,6 @@
     "healthFlags": [
       "fork"
     ],
-    "recommendedActions": [
-      "mlx-mission",
-      "ops-kit",
-      "codex-mission",
-      "claude-mission",
-      "house-integration"
-    ]
-  },
-  {
-    "nwo": "KBLLR/htdi-project",
-    "name": "htdi-project",
-    "author": "KBLLR",
-    "visibility": "public",
-    "hasReadme": true,
-    "updatedAt": "2025-11-19T15:46:18.000Z",
-    "healthFlags": [],
-    "recommendedActions": [
-      "mlx-mission",
-      "ops-kit",
-      "codex-mission",
-      "claude-mission"
-    ]
-  },
-  {
-    "nwo": "KBLLR/Leagentdiary",
-    "name": "Leagentdiary",
-    "author": "KBLLR",
-    "visibility": "public",
-    "hasReadme": true,
-    "updatedAt": "2025-11-18T21:54:17.000Z",
-    "healthFlags": [],
     "recommendedActions": [
       "mlx-mission",
       "ops-kit",
@@ -295,23 +367,6 @@
     "visibility": "private",
     "hasReadme": true,
     "updatedAt": "2025-11-17T04:02:56.000Z",
-    "healthFlags": [
-      "private"
-    ],
-    "recommendedActions": [
-      "mlx-mission",
-      "ops-kit",
-      "codex-mission",
-      "claude-mission"
-    ]
-  },
-  {
-    "nwo": "KBLLR/flirtcopilot",
-    "name": "flirtcopilot",
-    "author": "KBLLR",
-    "visibility": "private",
-    "hasReadme": true,
-    "updatedAt": "2025-11-17T01:52:43.000Z",
     "healthFlags": [
       "private"
     ],
@@ -1570,24 +1625,6 @@
     "visibility": "public",
     "hasReadme": true,
     "updatedAt": "2022-04-09T15:42:47.000Z",
-    "healthFlags": [
-      "stale"
-    ],
-    "recommendedActions": [
-      "mlx-mission",
-      "ops-kit",
-      "codex-mission",
-      "claude-mission",
-      "maintenance-plan"
-    ]
-  },
-  {
-    "nwo": "KBLLR/D-KNIGHT-NFT",
-    "name": "D-KNIGHT-NFT",
-    "author": "KBLLR",
-    "visibility": "public",
-    "hasReadme": true,
-    "updatedAt": "2022-03-24T05:12:13.000Z",
     "healthFlags": [
       "stale"
     ],

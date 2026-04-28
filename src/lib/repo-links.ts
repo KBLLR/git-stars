@@ -1,7 +1,7 @@
 import { Repo } from '../types';
 
 const ABOUT_OVERRIDES: Record<string, string> = {
-  'KBLLR/vega-lab': 'https://gitstars-gb6ccye00-kbllr-projects.vercel.app/',
+  'KBLLR/vega-lab': 'https://vega-lab.vercel.app/',
   'KBLLR/git-stars': 'https://gitstars-gb6ccye00-kbllr-projects.vercel.app/',
 };
 

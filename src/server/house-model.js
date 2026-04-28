@@ -1098,6 +1098,7 @@ function buildRepoOpsKits({ repos, skillExtractions, mineHealth, repoInspections
 
   for (const existing of toArray(existingRepoOpsKits)) {
     if (!existing?.nwo) continue;
+    if (!repoMap.has(nwoKey(existing.nwo))) continue;
     const key = repoOpsKitKey(existing);
     if (!kits.has(key)) {
       kits.set(key, existing);

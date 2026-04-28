@@ -1,5 +1,34 @@
 [
   {
+    "nwo": "KBLLR/Leagentdiary",
+    "name": "Leagentdiary",
+    "author": "KBLLR",
+    "description": "LeAgentDiary is a version-control system for AI agents. It connects handoffs, memory, and self-reflection into one timeline—track contributions, re-summon past agents, and evolve their personas. Built with the HTDI Agentic Framework for human-AI co-development.",
+    "scope": "mine",
+    "lastActivityAt": "2026-04-12T05:23:57.000Z",
+    "staleness": "active",
+    "researchStatus": "untracked",
+    "adoptionScore": 69,
+    "adoptionKind": "house",
+    "reasons": [
+      "Adoption kind: house",
+      "Primary skills: repo-discovery, skill-extraction, repo-adoption, mine-execution",
+      "Recent activity suggests the repo is still moving.",
+      "This repo is owned or directly maintained and belongs in the execution workspace."
+    ],
+    "houseSkills": [
+      "repo-discovery",
+      "skill-extraction",
+      "repo-adoption",
+      "mine-execution"
+    ],
+    "capabilities": [
+      "agent-workflows",
+      "ml-ai",
+      "frontend-ui"
+    ]
+  },
+  {
     "nwo": "KBLLR/talking-heads-papers",
     "name": "talking-heads-papers",
     "author": "KBLLR",
@@ -51,35 +80,6 @@
     "capabilities": [
       "agent-workflows",
       "ml-ai"
-    ]
-  },
-  {
-    "nwo": "KBLLR/Leagentdiary",
-    "name": "Leagentdiary",
-    "author": "KBLLR",
-    "description": "LeAgentDiary is a version-control system for AI agents. It connects handoffs, memory, and self-reflection into one timeline—track contributions, re-summon past agents, and evolve their personas. Built with the HTDI Agentic Framework for human-AI co-development.",
-    "scope": "mine",
-    "lastActivityAt": "2025-11-18T21:54:17.000Z",
-    "staleness": "watch",
-    "researchStatus": "untracked",
-    "adoptionScore": 62,
-    "adoptionKind": "house",
-    "reasons": [
-      "Adoption kind: house",
-      "Primary skills: repo-discovery, skill-extraction, repo-adoption, mine-execution",
-      "Medium-term activity suggests this repo should stay on the watchlist.",
-      "This repo is owned or directly maintained and belongs in the execution workspace."
-    ],
-    "houseSkills": [
-      "repo-discovery",
-      "skill-extraction",
-      "repo-adoption",
-      "mine-execution"
-    ],
-    "capabilities": [
-      "agent-workflows",
-      "ml-ai",
-      "frontend-ui"
     ]
   },
   {
@@ -278,7 +278,7 @@
     "author": "KBLLR",
     "description": "No description",
     "scope": "mine",
-    "lastActivityAt": "2026-02-02T09:23:52.000Z",
+    "lastActivityAt": "2026-04-13T09:49:25.000Z",
     "staleness": "active",
     "researchStatus": "untracked",
     "adoptionScore": 55,
@@ -364,6 +364,33 @@
       "Adoption kind: tool",
       "Primary skills: skill-extraction, repo-adoption, mine-execution",
       "Medium-term activity suggests this repo should stay on the watchlist.",
+      "This repo is owned or directly maintained and belongs in the execution workspace."
+    ],
+    "houseSkills": [
+      "skill-extraction",
+      "repo-adoption",
+      "mine-execution"
+    ],
+    "capabilities": [
+      "agent-workflows",
+      "ml-ai"
+    ]
+  },
+  {
+    "nwo": "KBLLR/gen-idea-lab",
+    "name": "gen-idea-lab",
+    "author": "KBLLR",
+    "description": "Connect with expert AI assistants for each subject and generate creative project ideas. A growing collection of micro-apps designed for agents with Human in the loop.",
+    "scope": "mine",
+    "lastActivityAt": "2026-04-26T19:40:13.000Z",
+    "staleness": "active",
+    "researchStatus": "untracked",
+    "adoptionScore": 52,
+    "adoptionKind": "house",
+    "reasons": [
+      "Adoption kind: house",
+      "Primary skills: skill-extraction, repo-adoption, mine-execution",
+      "Recent activity suggests the repo is still moving.",
       "This repo is owned or directly maintained and belongs in the execution workspace."
     ],
     "houseSkills": [
@@ -713,6 +740,84 @@
     ]
   },
   {
+    "nwo": "KBLLR/vega-lab",
+    "name": "vega-lab",
+    "author": "KBLLR",
+    "description": "A curated list of GitHub stars ☕️",
+    "scope": "mine",
+    "lastActivityAt": "2026-04-28T07:08:39.000Z",
+    "staleness": "active",
+    "researchStatus": "untracked",
+    "adoptionScore": 47,
+    "adoptionKind": "house",
+    "reasons": [
+      "Adoption kind: house",
+      "Primary skills: repo-discovery, repo-adoption, mine-execution",
+      "Recent activity suggests the repo is still moving.",
+      "This repo is owned or directly maintained and belongs in the execution workspace."
+    ],
+    "houseSkills": [
+      "repo-discovery",
+      "repo-adoption",
+      "mine-execution"
+    ],
+    "capabilities": [
+      "frontend-ui"
+    ]
+  },
+  {
+    "nwo": "KBLLR/memoryblocks",
+    "name": "memoryblocks",
+    "author": "KBLLR",
+    "description": "No description",
+    "scope": "mine",
+    "lastActivityAt": "2026-04-26T12:37:26.000Z",
+    "staleness": "active",
+    "researchStatus": "untracked",
+    "adoptionScore": 47,
+    "adoptionKind": "house",
+    "reasons": [
+      "Adoption kind: house",
+      "Primary skills: repo-discovery, repo-adoption, mine-execution",
+      "Recent activity suggests the repo is still moving.",
+      "This repo is owned or directly maintained and belongs in the execution workspace."
+    ],
+    "houseSkills": [
+      "repo-discovery",
+      "repo-adoption",
+      "mine-execution"
+    ],
+    "capabilities": [
+      "frontend-ui"
+    ]
+  },
+  {
+    "nwo": "KBLLR/le-belle-epoch",
+    "name": "le-belle-epoch",
+    "author": "KBLLR",
+    "description": "No description",
+    "scope": "mine",
+    "lastActivityAt": "2026-04-11T12:59:29.000Z",
+    "staleness": "active",
+    "researchStatus": "untracked",
+    "adoptionScore": 47,
+    "adoptionKind": "house",
+    "reasons": [
+      "Adoption kind: house",
+      "Primary skills: repo-discovery, repo-adoption, mine-execution",
+      "Recent activity suggests the repo is still moving.",
+      "This repo is owned or directly maintained and belongs in the execution workspace."
+    ],
+    "houseSkills": [
+      "repo-discovery",
+      "repo-adoption",
+      "mine-execution"
+    ],
+    "capabilities": [
+      "frontend-ui"
+    ]
+  },
+  {
     "nwo": "KBLLR/panorama-to-cubemap",
     "name": "panorama-to-cubemap",
     "author": "KBLLR",
@@ -867,33 +972,6 @@
     ]
   },
   {
-    "nwo": "KBLLR/gen-idea-lab",
-    "name": "gen-idea-lab",
-    "author": "KBLLR",
-    "description": "Connect with expert AI assistants for each subject and generate creative project ideas. A growing collection of micro-apps designed for agents with Human in the loop.",
-    "scope": "mine",
-    "lastActivityAt": "2026-01-06T02:58:58.000Z",
-    "staleness": "watch",
-    "researchStatus": "untracked",
-    "adoptionScore": 45,
-    "adoptionKind": "house",
-    "reasons": [
-      "Adoption kind: house",
-      "Primary skills: skill-extraction, repo-adoption, mine-execution",
-      "Medium-term activity suggests this repo should stay on the watchlist.",
-      "This repo is owned or directly maintained and belongs in the execution workspace."
-    ],
-    "houseSkills": [
-      "skill-extraction",
-      "repo-adoption",
-      "mine-execution"
-    ],
-    "capabilities": [
-      "agent-workflows",
-      "ml-ai"
-    ]
-  },
-  {
     "nwo": "KBLLR/empathic-ai",
     "name": "empathic-ai",
     "author": "KBLLR",
@@ -998,6 +1076,31 @@
     ]
   },
   {
+    "nwo": "KBLLR/core-x",
+    "name": "core-x",
+    "author": "KBLLR",
+    "description": "Core-X: Clean architecture backbone for the KBLLR AI ecosystem",
+    "scope": "mine",
+    "lastActivityAt": "2026-04-28T03:09:14.000Z",
+    "staleness": "active",
+    "researchStatus": "untracked",
+    "adoptionScore": 43,
+    "adoptionKind": "tool",
+    "reasons": [
+      "Adoption kind: tool",
+      "Primary skills: repo-adoption, mine-execution",
+      "Recent activity suggests the repo is still moving.",
+      "This repo is owned or directly maintained and belongs in the execution workspace."
+    ],
+    "houseSkills": [
+      "repo-adoption",
+      "mine-execution"
+    ],
+    "capabilities": [
+      "ml-ai"
+    ]
+  },
+  {
     "nwo": "KBLLR/threejs-Vite-template-complex",
     "name": "threejs-Vite-template-complex",
     "author": "KBLLR",
@@ -1032,32 +1135,6 @@
     "description": "No description",
     "scope": "mine",
     "lastActivityAt": "2025-12-28T19:43:56.000Z",
-    "staleness": "watch",
-    "researchStatus": "untracked",
-    "adoptionScore": 40,
-    "adoptionKind": "house",
-    "reasons": [
-      "Adoption kind: house",
-      "Primary skills: repo-discovery, repo-adoption, mine-execution",
-      "Medium-term activity suggests this repo should stay on the watchlist.",
-      "This repo is owned or directly maintained and belongs in the execution workspace."
-    ],
-    "houseSkills": [
-      "repo-discovery",
-      "repo-adoption",
-      "mine-execution"
-    ],
-    "capabilities": [
-      "frontend-ui"
-    ]
-  },
-  {
-    "nwo": "KBLLR/memoryblocks",
-    "name": "memoryblocks",
-    "author": "KBLLR",
-    "description": "No description",
-    "scope": "mine",
-    "lastActivityAt": "2025-11-23T09:46:11.000Z",
     "staleness": "watch",
     "researchStatus": "untracked",
     "adoptionScore": 40,
@@ -1308,6 +1385,28 @@
     "capabilities": [
       "template-scaffolding"
     ]
+  },
+  {
+    "nwo": "KBLLR/kbllr-docs",
+    "name": "kbllr-docs",
+    "author": "KBLLR",
+    "description": "Core-X documentation site — Astro + Starlight, deployed to docs.kbllr.com",
+    "scope": "mine",
+    "lastActivityAt": "2026-03-07T15:55:53.000Z",
+    "staleness": "active",
+    "researchStatus": "untracked",
+    "adoptionScore": 36,
+    "adoptionKind": "ignore",
+    "reasons": [
+      "Adoption kind: ignore",
+      "Primary skills: mine-execution",
+      "Recent activity suggests the repo is still moving.",
+      "This repo is owned or directly maintained and belongs in the execution workspace."
+    ],
+    "houseSkills": [
+      "mine-execution"
+    ],
+    "capabilities": []
   },
   {
     "nwo": "KBLLR/htdi-agentic-lab",
@@ -1597,12 +1696,56 @@
     "capabilities": []
   },
   {
-    "nwo": "KBLLR/git-stars",
-    "name": "git-stars",
+    "nwo": "KBLLR/rigging-palace",
+    "name": "rigging-palace",
     "author": "KBLLR",
-    "description": "A curated list of GitHub stars ☕️",
+    "description": "Rigging Palace",
     "scope": "mine",
-    "lastActivityAt": "2026-02-04T00:27:32.000Z",
+    "lastActivityAt": "2026-04-27T22:24:04.000Z",
+    "staleness": "active",
+    "researchStatus": "untracked",
+    "adoptionScore": 30,
+    "adoptionKind": "ignore",
+    "reasons": [
+      "Adoption kind: ignore",
+      "Primary skills: mine-execution",
+      "Recent activity suggests the repo is still moving.",
+      "This repo is owned or directly maintained and belongs in the execution workspace."
+    ],
+    "houseSkills": [
+      "mine-execution"
+    ],
+    "capabilities": []
+  },
+  {
+    "nwo": "KBLLR/htdi-project",
+    "name": "htdi-project",
+    "author": "KBLLR",
+    "description": "Hard To Debug Issues",
+    "scope": "mine",
+    "lastActivityAt": "2026-04-23T18:49:36.000Z",
+    "staleness": "active",
+    "researchStatus": "untracked",
+    "adoptionScore": 30,
+    "adoptionKind": "ignore",
+    "reasons": [
+      "Adoption kind: ignore",
+      "Primary skills: mine-execution",
+      "Recent activity suggests the repo is still moving.",
+      "This repo is owned or directly maintained and belongs in the execution workspace."
+    ],
+    "houseSkills": [
+      "mine-execution"
+    ],
+    "capabilities": []
+  },
+  {
+    "nwo": "KBLLR/flirtcopilot",
+    "name": "flirtcopilot",
+    "author": "KBLLR",
+    "description": "No description",
+    "scope": "mine",
+    "lastActivityAt": "2026-03-12T11:31:18.000Z",
     "staleness": "active",
     "researchStatus": "untracked",
     "adoptionScore": 30,
@@ -1624,7 +1767,7 @@
     "author": "KBLLR",
     "description": "No description",
     "scope": "mine",
-    "lastActivityAt": "2026-02-03T18:04:03.000Z",
+    "lastActivityAt": "2026-03-07T05:27:26.000Z",
     "staleness": "active",
     "researchStatus": "untracked",
     "adoptionScore": 30,
@@ -1693,56 +1836,12 @@
     ]
   },
   {
-    "nwo": "KBLLR/htdi-project",
-    "name": "htdi-project",
-    "author": "KBLLR",
-    "description": "Hard To Debug Issues",
-    "scope": "mine",
-    "lastActivityAt": "2025-11-19T15:46:18.000Z",
-    "staleness": "watch",
-    "researchStatus": "untracked",
-    "adoptionScore": 23,
-    "adoptionKind": "ignore",
-    "reasons": [
-      "Adoption kind: ignore",
-      "Primary skills: mine-execution",
-      "Medium-term activity suggests this repo should stay on the watchlist.",
-      "This repo is owned or directly maintained and belongs in the execution workspace."
-    ],
-    "houseSkills": [
-      "mine-execution"
-    ],
-    "capabilities": []
-  },
-  {
     "nwo": "KBLLR/project_anja",
     "name": "project_anja",
     "author": "KBLLR",
     "description": "No description",
     "scope": "mine",
     "lastActivityAt": "2025-11-17T04:02:56.000Z",
-    "staleness": "watch",
-    "researchStatus": "untracked",
-    "adoptionScore": 23,
-    "adoptionKind": "ignore",
-    "reasons": [
-      "Adoption kind: ignore",
-      "Primary skills: mine-execution",
-      "Medium-term activity suggests this repo should stay on the watchlist.",
-      "This repo is owned or directly maintained and belongs in the execution workspace."
-    ],
-    "houseSkills": [
-      "mine-execution"
-    ],
-    "capabilities": []
-  },
-  {
-    "nwo": "KBLLR/flirtcopilot",
-    "name": "flirtcopilot",
-    "author": "KBLLR",
-    "description": "No description",
-    "scope": "mine",
-    "lastActivityAt": "2025-11-17T01:52:43.000Z",
     "staleness": "watch",
     "researchStatus": "untracked",
     "adoptionScore": 23,
@@ -2103,50 +2202,6 @@
       "Adoption kind: ignore",
       "Primary skills: mine-execution",
       "Stale activity suggests higher maintenance risk.",
-      "This repo is owned or directly maintained and belongs in the execution workspace."
-    ],
-    "houseSkills": [
-      "mine-execution"
-    ],
-    "capabilities": []
-  },
-  {
-    "nwo": "KBLLR/D-KNIGHT-NFT",
-    "name": "D-KNIGHT-NFT",
-    "author": "KBLLR",
-    "description": "No description",
-    "scope": "mine",
-    "lastActivityAt": "2022-03-24T05:12:13.000Z",
-    "staleness": "stale",
-    "researchStatus": "untracked",
-    "adoptionScore": 12,
-    "adoptionKind": "ignore",
-    "reasons": [
-      "Adoption kind: ignore",
-      "Primary skills: mine-execution",
-      "Stale activity suggests higher maintenance risk.",
-      "This repo is owned or directly maintained and belongs in the execution workspace."
-    ],
-    "houseSkills": [
-      "mine-execution"
-    ],
-    "capabilities": []
-  },
-  {
-    "nwo": "KBLLR/le-belle-epoch",
-    "name": "le-belle-epoch",
-    "author": "KBLLR",
-    "description": "No description",
-    "scope": "mine",
-    "lastActivityAt": "2025-12-28T23:22:47.000Z",
-    "staleness": "watch",
-    "researchStatus": "untracked",
-    "adoptionScore": 11,
-    "adoptionKind": "ignore",
-    "reasons": [
-      "Adoption kind: ignore",
-      "Primary skills: mine-execution",
-      "Medium-term activity suggests this repo should stay on the watchlist.",
       "This repo is owned or directly maintained and belongs in the execution workspace."
     ],
     "houseSkills": [
@@ -54543,6 +54598,25 @@
     "description": "Using a Kinect v1 and encoding its depth into a video file as a hue range, it can later be used to playback point-cloud animations.",
     "scope": "starred",
     "lastActivityAt": "2022-05-31T22:00:00.000Z",
+    "staleness": "stale",
+    "researchStatus": "untracked",
+    "adoptionScore": 2,
+    "adoptionKind": "ignore",
+    "reasons": [
+      "Adoption kind: ignore",
+      "Primary skills: repo-discovery",
+      "Stale activity suggests higher maintenance risk."
+    ],
+    "houseSkills": [],
+    "capabilities": []
+  },
+  {
+    "nwo": "KBLLR/D-KNIGHT-NFT",
+    "name": "D-KNIGHT-NFT",
+    "author": "KBLLR",
+    "description": "No description",
+    "scope": "starred",
+    "lastActivityAt": "2022-03-23T23:00:00.000Z",
     "staleness": "stale",
     "researchStatus": "untracked",
     "adoptionScore": 2,

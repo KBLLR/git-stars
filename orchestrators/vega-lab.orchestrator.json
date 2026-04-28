@@ -30,7 +30,7 @@
   },
   "shared_resources": {
     "filesystem": {
-      "root_paths": ["houses/vega-lab", "houses/git-stars"],
+      "root_paths": ["houses/vega-lab"],
       "workspace": "var/workspace",
       "artifacts": "var/artifacts"
     },
