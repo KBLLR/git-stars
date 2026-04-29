@@ -1,27 +1,11 @@
 [
   {
-    "nwo": "KBLLR/vega-lab",
-    "name": "vega-lab",
-    "author": "KBLLR",
-    "visibility": "public",
-    "hasReadme": true,
-    "updatedAt": "2026-04-28T07:08:39.000Z",
-    "healthFlags": [],
-    "recommendedActions": [
-      "mlx-mission",
-      "ops-kit",
-      "codex-mission",
-      "claude-mission",
-      "house-integration"
-    ]
-  },
-  {
     "nwo": "KBLLR/core-x",
     "name": "core-x",
     "author": "KBLLR",
     "visibility": "private",
     "hasReadme": false,
-    "updatedAt": "2026-04-28T03:09:14.000Z",
+    "updatedAt": "2026-04-28T10:26:05.000Z",
     "healthFlags": [
       "missing-readme",
       "private"
@@ -41,7 +25,7 @@
     "author": "KBLLR",
     "visibility": "private",
     "hasReadme": true,
-    "updatedAt": "2026-04-27T22:24:04.000Z",
+    "updatedAt": "2026-04-28T10:21:12.000Z",
     "healthFlags": [
       "private"
     ],
@@ -50,6 +34,22 @@
       "ops-kit",
       "codex-mission",
       "claude-mission"
+    ]
+  },
+  {
+    "nwo": "KBLLR/vega-lab",
+    "name": "vega-lab",
+    "author": "KBLLR",
+    "visibility": "public",
+    "hasReadme": true,
+    "updatedAt": "2026-04-28T07:39:49.000Z",
+    "healthFlags": [],
+    "recommendedActions": [
+      "mlx-mission",
+      "ops-kit",
+      "codex-mission",
+      "claude-mission",
+      "house-integration"
     ]
   },
   {
