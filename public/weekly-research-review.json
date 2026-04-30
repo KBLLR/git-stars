@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-29T00:00:00.000Z",
+  "generatedAt": "2026-04-30T00:00:00.000Z",
   "summary": "Weekly Vega Lab review for bright-star adoption, skill extraction, and research queue movement.",
   "brightStars": [
     "KBLLR/Leagentdiary",
@@ -34,12 +34,12 @@
   "researchCandidates": [
     "KBLLR/talking-heads-papers",
     "KBLLR/whisperkittools",
-    "MemPalace/mempalace",
-    "HKUDS/DeepCode",
     "comet-ml/opik",
+    "MemPalace/mempalace",
+    "marcomusy/vedo",
+    "HKUDS/DeepCode",
     "NVIDIAGameWorks/kaolin",
-    "Orchestra-Research/AI-Research-SKILLs",
-    "marcomusy/vedo"
+    "Orchestra-Research/AI-Research-SKILLs"
   ],
   "actionItemIds": [
     "vega-lab:skill:kbllr-leagentdiary",
