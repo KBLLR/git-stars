@@ -1,38 +1,48 @@
 {
-  "generated_at": "2026-04-30T00:59:24.606Z",
+  "generated_at": "2026-05-01T01:02:08.117Z",
   "summary": {
-    "total_repos": 2261,
-    "total_stars": 17747057,
-    "total_forks": 2514332,
-    "total_open_issues": 250601,
-    "average_stars": "7849.21",
-    "average_forks": "1112.04"
+    "total_repos": 2265,
+    "total_stars": 17855836,
+    "total_forks": 2531206,
+    "total_open_issues": 251091,
+    "average_stars": "7883.37",
+    "average_forks": "1117.53"
   },
   "languages": {
     "Python": {
-      "count": 865,
-      "total_stars": 8009300,
-      "total_forks": 1135674,
+      "count": 867,
+      "total_stars": 8019675,
+      "total_forks": 1136724,
       "repos": [
+        {
+          "name": "awesome-codex-skills",
+          "author": "ComposioHQ",
+          "stars": 5197
+        },
+        {
+          "name": "duh",
+          "author": "msitarzewski",
+          "stars": 38
+        },
         {
           "name": "EgoEdit",
           "author": "snap-research",
-          "stars": 142
+          "stars": 143
         },
         {
           "name": "mempalace",
           "author": "MemPalace",
-          "stars": 50374
+          "stars": 50542
         },
         {
           "name": "ai4animationpy",
           "author": "facebookresearch",
-          "stars": 1630
+          "stars": 1647
         },
         {
           "name": "DreamID-V",
           "author": "bytedance",
-          "stars": 624
+          "stars": 625
         },
         {
           "name": "unified-planning",
@@ -42,7 +52,7 @@
         {
           "name": "ACE-Step-1.5",
           "author": "ace-step",
-          "stars": 9811
+          "stars": 9847
         },
         {
           "name": "VISinger",
@@ -53,25 +63,20 @@
           "name": "DiffSinger",
           "author": "MoonInTheRiver",
           "stars": 4777
-        },
-        {
-          "name": "hold",
-          "author": "zc-alexfan",
-          "stars": 476
-        },
-        {
-          "name": "personaplex",
-          "author": "NVIDIA",
-          "stars": 9707
         }
       ],
-      "percentage": "38.26%"
+      "percentage": "38.28%"
     },
     "JavaScript": {
-      "count": 430,
-      "total_stars": 1347473,
-      "total_forks": 223824,
+      "count": 431,
+      "total_stars": 1348144,
+      "total_forks": 223902,
       "repos": [
+        {
+          "name": "fullik",
+          "author": "lo-th",
+          "stars": 465
+        },
         {
           "name": "degit",
           "author": "Rich-Harris",
@@ -80,7 +85,7 @@
         {
           "name": "osascript-dxt",
           "author": "k6l3",
-          "stars": 151
+          "stars": 152
         },
         {
           "name": "laboratoire",
@@ -90,12 +95,12 @@
         {
           "name": "Ai-Agent-Skills",
           "author": "MoizIbnYousaf",
-          "stars": 1041
+          "stars": 1042
         },
         {
           "name": "webgl-crt-shader",
           "author": "gingerbeardman",
-          "stars": 149
+          "stars": 150
         },
         {
           "name": "HeadAudio",
@@ -105,7 +110,7 @@
         {
           "name": "opentelemetry.io",
           "author": "open-telemetry",
-          "stars": 878
+          "stars": 879
         },
         {
           "name": "phy",
@@ -116,19 +121,14 @@
           "name": "neo",
           "author": "lo-th",
           "stars": 302
-        },
-        {
-          "name": "three.js-tba",
-          "author": "sunag",
-          "stars": 27
         }
       ],
-      "percentage": "19.02%"
+      "percentage": "19.03%"
     },
     "TypeScript": {
       "count": 272,
-      "total_stars": 2569482,
-      "total_forks": 429386,
+      "total_stars": 2571404,
+      "total_forks": 429741,
       "repos": [
         {
           "name": "koyha_fast_lora_trainer",
@@ -138,12 +138,12 @@
         {
           "name": "voicebox",
           "author": "jamiepine",
-          "stars": 24054
+          "stars": 24171
         },
         {
           "name": "tambo",
           "author": "tambo-ai",
-          "stars": 11149
+          "stars": 11151
         },
         {
           "name": "StringTune-3D",
@@ -153,17 +153,17 @@
         {
           "name": "openclaw",
           "author": "openclaw",
-          "stars": 366379
+          "stars": 366802
         },
         {
           "name": "openresponses",
           "author": "openresponses",
-          "stars": 1000
+          "stars": 1002
         },
         {
           "name": "three-vrm",
           "author": "pixiv",
-          "stars": 1895
+          "stars": 1898
         },
         {
           "name": "audial",
@@ -173,20 +173,20 @@
         {
           "name": "hono",
           "author": "honojs",
-          "stars": 30196
+          "stars": 30222
         },
         {
           "name": "agents.md",
           "author": "agentsmd",
-          "stars": 20793
+          "stars": 20841
         }
       ],
-      "percentage": "12.03%"
+      "percentage": "12.01%"
     },
     "Jupyter Notebook": {
       "count": 119,
-      "total_stars": 1040488,
-      "total_forks": 194236,
+      "total_stars": 1040896,
+      "total_forks": 194330,
       "repos": [
         {
           "name": "diffusionbee-stable-diffusion-ui",
@@ -201,7 +201,7 @@
         {
           "name": "perception_models",
           "author": "facebookresearch",
-          "stars": 2260
+          "stars": 2261
         },
         {
           "name": "AgentLite",
@@ -239,12 +239,12 @@
           "stars": 4054
         }
       ],
-      "percentage": "5.26%"
+      "percentage": "5.25%"
     },
     "C++": {
       "count": 115,
-      "total_stars": 675442,
-      "total_forks": 106463,
+      "total_stars": 675800,
+      "total_forks": 106527,
       "repos": [
         {
           "name": "bark.cpp",
@@ -297,12 +297,12 @@
           "stars": 95
         }
       ],
-      "percentage": "5.09%"
+      "percentage": "5.08%"
     },
     "Unknown": {
       "count": 112,
-      "total_stars": 1408761,
-      "total_forks": 145063,
+      "total_stars": 1412353,
+      "total_forks": 145508,
       "repos": [
         {
           "name": "procedural-clouds-threejs",
@@ -312,7 +312,7 @@
         {
           "name": "awesome-agent-skills",
           "author": "skillmatic-ai",
-          "stars": 555
+          "stars": 557
         },
         {
           "name": "laion-3d",
@@ -322,12 +322,12 @@
         {
           "name": "andrej-karpathy-skills",
           "author": "forrestchang",
-          "stars": 99639
+          "stars": 102583
         },
         {
           "name": "awesome-webxr-development",
           "author": "Pico-Developer",
-          "stars": 279
+          "stars": 280
         },
         {
           "name": "PosterCopilot",
@@ -347,20 +347,20 @@
         {
           "name": "jules-awesome-list",
           "author": "google-labs-code",
-          "stars": 2981
+          "stars": 2982
         },
         {
           "name": "awesome-mcp-servers",
           "author": "punkpeye",
-          "stars": 85946
+          "stars": 86022
         }
       ],
-      "percentage": "4.95%"
+      "percentage": "4.94%"
     },
     "Swift": {
       "count": 52,
-      "total_stars": 253889,
-      "total_forks": 20845,
+      "total_stars": 254002,
+      "total_forks": 20852,
       "repos": [
         {
           "name": "Factory",
@@ -380,7 +380,7 @@
         {
           "name": "mlx-swift-lm",
           "author": "ml-explore",
-          "stars": 469
+          "stars": 472
         },
         {
           "name": "claudecodeusage",
@@ -390,7 +390,7 @@
         {
           "name": "container",
           "author": "apple",
-          "stars": 26227
+          "stars": 26252
         },
         {
           "name": "MetalSplatter",
@@ -405,7 +405,7 @@
         {
           "name": "argmax-oss-swift",
           "author": "argmaxinc",
-          "stars": 6048
+          "stars": 6049
         },
         {
           "name": "thumbhash",
@@ -417,8 +417,8 @@
     },
     "HTML": {
       "count": 52,
-      "total_stars": 270425,
-      "total_forks": 31985,
+      "total_stars": 270541,
+      "total_forks": 31991,
       "repos": [
         {
           "name": "holograim",
@@ -458,7 +458,7 @@
         {
           "name": "human",
           "author": "vladmandic",
-          "stars": 3109
+          "stars": 3110
         },
         {
           "name": "gamepad",
@@ -468,30 +468,30 @@
         {
           "name": "stats-gl",
           "author": "RenaudRohlinger",
-          "stars": 267
+          "stars": 268
         }
       ],
       "percentage": "2.30%"
     },
     "C": {
       "count": 35,
-      "total_stars": 102354,
-      "total_forks": 11322,
+      "total_stars": 102382,
+      "total_forks": 11326,
       "repos": [
         {
           "name": "GraphicsGems",
           "author": "erich666",
-          "stars": 1508
+          "stars": 1509
         },
         {
           "name": "espeak-ng",
           "author": "espeak-ng",
-          "stars": 6413
+          "stars": 6414
         },
         {
           "name": "markdown-wasm",
           "author": "rsms",
-          "stars": 1658
+          "stars": 1659
         },
         {
           "name": "llvmbox",
@@ -506,7 +506,7 @@
         {
           "name": "PufferLib",
           "author": "PufferAI",
-          "stars": 5633
+          "stars": 5638
         },
         {
           "name": "ScanNet",
@@ -533,8 +533,8 @@
     },
     "C#": {
       "count": 24,
-      "total_stars": 36936,
-      "total_forks": 6766,
+      "total_stars": 36947,
+      "total_forks": 6764,
       "repos": [
         {
           "name": "LLMR",
@@ -554,12 +554,12 @@
         {
           "name": "MonoGame",
           "author": "MonoGame",
-          "stars": 13822
+          "stars": 13829
         },
         {
           "name": "NoFences",
           "author": "Twometer",
-          "stars": 622
+          "stars": 623
         },
         {
           "name": "Unity-Movement",
@@ -591,38 +591,38 @@
     },
     "Rust": {
       "count": 22,
-      "total_stars": 373569,
-      "total_forks": 33429,
+      "total_stars": 374472,
+      "total_forks": 33564,
       "repos": [
         {
           "name": "rig",
           "author": "0xPlaygrounds",
-          "stars": 7101
+          "stars": 7118
         },
         {
           "name": "spacebot",
           "author": "spacedriveapp",
-          "stars": 2160
+          "stars": 2168
         },
         {
           "name": "spacedrive",
           "author": "spacedriveapp",
-          "stars": 37924
+          "stars": 37931
         },
         {
           "name": "rip",
           "author": "cesarferreira",
-          "stars": 455
+          "stars": 456
         },
         {
           "name": "oxdraw",
           "author": "RohanAdwankar",
-          "stars": 2305
+          "stars": 2307
         },
         {
           "name": "iroh",
           "author": "n0-computer",
-          "stars": 8397
+          "stars": 8407
         },
         {
           "name": "harmony",
@@ -637,7 +637,7 @@
         {
           "name": "rerun",
           "author": "rerun-io",
-          "stars": 10600
+          "stars": 10610
         },
         {
           "name": "audioscope",
@@ -707,33 +707,33 @@
     },
     "Go": {
       "count": 16,
-      "total_stars": 442801,
-      "total_forks": 38237,
+      "total_stars": 443016,
+      "total_forks": 38280,
       "repos": [
         {
           "name": "livekit",
           "author": "livekit",
-          "stars": 18431
+          "stars": 18450
         },
         {
           "name": "fzf",
           "author": "junegunn",
-          "stars": 79892
+          "stars": 79907
         },
         {
           "name": "github-mcp-server",
           "author": "github",
-          "stars": 29365
+          "stars": 29402
         },
         {
           "name": "lux",
           "author": "iawia002",
-          "stars": 31302
+          "stars": 31304
         },
         {
           "name": "Fabric",
           "author": "danielmiessler",
-          "stars": 41127
+          "stars": 41176
         },
         {
           "name": "LLocalSearch",
@@ -743,12 +743,12 @@
         {
           "name": "ollama",
           "author": "ollama",
-          "stars": 170336
+          "stars": 170419
         },
         {
           "name": "plandex",
           "author": "plandex-ai",
-          "stars": 15313
+          "stars": 15317
         },
         {
           "name": "cortex",
@@ -771,12 +771,12 @@
         {
           "name": "12factor",
           "author": "heroku",
-          "stars": 3763
+          "stars": 3762
         },
         {
           "name": "pokemon-cards-css",
           "author": "simeydotme",
-          "stars": 7530
+          "stars": 7532
         },
         {
           "name": "palettes",
@@ -811,7 +811,7 @@
         {
           "name": "magic-of-css",
           "author": "adamschwartz",
-          "stars": 6688
+          "stars": 6687
         },
         {
           "name": "facevoice",
@@ -821,9 +821,67 @@
       ],
       "percentage": "0.62%"
     },
+    "Shell": {
+      "count": 12,
+      "total_stars": 383671,
+      "total_forks": 53742,
+      "repos": [
+        {
+          "name": "agency-agents",
+          "author": "msitarzewski",
+          "stars": 89613
+        },
+        {
+          "name": "r1_escape",
+          "author": "RabbitHoleEscapeR1",
+          "stars": 418
+        },
+        {
+          "name": "ohmyzsh",
+          "author": "ohmyzsh",
+          "stars": 186637
+        },
+        {
+          "name": "headless-chrome-nvidia-t4-gpu-support",
+          "author": "jasonmayes",
+          "stars": 88
+        },
+        {
+          "name": "morse-meme",
+          "author": "ggerganov",
+          "stars": 25
+        },
+        {
+          "name": "shell-novice",
+          "author": "swcarpentry",
+          "stars": 434
+        },
+        {
+          "name": "miniforge",
+          "author": "conda-forge",
+          "stars": 9714
+        },
+        {
+          "name": "xbar-plugins",
+          "author": "matryer",
+          "stars": 2581
+        },
+        {
+          "name": "minimal-terminal-prompt",
+          "author": "Lissy93",
+          "stars": 71
+        },
+        {
+          "name": "afloat",
+          "author": "rwu823",
+          "stars": 876
+        }
+      ],
+      "percentage": "0.53%"
+    },
     "Objective-C": {
       "count": 12,
-      "total_stars": 52777,
+      "total_stars": 52786,
       "total_forks": 7977,
       "repos": [
         {
@@ -839,7 +897,7 @@
         {
           "name": "hear",
           "author": "sveinbjornt",
-          "stars": 651
+          "stars": 652
         },
         {
           "name": "FastDMG",
@@ -859,7 +917,7 @@
         {
           "name": "Sparkle",
           "author": "sparkle-project",
-          "stars": 8929
+          "stars": 8937
         },
         {
           "name": "SBSCustomAnimoji",
@@ -881,8 +939,8 @@
     },
     "Vue": {
       "count": 11,
-      "total_stars": 50371,
-      "total_forks": 5933,
+      "total_stars": 50388,
+      "total_forks": 5938,
       "repos": [
         {
           "name": "do-not-laugh",
@@ -907,7 +965,7 @@
         {
           "name": "it-tools",
           "author": "CorentinTh",
-          "stars": 38320
+          "stars": 38336
         },
         {
           "name": "aiManagerPrompter",
@@ -927,7 +985,7 @@
         {
           "name": "cssgridgenerator",
           "author": "sdras",
-          "stars": 5333
+          "stars": 5334
         },
         {
           "name": "Whitebird",
@@ -937,68 +995,10 @@
       ],
       "percentage": "0.49%"
     },
-    "Shell": {
-      "count": 11,
-      "total_stars": 294003,
-      "total_forks": 39203,
-      "repos": [
-        {
-          "name": "r1_escape",
-          "author": "RabbitHoleEscapeR1",
-          "stars": 417
-        },
-        {
-          "name": "ohmyzsh",
-          "author": "ohmyzsh",
-          "stars": 186601
-        },
-        {
-          "name": "headless-chrome-nvidia-t4-gpu-support",
-          "author": "jasonmayes",
-          "stars": 88
-        },
-        {
-          "name": "morse-meme",
-          "author": "ggerganov",
-          "stars": 25
-        },
-        {
-          "name": "shell-novice",
-          "author": "swcarpentry",
-          "stars": 434
-        },
-        {
-          "name": "miniforge",
-          "author": "conda-forge",
-          "stars": 9707
-        },
-        {
-          "name": "xbar-plugins",
-          "author": "matryer",
-          "stars": 2582
-        },
-        {
-          "name": "minimal-terminal-prompt",
-          "author": "Lissy93",
-          "stars": 71
-        },
-        {
-          "name": "afloat",
-          "author": "rwu823",
-          "stars": 876
-        },
-        {
-          "name": "nvm",
-          "author": "nvm-sh",
-          "stars": 93148
-        }
-      ],
-      "percentage": "0.49%"
-    },
     "Java": {
       "count": 6,
-      "total_stars": 28069,
-      "total_forks": 4910,
+      "total_stars": 28072,
+      "total_forks": 4914,
       "repos": [
         {
           "name": "controlp5",
@@ -1023,7 +1023,7 @@
         {
           "name": "bazel",
           "author": "bazelbuild",
-          "stars": 25346
+          "stars": 25349
         },
         {
           "name": "lwjgl-basics",
@@ -1031,22 +1031,22 @@
           "stars": 1892
         }
       ],
-      "percentage": "0.27%"
+      "percentage": "0.26%"
     },
     "TeX": {
       "count": 5,
-      "total_stars": 19423,
-      "total_forks": 1297,
+      "total_stars": 19482,
+      "total_forks": 1302,
       "repos": [
         {
           "name": "AI-Research-SKILLs",
           "author": "Orchestra-Research",
-          "stars": 7595
+          "stars": 7652
         },
         {
           "name": "milewski-ctfp-pdf",
           "author": "hmemcpy",
-          "stars": 11573
+          "stars": 11575
         },
         {
           "name": "deep-learning-notes",
@@ -1068,13 +1068,13 @@
     },
     "Svelte": {
       "count": 5,
-      "total_stars": 1050,
+      "total_stars": 1052,
       "total_forks": 163,
       "repos": [
         {
           "name": "text-to-cad-ui",
           "author": "KittyCAD",
-          "stars": 271
+          "stars": 273
         },
         {
           "name": "extension",
@@ -1101,8 +1101,8 @@
     },
     "Cuda": {
       "count": 5,
-      "total_stars": 48762,
-      "total_forks": 5914,
+      "total_stars": 48773,
+      "total_forks": 5916,
       "repos": [
         {
           "name": "sdf_gen",
@@ -1112,7 +1112,7 @@
         {
           "name": "llm.c",
           "author": "karpathy",
-          "stars": 29760
+          "stars": 29768
         },
         {
           "name": "torchmcubes",
@@ -1122,7 +1122,7 @@
         {
           "name": "instant-ngp",
           "author": "NVlabs",
-          "stars": 17371
+          "stars": 17374
         },
         {
           "name": "k2",
@@ -1167,18 +1167,18 @@
     },
     "Ruby": {
       "count": 3,
-      "total_stars": 58379,
-      "total_forks": 6175,
+      "total_stars": 58395,
+      "total_forks": 6182,
       "repos": [
         {
           "name": "gumroad",
           "author": "antiwork",
-          "stars": 8978
+          "stars": 8987
         },
         {
           "name": "huginn",
           "author": "huginn",
-          "stars": 49206
+          "stars": 49213
         },
         {
           "name": "punks.starter",
@@ -1213,7 +1213,7 @@
     },
     "MATLAB": {
       "count": 3,
-      "total_stars": 7778,
+      "total_stars": 7779,
       "total_forks": 2006,
       "repos": [
         {
@@ -1229,7 +1229,7 @@
         {
           "name": "OpenFace",
           "author": "TadasBaltrusaitis",
-          "stars": 7638
+          "stars": 7639
         }
       ],
       "percentage": "0.13%"
@@ -1259,7 +1259,7 @@
     },
     "Roff": {
       "count": 3,
-      "total_stars": 3080,
+      "total_stars": 3081,
       "total_forks": 245,
       "repos": [
         {
@@ -1270,7 +1270,7 @@
         {
           "name": "screen-space-reflections",
           "author": "0beqz",
-          "stars": 588
+          "stars": 589
         },
         {
           "name": "threejs-sandbox",
@@ -1318,13 +1318,13 @@
     },
     "Dart": {
       "count": 2,
-      "total_stars": 12470,
-      "total_forks": 1978,
+      "total_stars": 12491,
+      "total_forks": 1983,
       "repos": [
         {
           "name": "omi",
           "author": "BasedHardware",
-          "stars": 12323
+          "stars": 12344
         },
         {
           "name": "package_im_stepper",
@@ -1336,18 +1336,18 @@
     },
     "MDX": {
       "count": 2,
-      "total_stars": 45863,
-      "total_forks": 3739,
+      "total_stars": 45890,
+      "total_forks": 3745,
       "repos": [
         {
           "name": "magicui",
           "author": "magicuidesign",
-          "stars": 20841
+          "stars": 20856
         },
         {
           "name": "haystack",
           "author": "deepset-ai",
-          "stars": 25022
+          "stars": 25034
         }
       ],
       "percentage": "0.09%"
@@ -1372,13 +1372,13 @@
     },
     "Mathematica": {
       "count": 2,
-      "total_stars": 3537,
+      "total_stars": 3538,
       "total_forks": 1350,
       "repos": [
         {
           "name": "FaceCapCustomAvatarExporter",
           "author": "hizzlehoff",
-          "stars": 13
+          "stars": 14
         },
         {
           "name": "glTF-Sample-Models",
@@ -1390,26 +1390,26 @@
     },
     "Markdown": {
       "count": 1,
-      "total_stars": 498086,
-      "total_forks": 47199,
+      "total_stars": 498306,
+      "total_forks": 47221,
       "repos": [
         {
           "name": "build-your-own-x",
           "author": "codecrafters-io",
-          "stars": 498086
+          "stars": 498306
         }
       ],
       "percentage": "0.04%"
     },
     "Astro": {
       "count": 1,
-      "total_stars": 848,
+      "total_stars": 849,
       "total_forks": 42,
       "repos": [
         {
           "name": "smooothy",
           "author": "vallafederico",
-          "stars": 848
+          "stars": 849
         }
       ],
       "percentage": "0.04%"
@@ -1455,13 +1455,13 @@
     },
     "Objective-C++": {
       "count": 1,
-      "total_stars": 5601,
+      "total_stars": 5603,
       "total_forks": 495,
       "repos": [
         {
           "name": "MoltenVK",
           "author": "KhronosGroup",
-          "stars": 5601
+          "stars": 5603
         }
       ],
       "percentage": "0.04%"
@@ -1507,13 +1507,13 @@
     },
     "Jinja": {
       "count": 1,
-      "total_stars": 1577,
+      "total_stars": 1578,
       "total_forks": 7,
       "repos": [
         {
           "name": "LLM-Prompt-Library",
           "author": "abilzerian",
-          "stars": 1577
+          "stars": 1578
         }
       ],
       "percentage": "0.04%"
@@ -1559,13 +1559,13 @@
     },
     "Fluent": {
       "count": 1,
-      "total_stars": 30797,
-      "total_forks": 1033,
+      "total_stars": 30802,
+      "total_forks": 1032,
       "repos": [
         {
           "name": "czkawka",
           "author": "qarmin",
-          "stars": 30797
+          "stars": 30802
         }
       ],
       "percentage": "0.04%"
@@ -1598,13 +1598,13 @@
     },
     "CMake": {
       "count": 1,
-      "total_stars": 461,
+      "total_stars": 462,
       "total_forks": 221,
       "repos": [
         {
           "name": "obs-plugintemplate",
           "author": "obsproject",
-          "stars": 461
+          "stars": 462
         }
       ],
       "percentage": "0.04%"
@@ -1676,13 +1676,13 @@
     },
     "Forth": {
       "count": 1,
-      "total_stars": 1534,
+      "total_stars": 1535,
       "total_forks": 154,
       "repos": [
         {
           "name": "common-3d-test-models",
           "author": "alecjacobson",
-          "stars": 1534
+          "stars": 1535
         }
       ],
       "percentage": "0.04%"
@@ -1729,7 +1729,7 @@
     "Wolfram Language": {
       "count": 1,
       "total_stars": 686,
-      "total_forks": 325,
+      "total_forks": 326,
       "repos": [
         {
           "name": "Exporters",
@@ -1743,7 +1743,7 @@
   "topics": {
     "ai": {
       "count": 123,
-      "total_stars": 3284237,
+      "total_stars": 3287057,
       "repos": [
         "claude-code-templates",
         "documind",
@@ -1754,7 +1754,7 @@
     },
     "python": {
       "count": 115,
-      "total_stars": 3331850,
+      "total_stars": 3333578,
       "repos": [
         "comfyui-lf",
         "mempalace",
@@ -1765,7 +1765,7 @@
     },
     "javascript": {
       "count": 110,
-      "total_stars": 1577492,
+      "total_stars": 1577905,
       "repos": [
         "two.js",
         "melonJS",
@@ -1776,7 +1776,7 @@
     },
     "deep-learning": {
       "count": 93,
-      "total_stars": 1371889,
+      "total_stars": 1372212,
       "repos": [
         "netron",
         "jeelizWeboji",
@@ -1787,7 +1787,7 @@
     },
     "machine-learning": {
       "count": 90,
-      "total_stars": 1509389,
+      "total_stars": 1509858,
       "repos": [
         "teachable-machine-v1",
         "chatgpt.js",
@@ -1798,7 +1798,7 @@
     },
     "threejs": {
       "count": 85,
-      "total_stars": 139610,
+      "total_stars": 139635,
       "repos": [
         "phy",
         "three.js-tba",
@@ -1809,7 +1809,7 @@
     },
     "webgl": {
       "count": 83,
-      "total_stars": 372681,
+      "total_stars": 372744,
       "repos": [
         "two.js",
         "melonJS",
@@ -1820,7 +1820,7 @@
     },
     "pytorch": {
       "count": 82,
-      "total_stars": 1374339,
+      "total_stars": 1374883,
       "repos": [
         "netron",
         "hold",
@@ -1830,19 +1830,19 @@
       ]
     },
     "llm": {
-      "count": 71,
-      "total_stars": 2296620,
+      "count": 72,
+      "total_stars": 2303780,
       "repos": [
+        "awesome-codex-skills",
         "mempalace",
         "vllm",
         "vllm-mlx",
-        "mlx-tune",
-        "code-interpreter"
+        "mlx-tune"
       ]
     },
     "computer-vision": {
       "count": 63,
-      "total_stars": 349872,
+      "total_stars": 350017,
       "repos": [
         "speedy-vision",
         "WebAR.rocks.object",
@@ -1853,7 +1853,7 @@
     },
     "stable-diffusion": {
       "count": 62,
-      "total_stars": 492556,
+      "total_stars": 492768,
       "repos": [
         "Stable-Diffusion",
         "StableDiffusion-CheatSheet",
@@ -1864,7 +1864,7 @@
     },
     "3d": {
       "count": 61,
-      "total_stars": 381179,
+      "total_stars": 381293,
       "repos": [
         "aframe",
         "threejs-blender-template",
@@ -1875,7 +1875,7 @@
     },
     "typescript": {
       "count": 56,
-      "total_stars": 1073377,
+      "total_stars": 1073957,
       "repos": [
         "melonJS",
         "comfyui-lf",
@@ -1886,7 +1886,7 @@
     },
     "react": {
       "count": 52,
-      "total_stars": 777628,
+      "total_stars": 777802,
       "repos": [
         "MusicDiscovery",
         "diffusion-canvas",
@@ -1897,7 +1897,7 @@
     },
     "openai": {
       "count": 45,
-      "total_stars": 1636157,
+      "total_stars": 1637440,
       "repos": [
         "one-api",
         "chatgpt.js",
@@ -1908,7 +1908,7 @@
     },
     "chatgpt": {
       "count": 41,
-      "total_stars": 1410958,
+      "total_stars": 1411706,
       "repos": [
         "one-api",
         "chatgpt.js",
@@ -1919,7 +1919,7 @@
     },
     "comfyui": {
       "count": 38,
-      "total_stars": 148145,
+      "total_stars": 148328,
       "repos": [
         "comfyui-lf",
         "ComfyUI-Custom-Scripts",
@@ -1930,7 +1930,7 @@
     },
     "artificial-intelligence": {
       "count": 36,
-      "total_stars": 956737,
+      "total_stars": 957129,
       "repos": [
         "chatgpt.js",
         "enhancr",
@@ -1941,7 +1941,7 @@
     },
     "hacktoberfest": {
       "count": 33,
-      "total_stars": 1286042,
+      "total_stars": 1286567,
       "repos": [
         "melonJS",
         "OpenJSCAD.org",
@@ -1952,7 +1952,7 @@
     },
     "blender": {
       "count": 33,
-      "total_stars": 47545,
+      "total_stars": 47561,
       "repos": [
         "threejs-blender-template",
         "threegn",
@@ -1963,7 +1963,7 @@
     },
     "macos": {
       "count": 32,
-      "total_stars": 314584,
+      "total_stars": 314728,
       "repos": [
         "chatgpt-mac",
         "edex-ui",
@@ -1974,7 +1974,7 @@
     },
     "agent": {
       "count": 32,
-      "total_stars": 761099,
+      "total_stars": 761596,
       "repos": [
         "E2B",
         "adk-python",
@@ -1985,7 +1985,7 @@
     },
     "ios": {
       "count": 29,
-      "total_stars": 219632,
+      "total_stars": 219692,
       "repos": [
         "RSSBud",
         "expo-three-demo",
@@ -1996,7 +1996,7 @@
     },
     "3d-reconstruction": {
       "count": 29,
-      "total_stars": 70523,
+      "total_stars": 70534,
       "repos": [
         "hold",
         "LongSplat",
@@ -2007,7 +2007,7 @@
     },
     "gpt": {
       "count": 27,
-      "total_stars": 1160275,
+      "total_stars": 1160896,
       "repos": [
         "one-api",
         "chatgpt.js",
@@ -2018,7 +2018,7 @@
     },
     "transformers": {
       "count": 24,
-      "total_stars": 433174,
+      "total_stars": 433361,
       "repos": [
         "transformers.js-examples",
         "transformers.js",
@@ -2029,7 +2029,7 @@
     },
     "graphics": {
       "count": 24,
-      "total_stars": 115202,
+      "total_stars": 115224,
       "repos": [
         "Three-Kinectron",
         "three-mesh-bvh",
@@ -2040,7 +2040,7 @@
     },
     "shaders": {
       "count": 24,
-      "total_stars": 82725,
+      "total_stars": 82737,
       "repos": [
         "fake-glow-material-threejs",
         "three-csm",
@@ -2051,7 +2051,7 @@
     },
     "cli": {
       "count": 23,
-      "total_stars": 842953,
+      "total_stars": 843411,
       "repos": [
         "Ai-Agent-Skills",
         "Termino.js",
@@ -2062,7 +2062,7 @@
     },
     "animation": {
       "count": 23,
-      "total_stars": 79031,
+      "total_stars": 79039,
       "repos": [
         "three.js-tba",
         "two.js",
@@ -2073,7 +2073,7 @@
     },
     "generative-ai": {
       "count": 23,
-      "total_stars": 628829,
+      "total_stars": 629182,
       "repos": [
         "Stable-Diffusion",
         "meta-glasses-gemini",
@@ -2084,7 +2084,7 @@
     },
     "swift": {
       "count": 23,
-      "total_stars": 86839,
+      "total_stars": 86851,
       "repos": [
         "argmax-oss-swift",
         "iOS",
@@ -2095,7 +2095,7 @@
     },
     "glsl": {
       "count": 22,
-      "total_stars": 46105,
+      "total_stars": 46107,
       "repos": [
         "fake-glow-material-threejs",
         "shader-doodle",
@@ -2106,7 +2106,7 @@
     },
     "css": {
       "count": 22,
-      "total_stars": 191333,
+      "total_stars": 191340,
       "repos": [
         "flex-cheatsheet",
         "dom-to-image",
@@ -2117,7 +2117,7 @@
     },
     "computer-graphics": {
       "count": 22,
-      "total_stars": 114889,
+      "total_stars": 114925,
       "repos": [
         "physically-based-api",
         "SolarSys",
@@ -2128,7 +2128,7 @@
     },
     "agents": {
       "count": 22,
-      "total_stars": 797463,
+      "total_stars": 797870,
       "repos": [
         "adk-python",
         "optillm",
@@ -2139,7 +2139,7 @@
     },
     "automation": {
       "count": 21,
-      "total_stars": 637127,
+      "total_stars": 637523,
       "repos": [
         "automatisch",
         "nexrender",
@@ -2150,7 +2150,7 @@
     },
     "html": {
       "count": 21,
-      "total_stars": 293949,
+      "total_stars": 293979,
       "repos": [
         "aframe",
         "node-html-to-text",
@@ -2161,7 +2161,7 @@
     },
     "tensorflow": {
       "count": 21,
-      "total_stars": 202858,
+      "total_stars": 202896,
       "repos": [
         "netron",
         "screenity",
@@ -2172,7 +2172,7 @@
     },
     "diffusion-models": {
       "count": 21,
-      "total_stars": 55680,
+      "total_stars": 55712,
       "repos": [
         "1Prompt1Story",
         "Hunyuan3D-2",
@@ -2183,7 +2183,7 @@
     },
     "image-generation": {
       "count": 20,
-      "total_stars": 319068,
+      "total_stars": 319115,
       "repos": [
         "mlx-openai-server",
         "PhotoPoster",
@@ -2194,7 +2194,7 @@
     },
     "3d-graphics": {
       "count": 19,
-      "total_stars": 91745,
+      "total_stars": 91767,
       "repos": [
         "suica",
         "physically-based-api",
@@ -2205,7 +2205,7 @@
     },
     "gemini": {
       "count": 19,
-      "total_stars": 821255,
+      "total_stars": 821899,
       "repos": [
         "example-chat-app",
         "one-api",
@@ -2216,7 +2216,7 @@
     },
     "nodejs": {
       "count": 19,
-      "total_stars": 506738,
+      "total_stars": 506914,
       "repos": [
         "threads.js",
         "node-chatgpt-api",
@@ -2227,7 +2227,7 @@
     },
     "creative-coding": {
       "count": 19,
-      "total_stars": 45934,
+      "total_stars": 45937,
       "repos": [
         "threejs-vanilla-holographic-material",
         "shader-doodle",
@@ -2238,7 +2238,7 @@
     },
     "ui": {
       "count": 19,
-      "total_stars": 468968,
+      "total_stars": 469277,
       "repos": [
         "reef",
         "pywinassistant",
@@ -2247,9 +2247,20 @@
         "unsloth"
       ]
     },
+    "awesome": {
+      "count": 19,
+      "total_stars": 927757,
+      "repos": [
+        "awesome-codex-skills",
+        "awesome-ml-demos-with-ios",
+        "awesome-python",
+        "awesome-ios",
+        "awesome-creative-coding"
+      ]
+    },
     "canvas": {
       "count": 18,
-      "total_stars": 253875,
+      "total_stars": 253905,
       "repos": [
         "two.js",
         "diffusion-canvas",
@@ -2260,7 +2271,7 @@
     },
     "text-to-speech": {
       "count": 18,
-      "total_stars": 234997,
+      "total_stars": 235139,
       "repos": [
         "HeadTTS",
         "TalkingHead",
@@ -2271,7 +2282,7 @@
     },
     "gltf": {
       "count": 18,
-      "total_stars": 44401,
+      "total_stars": 44409,
       "repos": [
         "gltf-pipeline",
         "three-gltf-extensions",
@@ -2282,7 +2293,7 @@
     },
     "llms": {
       "count": 18,
-      "total_stars": 578406,
+      "total_stars": 578845,
       "repos": [
         "documind",
         "mlx-lm",
@@ -2293,7 +2304,7 @@
     },
     "tts": {
       "count": 18,
-      "total_stars": 260619,
+      "total_stars": 260758,
       "repos": [
         "Stable-Diffusion",
         "comfyui-mixlab-nodes",
@@ -2304,7 +2315,7 @@
     },
     "rendering": {
       "count": 18,
-      "total_stars": 58594,
+      "total_stars": 58619,
       "repos": [
         "physically-based-api",
         "three-gpu-pathtracer",
@@ -2315,7 +2326,7 @@
     },
     "large-language-models": {
       "count": 18,
-      "total_stars": 502522,
+      "total_stars": 502783,
       "repos": [
         "mav",
         "mlx-tune",
@@ -2324,20 +2335,9 @@
         "R2R"
       ]
     },
-    "awesome": {
-      "count": 18,
-      "total_stars": 921908,
-      "repos": [
-        "awesome-ml-demos-with-ios",
-        "awesome-python",
-        "awesome-ios",
-        "awesome-creative-coding",
-        "awesome-agent-skills"
-      ]
-    },
     "nextjs": {
       "count": 17,
-      "total_stars": 457048,
+      "total_stars": 457335,
       "repos": [
         "NotionNext",
         "HULL",
@@ -2348,7 +2348,7 @@
     },
     "speech-recognition": {
       "count": 17,
-      "total_stars": 262963,
+      "total_stars": 263088,
       "repos": [
         "ComfyUI_Custom_Nodes_AlekPet",
         "mlx-tune",
@@ -2359,7 +2359,7 @@
     },
     "mlx": {
       "count": 17,
-      "total_stars": 85994,
+      "total_stars": 86208,
       "repos": [
         "vllm-mlx",
         "photo-similarity-search",
@@ -2370,7 +2370,7 @@
     },
     "blender-addon": {
       "count": 17,
-      "total_stars": 25707,
+      "total_stars": 25715,
       "repos": [
         "BakeMaster-Blender-Addon",
         "AI-Render",
@@ -2381,7 +2381,7 @@
     },
     "gui": {
       "count": 17,
-      "total_stars": 208983,
+      "total_stars": 209049,
       "repos": [
         "reflex",
         "Fractalshades",
@@ -2392,7 +2392,7 @@
     },
     "awesome-list": {
       "count": 17,
-      "total_stars": 1169285,
+      "total_stars": 1170012,
       "repos": [
         "prompts.chat",
         "awesome-creative-coding",
@@ -2403,7 +2403,7 @@
     },
     "svg": {
       "count": 16,
-      "total_stars": 246627,
+      "total_stars": 246655,
       "repos": [
         "two.js",
         "OpenJSCAD.org",
@@ -2414,7 +2414,7 @@
     },
     "inference": {
       "count": 16,
-      "total_stars": 229068,
+      "total_stars": 229251,
       "repos": [
         "vllm",
         "vllm-mlx",
@@ -2425,7 +2425,7 @@
     },
     "rag": {
       "count": 16,
-      "total_stars": 645875,
+      "total_stars": 646386,
       "repos": [
         "mlx-embeddings",
         "philoagents-course",
@@ -2436,7 +2436,7 @@
     },
     "nerf": {
       "count": 16,
-      "total_stars": 60759,
+      "total_stars": 60767,
       "repos": [
         "cv-arxiv-daily",
         "fast-gaussian-rasterization",
@@ -2447,7 +2447,7 @@
     },
     "cpp": {
       "count": 16,
-      "total_stars": 385058,
+      "total_stars": 385174,
       "repos": [
         "rerun",
         "hmm",
@@ -2458,7 +2458,7 @@
     },
     "pose-estimation": {
       "count": 15,
-      "total_stars": 122728,
+      "total_stars": 122776,
       "repos": [
         "fingerpose",
         "PoseOSC",
@@ -2469,7 +2469,7 @@
     },
     "video": {
       "count": 15,
-      "total_stars": 118442,
+      "total_stars": 118470,
       "repos": [
         "Depthkit.js",
         "xgplayer",
@@ -2480,7 +2480,7 @@
     },
     "chatbot": {
       "count": 15,
-      "total_stars": 243840,
+      "total_stars": 243972,
       "repos": [
         "Termino.js",
         "chatgpt.js",
@@ -2491,7 +2491,7 @@
     },
     "gpu": {
       "count": 15,
-      "total_stars": 257957,
+      "total_stars": 258074,
       "repos": [
         "speedy-vision",
         "WebGL-Fluid-Simulation",
@@ -2502,7 +2502,7 @@
     },
     "gpt-4": {
       "count": 15,
-      "total_stars": 667250,
+      "total_stars": 667608,
       "repos": [
         "node-chatgpt-api",
         "E2B",
@@ -2513,7 +2513,7 @@
     },
     "framework": {
       "count": 15,
-      "total_stars": 509154,
+      "total_stars": 509441,
       "repos": [
         "hybrids",
         "webgl-tools",
@@ -2524,7 +2524,7 @@
     },
     "generative-art": {
       "count": 15,
-      "total_stars": 91839,
+      "total_stars": 91855,
       "repos": [
         "skybx",
         "Code-Package-p5.js",
@@ -2535,7 +2535,7 @@
     },
     "open-source": {
       "count": 14,
-      "total_stars": 870326,
+      "total_stars": 871273,
       "repos": [
         "automatisch",
         "documind",
@@ -2546,7 +2546,7 @@
     },
     "three-js": {
       "count": 14,
-      "total_stars": 24461,
+      "total_stars": 24468,
       "repos": [
         "threejs-blender-template",
         "3D-Driving-AI-PPO",
@@ -2557,7 +2557,7 @@
     },
     "neural-network": {
       "count": 14,
-      "total_stars": 213869,
+      "total_stars": 213916,
       "repos": [
         "netron",
         "3d_nn",
@@ -2568,7 +2568,7 @@
     },
     "mcp": {
       "count": 14,
-      "total_stars": 812748,
+      "total_stars": 813745,
       "repos": [
         "mempalace",
         "ag2",
@@ -2579,7 +2579,7 @@
     },
     "llama": {
       "count": 14,
-      "total_stars": 546990,
+      "total_stars": 547396,
       "repos": [
         "vllm",
         "LlamaFactory",
@@ -2590,7 +2590,7 @@
     },
     "data-science": {
       "count": 14,
-      "total_stars": 236620,
+      "total_stars": 236676,
       "repos": [
         "mlxtend",
         "airflow",
@@ -2601,7 +2601,7 @@
     },
     "webgpu": {
       "count": 13,
-      "total_stars": 155604,
+      "total_stars": 155626,
       "repos": [
         "three.js-tba",
         "engine",
@@ -2612,7 +2612,7 @@
     },
     "gamedev": {
       "count": 13,
-      "total_stars": 227858,
+      "total_stars": 227915,
       "repos": [
         "melonJS",
         "aframe",
@@ -2623,7 +2623,7 @@
     },
     "terminal": {
       "count": 13,
-      "total_stars": 469927,
+      "total_stars": 470055,
       "repos": [
         "Termino.js",
         "chalk",
@@ -2634,7 +2634,7 @@
     },
     "audio": {
       "count": 13,
-      "total_stars": 232037,
+      "total_stars": 232086,
       "repos": [
         "screenity",
         "html5bytebeat",
@@ -2645,7 +2645,7 @@
     },
     "face-detection": {
       "count": 13,
-      "total_stars": 133397,
+      "total_stars": 133412,
       "repos": [
         "WebAR.rocks.faceDepth",
         "jeelizWeboji",
@@ -2656,7 +2656,7 @@
     },
     "mesh": {
       "count": 13,
-      "total_stars": 25817,
+      "total_stars": 25825,
       "repos": [
         "three-mesh-bvh",
         "three-gpu-pathtracer",
@@ -2667,7 +2667,7 @@
     },
     "vue": {
       "count": 13,
-      "total_stars": 146265,
+      "total_stars": 146295,
       "repos": [
         "atropos",
         "import-three-examples",
@@ -2678,7 +2678,7 @@
     },
     "opengl": {
       "count": 13,
-      "total_stars": 153037,
+      "total_stars": 153105,
       "repos": [
         "matcaps",
         "expo-three-demo",
@@ -2689,7 +2689,7 @@
     },
     "huggingface": {
       "count": 13,
-      "total_stars": 42925,
+      "total_stars": 42996,
       "repos": [
         "mlx-tune",
         "mflux",
@@ -2700,7 +2700,7 @@
     },
     "video-generation": {
       "count": 13,
-      "total_stars": 58865,
+      "total_stars": 58888,
       "repos": [
         "Wan2.2",
         "ReCamMaster",
@@ -2711,7 +2711,7 @@
     },
     "developer-tools": {
       "count": 12,
-      "total_stars": 248056,
+      "total_stars": 248183,
       "repos": [
         "Ai-Agent-Skills",
         "documind",
@@ -2722,7 +2722,7 @@
     },
     "game-development": {
       "count": 12,
-      "total_stars": 241803,
+      "total_stars": 241858,
       "repos": [
         "melonJS",
         "aframe",
@@ -2733,7 +2733,7 @@
     },
     "webgl2": {
       "count": 12,
-      "total_stars": 161086,
+      "total_stars": 161111,
       "repos": [
         "melonJS",
         "threejs-blender-template",
@@ -2744,7 +2744,7 @@
     },
     "augmented-reality": {
       "count": 12,
-      "total_stars": 156862,
+      "total_stars": 156883,
       "repos": [
         "aframe",
         "SysMocap",
@@ -2755,7 +2755,7 @@
     },
     "webxr": {
       "count": 12,
-      "total_stars": 183656,
+      "total_stars": 183680,
       "repos": [
         "aframe",
         "webvr-polyfill",
@@ -2766,7 +2766,7 @@
     },
     "design": {
       "count": 12,
-      "total_stars": 435363,
+      "total_stars": 435575,
       "repos": [
         "mechanic",
         "screenity",
@@ -2777,7 +2777,7 @@
     },
     "speech-to-text": {
       "count": 12,
-      "total_stars": 94726,
+      "total_stars": 94820,
       "repos": [
         "ComfyUI_Custom_Nodes_AlekPet",
         "vllm-mlx",
@@ -2788,7 +2788,7 @@
     },
     "real-time": {
       "count": 12,
-      "total_stars": 101197,
+      "total_stars": 101227,
       "repos": [
         "WebAR.rocks.faceDepth",
         "WebAR.rocks.object",
@@ -2799,7 +2799,7 @@
     },
     "transformer": {
       "count": 12,
-      "total_stars": 400898,
+      "total_stars": 401108,
       "repos": [
         "vllm",
         "fish-speech",
@@ -2810,7 +2810,7 @@
     },
     "ai-agents": {
       "count": 12,
-      "total_stars": 496961,
+      "total_stars": 497619,
       "repos": [
         "E2B",
         "adk-python",
@@ -2821,7 +2821,7 @@
     },
     "3d-generation": {
       "count": 12,
-      "total_stars": 43031,
+      "total_stars": 43073,
       "repos": [
         "HunyuanWorld-1.0",
         "TripoSG",
@@ -2832,7 +2832,7 @@
     },
     "generative-model": {
       "count": 12,
-      "total_stars": 37266,
+      "total_stars": 37265,
       "repos": [
         "MeshAnythingV2",
         "Text2LIVE",
@@ -2844,32 +2844,32 @@
   },
   "licenses": {
     "MIT": {
-      "count": 869,
-      "percentage": "38.43%"
+      "count": 871,
+      "percentage": "38.45%"
     },
     "None": {
-      "count": 432,
-      "percentage": "19.11%"
+      "count": 433,
+      "percentage": "19.12%"
     },
     "Apache-2.0": {
       "count": 363,
-      "percentage": "16.05%"
+      "percentage": "16.03%"
     },
     "NOASSERTION": {
       "count": 302,
-      "percentage": "13.36%"
+      "percentage": "13.33%"
     },
     "GPL-3.0": {
       "count": 119,
-      "percentage": "5.26%"
+      "percentage": "5.25%"
     },
     "BSD-3-Clause": {
       "count": 37,
-      "percentage": "1.64%"
+      "percentage": "1.63%"
     },
     "AGPL-3.0": {
-      "count": 34,
-      "percentage": "1.50%"
+      "count": 35,
+      "percentage": "1.55%"
     },
     "CC0-1.0": {
       "count": 28,
@@ -2893,11 +2893,11 @@
     },
     "MPL-2.0": {
       "count": 6,
-      "percentage": "0.27%"
+      "percentage": "0.26%"
     },
     "LGPL-3.0": {
       "count": 6,
-      "percentage": "0.27%"
+      "percentage": "0.26%"
     },
     "Zlib": {
       "count": 5,
@@ -2927,7 +2927,7 @@
   "authors": {
     "facebookresearch": {
       "count": 23,
-      "total_stars": 241041,
+      "total_stars": 241096,
       "repos": [
         "ai4animationpy",
         "sam-3d-objects",
@@ -2938,7 +2938,7 @@
     },
     "openai": {
       "count": 19,
-      "total_stars": 394465,
+      "total_stars": 394949,
       "repos": [
         "skills",
         "openai-agents-python",
@@ -2949,7 +2949,7 @@
     },
     "apple": {
       "count": 17,
-      "total_stars": 90529,
+      "total_stars": 90555,
       "repos": [
         "ml-depth-pro",
         "ml-gbc",
@@ -2960,7 +2960,7 @@
     },
     "evanw": {
       "count": 13,
-      "total_stars": 13444,
+      "total_stars": 13445,
       "repos": [
         "fsm",
         "csg.js",
@@ -2971,7 +2971,7 @@
     },
     "huggingface": {
       "count": 12,
-      "total_stars": 240795,
+      "total_stars": 240860,
       "repos": [
         "transformers.js-examples",
         "transformers.js",
@@ -2982,7 +2982,7 @@
     },
     "pmndrs": {
       "count": 12,
-      "total_stars": 119629,
+      "total_stars": 119649,
       "repos": [
         "drei",
         "react-three-next",
@@ -3004,7 +3004,7 @@
     },
     "microsoft": {
       "count": 12,
-      "total_stars": 270418,
+      "total_stars": 270936,
       "repos": [
         "VibeVoice",
         "TRELLIS",
@@ -3015,7 +3015,7 @@
     },
     "KhronosGroup": {
       "count": 11,
-      "total_stars": 25100,
+      "total_stars": 25103,
       "repos": [
         "glTF-Sample-Renderer",
         "glTF-Sample-Viewer",
@@ -3037,7 +3037,7 @@
     },
     "spite": {
       "count": 8,
-      "total_stars": 8908,
+      "total_stars": 8909,
       "repos": [
         "THREE.CubemapToEquirectangular",
         "FaceMeshFaceGeometry",
@@ -3059,7 +3059,7 @@
     },
     "TencentARC": {
       "count": 8,
-      "total_stars": 58216,
+      "total_stars": 58220,
       "repos": [
         "GFPGAN",
         "ColorFlow",
@@ -3074,9 +3074,9 @@
       "repos": [
         "python-novice-inflammation",
         "make-novice",
+        "shell-novice",
         "git-novice",
-        "sql-novice-survey",
-        "shell-novice"
+        "sql-novice-survey"
       ]
     },
     "mattdesl": {
@@ -3092,7 +3092,7 @@
     },
     "Stability-AI": {
       "count": 7,
-      "total_stars": 42185,
+      "total_stars": 42188,
       "repos": [
         "stable-virtual-camera",
         "stable-fast-3d",
@@ -3105,16 +3105,16 @@
       "count": 7,
       "total_stars": 1044,
       "repos": [
+        "morse-meme",
         "font-rasterizer",
         "ggweb",
         "bark.cpp",
-        "stable-diffusion.cpp",
-        "hnterm"
+        "stable-diffusion.cpp"
       ]
     },
     "google": {
       "count": 6,
-      "total_stars": 42886,
+      "total_stars": 42912,
       "repos": [
         "lipsync",
         "adk-python",
@@ -3136,7 +3136,7 @@
     },
     "boytchev": {
       "count": 6,
-      "total_stars": 517,
+      "total_stars": 522,
       "repos": [
         "CourseVAX",
         "tsl-textures",
@@ -3158,7 +3158,7 @@
     },
     "replicate": {
       "count": 6,
-      "total_stars": 10871,
+      "total_stars": 10872,
       "repos": [
         "tilemaker",
         "getting-started-nextjs",
@@ -3169,7 +3169,7 @@
     },
     "playcanvas": {
       "count": 6,
-      "total_stars": 17691,
+      "total_stars": 17698,
       "repos": [
         "engine",
         "supersplat-viewer",
@@ -3191,7 +3191,7 @@
     },
     "ml-explore": {
       "count": 6,
-      "total_stars": 42960,
+      "total_stars": 43018,
       "repos": [
         "mlx-lm",
         "mlx-examples",
@@ -3202,7 +3202,7 @@
     },
     "lucidrains": {
       "count": 6,
-      "total_stars": 30522,
+      "total_stars": 30527,
       "repos": [
         "vit-pytorch",
         "alphafold3-pytorch",
@@ -3213,7 +3213,7 @@
     },
     "NVlabs": {
       "count": 6,
-      "total_stars": 35958,
+      "total_stars": 35964,
       "repos": [
         "LongSplat",
         "stylegan3",
@@ -3224,7 +3224,7 @@
     },
     "sveinbjornt": {
       "count": 6,
-      "total_stars": 13123,
+      "total_stars": 13124,
       "repos": [
         "ochre",
         "hear",
@@ -3257,7 +3257,7 @@
     },
     "wass08": {
       "count": 5,
-      "total_stars": 674,
+      "total_stars": 672,
       "repos": [
         "r3f-ai-language-teacher",
         "r3f-virtual-girlfriend-backend",
@@ -3268,7 +3268,7 @@
     },
     "bytedance": {
       "count": 5,
-      "total_stars": 27257,
+      "total_stars": 27258,
       "repos": [
         "xgplayer",
         "DreamID-V",
@@ -3279,7 +3279,7 @@
     },
     "google-gemini": {
       "count": 5,
-      "total_stars": 123907,
+      "total_stars": 124001,
       "repos": [
         "example-chat-app",
         "gemini-cli",
@@ -3312,7 +3312,7 @@
     },
     "Blaizzy": {
       "count": 5,
-      "total_stars": 11817,
+      "total_stars": 11838,
       "repos": [
         "fastmlx",
         "reachy_mini_conversation_app",
@@ -3323,7 +3323,7 @@
     },
     "open-mmlab": {
       "count": 5,
-      "total_stars": 57610,
+      "total_stars": 57616,
       "repos": [
         "mmsegmentation",
         "mmdetection",
@@ -3334,7 +3334,7 @@
     },
     "meta-llama": {
       "count": 5,
-      "total_stars": 118713,
+      "total_stars": 118721,
       "repos": [
         "llama-models",
         "PurpleLlama",
@@ -3345,13 +3345,23 @@
     },
     "modal-labs": {
       "count": 5,
-      "total_stars": 2818,
+      "total_stars": 2820,
       "repos": [
         "modal-examples",
         "quillman",
         "awesome-modal",
         "music-video-gen",
         "turbo-art"
+      ]
+    },
+    "lo-th": {
+      "count": 4,
+      "total_stars": 2058,
+      "repos": [
+        "fullik",
+        "phy",
+        "neo",
+        "uil"
       ]
     },
     "takahirox": {
@@ -3366,7 +3376,7 @@
     },
     "home-assistant": {
       "count": 4,
-      "total_stars": 15091,
+      "total_stars": 15096,
       "repos": [
         "developers.home-assistant",
         "operating-system",
@@ -3376,7 +3386,7 @@
     },
     "StrandedKitty": {
       "count": 4,
-      "total_stars": 1376,
+      "total_stars": 1379,
       "repos": [
         "three-csm",
         "ants-simulation",
@@ -3386,7 +3396,7 @@
     },
     "mrdoob": {
       "count": 4,
-      "total_stars": 124385,
+      "total_stars": 124403,
       "repos": [
         "frame.js",
         "texgen.js",
@@ -3406,7 +3416,7 @@
     },
     "danielesteban": {
       "count": 4,
-      "total_stars": 196,
+      "total_stars": 197,
       "repos": [
         "synth",
         "VRBoilerplate",
@@ -3416,7 +3426,7 @@
     },
     "brunosimon": {
       "count": 4,
-      "total_stars": 4809,
+      "total_stars": 4810,
       "repos": [
         "threejs-template-simple",
         "lab",
@@ -3426,7 +3436,7 @@
     },
     "BabylonJS": {
       "count": 4,
-      "total_stars": 26593,
+      "total_stars": 26595,
       "repos": [
         "Assets",
         "BlenderExporter",
@@ -3436,7 +3446,7 @@
     },
     "donmccurdy": {
       "count": 4,
-      "total_stars": 5716,
+      "total_stars": 5717,
       "repos": [
         "simple-dropzone",
         "three-pathfinding",
@@ -3453,16 +3463,6 @@
         "context-cursor",
         "Hover3D.js"
       ]
-    },
-    "argyleink": {
-      "count": 4,
-      "total_stars": 5781,
-      "repos": [
-        "shortstack",
-        "blingblingjs",
-        "open-props",
-        "london-css-2020"
-      ]
     }
   },
   "yearly_activity": {
@@ -3476,153 +3476,153 @@
     "2020": 50,
     "2021": 71,
     "2022": 165,
-    "2023": 263,
+    "2023": 261,
     "2024": 451,
-    "2025": 406,
-    "2026": 756
+    "2025": 405,
+    "2026": 763
   },
   "staleness": {
-    "active": 838,
-    "stable": 638,
-    "archived": 785
+    "active": 845,
+    "stable": 636,
+    "archived": 784
   },
   "hidden_gems": [
     {
       "name": "build-your-own-x",
-      "stars": 498086,
-      "forks": 47199,
+      "stars": 498306,
+      "forks": 47221,
       "description": "Master programming by recreating your favorite technologies from scratch.",
       "url": "https://github.com/codecrafters-io/build-your-own-x"
     },
     {
       "name": "awesome",
-      "stars": 460260,
-      "forks": 34534,
+      "stars": 460649,
+      "forks": 34559,
       "description": "😎 Awesome lists about all kinds of interesting topics",
       "url": "https://github.com/sindresorhus/awesome"
     },
     {
       "name": "awesome-python",
-      "stars": 295080,
-      "forks": 27795,
+      "stars": 295275,
+      "forks": 27796,
       "description": "An opinionated list of Python frameworks, libraries, tools, and resources",
       "url": "https://github.com/vinta/awesome-python"
     },
     {
       "name": "ollama",
-      "stars": 170336,
-      "forks": 15881,
+      "stars": 170419,
+      "forks": 15911,
       "description": "Get up and running with Kimi-K2.5, GLM-5, MiniMax, DeepSeek, gpt-oss, Qwen, Gemma and other models.",
       "url": "https://github.com/ollama/ollama"
     },
     {
       "name": "langflow",
-      "stars": 147512,
-      "forks": 8873,
+      "stars": 147571,
+      "forks": 8884,
       "description": "Langflow is a powerful tool for building and deploying AI-powered agents and workflows.",
       "url": "https://github.com/langflow-ai/langflow"
     },
     {
       "name": "youtube-dl",
-      "stars": 140159,
-      "forks": 10623,
+      "stars": 140165,
+      "forks": 10621,
       "description": "Command-line program to download videos from YouTube.com and other video sites",
       "url": "https://github.com/ytdl-org/youtube-dl"
     },
     {
       "name": "firecrawl",
-      "stars": 113118,
-      "forks": 7201,
+      "stars": 113452,
+      "forks": 7207,
       "description": "🔥 The API to search, scrape, and interact with the web for AI",
       "url": "https://github.com/firecrawl/firecrawl"
     },
     {
       "name": "andrej-karpathy-skills",
-      "stars": 99639,
-      "forks": 9716,
+      "stars": 102583,
+      "forks": 10074,
       "description": "A single CLAUDE.md file to improve Claude Code behavior, derived from Andrej Karpathy's observations on LLM coding pitfalls.",
       "url": "https://github.com/forrestchang/andrej-karpathy-skills"
     },
     {
       "name": "immich",
-      "stars": 99262,
-      "forks": 5515,
+      "stars": 99382,
+      "forks": 5521,
       "description": "High performance self-hosted photo and video management solution.",
       "url": "https://github.com/immich-app/immich"
     },
     {
       "name": "fzf",
-      "stars": 79892,
-      "forks": 2795,
+      "stars": 79907,
+      "forks": 2796,
       "description": ":cherry_blossom: A command-line fuzzy finder",
       "url": "https://github.com/junegunn/fzf"
     },
     {
       "name": "Front-End-Checklist",
-      "stars": 72538,
-      "forks": 6649,
+      "stars": 72540,
+      "forks": 6646,
       "description": "🗂 The perfect Front-End Checklist for modern websites and meticulous developers",
       "url": "https://github.com/thedaviddias/Front-End-Checklist"
     },
     {
       "name": "alacritty",
-      "stars": 63752,
-      "forks": 3435,
+      "stars": 63794,
+      "forks": 3440,
       "description": "A cross-platform, OpenGL terminal emulator.",
       "url": "https://github.com/alacritty/alacritty"
     },
     {
-      "name": "open-interpreter",
-      "stars": 63353,
-      "forks": 5521,
-      "description": "A natural language interface for computers",
-      "url": "https://github.com/openinterpreter/open-interpreter"
-    },
-    {
       "name": "unsloth",
-      "stars": 63284,
-      "forks": 5538,
+      "stars": 63358,
+      "forks": 5548,
       "description": "Web UI for training and running open models like Gemma 4, Qwen3.6, DeepSeek, gpt-oss locally.",
       "url": "https://github.com/unslothai/unsloth"
     },
     {
+      "name": "open-interpreter",
+      "stars": 63355,
+      "forks": 5522,
+      "description": "A natural language interface for computers",
+      "url": "https://github.com/openinterpreter/open-interpreter"
+    },
+    {
       "name": "zustand",
-      "stars": 57897,
+      "stars": 57911,
       "forks": 2047,
       "description": "🐻 Bear necessities for state management in React",
       "url": "https://github.com/pmndrs/zustand"
     },
     {
       "name": "rich",
-      "stars": 56222,
-      "forks": 2125,
+      "stars": 56226,
+      "forks": 2126,
       "description": "Rich is a Python library for rich text and beautiful formatting in the terminal.",
       "url": "https://github.com/Textualize/rich"
     },
     {
       "name": "huginn",
-      "stars": 49206,
+      "stars": 49213,
       "forks": 4252,
       "description": "Create agents that monitor and act on your behalf.  Your agents are standing by!",
       "url": "https://github.com/huginn/huginn"
     },
     {
       "name": "htmx",
-      "stars": 47916,
+      "stars": 47924,
       "forks": 1589,
       "description": "</> htmx - high power tools for HTML",
       "url": "https://github.com/bigskysoftware/htmx"
     },
     {
       "name": "aider",
-      "stars": 44133,
-      "forks": 4326,
+      "stars": 44172,
+      "forks": 4332,
       "description": "aider is AI pair programming in your terminal",
       "url": "https://github.com/Aider-AI/aider"
     },
     {
       "name": "gradio",
-      "stars": 42461,
+      "stars": 42471,
       "forks": 3423,
       "description": "Build and share delightful machine learning apps, all in Python. 🌟 Star to support our work!",
       "url": "https://github.com/gradio-app/gradio"
@@ -3655,8 +3655,8 @@
       {
         "name": "build-your-own-x",
         "author": "codecrafters-io",
-        "stars": 498086,
-        "forks": 47199,
+        "stars": 498306,
+        "forks": 47221,
         "description": "Master programming by recreating your favorite technologies from scratch.",
         "url": "https://github.com/codecrafters-io/build-your-own-x",
         "language": "Markdown",
@@ -3673,8 +3673,8 @@
       {
         "name": "awesome",
         "author": "sindresorhus",
-        "stars": 460260,
-        "forks": 34534,
+        "stars": 460649,
+        "forks": 34559,
         "description": "😎 Awesome lists about all kinds of interesting topics",
         "url": "https://github.com/sindresorhus/awesome",
         "language": "Unknown",
@@ -3690,8 +3690,8 @@
       {
         "name": "public-apis",
         "author": "public-apis",
-        "stars": 428890,
-        "forks": 46807,
+        "stars": 429520,
+        "forks": 46865,
         "description": "A collective list of free APIs",
         "url": "https://github.com/public-apis/public-apis",
         "language": "Python",
@@ -3715,8 +3715,8 @@
       {
         "name": "free-programming-books",
         "author": "EbookFoundation",
-        "stars": 387178,
-        "forks": 66184,
+        "stars": 387434,
+        "forks": 66206,
         "description": ":books: Freely available programming books",
         "url": "https://github.com/EbookFoundation/free-programming-books",
         "language": "Python",
@@ -3732,8 +3732,8 @@
       {
         "name": "openclaw",
         "author": "openclaw",
-        "stars": 366379,
-        "forks": 75155,
+        "stars": 366802,
+        "forks": 75344,
         "description": "Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞 ",
         "url": "https://github.com/openclaw/openclaw",
         "language": "TypeScript",
@@ -3746,13 +3746,13 @@
           "own-your-data",
           "personal"
         ],
-        "last_updated": "4/30/2026"
+        "last_updated": "5/1/2026"
       },
       {
         "name": "system-design-primer",
         "author": "donnemartin",
-        "stars": 346250,
-        "forks": 55868,
+        "stars": 346443,
+        "forks": 55897,
         "description": "Learn how to design large-scale systems. Prep for the system design interview.  Includes Anki flashcards.",
         "url": "https://github.com/donnemartin/system-design-primer",
         "language": "Python",
@@ -3776,8 +3776,8 @@
       {
         "name": "awesome-python",
         "author": "vinta",
-        "stars": 295080,
-        "forks": 27795,
+        "stars": 295275,
+        "forks": 27796,
         "description": "An opinionated list of Python frameworks, libraries, tools, and resources",
         "url": "https://github.com/vinta/awesome-python",
         "language": "Python",
@@ -3794,8 +3794,8 @@
       {
         "name": "project-based-learning",
         "author": "practical-tutorials",
-        "stars": 264419,
-        "forks": 34370,
+        "stars": 264498,
+        "forks": 34372,
         "description": "Curated list of project-based tutorials",
         "url": "https://github.com/practical-tutorials/project-based-learning",
         "language": "Unknown",
@@ -3814,8 +3814,8 @@
       {
         "name": "Python",
         "author": "TheAlgorithms",
-        "stars": 220395,
-        "forks": 50457,
+        "stars": 220522,
+        "forks": 50488,
         "description": "All Algorithms implemented in Python",
         "url": "https://github.com/TheAlgorithms/Python",
         "language": "Python",
@@ -3840,8 +3840,8 @@
       {
         "name": "ohmyzsh",
         "author": "ohmyzsh",
-        "stars": 186601,
-        "forks": 26359,
+        "stars": 186637,
+        "forks": 26351,
         "description": "🙃   A delightful community-driven (with 2,400+ contributors) framework for managing your zsh configuration. Includes 300+ optional plugins (rails, git, macOS, hub, docker, homebrew, node, php, python, etc), 140+ themes to spice up your morning, and an auto-update tool that makes it easy to keep up with the latest updates from the community.",
         "url": "https://github.com/ohmyzsh/ohmyzsh",
         "language": "Shell",
@@ -3862,13 +3862,13 @@
           "zsh",
           "zsh-configuration"
         ],
-        "last_updated": "4/28/2026"
+        "last_updated": "4/30/2026"
       },
       {
         "name": "n8n",
         "author": "n8n-io",
-        "stars": 186140,
-        "forks": 57241,
+        "stars": 186286,
+        "forks": 57265,
         "description": "Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integrations.",
         "url": "https://github.com/n8n-io/n8n",
         "language": "TypeScript",
@@ -3899,8 +3899,8 @@
       {
         "name": "AutoGPT",
         "author": "Significant-Gravitas",
-        "stars": 183883,
-        "forks": 46236,
+        "stars": 183908,
+        "forks": 46238,
         "description": "AutoGPT is the vision of accessible AI for everyone, to use and to build on. Our mission is to provide the tools, so that you can focus on what matters.",
         "url": "https://github.com/Significant-Gravitas/AutoGPT",
         "language": "Python",
@@ -3917,13 +3917,13 @@
           "openai",
           "python"
         ],
-        "last_updated": "4/29/2026"
+        "last_updated": "5/1/2026"
       },
       {
         "name": "ollama",
         "author": "ollama",
-        "stars": 170336,
-        "forks": 15881,
+        "stars": 170419,
+        "forks": 15911,
         "description": "Get up and running with Kimi-K2.5, GLM-5, MiniMax, DeepSeek, gpt-oss, Qwen, Gemma and other models.",
         "url": "https://github.com/ollama/ollama",
         "language": "Go",
@@ -3949,8 +3949,8 @@
       {
         "name": "stable-diffusion-webui",
         "author": "AUTOMATIC1111",
-        "stars": 162662,
-        "forks": 30294,
+        "stars": 162677,
+        "forks": 30299,
         "description": "Stable Diffusion web UI",
         "url": "https://github.com/AUTOMATIC1111/stable-diffusion-webui",
         "language": "Python",
@@ -3977,8 +3977,8 @@
       {
         "name": "prompts.chat",
         "author": "f",
-        "stars": 161160,
-        "forks": 21047,
+        "stars": 161259,
+        "forks": 21050,
         "description": "f.k.a. Awesome ChatGPT Prompts. Share, discover, and collect prompts from the community. Free and open source — self-host for your organization with complete privacy.",
         "url": "https://github.com/f/prompts.chat",
         "language": "HTML",
@@ -4002,13 +4002,13 @@
           "prompts-chat",
           "typescript"
         ],
-        "last_updated": "4/29/2026"
+        "last_updated": "4/30/2026"
       },
       {
         "name": "transformers",
         "author": "huggingface",
-        "stars": 160088,
-        "forks": 33055,
+        "stars": 160130,
+        "forks": 33066,
         "description": "🤗 Transformers: the model-definition framework for state-of-the-art machine learning models in text, vision, audio, and multimodal models, for both inference and training. ",
         "url": "https://github.com/huggingface/transformers",
         "language": "Python",
@@ -4033,13 +4033,13 @@
           "transformer",
           "vlm"
         ],
-        "last_updated": "4/29/2026"
+        "last_updated": "4/30/2026"
       },
       {
         "name": "langflow",
         "author": "langflow-ai",
-        "stars": 147512,
-        "forks": 8873,
+        "stars": 147571,
+        "forks": 8884,
         "description": "Langflow is a powerful tool for building and deploying AI-powered agents and workflows.",
         "url": "https://github.com/langflow-ai/langflow",
         "language": "Python",
@@ -4051,13 +4051,13 @@
           "multiagent",
           "react-flow"
         ],
-        "last_updated": "4/29/2026"
+        "last_updated": "4/30/2026"
       },
       {
         "name": "youtube-dl",
         "author": "ytdl-org",
-        "stars": 140159,
-        "forks": 10623,
+        "stars": 140165,
+        "forks": 10621,
         "description": "Command-line program to download videos from YouTube.com and other video sites",
         "url": "https://github.com/ytdl-org/youtube-dl",
         "language": "Python",
@@ -4067,8 +4067,8 @@
       {
         "name": "dify",
         "author": "langgenius",
-        "stars": 139652,
-        "forks": 21901,
+        "stars": 139767,
+        "forks": 21920,
         "description": "Production-ready platform for agentic workflow development.",
         "url": "https://github.com/langgenius/dify",
         "language": "TypeScript",
@@ -4094,13 +4094,13 @@
           "rag",
           "workflow"
         ],
-        "last_updated": "4/29/2026"
+        "last_updated": "4/30/2026"
       },
       {
         "name": "langchain",
         "author": "langchain-ai",
-        "stars": 135396,
-        "forks": 22388,
+        "stars": 135507,
+        "forks": 22392,
         "description": "The agent engineering platform",
         "url": "https://github.com/langchain-ai/langchain",
         "language": "Python",
@@ -4125,13 +4125,13 @@
           "python",
           "rag"
         ],
-        "last_updated": "4/29/2026"
+        "last_updated": "4/30/2026"
       },
       {
         "name": "open-webui",
         "author": "open-webui",
-        "stars": 134829,
-        "forks": 19160,
+        "stars": 134995,
+        "forks": 19192,
         "description": "User-friendly AI Interface (Supports Ollama, OpenAI API, ...)",
         "url": "https://github.com/open-webui/open-webui",
         "language": "Python",
@@ -4157,8 +4157,8 @@
       {
         "name": "skills",
         "author": "anthropics",
-        "stars": 126096,
-        "forks": 14778,
+        "stars": 126602,
+        "forks": 14850,
         "description": "Public repository for Agent Skills",
         "url": "https://github.com/anthropics/skills",
         "language": "Python",
@@ -4170,8 +4170,8 @@
       {
         "name": "firecrawl",
         "author": "firecrawl",
-        "stars": 113118,
-        "forks": 7201,
+        "stars": 113452,
+        "forks": 7207,
         "description": "🔥 The API to search, scrape, and interact with the web for AI",
         "url": "https://github.com/firecrawl/firecrawl",
         "language": "TypeScript",
@@ -4196,13 +4196,13 @@
           "web-search",
           "webscraping"
         ],
-        "last_updated": "4/29/2026"
+        "last_updated": "4/30/2026"
       },
       {
         "name": "three.js",
         "author": "mrdoob",
-        "stars": 112247,
-        "forks": 36355,
+        "stars": 112265,
+        "forks": 36354,
         "description": "JavaScript 3D Library.",
         "url": "https://github.com/mrdoob/three.js",
         "language": "JavaScript",
@@ -4220,13 +4220,13 @@
           "webgpu",
           "webxr"
         ],
-        "last_updated": "4/29/2026"
+        "last_updated": "4/30/2026"
       },
       {
         "name": "ComfyUI",
         "author": "Comfy-Org",
-        "stars": 110653,
-        "forks": 12913,
+        "stars": 110817,
+        "forks": 12924,
         "description": "The most powerful and modular diffusion model GUI, api and backend with a graph/nodes interface.",
         "url": "https://github.com/Comfy-Org/ComfyUI",
         "language": "Python",
@@ -4238,13 +4238,13 @@
           "pytorch",
           "stable-diffusion"
         ],
-        "last_updated": "4/29/2026"
+        "last_updated": "5/1/2026"
       },
       {
         "name": "generative-ai-for-beginners",
         "author": "microsoft",
-        "stars": 110014,
-        "forks": 59032,
+        "stars": 110054,
+        "forks": 59052,
         "description": "21 Lessons, Get Started Building with Generative AI ",
         "url": "https://github.com/microsoft/generative-ai-for-beginners",
         "language": "Jupyter Notebook",
@@ -4264,12 +4264,12 @@
           "semantic-search",
           "transformers"
         ],
-        "last_updated": "4/26/2026"
+        "last_updated": "4/30/2026"
       },
       {
         "name": "axios",
         "author": "axios",
-        "stars": 109027,
+        "stars": 109037,
         "forks": 11660,
         "description": "Promise based HTTP client for the browser and node.js",
         "url": "https://github.com/axios/axios",
@@ -4281,26 +4281,26 @@
           "nodejs",
           "promise"
         ],
-        "last_updated": "4/29/2026"
+        "last_updated": "4/30/2026"
       },
       {
         "name": "llama.cpp",
         "author": "ggml-org",
-        "stars": 107447,
-        "forks": 17571,
+        "stars": 107630,
+        "forks": 17627,
         "description": "LLM inference in C/C++",
         "url": "https://github.com/ggml-org/llama.cpp",
         "language": "C++",
         "topics": [
           "ggml"
         ],
-        "last_updated": "4/29/2026"
+        "last_updated": "4/30/2026"
       },
       {
         "name": "gemini-cli",
         "author": "google-gemini",
-        "stars": 102746,
-        "forks": 13402,
+        "stars": 102833,
+        "forks": 13416,
         "description": "An open-source AI agent that brings the power of Gemini directly into your terminal.",
         "url": "https://github.com/google-gemini/gemini-cli",
         "language": "TypeScript",
@@ -4313,13 +4313,13 @@
           "mcp-client",
           "mcp-server"
         ],
-        "last_updated": "4/30/2026"
+        "last_updated": "5/1/2026"
       },
       {
         "name": "andrej-karpathy-skills",
         "author": "forrestchang",
-        "stars": 99639,
-        "forks": 9716,
+        "stars": 102583,
+        "forks": 10074,
         "description": "A single CLAUDE.md file to improve Claude Code behavior, derived from Andrej Karpathy's observations on LLM coding pitfalls.",
         "url": "https://github.com/forrestchang/andrej-karpathy-skills",
         "language": "Unknown",
@@ -4329,8 +4329,8 @@
       {
         "name": "pytorch",
         "author": "pytorch",
-        "stars": 99534,
-        "forks": 27620,
+        "stars": 99561,
+        "forks": 27631,
         "description": "Tensors and Dynamic neural networks in Python with strong GPU acceleration",
         "url": "https://github.com/pytorch/pytorch",
         "language": "Python",
@@ -4344,13 +4344,13 @@
           "python",
           "tensor"
         ],
-        "last_updated": "4/30/2026"
+        "last_updated": "5/1/2026"
       },
       {
         "name": "immich",
         "author": "immich-app",
-        "stars": 99262,
-        "forks": 5515,
+        "stars": 99382,
+        "forks": 5521,
         "description": "High performance self-hosted photo and video management solution.",
         "url": "https://github.com/immich-app/immich",
         "language": "TypeScript",
@@ -4372,13 +4372,13 @@
           "typescript",
           "videos"
         ],
-        "last_updated": "4/29/2026"
+        "last_updated": "5/1/2026"
       },
       {
         "name": "whisper",
         "author": "openai",
-        "stars": 98647,
-        "forks": 12121,
+        "stars": 98695,
+        "forks": 12127,
         "description": "Robust Speech Recognition via Large-Scale Weak Supervision",
         "url": "https://github.com/openai/whisper",
         "language": "Python",
@@ -4388,8 +4388,8 @@
       {
         "name": "material-ui",
         "author": "mui",
-        "stars": 98253,
-        "forks": 32650,
+        "stars": 98257,
+        "forks": 32655,
         "description": "Material UI: Comprehensive React component library that implements Google's Material Design. Free forever.",
         "url": "https://github.com/mui/material-ui",
         "language": "JavaScript",
@@ -4400,13 +4400,13 @@
           "react",
           "react-components"
         ],
-        "last_updated": "4/29/2026"
+        "last_updated": "4/30/2026"
       },
       {
         "name": "nvm",
         "author": "nvm-sh",
-        "stars": 93148,
-        "forks": 10136,
+        "stars": 93160,
+        "forks": 10139,
         "description": "Node Version Manager - POSIX-compliant bash script to manage multiple active node.js versions",
         "url": "https://github.com/nvm-sh/nvm",
         "language": "Shell",
@@ -4430,8 +4430,8 @@
       {
         "name": "Deep-Live-Cam",
         "author": "hacksider",
-        "stars": 92466,
-        "forks": 13429,
+        "stars": 92510,
+        "forks": 13435,
         "description": "real time face swap and one-click video deepfake with only a single image",
         "url": "https://github.com/hacksider/Deep-Live-Cam",
         "language": "Python",
@@ -4460,8 +4460,8 @@
       {
         "name": "LLMs-from-scratch",
         "author": "rasbt",
-        "stars": 91719,
-        "forks": 14129,
+        "stars": 91764,
+        "forks": 14140,
         "description": "Implement a ChatGPT-like LLM in PyTorch from scratch, step by step",
         "url": "https://github.com/rasbt/LLMs-from-scratch",
         "language": "Jupyter Notebook",
@@ -4488,8 +4488,8 @@
       {
         "name": "storybook",
         "author": "storybookjs",
-        "stars": 89823,
-        "forks": 10037,
+        "stars": 89836,
+        "forks": 10041,
         "description": "Storybook is the industry standard workshop for building, documenting, and testing UI components in isolation",
         "url": "https://github.com/storybookjs/storybook",
         "language": "TypeScript",
@@ -4515,13 +4515,24 @@
           "webpack",
           "workshop"
         ],
-        "last_updated": "4/29/2026"
+        "last_updated": "4/30/2026"
+      },
+      {
+        "name": "agency-agents",
+        "author": "msitarzewski",
+        "stars": 89613,
+        "forks": 14543,
+        "description": "A complete AI agency at your fingertips - From frontend wizards to Reddit community ninjas, from whimsy injectors to reality checkers. Each agent is a specialized expert with personality, processes, and proven deliverables.",
+        "url": "https://github.com/msitarzewski/agency-agents",
+        "language": "Shell",
+        "topics": [],
+        "last_updated": "4/12/2026"
       },
       {
         "name": "NextChat",
         "author": "ChatGPTNextWeb",
-        "stars": 87847,
-        "forks": 59786,
+        "stars": 87858,
+        "forks": 59782,
         "description": "✨ Light and Fast AI Assistant. Support: Web | iOS | MacOS | Android |  Linux | Windows",
         "url": "https://github.com/ChatGPTNextWeb/NextChat",
         "language": "TypeScript",
@@ -4551,8 +4562,8 @@
       {
         "name": "mermaid",
         "author": "mermaid-js",
-        "stars": 87728,
-        "forks": 8920,
+        "stars": 87746,
+        "forks": 8923,
         "description": "Generation of diagrams like flowcharts or sequence diagrams from text in a similar manner as markdown",
         "url": "https://github.com/mermaid-js/mermaid",
         "language": "TypeScript",
@@ -4566,13 +4577,13 @@
           "typescript",
           "uml-diagrams"
         ],
-        "last_updated": "4/29/2026"
+        "last_updated": "4/30/2026"
       },
       {
         "name": "awesome-mcp-servers",
         "author": "punkpeye",
-        "stars": 85946,
-        "forks": 9650,
+        "stars": 86022,
+        "forks": 9686,
         "description": "A collection of MCP servers.",
         "url": "https://github.com/punkpeye/awesome-mcp-servers",
         "language": "Unknown",
@@ -4585,8 +4596,8 @@
       {
         "name": "system-design-101",
         "author": "ByteByteGoHq",
-        "stars": 82207,
-        "forks": 9076,
+        "stars": 82235,
+        "forks": 9085,
         "description": "Explain complex systems using visuals and simple terms. Help you prepare for system design interviews.",
         "url": "https://github.com/ByteByteGoHq/system-design-101",
         "language": "Unknown",
@@ -4607,8 +4618,8 @@
       {
         "name": "zed",
         "author": "zed-industries",
-        "stars": 80394,
-        "forks": 8084,
+        "stars": 80874,
+        "forks": 8143,
         "description": "Code at the speed of thought – Zed is a high-performance, multiplayer code editor from the creators of Atom and Tree-sitter.",
         "url": "https://github.com/zed-industries/zed",
         "language": "Rust",
@@ -4618,13 +4629,13 @@
           "text-editor",
           "zed"
         ],
-        "last_updated": "4/29/2026"
+        "last_updated": "4/30/2026"
       },
       {
         "name": "fzf",
         "author": "junegunn",
-        "stars": 79892,
-        "forks": 2795,
+        "stars": 79907,
+        "forks": 2796,
         "description": ":cherry_blossom: A command-line fuzzy finder",
         "url": "https://github.com/junegunn/fzf",
         "language": "Go",
@@ -4645,19 +4656,19 @@
       {
         "name": "codex",
         "author": "openai",
-        "stars": 78909,
-        "forks": 11287,
+        "stars": 79168,
+        "forks": 11347,
         "description": "Lightweight coding agent that runs in your terminal",
         "url": "https://github.com/openai/codex",
         "language": "Rust",
         "topics": [],
-        "last_updated": "4/30/2026"
+        "last_updated": "5/1/2026"
       },
       {
         "name": "vllm",
         "author": "vllm-project",
-        "stars": 78616,
-        "forks": 16258,
+        "stars": 78705,
+        "forks": 16303,
         "description": "A high-throughput and memory-efficient inference and serving engine for LLMs",
         "url": "https://github.com/vllm-project/vllm",
         "language": "Python",
@@ -4683,13 +4694,13 @@
           "tpu",
           "transformer"
         ],
-        "last_updated": "4/30/2026"
+        "last_updated": "5/1/2026"
       },
       {
         "name": "gpt4all",
         "author": "nomic-ai",
-        "stars": 77374,
-        "forks": 8334,
+        "stars": 77376,
+        "forks": 8335,
         "description": "GPT4All: Run Local LLMs on Any Device. Open-source and available for commercial use.",
         "url": "https://github.com/nomic-ai/gpt4all",
         "language": "C++",
@@ -4702,8 +4713,8 @@
       {
         "name": "openai-cookbook",
         "author": "openai",
-        "stars": 73114,
-        "forks": 12339,
+        "stars": 73150,
+        "forks": 12349,
         "description": "Examples and guides for using the OpenAI API",
         "url": "https://github.com/openai/openai-cookbook",
         "language": "Jupyter Notebook",
@@ -4718,48 +4729,21 @@
       {
         "name": "stable-diffusion",
         "author": "CompVis",
-        "stars": 72955,
-        "forks": 10610,
+        "stars": 72962,
+        "forks": 10611,
         "description": "A latent text-to-image diffusion model",
         "url": "https://github.com/CompVis/stable-diffusion",
         "language": "Jupyter Notebook",
         "topics": [],
         "last_updated": "6/18/2024"
-      },
-      {
-        "name": "imgui",
-        "author": "ocornut",
-        "stars": 72879,
-        "forks": 11736,
-        "description": "Dear ImGui: Bloat-free Graphical User interface for C++ with minimal dependencies",
-        "url": "https://github.com/ocornut/imgui",
-        "language": "C++",
-        "topics": [
-          "api",
-          "cplusplus",
-          "framework",
-          "game-development",
-          "game-engine",
-          "gamedev",
-          "gui",
-          "imgui",
-          "immediate-gui",
-          "library",
-          "multi-platform",
-          "native",
-          "toolkit",
-          "tools",
-          "ui"
-        ],
-        "last_updated": "4/28/2026"
       }
     ],
     "by_forks": [
       {
         "name": "openclaw",
         "author": "openclaw",
-        "stars": 366379,
-        "forks": 75155,
+        "stars": 366802,
+        "forks": 75344,
         "description": "Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞 ",
         "url": "https://github.com/openclaw/openclaw",
         "language": "TypeScript",
@@ -4772,13 +4756,13 @@
           "own-your-data",
           "personal"
         ],
-        "last_updated": "4/30/2026"
+        "last_updated": "5/1/2026"
       },
       {
         "name": "free-programming-books",
         "author": "EbookFoundation",
-        "stars": 387178,
-        "forks": 66184,
+        "stars": 387434,
+        "forks": 66206,
         "description": ":books: Freely available programming books",
         "url": "https://github.com/EbookFoundation/free-programming-books",
         "language": "Python",
@@ -4794,8 +4778,8 @@
       {
         "name": "NextChat",
         "author": "ChatGPTNextWeb",
-        "stars": 87847,
-        "forks": 59786,
+        "stars": 87858,
+        "forks": 59782,
         "description": "✨ Light and Fast AI Assistant. Support: Web | iOS | MacOS | Android |  Linux | Windows",
         "url": "https://github.com/ChatGPTNextWeb/NextChat",
         "language": "TypeScript",
@@ -4825,8 +4809,8 @@
       {
         "name": "generative-ai-for-beginners",
         "author": "microsoft",
-        "stars": 110014,
-        "forks": 59032,
+        "stars": 110054,
+        "forks": 59052,
         "description": "21 Lessons, Get Started Building with Generative AI ",
         "url": "https://github.com/microsoft/generative-ai-for-beginners",
         "language": "Jupyter Notebook",
@@ -4846,13 +4830,13 @@
           "semantic-search",
           "transformers"
         ],
-        "last_updated": "4/26/2026"
+        "last_updated": "4/30/2026"
       },
       {
         "name": "n8n",
         "author": "n8n-io",
-        "stars": 186140,
-        "forks": 57241,
+        "stars": 186286,
+        "forks": 57265,
         "description": "Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integrations.",
         "url": "https://github.com/n8n-io/n8n",
         "language": "TypeScript",
@@ -4883,8 +4867,8 @@
       {
         "name": "system-design-primer",
         "author": "donnemartin",
-        "stars": 346250,
-        "forks": 55868,
+        "stars": 346443,
+        "forks": 55897,
         "description": "Learn how to design large-scale systems. Prep for the system design interview.  Includes Anki flashcards.",
         "url": "https://github.com/donnemartin/system-design-primer",
         "language": "Python",
@@ -4908,8 +4892,8 @@
       {
         "name": "Python",
         "author": "TheAlgorithms",
-        "stars": 220395,
-        "forks": 50457,
+        "stars": 220522,
+        "forks": 50488,
         "description": "All Algorithms implemented in Python",
         "url": "https://github.com/TheAlgorithms/Python",
         "language": "Python",
@@ -4934,8 +4918,8 @@
       {
         "name": "build-your-own-x",
         "author": "codecrafters-io",
-        "stars": 498086,
-        "forks": 47199,
+        "stars": 498306,
+        "forks": 47221,
         "description": "Master programming by recreating your favorite technologies from scratch.",
         "url": "https://github.com/codecrafters-io/build-your-own-x",
         "language": "Markdown",
@@ -4952,8 +4936,8 @@
       {
         "name": "public-apis",
         "author": "public-apis",
-        "stars": 428890,
-        "forks": 46807,
+        "stars": 429520,
+        "forks": 46865,
         "description": "A collective list of free APIs",
         "url": "https://github.com/public-apis/public-apis",
         "language": "Python",
@@ -4977,8 +4961,8 @@
       {
         "name": "AutoGPT",
         "author": "Significant-Gravitas",
-        "stars": 183883,
-        "forks": 46236,
+        "stars": 183908,
+        "forks": 46238,
         "description": "AutoGPT is the vision of accessible AI for everyone, to use and to build on. Our mission is to provide the tools, so that you can focus on what matters.",
         "url": "https://github.com/Significant-Gravitas/AutoGPT",
         "language": "Python",
@@ -4995,13 +4979,13 @@
           "openai",
           "python"
         ],
-        "last_updated": "4/29/2026"
+        "last_updated": "5/1/2026"
       },
       {
         "name": "three.js",
         "author": "mrdoob",
-        "stars": 112247,
-        "forks": 36355,
+        "stars": 112265,
+        "forks": 36354,
         "description": "JavaScript 3D Library.",
         "url": "https://github.com/mrdoob/three.js",
         "language": "JavaScript",
@@ -5019,13 +5003,13 @@
           "webgpu",
           "webxr"
         ],
-        "last_updated": "4/29/2026"
+        "last_updated": "4/30/2026"
       },
       {
         "name": "awesome",
         "author": "sindresorhus",
-        "stars": 460260,
-        "forks": 34534,
+        "stars": 460649,
+        "forks": 34559,
         "description": "😎 Awesome lists about all kinds of interesting topics",
         "url": "https://github.com/sindresorhus/awesome",
         "language": "Unknown",
@@ -5041,8 +5025,8 @@
       {
         "name": "project-based-learning",
         "author": "practical-tutorials",
-        "stars": 264419,
-        "forks": 34370,
+        "stars": 264498,
+        "forks": 34372,
         "description": "Curated list of project-based tutorials",
         "url": "https://github.com/practical-tutorials/project-based-learning",
         "language": "Unknown",
@@ -5061,8 +5045,8 @@
       {
         "name": "transformers",
         "author": "huggingface",
-        "stars": 160088,
-        "forks": 33055,
+        "stars": 160130,
+        "forks": 33066,
         "description": "🤗 Transformers: the model-definition framework for state-of-the-art machine learning models in text, vision, audio, and multimodal models, for both inference and training. ",
         "url": "https://github.com/huggingface/transformers",
         "language": "Python",
@@ -5087,13 +5071,13 @@
           "transformer",
           "vlm"
         ],
-        "last_updated": "4/29/2026"
+        "last_updated": "4/30/2026"
       },
       {
         "name": "material-ui",
         "author": "mui",
-        "stars": 98253,
-        "forks": 32650,
+        "stars": 98257,
+        "forks": 32655,
         "description": "Material UI: Comprehensive React component library that implements Google's Material Design. Free forever.",
         "url": "https://github.com/mui/material-ui",
         "language": "JavaScript",
@@ -5104,13 +5088,13 @@
           "react",
           "react-components"
         ],
-        "last_updated": "4/29/2026"
+        "last_updated": "4/30/2026"
       },
       {
         "name": "stable-diffusion-webui",
         "author": "AUTOMATIC1111",
-        "stars": 162662,
-        "forks": 30294,
+        "stars": 162677,
+        "forks": 30299,
         "description": "Stable Diffusion web UI",
         "url": "https://github.com/AUTOMATIC1111/stable-diffusion-webui",
         "language": "Python",
@@ -5137,8 +5121,8 @@
       {
         "name": "awesome-python",
         "author": "vinta",
-        "stars": 295080,
-        "forks": 27795,
+        "stars": 295275,
+        "forks": 27796,
         "description": "An opinionated list of Python frameworks, libraries, tools, and resources",
         "url": "https://github.com/vinta/awesome-python",
         "language": "Python",
@@ -5155,8 +5139,8 @@
       {
         "name": "pytorch",
         "author": "pytorch",
-        "stars": 99534,
-        "forks": 27620,
+        "stars": 99561,
+        "forks": 27631,
         "description": "Tensors and Dynamic neural networks in Python with strong GPU acceleration",
         "url": "https://github.com/pytorch/pytorch",
         "language": "Python",
@@ -5170,13 +5154,13 @@
           "python",
           "tensor"
         ],
-        "last_updated": "4/30/2026"
+        "last_updated": "5/1/2026"
       },
       {
         "name": "ohmyzsh",
         "author": "ohmyzsh",
-        "stars": 186601,
-        "forks": 26359,
+        "stars": 186637,
+        "forks": 26351,
         "description": "🙃   A delightful community-driven (with 2,400+ contributors) framework for managing your zsh configuration. Includes 300+ optional plugins (rails, git, macOS, hub, docker, homebrew, node, php, python, etc), 140+ themes to spice up your morning, and an auto-update tool that makes it easy to keep up with the latest updates from the community.",
         "url": "https://github.com/ohmyzsh/ohmyzsh",
         "language": "Shell",
@@ -5197,13 +5181,13 @@
           "zsh",
           "zsh-configuration"
         ],
-        "last_updated": "4/28/2026"
+        "last_updated": "4/30/2026"
       },
       {
         "name": "Flowise",
         "author": "FlowiseAI",
-        "stars": 52396,
-        "forks": 24235,
+        "stars": 52433,
+        "forks": 24242,
         "description": "Build AI Agents, Visually",
         "url": "https://github.com/FlowiseAI/Flowise",
         "language": "TypeScript",
@@ -5231,8 +5215,8 @@
       {
         "name": "langchain",
         "author": "langchain-ai",
-        "stars": 135396,
-        "forks": 22388,
+        "stars": 135507,
+        "forks": 22392,
         "description": "The agent engineering platform",
         "url": "https://github.com/langchain-ai/langchain",
         "language": "Python",
@@ -5257,13 +5241,13 @@
           "python",
           "rag"
         ],
-        "last_updated": "4/29/2026"
+        "last_updated": "4/30/2026"
       },
       {
         "name": "dify",
         "author": "langgenius",
-        "stars": 139652,
-        "forks": 21901,
+        "stars": 139767,
+        "forks": 21920,
         "description": "Production-ready platform for agentic workflow development.",
         "url": "https://github.com/langgenius/dify",
         "language": "TypeScript",
@@ -5289,13 +5273,13 @@
           "rag",
           "workflow"
         ],
-        "last_updated": "4/29/2026"
+        "last_updated": "4/30/2026"
       },
       {
         "name": "prompts.chat",
         "author": "f",
-        "stars": 161160,
-        "forks": 21047,
+        "stars": 161259,
+        "forks": 21050,
         "description": "f.k.a. Awesome ChatGPT Prompts. Share, discover, and collect prompts from the community. Free and open source — self-host for your organization with complete privacy.",
         "url": "https://github.com/f/prompts.chat",
         "language": "HTML",
@@ -5319,12 +5303,12 @@
           "prompts-chat",
           "typescript"
         ],
-        "last_updated": "4/29/2026"
+        "last_updated": "4/30/2026"
       },
       {
         "name": "keras",
         "author": "keras-team",
-        "stars": 64047,
+        "stars": 64051,
         "forks": 19761,
         "description": "Deep Learning for humans",
         "url": "https://github.com/keras-team/keras",
@@ -5344,8 +5328,8 @@
       {
         "name": "open-webui",
         "author": "open-webui",
-        "stars": 134829,
-        "forks": 19160,
+        "stars": 134995,
+        "forks": 19192,
         "description": "User-friendly AI Interface (Supports Ollama, OpenAI API, ...)",
         "url": "https://github.com/open-webui/open-webui",
         "language": "Python",
@@ -5371,21 +5355,21 @@
       {
         "name": "llama.cpp",
         "author": "ggml-org",
-        "stars": 107447,
-        "forks": 17571,
+        "stars": 107630,
+        "forks": 17627,
         "description": "LLM inference in C/C++",
         "url": "https://github.com/ggml-org/llama.cpp",
         "language": "C++",
         "topics": [
           "ggml"
         ],
-        "last_updated": "4/29/2026"
+        "last_updated": "4/30/2026"
       },
       {
         "name": "airflow",
         "author": "apache",
-        "stars": 45238,
-        "forks": 16969,
+        "stars": 45250,
+        "forks": 16974,
         "description": "Apache Airflow - A platform to programmatically author, schedule, and monitor workflows",
         "url": "https://github.com/apache/airflow",
         "language": "Python",
@@ -5416,8 +5400,8 @@
       {
         "name": "vllm",
         "author": "vllm-project",
-        "stars": 78616,
-        "forks": 16258,
+        "stars": 78705,
+        "forks": 16303,
         "description": "A high-throughput and memory-efficient inference and serving engine for LLMs",
         "url": "https://github.com/vllm-project/vllm",
         "language": "Python",
@@ -5443,13 +5427,13 @@
           "tpu",
           "transformer"
         ],
-        "last_updated": "4/30/2026"
+        "last_updated": "5/1/2026"
       },
       {
         "name": "ollama",
         "author": "ollama",
-        "stars": 170336,
-        "forks": 15881,
+        "stars": 170419,
+        "forks": 15911,
         "description": "Get up and running with Kimi-K2.5, GLM-5, MiniMax, DeepSeek, gpt-oss, Qwen, Gemma and other models.",
         "url": "https://github.com/ollama/ollama",
         "language": "Go",
@@ -5475,8 +5459,8 @@
       {
         "name": "skills",
         "author": "anthropics",
-        "stars": 126096,
-        "forks": 14778,
+        "stars": 126602,
+        "forks": 14850,
         "description": "Public repository for Agent Skills",
         "url": "https://github.com/anthropics/skills",
         "language": "Python",
@@ -5488,8 +5472,8 @@
       {
         "name": "NotionNext",
         "author": "tangly1024",
-        "stars": 11370,
-        "forks": 14584,
+        "stars": 11373,
+        "forks": 14585,
         "description": "使用 NextJS + Notion API 实现的，支持多种部署方案的静态博客，无需服务器、零门槛搭建网站，为Notion和所有创作者设计。 (A static blog built with NextJS and Notion API, supporting multiple deployment options. No server required, zero threshold to set up a website. Designed for Notion and all creators.)",
         "url": "https://github.com/tangly1024/NotionNext",
         "language": "JavaScript",
@@ -5502,13 +5486,24 @@
           "vercel",
           "zeabur"
         ],
-        "last_updated": "4/29/2026"
+        "last_updated": "4/30/2026"
+      },
+      {
+        "name": "agency-agents",
+        "author": "msitarzewski",
+        "stars": 89613,
+        "forks": 14543,
+        "description": "A complete AI agency at your fingertips - From frontend wizards to Reddit community ninjas, from whimsy injectors to reality checkers. Each agent is a specialized expert with personality, processes, and proven deliverables.",
+        "url": "https://github.com/msitarzewski/agency-agents",
+        "language": "Shell",
+        "topics": [],
+        "last_updated": "4/12/2026"
       },
       {
         "name": "LLMs-from-scratch",
         "author": "rasbt",
-        "stars": 91719,
-        "forks": 14129,
+        "stars": 91764,
+        "forks": 14140,
         "description": "Implement a ChatGPT-like LLM in PyTorch from scratch, step by step",
         "url": "https://github.com/rasbt/LLMs-from-scratch",
         "language": "Jupyter Notebook",
@@ -5535,8 +5530,8 @@
       {
         "name": "face_recognition",
         "author": "ageitgey",
-        "stars": 56355,
-        "forks": 13722,
+        "stars": 56358,
+        "forks": 13719,
         "description": "The world's simplest facial recognition api for Python and the command line",
         "url": "https://github.com/ageitgey/face_recognition",
         "language": "Python",
@@ -5551,8 +5546,8 @@
       {
         "name": "Deep-Live-Cam",
         "author": "hacksider",
-        "stars": 92466,
-        "forks": 13429,
+        "stars": 92510,
+        "forks": 13435,
         "description": "real time face swap and one-click video deepfake with only a single image",
         "url": "https://github.com/hacksider/Deep-Live-Cam",
         "language": "Python",
@@ -5579,10 +5574,29 @@
         "last_updated": "4/29/2026"
       },
       {
+        "name": "gemini-cli",
+        "author": "google-gemini",
+        "stars": 102833,
+        "forks": 13416,
+        "description": "An open-source AI agent that brings the power of Gemini directly into your terminal.",
+        "url": "https://github.com/google-gemini/gemini-cli",
+        "language": "TypeScript",
+        "topics": [
+          "ai",
+          "ai-agents",
+          "cli",
+          "gemini",
+          "gemini-api",
+          "mcp-client",
+          "mcp-server"
+        ],
+        "last_updated": "5/1/2026"
+      },
+      {
         "name": "faceswap",
         "author": "deepfakes",
-        "stars": 55194,
-        "forks": 13404,
+        "stars": 55197,
+        "forks": 13403,
         "description": "Deepfakes Software For All",
         "url": "https://github.com/deepfakes/faceswap",
         "language": "Python",
@@ -5605,29 +5619,10 @@
         "last_updated": "4/28/2026"
       },
       {
-        "name": "gemini-cli",
-        "author": "google-gemini",
-        "stars": 102746,
-        "forks": 13402,
-        "description": "An open-source AI agent that brings the power of Gemini directly into your terminal.",
-        "url": "https://github.com/google-gemini/gemini-cli",
-        "language": "TypeScript",
-        "topics": [
-          "ai",
-          "ai-agents",
-          "cli",
-          "gemini",
-          "gemini-api",
-          "mcp-client",
-          "mcp-server"
-        ],
-        "last_updated": "4/30/2026"
-      },
-      {
         "name": "ComfyUI",
         "author": "Comfy-Org",
-        "stars": 110653,
-        "forks": 12913,
+        "stars": 110817,
+        "forks": 12924,
         "description": "The most powerful and modular diffusion model GUI, api and backend with a graph/nodes interface.",
         "url": "https://github.com/Comfy-Org/ComfyUI",
         "language": "Python",
@@ -5639,13 +5634,13 @@
           "pytorch",
           "stable-diffusion"
         ],
-        "last_updated": "4/29/2026"
+        "last_updated": "5/1/2026"
       },
       {
         "name": "openai-cookbook",
         "author": "openai",
-        "stars": 73114,
-        "forks": 12339,
+        "stars": 73150,
+        "forks": 12349,
         "description": "Examples and guides for using the OpenAI API",
         "url": "https://github.com/openai/openai-cookbook",
         "language": "Jupyter Notebook",
@@ -5660,8 +5655,8 @@
       {
         "name": "whisper",
         "author": "openai",
-        "stars": 98647,
-        "forks": 12121,
+        "stars": 98695,
+        "forks": 12127,
         "description": "Robust Speech Recognition via Large-Scale Weak Supervision",
         "url": "https://github.com/openai/whisper",
         "language": "Python",
@@ -5671,8 +5666,8 @@
       {
         "name": "imgui",
         "author": "ocornut",
-        "stars": 72879,
-        "forks": 11736,
+        "stars": 72904,
+        "forks": 11738,
         "description": "Dear ImGui: Bloat-free Graphical User interface for C++ with minimal dependencies",
         "url": "https://github.com/ocornut/imgui",
         "language": "C++",
@@ -5698,7 +5693,7 @@
       {
         "name": "axios",
         "author": "axios",
-        "stars": 109027,
+        "stars": 109037,
         "forks": 11660,
         "description": "Promise based HTTP client for the browser and node.js",
         "url": "https://github.com/axios/axios",
@@ -5710,24 +5705,24 @@
           "nodejs",
           "promise"
         ],
-        "last_updated": "4/29/2026"
+        "last_updated": "4/30/2026"
       },
       {
         "name": "codex",
         "author": "openai",
-        "stars": 78909,
-        "forks": 11287,
+        "stars": 79168,
+        "forks": 11347,
         "description": "Lightweight coding agent that runs in your terminal",
         "url": "https://github.com/openai/codex",
         "language": "Rust",
         "topics": [],
-        "last_updated": "4/30/2026"
+        "last_updated": "5/1/2026"
       },
       {
         "name": "ultralytics",
         "author": "ultralytics",
-        "stars": 56594,
-        "forks": 10886,
+        "stars": 56632,
+        "forks": 10895,
         "description": "Ultralytics YOLO 🚀",
         "url": "https://github.com/ultralytics/ultralytics",
         "language": "Python",
@@ -5753,13 +5748,13 @@
           "yolo26",
           "yolov8"
         ],
-        "last_updated": "4/29/2026"
+        "last_updated": "4/30/2026"
       },
       {
         "name": "youtube-dl",
         "author": "ytdl-org",
-        "stars": 140159,
-        "forks": 10623,
+        "stars": 140165,
+        "forks": 10621,
         "description": "Command-line program to download videos from YouTube.com and other video sites",
         "url": "https://github.com/ytdl-org/youtube-dl",
         "language": "Python",
@@ -5769,8 +5764,8 @@
       {
         "name": "stable-diffusion",
         "author": "CompVis",
-        "stars": 72955,
-        "forks": 10610,
+        "stars": 72962,
+        "forks": 10611,
         "description": "A latent text-to-image diffusion model",
         "url": "https://github.com/CompVis/stable-diffusion",
         "language": "Jupyter Notebook",
@@ -5780,8 +5775,8 @@
       {
         "name": "nvm",
         "author": "nvm-sh",
-        "stars": 93148,
-        "forks": 10136,
+        "stars": 93160,
+        "forks": 10139,
         "description": "Node Version Manager - POSIX-compliant bash script to manage multiple active node.js versions",
         "url": "https://github.com/nvm-sh/nvm",
         "language": "Shell",
@@ -5803,10 +5798,21 @@
         "last_updated": "4/24/2026"
       },
       {
+        "name": "andrej-karpathy-skills",
+        "author": "forrestchang",
+        "stars": 102583,
+        "forks": 10074,
+        "description": "A single CLAUDE.md file to improve Claude Code behavior, derived from Andrej Karpathy's observations on LLM coding pitfalls.",
+        "url": "https://github.com/forrestchang/andrej-karpathy-skills",
+        "language": "Unknown",
+        "topics": [],
+        "last_updated": "4/20/2026"
+      },
+      {
         "name": "storybook",
         "author": "storybookjs",
-        "stars": 89823,
-        "forks": 10037,
+        "stars": 89836,
+        "forks": 10041,
         "description": "Storybook is the industry standard workshop for building, documenting, and testing UI components in isolation",
         "url": "https://github.com/storybookjs/storybook",
         "language": "TypeScript",
@@ -5832,13 +5838,13 @@
           "webpack",
           "workshop"
         ],
-        "last_updated": "4/29/2026"
+        "last_updated": "4/30/2026"
       },
       {
         "name": "mmdetection",
         "author": "open-mmlab",
-        "stars": 32639,
-        "forks": 9841,
+        "stars": 32641,
+        "forks": 9842,
         "description": "OpenMMLab Detection Toolbox and Benchmark",
         "url": "https://github.com/open-mmlab/mmdetection",
         "language": "Python",
@@ -5865,36 +5871,14 @@
           "yolo"
         ],
         "last_updated": "8/21/2024"
-      },
-      {
-        "name": "llama",
-        "author": "meta-llama",
-        "stars": 59376,
-        "forks": 9818,
-        "description": "Inference code for Llama models",
-        "url": "https://github.com/meta-llama/llama",
-        "language": "Python",
-        "topics": [],
-        "last_updated": "1/26/2025"
-      },
-      {
-        "name": "andrej-karpathy-skills",
-        "author": "forrestchang",
-        "stars": 99639,
-        "forks": 9716,
-        "description": "A single CLAUDE.md file to improve Claude Code behavior, derived from Andrej Karpathy's observations on LLM coding pitfalls.",
-        "url": "https://github.com/forrestchang/andrej-karpathy-skills",
-        "language": "Unknown",
-        "topics": [],
-        "last_updated": "4/20/2026"
       }
     ],
     "by_activity": [
       {
         "name": "openclaw",
         "author": "openclaw",
-        "stars": 366379,
-        "forks": 75155,
+        "stars": 366802,
+        "forks": 75344,
         "description": "Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞 ",
         "url": "https://github.com/openclaw/openclaw",
         "language": "TypeScript",
@@ -5907,45 +5891,36 @@
           "own-your-data",
           "personal"
         ],
-        "last_updated": "4/30/2026"
+        "last_updated": "5/1/2026"
       },
       {
-        "name": "n8n",
-        "author": "n8n-io",
-        "stars": 186140,
-        "forks": 57241,
-        "description": "Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integrations.",
-        "url": "https://github.com/n8n-io/n8n",
-        "language": "TypeScript",
+        "name": "AutoGPT",
+        "author": "Significant-Gravitas",
+        "stars": 183908,
+        "forks": 46238,
+        "description": "AutoGPT is the vision of accessible AI for everyone, to use and to build on. Our mission is to provide the tools, so that you can focus on what matters.",
+        "url": "https://github.com/Significant-Gravitas/AutoGPT",
+        "language": "Python",
         "topics": [
+          "agentic-ai",
+          "agents",
           "ai",
-          "apis",
-          "automation",
-          "cli",
-          "data-flow",
-          "development",
-          "integration-framework",
-          "integrations",
-          "ipaas",
-          "low-code",
-          "low-code-platform",
-          "mcp",
-          "mcp-client",
-          "mcp-server",
-          "n8n",
-          "no-code",
-          "self-hosted",
-          "typescript",
-          "workflow",
-          "workflow-automation"
+          "artificial-intelligence",
+          "autonomous-agents",
+          "claude",
+          "gpt",
+          "llama-api",
+          "llm",
+          "openai",
+          "python"
         ],
-        "last_updated": "4/30/2026"
+        "last_updated": "5/1/2026"
       },
       {
         "name": "pytorch",
         "author": "pytorch",
-        "stars": 99534,
-        "forks": 27620,
+        "stars": 99561,
+        "forks": 27631,
         "description": "Tensors and Dynamic neural networks in Python with strong GPU acceleration",
         "url": "https://github.com/pytorch/pytorch",
         "language": "Python",
@@ -5959,94 +5934,13 @@
           "python",
           "tensor"
         ],
-        "last_updated": "4/30/2026"
-      },
-      {
-        "name": "Flowise",
-        "author": "FlowiseAI",
-        "stars": 52396,
-        "forks": 24235,
-        "description": "Build AI Agents, Visually",
-        "url": "https://github.com/FlowiseAI/Flowise",
-        "language": "TypeScript",
-        "topics": [
-          "agentic-ai",
-          "agentic-workflow",
-          "agents",
-          "artificial-intelligence",
-          "chatbot",
-          "chatgpt",
-          "javascript",
-          "langchain",
-          "large-language-models",
-          "low-code",
-          "multiagent-systems",
-          "no-code",
-          "openai",
-          "rag",
-          "react",
-          "typescript",
-          "workflow-automation"
-        ],
-        "last_updated": "4/30/2026"
-      },
-      {
-        "name": "keras",
-        "author": "keras-team",
-        "stars": 64047,
-        "forks": 19761,
-        "description": "Deep Learning for humans",
-        "url": "https://github.com/keras-team/keras",
-        "language": "Python",
-        "topics": [
-          "data-science",
-          "deep-learning",
-          "jax",
-          "machine-learning",
-          "neural-networks",
-          "python",
-          "pytorch",
-          "tensorflow"
-        ],
-        "last_updated": "4/30/2026"
-      },
-      {
-        "name": "airflow",
-        "author": "apache",
-        "stars": 45238,
-        "forks": 16969,
-        "description": "Apache Airflow - A platform to programmatically author, schedule, and monitor workflows",
-        "url": "https://github.com/apache/airflow",
-        "language": "Python",
-        "topics": [
-          "airflow",
-          "apache",
-          "apache-airflow",
-          "automation",
-          "dag",
-          "data-engineering",
-          "data-integration",
-          "data-orchestrator",
-          "data-pipelines",
-          "data-science",
-          "elt",
-          "etl",
-          "machine-learning",
-          "mlops",
-          "orchestration",
-          "python",
-          "scheduler",
-          "workflow",
-          "workflow-engine",
-          "workflow-orchestration"
-        ],
-        "last_updated": "4/30/2026"
+        "last_updated": "5/1/2026"
       },
       {
         "name": "vllm",
         "author": "vllm-project",
-        "stars": 78616,
-        "forks": 16258,
+        "stars": 78705,
+        "forks": 16303,
         "description": "A high-throughput and memory-efficient inference and serving engine for LLMs",
         "url": "https://github.com/vllm-project/vllm",
         "language": "Python",
@@ -6072,40 +5966,13 @@
           "tpu",
           "transformer"
         ],
-        "last_updated": "4/30/2026"
-      },
-      {
-        "name": "ollama",
-        "author": "ollama",
-        "stars": 170336,
-        "forks": 15881,
-        "description": "Get up and running with Kimi-K2.5, GLM-5, MiniMax, DeepSeek, gpt-oss, Qwen, Gemma and other models.",
-        "url": "https://github.com/ollama/ollama",
-        "language": "Go",
-        "topics": [
-          "deepseek",
-          "gemma",
-          "gemma3",
-          "glm",
-          "go",
-          "golang",
-          "gpt-oss",
-          "llama",
-          "llama3",
-          "llm",
-          "llms",
-          "minimax",
-          "mistral",
-          "ollama",
-          "qwen"
-        ],
-        "last_updated": "4/30/2026"
+        "last_updated": "5/1/2026"
       },
       {
         "name": "gemini-cli",
         "author": "google-gemini",
-        "stars": 102746,
-        "forks": 13402,
+        "stars": 102833,
+        "forks": 13416,
         "description": "An open-source AI agent that brings the power of Gemini directly into your terminal.",
         "url": "https://github.com/google-gemini/gemini-cli",
         "language": "TypeScript",
@@ -6118,24 +5985,42 @@
           "mcp-client",
           "mcp-server"
         ],
-        "last_updated": "4/30/2026"
+        "last_updated": "5/1/2026"
+      },
+      {
+        "name": "ComfyUI",
+        "author": "Comfy-Org",
+        "stars": 110817,
+        "forks": 12924,
+        "description": "The most powerful and modular diffusion model GUI, api and backend with a graph/nodes interface.",
+        "url": "https://github.com/Comfy-Org/ComfyUI",
+        "language": "Python",
+        "topics": [
+          "ai",
+          "comfy",
+          "comfyui",
+          "python",
+          "pytorch",
+          "stable-diffusion"
+        ],
+        "last_updated": "5/1/2026"
       },
       {
         "name": "codex",
         "author": "openai",
-        "stars": 78909,
-        "forks": 11287,
+        "stars": 79168,
+        "forks": 11347,
         "description": "Lightweight coding agent that runs in your terminal",
         "url": "https://github.com/openai/codex",
         "language": "Rust",
         "topics": [],
-        "last_updated": "4/30/2026"
+        "last_updated": "5/1/2026"
       },
       {
         "name": "OpenHands",
         "author": "OpenHands",
-        "stars": 72371,
-        "forks": 9144,
+        "stars": 72430,
+        "forks": 9153,
         "description": "🙌 OpenHands: AI-Driven Development",
         "url": "https://github.com/OpenHands/OpenHands",
         "language": "Python",
@@ -6150,13 +6035,13 @@
           "llm",
           "openai"
         ],
-        "last_updated": "4/30/2026"
+        "last_updated": "5/1/2026"
       },
       {
         "name": "litellm",
         "author": "BerriAI",
-        "stars": 45232,
-        "forks": 7663,
+        "stars": 45351,
+        "forks": 7690,
         "description": "Python SDK, Proxy Server (AI Gateway) to call 100+ LLM APIs in OpenAI (or native) format, with cost tracking, guardrails, loadbalancing and logging. [Bedrock, Azure, OpenAI, VertexAI, Cohere, Anthropic, Sagemaker, HuggingFace, VLLM, NVIDIA NIM]",
         "url": "https://github.com/BerriAI/litellm",
         "language": "Python",
@@ -6176,51 +6061,104 @@
           "openai-proxy",
           "vertex-ai"
         ],
-        "last_updated": "4/30/2026"
+        "last_updated": "5/1/2026"
       },
       {
-        "name": "phaser",
-        "author": "phaserjs",
-        "stars": 39528,
-        "forks": 7137,
-        "description": "Phaser is a fun, free and fast 2D game framework for making HTML5 games for desktop and mobile web browsers, supporting Canvas and WebGL rendering.",
-        "url": "https://github.com/phaserjs/phaser",
-        "language": "JavaScript",
+        "name": "immich",
+        "author": "immich-app",
+        "stars": 99382,
+        "forks": 5521,
+        "description": "High performance self-hosted photo and video management solution.",
+        "url": "https://github.com/immich-app/immich",
+        "language": "TypeScript",
         "topics": [
-          "canvas",
-          "discord-activities",
-          "facebook-instant-games",
-          "game-development",
-          "game-frameworks",
-          "gamedev",
-          "html5-game-development",
+          "backup-tool",
+          "flutter",
+          "google-photos",
+          "google-photos-alternative",
           "javascript",
-          "phaser",
-          "phaser-development",
-          "phaserjs",
-          "webgl",
-          "youtube-playables"
+          "mobile-app",
+          "nestjs",
+          "nodejs",
+          "photo-gallery",
+          "photos",
+          "photos-management",
+          "self-hosted",
+          "svelte",
+          "sveltekit",
+          "typescript",
+          "videos"
         ],
-        "last_updated": "4/30/2026"
+        "last_updated": "5/1/2026"
+      },
+      {
+        "name": "appsmith",
+        "author": "appsmithorg",
+        "stars": 39717,
+        "forks": 4548,
+        "description": "Platform to build admin panels, internal tools, and dashboards. Integrates with 25+ databases and any API.",
+        "url": "https://github.com/appsmithorg/appsmith",
+        "language": "TypeScript",
+        "topics": [
+          "admin-dashboard",
+          "admin-panels",
+          "app-builder",
+          "automation",
+          "crud",
+          "custom-internal",
+          "developer-tools",
+          "gui",
+          "gui-application",
+          "hacktoberfest",
+          "internal-tools",
+          "java",
+          "javascript",
+          "low-code",
+          "low-code-framework",
+          "react",
+          "self-hosted",
+          "typescript",
+          "webdevelopment",
+          "workflows"
+        ],
+        "last_updated": "5/1/2026"
+      },
+      {
+        "name": "openai-agents-python",
+        "author": "openai",
+        "stars": 25613,
+        "forks": 3908,
+        "description": "A lightweight, powerful framework for multi-agent workflows",
+        "url": "https://github.com/openai/openai-agents-python",
+        "language": "Python",
+        "topics": [
+          "agents",
+          "ai",
+          "framework",
+          "llm",
+          "openai",
+          "python"
+        ],
+        "last_updated": "5/1/2026"
       },
       {
         "name": "jax",
         "author": "jax-ml",
-        "stars": 35510,
-        "forks": 3549,
+        "stars": 35515,
+        "forks": 3552,
         "description": "Composable transformations of Python+NumPy programs: differentiate, vectorize, JIT to GPU/TPU, and more",
         "url": "https://github.com/jax-ml/jax",
         "language": "Python",
         "topics": [
           "jax"
         ],
-        "last_updated": "4/30/2026"
+        "last_updated": "5/1/2026"
       },
       {
         "name": "adk-python",
         "author": "google",
-        "stars": 19357,
-        "forks": 3314,
+        "stars": 19373,
+        "forks": 3320,
         "description": "An open-source, code-first Python toolkit for building, evaluating, and deploying sophisticated AI agents with flexibility and control.",
         "url": "https://github.com/google/adk-python",
         "language": "Python",
@@ -6242,60 +6180,140 @@
           "multi-agents",
           "multi-agents-collaboration"
         ],
-        "last_updated": "4/30/2026"
+        "last_updated": "5/1/2026"
       },
       {
-        "name": "schemastore",
-        "author": "SchemaStore",
-        "stars": 3737,
-        "forks": 2157,
-        "description": "A collection of JSON schema files including full API",
-        "url": "https://github.com/SchemaStore/schemastore",
-        "language": "JavaScript",
-        "topics": [],
-        "last_updated": "4/30/2026"
+        "name": "InvokeAI",
+        "author": "invoke-ai",
+        "stars": 27078,
+        "forks": 2813,
+        "description": "Invoke is a leading creative engine for Stable Diffusion models, empowering professionals, artists, and enthusiasts to generate and create visual media using the latest AI-driven technologies. The solution offers an industry leading WebUI, and serves as the foundation for multiple commercial products.",
+        "url": "https://github.com/invoke-ai/InvokeAI",
+        "language": "TypeScript",
+        "topics": [
+          "ai-art",
+          "artificial-intelligence",
+          "generative-art",
+          "image-generation",
+          "img2img",
+          "inpainting",
+          "latent-diffusion",
+          "linux",
+          "macos",
+          "outpainting",
+          "stable-diffusion",
+          "txt2img",
+          "windows"
+        ],
+        "last_updated": "5/1/2026"
       },
       {
-        "name": "gumroad",
-        "author": "antiwork",
-        "stars": 8978,
-        "forks": 1886,
-        "description": "Sell stuff and see what sticks",
-        "url": "https://github.com/antiwork/gumroad",
-        "language": "Ruby",
-        "topics": [],
-        "last_updated": "4/30/2026"
-      },
-      {
-        "name": "opik",
-        "author": "comet-ml",
-        "stars": 19120,
-        "forks": 1460,
-        "description": "Debug, evaluate, and monitor your LLM applications, RAG systems, and agentic workflows with comprehensive tracing, automated evaluations, and production-ready dashboards.",
-        "url": "https://github.com/comet-ml/opik",
+        "name": "pipecat",
+        "author": "pipecat-ai",
+        "stars": 11645,
+        "forks": 1983,
+        "description": "Open Source framework for voice and multimodal conversational AI",
+        "url": "https://github.com/pipecat-ai/pipecat",
         "language": "Python",
         "topics": [
-          "evaluation",
-          "hacktoberfest",
-          "hacktoberfest2025",
-          "langchain",
-          "llama-index",
-          "llm",
-          "llm-evaluation",
-          "llm-observability",
-          "llmops",
-          "open-source",
-          "openai",
-          "playground",
-          "prompt-engineering"
+          "ai",
+          "chatbot-framework",
+          "chatbots",
+          "real-time",
+          "voice",
+          "voice-assistant"
         ],
-        "last_updated": "4/30/2026"
+        "last_updated": "5/1/2026"
+      },
+      {
+        "name": "changedetection.io",
+        "author": "dgtlmoon",
+        "stars": 31304,
+        "forks": 1769,
+        "description": "Best and simplest tool for website change detection, web page monitoring, and website change alerts. Perfect for tracking content changes, price drops, restock alerts, and website defacement monitoring—all for free or enjoy our SaaS plan!",
+        "url": "https://github.com/dgtlmoon/changedetection.io",
+        "language": "Python",
+        "topics": [
+          "back-in-stock",
+          "change-alert",
+          "change-detection",
+          "change-monitoring",
+          "monitoring",
+          "notifications",
+          "restock-monitor",
+          "rss",
+          "self-hosted",
+          "url-monitor",
+          "web-scraping",
+          "website-change-detection",
+          "website-change-detector",
+          "website-change-monitor",
+          "website-change-notification",
+          "website-change-tracker",
+          "website-defacement-monitoring",
+          "website-monitor",
+          "website-monitoring",
+          "website-watcher"
+        ],
+        "last_updated": "5/1/2026"
+      },
+      {
+        "name": "reflex",
+        "author": "reflex-dev",
+        "stars": 28341,
+        "forks": 1708,
+        "description": "🕸️ Web apps in pure Python 🐍",
+        "url": "https://github.com/reflex-dev/reflex",
+        "language": "Python",
+        "topics": [
+          "dashboard",
+          "data-analysis",
+          "data-science",
+          "data-visualization",
+          "developer-tools",
+          "framework",
+          "fullstack",
+          "gui",
+          "open-source",
+          "python",
+          "webapp"
+        ],
+        "last_updated": "5/1/2026"
+      },
+      {
+        "name": "react-spectrum",
+        "author": "adobe",
+        "stars": 15044,
+        "forks": 1415,
+        "description": "A collection of libraries and tools that help you build adaptive, accessible, and robust user experiences.",
+        "url": "https://github.com/adobe/react-spectrum",
+        "language": "TypeScript",
+        "topics": [
+          "accessibility",
+          "design-systems",
+          "react",
+          "react-components",
+          "ui-components",
+          "wai-aria"
+        ],
+        "last_updated": "5/1/2026"
+      },
+      {
+        "name": "kaggle-cli",
+        "author": "Kaggle",
+        "stars": 7279,
+        "forks": 1350,
+        "description": "Official Kaggle CLI",
+        "url": "https://github.com/Kaggle/kaggle-cli",
+        "language": "Python",
+        "topics": [],
+        "last_updated": "5/1/2026"
       },
       {
         "name": "executorch",
         "author": "pytorch",
-        "stars": 4559,
-        "forks": 966,
+        "stars": 4562,
+        "forks": 967,
         "description": "On-device AI across mobile, embedded and edge for PyTorch",
         "url": "https://github.com/pytorch/executorch",
         "language": "Python",
@@ -6308,105 +6326,108 @@
           "neural-network",
           "tensor"
         ],
-        "last_updated": "4/30/2026"
+        "last_updated": "5/1/2026"
       },
       {
-        "name": "BentoML",
-        "author": "bentoml",
-        "stars": 8614,
-        "forks": 955,
-        "description": "The easiest way to serve AI apps and models - Build Model Inference APIs, Job queues, LLM apps, Multi-model pipelines, and more!",
-        "url": "https://github.com/bentoml/BentoML",
+        "name": "rig",
+        "author": "0xPlaygrounds",
+        "stars": 7118,
+        "forks": 789,
+        "description": "⚙️🦀 Build modular and scalable LLM Applications in Rust",
+        "url": "https://github.com/0xPlaygrounds/rig",
+        "language": "Rust",
+        "topics": [
+          "agent",
+          "ai",
+          "artificial-intelligence",
+          "automation",
+          "generative-ai",
+          "large-language-model",
+          "llm",
+          "llmops",
+          "rust",
+          "scalable-ai"
+        ],
+        "last_updated": "5/1/2026"
+      },
+      {
+        "name": "trimesh",
+        "author": "mikedh",
+        "stars": 3557,
+        "forks": 641,
+        "description": "Python library for loading and using triangular meshes.",
+        "url": "https://github.com/mikedh/trimesh",
         "language": "Python",
         "topics": [
-          "ai-inference",
-          "deep-learning",
-          "generative-ai",
-          "inference-platform",
+          "geometry",
+          "mesh",
+          "python",
+          "triangular-meshes"
+        ],
+        "last_updated": "5/1/2026"
+      },
+      {
+        "name": "ag2",
+        "author": "ag2ai",
+        "stars": 4465,
+        "forks": 599,
+        "description": "AG2 (formerly AutoGen): The Open-Source AgentOS.Join us at: https://discord.gg/sNGSwQME3x",
+        "url": "https://github.com/ag2ai/ag2",
+        "language": "Python",
+        "topics": [
+          "a2a",
+          "ag2",
+          "agent-framework",
+          "agentic",
+          "agentic-ai",
+          "ai",
+          "ai-agents-framework",
+          "aiagents",
+          "genai",
           "llm",
-          "llm-inference",
-          "llm-serving",
-          "llmops",
-          "machine-learning",
-          "ml-engineering",
-          "mlops",
-          "model-inference-service",
-          "model-serving",
-          "multimodal",
+          "llms",
+          "mcp",
+          "multi-agent",
+          "multi-agent-system",
+          "open-source",
           "python"
         ],
-        "last_updated": "4/30/2026"
+        "last_updated": "5/1/2026"
       },
       {
-        "name": "OpenImageIO",
-        "author": "AcademySoftwareFoundation",
-        "stars": 2284,
-        "forks": 667,
-        "description": "Reading, writing, and processing images in a wide variety of file formats, using a format-agnostic API, aimed at VFX applications.",
-        "url": "https://github.com/AcademySoftwareFoundation/OpenImageIO",
-        "language": "C++",
+        "name": "sdnext",
+        "author": "vladmandic",
+        "stars": 7078,
+        "forks": 560,
+        "description": "SD.Next: All-in-one WebUI for AI generative image and video creation, captioning and processing",
+        "url": "https://github.com/vladmandic/sdnext",
+        "language": "Python",
         "topics": [
-          "c-plus-plus",
-          "c-plus-plus-11",
-          "image-processing",
-          "images",
-          "texture",
-          "vfx"
+          "ai-art",
+          "caption",
+          "diffusers",
+          "generative-art",
+          "python",
+          "pytorch",
+          "sdnext",
+          "stable-diffusion",
+          "transformers",
+          "webui"
         ],
-        "last_updated": "4/30/2026"
+        "last_updated": "5/1/2026"
       },
       {
-        "name": "satori",
-        "author": "vercel",
-        "stars": 13350,
-        "forks": 343,
-        "description": "Enlightened library to convert HTML and CSS to SVG",
-        "url": "https://github.com/vercel/satori",
-        "language": "TypeScript",
+        "name": "PufferLib",
+        "author": "PufferAI",
+        "stars": 5638,
+        "forks": 443,
+        "description": "Puffing up reinforcement learning",
+        "url": "https://github.com/PufferAI/PufferLib",
+        "language": "C",
         "topics": [
-          "css",
-          "image",
-          "image-generation",
-          "image-generator",
-          "jsx",
-          "opengraph-images",
-          "satori",
-          "svg",
-          "vercel"
+          "reinforcement-learning"
         ],
-        "last_updated": "4/30/2026"
-      },
-      {
-        "name": "loaders.gl",
-        "author": "visgl",
-        "stars": 833,
-        "forks": 218,
-        "description": "Loaders for big data visualization. Website:",
-        "url": "https://github.com/visgl/loaders.gl",
-        "language": "TypeScript",
-        "topics": [
-          "3d-tiles",
-          "apache-arrow",
-          "apache-parquet",
-          "basis",
-          "csv",
-          "draco",
-          "geoarrow",
-          "geoparquet",
-          "gltf",
-          "i3s",
-          "javascript",
-          "las",
-          "loaders",
-          "nodejs",
-          "obj",
-          "ply",
-          "streaming",
-          "wkb",
-          "wkt",
-          "workers"
-        ],
-        "last_updated": "4/30/2026"
+        "last_updated": "5/1/2026"
       },
       {
         "name": "chatgpt.js",
@@ -6437,68 +6458,88 @@
           "nlp",
           "openai"
         ],
-        "last_updated": "4/30/2026"
+        "last_updated": "5/1/2026"
       },
       {
-        "name": "Enzyme",
-        "author": "EnzymeAD",
-        "stars": 1587,
-        "forks": 159,
-        "description": "High-performance automatic differentiation of LLVM and MLIR.",
-        "url": "https://github.com/EnzymeAD/Enzyme",
-        "language": "LLVM",
-        "topics": [
-          "ad",
-          "automatic-differentiation",
-          "c",
-          "clang",
-          "compiler",
-          "cpp",
-          "deep-learning",
-          "derivative",
-          "differentiable-programming",
-          "enzyme",
-          "gradient",
-          "high-performance",
-          "llvm",
-          "llvm-enzyme",
-          "machine-learning",
-          "pytorch",
-          "rust",
-          "scientific-computing",
-          "simulation",
-          "tensorflow"
-        ],
-        "last_updated": "4/30/2026"
-      },
-      {
-        "name": "AutoGPT",
-        "author": "Significant-Gravitas",
-        "stars": 183883,
-        "forks": 46236,
-        "description": "AutoGPT is the vision of accessible AI for everyone, to use and to build on. Our mission is to provide the tools, so that you can focus on what matters.",
-        "url": "https://github.com/Significant-Gravitas/AutoGPT",
+        "name": "ppf-contact-solver",
+        "author": "st-tech",
+        "stars": 1611,
+        "forks": 94,
+        "description": "A contact solver for physics-based simulations involving 👚 shells, 🪵 solids and 🪢 rods.",
+        "url": "https://github.com/st-tech/ppf-contact-solver",
         "language": "Python",
         "topics": [
-          "agentic-ai",
-          "agents",
-          "ai",
-          "artificial-intelligence",
-          "autonomous-agents",
-          "claude",
-          "gpt",
-          "llama-api",
-          "llm",
-          "openai",
-          "python"
+          "cloth",
+          "collision",
+          "contact",
+          "physics",
+          "simulation"
         ],
-        "last_updated": "4/29/2026"
+        "last_updated": "5/1/2026"
+      },
+      {
+        "name": "generative-ai-for-beginners",
+        "author": "microsoft",
+        "stars": 110054,
+        "forks": 59052,
+        "description": "21 Lessons, Get Started Building with Generative AI ",
+        "url": "https://github.com/microsoft/generative-ai-for-beginners",
+        "language": "Jupyter Notebook",
+        "topics": [
+          "ai",
+          "azure",
+          "chatgpt",
+          "dall-e",
+          "generative-ai",
+          "generativeai",
+          "gpt",
+          "language-model",
+          "llms",
+          "microsoft-for-beginners",
+          "openai",
+          "prompt-engineering",
+          "semantic-search",
+          "transformers"
+        ],
+        "last_updated": "4/30/2026"
+      },
+      {
+        "name": "n8n",
+        "author": "n8n-io",
+        "stars": 186286,
+        "forks": 57265,
+        "description": "Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integrations.",
+        "url": "https://github.com/n8n-io/n8n",
+        "language": "TypeScript",
+        "topics": [
+          "ai",
+          "apis",
+          "automation",
+          "cli",
+          "data-flow",
+          "development",
+          "integration-framework",
+          "integrations",
+          "ipaas",
+          "low-code",
+          "low-code-platform",
+          "mcp",
+          "mcp-client",
+          "mcp-server",
+          "n8n",
+          "no-code",
+          "self-hosted",
+          "typescript",
+          "workflow",
+          "workflow-automation"
+        ],
+        "last_updated": "4/30/2026"
       },
       {
         "name": "three.js",
         "author": "mrdoob",
-        "stars": 112247,
-        "forks": 36355,
+        "stars": 112265,
+        "forks": 36354,
         "description": "JavaScript 3D Library.",
         "url": "https://github.com/mrdoob/three.js",
         "language": "JavaScript",
@@ -6516,13 +6557,13 @@
           "webgpu",
           "webxr"
         ],
-        "last_updated": "4/29/2026"
+        "last_updated": "4/30/2026"
       },
       {
         "name": "transformers",
         "author": "huggingface",
-        "stars": 160088,
-        "forks": 33055,
+        "stars": 160130,
+        "forks": 33066,
         "description": "🤗 Transformers: the model-definition framework for state-of-the-art machine learning models in text, vision, audio, and multimodal models, for both inference and training. ",
         "url": "https://github.com/huggingface/transformers",
         "language": "Python",
@@ -6547,13 +6588,13 @@
           "transformer",
           "vlm"
         ],
-        "last_updated": "4/29/2026"
+        "last_updated": "4/30/2026"
       },
       {
         "name": "material-ui",
         "author": "mui",
-        "stars": 98253,
-        "forks": 32650,
+        "stars": 98257,
+        "forks": 32655,
         "description": "Material UI: Comprehensive React component library that implements Google's Material Design. Free forever.",
         "url": "https://github.com/mui/material-ui",
         "language": "JavaScript",
@@ -6564,13 +6605,69 @@
           "react",
           "react-components"
         ],
-        "last_updated": "4/29/2026"
+        "last_updated": "4/30/2026"
+      },
+      {
+        "name": "ohmyzsh",
+        "author": "ohmyzsh",
+        "stars": 186637,
+        "forks": 26351,
+        "description": "🙃   A delightful community-driven (with 2,400+ contributors) framework for managing your zsh configuration. Includes 300+ optional plugins (rails, git, macOS, hub, docker, homebrew, node, php, python, etc), 140+ themes to spice up your morning, and an auto-update tool that makes it easy to keep up with the latest updates from the community.",
+        "url": "https://github.com/ohmyzsh/ohmyzsh",
+        "language": "Shell",
+        "topics": [
+          "cli",
+          "cli-app",
+          "oh-my-zsh",
+          "oh-my-zsh-plugin",
+          "oh-my-zsh-theme",
+          "ohmyzsh",
+          "plugin-framework",
+          "plugins",
+          "productivity",
+          "shell",
+          "terminal",
+          "theme",
+          "themes",
+          "zsh",
+          "zsh-configuration"
+        ],
+        "last_updated": "4/30/2026"
+      },
+      {
+        "name": "Flowise",
+        "author": "FlowiseAI",
+        "stars": 52433,
+        "forks": 24242,
+        "description": "Build AI Agents, Visually",
+        "url": "https://github.com/FlowiseAI/Flowise",
+        "language": "TypeScript",
+        "topics": [
+          "agentic-ai",
+          "agentic-workflow",
+          "agents",
+          "artificial-intelligence",
+          "chatbot",
+          "chatgpt",
+          "javascript",
+          "langchain",
+          "large-language-models",
+          "low-code",
+          "multiagent-systems",
+          "no-code",
+          "openai",
+          "rag",
+          "react",
+          "typescript",
+          "workflow-automation"
+        ],
+        "last_updated": "4/30/2026"
       },
       {
         "name": "langchain",
         "author": "langchain-ai",
-        "stars": 135396,
-        "forks": 22388,
+        "stars": 135507,
+        "forks": 22392,
         "description": "The agent engineering platform",
         "url": "https://github.com/langchain-ai/langchain",
         "language": "Python",
@@ -6595,13 +6692,13 @@
           "python",
           "rag"
         ],
-        "last_updated": "4/29/2026"
+        "last_updated": "4/30/2026"
       },
       {
         "name": "dify",
         "author": "langgenius",
-        "stars": 139652,
-        "forks": 21901,
+        "stars": 139767,
+        "forks": 21920,
         "description": "Production-ready platform for agentic workflow development.",
         "url": "https://github.com/langgenius/dify",
         "language": "TypeScript",
@@ -6627,13 +6724,13 @@
           "rag",
           "workflow"
         ],
-        "last_updated": "4/29/2026"
+        "last_updated": "4/30/2026"
       },
       {
         "name": "prompts.chat",
         "author": "f",
-        "stars": 161160,
-        "forks": 21047,
+        "stars": 161259,
+        "forks": 21050,
         "description": "f.k.a. Awesome ChatGPT Prompts. Share, discover, and collect prompts from the community. Free and open source — self-host for your organization with complete privacy.",
         "url": "https://github.com/f/prompts.chat",
         "language": "HTML",
@@ -6657,26 +6754,105 @@
           "prompts-chat",
           "typescript"
         ],
-        "last_updated": "4/29/2026"
+        "last_updated": "4/30/2026"
+      },
+      {
+        "name": "keras",
+        "author": "keras-team",
+        "stars": 64051,
+        "forks": 19761,
+        "description": "Deep Learning for humans",
+        "url": "https://github.com/keras-team/keras",
+        "language": "Python",
+        "topics": [
+          "data-science",
+          "deep-learning",
+          "jax",
+          "machine-learning",
+          "neural-networks",
+          "python",
+          "pytorch",
+          "tensorflow"
+        ],
+        "last_updated": "4/30/2026"
       },
       {
         "name": "llama.cpp",
         "author": "ggml-org",
-        "stars": 107447,
-        "forks": 17571,
+        "stars": 107630,
+        "forks": 17627,
         "description": "LLM inference in C/C++",
         "url": "https://github.com/ggml-org/llama.cpp",
         "language": "C++",
         "topics": [
           "ggml"
         ],
-        "last_updated": "4/29/2026"
+        "last_updated": "4/30/2026"
+      },
+      {
+        "name": "airflow",
+        "author": "apache",
+        "stars": 45250,
+        "forks": 16974,
+        "description": "Apache Airflow - A platform to programmatically author, schedule, and monitor workflows",
+        "url": "https://github.com/apache/airflow",
+        "language": "Python",
+        "topics": [
+          "airflow",
+          "apache",
+          "apache-airflow",
+          "automation",
+          "dag",
+          "data-engineering",
+          "data-integration",
+          "data-orchestrator",
+          "data-pipelines",
+          "data-science",
+          "elt",
+          "etl",
+          "machine-learning",
+          "mlops",
+          "orchestration",
+          "python",
+          "scheduler",
+          "workflow",
+          "workflow-engine",
+          "workflow-orchestration"
+        ],
+        "last_updated": "4/30/2026"
+      },
+      {
+        "name": "ollama",
+        "author": "ollama",
+        "stars": 170419,
+        "forks": 15911,
+        "description": "Get up and running with Kimi-K2.5, GLM-5, MiniMax, DeepSeek, gpt-oss, Qwen, Gemma and other models.",
+        "url": "https://github.com/ollama/ollama",
+        "language": "Go",
+        "topics": [
+          "deepseek",
+          "gemma",
+          "gemma3",
+          "glm",
+          "go",
+          "golang",
+          "gpt-oss",
+          "llama",
+          "llama3",
+          "llm",
+          "llms",
+          "minimax",
+          "mistral",
+          "ollama",
+          "qwen"
+        ],
+        "last_updated": "4/30/2026"
       },
       {
         "name": "NotionNext",
         "author": "tangly1024",
-        "stars": 11370,
-        "forks": 14584,
+        "stars": 11373,
+        "forks": 14585,
         "description": "使用 NextJS + Notion API 实现的，支持多种部署方案的静态博客，无需服务器、零门槛搭建网站，为Notion和所有创作者设计。 (A static blog built with NextJS and Notion API, supporting multiple deployment options. No server required, zero threshold to set up a website. Designed for Notion and all creators.)",
         "url": "https://github.com/tangly1024/NotionNext",
         "language": "JavaScript",
@@ -6689,76 +6865,12 @@
           "vercel",
           "zeabur"
         ],
-        "last_updated": "4/29/2026"
-      },
-      {
-        "name": "Deep-Live-Cam",
-        "author": "hacksider",
-        "stars": 92466,
-        "forks": 13429,
-        "description": "real time face swap and one-click video deepfake with only a single image",
-        "url": "https://github.com/hacksider/Deep-Live-Cam",
-        "language": "Python",
-        "topics": [
-          "ai",
-          "ai-deep-fake",
-          "ai-face",
-          "ai-webcam",
-          "artificial-intelligence",
-          "deep-fake",
-          "deepfake",
-          "deepfake-webcam",
-          "faceswap",
-          "fake-webcam",
-          "gan",
-          "real-time-deepfake",
-          "realtime",
-          "realtime-deepfake",
-          "realtime-face-changer",
-          "video-deepfake",
-          "webcam",
-          "webcamera"
-        ],
-        "last_updated": "4/29/2026"
-      },
-      {
-        "name": "ComfyUI",
-        "author": "Comfy-Org",
-        "stars": 110653,
-        "forks": 12913,
-        "description": "The most powerful and modular diffusion model GUI, api and backend with a graph/nodes interface.",
-        "url": "https://github.com/Comfy-Org/ComfyUI",
-        "language": "Python",
-        "topics": [
-          "ai",
-          "comfy",
-          "comfyui",
-          "python",
-          "pytorch",
-          "stable-diffusion"
-        ],
-        "last_updated": "4/29/2026"
-      },
-      {
-        "name": "openai-cookbook",
-        "author": "openai",
-        "stars": 73114,
-        "forks": 12339,
-        "description": "Examples and guides for using the OpenAI API",
-        "url": "https://github.com/openai/openai-cookbook",
-        "language": "Jupyter Notebook",
-        "topics": [
-          "chatgpt",
-          "gpt-4",
-          "openai",
-          "openai-api"
-        ],
-        "last_updated": "4/29/2026"
+        "last_updated": "4/30/2026"
       },
       {
         "name": "axios",
         "author": "axios",
-        "stars": 109027,
+        "stars": 109037,
         "forks": 11660,
         "description": "Promise based HTTP client for the browser and node.js",
         "url": "https://github.com/axios/axios",
@@ -6770,13 +6882,13 @@
           "nodejs",
           "promise"
         ],
-        "last_updated": "4/29/2026"
+        "last_updated": "4/30/2026"
       },
       {
         "name": "ultralytics",
         "author": "ultralytics",
-        "stars": 56594,
-        "forks": 10886,
+        "stars": 56632,
+        "forks": 10895,
         "description": "Ultralytics YOLO 🚀",
         "url": "https://github.com/ultralytics/ultralytics",
         "language": "Python",
@@ -6802,13 +6914,13 @@
           "yolo26",
           "yolov8"
         ],
-        "last_updated": "4/29/2026"
+        "last_updated": "4/30/2026"
       },
       {
         "name": "storybook",
         "author": "storybookjs",
-        "stars": 89823,
-        "forks": 10037,
+        "stars": 89836,
+        "forks": 10041,
         "description": "Storybook is the industry standard workshop for building, documenting, and testing UI components in isolation",
         "url": "https://github.com/storybookjs/storybook",
         "language": "TypeScript",
@@ -6834,13 +6946,13 @@
           "webpack",
           "workshop"
         ],
-        "last_updated": "4/29/2026"
+        "last_updated": "4/30/2026"
       },
       {
         "name": "mermaid",
         "author": "mermaid-js",
-        "stars": 87728,
-        "forks": 8920,
+        "stars": 87746,
+        "forks": 8923,
         "description": "Generation of diagrams like flowcharts or sequence diagrams from text in a similar manner as markdown",
         "url": "https://github.com/mermaid-js/mermaid",
         "language": "TypeScript",
@@ -6854,13 +6966,13 @@
           "typescript",
           "uml-diagrams"
         ],
-        "last_updated": "4/29/2026"
+        "last_updated": "4/30/2026"
       },
       {
         "name": "langflow",
         "author": "langflow-ai",
-        "stars": 147512,
-        "forks": 8873,
+        "stars": 147571,
+        "forks": 8884,
         "description": "Langflow is a powerful tool for building and deploying AI-powered agents and workflows.",
         "url": "https://github.com/langflow-ai/langflow",
         "language": "Python",
@@ -6872,12 +6984,12 @@
           "multiagent",
           "react-flow"
         ],
-        "last_updated": "4/29/2026"
+        "last_updated": "4/30/2026"
       },
       {
         "name": "LlamaFactory",
         "author": "hiyouga",
-        "stars": 70769,
+        "stars": 70799,
         "forks": 8643,
         "description": "Unified Efficient Fine-Tuning of 100+ LLMs & VLMs (ACL 2024)",
         "url": "https://github.com/hiyouga/LlamaFactory",
@@ -6904,191 +7016,22 @@
           "rlhf",
           "transformers"
         ],
-        "last_updated": "4/29/2026"
+        "last_updated": "4/30/2026"
       },
       {
-        "name": "full-stack-fastapi-template",
-        "author": "fastapi",
-        "stars": 42930,
-        "forks": 8469,
-        "description": "Full stack, modern web application template. Using FastAPI, React, SQLModel, PostgreSQL, Docker, GitHub Actions, automatic HTTPS and more.",
-        "url": "https://github.com/fastapi/full-stack-fastapi-template",
-        "language": "TypeScript",
-        "topics": [
-          "backend",
-          "chakra-ui",
-          "docker",
-          "fastapi",
-          "frontend",
-          "json",
-          "json-schema",
-          "jwt",
-          "letsencrypt",
-          "openapi",
-          "postgresql",
-          "python",
-          "react",
-          "sqlmodel",
-          "swagger",
-          "tanstack-query",
-          "tanstack-router",
-          "traefik",
-          "typescript"
-        ],
-        "last_updated": "4/29/2026"
-      },
-      {
-        "name": "zed",
-        "author": "zed-industries",
-        "stars": 80394,
-        "forks": 8084,
-        "description": "Code at the speed of thought – Zed is a high-performance, multiplayer code editor from the creators of Atom and Tree-sitter.",
-        "url": "https://github.com/zed-industries/zed",
-        "language": "Rust",
-        "topics": [
-          "gpui",
-          "rust-lang",
-          "text-editor",
-          "zed"
-        ],
-        "last_updated": "4/29/2026"
-      },
-      {
-        "name": "LibreChat",
-        "author": "danny-avila",
-        "stars": 36293,
-        "forks": 7434,
-        "description": "Enhanced ChatGPT Clone: Features Agents, MCP, DeepSeek, Anthropic, AWS, OpenAI, Responses API, Azure, Groq, o1, GPT-5, Mistral, OpenRouter, Vertex AI, Gemini, Artifacts, AI model switching, message search, Code Interpreter, langchain, DALL-E-3, OpenAPI Actions, Functions, Secure Multi-User Auth, Presets, open-source for self-hosting. Active.",
-        "url": "https://github.com/danny-avila/LibreChat",
-        "language": "TypeScript",
+        "name": "google-research",
+        "author": "google-research",
+        "stars": 37829,
+        "forks": 8397,
+        "description": "Google Research",
+        "url": "https://github.com/google-research/google-research",
+        "language": "Jupyter Notebook",
         "topics": [
           "ai",
-          "anthropic",
-          "artifacts",
-          "aws",
-          "azure",
-          "chatgpt",
-          "chatgpt-clone",
-          "claude",
-          "clone",
-          "deepseek",
-          "gemini",
-          "google",
-          "gpt-5",
-          "librechat",
-          "mcp",
-          "o1",
-          "openai",
-          "responses-api",
-          "vision",
-          "webui"
-        ],
-        "last_updated": "4/29/2026"
-      },
-      {
-        "name": "firecrawl",
-        "author": "firecrawl",
-        "stars": 113118,
-        "forks": 7201,
-        "description": "🔥 The API to search, scrape, and interact with the web for AI",
-        "url": "https://github.com/firecrawl/firecrawl",
-        "language": "TypeScript",
-        "topics": [
-          "ai",
-          "ai-agents",
-          "ai-crawler",
-          "ai-scraping",
-          "ai-search",
-          "crawler",
-          "data-extraction",
-          "html-to-markdown",
-          "llm",
-          "markdown",
-          "scraper",
-          "scraping",
-          "web-crawler",
-          "web-data",
-          "web-data-extraction",
-          "web-scraper",
-          "web-scraping",
-          "web-search",
-          "webscraping"
-        ],
-        "last_updated": "4/29/2026"
-      },
-      {
-        "name": "diffusers",
-        "author": "huggingface",
-        "stars": 33502,
-        "forks": 6954,
-        "description": "🤗 Diffusers: State-of-the-art diffusion models for image, video, and audio generation in PyTorch.",
-        "url": "https://github.com/huggingface/diffusers",
-        "language": "Python",
-        "topics": [
-          "deep-learning",
-          "diffusion",
-          "flux",
-          "image-generation",
-          "image2image",
-          "image2video",
-          "latent-diffusion-models",
-          "pytorch",
-          "qwen-image",
-          "score-based-generative-modeling",
-          "stable-diffusion",
-          "stable-diffusion-diffusers",
-          "text2image",
-          "text2video",
-          "video2video"
-        ],
-        "last_updated": "4/29/2026"
-      },
-      {
-        "name": "mempalace",
-        "author": "MemPalace",
-        "stars": 50374,
-        "forks": 6620,
-        "description": "The best-benchmarked open-source AI memory system. And it's free.",
-        "url": "https://github.com/MemPalace/mempalace",
-        "language": "Python",
-        "topics": [
-          "ai",
-          "chromadb",
-          "llm",
-          "mcp",
-          "memory",
-          "python"
-        ],
-        "last_updated": "4/29/2026"
-      },
-      {
-        "name": "mediapipe",
-        "author": "google-ai-edge",
-        "stars": 35011,
-        "forks": 5939,
-        "description": "Cross-platform, customizable ML solutions for live and streaming media.",
-        "url": "https://github.com/google-ai-edge/mediapipe",
-        "language": "C++",
-        "topics": [
-          "android",
-          "audio-processing",
-          "c-plus-plus",
-          "calculator",
-          "computer-vision",
-          "deep-learning",
-          "framework",
-          "graph-based",
-          "graph-framework",
-          "inference",
           "machine-learning",
-          "mediapipe",
-          "mobile-development",
-          "perception",
-          "pipeline-framework",
-          "stream-processing",
-          "video-processing"
+          "research"
         ],
-        "last_updated": "4/29/2026"
+        "last_updated": "4/30/2026"
       }
     ],
     "by_hype": []
@@ -7096,17 +7039,17 @@
   "distributions": {
     "stars_ranges": {
       "0-10": 140,
-      "11-50": 205,
+      "11-50": 206,
       "51-100": 150,
-      "101-500": 516,
-      "501-1000": 258,
-      "1000+": 992
+      "101-500": 517,
+      "501-1000": 257,
+      "1000+": 995
     },
     "forks_ranges": {
-      "0-5": 313,
-      "6-25": 412,
-      "26-100": 497,
-      "101-500": 500,
+      "0-5": 312,
+      "6-25": 414,
+      "26-100": 498,
+      "101-500": 502,
       "500+": 539
     }
   }
